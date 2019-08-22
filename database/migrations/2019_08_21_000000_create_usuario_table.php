@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInventarioTable extends Migration
+class CreateUsuarioTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'inventario';
+    public $tableName = 'usuario';
 
     /**
      * Run the migrations.
-     * @table inventario
+     * @table usuario
      *
      * @return void
      */
@@ -22,22 +22,15 @@ class CreateInventarioTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('idInventario');
-            $table->integer('idEmergencias');
-            $table->integer('SuministrosComision');
-            $table->integer('SuministrosGobierno');
-            $table->integer('Colchonetas');
-            $table->integer('Cobijas');
-            $table->tinyInteger('Ropa');
+            $table->increments('idUsuario');
+            $table->string('Nombre', 50);
+            $table->string('Apellido1', 50);
+            $table->string('Apellido2', 50);
+            $table->string('Cedula', 50);
+            $table->string('patologia', 100)->nullable()->default(null);
+            $table->string('Nacionalidad', 50)->nullable()->default(null);
+            $table->string('Comunidad', 50)->nullable()->default(null);
             $table->timestamp('Fecha')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-
-            $table->index(["idEmergencias"], 'idEmergencias');
-
-
-            $table->foreign('idEmergencias', 'idEmergencias')
-                ->references('idEmergencias')->on('emergencia')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
         });
     }
 

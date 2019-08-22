@@ -47,7 +47,7 @@ class CreateEntregadonacionesTable extends Migration
                 ->onUpdate('restrict');
 
             $table->foreign('IdVoluntario', 'IdVoluntario')
-                ->references('IdVoluntario')->on('voluntario')
+                ->references('idUsuario')->on('usuario')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
         });

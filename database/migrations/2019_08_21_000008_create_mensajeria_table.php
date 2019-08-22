@@ -29,21 +29,13 @@ class CreateMensajeriaTable extends Migration
             $table->time('Hora');
             $table->timestamp('Fecha')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->string('Categoria', 100);
-            $table->integer('IdDirector');
             $table->integer('IdLiderComunal');
 
             $table->index(["IdLiderComunal"], 'Fk_IdLiderComunal');
 
-            $table->index(["IdDirector"], 'Fk_IdDirector');
-
-
-            $table->foreign('IdDirector', 'Fk_IdDirector')
-                ->references('IdDirector')->on('director')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
 
             $table->foreign('IdLiderComunal', 'Fk_IdLiderComunal')
-                ->references('IdLiderComunal')->on('lidercomunal')
+                ->references('idUsuario')->on('usuario')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
         });

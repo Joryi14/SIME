@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNoticiasTable extends Migration
+class CreateInventarioTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'noticias';
+    public $tableName = 'inventario';
 
     /**
      * Run the migrations.
-     * @table noticias
+     * @table inventario
      *
      * @return void
      */
@@ -22,20 +22,19 @@ class CreateNoticiasTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('IdNoticias');
-            $table->dateTime('FechaPublicacion');
-            $table->string('Titulo', 100);
-            $table->integer('IdAutor');
-            $table->binary('Imagenes')->nullable()->default(null);
-            $table->binary('Videos')->nullable()->default(null);
-            $table->string('Articulo');
-            $table->binary('PDF')->nullable()->default(null);
+            $table->increments('idInventario');
+            $table->integer('idEmergencias');
+            $table->integer('Suministros');
+            $table->integer('Colchonetas');
+            $table->integer('Cobijas');
+            $table->tinyInteger('Ropa');
+            $table->timestamp('Fecha')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
-            $table->index(["IdAutor"], 'IdAutor');
+            $table->index(["idEmergencias"], 'idEmergencias');
 
 
-            $table->foreign('IdAutor', 'IdAutor')
-                ->references('idAutor')->on('autor')
+            $table->foreign('idEmergencias', 'idEmergencias')
+                ->references('idEmergencias')->on('emergencia')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
         });

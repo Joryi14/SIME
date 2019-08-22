@@ -28,7 +28,8 @@ class CreateRetiropaquetesTable extends Migration
             $table->integer('IdVoluntario');
             $table->integer('PlacaVehiculo');
             $table->string('DireccionAEntregar', 100);
-            $table->integer('CantidadPaquetes');
+            $table->integer('SuministrosGobierno');
+            $table->integer('SuministrosComision');
             $table->integer('IdInventario');
             $table->timestamp('Fecha')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
@@ -47,7 +48,7 @@ class CreateRetiropaquetesTable extends Migration
                 ->onUpdate('restrict');
 
             $table->foreign('IdVoluntario', 'IdVoluntario')
-                ->references('IdVoluntario')->on('voluntario')
+                ->references('idUsuario')->on('usuario')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
 
@@ -57,7 +58,7 @@ class CreateRetiropaquetesTable extends Migration
                 ->onUpdate('restrict');
 
             $table->foreign('IdAdministradorI', 'IdAdministradorI')
-                ->references('IdAdministradorI')->on('administradorinventario')
+                ->references('idUsuario')->on('usuario')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
         });

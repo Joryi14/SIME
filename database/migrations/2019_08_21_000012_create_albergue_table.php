@@ -43,7 +43,7 @@ class CreateAlbergueTable extends Migration
 
 
             $table->foreign('IdResponsable', 'IdResponsable')
-                ->references('IdLiderComunal')->on('lidercomunal')
+                ->references('idUsuario')->on('usuario')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
         });

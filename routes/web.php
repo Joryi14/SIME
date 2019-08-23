@@ -11,6 +11,10 @@
 |
 */
 
+use App\Http\Controllers\permisoController;
+use Doctrine\DBAL\Schema\Index;
+
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('permiso', 'permisoController@Index');

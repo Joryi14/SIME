@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-class permisoController extends Controller
+
+class usuario_rol extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,6 @@ class permisoController extends Controller
      */
     public function index()
     {
-     return view('permisoIndex');
         //
     }
 
@@ -35,10 +34,7 @@ class permisoController extends Controller
      */
     public function store(Request $request)
     {
-        //return "store";
-        //dd($request-);
         //
-        $permiso = DB::insert("call insert_permiso('$request->name','$request->slug')");
     }
 
     /**

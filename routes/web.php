@@ -17,4 +17,9 @@ use Doctrine\DBAL\Schema\Index;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('permiso', 'permisoController@Index');
+
+Route::group(['prefix' => 'permiso'], function () {
+    Route::get('/', 'permisoController@Index');
+    Route::post('/','permisoController@store');
+    Route::put('/{permiso}','permisoController@update');
+});

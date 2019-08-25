@@ -14,7 +14,7 @@ class CensoController extends Controller
     public function index()
     {
         //
-        return view(Censo);
+        return view('Censo.index');
     }
 
     /**
@@ -25,6 +25,7 @@ class CensoController extends Controller
     public function create()
     {
         //
+        return view('Censo.create');
     }
 
     /**
@@ -35,8 +36,11 @@ class CensoController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $permiso = DB::insert("call insert_Censo('$request->IdJefeFam','$request->Refrigerador', '$recuest->Cocina' ,'$request->Colchon' ,'$recuest->Cama')");
+        $censo = new Censo();
+        $censo->IdJefeFam = $request->input('IdJefeFam');
+        $censo->save();
+        return 'Dato guardado';
+        //$permiso = DB::insert("call insert_Censo('$request->IdJefeFam','$request->Refrigerador', '$recuest->Cocina' ,'$request->Colchon' ,'$recuest->Cama')");
     }
 
     /**

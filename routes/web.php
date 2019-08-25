@@ -12,9 +12,9 @@
 */
 
 
-Route::group(['prefix' => 'Censo'], function(){
-Route:: get('/', 'CensoController@Index');
-Route:: post('/', 'CensoController@store');
-//Route:: get('/', 'CensoController@update');
-});
-
+//Route::group(['prefix' => 'Censo'], function(){
+//Route:: get('/', 'CensoController@index');
+//Route:: post('/', 'CensoController@store');
+//Route:: get('/', 'CensoController@create');
+//});
+Route::resource('Censo', 'CensoController');

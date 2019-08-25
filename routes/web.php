@@ -11,12 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('Censo');
-});
+
 Route::group(['prefix' => 'Censo'], function(){
 Route:: get('/', 'CensoController@Index');
 Route:: post('/', 'CensoController@store');
-Route:: get('/', 'CensoController@update');
+//Route:: get('/', 'CensoController@update');
 });
 

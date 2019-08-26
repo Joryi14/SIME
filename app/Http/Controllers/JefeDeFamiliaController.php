@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Censo;
 use Illuminate\Http\Request;
 
-class CensoController extends Controller
+class JefeDeFamilia extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class CensoController extends Controller
      */
     public function index()
     {
-        //
-        return view('Censo.index');
+        return view('JefeDeFamilia.index');
     }
 
     /**
@@ -25,8 +23,7 @@ class CensoController extends Controller
      */
     public function create()
     {
-        //
-        return view('Censo.create');
+        return view('JefeDeFamilia.create');
     }
 
     /**
@@ -37,16 +34,7 @@ class CensoController extends Controller
      */
     public function store(Request $request)
     {
-        $censo = new Censo();
-        $censo->IdJefeFam = $request->input('IdJefeFam');
-        $censo->Refrigerador = $request->input('Refrigerador');
-        $censo->Cocina = $request->input('Cocina');
-        $censo->Colchon = $request->input('Colchon');
-        $censo->Cama = $request->input('Cama');
-        $censo->save();
-
-        return 'Dato guardado';
-        //$permiso = DB::insert("call insert_Censo('$request->IdJefeFam','$request->Refrigerador', '$recuest->Cocina' ,'$request->Colchon' ,'$recuest->Cama')");
+        
     }
 
     /**

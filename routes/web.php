@@ -18,3 +18,4 @@
 //Route:: get('/', 'CensoController@create');
 //});
 Route::resource('Censo', 'CensoController');
+Route::resource('JefeDeFamilia', 'JefeDeFamiliaController');

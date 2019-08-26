@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\permiso as AppPermiso;
 use Illuminate\Support\Facades\DB;
+
 class permisoController extends Controller
 {
     /**
@@ -13,8 +16,8 @@ class permisoController extends Controller
      */
     public function index()
     {
-     return view('permisoIndex');
-        //
+        $permisos = AppPermiso::orderBy('idPermiso')->get();
+        return view('admin.permisoIndex', compact('permisos'));
     }
 
     /**
@@ -35,9 +38,6 @@ class permisoController extends Controller
      */
     public function store(Request $request)
     {
-        //return "store";
-        //dd($request-);
-        //
         $permiso = DB::insert("call insert_permiso('$request->name','$request->slug')");
     }
 

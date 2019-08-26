@@ -13,7 +13,7 @@ class homeController extends Controller
      */
     public function index()
     {
-        return view('Login');
+        return view('Index');
     }
 
     /**
@@ -21,9 +21,9 @@ class homeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function Login(Request $request)
     {
-        //
+        return view('Login');
     }
 
     /**

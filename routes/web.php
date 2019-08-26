@@ -14,9 +14,13 @@
 use App\Http\Controllers\permisoController;
 use Doctrine\DBAL\Schema\Index;
 
-Route::get('/','HomeController@Index');
-Route::group(['prefix' => 'permiso'], function () {
-    Route::get('/', 'permisoController@Index');
-    Route::post('/','permisoController@store');
+
+Route::group(['prefix' => '/'], function () {
+    //Route::get('/', 'HomeController@Index');
+    Route::get('/','Homecontroller@Login');
+});
+Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
+    Route::get('permiso', 'permisoController@index');
+    Route::post('permiso/store','permisoController@store');
     Route::put('/{permiso}','permisoController@update');
 });

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Censo;
+use App\models\Censo;
 use Illuminate\Http\Request;
 
 class CensoController extends Controller
@@ -14,8 +14,8 @@ class CensoController extends Controller
      */
     public function index()
     {
-        //
-        return view('Censo.index');
+        $censos = AppPermiso::orderBy('IdCenso')->get();
+        return view('Censo.index', compact('censos'));
     }
 
     /**
@@ -45,7 +45,7 @@ class CensoController extends Controller
         $censo->Cama = $request->input('Cama');
         $censo->save();
 
-        return 'Dato guardado';
+        return ('Censo.index');
         //$permiso = DB::insert("call insert_Censo('$request->IdJefeFam','$request->Refrigerador', '$recuest->Cocina' ,'$request->Colchon' ,'$recuest->Cama')");
     }
 

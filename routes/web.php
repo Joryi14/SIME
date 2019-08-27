@@ -25,5 +25,16 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
     Route::put('/{permiso}','permisoController@update');
 });
 
-Route::resource('Censo', 'CensoController');
-Route::resource('JefeDeFamilia', 'JefeDeFamiliaController');
+
+Route::group(['prefix' => '/'], function () {
+    Route::get('Censo', 'CensoController@index');
+    Route::get('Censo/create', 'CensoController@create');
+    Route::post('Censo/store','CensoController@store');
+    Route::put('/{Censo}','CensoController@update');
+});
+
+Route::group(['prefix' => '/'], function () {
+    Route::get('JefeDeFamilia', 'JefeDeFamiliaController@index');
+    Route::post('JefeDeFamilia/store','JefeDeFamiliaController@store');
+    Route::put('/{JefeDeFamilia}','JefeDeFamiliaController@update');
+});

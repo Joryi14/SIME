@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JefeDeFamilia as AppJefe;
 use Illuminate\Http\Request;
 
 class JefeDeFamilia extends Controller
@@ -13,7 +14,8 @@ class JefeDeFamilia extends Controller
      */
     public function index()
     {
-        return view('JefeDeFamilia.index');
+        $JefeF = AppJefe::orderBy('IdJefe')->get();
+        return view('JefeDeFamilia.index', compact('JefeF'));
     }
 
     /**

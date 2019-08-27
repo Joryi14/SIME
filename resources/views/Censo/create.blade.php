@@ -1,9 +1,6 @@
-@extends('layouts.app')
-
-@section('title','Crear Censo')
-    
-@section('content')
-<form class= "form-group" method="POST" action="/Censo">
+@extends("theme/$theme/layout")
+@section('Contenido')
+<form class= "form-group" method="POST" action="/Censo/store">
   @csrf
 <div class= "form-group">
   <h1>Crear</h1>

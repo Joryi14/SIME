@@ -1,5 +1,5 @@
 @extends("theme/$theme/layout")
-@section('contenido')
+@section('Contenido')
 <div class="row">
     <div class="col-xs-12">
       <div class="box">

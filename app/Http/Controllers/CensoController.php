@@ -37,15 +37,13 @@ class CensoController extends Controller
     public function store(Request $request)
     {
         $censo = new Censo();
-        $censo->IdJefeFam = $request->input('IdJefeFam');
-        $censo->Refrigerador = $request->input('Refrigerador');
-        $censo->Cocina = $request->input('Cocina');
-        $censo->Colchon = $request->input('Colchon');
-        $censo->Cama = $request->input('Cama');
-        $censo->save();
-
+        $censo->IdJefeFam = $request->IdJefeFam;
+        $censo->Refrigerador = $request->Refrigerador;
+        $censo->Cocina = $request->Cocina;
+        $censo->Colchon = $request->Colchon;
+        $censo->Cama = $request->Cama;
+        $censo->save();  
         return ('Censo.index');
-        //$permiso = DB::insert("call insert_Censo('$request->IdJefeFam','$request->Refrigerador', '$recuest->Cocina' ,'$request->Colchon' ,'$recuest->Cama')");
     }
 
     /**

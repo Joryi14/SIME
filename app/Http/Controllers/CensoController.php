@@ -43,7 +43,7 @@ class CensoController extends Controller
         $censo->Colchon = $request->Colchon;
         $censo->Cama = $request->Cama;
         $censo->save();  
-        return view('Censo.index');
+        header("location: /Censo");
     }
 
     /**

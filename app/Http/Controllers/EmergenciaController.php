@@ -45,8 +45,7 @@ class EmergenciaController extends Controller
         $emergencia->Longitud = $request->Longitud;
         $emergencia->Latitud =  $request->Latitud;
         $emergencia->save();
-        $emergencias = Emergencia::orderBy('idEmergencias')->get();
-        return view('Emergencia.index', compact('emergencias'));
+        header("location: /Emergencia");
 
     }
 

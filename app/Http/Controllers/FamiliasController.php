@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Familias;
 use Illuminate\Http\Request;
 
 class FamiliasController extends Controller
@@ -13,7 +14,8 @@ class FamiliasController extends Controller
      */
     public function index()
     {
-        //
+        $Familias = Familias::orderBy('IdFamilia')->get();
+        return view('Familias.index', compact('Familias'));
     }
 
     /**
@@ -23,7 +25,7 @@ class FamiliasController extends Controller
      */
     public function create()
     {
-        //
+       return view('Familias.create');
     }
 
     /**
@@ -34,7 +36,22 @@ class FamiliasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Familia = new Familias();  
+        $Familia->IdJefeF = $request->IdJefeF;    
+        $Familia->Nombre = $request->Nombre;
+        $Familia->Apellido1 = $request->Apellido1;
+        $Familia->Apellido2 = $request->Apellido2;
+        $Familia->Cedula = $request->Cedula;
+        $Familia->Parentesco = $request->Parentesco;
+        $Familia->Edad = $request->Edad;
+        $Familia->sexo = $request->sexo;
+        $Familia->PcD = $request->PcD;
+        $Familia->MG = $request->MG;
+        $Familia->PI = $request->PI;
+        $Familia->PM = $request->PM;
+        $Familia->Patologia = $request->Patologia;
+        $Familia->save();  
+        header("location: /Familias");
     }
 
     /**

@@ -52,7 +52,7 @@ class JefeDeFamiliaController extends Controller
         $Jefe->Patologia = $request->Patologia;
         $Jefe->save();  
         
-        return view('JefeDeFamilia.index');
+        header("location: /JefeDeFamilia");
         
     }
 

@@ -1,4 +1,5 @@
-@extends("layout.app")
+@extends("theme/$theme/layout")
+@extends("layouts.app")
 @section('title','Censo')
 @section('content')
 <div class="row">

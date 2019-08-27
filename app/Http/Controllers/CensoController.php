@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Censo;
 use Illuminate\Http\Request;
 
 class CensoController extends Controller

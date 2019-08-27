@@ -24,3 +24,11 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
     Route::post('permiso/store','permisoController@store');
     Route::put('/{permiso}','permisoController@update');
 });
+
+//Route::group(['prefix' => 'Censo'], function(){
+//Route:: get('/', 'CensoController@index');
+//Route:: post('/', 'CensoController@store');
+//Route:: get('/', 'CensoController@create');
+//});
+Route::resource('Censo', 'CensoController');
+Route::resource('JefeDeFamilia', 'JefeDeFamiliaController');

@@ -1,7 +1,5 @@
 @extends("theme/$theme/layout")
-@extends("layouts.app")
-@section('title','Censo')
-@section('content')
+@section('contenido')
 <div class="row">
     <div class="col-xs-12">
       <div class="box">

@@ -26,6 +26,8 @@ class CreateMapazonarTable extends Migration
             $table->string('Longitud', 50);
             $table->string('Latitud', 50);
             $table->string('NombreZona', 100);
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
         });
     }
 

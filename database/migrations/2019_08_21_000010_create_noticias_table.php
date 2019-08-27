@@ -30,6 +30,8 @@ class CreateNoticiasTable extends Migration
             $table->binary('Videos')->nullable()->default(null);
             $table->string('Articulo');
             $table->binary('PDF')->nullable()->default(null);
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
 
             $table->index(["IdAutor"], 'IdAutor');
 

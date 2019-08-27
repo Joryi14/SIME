@@ -28,7 +28,8 @@ class CreateInventarioTable extends Migration
             $table->integer('Colchonetas');
             $table->integer('Cobijas');
             $table->tinyInteger('Ropa');
-            $table->timestamp('Fecha')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
 
             $table->index(["idEmergencias"], 'idEmergencias');
 

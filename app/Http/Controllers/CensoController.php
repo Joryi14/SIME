@@ -54,7 +54,8 @@ class CensoController extends Controller
      */
     public function show($id)
     {
-        //
+        $censo = Censo::find($id);
+        return view('Censo.show', compact('censo'));
     }
 
     /**

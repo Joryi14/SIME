@@ -39,3 +39,17 @@ Route::group(['prefix' => '/'], function () {
     Route::post('JefeDeFamilia/store','JefeDeFamiliaController@store');
     Route::put('/{JefeDeFamilia}','JefeDeFamiliaController@update');
 });
+
+Route::group(['prefix' => '/'], function () {
+    Route::get('Familias', 'FamiliasController@index');
+    Route::get('Familias/create', 'FamiliasController@create');
+    Route::post('Familias/store','FamiliasController@store');
+    Route::put('/{Familias}','FamiliasController@update');
+});
+
+Route::group(['prefix' => '/'], function () {
+    Route::get('Emergencia', 'EmergenciaController@index');
+    Route::get('Emergencia/create', 'EmergenciaController@create');
+    Route::post('Emergencia/store','EmergenciaController@store');
+    Route::put('/{Emergencia}','EmergenciaController@update');
+});

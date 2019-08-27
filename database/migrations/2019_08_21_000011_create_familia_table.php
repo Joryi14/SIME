@@ -36,6 +36,8 @@ class CreateFamiliaTable extends Migration
             $table->string('PI', 100);
             $table->string('PM', 100);
             $table->string('Patologia', 200);
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
 
             $table->index(["IdJefeF"], 'Fk_IdJefeF');
 

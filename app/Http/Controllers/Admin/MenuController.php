@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\permiso;
+use App\Models\Admin\Menu;
 use Illuminate\Support\Facades\DB;
 
-class permisoController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,7 @@ class permisoController extends Controller
      */
     public function index()
     {
-        $permisos = permiso::orderBy('idPermiso')->get();
-        return view('admin.permisoIndex', compact('permisos'));
+        //
     }
 
     /**
@@ -27,7 +26,7 @@ class permisoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.menu.Create');
     }
 
     /**
@@ -38,7 +37,9 @@ class permisoController extends Controller
      */
     public function store(Request $request)
     {
-        $permiso = DB::insert("call insert_permiso('$request->name','$request->slug')");
+        //dd($request->all());
+        $menu = DB::insert("call Insert_Menu('$request->nombre','$request->url','$request->icono')");
+        
     }
 
     /**

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\models\Censo;
 use Illuminate\Http\Request;
 
 class CensoController extends Controller
@@ -14,7 +13,7 @@ class CensoController extends Controller
      */
     public function index()
     {
-        $censos = AppPermiso::orderBy('IdCenso')->get();
+        $censos = Censo::orderBy('IdCenso')->get();
         return view('Censo.index', compact('censos'));
     }
 

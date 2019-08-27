@@ -24,7 +24,11 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
     Route::post('permiso/store','permisoController@store');
     Route::put('/{permiso}','permisoController@update');
     Route::get('Menu', 'MenuController@index');
-    Route::get('Menu/Create','MenuController@Create');
+    Route::get('Menu/Create','MenuController@Create')->name('menu_create');
     Route::post('Menu','MenuController@Store')->name('menu_guardar');
+    Route::get('Menu/{id}/editar', 'MenuController@edit')->name('menu_edit');
+    Route::put('Menu/{id}', 'MenuController@update')->name('menu_update');
+    Route::get('Menu/{id}/destroy', 'MenuController@destroy')->name('menu_delete');
+    Route::post('Menu/guardar-orden', 'MenuController@guardarOrden')->name('guardar_orden');
 });
 

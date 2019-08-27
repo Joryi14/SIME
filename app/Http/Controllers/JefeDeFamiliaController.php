@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JefeDeFamilia as AppJefe;
+use App\Models\JefeDeFamilia;
 use Illuminate\Http\Request;
 
-class JefeDeFamilia extends Controller
+class JefeDeFamiliaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class JefeDeFamilia extends Controller
      */
     public function index()
     {
-        $JefeF = AppJefe::orderBy('IdJefe')->get();
+        $JefeF = JefeDeFamilia::orderBy('IdJefe')->get();
         return view('JefeDeFamilia.index', compact('JefeF'));
     }
 
@@ -36,6 +36,23 @@ class JefeDeFamilia extends Controller
      */
     public function store(Request $request)
     {
+        $Jefe = new JefeDeFamilia();  
+        $Jefe->TotalPersonas = $request->TotalPersonas;    
+        $Jefe->Nombre = $request->Nombre;
+        $Jefe->Apellido1 = $request->Apellido1;
+        $Jefe->Apellido2 = $request->Apellido2;
+        $Jefe->Cedula = $request->Cedula;
+        $Jefe->Edad = $request->Edad;
+        $Jefe->sexo = $request->sexo; 
+        $Jefe->Telefono = $request->Telefono;
+        $Jefe->PcD = $request->PcD;
+        $Jefe->MG = $request->MG;
+        $Jefe->PI = $request->PI;
+        $Jefe->PM = $request->PM;
+        $Jefe->Patologia = $request->Patologia;
+        $Jefe->save();  
+        
+        return view('JefeDeFamilia.index');
         
     }
 

@@ -28,7 +28,8 @@ class CreateCensoTable extends Migration
             $table->tinyInteger('Cocina');
             $table->tinyInteger('Colchon');
             $table->tinyInteger('Cama');
-            $table->timestamp('Fecha')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
 
             $table->index(["IdJefeFam"], 'Fk_IdJefeFam');
 

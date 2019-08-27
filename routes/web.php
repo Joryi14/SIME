@@ -35,6 +35,7 @@ Route::group(['prefix' => '/'], function () {
 
 Route::group(['prefix' => '/'], function () {
     Route::get('JefeDeFamilia', 'JefeDeFamiliaController@index');
+    Route::get('JefeDeFamilia/create', 'JefeDeFamiliaController@create');
     Route::post('JefeDeFamilia/store','JefeDeFamiliaController@store');
     Route::put('/{JefeDeFamilia}','JefeDeFamiliaController@update');
 });

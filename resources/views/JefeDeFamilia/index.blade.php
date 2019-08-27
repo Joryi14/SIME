@@ -1,5 +1,5 @@
 @extends("theme/$theme/layout")
-@section('contenido')
+@section('Contenido')
 <div class="row">
     <div class="col-xs-12">
       <div class="box">
@@ -18,22 +18,39 @@
         <div class="box-body table-responsive no-padding">
           <table class="table table-hover">
             <tr>
-              <th>ID Censo</th>
               <th>ID Jefe de familia</th>
-              <th>Refrigerador</th>
-              <th>Cocina</th>
-              <th>Colchon</th>
-              <th>Cama</th>
+              <th>TotalPersonas</th>
+              <th>Nombre</th>
+              <th>Apellido1</th>
+              <th>Apellido2</th>
+              <th>Cedula</th>
+              <th>Edad</th>
+              <th>sexo</th>
+              <th>Telefono</th>
+              <th>PcD</th>
+              <th>MG</th>
+              <th>PI</th>
+              <th>PM</th>
+              <th>Patologia</th>
             </tr>
-            @foreach ($censos as $item)
+            @foreach ($JefeF as $item)
 <tr>
-<td>{{$item->IdCenso}}</td>    
-<td>{{$item->IdJefeFam}}</td>
-<td>{{$item->Refrigerador}}</td>
-<td>{{$item->Cocina}}</td>
-<td>{{$item->Colchon}}</td>
-<td>{{$item->Cama}}</td>
+<td>{{$item->IdJefe}}</td>  
+<td>{{$item->TotalPersonas}}</td>    
+<td>{{$item->Nombre}}</td>
+<td>{{$item->Apellido1}}</td>
+<td>{{$item->Apellido2}}</td>
+<td>{{$item->Cedula}}</td>
+<td>{{$item->Edad}}</td>
+<td>{{$item->sexo}}</td>    
+<td>{{$item->Telefono}}</td>
+<td>{{$item->PcD}}</td>
+<td>{{$item->MG}}</td>
+<td>{{$item->PI}}</td>
+<td>{{$item->PM}}</td>
+<td>{{$item->Patologia}}</td>
 </tr>
+
             @endforeach
           </table>
         </div>

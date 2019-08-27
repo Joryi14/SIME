@@ -74,15 +74,6 @@ class Menu extends Model
                                         foreach ($vchild2->children as $key => $vchild3) {
                                             $update_id = $vchild3->id;
                                             $parent_id = $vchild2->id;
-                                            $this->where('id', $update_id)->update(['idMenu' => $parent_id, 'orden' => $key + 1]);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+                                            $this->where('id', $update_id)->update(['idMenu' => $parent_id, 'orden' => $key + 1]);}}}}}}}}}}
+                                        
 }

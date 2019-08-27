@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#nestable').nestable().on('change', function () {
+    $('#nestable').nestable().on('change', function () {        
         const data = {
             menu: window.JSON.stringify($('#nestable').nestable('serialize')),
             _token: $('input[name=_token]').val()
@@ -12,9 +12,8 @@ $(document).ready(function () {
             success: function (respuesta) {
             }
         });
-    });
-
-    $('.eliminar-menu').on('click', function(event){
+}); 
+   $('.eliminar-menu').on('click', function(event){
         event.preventDefault();
         const url = $(this).attr('href');
         swal({

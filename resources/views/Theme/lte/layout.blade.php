@@ -49,6 +49,7 @@
     @include("theme/$theme/footer")
  
  </div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{asset("assets/$theme/bower_components/jquery/dist/jquery.min.js")}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset("assets/$theme/bower_components/bootstrap/dist/js/bootstrap.min.js")}}"></script>
@@ -59,6 +60,7 @@
 <!-- AdminLTE App -->
 <script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
 @yield('scriptsPlugins')
+<script src="{{asset("assets/js/scripts.js")}}"></script>
 @yield('Script')
 </body>
 </html>

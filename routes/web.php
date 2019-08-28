@@ -30,5 +30,11 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
     Route::put('Menu/{id}', 'MenuController@update')->name('menu_update');
     Route::get('Menu/{id}/destroy', 'MenuController@destroy')->name('menu_delete');
     Route::post('Menu/guardar-orden', 'MenuController@guardarOrden')->name('guardar_orden');
+    Route::get('rol', 'rolController@index')->name('rol_index');
+    Route::get('rol/Create','rolController@Create')->name('rol_create');
+    Route::post('rol','rolController@Store')->name('rol_guardar');
+    Route::get('rol/{id}/edit', 'rolController@edit')->name('rol_edit');
+    Route::put('rol/{id}', 'rolController@update')->name('rol_update');
+    Route::delete('rol/{id}', 'rolController@delete')->name('rol_delete');
 });
 

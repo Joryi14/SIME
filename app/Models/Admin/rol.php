@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class rol extends Model
 {
-    //
-    protected $table = 'rol';
+    protected $table = 'roles';
+    protected $primaryKey = 'IdRol';
 }

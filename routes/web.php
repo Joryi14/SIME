@@ -83,3 +83,12 @@ Route::group(['prefix' => '/'], function () {
     Route::put('PersonaAlbergue/{PersonaAlbergue}','PersonasAlbergue@update');
     Route::delete('PersonaAlbergue/{PersonaAlbergue}','PersonasAlbergue@delete')->name('personaAlbergue_delete');
 });
+
+Route::group(['prefix' => '/'], function () {
+    Route::get('Albergue', 'Albergue@index');
+    Route::get('Albergue/create', 'Albergue@create')->name('albergue_create');
+    Route::post('Albergue/store','Albergue@store');
+    Route::get('Albergue/{Albergue}/edit', 'Albergue@edit')->name('albergue_edit');
+    Route::put('Albergue/{Albergue}','Albergue@update');
+    Route::delete('Albergue/{Albergue}','Albergue@delete')->name('albergue_delete');
+});

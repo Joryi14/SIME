@@ -91,7 +91,7 @@ class PersonasAlbergueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete($id, Request $request)
     {
         if ($request->ajax()) {
             if (PersonaAlbergue::destroy($id)) {

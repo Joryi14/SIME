@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Albergue;
 use Illuminate\Http\Request;
 
 class AlbergueController extends Controller
@@ -13,7 +13,8 @@ class AlbergueController extends Controller
      */
     public function index()
     {
-        //
+        $albergue = Albergue::orderBy('idAlbergue')->get();
+        return view('Albergue.index', compact('albergue'));
     }
 
     /**
@@ -23,7 +24,7 @@ class AlbergueController extends Controller
      */
     public function create()
     {
-        //
+        return view('Albergue.create');
     }
 
     /**
@@ -34,7 +35,23 @@ class AlbergueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $albergue = new Albergue();
+        $albergue->Nombre = $request->Nombre;
+        $albergue->Distrito = $request->Distrito;  
+        $albergue->Comunidad = $request->Comunidad;
+        $albergue->TipoDeInstalacion = $request->TipoDeInstalacion;
+        $albergue->Capacidad = $request->Capacidad;
+        $albergue->IdResponsable = $request->IdResponsable;
+        $albergue->telefono = $request->telefono;
+        $albergue->Duchas = $request->Duchas;
+        $albergue->inodoros = $request->inodoros;
+        $albergue->EspacioDeCocina = $request->EspacioDeCocina;
+        $albergue->Bodega = $request->Bodega;
+        $albergue->Longitud = $request->Longitud;
+        $albergue->Latitud = $request->Latitud;
+        $albergue->Nececidades = $request->Nececidades;
+        $albergue->save();  
+        header("location: /Albergue");
     }
 
     /**
@@ -56,7 +73,8 @@ class AlbergueController extends Controller
      */
     public function edit($id)
     {
-        //
+        $albergue = Albergue::find($id);
+        return view('Albergue.edit', compact('albergue'));
     }
 
     /**
@@ -68,7 +86,10 @@ class AlbergueController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $albergue = Albergue::find($id);
+        $albergue->fill($request->all());
+        $albergue->save();
+        header("location: /Albergue");
     }
 
     /**
@@ -77,8 +98,16 @@ class AlbergueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id, Request $request)
     {
-        //
+        if ($request->ajax()) {
+            if (Albergue::destroy($id)) {
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
     }
 }

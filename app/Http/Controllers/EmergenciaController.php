@@ -68,7 +68,8 @@ class EmergenciaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $emergencia = Emergencia::find($id);
+        return view('Emergencia.edit', compact('emergencia'));
     }
 
     /**
@@ -80,7 +81,10 @@ class EmergenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $emergencia = Emergencia::find($id);
+     $emergencia->fill($request->all());
+     $emergencia->save();
+     header("location: /Emergencia");
     }
 
     /**
@@ -89,8 +93,16 @@ class EmergenciaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id, Request $request)
     {
-        //
+        if ($request->ajax()) {
+            if (Emergencia::destroy($id)) {
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
     }
 }

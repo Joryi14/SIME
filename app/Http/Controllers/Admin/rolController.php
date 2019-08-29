@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\permiso;
+use App\Http\Requests\validarRol;
+use App\Models\Admin\rol;
 use Illuminate\Support\Facades\DB;
 
-class permisoController extends Controller
+class rolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class permisoController extends Controller
      */
     public function index()
     {
-        $permisos = permiso::orderBy('idPermiso')->get();
-        return view('admin.permisoIndex', compact('permisos'));
+        $roles = rol::orderBy('IdRol')->get();
+        return view('admin.rol.rolIndex', compact('roles'));
     }
 
     /**
@@ -27,7 +28,7 @@ class permisoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.rol.Create');
     }
 
     /**
@@ -36,9 +37,10 @@ class permisoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(validarRol $request)
     {
-        $permiso = DB::insert("call insert_permiso('$request->name','$request->slug')");
+        $rol = DB::insert("call Insert_Roles('$request->NombreRol')");
+        return redirect('admin/rol')->with('mensaje','Se guardo con exito');
     }
 
     /**
@@ -60,7 +62,8 @@ class permisoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $roles = rol::findorfail($id);
+        return view('admin.rol.Edit', compact('roles'));
     }
 
     /**
@@ -70,9 +73,10 @@ class permisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(validarRol $request, $id)
     {
-        //
+        $rol = DB::insert("call Update_Roles('$id','$request->NombreRol')");
+        return redirect('admin/rol')->with('mensaje','Se Actualizo con exito');
     }
 
     /**
@@ -81,8 +85,16 @@ class permisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id, Request $request)
     {
-        //
+        if ($request->ajax()) {
+            if (rol::destroy($id)) {
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
     }
 }

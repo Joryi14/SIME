@@ -15,9 +15,10 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/AdminLTE.min.css")}}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
+  folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/skins/_all-skins.min.css")}}">
-@yield('styles')
+  @yield('styles')
+  <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -46,8 +47,10 @@
           <!-- /.content -->
     </div>
     @include("theme/$theme/footer")
-  </div>
-  <script src="{{asset("assets/$theme/bower_components/jquery/dist/jquery.min.js")}}"></script>
+ 
+ </div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{asset("assets/$theme/bower_components/jquery/dist/jquery.min.js")}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset("assets/$theme/bower_components/bootstrap/dist/js/bootstrap.min.js")}}"></script>
 <!-- SlimScroll -->
@@ -56,7 +59,8 @@
 <script src="{{asset("assets/$theme/bower_components/fastclick/lib/fastclick.js")}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
-<!-- AdminLTE for demo purposes -->
+@yield('scriptsPlugins')
+<script src="{{asset("assets/js/scripts.js")}}"></script>
 @yield('Script')
 </body>
 </html>

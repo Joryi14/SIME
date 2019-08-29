@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\permiso;
+use App\Http\Requests\formMenu;
+use App\Models\Admin\Menu;
 use Illuminate\Support\Facades\DB;
 
-class permisoController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,10 @@ class permisoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $permisos = permiso::orderBy('idPermiso')->get();
-        return view('admin.permisoIndex', compact('permisos'));
+    {   
+        $menus = Menu::getMenu();
+        
+        return view('admin.menu.Index',compact('menus'));
     }
 
     /**
@@ -27,7 +29,7 @@ class permisoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.menu.Create');
     }
 
     /**
@@ -36,9 +38,11 @@ class permisoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(formMenu $request)
     {
-        $permiso = DB::insert("call insert_permiso('$request->name','$request->slug')");
+        //dd($request->all());
+        $menu = DB::insert("call Insert_Menu('$request->nombre','$request->url','$request->icono')");
+       return redirect('admin/Menu/Create')->with('mensaje','Se guardo con exito');
     }
 
     /**
@@ -84,5 +88,15 @@ class permisoController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function guardarOrden(Request $request)
+    {
+        if ($request->ajax()) {
+            $menu = new Menu;
+            $menu->guardarOrden($request->menu);
+            return response()->json(['respuesta' => 'ok']);
+        } else {
+            abort(404);
+        }
     }
 }

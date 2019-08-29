@@ -59,14 +59,18 @@ Route::group(['prefix' => '/'], function () {
 
 Route::group(['prefix' => '/'], function () {
     Route::get('Familias', 'FamiliasController@index');
-    Route::get('Familias/create', 'FamiliasController@create');
+    Route::get('Familias/create', 'FamiliasController@create')->name('familias_create');
     Route::post('Familias/store','FamiliasController@store');
-    Route::put('/{Familias}','FamiliasController@update');
+    Route::get('Familias/{Familias}/edit', 'FamiliasController@edit')->name('familias_edit');
+    Route::put('Familias/{Familias}','FamiliasController@update');
+    Route::delete('Familias/{Familias}','FamiliasController@delete')->name('familias_delete');
 });
 
 Route::group(['prefix' => '/'], function () {
     Route::get('Emergencia', 'EmergenciaController@index');
-    Route::get('Emergencia/create', 'EmergenciaController@create');
+    Route::get('Emergencia/create', 'EmergenciaController@create')->name('emergencia_create');
     Route::post('Emergencia/store','EmergenciaController@store');
-    Route::put('/{Emergencia}','EmergenciaController@update');
+    Route::get('Emergencia/{Emergencia}/edit', 'EmergenciaController@edit')->name('emergencia_edit');
+    Route::put('Emergencia/{Emergencia}','EmergenciaController@update');
+    Route::delete('Emergencia/{Emergencia}','EmergenciaController@delete')->name('emergencia_delete');
 });

@@ -73,7 +73,8 @@ class FamiliasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Familia = Familias::find($id);
+        return view('Familias.edit', compact('Familia'));
     }
 
     /**
@@ -85,7 +86,11 @@ class FamiliasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Familia = Familias::find($id);
+        $Familia->fill($request->all());
+        $Familia->save();
+     header("location: /Familias");
+    
     }
 
     /**
@@ -94,8 +99,17 @@ class FamiliasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id, Request $request)
     {
-        //
+        if ($request->ajax()) {
+            if (Familias::destroy($id)) {
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
+    
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Censo;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class CensoController extends Controller
 {
     /**
@@ -54,9 +54,7 @@ class CensoController extends Controller
      */
     public function show($id)
     {
-        $censo = Censo::find($id);
-      
-        return view('Censo.show',compact('censo'));
+    
     }
 
     /**
@@ -93,11 +91,17 @@ class CensoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id, Request $request)
     {
-        $censo = Censo::find($id);
-        $censo->delete();
-        header("location: /Censo");
+        if ($request->ajax()) {
+            if (Censo::destroy($id)) {
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
         
     }
 }

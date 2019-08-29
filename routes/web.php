@@ -41,12 +41,11 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
 
 Route::group(['prefix' => '/'], function () {
     Route::get('Censo', 'CensoController@index');
-    Route::get('Censo/create', 'CensoController@create');
+    Route::get('Censo/create', 'CensoController@create')->name('censo_create');
     Route::post('Censo/store','CensoController@store');
-    Route::get('Censo/{Censo}', 'CensoController@show');
     Route::get('Censo/{Censo}/edit', 'CensoController@edit');
     Route::put('Censo/{Censo}','CensoController@update');
-    Route::delete('Censo/{Censo}','CensoController@destroy');
+    Route::delete('Censo/{Censo}','CensoController@delete')->name('censo_delete');
 });
 
 Route::group(['prefix' => '/'], function () {

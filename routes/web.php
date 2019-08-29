@@ -74,3 +74,12 @@ Route::group(['prefix' => '/'], function () {
     Route::put('Emergencia/{Emergencia}','EmergenciaController@update');
     Route::delete('Emergencia/{Emergencia}','EmergenciaController@delete')->name('emergencia_delete');
 });
+
+Route::group(['prefix' => '/'], function () {
+    Route::get('PersonaAlbergue', 'PersonasAlbergue@index');
+    Route::get('PersonaAlbergue/create', 'PersonasAlbergue@create')->name('personaAlbergue_create');
+    Route::post('PersonaAlbergue/store','PersonasAlbergue@store');
+    Route::get('PersonaAlbergue/{PersonaAlbergue}/edit', 'PersonasAlbergue@edit')->name('personaAlbergue_edit');
+    Route::put('PersonaAlbergue/{PersonaAlbergue}','PersonasAlbergue@update');
+    Route::delete('PersonaAlbergue/{PersonaAlbergue}','PersonasAlbergue@delete')->name('personaAlbergue_delete');
+});

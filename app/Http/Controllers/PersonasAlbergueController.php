@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Censo;
+use App\Models\PersonaAlbergue;
 use Illuminate\Http\Request;
 
-class CensoController extends Controller
+class PersonasAlbergueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,8 @@ class CensoController extends Controller
      */
     public function index()
     {
-        $censos = Censo::orderBy('IdCenso')->get();
-        return view('Censo.index', compact('censos'));
+        $persona = PersonaAlbergue::orderBy('idregistroA')->get();
+        return view('PersonaAlbergue.index', compact('persona'));
     }
 
     /**
@@ -24,8 +24,7 @@ class CensoController extends Controller
      */
     public function create()
     {
-        //
-        return view('Censo.create');
+        return view('PersonaAlbergue.create');
     }
 
     /**
@@ -36,14 +35,16 @@ class CensoController extends Controller
      */
     public function store(Request $request)
     {
-        $censo = new Censo();
-        $censo->IdJefeFam = $request->IdJefeFam;
-        $censo->Refrigerador = $request->Refrigerador;
-        $censo->Cocina = $request->Cocina;
-        $censo->Colchon = $request->Colchon;
-        $censo->Cama = $request->Cama;
-        $censo->save();  
-        header("location: /Censo");
+        $persona = new PersonaAlbergue();
+        $persona->idAlbergue = $request->idAlbergue;
+        $persona->idJefe = $request->idJefe;  
+        $persona->LugarDeProcedencia = $request->LugarDeProcedencia;
+        $persona->FechaDeIngreso = $request->FechaDeIngreso;
+        $persona->HoraDeIngreso = $request->HoraDeIngreso;
+        $persona->FechaDeSalida = $request->FechaDeSalida;
+        $persona->HoraDeSalida = $request->HoraDeSalida;
+        $persona->save();  
+        header("location: /PersonaAlbergue");
     }
 
     /**
@@ -54,7 +55,7 @@ class CensoController extends Controller
      */
     public function show($id)
     {
-    
+        //
     }
 
     /**
@@ -65,8 +66,8 @@ class CensoController extends Controller
      */
     public function edit($id)
     {
-        $censo = Censo::find($id);
-        return view('Censo.edit', compact('censo'));
+        $persona = PersonaAlbergue::find($id);
+        return view('PersonaAlbergue.edit', compact('persona'));
     }
 
     /**
@@ -78,11 +79,10 @@ class CensoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $censo = Censo::find($id);
-     $censo->fill($request->all());
-     $censo->save();
-     header("location: /Censo");
-
+        $persona = PersonaAlbergue::find($id);
+        $persona->fill($request->all());
+        $persona->save();
+        header("location: /PersonaAlbergue");
     }
 
     /**
@@ -91,10 +91,10 @@ class CensoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id, Request $request)
+    public function delete($id)
     {
         if ($request->ajax()) {
-            if (Censo::destroy($id)) {
+            if (PersonaAlbergue::destroy($id)) {
                 return response()->json(['mensaje' => 'ok']);
             } else {
                 return response()->json(['mensaje' => 'ng']);
@@ -102,6 +102,5 @@ class CensoController extends Controller
         } else {
             abort(404);
         }
-        
     }
 }

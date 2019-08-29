@@ -31,7 +31,9 @@ Route::group(['prefix' => '/'], function () {
     Route::get('Censo/create', 'CensoController@create');
     Route::post('Censo/store','CensoController@store');
     Route::get('Censo/{Censo}', 'CensoController@show');
-    Route::put('/{Censo}','CensoController@update');
+    Route::get('Censo/{Censo}/edit', 'CensoController@edit');
+    Route::put('Censo/{Censo}','CensoController@update');
+    Route::delete('Censo/{Censo}','CensoController@destroy');
 });
 
 Route::group(['prefix' => '/'], function () {

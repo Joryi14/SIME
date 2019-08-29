@@ -24,7 +24,8 @@
               <th>Cocina</th>
               <th>Colchon</th>
               <th>Cama</th>
-              <th>Detalles<th>
+              <th>Acciones<th>
+
             </tr>
             @foreach ($censos as $item)
 <tr>
@@ -34,8 +35,11 @@
 <td>{{$item->Cocina}}</td>
 <td>{{$item->Colchon}}</td>
 <td>{{$item->Cama}}</td>
+<td><a href="/Censo/{{$item->IdCenso}}" class= "btn btn=primary">Detalles</a>
+<a href="/Censo/{{$item->IdCenso}}/edit" class= "btn btn=primary">Edit</a>
+
+ </td>
 </tr>
-<a href="/Censo/{{$item->IdCenso}}" class= "btn btn=primary">D</a>
             @endforeach
           </table>
         </div>

@@ -55,7 +55,8 @@ class CensoController extends Controller
     public function show($id)
     {
         $censo = Censo::find($id);
-        return view('Censo.show', compact('censo'));
+      
+        return view('Censo.show',compact('censo'));
     }
 
     /**
@@ -66,7 +67,8 @@ class CensoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $censo = Censo::find($id);
+        return view('Censo.edit', compact('censo'));
     }
 
     /**
@@ -78,7 +80,11 @@ class CensoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $censo = Censo::find($id);
+     $censo->fill($request->all());
+     $censo->save();
+     header("location: /Censo");
+
     }
 
     /**
@@ -89,6 +95,9 @@ class CensoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $censo = Censo::find($id);
+        $censo->delete();
+        header("location: /Censo");
+        
     }
 }

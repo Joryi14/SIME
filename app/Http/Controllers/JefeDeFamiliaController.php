@@ -75,7 +75,8 @@ class JefeDeFamiliaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $JefeF = JefeDeFamilia::find($id);
+        return view('JefeDeFamilia.edit', compact('JefeF'));
     }
 
     /**
@@ -87,7 +88,10 @@ class JefeDeFamiliaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $JefeF = JefeDeFamilia::find($id);
+        $JefeF->fill($request->all());
+        $JefeF->save();
+     header("location: /JefeDeFamilia");
     }
 
     /**
@@ -96,8 +100,17 @@ class JefeDeFamiliaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id, Request $request)
     {
-        //
+        if ($request->ajax()) {
+            if (JefeDeFamilia::destroy($id)) {
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
+        
     }
 }

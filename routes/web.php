@@ -50,9 +50,11 @@ Route::group(['prefix' => '/'], function () {
 
 Route::group(['prefix' => '/'], function () {
     Route::get('JefeDeFamilia', 'JefeDeFamiliaController@index');
-    Route::get('JefeDeFamilia/create', 'JefeDeFamiliaController@create');
+    Route::get('JefeDeFamilia/create', 'JefeDeFamiliaController@create')->name('jefe_create');
     Route::post('JefeDeFamilia/store','JefeDeFamiliaController@store');
-    Route::put('/{JefeDeFamilia}','JefeDeFamiliaController@update');
+    Route::get('JefeDeFamilia/{JefeDeFamilia}/edit', 'JefeDeFamiliaController@edit')->name('jefe_edit');
+    Route::put('JefeDeFamilia/{JefeDeFamilia}','JefeDeFamiliaController@update');
+    Route::delete('JefeDeFamilia/{JefeDeFamilia}','JefeDeFamiliaController@delete')->name('jefe_delete');
 });
 
 Route::group(['prefix' => '/'], function () {

@@ -38,7 +38,7 @@
               <td>{{$item->Cocina}}</td>
               <td>{{$item->Colchon}}</td>
               <td>{{$item->Cama}}</td>
-              <td><a href="/Censo/{{$item->IdCenso}}/edit" class="btn-accion-tabla tooltipsC" title="Editar Rol">
+              <td><a href="/Censo/{{$item->IdCenso}}/edit" class="btn-accion-tabla tooltipsC" title="Editar censo">
                 <i class="fa fa-fw fa-pencil"></i></a>
               <form action="{{route('censo_delete', ['Censo' => $item->IdCenso])}}" class="d-inline form-eliminar" method="POST">
                 @csrf @method('delete')

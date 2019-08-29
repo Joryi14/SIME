@@ -1,22 +1,25 @@
 @extends("theme/$theme/layout")
+@section('Script')
+<script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
+@endsection
 @section('Contenido')
 <div class="row">
-    <div class="col-xs-12">
-      <div class="box">
+    <div class="col-xs-8">
+        @include('Includes.mensaje-Succes')
+      <div class="box box-primary">
         <div class="box-header">
-          <h3 class="box-title">Jefe de familia</h3>
-          <div class="box-tools">
-            <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-              <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-              <div class="input-group-btn">
-                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-              </div>
+            <div class="box-tools pull-right">
+                <a href="{{route('jefe_create')}}" class="btn btn-block btn-primary btn-sm">
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear Jefe de familia
+                </a>
             </div>
-          </div>
+            
+          <h3 class="box-title">Jefes de familia</h3>
         </div>
         <!-- /.box-header -->
-        <div class="box-body table-responsive no-padding">
+        <div class="box-body table-responsive no-padding" id="tabla-data">
           <table class="table table-hover">
+           
             <tr>
               <th>ID Jefe de familia</th>
               <th>TotalPersonas</th>
@@ -34,29 +37,37 @@
               <th>Patologia</th>
             </tr>
             @foreach ($JefeF as $item)
-<tr>
-<td>{{$item->IdJefe}}</td>  
-<td>{{$item->TotalPersonas}}</td>    
-<td>{{$item->Nombre}}</td>
-<td>{{$item->Apellido1}}</td>
-<td>{{$item->Apellido2}}</td>
-<td>{{$item->Cedula}}</td>
-<td>{{$item->Edad}}</td>
-<td>{{$item->sexo}}</td>    
-<td>{{$item->Telefono}}</td>
-<td>{{$item->PcD}}</td>
-<td>{{$item->MG}}</td>
-<td>{{$item->PI}}</td>
-<td>{{$item->PM}}</td>
-<td>{{$item->Patologia}}</td>
-</tr>
-
+              <tr>
+              <td>{{$item->IdJefe}}</td>  
+              <td>{{$item->TotalPersonas}}</td>    
+              <td>{{$item->Nombre}}</td>
+              <td>{{$item->Apellido1}}</td>
+              <td>{{$item->Apellido2}}</td>
+              <td>{{$item->Cedula}}</td>
+              <td>{{$item->Edad}}</td>
+              <td>{{$item->sexo}}</td>    
+              <td>{{$item->Telefono}}</td>
+              <td>{{$item->PcD}}</td>
+              <td>{{$item->MG}}</td>
+              <td>{{$item->PI}}</td>
+              <td>{{$item->PM}}</td>
+              <td>{{$item->Patologia}}</td>
+              <td><a href="/JefeDeFamilia/{{$item->IdJefe}}/edit" class="btn-accion-tabla tooltipsC" title="Editar jefe de familia">
+                <i class="fa fa-fw fa-pencil"></i></a>
+              <form action="{{route('jefe_delete', ['JefeDeFamilia' => $item->IdJefe])}}" class="d-inline form-eliminar" method="POST">
+                @csrf @method('delete')
+                <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar jefe de familia">
+                    <i class="fa fa-fw fa-trash text-danger"></i>
+                </button>
+              </form>
+              </td>
+              </tr>
             @endforeach
+
+
           </table>
         </div>
-        <!-- /.box-body -->
       </div>
-      <!-- /.box -->
     </div>
   </div>
 @endsection

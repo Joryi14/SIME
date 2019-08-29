@@ -17,7 +17,7 @@
           <h3 class="box-title">Roles</h3>
         </div>
         <!-- /.box-header -->
-        <div class="box-body table-responsive no-padding">
+        <div class="box-body table-responsive no-padding" id="tabla-data">
           <table class="table table-hover">
             <tr>
               <th>ID Rol</th>

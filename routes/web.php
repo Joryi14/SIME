@@ -15,12 +15,15 @@ use App\Http\Controllers\permisoController;
 use Doctrine\DBAL\Schema\Index;
 
 
-Route::group(['prefix' => '/'], function () {
-    //Route::get('/', 'HomeController@Index');
-    Route::get('/','Homecontroller@Login');
+Route::get('/', function () {
+    return view('welcome');
 });
 Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
 
 });
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

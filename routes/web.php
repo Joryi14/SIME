@@ -20,10 +20,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/','Homecontroller@Login');
 });
 Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
-    /*Permiso*/ 
+
 });
-
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

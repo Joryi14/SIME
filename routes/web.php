@@ -20,11 +20,6 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/','Homecontroller@Login');
 });
 Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
-    Route::get('permiso', 'permisoController@index');
-    Route::post('permiso/store','permisoController@store');
-    Route::put('/{permiso}','permisoController@update');
-    Route::get('Menu', 'MenuController@index');
-    Route::get('Menu/Create','MenuController@Create');
-    Route::post('Menu','MenuController@Store')->name('menu_guardar');
+
 });
 

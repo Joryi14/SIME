@@ -38,10 +38,8 @@
                     <!-- /.box-body -->
              </div>                               <a href="/Mensajeria/{{$item->IdMensajeria}}" class= "btn btn=primary">D</a>
             @endforeach
-          
+
       <!-- /.box -->
     </div>
   </div>
-</div>
-</div>
 @endsection

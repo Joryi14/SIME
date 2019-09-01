@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Mensajeria;
+
+use App\Models\Inventario;
 use Illuminate\Http\Request;
 
-class MensajeriaController extends Controller
+class InventarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,8 @@ class MensajeriaController extends Controller
      */
     public function index()
     {
-        $mensajerias = Mensajeria::orderBy('IdMensajeria')->get();
-        return view('Mensajeria.index', compact('mensajerias'));
+        $inventarios = Inventario::orderBy('idInventario')->get();
+        return view('Inventario.index', compact('inventarios'));
     }
 
     /**
@@ -24,7 +25,7 @@ class MensajeriaController extends Controller
      */
     public function create()
     {
-        return view('Mensajeria.create');
+        return view('Inventario.create');
     }
 
     /**
@@ -35,16 +36,14 @@ class MensajeriaController extends Controller
      */
     public function store(Request $request)
     {
-        $mensajeria = new Mensajeria();
-        $mensajeria->CodigoIncidente = $request->CodigoIncidente;
-        $mensajeria->Descripcion = $request->Descripcion;
-        $mensajeria->Ubicacion = $request->Ubicacion;
-        $mensajeria->Hora = $request->Hora;
-        $mensajeria->Fecha = $request->Fecha;
-        $mensajeria->Categoria = $request->Categoria;
-        $mensajeria->IdUsuarioRol = $request->IdUsuarioRol;
-        $mensajeria->save();  
-        header("location: /Mensajeria");
+        $inventario = new Inventario();
+        $inventario->idEmergencias = $request->idEmergencias;
+        $inventario->Suministros = $request->Suministros;
+        $inventario->Colchonetas= $request->Colchonetas;
+        $inventario->Cobijas = $request->Cobijas;
+        $inventario->Ropa = $request->Ropa;
+        $inventario->save();  
+        header("location: /Inventario");
     }
 
     /**
@@ -55,7 +54,7 @@ class MensajeriaController extends Controller
      */
     public function show($id)
     {
-       //
+        //
     }
 
     /**
@@ -66,9 +65,8 @@ class MensajeriaController extends Controller
      */
     public function edit($id)
     {
-        $mensajeria = Mensajeria::find($id);
-        return view('Mensajeria.edit', compact('mensajeria'));
-      
+        $inventario = Inventario::find($id);
+        return view('Inventario.edit', compact('inventario'));
     }
 
     /**
@@ -80,10 +78,10 @@ class MensajeriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $mensajeria = Mensajeria::find($id);
-        $mensajeria->fill($request->all());
-        $mensajeria->save();
-        header("location: /Mensajeria");
+        $inventario = Inventario::find($id);
+        $inventario->fill($request->all());
+        $inventario->save();
+        header("location: /Inventario");
     }
 
     /**
@@ -95,7 +93,7 @@ class MensajeriaController extends Controller
     public function delete($id, Request $request)
     {
         if ($request->ajax()) {
-            if (Mensajeria::destroy($id)) {
+            if (Inventario::destroy($id)) {
                 return response()->json(['mensaje' => 'ok']);
             } else {
                 return response()->json(['mensaje' => 'ng']);
@@ -103,7 +101,6 @@ class MensajeriaController extends Controller
         } else {
             abort(404);
         }
-        
-    
+         
     }
 }

@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Mensajeria;
+
+use App\Models\EntregaDonaciones;
 use Illuminate\Http\Request;
 
-class MensajeriaController extends Controller
+class EntregaDonacionesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,8 @@ class MensajeriaController extends Controller
      */
     public function index()
     {
-        $mensajerias = Mensajeria::orderBy('IdMensajeria')->get();
-        return view('Mensajeria.index', compact('mensajerias'));
+        $entregadonacioness = EntregaDonaciones::orderBy('IdEntrega')->get();
+        return view('EntregaDonaciones.index', compact('entregadonacioness'));
     }
 
     /**
@@ -24,7 +25,7 @@ class MensajeriaController extends Controller
      */
     public function create()
     {
-        return view('Mensajeria.create');
+        return view('EntregaDonaciones.create');
     }
 
     /**
@@ -35,16 +36,13 @@ class MensajeriaController extends Controller
      */
     public function store(Request $request)
     {
-        $mensajeria = new Mensajeria();
-        $mensajeria->CodigoIncidente = $request->CodigoIncidente;
-        $mensajeria->Descripcion = $request->Descripcion;
-        $mensajeria->Ubicacion = $request->Ubicacion;
-        $mensajeria->Hora = $request->Hora;
-        $mensajeria->Fecha = $request->Fecha;
-        $mensajeria->Categoria = $request->Categoria;
-        $mensajeria->IdUsuarioRol = $request->IdUsuarioRol;
-        $mensajeria->save();  
-        header("location: /Mensajeria");
+        $entregadonaciones = new EntregaDonaciones();
+        $entregadonaciones->IdVoluntario = $request->IdVoluntario;
+        $entregadonaciones->IdJefe = $request->IdJefe;
+        $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
+        $entregadonaciones->Foto = $request->Foto;
+        $entregadonaciones->save();  
+        header("location:EntregaDonaciones /");
     }
 
     /**
@@ -55,7 +53,7 @@ class MensajeriaController extends Controller
      */
     public function show($id)
     {
-       //
+        //
     }
 
     /**
@@ -66,9 +64,8 @@ class MensajeriaController extends Controller
      */
     public function edit($id)
     {
-        $mensajeria = Mensajeria::find($id);
-        return view('Mensajeria.edit', compact('mensajeria'));
-      
+        $entregadonaciones = EntregaDonaciones::find($id);
+        return view('EntregaDonaciones.edit', compact('entregadonaciones'));
     }
 
     /**
@@ -80,10 +77,11 @@ class MensajeriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $mensajeria = Mensajeria::find($id);
-        $mensajeria->fill($request->all());
-        $mensajeria->save();
-        header("location: /Mensajeria");
+        $entregadonaciones = EntregaDonaciones::find($id);
+        $entregadonaciones->fill($request->all());
+        $entregadonaciones->save();
+        header("location: /EntregaDonaciones");
+    
     }
 
     /**
@@ -95,7 +93,7 @@ class MensajeriaController extends Controller
     public function delete($id, Request $request)
     {
         if ($request->ajax()) {
-            if (Mensajeria::destroy($id)) {
+            if (EntregaDonaciones::delete($id)) {
                 return response()->json(['mensaje' => 'ok']);
             } else {
                 return response()->json(['mensaje' => 'ng']);
@@ -103,7 +101,5 @@ class MensajeriaController extends Controller
         } else {
             abort(404);
         }
-        
-    
     }
 }

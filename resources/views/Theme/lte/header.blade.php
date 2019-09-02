@@ -1,6 +1,7 @@
 <header class="main-header">
         <!-- Logo -->
-        <a img="{{asset("assets/images/logo.png")}}" class="logo">
+        <a href="/" class="logo">
+          <span class="logo-mini"><b>SI</b>ME</span>
           <span class="logo-lg"><b>SIME</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
@@ -29,20 +30,6 @@
                       Alexander Pierce - Web Developer
                       <small>Member since Nov. 2012</small>
                     </p>
-                  </li>
-                  <li class="user-body">
-                    <div class="row">
-                      <div class="col-xs-4 text-center">
-                        <a href="#">Followers</a>
-                      </div>
-                      <div class="col-xs-4 text-center">
-                        <a href="#">Sales</a>
-                      </div>
-                      <div class="col-xs-4 text-center">
-                        <a href="#">Friends</a>
-                      </div>
-                    </div>
-                    <!-- /.row -->
                   </li>
                   <!-- Menu Footer-->
                   <li class="user-footer">

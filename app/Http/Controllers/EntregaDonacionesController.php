@@ -37,7 +37,7 @@ class EntregaDonacionesController extends Controller
     public function store(Request $request)
     {
         $entregadonaciones = new EntregaDonaciones();
-        $entregadonaciones->IdVoluntario = $request->IdVoluntario;
+        $entregadonaciones->IdUsuarioRol = $request->IdUsuarioRol;
         $entregadonaciones->IdJefe = $request->IdJefe;
         $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
         $entregadonaciones->Foto = $request->Foto;

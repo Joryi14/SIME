@@ -42,7 +42,7 @@ class MensajeriaController extends Controller
         $mensajeria->Hora = $request->Hora;
         $mensajeria->Fecha = $request->Fecha;
         $mensajeria->Categoria = $request->Categoria;
-        $mensajeria->IdUsuarioRol = $request->IdUsuarioRol;
+        $mensajeria->IdLiderComunal = $request->IdLiderComunal;
         $mensajeria->save();  
         header("location: /Mensajeria");
     }

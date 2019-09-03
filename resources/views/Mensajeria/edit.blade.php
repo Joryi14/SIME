@@ -11,7 +11,7 @@
 <label>Hora: <input type="text" name="Hora" value=" {{$mensajeria->Hora}}" class= "form-control" > </label><br>
 <label>Fecha: <input type="text" name="Fecha" value=" {{$mensajeria->Fecha}} " class= "form-control" > </label><br>
 <label>Categoria: <input type="text" name="Categoria" value=" {{$mensajeria->Categoria}}" class= "form-control" > </label><br>
-<label>Id lider Comunal:: <input type="text" name="IdUsuarioRol"  value=" {{$mensajeria->IdUsuarioRol}}" class= "form-control" > </label><br>
+<label>Id lider Comunal: <input type="text" name="IdLiderComunal"  value=" {{$mensajeria->IdLiderComunal}}" class= "form-control" > </label><br>
 </div>
 
 

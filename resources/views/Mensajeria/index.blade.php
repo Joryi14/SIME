@@ -1,4 +1,7 @@
 @extends("theme/$theme/layout")
+@section('Script')
+<script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
+@endsection
 @section('Contenido')
 <head>
   <title>Bootstrap Example</title>
@@ -18,7 +21,6 @@
                   <i class="fa fa-fw fa-plus-circle"></i> Crear nuevo informe
                 </a>
             </div>
-
             <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
               <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
               <div class="input-group-btn">
@@ -27,20 +29,17 @@
             </div>
           </div>
         </div>
-       
-          
-        
      @foreach ($mensajerias as $item)
-     <div class="panel panel-primary">
-            <div class="panel-heading"> Este reporte fue enviado en la fecha y hora:  {{$item->created_at}} </div>
-  
+     <div class="panel panel-primary" id="tabla-data">
+            <div class="panel-heading"> Este reporte fue enviado en la fecha y hora: {{$item->created_at}} 
+            </div>
                   <div class="panel-body">
                     <p><strong>ID Mensajeria:</strong> {{$item->IdMensajeria}}</p>
                     <p><strong>Codigo Incidente:</strong> {{$item->CodigoIncidente}}</p>
                        <p><strong>Descripcion:</strong>  {{$item->Descripcion}}</p>
                       <p><strong>Ubicacion:</strong>  {{$item->Ubicacion}}</p>
                     <p><strong>Hora:</strong>   {{$item->Hora}}</p>
-                       <p><strong>Fecha:</strong>        {{$item->Fecha}}</p>
+                       <p><strong>Fecha:</strong>     {{$item->Fecha}}</p>
                       <p><strong>Categoria:</strong>   {{$item->Categoria}}</p>
                          <p><strong>Id Lider Comunal:</strong>  {{$item->IdUsuarioRol}} </p>  
                          <td><a href="/Mensajeria/{{$item->IdMensajeria}}/edit" class="btn-accion-tabla tooltipsC" title="Editar Informe">
@@ -50,18 +49,10 @@
                               <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Informacion">
                                   <i class="fa fa-fw fa-trash text-danger"></i>
                               </button>
-                             <th><th> 
-                             
-            </div>
-                    
-                    <!-- /.box-body -->
-             </div>                               
-             <a href="/Mensajeria/{{$item->IdMensajeria}}" class= "btn btn=primary">D</a>
+                             <th><th>                
+                   </div>
+                  </div>                              
             @endforeach
-          
-      <!-- /.box -->
     </div>
   </div>
-</div>
-</div>
 @endsection

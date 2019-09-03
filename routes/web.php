@@ -13,16 +13,9 @@
 
 use App\Http\Controllers\permisoController;
 use Doctrine\DBAL\Schema\Index;
-
-Route::group(['prefix' => '/'], function () {
-    //Route::get('/', 'HomeController@Index');
-    Route::get('/','Homecontroller@Login');
-
 Route::get('/', function () {
     return view('welcome');
 });
-
-
 Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
     Route::get('permiso', 'permisoController@index');
     Route::post('permiso/store','permisoController@store');
@@ -31,7 +24,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
 });
 
 Route::group(['prefix' => '/'], function () {
-    Route::get('Mensajeria', 'MensajeriaController@index');
+    Route::get('Mensajeria', 'MensajeriaController@index')->name('inicio_mensaje');
     Route::get('Mensajeria/create', 'MensajeriaController@create')->name('Mensajeria_create');
     Route::post('Mensajeria/store','MensajeriaController@store');
     Route::get('Mensajeria/{Mensajeria}/edit', 'MensajeriaController@edit');
@@ -49,25 +42,18 @@ Route::group(['prefix' => '/'], function () {
     Route::delete('Inventario/{Inventario}','InventarioController@delete')->name('inventario_delete');
     
 });
-
 Route::group(['prefix' => '/'], function () {
     Route::get('EntregaDonaciones', 'EntregaDonacionesController@index');
     Route::get('EntregaDonaciones/create', 'EntregaDonaciones@create')->name('EntregaDonaciones_create');
     Route::post('EntregaDonaciones/store','EntregaDonacionesController@store');
     Route::get('EntregaDonaciones/{EntregaDonaciones}/edit', 'EntregaDonacionesController@edit');
     Route::put('EntregaDonaciones/{EntregaDonaciones}','EntregaDonacionesController@update');
-    Route::delete('EntregaDonaciones/{EntregaDonaciones}','EntregaDonacionesController@delete')->name('entregadonaciones_delete');
-    
-});
-
-
-
-
+    Route::delete('EntregaDonaciones/{EntregaDonaciones}','EntregaDonacionesController@delete')->name('entregadonaciones_delete'); 
 });
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 Route::group(['prefix' => '/'], function () {
-    Route::get('Censo', 'CensoController@index');
+    Route::get('Censo', 'CensoController@index')->name('inicio_censo');
     Route::get('Censo/create', 'CensoController@create')->name('censo_create');
     Route::post('Censo/store','CensoController@store');
     Route::get('Censo/{Censo}/edit', 'CensoController@edit');
@@ -76,7 +62,7 @@ Route::group(['prefix' => '/'], function () {
 });
 
 Route::group(['prefix' => '/'], function () {
-    Route::get('JefeDeFamilia', 'JefeDeFamiliaController@index');
+    Route::get('JefeDeFamilia', 'JefeDeFamiliaController@index')->name('inicio_jefe');
     Route::get('JefeDeFamilia/create', 'JefeDeFamiliaController@create')->name('jefe_create');
     Route::post('JefeDeFamilia/store','JefeDeFamiliaController@store');
     Route::get('JefeDeFamilia/{JefeDeFamilia}/edit', 'JefeDeFamiliaController@edit')->name('jefe_edit');
@@ -85,7 +71,7 @@ Route::group(['prefix' => '/'], function () {
 });
 
 Route::group(['prefix' => '/'], function () {
-    Route::get('Familias', 'FamiliasController@index');
+    Route::get('Familias', 'FamiliasController@index')->name('inicio_familia');
     Route::get('Familias/create', 'FamiliasController@create')->name('familias_create');
     Route::post('Familias/store','FamiliasController@store');
     Route::get('Familias/{Familias}/edit', 'FamiliasController@edit')->name('familias_edit');
@@ -110,7 +96,6 @@ Route::group(['prefix' => '/'], function () {
     Route::put('PersonaAlbergue/{PersonaAlbergue}','PersonasAlbergue@update');
     Route::delete('PersonaAlbergue/{PersonaAlbergue}','PersonasAlbergue@delete')->name('personaAlbergue_delete');
 });
-
 Route::group(['prefix' => '/'], function () {
     Route::get('Albergue', 'Albergue@index');
     Route::get('Albergue/create', 'Albergue@create')->name('albergue_create');

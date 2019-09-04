@@ -1,28 +1,127 @@
 @extends("theme/$theme/layout")
 @section('Contenido')
-<form class= "form-group" method="POST" action="/JefeDeFamilia/store">
-  @csrf
-<div class= "form-group">
-  <h1>Crear Jefe de familia</h1>
-  <label>TotalPersonas: <input type="text" name="TotalPersonas" class= "form-control" > </label><br>
-  <label>Nombre: <input type="text" name="Nombre" class= "form-control" > </label><br>
-  <label>Apellido1: <input type="text" name="Apellido1" class= "form-control" > </label><br>
-  <label>Apellido2: <input type="text" name="Apellido2" class= "form-control" > </label><br>
-  <label>Cedula: <input type="text" name="Cedula" class= "form-control" > </label><br>
-  <label>Edad: <input type="text" name="Edad" class= "form-control" > </label><br>
-  <label>sexo: <input type="text" name="sexo" class= "form-control" > </label><br>
-  <label>Telefono: <input type="text" name="Telefono" class= "form-control" > </label><br>
-  <input type="hidden" name="PcD" value="no" />
-  <label>PcD: <input type="checkbox" name="PcD" value="si"> </label><br>
-  <input type="hidden" name="MG" value="no" />
-  <label>MG: <input type="checkbox" name="MG" value="si"> </label><br>
-  <input type="hidden" name="PI" value="no" />
-  <label>PI: <input type="checkbox" name="PI" value="si"> </label><br>
-  <input type="hidden" name="PM" value="no" />
-  <label>PM: <input type="checkbox" name="PM" value="si"> </label><br>
-  <label>Patologia: <input type="text" name="Patologia" class= "form-control" > </label><br>
-   </div>
+<div class="row">
+<div class="col-md-10">
+    <div class="box box-info">
+      <div class="box-header with-border">
+          <div class="box-tools pull-right">
+              <div class="col-sm-12">
+              <a href="{{route('inicio_jefe')}}" class="btn btn-block btn-info ">
+                  <i class="fa fa-fw fa-reply-all"></i> Regresar
+              </a>
+              </div>
+            </div>
+        <h3 class="box-title">Crear Jefe de Familia</h3>
+      </div>
+      <form class="form-horizontal" method="POST" action="/JefeDeFamilia/store">
+          @csrf
+        <div class="box-body">
+          <div class="form-group">
+            <label for="TotalPersonas" class="col-sm-2 control-label">TotalPersonas: </label>
+            <div class="col-sm-8">
+                <input type="text" name="TotalPersonas" class= "form-control" >
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Nombre" class="col-sm-2 control-label">Nombre: </label>
 
-   <button type="submit" class="btn btn-primary">Guardar</button>
-   </div>  
+            <div class="col-sm-8">
+                <input type="text" name="Nombre" class= "form-control" >
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="Apellido1" class="col-sm-2 control-label">Apellido1:  </label>
+  
+              <div class="col-sm-8">
+                  <input type="text" name="Apellido1" class= "form-control" > 
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="Apellido2" class="col-sm-2 control-label">Apellido2: </label>
+    
+                <div class="col-sm-8">
+                    <input type="text" name="Apellido2" class= "form-control" >
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="Cedula" class="col-sm-2 control-label">Cedula: </label>
+      
+                  <div class="col-sm-8">
+                      <input type="text" name="Cedula" class= "form-control" >
+                  </div>
+                </div>
+               
+                  <div class="form-group">
+                      <label for="Edad" class="col-sm-2 control-label">Edad: </label>
+          
+                      <div class="col-sm-8">
+                          <input type="text" name="Edad" class= "form-control" >
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sexo" class="col-sm-2 control-label">Sexo: </label>
+            
+                        <div class="col-sm-8">
+                            <input type="text" name="sexo" class= "form-control" > 
+                        </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="Telefono" class="col-sm-2 control-label">Telefono: </label>
+              
+                          <div class="col-sm-8">
+                              <input type="text" name="Telefono" class= "form-control" > 
+                          </div>
+                        </div>
+                      <div class="form-group">
+                          <div class="checkbox">
+                            <label class="col-sm-2 control-label">
+                              Persona Con Discapacidad:
+                              <input type="hidden" name="PcD" value="No" />
+                            <input type="checkbox" class="col-sm-6" name="PcD" value="Si">  
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                            <div class="checkbox">
+                              <label class="col-sm-2 control-label">
+                                  Mujer Gestante:
+                                <input type="hidden" name="MG" value="No" />
+                                <input type="checkbox" class="col-sm-6" name="MG" value="Si"> 
+                               
+                              </label>
+                        </div>
+                      </div>
+                        <div class="form-group">
+                              <div class="checkbox">
+                                  <label class="col-sm-2 control-label">  
+                                      Persona Indigena:
+                                      <input type="hidden" name="PI" value="No" />
+                                      <input type="checkbox" class="col-sm-6" name="PI" value="Si">
+                                    </label>
+                                </div>
+                        </div>
+                          <div class="form-group">
+                                <div class="checkbox">
+                                    <label class="col-sm-2 control-label">
+                                        Persona Migrante: 
+                                    <input type="hidden" name="PM" value="No" />
+                                    <input type="checkbox" class="col-sm-6" name="PM" value="Si"> 
+                                    
+                                  </label>
+                                </div>
+                              </div>
+                            <div class="form-group">
+                                <label for="Patologia" class="col-sm-2 control-label">Patologia: </label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="Patologia" class= "form-control" >
+                                </div>
+                            </div>
+        </div>
+        <div class="box-footer">
+            @include("Includes.boton-form-create")
+        </div>
+    </form>
+  </div>
+</div>
+</div>
 @endsection

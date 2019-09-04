@@ -11,10 +11,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
-<div class="row">
+<div class="row" id="tabla-data">
     <div class="col-xs-12">
       <div class="box">
-        <div class="box-header">
+        <div class="box-header ">
           <h3 class="box-title">Informes de incidentes</h3>
           <div class="box-tools pull-right">
               <a href="{{route('Mensajeria_create')}}" class="btn btn-block btn-primary btn-sm">
@@ -29,8 +29,10 @@
             </div>
           </div>
         </div>
-     @foreach ($mensajerias as $item)
-     <div class="panel panel-primary" id="tabla-data">
+        <tr>
+        @foreach ($mensajerias as $item)
+     <div class="panel panel-primary">
+       
             <div class="panel-heading"> Este reporte fue enviado en la fecha y hora: {{$item->created_at}} 
             </div>
                   <div class="panel-body">
@@ -39,9 +41,9 @@
                        <p><strong>Descripcion:</strong>  {{$item->Descripcion}}</p>
                       <p><strong>Ubicacion:</strong>  {{$item->Ubicacion}}</p>
                     <p><strong>Hora:</strong>   {{$item->Hora}}</p>
-                       <p><strong>Fecha:</strong>     {{$item->Fecha}}</p>
+                       <p><strong>Fecha: </strong>{{\Carbon\Carbon::parse($item->fecha)->format('d/m/Y')}} </p>
                       <p><strong>Categoria:</strong>   {{$item->Categoria}}</p>
-                         <p><strong>Id Lider Comunal:</strong>  {{$item->IdUsuarioRol}} </p>  
+                         <p><strong>Id Lider Comunal:</strong>  {{$item->IdLiderComunal}} </p>  
                          <td><a href="/Mensajeria/{{$item->IdMensajeria}}/edit" class="btn-accion-tabla tooltipsC" title="Editar Informe">
                           <i class="fa fa-fw fa-pencil"></i></a>
                           <form action="{{route('mensajeria_delete', ['Mensajeria' => $item->IdMensajeria])}}" class="d-inline form-eliminar" method="POST">
@@ -49,10 +51,14 @@
                               <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Informacion">
                                   <i class="fa fa-fw fa-trash text-danger"></i>
                               </button>
-                             <th><th>                
+                          </form>
+                         </td>
+                          <th><th>  
+                  
                    </div>
-                  </div>                              
-            @endforeach
+        </div>                              
+        @endforeach  
+        </tr>   
     </div>
-  </div>
+</div>
 @endsection

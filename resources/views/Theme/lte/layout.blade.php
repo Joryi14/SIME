@@ -45,7 +45,6 @@
         <section class="content">
            @yield('Contenido')
           </section>
-          <!-- /.content -->
     </div>
     @include("theme/$theme/footer")
  

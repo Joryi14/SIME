@@ -4,7 +4,7 @@
 @endsection
 @section('Contenido')
 <div class="row">
-    <div class="col-xs-10">
+    <div class="col-xs-12">
         @include('Includes.mensaje-Succes')
       <div class="box box-primary">
         <div class="box-header">
@@ -19,27 +19,26 @@
         <!-- /.box-header -->
         <div class="box-body table-responsive no-padding" id="tabla-data">
           <table class="table table-hover">
-           
             <tr>
               <th>ID de familia</th>
-              <th>ID Jefe de familia</th>
+              <th>Cedula del Jefe de familia</th>
               <th>Nombre</th>
               <th>Apellido1</th>
               <th>Apellido2</th>
               <th>Cedula</th>
               <th>Parentesco</th>
               <th>Edad</th>
-              <th>sexo</th>
-              <th>PcD</th>
-              <th>MG</th>
-              <th>PI</th>
-              <th>PM</th>
+              <th>Sexo</th>
+              <th>Persona con Discapacidad</th>
+              <th>Mujer Gestante</th>
+              <th>Persona Indigena</th>
+              <th>Persona Migrante</th>
               <th>Patologia</th>
             </tr>
             @foreach ($Familias as $item)
               <tr>
               <td>{{$item->IdFamilia}}</td>      
-              <td>{{$item->IdJefeF}}</td>  
+              <td>{{$item->jefeDeFamilia->Cedula}}</td>  
               <td>{{$item->Nombre}}</td>
               <td>{{$item->Apellido1}}</td>
               <td>{{$item->Apellido2}}</td>
@@ -63,8 +62,6 @@
               </td>
               </tr>
             @endforeach
-
-
           </table>
         </div>
       </div>

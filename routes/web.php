@@ -16,12 +16,6 @@ use Doctrine\DBAL\Schema\Index;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
-    Route::get('permiso', 'permisoController@index');
-    Route::post('permiso/store','permisoController@store');
-    Route::put('/{permiso}','permisoController@update');
-
-});
 
 Route::group(['prefix' => '/'], function () {
     Route::get('Mensajeria', 'MensajeriaController@index')->name('inicio_mensaje');
@@ -103,4 +97,13 @@ Route::group(['prefix' => '/'], function () {
     Route::get('Albergue/{Albergue}/edit', 'Albergue@edit')->name('albergue_edit');
     Route::put('Albergue/{Albergue}','Albergue@update');
     Route::delete('Albergue/{Albergue}','Albergue@delete')->name('albergue_delete');
+});
+
+Route::group(['prefix' => '/'], function () {
+    Route::get('user', 'user@index');
+    Route::get('user/create', 'user@create')->name('user_create');
+    Route::post('user/store','user@store');
+    Route::get('user/{user}/edit', 'user@edit')->name('user_edit');
+    Route::put('user/{user}','user@update');
+    Route::delete('user/{user}','user@delete')->name('user_delete');
 });

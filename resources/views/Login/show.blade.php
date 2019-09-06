@@ -4,14 +4,11 @@
         <div class="box-header with-border">
                 <h3 class="box-title">Perfil</h3>
         </div>
-        <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-        </div>
+        <form class="form" method="POST" action="{{route('user_edit', ['id' => $user->id])}}">
+                @method('PUT')
+                @csrf
         <div class="box-body">
                 <div class="row">
-        <form class="form" method="POST" action="{{route('user_edit', ['id' => $user->id])}}">
-                        @method('PUT')
-                        @csrf
                 <div class="col-md-6">
                 <div class="form-group">
                 <label for="Email">Email:</label>
@@ -321,17 +318,21 @@
                 <!-- /.form-group -->
                 </div>
                 <!-- /.col -->
-                @include('Includes.boton-editar')
-        </form>
+                
+        
                 </div>
                 <!-- /.row -->
         
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
+        <div class="form-group">
+                @include('Includes.boton-editar')        
         </div>
 
         </div>
+</form>
+</div>
         <!-- /.box -->
         @section('Script')
 <script>

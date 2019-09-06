@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Familias;
-use Illuminate\Http\Request;
+use App\Http\Requests\ValidacionFamilia;
 
 class FamiliasController extends Controller
 {
@@ -34,7 +34,7 @@ class FamiliasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionFamilia $request)
     {
         $Familia = new Familias();  
         $Familia->IdJefeF = $request->IdJefeF;    
@@ -84,7 +84,7 @@ class FamiliasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionFamilia $request, $id)
     {
         $Familia = Familias::find($id);
         $Familia->fill($request->all());
@@ -99,7 +99,7 @@ class FamiliasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id, Request $request)
+    public function delete($id, ValidacionFamilia $request)
     {
         if ($request->ajax()) {
             if (Familias::destroy($id)) {

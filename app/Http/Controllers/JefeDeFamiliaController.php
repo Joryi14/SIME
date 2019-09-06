@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JefeDeFamilia;
-use Illuminate\Http\Request;
+use App\Http\Requests\ValidacionJefeDeFamilia;
 
 class JefeDeFamiliaController extends Controller
 {
@@ -34,7 +34,7 @@ class JefeDeFamiliaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionJefeDeFamilia $request)
     {
         $Jefe = new JefeDeFamilia();  
         $Jefe->TotalPersonas = $request->TotalPersonas;    
@@ -86,7 +86,7 @@ class JefeDeFamiliaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionJefeDeFamilia $request, $id)
     {
         $JefeF = JefeDeFamilia::find($id);
         $JefeF->fill($request->all());
@@ -100,7 +100,7 @@ class JefeDeFamiliaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id, Request $request)
+    public function delete($id, ValidacionJefeDeFamilia $request)
     {
         if ($request->ajax()) {
             if (JefeDeFamilia::destroy($id)) {

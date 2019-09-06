@@ -31,7 +31,7 @@
                     <li class="user-body">
                   <!-- Menu Footer-->
                     <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Datos de usuario</a>
+                      <a href="{{route('user_show', ['id' => Auth::user()->id])}}" class="btn btn-default btn-flat">Datos de usuario</a>
                     </div>
                     <div class="pull-right">
                       <a href="{{ route('logout')}}" class="btn btn-default btn-flat"

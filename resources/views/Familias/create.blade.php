@@ -108,7 +108,7 @@
                       <div class="col-sm-8">
                           <input type="text" name="Patologia" class= "form-control" >
                       </div>
-                  </div>
+                      @endforeach
           </div>
           <div class="box-footer">
               @include("Includes.boton-form-create")

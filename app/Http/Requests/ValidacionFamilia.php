@@ -32,7 +32,7 @@ class ValidacionFamilia extends FormRequest
             'Parentesco'=> 'required',
             'Edad'=> 'required|max:3',
             'sexo'=> 'required',
-            'Patologia'=> 'max:15'
+            'Patologia'=> 'required|max:15'
         ];
     }
     public function messages()
@@ -61,6 +61,7 @@ class ValidacionFamilia extends FormRequest
             
             'sexo.required' => 'El sexo es requerido',
          
+            'Patologia.required' => 'La Patologia es requerida',
             'Patologia.max' => 'La Patologia no debe superar los 15 digitos'
 
         ];

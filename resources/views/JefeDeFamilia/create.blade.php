@@ -2,7 +2,8 @@
 @section('Contenido')
 <div class="row">
 <div class="col-md-10">
-  @include('Includes.Error-form-create')
+  @include('Includes.Error-form')
+  @include('Includes.mensaje-Succes')
     <div class="box box-info">
       <div class="box-header with-border">
           <div class="box-tools pull-right">

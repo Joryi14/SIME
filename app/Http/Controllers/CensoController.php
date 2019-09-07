@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Censo;
+use Illuminate\Http\Request;
 use App\Http\Requests\ValidacionCenso;
 
 class CensoController extends Controller
@@ -76,7 +77,7 @@ class CensoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ValidacionCenso $request, $id)
+    public function update(Request $request, $id)
     {
         $censo = Censo::find($id);
      $censo->fill($request->all());
@@ -91,7 +92,7 @@ class CensoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id, ValidacionCenso $request)
+    public function delete($id, Request $request)
     {
         if ($request->ajax()) {
             if (Censo::destroy($id)) {

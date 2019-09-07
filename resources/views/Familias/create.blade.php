@@ -2,7 +2,8 @@
 @section('Contenido')
 <div class="row">
     <div class="col-md-10">
-        @include('Includes.mensaje-Succes')
+      @include('Includes.Error-form')
+      @include('Includes.mensaje-Succes')
       <div class="box box-info">
         <div class="box-header with-border">
           <h3 class="box-title">Crear Familia</h3>
@@ -108,7 +109,7 @@
                       <div class="col-sm-8">
                           <input type="text" name="Patologia" class= "form-control" >
                       </div>
-                      @endforeach
+                    
           </div>
           <div class="box-footer">
               @include("Includes.boton-form-create")

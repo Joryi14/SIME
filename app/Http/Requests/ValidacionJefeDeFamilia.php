@@ -25,7 +25,6 @@ class ValidacionJefeDeFamilia extends FormRequest
     {
         return [
         'TotalPersonas' => 'required',         
-         'IdJefeF' => 'required|max:8',
          'Nombre'  => 'required|max:10',
          'Apellido1' => 'required|max:15',
          'Apellido2' => 'required|max:15',
@@ -33,16 +32,13 @@ class ValidacionJefeDeFamilia extends FormRequest
          'Edad'=> 'required|max:3',
          'sexo'=> 'required',
          'Telefono' => 'max:15',
-         'Patologia'=> 'max:15'
+         'Patologia'=> 'required|max:15'
         ];
     }
     public function messages()
     {
         return [
             'TotalPersonas.required' => 'El Total de Personas es requerido',
-
-            'IdJefeF.required' => 'El Id de jefe de familia es requerido',
-            'IdJefeF.max' => 'El id de jefe de familia no debe superar los 8 digitos',
 
             'Nombre.required' => 'El nombre es requerido',
             'Nombre.max' => 'El nombre no debe superar los 10 caracteres',
@@ -63,6 +59,7 @@ class ValidacionJefeDeFamilia extends FormRequest
             
             'Telefono.max' => 'La Telefono no debe superar los 15 digitos',
 
+            'Patologia.required' => 'la patologia es requerido',
             'Patologia.max' => 'La Patologia no debe superar los 15 digitos'
         ];
     }

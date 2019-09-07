@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Familias;
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidacionFamilia;
@@ -37,21 +37,10 @@ class FamiliasController extends Controller
      */
     public function store(ValidacionFamilia $request)
     {
-        $Familia = new Familias();  
-        $Familia->IdJefeF = $request->IdJefeF;    
-        $Familia->Nombre = $request->Nombre;
-        $Familia->Apellido1 = $request->Apellido1;
-        $Familia->Apellido2 = $request->Apellido2;
-        $Familia->Cedula = $request->Cedula;
-        $Familia->Parentesco = $request->Parentesco;
-        $Familia->Edad = $request->Edad;
-        $Familia->sexo = $request->sexo;
-        $Familia->PcD = $request->PcD;
-        $Familia->MG = $request->MG;
-        $Familia->PI = $request->PI;
-        $Familia->PM = $request->PM;
-        $Familia->Patologia = $request->Patologia;
-        $Familia->save();  
+         $Patologia = implode(', ',$request->Patologia);
+         $Familia = DB::select("call Insert_Familia('$request->IdJefeF','$request->Nombre','$request->Apellido1','$request->Apellido2',
+        '$request->Cedula','$request->Parentesco','$request->Edad','$request->sexo','$request->PcD','$request->MG','$request->PI','$request->PM','$Patologia')");
+  
         header("location: /Familias");
     }
 
@@ -87,11 +76,10 @@ class FamiliasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $Familia = Familias::find($id);
-        $Familia->fill($request->all());
-        $Familia->save();
+        $Patologia = implode(', ',$request->Patologia);
+        $Familia = DB::update("call Update_Familia('$id','$request->IdJefeF','$request->Nombre','$request->Apellido1','$request->Apellido2',
+        '$request->Cedula','$request->Parentesco','$request->Edad','$request->sexo','$request->PcD','$request->MG','$request->PI','$request->PM','$Patologia')");
      header("location: /Familias");
-    
     }
 
     /**

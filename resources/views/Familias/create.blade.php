@@ -108,12 +108,20 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="Patologia" class="col-sm-2 control-label">Patologia: </label>
-                      <div class="col-sm-8">
-                          <input type="text" name="Patologia" class= "form-control" >
-                      </div>
-                    
-          </div>
+                      <label>Patologia</label>
+                      <select class="form-control select2" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 100%;">
+                              <option>Alergias</option>
+                              <option>Asma</option>
+                              <option>CA</option>
+                              <option value="Cardiopatia">Cardiopatía</option>
+                              <option>Diabetes Mellitus</option>
+                              <option>Digestivos</option>
+                              <option>Epilepsia</option>
+                              <option>EPOC</option>
+                              <option>HTA</option>
+                              <option value="Psiquiatricos">Psiquiátricos</option>
+                      </select>
+                </div>
           <div class="box-footer">
               @include("Includes.boton-form-create")
           </div>
@@ -121,4 +129,10 @@
       </div>
     </div>
   </div>
+  @section('Script')
+  <script>
+        $(document).ready(function() { 
+          $('.select2').select2({tags: true});
+              }); </script>
+          @endsection
 @endsection

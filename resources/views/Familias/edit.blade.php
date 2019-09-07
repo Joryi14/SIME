@@ -62,8 +62,8 @@
                       <div class="form-group">
                           <label for="Sexo" class="col-sm-2 control-label">Sexo: </label>
                           <div class="col-sm-10">
-                              <input type="text" name="sexo" class= "form-control" value="{{$Familia->sexo}}" >
-                          </div>
+                            <input type="text" name="sexo" class= "form-control" value= "{{$Familia->sexo}}"  readonly="readonly">
+                        </div>
                         </div>
             <div class="form-group">
                 <div class="checkbox">
@@ -103,12 +103,23 @@
                         </label>
                       </div>
                     </div>
-                  <div class="form-group">
-                      <label for="Patologia" class="col-sm-2 control-label">Patologia: </label>
-                      <div class="col-sm-10">
-                          <input type="text" name="Patologia" class= "form-control" value="{{$Familia->Patologia}}"> 
+                    <div class="form-group">
+                      <label>Patologia</label>
+                      <select class="form-control select2" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 100%;">
+                              <option selected>{{$Familia->Patologia}}</option>
+                              <option>Alergias</option>
+                              <option>Asma</option>
+                              <option>CA</option>
+                              <option value="Cardiopatia">Cardiopatía</option>
+                              <option>Diabetes Mellitus</option>
+                              <option>Digestivos</option>
+                              <option>Epilepsia</option>
+                              <option>EPOC</option>
+                              <option>HTA</option>
+                              <option value="Psiquiatricos">Psiquiátricos</option>
+                      </select>
                       </div>
-                  </div>
+                                            
           </div>
           <div class="box-footer">
               @include("Includes.boton-editar")
@@ -117,4 +128,10 @@
       </div>
     </div>
   </div>
+  @section('Script')
+  <script>
+        $(document).ready(function() { 
+          $('.select2').select2({tags: true});
+              }); </script>
+          @endsection
 @endsection

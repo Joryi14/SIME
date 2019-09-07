@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\JefeDeFamilia;
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidacionJefeDeFamilia;
@@ -37,21 +37,9 @@ class JefeDeFamiliaController extends Controller
      */
     public function store(ValidacionJefeDeFamilia $request)
     {
-        $Jefe = new JefeDeFamilia();  
-        $Jefe->TotalPersonas = $request->TotalPersonas;    
-        $Jefe->Nombre = $request->Nombre;
-        $Jefe->Apellido1 = $request->Apellido1;
-        $Jefe->Apellido2 = $request->Apellido2;
-        $Jefe->Cedula = $request->Cedula;
-        $Jefe->Edad = $request->Edad;
-        $Jefe->sexo = $request->sexo; 
-        $Jefe->Telefono = $request->Telefono;
-        $Jefe->PcD = $request->PcD;
-        $Jefe->MG = $request->MG;
-        $Jefe->PI = $request->PI;
-        $Jefe->PM = $request->PM;
-        $Jefe->Patologia = $request->Patologia;
-        $Jefe->save();  
+        $patologia = implode(', ',$request->Patologia);
+        $Jefe = DB::select("call Insert_JefeDeFamilia('$request->TotalPersonas','$request->Nombre','$request->Apellido1','$request->Apellido2',
+       '$request->Cedula','$request->Edad','$request->sexo','$request->Telefono','$request->PcD','$request->MG','$request->PI','$request->PM','$patologia')");
         
         header("location: /JefeDeFamilia");
         
@@ -88,11 +76,12 @@ class JefeDeFamiliaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        $JefeF = JefeDeFamilia::find($id);
-        $JefeF->fill($request->all());
-        $JefeF->save();
-     header("location: /JefeDeFamilia");
+    { 
+        $patologia = implode(', ',$request->Patologia);
+         $JefeF = DB::update("call Update_JefeDeFamilia('$id','$request->TotalPersonas','$request->Nombre','$request->Apellido1','$request->Apellido2',
+        '$request->Cedula','$request->Edad','$request->sexo','$request->Telefono','$request->PcD','$request->MG','$request->PI','$request->PM','$patologia')");
+     
+        header("location: /JefeDeFamilia");
     }
 
     /**

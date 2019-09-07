@@ -63,10 +63,12 @@
                     <div class="form-group">
                         <label for="sexo" class="col-sm-2 control-label">Sexo: </label>
             
-                        <div class="col-sm-8">
-                            <input type="text" name="sexo" class= "form-control" > 
-                        </div>
-                    
+                        <label>
+                          <input type="radio" name="sexo" class="minimal-red" checked value="F"> Femenino
+                        </label>
+                        <label>
+                          <input type="radio" name="sexo" class="minimal-red" checked value="M"> Masculino
+                        </label>
                       
                       </div>
                       <div class="form-group">

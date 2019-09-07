@@ -50,8 +50,9 @@
                   </div>
               
                       <div class="form-group">
-                        <label for="Parentesco">Parentesco: </label>
-                        <select class="form-control select2" name="Parentesco" value=""style="width: 100%;">
+                        <label for="Parentesco" class="col-sm-2 control-label">Parentesco: </label>
+                        <div class="col-sm-10">
+                        <select class="form-control select2" name="Parentesco" value=""style="width: 50%;">
                           <option value="Hijo">Hijo</option>
                           <option value="Conyugue ">Conyugue</option>
                           <option value="Nieto">Nieto</option>
@@ -59,6 +60,7 @@
                           <option value="Padre">Padre</option>
                           <option value="Madre">Madre</option>
                         </select>
+                      </div>
                     </div>
                     <div class="form-group">
                         <label for="Edad" class="col-sm-2 control-label">Edad: </label>
@@ -114,8 +116,9 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label>Patologia</label>
-                      <select class="form-control select2" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 100%;">
+                      <label class="col-sm-2 control-label">Patologia: </label>
+                      <div class="col-sm-10">
+                      <select class="form-control select2" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 70%;">
                               <option>Alergias</option>
                               <option>Asma</option>
                               <option>CA</option>
@@ -127,6 +130,7 @@
                               <option>HTA</option>
                               <option value="Psiquiatricos">Psiquiátricos</option>
                       </select>
+                      </div>
                 </div>
           <div class="box-footer">
               @include("Includes.boton-form-create")

@@ -48,11 +48,19 @@
                     </div>
                   </div>
                   <div class="form-group">
-                      <label for="Parentesco" class="col-sm-2 control-label">Parentesco: </label>
-                      <div class="col-sm-10">
-                          <input type="text" name="Parentesco" class= "form-control" value="{{$Familia->Parentesco}}"> 
-                      </div>
-                    </div>
+                    <label for="Parentesco" class="col-sm-2 control-label">Parentesco: </label>
+                    <div class="col-sm-10">
+                    <select class="form-control select2" name="Parentesco" value=""style="width: 50%;">
+                      <option selected>{{$Familia->Parentesco}}</option>
+                      <option value="Hijo">Hijo</option>
+                      <option value="Conyugue ">Conyugue</option>
+                      <option value="Nieto">Nieto</option>
+                      <option value="Primo">Primo</option>
+                      <option value="Padre">Padre</option>
+                      <option value="Madre">Madre</option>
+                    </select>
+                  </div>
+                </div>
                     <div class="form-group">
                         <label for="Edad" class="col-sm-2 control-label">Edad: </label>
                         <div class="col-sm-10">

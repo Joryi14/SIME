@@ -100,9 +100,14 @@ Route::group(['prefix' => '/'], function () {
 });
 
 Route::group(['prefix' => '/'], function () {
-    Route::get('user', 'user@index');
-    Route::post('user/store','user@store');
+    Route::get('user', 'user@index')->name('inicio_users');
+    Route::get('roles/create', 'roles@create')->name('crearRol');
+    Route::post('roles/store','roles@store');
     Route::put('user/{user}','user@update')->name('user_edit');
-    Route::delete('user/{user}','user@delete')->name('user_delete');
+    Route::delete('user/{user}','user@destroy')->name('user_delete');
+    Route::delete('roles/{roles}','roles@destroy')->name('rol_delete');
     Route::get('user/{user}','user@show')->name('user_show');
+    Route::get('Permissions/create', 'PermissionsController@create')->name('crear_permiso');
+    Route::delete('Permissions/{Permissions}','PermissionsController@destroy')->name('permissions_delete');
+    Route::post('Permissions/store','PermissionsController@store');
 });

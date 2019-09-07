@@ -1,11 +1,16 @@
 @extends("theme/$theme/layout")
 @section('Contenido')
+
 <div class="box box-primary">
         <div class="box-header with-border">
                 <h3 class="box-title">Perfil</h3>
-        </div>
-        <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <div class="box-tools pull-right">
+                                <div class="col-sm-12">
+                                <a href="{{route('home')}}" class="btn btn-block btn-info ">
+                                        <i class="fa fa-fw fa-reply-all"></i> Regresar
+                                </a>
+                                </div>
+                </div>
         </div>
         <div class="box-body">
                 <div class="row">

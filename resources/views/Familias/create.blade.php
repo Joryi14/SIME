@@ -103,6 +103,7 @@
                         </label>
                       </div>
                     </div>
+                    @foreach ($Familias as $item)
                     <div class="form-group">
                       <label>Patologia</label>
                       <select class="form-control select2" multiple="multiple" name="patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 100%;">
@@ -119,6 +120,7 @@
                               <option value="Psiquiatricos">Psiquiátricos</option>
                       </select>
                       </div>
+                      @endforeach
           </div>
           <div class="box-footer">
               @include("Includes.boton-form-create")

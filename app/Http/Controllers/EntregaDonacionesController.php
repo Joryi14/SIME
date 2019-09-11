@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\EntregaDonaciones;
 use Illuminate\Http\Request;
 
@@ -36,12 +36,11 @@ class EntregaDonacionesController extends Controller
      */
     public function store(Request $request)
     {
-        $entregadonaciones = new EntregaDonaciones();
-        $entregadonaciones->IdUsuarioRol = $request->IdUsuarioRol;
-        $entregadonaciones->IdJefe = $request->IdJefe;
-        $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
-        $entregadonaciones->Foto = $request->Foto;
-        $entregadonaciones->save();  
+        $entregadonaciones = DB::select("call Insert_EntregaDonaciones(
+        '$request->IdUsuarioRol',
+        '$request->IdJefe',
+        '$request->IdRetiroPaquetes',
+        '$request->Foto')");  
         header("location:EntregaDonaciones /");
     }
 
@@ -77,9 +76,11 @@ class EntregaDonacionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $entregadonaciones = EntregaDonaciones::find($id);
-        $entregadonaciones->fill($request->all());
-        $entregadonaciones->save();
+        $entregadonaciones = DB::update("call Update_EntregaDonaciones('$id',
+        '$request->IdUsuarioRol',
+        '$request->IdJefe',
+        '$request->IdRetiroPaquetes',
+        '$request->Foto')");
         header("location: /EntregaDonaciones");
     
     }

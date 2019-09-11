@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
 
@@ -36,13 +36,13 @@ class InventarioController extends Controller
      */
     public function store(Request $request)
     {
-        $inventario = new Inventario();
-        $inventario->idEmergencias = $request->idEmergencias;
-        $inventario->Suministros = $request->Suministros;
-        $inventario->Colchonetas= $request->Colchonetas;
-        $inventario->Cobijas = $request->Cobijas;
-        $inventario->Ropa = $request->Ropa;
-        $inventario->save();  
+       
+        $inventario = DB::select("call Insert_Inventario(
+            '$request->idEmergencias',
+            '$request->Suministros',
+            '$request->Colchonetas',
+           '$request->Cobijas',
+          '$request->Ropa')");
         header("location: /Inventario");
     }
 
@@ -78,9 +78,11 @@ class InventarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $inventario = Inventario::find($id);
-        $inventario->fill($request->all());
-        $inventario->save();
+        $inventario= DB::update("call Update_Inventario('$id','$request->idEmergencias',
+        '$request->Suministros',
+        '$request->Colchonetas',
+       '$request->Cobijas',
+      '$request->Ropa')");
         header("location: /Inventario");
     }
 

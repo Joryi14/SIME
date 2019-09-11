@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 use App\Models\Censo;
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidacionCenso;
@@ -37,13 +38,9 @@ class CensoController extends Controller
      */
     public function store(ValidacionCenso $request)
     {
-        $censo = new Censo();
-        $censo->IdJefeFam = $request->IdJefeFam;
-        $censo->Refrigerador = $request->Refrigerador;
-        $censo->Cocina = $request->Cocina;
-        $censo->Colchon = $request->Colchon;
-        $censo->Cama = $request->Cama;
-        $censo->save();  
+        $censo = DB::select("call Insert_Censo('$request->IdJefeFam'
+        ,'$request->Refrigerador','$request->Cocina','$request->Colchon,'
+        $request->Cama')");  
         header("location: /Censo");
     }
 
@@ -79,9 +76,10 @@ class CensoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $censo = Censo::find($id);
-     $censo->fill($request->all());
-     $censo->save();
+        $censo = DB::update("call Update_Censo('$id','$request->IdJefeFam'
+        ,'$request->Refrigerador','$request->Cocina','$request->Colchon','
+        $request->Cama')");  
+    
      header("location: /Censo");
 
     }

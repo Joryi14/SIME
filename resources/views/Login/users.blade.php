@@ -1,6 +1,146 @@
 @extends("theme/$theme/layout")
 @section('Script')
 <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
+<script type="text/javascript">
+  document.querySelector('#form1').addEventListener('submit', function(e) {
+  var form = this;
+  e.preventDefault(); // <--- prevent form from submitting
+  swal({
+      title: "Esta seguro de eliminar?",
+      text: "Una vez eliminado no se puede recuperar!",
+      icon: "warning",
+      buttons: [
+        'Cancelar!',
+        'Aceptar!'
+      ],
+      dangerMode: true,
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+        swal({
+          title: 'Exito!',
+          text: 'Se ha Eliminado el registro!',
+          icon: 'success'
+        }).then(function() {
+          form.submit(); // <--- submit form programmatically
+        });
+      } else {
+        swal("Cancelado","" ,"error");
+      }
+    })
+});
+</script>
+<script type="text/javascript">
+  document.querySelector('#form2').addEventListener('submit', function(e) {
+  var form = this;
+  e.preventDefault(); // <--- prevent form from submitting
+  swal({
+      title: "Esta seguro de eliminar?",
+      text: "Una vez eliminado no se puede recuperar!",
+      icon: "warning",
+      buttons: [
+        'Cancelar!',
+        'Aceptar!'
+      ],
+      dangerMode: true,
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+        swal({
+          title: 'Exito!',
+          text: 'Se ha Eliminado el registro!',
+          icon: 'success'
+        }).then(function() {
+          form.submit(); // <--- submit form programmatically
+        });
+      } else {
+        swal("Cancelado","" ,"error");
+      }
+    })
+});
+</script>
+<script type="text/javascript">
+  document.querySelector('#form3').addEventListener('submit', function(e) {
+  var form = this;
+  e.preventDefault(); // <--- prevent form from submitting
+  swal({
+      title: "Esta seguro de eliminar?",
+      text: "Una vez eliminado no se puede recuperar!",
+      icon: "warning",
+      buttons: [
+        'Cancelar!',
+        'Aceptar!'
+      ],
+      dangerMode: true,
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+        swal({
+          title: 'Exito!',
+          text: 'Se ha Eliminado el registro!',
+          icon: 'success'
+        }).then(function() {
+          form.submit(); // <--- submit form programmatically
+        });
+      } else {
+        swal("Cancelado","" ,"error");
+      }
+    })
+});
+</script>
+<script type="text/javascript">
+  document.querySelector('#form4').addEventListener('submit', function(e) {
+  var form = this;
+  e.preventDefault(); // <--- prevent form from submitting
+  swal({
+      title: "Esta seguro de eliminar?",
+      text: "Una vez eliminado no se puede recuperar!",
+      icon: "warning",
+      buttons: [
+        'Cancelar!',
+        'Aceptar!'
+      ],
+      dangerMode: true,
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+        swal({
+          title: 'Exito!',
+          text: 'Se ha Eliminado el registro!',
+          icon: 'success'
+        }).then(function() {
+          form.submit(); // <--- submit form programmatically
+        });
+      } else {
+        swal("Cancelado","" ,"error");
+      }
+    })
+});
+</script>
+<script type="text/javascript">
+  document.querySelector('#form5').addEventListener('submit', function(e) {
+  var form = this;
+  e.preventDefault(); // <--- prevent form from submitting
+  swal({
+      title: "Esta seguro de eliminar?",
+      text: "Una vez eliminado no se puede recuperar!",
+      icon: "warning",
+      buttons: [
+        'Cancelar!',
+        'Aceptar!'
+      ],
+      dangerMode: true,
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+        swal({
+          title: 'Exito!',
+          text: 'Se ha Eliminado el registro!',
+          icon: 'success'
+        }).then(function() {
+          form.submit(); // <--- submit form programmatically
+        });
+      } else {
+        swal("Cancelado","" ,"error");
+      }
+    })
+});
+</script>
 @endsection
 @section('Contenido')
 <div class="row">
@@ -12,7 +152,7 @@
               </div>
           <h3 class="box-title">Usuarios</h3>
         </div>
-        <div class="box-body table-responsive no-padding" id="tabla-data">
+        <div class="box-body table-responsive no-padding">
           <table class="table table-hover">
             <tr>
               <th>ID Usuario</th>
@@ -37,7 +177,7 @@
               <td>{{$item->Nacionalidad}}</td>
               <td>{{$item->Comunidad}}</td>
               <td>
-              <form action="{{route('user_delete', ['user' => $item->id])}}" class="d-inline form-eliminar" method="POST">
+              <form id="form1" action="{{route('user_delete', ['user' => $item->id])}}" class="d-inline form-eliminar" method="POST">
                   @csrf @method('delete')
                   <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar usuario">
                       <i class="fa fa-fw fa-trash text-danger"></i>
@@ -69,8 +209,8 @@
                 </div>
               </div>
           </div>
-          <div class="box-body table-responsive no-padding"  id="tabla-data">
-            <table class="table table-hover " >
+          <div class="box-body table-responsive no-padding">
+            <table class="table table-hover" >
               <tr>
                 <th>ID Rol</th>
                 <th>name</th>
@@ -82,7 +222,7 @@
                 <td>{{$object->name}}</td>
                 <td>{{$object->guard_name}}</td>
                 <td>
-                <form action="{{route('rol_delete', ['roles' => $object->id])}}" class="d-inline form-eliminar" method="POST">
+                <form id="form2" action="{{route('rol_delete', ['roles' => $object->id])}}" class="d-inline form-eliminar" method="POST">
                     @csrf @method('delete')
                     <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar rol">
                         <i class="fa fa-fw fa-trash text-danger"></i>
@@ -114,7 +254,7 @@
                   </div>
                 </div>
             </div>
-            <div class="box-body table-responsive no-padding" id="tabla-data">
+            <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
                   <th>ID Permiso</th>
@@ -127,9 +267,100 @@
                   <td>{{$permiso->name}}</td>
                   <td>{{$permiso->guard_name}}</td>
                   <td>
-                  <form action="{{route('permissions_delete', ['Permissions' => $permiso->id])}}" class="d-inline form-eliminar" method="POST">
-                      @csrf @method('delete')
-                      <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Permiso">
+                  <form id="form3" action="{{route('permissions_delete', ['Permissions' => $permiso->id])}}" method="POST">
+                      @csrf 
+                      <input name="_method" type="hidden" value="DELETE">
+                      <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Permiso" onclick="confirmarEnvio()">
+                          <i class="fa fa-fw fa-trash text-danger"></i>
+                      </button>
+                    </form>
+                  </td>
+                  </tr>
+                @endforeach
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="box box-primary">
+            <div class="box-header">
+              <h3 class="box-title">Permisos Rol</h3>
+              <div class="box-tools">
+                  <div class="row">
+                  <div class="col-sm-1">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+                <div class="col-sm-9">
+                  <a href="{{route('crear_permisoRol')}}" class="btn btn-block btn-primary btn-sm">
+                      <i class="fa fa-fw fa-plus-circle"></i> Crear nuevo PermisoRol
+                    </a>
+              </div>
+                  </div>
+                </div>
+            </div>
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
+                  <th>ID Permiso</th>
+                  <th>ID Rol</th>
+                </tr>
+                @foreach ($permisoRol as $permisoRol)
+                  <tr>
+                  <td>{{$permisoRol->permission_id}}</td>    
+                  <td>{{$permisoRol->role_id}}</td>
+                  <td>
+                  <form id="form4" action="{{route('permisoRol_delete', ['PermisoRol' => $permisoRol->permission_id])}}" method="POST">
+                      @csrf 
+                      <input name="_method" type="hidden" value="DELETE">
+                      <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar PermisoRol" onclick="confirmarEnvio()">
+                          <i class="fa fa-fw fa-trash text-danger"></i>
+                      </button>
+                    </form>
+                  </td>
+                  </tr>
+                @endforeach
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="box box-primary">
+            <div class="box-header">
+              <h3 class="box-title">Usuario Rol</h3>
+              <div class="box-tools">
+                  <div class="row">
+                  <div class="col-sm-1">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+                <div class="col-sm-9">
+                  <a href="{{route('crear_UserRol')}}" class="btn btn-block btn-primary btn-sm">
+                      <i class="fa fa-fw fa-plus-circle"></i> Crear nuevo UsuarioRol
+                    </a>
+              </div>
+                  </div>
+                </div>
+            </div>
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
+                  <th>ID Usuario</th>
+                  <th>Model_Type</th>
+                  <th>ID Rol</th>
+                </tr>
+                @foreach ($UserRol as $UserRol)
+                  <tr>
+                  <td>{{$UserRol->model_id}}</td> 
+                  <td>{{$UserRol->model_type}}</td>  
+                  <td>{{$UserRol->role_id}}</td>
+                  <td>
+                  <form id="form5" action="{{route('UserRol_delete', ['UserRol' => $UserRol->role_id])}}" method="POST">
+                      @csrf 
+                      <input name="_method" type="hidden" value="DELETE">
+                      <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar PermisoRol" onclick="confirmarEnvio()">
                           <i class="fa fa-fw fa-trash text-danger"></i>
                       </button>
                     </form>

@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => '/'], function () {
+Route::group(['prefix' => '/','middleware' => ['role:Admin|Director']], function () {
     Route::get('Mensajeria', 'MensajeriaController@index')->name('inicio_mensaje');
     Route::get('Mensajeria/create', 'MensajeriaController@create')->name('Mensajeria_create');
     Route::post('Mensajeria/store','MensajeriaController@store');
@@ -46,7 +46,7 @@ Route::group(['prefix' => '/'], function () {
 });
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
-Route::group(['prefix' => '/'], function () {
+Route::group(['prefix' => '/','middleware' => ['role:Admin|Director']], function () {
     Route::get('Censo', 'CensoController@index')->name('inicio_censo');
     Route::get('Censo/create', 'CensoController@create')->name('censo_create');
     Route::post('Censo/store','CensoController@store');
@@ -110,4 +110,10 @@ Route::group(['prefix' => '/'], function () {
     Route::get('Permissions/create', 'PermissionsController@create')->name('crear_permiso');
     Route::delete('Permissions/{Permissions}','PermissionsController@destroy')->name('permissions_delete');
     Route::post('Permissions/store','PermissionsController@store');
+    Route::get('PermisoRol/create', 'PermisoRolController@create')->name('crear_permisoRol');
+    Route::delete('PermisoRol/{PermisoRol}','PermisoRolController@destroy')->name('permisoRol_delete');
+    Route::post('PermisoRol/store','PermisoRolController@store');
+    Route::get('UserRol/create', 'UserRolController@create')->name('crear_UserRol');
+    Route::delete('UseroRol/{UserRol}','UserRolController@destroy')->name('UserRol_delete');
+    Route::post('UserRol/store','UserRolController@store');
 });

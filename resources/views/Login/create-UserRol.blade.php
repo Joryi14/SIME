@@ -11,15 +11,21 @@
                       </a>
                       </div>
                     </div>
-                <h3 class="box-title">Crear Permiso</h3>
+                <h3 class="box-title">Crear UserRol</h3>
               </div>
-              <form class="form-horizontal" method="POST" action="/Permissions/store">
+              <form class="form-horizontal" method="POST" action="/UserRol/store">
                 @csrf
                 <div class="box-body">
                   <div class="form-group">
-                    <label for="name" class="col-sm-2 control-label">Nombre:</label>
+                    <label for="name" class="col-sm-2 control-label">Id de Usuario:</label>
                     <div class="col-sm-9">
-                        <input type="text" name="name" class= "form-control" >
+                        <input type="text" name="model_id" class= "form-control" >
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="guard_name" class="col-sm-2 control-label">Id de Rol: </label>
+                    <div class="col-sm-9">
+                      <input type="text" name="role_id" class= "form-control" >
                     </div>
                   </div>
                 </div>
@@ -30,4 +36,4 @@
             </div>
           </div>
         </div>
-        @endsection
+@endsection

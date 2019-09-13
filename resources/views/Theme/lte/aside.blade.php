@@ -13,6 +13,7 @@
             </div>
           </form>
           <ul class="sidebar-menu" data-widget="tree">
+            @role('Voluntario|Admin')
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-globe"></i> <span>Modulo de Censo</span>
@@ -26,6 +27,7 @@
                 <li><a href="{{ route('inicio_censo')}}"><i class="fa fa-circle-o"></i> Censo</a></li>
               </ul>
             </li>
+            @endrole
             <li><a href="{{route('inicio_mensaje')}}"><i class="fa  fa-envelope"></i> <span>Mensajeria</span></a></li>
           </ul>
         </section>

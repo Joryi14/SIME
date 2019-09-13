@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\roles as AppRoles;
+use App\Models\UserRol;
+use App\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
-class roles extends Controller
+class UserRolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +26,7 @@ class roles extends Controller
      */
     public function create()
     {
-        return view('Login.create-rol');
+        return view('Login.create-UserRol');
     }
 
     /**
@@ -36,17 +37,19 @@ class roles extends Controller
      */
     public function store(Request $request)
     {
-        $role = Role::create(['name' => $request->name]);
+        $user = User::find($request->model_id);
+        $role = Role::findById($request->role_id);
+        $user->assignRole($role->name);
         header("location: /user");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\UserRol  $userRol
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(UserRol $userRol)
     {
         //
     }
@@ -54,10 +57,10 @@ class roles extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\UserRol  $userRol
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(UserRol $userRol)
     {
         //
     }
@@ -66,10 +69,10 @@ class roles extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\UserRol  $userRol
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, UserRol $userRol)
     {
         //
     }
@@ -77,13 +80,12 @@ class roles extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\UserRol  $userRol
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $rol = AppRoles::find($id);
-        $rol->delete();
+        UserRol::where('role_id', $id)->delete();
         return redirect('user')->with('Se ha eliminado correctamente');
     }
 }

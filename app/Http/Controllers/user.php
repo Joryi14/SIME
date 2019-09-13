@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\permisoRol;
 use App\Models\permissions;
 use App\Models\roles;
+use App\Models\UserRol;
 use App\User as AppUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -21,7 +23,9 @@ class user extends Controller
         $users = AppUser::OrderBy('id')->get();
         $rols = roles::OrderBy('id')->get();
         $permissions = permissions::OrderBy('id')->get();
-        return view('Login.users',compact('users','rols','permissions'));
+        $permisoRol = permisoRol::get();
+        $UserRol = UserRol::get();
+        return view('Login.users',compact('users','rols','permissions','permisoRol','UserRol'));
     }
     /**
      * Display the specified resource.
@@ -69,16 +73,10 @@ class user extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id,Request $request)
+    public function destroy($id)
     {
-        if ($request->ajax()) {
-            if (AppUser::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        $user = AppUser::find($id);
+        $user->delete();
+        return redirect('user')->with('Se ha eliminado correctamente');
     }
 }

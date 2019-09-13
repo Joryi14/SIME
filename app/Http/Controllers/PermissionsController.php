@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\permissions;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 
 class PermissionsController extends Controller
 {
@@ -20,10 +21,7 @@ class PermissionsController extends Controller
      */
     public function store(Request $request)
     {
-        $permissions = new permissions();
-        $permissions->name = $request->name;
-        $permissions->guard_name = $request->guard_name;
-        $permissions->save();
+        $permission = Permission::create(['name' => $request->name]);
         header("location: /user");
     }
     /**
@@ -32,16 +30,10 @@ class PermissionsController extends Controller
      * @param  \App\Models\permissions  $permissions
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id,Request $request)
+    public function destroy($id)
     {
-        if ($request->ajax()) {
-            if (permissions::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        $permiso = permissions::find($id);
+        $permiso->delete();
+        return redirect('user')->with('Se ha eliminado correctamente');
     }
 }

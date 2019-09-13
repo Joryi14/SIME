@@ -11,15 +11,21 @@
                       </a>
                       </div>
                     </div>
-                <h3 class="box-title">Crear Permiso</h3>
+                <h3 class="box-title">Crear PermisoRol</h3>
               </div>
-              <form class="form-horizontal" method="POST" action="/Permissions/store">
+              <form class="form-horizontal" method="POST" action="/PermisoRol/store">
                 @csrf
                 <div class="box-body">
                   <div class="form-group">
-                    <label for="name" class="col-sm-2 control-label">Nombre:</label>
+                    <label for="name" class="col-sm-2 control-label">Id de Permiso:</label>
                     <div class="col-sm-9">
-                        <input type="text" name="name" class= "form-control" >
+                        <input type="text" name="permission_id" class= "form-control" >
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="guard_name" class="col-sm-2 control-label">Id de Rol: </label>
+                    <div class="col-sm-9">
+                      <input type="text" name="role_id" class= "form-control" >
                     </div>
                   </div>
                 </div>

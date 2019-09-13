@@ -22,12 +22,6 @@
                         <input type="text" name="name" class= "form-control" >
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="guard_name" class="col-sm-2 control-label">Guard_Name: </label>
-                    <div class="col-sm-9">
-                      <input type="text" name="guard_name" class= "form-control" >
-                    </div>
-                  </div>
                 </div>
                 <div class="box-footer">
                     @include("Includes.boton-form-create")

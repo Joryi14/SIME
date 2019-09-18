@@ -7,28 +7,28 @@
   document.querySelector('#form1').addEventListener('submit', function(e) {
   var form = this;
   e.preventDefault(); // <--- prevent form from submitting
-  swal({
+  Swal.fire({
       title: "Esta seguro de eliminar?",
       text: "Una vez eliminado no se puede recuperar!",
-      icon: "warning",
-      buttons: [
-        'Cancelar!',
-        'Aceptar!'
-      ],
-      dangerMode: true,
-    }).then(function(isConfirm) {
-      if (isConfirm) {
-        swal({
-          title: 'Exito!',
-          text: 'Se ha Eliminado el registro!',
-          icon: 'success'
-        }).then(function() {
-          form.submit(); // <--- submit form programmatically
-        });
-      } else {
-        swal("Cancelado","" ,"error");
-      }
-    })
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'No, cancel!',
+     reverseButtons: true
+    }).then((result)=> {
+      if (result.value) {
+        swalWithBootstrapButtons.fire('Deleted!',
+      'Your file has been deleted.',
+      'success')}
+        else if (
+      result.dismiss === Swal.DismissReason.cancel) 
+      {
+    swalWithBootstrapButtons.fire(
+      'Cancelled',
+      'Your imaginary file is safe :)',
+      'error'
+    )
+  }
 });
 </script>
 <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>

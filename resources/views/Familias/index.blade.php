@@ -1,6 +1,51 @@
 @extends("theme/$theme/layout")
+@section('styles')
+<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+@endsection
 @section('Script')
+<script type="text/javascript">
+  document.querySelector('#form1').addEventListener('submit', function(e) {
+  var form = this;
+  e.preventDefault(); // <--- prevent form from submitting
+  swal({
+      title: "Esta seguro de eliminar?",
+      text: "Una vez eliminado no se puede recuperar!",
+      icon: "warning",
+      buttons: [
+        'Cancelar!',
+        'Aceptar!'
+      ],
+      dangerMode: true,
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+        swal({
+          title: 'Exito!',
+          text: 'Se ha Eliminado el registro!',
+          icon: 'success'
+        }).then(function() {
+          form.submit(); // <--- submit form programmatically
+        });
+      } else {
+        swal("Cancelado","" ,"error");
+      }
+    })
+});
+</script>
 <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
+<script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
+<script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
+<script>
+$(function () {
+    $('#Censo_table').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
 @endsection
 @section('Contenido')
 <div class="row">
@@ -16,9 +61,8 @@
             
           <h3 class="box-title">Familias</h3>
         </div>
-        <!-- /.box-header -->
-        <div class="box-body table-responsive no-padding" id="tabla-data">
-          <table class="table table-hover">
+        <div class="box-body" >
+          <table id="Familias_table" class="table table-bordered table-striped">
             <tr>
               <th>ID de familia</th>
               <th>Cedula del Jefe de familia</th>

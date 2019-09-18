@@ -17,9 +17,9 @@
           <h3 class="box-title">Emergencias</h3>
         </div>
         <!-- /.box-header -->
-        <div class="box-body table-responsive no-padding" id="tabla-data">
+        <div class="table table-bordered table-striped" id="tabla-data">
           <table class="table table-hover">
-           
+              <thead>
             <tr>
               <th>Id de la Emergencia</th>
               <th>Nombre de la Emergencias</th>
@@ -29,6 +29,7 @@
               <th>Longitud</th>
               <th>Latitud</th>
             </tr>
+          </thead>
             @foreach ($emergencias as $item)
               <tr>
               <td>{{$item->idEmergencias}}</td>    

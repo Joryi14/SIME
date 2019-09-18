@@ -120,3 +120,23 @@ Route::group(['prefix' => '/',/*'middleware' => ['role:Admin']*/], function () {
     Route::post('UserRol/getUsers','UserRolController@getUsers')->name('Get_Users');
     Route::post('UserRol/getRoles','UserRolController@getRoles')->name('Get_Roles');
 });
+Route::group(['prefix' => '/'], function () {
+    Route::get('/', 'NoticiaController@index1');
+    Route::get('Noticia', 'NoticiaController@index')->name('inicio_noticia');
+    Route::get('Noticia/create', 'NoticiaController@create')->name('Noticia_create');
+    Route::post('Noticia/store','NoticiaController@store');
+    Route::get('Noticia/{Noticia}/edit', 'NoticiaController@edit');
+    Route::put('Noticia/{Noticia}','NoticiaController@update');
+    Route::delete('Noticia/{Noticia}','NoticiaController@delete')->name('noticia_delete');
+    
+});
+
+Route::group(['prefix' => '/'], function () {
+    Route::get('VoluntarioWeb', 'VoluntarioWebController@index')->name('inicio_voluntarioweb');
+   //Route::get('/', 'VoluntarioWebController@create')->name('VoluntarioWeb_create');
+    Route::post('VoluntarioWeb/store','VoluntarioWebController@store');
+    Route::get('VoluntarioWeb/{VoluntarioWeb}/edit', 'VoluntarioWebController@edit');
+    Route::put('VoluntarioWeb/{VoluntarioWeb}','VoluntarioWebController@update');
+    Route::delete('VoluntarioWeb/{VoluntarioWeb}','VoluntarioWebController@delete')->name('voluntarioweb_delete');
+
+});

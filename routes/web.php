@@ -117,4 +117,6 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin']], function () {
     Route::get('UserRol/create', 'UserRolController@create')->name('crear_UserRol');
     Route::delete('UseroRol/{UserRol}','UserRolController@destroy')->name('UserRol_delete');
     Route::post('UserRol/store','UserRolController@store');
+    Route::post('UserRol/getUsers','UserRolController@getUsers')->name('Get_Users');
+    Route::post('UserRol/getRoles','UserRolController@getRoles')->name('Get_Roles');
 });

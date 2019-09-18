@@ -26,9 +26,9 @@ class UserRolController extends Controller
      */
     public function create()
     {
-        $users =User::pluck('id','Cedula');
-        $roles =Role::pluck('id','name')->prepend("Selecciona2");
-        return view('Login.create-UserRol',['users'=>$users]);
+        $users =User::pluck('Cedula','id');
+        $roles =Role::pluck('name','id');
+        return view('Login.create-UserRol',['users'=>$users],['roles'=>$roles]);
     }
 
     /**
@@ -78,7 +78,48 @@ class UserRolController extends Controller
     {
         //
     }
+    public function getUsers(Request $request){
 
+        $search = $request->search;
+  
+        if($search == ''){
+           $Users = User::orderby('Cedula','asc')->select('id','Cedula')->limit(5)->get();
+        }else{
+           $Users = User::orderby('Cedula','asc')->select('id','Cedula')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+  
+        $response = array();
+        foreach($Users as $user){
+           $response[] = array(
+                "id"=>$user->id,
+                "text"=>$user->Cedula
+           );
+        }
+  
+        echo json_encode($response);
+        exit;
+     }
+     public function getRoles(Request $request){
+
+        $search = $request->search;
+  
+        if($search == ''){
+           $Roles = Role::orderby('name','asc')->select('id','name')->limit(5)->get();
+        }else{
+           $Roles = Role::orderby('name','asc')->select('id','name')->where('name', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+  
+        $response = array();
+        foreach($Roles as $role){
+           $response[] = array(
+                "id"=>$role->id,
+                "text"=>$role->name
+           );
+        }
+  
+        echo json_encode($response);
+        exit;
+     }
     /**
      * Remove the specified resource from storage.
      *

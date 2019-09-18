@@ -19,21 +19,79 @@
                   <div class="form-group">
                     <label for="name" class="col-sm-2 control-label"> Usuario:</label>
                     <div class="col-sm-9">
-                        {!! Form::select('users', $users, NULL, ['Cedula'=>'users']) !!}
+                        <select id='SelectU' name="model_id" style='width: 25%;'>
+                        <option value='0'>Seleccionar un Usuario</option></select>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="guard_name" class="col-sm-2 control-label">Id de Rol: </label>
                     <div class="col-sm-9">
-                      <input type="text" name="role_id" class= "form-control" >
+                        <select id='SelectR' name="role_id" style='width: 25%;'>
+                        <option value='0'>Seleccionar un Rol</option></select>
                     </div>
                   </div>
                 </div>
                 <div class="box-footer">
-                    @include("Includes.boton-form-create")
+                    @include("Includes.boton-editar")
                 </div>
               </form>
             </div>
           </div>
         </div>
 @endsection
+@section('Script')
+<!-- Script -->
+<script type="text/javascript">
+  // CSRF Token
+  var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+  $(document).ready(function(){
+    $( "#SelectU" ).select2({
+      ajax: { 
+        url: "{{route('Get_Users')}}",
+        type: "post",
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+          return {
+            _token: CSRF_TOKEN,
+            search: params.term // search term
+          };
+        },
+        processResults: function (response) {
+          return {
+            results: response
+          };
+        },
+        cache: true
+      }
+    });
+  });
+  </script>
+  <script type="text/javascript">
+    // CSRF Token
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $(document).ready(function(){
+      $( "#SelectR" ).select2({
+        ajax: { 
+          url: "{{route('Get_Roles')}}",
+          type: "post",
+          dataType: 'json',
+          delay: 250,
+          data: function (params) {
+            return {
+              _token: CSRF_TOKEN,
+              search: params.term // search term
+            };
+          },
+          processResults: function (response) {
+            return {
+              results: response
+            };
+          },
+          cache: true
+        }
+      });
+    });
+    </script>
+        @endsection
+

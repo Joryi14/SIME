@@ -28,7 +28,7 @@ class ValidacionJefeDeFamilia extends FormRequest
          'Nombre'  => 'required|max:10',
          'Apellido1' => 'required|max:15',
          'Apellido2' => 'required|max:15',
-         'Cedula'=> 'required|max:8',
+         'Cedula'=> 'required|max:10',
          'Edad'=> 'required|max:3',
          'sexo'=> 'required',
          'Telefono' => 'max:15',
@@ -50,7 +50,7 @@ class ValidacionJefeDeFamilia extends FormRequest
             'Apellido2.max' => 'El Apellido2 no debe superar los 15 digitos',
 
             'Cedula.required' => 'La Cedula es requerido',
-            'Cedula.max' => 'La Cedula no debe superar los 8 digitos',
+            'Cedula.max' => 'La Cedula no debe superar los 10 digitos',
 
             'Edad.required' => 'El Edad es requerido',
             'Edad.max' => 'El Edad no debe superar los 3 digitos',

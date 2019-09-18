@@ -40,13 +40,8 @@ class CensoController extends Controller
     public function store(ValidacionCenso $request)
     {
         if(JefeDeFamilia::find($request->IdJefeFam)!= NULL){
-        $Censo = new Censo();
-        $Censo->IdJefeFam = $request->IdJefeFam;
-        $Censo->Refrigerador = $request->Refrigerador;
-        $Censo->Cocina = $request->Cocina;
-        $Censo->Colchon = $request->Colchon;
-        $Censo->Cama = $request->Cama;
-        $Censo->save();
+            $censo = DB::select("call Insert_Censo('$request->IdJefeFam'
+            ,'$request->Refrigerador','$request->Cocina','$request->Colchon','$request->Cama')");  
         return redirect('Censo')->with('mensaje','Se guardo con exito');
         }
         else

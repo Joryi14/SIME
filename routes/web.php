@@ -46,7 +46,7 @@ Route::group(['prefix' => '/'], function () {
 });
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
-Route::group(['prefix' => '/','middleware' => ['role:Admin|Director']], function () {
+Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
     Route::get('Censo', 'CensoController@index')->name('inicio_censo');
     Route::get('Censo/create', 'CensoController@create')->name('censo_create');
     Route::post('Censo/store','CensoController@store');
@@ -55,7 +55,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director']], function
     Route::delete('Censo/{Censo}','CensoController@delete')->name('censo_delete');
 });
 
-Route::group(['prefix' => '/'], function () {
+Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
     Route::get('JefeDeFamilia', 'JefeDeFamiliaController@index')->name('inicio_jefe');
     Route::get('JefeDeFamilia/create', 'JefeDeFamiliaController@create')->name('jefe_create');
     Route::post('JefeDeFamilia/store','JefeDeFamiliaController@store');
@@ -64,7 +64,7 @@ Route::group(['prefix' => '/'], function () {
     Route::delete('JefeDeFamilia/{JefeDeFamilia}','JefeDeFamiliaController@delete')->name('jefe_delete');
 });
 
-Route::group(['prefix' => '/'], function () {
+Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
     Route::get('Familias', 'FamiliasController@index')->name('inicio_familia');
     Route::get('Familias/create', 'FamiliasController@create')->name('familias_create');
     Route::post('Familias/store','FamiliasController@store');
@@ -99,7 +99,7 @@ Route::group(['prefix' => '/'], function () {
     Route::delete('Albergue/{Albergue}','Albergue@delete')->name('albergue_delete');
 });
 
-Route::group(['prefix' => '/'], function () {
+Route::group(['prefix' => '/','middleware' => ['role:Admin']], function () {
     Route::get('user', 'user@index')->name('inicio_users');
     Route::get('roles/create', 'roles@create')->name('crearRol');
     Route::post('roles/store','roles@store');

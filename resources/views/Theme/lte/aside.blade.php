@@ -28,7 +28,9 @@
               </ul>
             </li>
             @endrole
+            @role('Director|Admin|Lider Comunal')
             <li><a href="{{route('inicio_mensaje')}}"><i class="fa  fa-envelope"></i> <span>Mensajeria</span></a></li>
+            @endrole 
           </ul>
         </section>
       </aside>

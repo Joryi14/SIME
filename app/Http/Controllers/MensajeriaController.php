@@ -92,18 +92,11 @@ class MensajeriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id, Request $request)
-    {
-        if ($request->ajax()) {
-            if (Mensajeria::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
-        
+    public function delete($id)
+    {   
+        $user = Mensajeria::find($id);
+        $user->delete();
+        return redirect('Mensajeria')->with('Se ha eliminado correctamente');
     
     }
 }

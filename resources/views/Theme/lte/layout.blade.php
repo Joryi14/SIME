@@ -48,7 +48,6 @@
           </section>
     </div>
     @include("theme/$theme/footer")
- 
  </div>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{asset("assets/$theme/bower_components/jquery/dist/jquery.min.js")}}"></script>

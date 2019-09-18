@@ -89,17 +89,10 @@ class JefeDeFamiliaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id, Request $request)
+    public function delete($id)
     {
-        if ($request->ajax()) {
-            if (JefeDeFamilia::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
-        
+        $jefe = JefeDeFamilia::find($id);
+        $jefe->delete();
+        return redirect('JefeDeFamilia')->with('Se ha eliminado correctamente');
     }
 }

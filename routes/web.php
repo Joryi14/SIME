@@ -52,7 +52,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], functi
     Route::post('Censo/store','CensoController@store');
     Route::get('Censo/{Censo}/edit', 'CensoController@edit');
     Route::put('Censo/{Censo}','CensoController@update');
-    Route::delete('Censo/{Censo}','CensoController@delete')->name('censo_delete');
+    Route::delete('Censo/{id}','CensoController@delete')->name('censo_delete');
 });
 
 Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
@@ -61,7 +61,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], functi
     Route::post('JefeDeFamilia/store','JefeDeFamiliaController@store');
     Route::get('JefeDeFamilia/{JefeDeFamilia}/edit', 'JefeDeFamiliaController@edit')->name('jefe_edit');
     Route::put('JefeDeFamilia/{JefeDeFamilia}','JefeDeFamiliaController@update');
-    Route::delete('JefeDeFamilia/{JefeDeFamilia}','JefeDeFamiliaController@delete')->name('jefe_delete');
+    Route::delete('JefeDeFamilia/{id}','JefeDeFamiliaController@delete')->name('jefe_delete');
 });
 
 Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {

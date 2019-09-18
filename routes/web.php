@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => '/'], function () {
+Route::group(['prefix' => '/','middleware' => ['role:Admin|Director']], function () {
     Route::get('Mensajeria', 'MensajeriaController@index')->name('inicio_mensaje');
     Route::get('Mensajeria/create', 'MensajeriaController@create')->name('Mensajeria_create');
     Route::post('Mensajeria/store','MensajeriaController@store');
@@ -46,7 +46,7 @@ Route::group(['prefix' => '/'], function () {
 });
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
-Route::group(['prefix' => '/'], function () {
+Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
     Route::get('Censo', 'CensoController@index')->name('inicio_censo');
     Route::get('Censo/create', 'CensoController@create')->name('censo_create');
     Route::post('Censo/store','CensoController@store');
@@ -55,7 +55,7 @@ Route::group(['prefix' => '/'], function () {
     Route::delete('Censo/{Censo}','CensoController@delete')->name('censo_delete');
 });
 
-Route::group(['prefix' => '/'], function () {
+Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
     Route::get('JefeDeFamilia', 'JefeDeFamiliaController@index')->name('inicio_jefe');
     Route::get('JefeDeFamilia/create', 'JefeDeFamiliaController@create')->name('jefe_create');
     Route::post('JefeDeFamilia/store','JefeDeFamiliaController@store');
@@ -64,7 +64,7 @@ Route::group(['prefix' => '/'], function () {
     Route::delete('JefeDeFamilia/{JefeDeFamilia}','JefeDeFamiliaController@delete')->name('jefe_delete');
 });
 
-Route::group(['prefix' => '/'], function () {
+Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
     Route::get('Familias', 'FamiliasController@index')->name('inicio_familia');
     Route::get('Familias/create', 'FamiliasController@create')->name('familias_create');
     Route::post('Familias/store','FamiliasController@store');
@@ -99,10 +99,21 @@ Route::group(['prefix' => '/'], function () {
     Route::delete('Albergue/{Albergue}','AlbergueController@delete')->name('albergue_delete');
 });
 
-Route::group(['prefix' => '/'], function () {
-    Route::get('user', 'user@index')->name('inicio_usuario');
-    Route::post('user/store','user@store');
+Route::group(['prefix' => '/','middleware' => ['role:Admin']], function () {
+    Route::get('user', 'user@index')->name('inicio_users');
+    Route::get('roles/create', 'roles@create')->name('crearRol');
+    Route::post('roles/store','roles@store');
     Route::put('user/{user}','user@update')->name('user_edit');
-    Route::delete('user/{user}','user@delete')->name('user_delete');
+    Route::delete('user/{user}','user@destroy')->name('user_delete');
+    Route::delete('roles/{roles}','roles@destroy')->name('rol_delete');
     Route::get('user/{user}','user@show')->name('user_show');
+    Route::get('Permissions/create', 'PermissionsController@create')->name('crear_permiso');
+    Route::delete('Permissions/{Permissions}','PermissionsController@destroy')->name('permissions_delete');
+    Route::post('Permissions/store','PermissionsController@store');
+    Route::get('PermisoRol/create', 'PermisoRolController@create')->name('crear_permisoRol');
+    Route::delete('PermisoRol/{PermisoRol}','PermisoRolController@destroy')->name('permisoRol_delete');
+    Route::post('PermisoRol/store','PermisoRolController@store');
+    Route::get('UserRol/create', 'UserRolController@create')->name('crear_UserRol');
+    Route::delete('UseroRol/{UserRol}','UserRolController@destroy')->name('UserRol_delete');
+    Route::post('UserRol/store','UserRolController@store');
 });

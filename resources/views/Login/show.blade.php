@@ -1,12 +1,24 @@
 @extends("theme/$theme/layout")
 @section('Contenido')
+
 <div class="box box-primary">
         <div class="box-header with-border">
                 <h3 class="box-title">Perfil</h3>
+<<<<<<< HEAD
         </div>
         <form class="form" method="POST" action="{{route('user_edit', ['id' => $user->id])}}">
                 @method('PUT')
                 @csrf
+=======
+                <div class="box-tools pull-right">
+                                <div class="col-sm-12">
+                                <a href="{{route('home')}}" class="btn btn-block btn-info ">
+                                        <i class="fa fa-fw fa-reply-all"></i> Regresar
+                                </a>
+                                </div>
+                </div>
+        </div>
+>>>>>>> LOGIN
         <div class="box-body">
                 <div class="row">
                 <div class="col-md-6">

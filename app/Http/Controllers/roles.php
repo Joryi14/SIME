@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\permisoRol;
-use App\Models\permissions;
-use App\Models\roles;
-use App\Models\UserRol;
-use App\User as AppUser;
+use App\Models\roles as AppRoles;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
-class user extends Controller
+class roles extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,13 +15,31 @@ class user extends Controller
      */
     public function index()
     {
-        $users = AppUser::OrderBy('id')->get();
-        $rols = roles::OrderBy('id')->get();
-        $permissions = permissions::OrderBy('id')->get();
-        $permisoRol = permisoRol::get();
-        $UserRol = UserRol::get();
-        return view('Login.users',compact('users','rols','permissions','permisoRol','UserRol'));
+        //
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('Login.create-rol');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $role = Role::create(['name' => $request->name]);
+        header("location: /user");
+    }
+
     /**
      * Display the specified resource.
      *
@@ -35,8 +48,7 @@ class user extends Controller
      */
     public function show($id)
     {
-     $user = AppUser::find($id);
-     return view('Login.show',compact('user'));
+        //
     }
 
     /**
@@ -47,8 +59,7 @@ class user extends Controller
      */
     public function edit($id)
     {
-     $user = AppUser::find($id);
-     return view('Login.show',compact('user'));
+        //
     }
 
     /**
@@ -60,11 +71,7 @@ class user extends Controller
      */
     public function update(Request $request, $id)
     {
-        $patologia = implode(', ',$request->patologia);
-        
-        $user = DB::update("call Update_Users('$id','$request->name','$request->Apellido1','$request->Apellido2',
-        '$request->Cedula','$patologia','$request->Nacionalidad','$request->Comunidad')");
-        return view('home');
+        //
     }
 
     /**
@@ -75,8 +82,8 @@ class user extends Controller
      */
     public function destroy($id)
     {
-        $user = AppUser::find($id);
-        $user->delete();
+        $rol = AppRoles::find($id);
+        $rol->delete();
         return redirect('user')->with('Se ha eliminado correctamente');
     }
 }

@@ -100,7 +100,7 @@ Route::group(['prefix' => '/'], function () {
 });
 
 Route::group(['prefix' => '/','middleware' => ['role:Admin']], function () {
-    Route::get('user', 'user@index')->name('inicio_users');
+    Route::get('user', 'user@index')->name('inicio_usuario');
     Route::get('roles/create', 'roles@create')->name('crearRol');
     Route::post('roles/store','roles@store');
     Route::put('user/{user}','user@update')->name('user_edit');

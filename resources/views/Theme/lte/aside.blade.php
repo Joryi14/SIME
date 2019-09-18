@@ -21,7 +21,7 @@
               </ul>
             </li>
           @endrole
-          @role('Voluntario|Admin|Director|Lider Comunal')
+          @role('Admin|Director|Lider Comunal')
           <li><a href="{{route('inicio_emergencia')}}"><i class="fa  fa-exclamation-triangle"></i><span> Emergencia</span></a></li>
           <li><a href="{{route('inicio_mensaje')}}"><i class="fa  fa-envelope"></i><span>Mensajeria</span></a></li>
           <li><a href="{{route('inicio_albergue')}}"><i class="fa  fa-hospital-o"></i><span>Albergue</span></a></li>

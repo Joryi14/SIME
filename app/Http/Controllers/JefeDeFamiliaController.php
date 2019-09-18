@@ -78,8 +78,7 @@ class JefeDeFamiliaController extends Controller
     public function update(Request $request, $id)
     { 
         $patologia = implode(', ',$request->Patologia);
-         $JefeF = DB::update("call Update_JefeDeFamilia('$id','$request->TotalPersonas','$request->Nombre','$request->Apellido1','$request->Apellido2',
-        '$request->Cedula','$request->Edad','$request->sexo','$request->Telefono','$request->PcD','$request->MG','$request->PI','$request->PM','$patologia')");
+        $JefeF = DB::update("call Update_JefeDeFamilia('$id','$request->TotalPersonas','$request->Nombre','$request->Apellido1','$request->Apellido2','$request->Cedula','$request->Edad','$request->sexo','$request->Telefono','$request->PcD','$request->MG','$request->PI','$request->PM','$patologia')");
      
         header("location: /JefeDeFamilia");
     }

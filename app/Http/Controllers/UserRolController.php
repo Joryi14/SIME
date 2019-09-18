@@ -26,7 +26,9 @@ class UserRolController extends Controller
      */
     public function create()
     {
-        return view('Login.create-UserRol');
+        $users =User::pluck('id','Cedula');
+        $roles =Role::pluck('id','name')->prepend("Selecciona2");
+        return view('Login.create-UserRol',['users'=>$users]);
     }
 
     /**

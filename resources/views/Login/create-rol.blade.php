@@ -6,7 +6,7 @@
               <div class="box-header with-border">
                   <div class="box-tools pull-right">
                       <div class="col-sm-12">
-                      <a href="{{route('inicio_users')}}" class="btn btn-block btn-info ">
+                      <a href="{{route('inicio_usuario')}}" class="btn btn-block btn-info ">
                           <i class="fa fa-fw fa-reply-all"></i> Regresar
                       </a>
                       </div>

@@ -98,15 +98,16 @@ Route::group(['prefix' => '/'], function () {
     Route::put('Albergue/{Albergue}','AlbergueController@update');
     Route::delete('Albergue/{Albergue}','AlbergueController@delete')->name('albergue_delete');
 });
-
+Route::group(['prefix' => '/','middleware' => ['role:Admin']], function () {
+Route::put('user/{user}','user@update')->name('user_edit');
+Route::get('user/{user}','user@show')->name('user_show');
+});
 Route::group(['prefix' => '/','middleware' => ['role:Admin']], function () {
     Route::get('user', 'user@index')->name('inicio_usuario');
     Route::get('roles/create', 'roles@create')->name('crearRol');
     Route::post('roles/store','roles@store');
-    Route::put('user/{user}','user@update')->name('user_edit');
     Route::delete('user/{user}','user@destroy')->name('user_delete');
     Route::delete('roles/{roles}','roles@destroy')->name('rol_delete');
-    Route::get('user/{user}','user@show')->name('user_show');
     Route::get('Permissions/create', 'PermissionsController@create')->name('crear_permiso');
     Route::delete('Permissions/{Permissions}','PermissionsController@destroy')->name('permissions_delete');
     Route::post('Permissions/store','PermissionsController@store');

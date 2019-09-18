@@ -86,8 +86,7 @@ class CensoController extends Controller
     public function update(Request $request, $id)
     {
         $censo = DB::update("call Update_Censo('$id','$request->IdJefeFam'
-        ,'$request->Refrigerador','$request->Cocina','$request->Colchon','
-        $request->Cama')");  
+        ,'$request->Refrigerador','$request->Cocina','$request->Colchon','$request->Cama')");  
     
      header("location: /Censo");
 

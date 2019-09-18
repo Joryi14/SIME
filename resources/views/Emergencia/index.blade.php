@@ -4,7 +4,7 @@
 @endsection
 @section('Contenido')
 <div class="row">
-    <div class="col-xs-8">
+    <div class="col-xs-12">
         @include('Includes.mensaje-Succes')
       <div class="box box-primary">
         <div class="box-header">
@@ -17,18 +17,19 @@
           <h3 class="box-title">Emergencias</h3>
         </div>
         <!-- /.box-header -->
-        <div class="box-body table-responsive no-padding" id="tabla-data">
+        <div class="table table-bordered table-striped" id="tabla-data">
           <table class="table table-hover">
-           
+              <thead>
             <tr>
-              <th>idEmergencias</th>
-              <th>NombreEmergencias</th>
+              <th>Id de la Emergencia</th>
+              <th>Nombre de la Emergencias</th>
               <th>Categoria</th>
-              <th>TipoDeEmergencia</th>
+              <th>Tipo De Emergencia</th>
               <th>Descripcion</th>
               <th>Longitud</th>
               <th>Latitud</th>
             </tr>
+          </thead>
             @foreach ($emergencias as $item)
               <tr>
               <td>{{$item->idEmergencias}}</td>    
@@ -49,8 +50,6 @@
               </td>
               </tr>
             @endforeach
-
-
           </table>
         </div>
       </div>

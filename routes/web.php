@@ -74,7 +74,7 @@ Route::group(['prefix' => '/'], function () {
 });
 
 Route::group(['prefix' => '/'], function () {
-    Route::get('Emergencia', 'EmergenciaController@index');
+    Route::get('Emergencia', 'EmergenciaController@index')->name('inicio_emergencia');
     Route::get('Emergencia/create', 'EmergenciaController@create')->name('emergencia_create');
     Route::post('Emergencia/store','EmergenciaController@store');
     Route::get('Emergencia/{Emergencia}/edit', 'EmergenciaController@edit')->name('emergencia_edit');
@@ -91,12 +91,12 @@ Route::group(['prefix' => '/'], function () {
     Route::delete('PersonaAlbergue/{PersonaAlbergue}','PersonasAlbergue@delete')->name('personaAlbergue_delete');
 });
 Route::group(['prefix' => '/'], function () {
-    Route::get('Albergue', 'Albergue@index');
-    Route::get('Albergue/create', 'Albergue@create')->name('albergue_create');
-    Route::post('Albergue/store','Albergue@store');
-    Route::get('Albergue/{Albergue}/edit', 'Albergue@edit')->name('albergue_edit');
-    Route::put('Albergue/{Albergue}','Albergue@update');
-    Route::delete('Albergue/{Albergue}','Albergue@delete')->name('albergue_delete');
+    Route::get('Albergue', 'AlbergueController@index')->name('inicio_albergue');
+    Route::get('Albergue/create', 'AlbergueController@create')->name('albergue_create');
+    Route::post('Albergue/store','AlbergueController@store');
+    Route::get('Albergue/{Albergue}/edit', 'AlbergueController@edit')->name('albergue_edit');
+    Route::put('Albergue/{Albergue}','AlbergueController@update');
+    Route::delete('Albergue/{Albergue}','AlbergueController@delete')->name('albergue_delete');
 });
 
 Route::group(['prefix' => '/'], function () {

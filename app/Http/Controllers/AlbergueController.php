@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\ValidacionesAlbergue;
 use App\Models\Albergue;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,7 @@ class AlbergueController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionesAlbergue $request)
     {
         $albergue = new Albergue();
         $albergue->Nombre = $request->Nombre;
@@ -45,7 +46,7 @@ class AlbergueController extends Controller
         $albergue->telefono = $request->telefono;
         $albergue->Duchas = $request->Duchas;
         $albergue->inodoros = $request->inodoros;
-        $albergue->EspacioDeCocina = $request->EspacioDeCocina;
+        $albergue->EspaciosDeCocina = $request->EspacioDeCocina;
         $albergue->Bodega = $request->Bodega;
         $albergue->Longitud = $request->Longitud;
         $albergue->Latitud = $request->Latitud;
@@ -84,7 +85,7 @@ class AlbergueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionesAlbergue $request, $id)
     {
         $albergue = Albergue::find($id);
         $albergue->fill($request->all());

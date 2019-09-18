@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidacionesEmergencia;
 use App\Models\Emergencia;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ class EmergenciaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionesEmergencia $request)
     {
         $emergencia = new Emergencia();  
         $emergencia->NombreEmergencias = $request->NombreEmergencias;
@@ -79,7 +80,7 @@ class EmergenciaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionesEmergencia $request, $id)
     {
         $emergencia = Emergencia::find($id);
      $emergencia->fill($request->all());

@@ -14,12 +14,10 @@
         </div>
         <div class="box-body">
                 <div class="row">
-                <div class="col-md-6">
-                <div class="box-body">
-                <div class="row">
-                <form class="form" method="POST" action="{{route('user_edit', ['id' => $user->id])}}">
+        <form class="form" method="POST" action="{{route('user_edit', ['id' => $user->id])}}">
                         @method('PUT')
                         @csrf
+                <div class="col-md-6">
                 <div class="form-group">
                 <label for="Email">Email:</label>
                         <input type="text" name="email" class= "form-control" value="{{$user->email}} " readonly="readonly">
@@ -328,21 +326,17 @@
                 <!-- /.form-group -->
                 </div>
                 <!-- /.col -->
-                
-        
+                @include('Includes.boton-editar')
+        </form>
                 </div>
                 <!-- /.row -->
         
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-        <div class="form-group">
-                @include('Includes.boton-editar')        
         </div>
 
         </div>
-  </form>
-</div>
         <!-- /.box -->
         @section('Script')
 <script>

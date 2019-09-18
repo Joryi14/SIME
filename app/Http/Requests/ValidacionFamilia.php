@@ -28,11 +28,11 @@ class ValidacionFamilia extends FormRequest
             'Nombre'  => 'required|max:10',
             'Apellido1' => 'required|max:15',
             'Apellido2' => 'required|max:15',
-            'Cedula'=> 'required|max:8',
+            'Cedula'=> 'required|max:10',
             'Parentesco'=> 'required',
             'Edad'=> 'required|max:3',
             'sexo'=> 'required',
-            'Patologia'=> 'required|max:15'
+           
         ];
     }
     public function messages()
@@ -51,7 +51,7 @@ class ValidacionFamilia extends FormRequest
             'Apellido2.max' => 'El Apellido2 no debe superar los 15 digitos',
 
             'Cedula.required' => 'La Cedula es requerido',
-            'Cedula.max' => 'La Cedula no debe superar los 8 digitos',
+            'Cedula.max' => 'La Cedula no debe superar los 10 digitos',
 
             'Parentesco.required' => 'El Parentesco es requerido',
             'Parentesco.max' => 'El Parentesco no debe superar los 15 digitos',
@@ -61,8 +61,7 @@ class ValidacionFamilia extends FormRequest
             
             'sexo.required' => 'El sexo es requerido',
          
-            'Patologia.required' => 'La Patologia es requerida',
-            'Patologia.max' => 'La Patologia no debe superar los 15 digitos'
+           
 
         ];
 

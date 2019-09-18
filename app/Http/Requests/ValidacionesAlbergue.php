@@ -32,8 +32,8 @@ class ValidacionesAlbergue extends FormRequest
 
             'Capacidad'=>'required',
             'telefono'=>'required',
-            'Longitud'=>'required|max:50',
-            'Latitud'=>'required|max:50',
+            'Longitud'=>'numeric',
+            'Latitud'=>'numeric',
             'Nececidades'=>'required|max:50',
         ];
     }
@@ -52,12 +52,10 @@ class ValidacionesAlbergue extends FormRequest
             'TipoDeInstalacion.max' =>' El tipo de instalacion no debe ser mayor a 50 caracteres',
             'Capacidad.required' =>'La capacidad del albergue es requerido',
             'telefono.required' =>'El número de telefono del albergue es requerido',
-            'Longitud.required' =>'La Longitud del albergue es requerida',
-            'Longitud.max' =>' La Longitud del albergue no debe ser mayor a 50 caracteres',
-            'Latitud.required' =>'La Latitud del albergue es requerida',
-            'Latitud.max' =>' La Latitud del albergue no debe ser mayor a 50 caracteres',
             'Nececidades.required' =>'Las nececidades del albergue es requerido',
-            'Nececidades.max' =>' Las nececidades del albergue no debe ser mayor a 50 caracteres'
+            'Nececidades.max' =>' Las nececidades del albergue no debe ser mayor a 50 caracteres',
+            'Longitud.numeric' =>' La Longitud de la emergencia debe ser NUMERICA',
+            'Latitud.numeric' =>' La Latitud de la emergencia debe ser NUMERICA'
             
         ];
     }

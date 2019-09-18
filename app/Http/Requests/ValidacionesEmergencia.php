@@ -28,8 +28,8 @@ class ValidacionesEmergencia extends FormRequest
             'NombreEmergencias'=>'required|max:50',
             'TipoDeEmergencia'=>'required|max:30',
             'Descripcion'=>'required|max:100',
-            'Longitud'=>'required|max:50',
-            'Latitud'=>'required|max:100'
+            'Longitud'=>'numeric',
+            'Latitud'=>'numeric'
         ];
     }
 
@@ -43,11 +43,9 @@ class ValidacionesEmergencia extends FormRequest
             'TipoDeEmergencia.max' =>'El tipo de emergencia no debe ser mayor a 30 caracteres',
             'Descripcion.required' =>'La descripcion de la emergencia es requerida',
             'Descripcion.max' =>' La descripcion de la emergencia no debe ser mayor a 30 caracteres',
-            'Longitud.required' =>'La Longitud de la emergencia es requerida',
-            'Longitud.max' =>' La Longitud de la emergencia no debe ser mayor a 50 caracteres',
-            'Latitud.required' =>'La Latitud de la emergencia es requerida',
-            'Latitud.max' =>' La Latitud de la emergencia no debe ser mayor a 50 caracteres'
-            
+            'Longitud.numeric' =>' La Longitud de la emergencia debe ser NUMERICA',
+            'Latitud.numeric' =>' La Latitud de la emergencia debe ser NUMERICA'
+           
         ];
     }
 

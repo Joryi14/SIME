@@ -98,7 +98,7 @@ Route::group(['prefix' => '/'], function () {
     Route::put('Albergue/{Albergue}','AlbergueController@update');
     Route::delete('Albergue/{Albergue}','AlbergueController@delete')->name('albergue_delete');
 });
-Route::group(['prefix' => '/','middleware' => ['role:Admin']], function () {
+Route::group(['prefix' => '/'], function () {
 Route::put('user/{user}','user@update')->name('user_edit');
 Route::get('user/{user}','user@show')->name('user_show');
 });

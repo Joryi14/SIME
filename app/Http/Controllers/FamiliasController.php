@@ -90,15 +90,9 @@ class FamiliasController extends Controller
      */
     public function delete($id, Request $request)
     {
-        if ($request->ajax()) {
-            if (Familias::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        $familia = Familias::find($id);
+        $familia->delete();
+        return redirect('Familias')->with('Se ha eliminado correctamente');
     
     }
 }

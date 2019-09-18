@@ -31,12 +31,11 @@
     })
 });
 </script>
-<script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 <script>
 $(function () {
-    $('#Censo_table').DataTable({
+    $('#Familias_table').DataTable({
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
@@ -61,12 +60,16 @@ $(function () {
             
           <h3 class="box-title">Familias</h3>
         </div>
-        <div class="box-body" >
+        <div class="box-body table-responsive no-padding" >
           <table id="Familias_table" class="table table-bordered table-striped">
+              <thead>
             <tr>
               <th>ID de familia</th>
+
               <th>Cedula del Jefe de familia</th>
+              
               <th>Nombre</th>
+              
               <th>Apellido1</th>
               <th>Apellido2</th>
               <th>Cedula</th>
@@ -78,7 +81,9 @@ $(function () {
               <th>Persona Indigena</th>
               <th>Persona Migrante</th>
               <th>Patologia</th>
+              <th>Acciones</th>
             </tr>
+          </thead>
             @foreach ($Familias as $item)
               <tr>
               <td>{{$item->IdFamilia}}</td>      
@@ -97,9 +102,10 @@ $(function () {
               <td>{{$item->Patologia}}</td>
               <td><a href="/Familias/{{$item->IdFamilia}}/edit" class="btn-accion-tabla tooltipsC" title="Editar familia">
                 <i class="fa fa-fw fa-pencil"></i></a>
-              <form action="{{route('familias_delete', ['Familias' => $item->IdFamilia])}}" class="d-inline form-eliminar" method="POST">
-                @csrf @method('delete')
-                <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar familia">
+              <form id="form1" action="{{route('familias_delete', ['Familias' => $item->IdFamilia])}}" method="POST">
+                @csrf 
+                <input name="_method" type="hidden" value="DELETE">
+                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar familia" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>

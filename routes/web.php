@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => '/','middleware' => ['role:Admin|Director']], function () {
+Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('Mensajeria', 'MensajeriaController@index')->name('inicio_mensaje');
     Route::get('Mensajeria/create', 'MensajeriaController@create')->name('Mensajeria_create');
     Route::post('Mensajeria/store','MensajeriaController@store');
@@ -73,7 +73,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], functi
     Route::delete('Familias/{Familias}','FamiliasController@delete')->name('familias_delete');
 });
 
-Route::group(['prefix' => '/'], function () {
+Route::group(['prefix' => '/','middleware' => ['role:Admin|Director']], function () {
     Route::get('Emergencia', 'EmergenciaController@index')->name('inicio_emergencia');
     Route::get('Emergencia/create', 'EmergenciaController@create')->name('emergencia_create');
     Route::post('Emergencia/store','EmergenciaController@store');
@@ -90,7 +90,7 @@ Route::group(['prefix' => '/'], function () {
     Route::put('PersonaAlbergue/{PersonaAlbergue}','PersonasAlbergue@update');
     Route::delete('PersonaAlbergue/{PersonaAlbergue}','PersonasAlbergue@delete')->name('personaAlbergue_delete');
 });
-Route::group(['prefix' => '/'], function () {
+Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('Albergue', 'AlbergueController@index')->name('inicio_albergue');
     Route::get('Albergue/create', 'AlbergueController@create')->name('albergue_create');
     Route::post('Albergue/store','AlbergueController@store');

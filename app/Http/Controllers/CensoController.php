@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Censo;
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidacionCenso;
+use App\Models\JefeDeFamilia;
 
 class CensoController extends Controller
 {
@@ -38,10 +39,18 @@ class CensoController extends Controller
      */
     public function store(ValidacionCenso $request)
     {
-        $censo = DB::select("call Insert_Censo('$request->IdJefeFam'
-        ,'$request->Refrigerador','$request->Cocina','$request->Colchon,'
-        $request->Cama')");  
-        header("location: /Censo");
+        if(JefeDeFamilia::find($request->IdJefeFam)!= NULL){
+        $Censo = new Censo();
+        $Censo->IdJefeFam = $request->IdJefeFam;
+        $Censo->Refrigerador = $request->Refrigerador;
+        $Censo->Cocina = $request->Cocina;
+        $Censo->Colchon = $request->Colchon;
+        $Censo->Cama = $request->Cama;
+        $Censo->save();
+        return redirect('Censo')->with('mensaje','Se guardo con exito');
+        }
+        else
+        return redirect('Censo\create')->with('mensaje','Error el Jefe De Familia no Existe');
     }
 
     /**
@@ -90,17 +99,11 @@ class CensoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id, Request $request)
+    public function delete($id)
     {
-        if ($request->ajax()) {
-            if (Censo::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        $censo = Censo::find($id);
+        $censo->delete();
+        return redirect('Censo')->with('Se ha eliminado correctamente');
         
     }
 }

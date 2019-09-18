@@ -33,7 +33,6 @@ class ValidacionCenso extends FormRequest
             'IdJefeFam.unique' => 'Este jefe de familia ya tiene un censo o no existe',
             'IdJefeFam.required' => 'El Id de jefe de familia es requerido',
             'IdJefeFam.max' => 'El id de jefe de familia no debe superar los 8 digitos'
-    
              ];
 
    }

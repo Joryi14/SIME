@@ -12,6 +12,7 @@
                   </span>
             </div>
           </form>
+          <li><a href="{{route('inicio_usuario')}}"><i class="fa fa-users"></i> <span>Control de Usuarios</span></a></li>
           <ul class="sidebar-menu" data-widget="tree">
             <li class="treeview">
               <a href="#">
@@ -26,19 +27,9 @@
                 <li><a href="{{ route('inicio_censo')}}"><i class="fa fa-circle-o"></i> Censo</a></li>
               </ul>
             </li>
-
-            
           <li><a href="{{route('inicio_emergencia')}}"><i class="fa   fa-exclamation-triangle"></i> <span>Emergencia</span></a></li>
-        
-
-       
-            <li><a href="{{route('inicio_mensaje')}}"><i class="fa  fa-envelope"></i> <span>Mensajeria</span></a></li>
-          
-
-        
-        <li><a href="{{route('inicio_albergue')}}"><i class="fa  fa-hospital-o"></i> <span>Albergue</span></a></li>
-      
-
+          <li><a href="{{route('inicio_mensaje')}}"><i class="fa  fa-envelope"></i> <span>Mensajeria</span></a></li>
+          <li><a href="{{route('inicio_albergue')}}"><i class="fa  fa-hospital-o"></i> <span>Albergue</span></a></li>
         </section>
       </aside>
     

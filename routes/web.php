@@ -100,7 +100,7 @@ Route::group(['prefix' => '/'], function () {
 });
 
 Route::group(['prefix' => '/'], function () {
-    Route::get('user', 'user@index');
+    Route::get('user', 'user@index')->name('inicio_usuario');
     Route::post('user/store','user@store');
     Route::put('user/{user}','user@update')->name('user_edit');
     Route::delete('user/{user}','user@delete')->name('user_delete');

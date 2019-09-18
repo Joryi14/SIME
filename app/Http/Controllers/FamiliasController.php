@@ -38,9 +38,7 @@ class FamiliasController extends Controller
     public function store(ValidacionFamilia $request)
     {
          $Patologia = implode(', ',$request->Patologia);
-         $Familia = DB::select("call Insert_Familia('$request->IdJefeF','$request->Nombre','$request->Apellido1','$request->Apellido2',
-        '$request->Cedula','$request->Parentesco','$request->Edad','$request->sexo','$request->PcD','$request->MG','$request->PI','$request->PM','$Patologia')");
-  
+         $Familia = DB::select("call Insert_Familia('$request->IdJefeF','$request->Nombre','$request->Apellido1','$request->Apellido2','$request->Cedula','$request->Parentesco','$request->Edad','$request->sexo','$request->PcD','$request->MG','$request->PI','$request->PM','$Patologia')");
         header("location: /Familias");
     }
 
@@ -77,8 +75,7 @@ class FamiliasController extends Controller
     public function update(Request $request, $id)
     {
         $Patologia = implode(', ',$request->Patologia);
-        $Familia = DB::update("call Update_Familia('$id','$request->IdJefeF','$request->Nombre','$request->Apellido1','$request->Apellido2',
-        '$request->Cedula','$request->Parentesco','$request->Edad','$request->sexo','$request->PcD','$request->MG','$request->PI','$request->PM','$Patologia')");
+        $Familia = DB::update("call Update_Familia('$id','$request->IdJefeF','$request->Nombre','$request->Apellido1','$request->Apellido2','$request->Cedula','$request->Parentesco','$request->Edad','$request->sexo','$request->PcD','$request->MG','$request->PI','$request->PM','$Patologia')");
      header("location: /Familias");
     }
 

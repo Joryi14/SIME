@@ -111,8 +111,8 @@
                                     </div>
                                   </div>
                                   <div class="form-group">
-                                    <label>Patologia</label>
-                                    <select class="form-control select2" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 100%;">
+                                    <label class="col-sm-2 control-label">Patologia</label>
+                                    <select class="form-control select2" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 50%;">
                                             <option selected>{{$JefeF->Patologia}}</option>
                                             <option>Alergias</option>
                                             <option>Asma</option>

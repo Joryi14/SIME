@@ -123,7 +123,7 @@ Route::group(['prefix' => '/',/*'middleware' => ['role:Admin']*/], function () {
 Route::group(['prefix' => '/'], function () {
     Route::get('/', 'NoticiaController@index1');
     Route::get('Noticia', 'NoticiaController@index')->name('inicio_noticia');
-    Route::get('Noticia/create', 'NoticiaController@create')->name('Noticia_create');
+    Route::get('Noticia/create', 'NoticiaController@create')->name('noticia_create');
     Route::post('Noticia/store','NoticiaController@store');
     Route::get('Noticia/{Noticia}/edit', 'NoticiaController@edit');
     Route::put('Noticia/{Noticia}','NoticiaController@update');

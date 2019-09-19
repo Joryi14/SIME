@@ -82,13 +82,13 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director']], function
     Route::delete('Emergencia/{Emergencia}','EmergenciaController@delete')->name('emergencia_delete');
 });
 
-Route::group(['prefix' => '/'], function () {
-    Route::get('PersonaAlbergue', 'PersonasAlbergue@index');
-    Route::get('PersonaAlbergue/create', 'PersonasAlbergue@create')->name('personaAlbergue_create');
-    Route::post('PersonaAlbergue/store','PersonasAlbergue@store');
-    Route::get('PersonaAlbergue/{PersonaAlbergue}/edit', 'PersonasAlbergue@edit')->name('personaAlbergue_edit');
-    Route::put('PersonaAlbergue/{PersonaAlbergue}','PersonasAlbergue@update');
-    Route::delete('PersonaAlbergue/{PersonaAlbergue}','PersonasAlbergue@delete')->name('personaAlbergue_delete');
+Route::group(['prefix' => '/','middleware'=> ['role:Admin|Director|Lider Comunal']], function () {
+    Route::get('PersonasAlbergue', 'PersonasAlbergue@index')->name('inicio_personasAlbergue');
+    Route::get('PersonasAlbergue/create', 'PersonasAlbergue@create')->name('personasAlbergue_create');
+    Route::post('PersonasAlbergue/store','PersonasAlbergue@store');
+    Route::get('PersonasAlbergue/{PersonasAlbergue}/edit', 'PersonasAlbergue@edit')->name('personasAlbergue_edit');
+    Route::put('PersonasAlbergue/{PersonasAlbergue}','PersonasAlbergue@update');
+    Route::delete('PersonasAlbergue/{PersonasAlbergue}','PersonasAlbergue@delete')->name('personasAlbergue_delete');
 });
 Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('Albergue', 'AlbergueController@index')->name('inicio_albergue');

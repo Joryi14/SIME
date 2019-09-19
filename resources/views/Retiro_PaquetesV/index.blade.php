@@ -64,15 +64,15 @@ $(function () {
           <table id="Retiro_PaquetesV_table" class="table table-bordered table-striped">
               <thead>
             <tr>
-              <th>IdRetiroPaquetes</th>
-              <th>IdChofer</th>
-              <th>IdAdministradorI</th>
-              <th>IdVoluntario</th>
-              <th>PlacaVehiculo</th>
-              <th>DireccionAEntregar</th>
-              <th>SuministrosGobierno </th>
-              <th>SuministrosComision</th>
-              <th>IdInventario</th>
+              <th>Id de RetiroPaquetes</th>
+              <th>Id de Chofer</th>
+              <th>Id de AdministradorI</th>
+              <th>Id de Voluntario</th>
+              <th>Placa de Vehiculo</th>
+              <th>Direccion A Entregar</th>
+              <th>Suministros Gobierno </th>
+              <th>Suministros Comision</th>
+              <th>Id de Inventario</th>
               <th>Acciones</th>
             </tr>
           </thead>

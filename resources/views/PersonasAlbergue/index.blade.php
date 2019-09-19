@@ -35,7 +35,7 @@
 <script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 <script>
 $(function () {
-    $('#VoluntariosWeb_table').DataTable({
+    $('#PersonaAlbergue_table').DataTable({
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
@@ -53,45 +53,44 @@ $(function () {
       <div class="box box-primary">
         <div class="box-header">
             <div class="box-tools pull-right">
-               
+                <a href="{{route('personasAlbergue_create')}}" class="btn btn-block btn-primary btn-sm">
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear PersonasAlbergue
+                </a>
             </div>
             
-          <h3 class="box-title">Incripciones web de voluntarios</h3>
+          <h3 class="box-title">PersonasAlbergue</h3>
         </div>
-        <!-- /.box-header -->
         <div class="box-body table-responsive no-padding" >
-            <table id="VoluntariosWeb_table" class="table table-bordered table-striped">
-            <thead>
+          <table id="PersonaAlbergue_table" class="table table-bordered table-striped">
+              <thead>
             <tr>
-              <th>Id</th>
-              <th>Nombre</th>
-              <th>1er Apellido</th>
-              <th>2do Apellido</th>
-              <th>Cedula</th>
-              <th>Telefono</th>
-              <th>Nacionalidad</th>
-              <th>Ocupacion</th>
-              <th>Patologia</th>
+              <th>idregistroA</th>
+              <th>idAlbergue</th>
+              <th>Cedula del Jefe de familia</th>
+              <th>LugarDeProcedencia</th>
+              <th>FechaDeIngreso</th>
+              <th>HoraDeIngreso</th>
+              <th>FechaDeSalida</th>
+              <th>HoraDeSalida</th>
               <th>Acciones</th>
             </tr>
-              </thead>
-            @foreach ($voluntariosWeb as $item)
+          </thead>
+            @foreach ($persona as $item)
               <tr>
-              <td>{{$item->IdVoluntarioWeb}}</td>  
-              <td>{{$item->NombreVoluntarioWeb}}</td>    
-              <td>{{$item->ApellidoVoluntario1Web}}</td>
-              <td>{{$item->ApellidoVoluntario2Web}}</td>
-              <td>{{$item->CedulaVoluntarioWeb}}</td>
-              <td>{{$item->TelefonoVoluntarioWeb}}</td>
-              <td>{{$item->NacionalidadVoluntarioWeb}}</td>
-              <td>{{$item->OcupacionWeb}}</td>    
-              <td>{{$item->PatologiaWeb}}</td>
-              <td><a href="/VoluntarioWeb/{{$item->IdVoluntarioWeb}}/edit" class="btn-accion-tabla tooltipsC" title="Editar VoluntarioWeb">
+               <td>{{$item->idregistroA}}</td> 
+              <td>{{$item->idAlbergue}}</td>      
+              <td>{{$item->idJefe->Cedula}}</td>  
+              <td>{{$item->LugarDeProcedencia}}</td>
+              <td>{{$item->FechaDeIngreso}}</td>
+              <td>{{$item->HoraDeIngreso}}</td>
+              <td>{{$item->FechaDeSalida}}</td>
+              <td>{{$item->HoraDeSalida}}</td>
+              <td><a href="/PersonasAlbergue/{{$item->idregistroA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar PersonasAlbergue">
                 <i class="fa fa-fw fa-pencil"></i></a>
-              <form id="form1" action="{{route('voluntarioweb_delete', ['VoluntarioWeb' => $item->IdVoluntarioWeb])}}" method="POST">
+              <form id="form1" action="{{route('personasAlbergue_delete', ['PersonasAlbergue' => $item->idregistroA])}}" method="POST">
                 @csrf 
                 <input name="_method" type="hidden" value="DELETE">
-                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar VoluntarioWeb" onclick="confirmarEnvio()">
+                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar PersonasAlbergue" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>

@@ -35,7 +35,7 @@
 <script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 <script>
 $(function () {
-    $('#Entregadonaciones_table').DataTable({
+    $('#EntregaDonacionesAlbergue_table').DataTable({
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
@@ -53,37 +53,33 @@ $(function () {
       <div class="box box-primary">
         <div class="box-header">
             <div class="box-tools pull-right">
-                <a href="{{route('EntregaDonaciones_create')}}" class="btn btn-block btn-primary btn-sm">
+                <a href="{{route('EntregaDonacionesA_create')}}" class="btn btn-block btn-primary btn-sm">
                     <i class="fa fa-fw fa-plus-circle"></i> Crear Entrega
                 </a>
             </div>
-          <h3 class="box-title">Entrega de donaciones</h3>
+          <h3 class="box-title">Entrega de donaciones en albergue</h3>
         </div>
          <div class="box-body" >
-          <table id="Entregadonaciones_table" class="table table-bordered table-striped">
+          <table id="EntregaDonacionesAlbergue_table" class="table table-bordered table-striped">
             <thead>
             <tr>
               <th>Id Entrega</th>
-              <th>Id UsuarioRol</th>
               <th>Id Jefe de familia</th>
-              <th>Id Retiro de Paquetes</th>
-              <th>Foto</th>  
-              <th>Acciones</th>
+              
             </tr>
           </thead>
-                @foreach ($entregadonaciones as $item)
+                @foreach ($entregadonacionesAlbergue as $item)
                   <tr>
-                  <td>{{$item->IdEntrega}}</td>
-                  <td>{{$item->IdUsuarioRol}}</td>
-                  <td>{{$item->IdJefe}}</td>
-                  <td>{{$item->IdRetiroPaquetes}}</td>
-                  <td>{{$item->Foto}}</td>
-                  <td><a href="/EntregaDonaciones/{{$item->IdEntrega}}/edit" class="btn-accion-tabla tooltipsC" title="Editar EntregaDonaciones">
+                  <td>{{$item->IdEntregaA}}</td>
+
+                  <td>{{$item->IdJefeFa->cedula}}</td>
+                 
+                  <td><a href="/EntregaDonacionesAlbergue/{{$item->IdEntregaA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar EntregaDonacionesAlbergue">
                     <i class="fa fa-fw fa-pencil"></i></a>
-                  <form id="form1" action="{{route('EntregaDonaciones_delete', ['EntregaDonaciones' => $item->IdEntrega])}}" method="POST">
+                  <form id="form1" action="{{route('EntregaDonacionesA_delete', ['EntregaDonacionesAlbergue' => $item->IdEntregaA])}}" method="POST">
                     @csrf 
                     <input name="_method" type="hidden" value="DELETE">
-                    <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar EntregaDonaciones" onclick="confirmarEnvio()">
+                    <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar EntregaDonacionesAlbergue" onclick="confirmarEnvio()">
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form>

@@ -1,19 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
+use App\Models\Retiro_PaquetesV;
 use Illuminate\Http\Request;
 
 class Retiro_PaquetesVController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $retiroPV = Retiro_PaquetesV::orderBy('IdRetiroPaquetes')->get();
+        return view('Retiro_PaquetesV.index', compact('retiroPV'));
     }
 
     /**
@@ -23,7 +25,7 @@ class Retiro_PaquetesVController extends Controller
      */
     public function create()
     {
-        //
+        return view('Retiro_PaquetesV.create');
     }
 
     /**
@@ -34,7 +36,10 @@ class Retiro_PaquetesVController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $retiroPV = DB::select("call Insert_RetiroPaquetes('$request->IdChofer','$request->IdAdministradorI',
+        '$request->IdVoluntario','$request->PlacaVehiculo','$request->DireccionAEntregar','$request->SuministrosGobierno','$request->SuministrosComision',
+        '$request->IdInventario')");  
+        header("location:Retiro_PaquetesV /");
     }
 
     /**
@@ -56,7 +61,8 @@ class Retiro_PaquetesVController extends Controller
      */
     public function edit($id)
     {
-        //
+        $retiroPV = Retiro_PaquetesV::find($id);
+        return view('Retiro_PaquetesV.edit', compact('retiroPV'));
     }
 
     /**
@@ -68,7 +74,11 @@ class Retiro_PaquetesVController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $retiroPV = DB::update("call Update_RetiroPaquetes('$id','$request->IdChofer','$request->IdAdministradorI',
+        '$request->IdVoluntario','$request->PlacaVehiculo','$request->DireccionAEntregar','$request->SuministrosGobierno','$request->SuministrosComision',
+        '$request->IdInventario')");  
+        header("location: /Retiro_PaquetesV");
+    
     }
 
     /**
@@ -77,8 +87,16 @@ class Retiro_PaquetesVController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id, Request $request)
     {
-        //
+        if ($request->ajax()) {
+            if (Retiro_PaquetesV::delete($id)) {
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
     }
 }

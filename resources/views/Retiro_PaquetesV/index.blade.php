@@ -35,7 +35,7 @@
 <script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 <script>
 $(function () {
-    $('#VoluntariosWeb_table').DataTable({
+    $('#Retiro_PaquetesV_table').DataTable({
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
@@ -53,45 +53,47 @@ $(function () {
       <div class="box box-primary">
         <div class="box-header">
             <div class="box-tools pull-right">
-               
+                <a href="{{route('Retiro_PaquetesV_create')}}" class="btn btn-block btn-primary btn-sm">
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear Retiro Paquetes
+                </a>
             </div>
             
-          <h3 class="box-title">Incripciones web de voluntarios</h3>
+          <h3 class="box-title">Retiro de Paquetes </h3>
         </div>
-        <!-- /.box-header -->
         <div class="box-body table-responsive no-padding" >
-            <table id="VoluntariosWeb_table" class="table table-bordered table-striped">
-            <thead>
+          <table id="Retiro_PaquetesV_table" class="table table-bordered table-striped">
+              <thead>
             <tr>
-              <th>Id</th>
-              <th>Nombre</th>
-              <th>1er Apellido</th>
-              <th>2do Apellido</th>
-              <th>Cedula</th>
-              <th>Telefono</th>
-              <th>Nacionalidad</th>
-              <th>Ocupacion</th>
-              <th>Patologia</th>
+              <th>Id de RetiroPaquetes</th>
+              <th>Id de Chofer</th>
+              <th>Id de AdministradorI</th>
+              <th>Id de Voluntario</th>
+              <th>Placa de Vehiculo</th>
+              <th>Direccion A Entregar</th>
+              <th>Suministros Gobierno </th>
+              <th>Suministros Comision</th>
+              <th>Id de Inventario</th>
               <th>Acciones</th>
             </tr>
-              </thead>
-            @foreach ($voluntariosWeb as $item)
+          </thead>
+            @foreach ($retiroPV as $item)
               <tr>
-              <td>{{$item->IdVoluntarioWeb}}</td>  
-              <td>{{$item->NombreVoluntarioWeb}}</td>    
-              <td>{{$item->ApellidoVoluntario1Web}}</td>
-              <td>{{$item->ApellidoVoluntario2Web}}</td>
-              <td>{{$item->CedulaVoluntarioWeb}}</td>
-              <td>{{$item->TelefonoVoluntarioWeb}}</td>
-              <td>{{$item->NacionalidadVoluntarioWeb}}</td>
-              <td>{{$item->OcupacionWeb}}</td>    
-              <td>{{$item->PatologiaWeb}}</td>
-              <td><a href="/VoluntarioWeb/{{$item->IdVoluntarioWeb}}/edit" class="btn-accion-tabla tooltipsC" title="Editar VoluntarioWeb">
+              <td>{{$item->IdRetiroPaquetes}}</td>      
+              <td>{{$item->IdChofer}}</td>  
+              <td>{{$item->IdAdministradorI}}</td>
+              <td>{{$item->IdVoluntario}}</td>
+              <td>{{$item->PlacaVehiculo}}</td>
+              <td>{{$item->DireccionAEntregar}}</td>
+              <td>{{$item->SuministrosGobierno}}</td>
+              <td>{{$item->SuministrosComision}}</td>
+              <td>{{$item->IdInventario}}</td>    
+    
+              <td><a href="/Retiro_PaquetesV/{{$item->IdRetiroPaquetes}}/edit" class="btn-accion-tabla tooltipsC" title="Editar Retiro_PaquetesV">
                 <i class="fa fa-fw fa-pencil"></i></a>
-              <form id="form1" action="{{route('voluntarioweb_delete', ['VoluntarioWeb' => $item->IdVoluntarioWeb])}}" method="POST">
+              <form id="form1" action="{{route('Retiro_PaquetesV_delete', ['Retiro_PaquetesV' => $item->IdRetiroPaquetes])}}" method="POST">
                 @csrf 
                 <input name="_method" type="hidden" value="DELETE">
-                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar VoluntarioWeb" onclick="confirmarEnvio()">
+                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Retiro_PaquetesV" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>

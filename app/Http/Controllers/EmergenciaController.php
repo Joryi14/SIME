@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidacionesEmergencia;
+use Illuminate\Support\Facades\DB;
 use App\Models\Emergencia;
 use Illuminate\Http\Request;
 
@@ -38,14 +39,11 @@ class EmergenciaController extends Controller
      */
     public function store(ValidacionesEmergencia $request)
     {
-        $emergencia = new Emergencia();  
-        $emergencia->NombreEmergencias = $request->NombreEmergencias;
-        $emergencia->Categoria = $request->Categoria;
-        $emergencia->TipoDeEmergencia = $request->TipoDeEmergencia;      
-        $emergencia->Descripcion = $request->Descripcion;
-        $emergencia->Longitud = $request->Longitud;
-        $emergencia->Latitud =  $request->Latitud;
-        $emergencia->save();
+        
+        $emergencia = DB::select("call Insertar_Emergencia('$request->NombreEmergencias',
+        '$request->Categoria','$request->TipoDeEmergencia','$request->Descripcion','$request->Longitud',
+        '$request->Latitud')");
+
         header("location: /Emergencia");
 
     }
@@ -96,14 +94,8 @@ class EmergenciaController extends Controller
      */
     public function delete($id, Request $request)
     {
-        if ($request->ajax()) {
-            if (Emergencia::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        $emergencia = Emergencia::find($id);
+        $emergencia->delete();
+        return redirect('Emergencia')->with('Se ha eliminado correctamente');
     }
 }

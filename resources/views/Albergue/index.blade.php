@@ -1,6 +1,50 @@
 @extends("theme/$theme/layout")
+@section('styles')
+<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+@endsection
 @section('Script')
-<script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
+<script type="text/javascript">
+  document.querySelector('#form1').addEventListener('submit', function(e) {
+  var form = this;
+  e.preventDefault(); // <--- prevent form from submitting
+  Swal.fire({
+      title: "Esta seguro de eliminar?",
+      text: "Una vez eliminado no se puede recuperar!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'No, cancel!',
+     reverseButtons: true
+    }).then((result)=> {
+      if (result.value) {
+        swalWithBootstrapButtons.fire('Deleted!',
+      'Your file has been deleted.',
+      'success')}
+        else if (
+      result.dismiss === Swal.DismissReason.cancel) 
+      {
+    swalWithBootstrapButtons.fire(
+      'Cancelled',
+      'Your imaginary file is safe :)',
+      'error'
+    )
+  }
+});
+</script>
+<script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
+<script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
+<script>
+$(function () {
+    $('#Albergue_Table').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
 @endsection
 @section('Contenido')
 <div class="row">
@@ -16,10 +60,11 @@
             
           <h3 class="box-title">Albergue</h3>
         </div>
-        <!-- /.box-header -->
-        <div class="box-body table-responsive no-padding" id="tabla-data">
-          <table class="table table-hover">
-           
+        
+        
+        <div class="box-body table-responsive no-padding" >
+          <table id="Albergue_Table" class="table table-bordered table-striped">
+              <thead>
             <tr>
               <th>Id del albergue</th>
               <th>Nombre del albergue</th>
@@ -36,7 +81,9 @@
               <th>Longitud</th>
               <th>Latitud</th>
               <th>Nececidades</th>
+              <th>Acciones</th>
               </tr>
+              </thead>
             @foreach ($albergue as $item)
               <tr>
               <td>{{$item->idAlbergue}}</td>    
@@ -56,9 +103,10 @@
               <td>{{$item->Nececidades}}</td>
               <td><a href="/Albergue/{{$item->idAlbergue}}/edit" class="btn-accion-tabla tooltipsC" title="Editar albergue">
                 <i class="fa fa-fw fa-pencil"></i></a>
-              <form action="{{route('albergue_delete', ['Albergue' => $item->idAlbergue])}}" class="d-inline form-eliminar" method="POST">
-                @csrf @method('delete')
-                <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar albergue">
+              <form id="form1" action="{{route('albergue_delete', ['Albergue' => $item->idAlbergue])}}" method="POST">
+                @csrf 
+                <input name="_method" type="hidden" value="DELETE">
+                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Albergue" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>

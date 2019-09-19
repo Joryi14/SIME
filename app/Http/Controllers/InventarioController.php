@@ -94,15 +94,8 @@ class InventarioController extends Controller
      */
     public function delete($id, Request $request)
     {
-        if ($request->ajax()) {
-            if (Inventario::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
-         
+        $inventario = Inventario::find($id);
+        $inventario->delete();
+        return redirect('Inventario')->with('Se ha eliminado correctamente');
     }
 }

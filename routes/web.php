@@ -28,8 +28,8 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comuna
 });
 
 Route::group(['prefix' => '/'], function () {
-    Route::get('Inventario', 'InventarioController@index');
-    Route::get('Inventario/create', 'InventarioController@create')->name('Inventario_create');
+    Route::get('Inventario', 'InventarioController@index')->name('inicio_inventario');
+    Route::get('Inventario/create', 'InventarioController@create')->name('inventario_create');
     Route::post('Inventario/store','InventarioController@store');
     Route::get('Inventario/{Inventario}/edit', 'InventarioController@edit');
     Route::put('Inventario/{Inventario}','InventarioController@update');
@@ -37,7 +37,7 @@ Route::group(['prefix' => '/'], function () {
     
 });
 Route::group(['prefix' => '/'], function () {
-    Route::get('EntregaDonaciones', 'EntregaDonacionesController@index');
+    Route::get('EntregaDonaciones', 'EntregaDonacionesController@index')->name('inicio_EntregaDonaciones');
     Route::get('EntregaDonaciones/create', 'EntregaDonaciones@create')->name('EntregaDonaciones_create');
     Route::post('EntregaDonaciones/store','EntregaDonacionesController@store');
     Route::get('EntregaDonaciones/{EntregaDonaciones}/edit', 'EntregaDonacionesController@edit');

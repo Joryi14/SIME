@@ -25,6 +25,8 @@
           <li><a href="{{route('inicio_emergencia')}}"><i class="fa  fa-exclamation-triangle"></i><span> Emergencia</span></a></li>
           <li><a href="{{route('inicio_mensaje')}}"><i class="fa  fa-envelope"></i><span>Mensajeria</span></a></li>
           <li><a href="{{route('inicio_albergue')}}"><i class="fa  fa-hospital-o"></i><span>Albergue</span></a></li>
+          <li><a href="{{route('inicio_inventario')}}"><i class="fa  fa-database"></i><span>Inventario</span></a></li>
+          <li><a href="{{route('inicio_EntregaDonaciones')}}"><i class="fa  fa-truck"></i><span>EntregaDonaciones</span></a></li>
           @endrole
         </ul>
         </section>

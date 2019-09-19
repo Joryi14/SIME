@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-use App\Models\EntregaDonaciones;
+use App\Models\EntregaDonacionesAlbergue;
 use Illuminate\Http\Request;
 
-class EntregaDonacionesController extends Controller
+class EntregaDonacionesAlbergueController extends Controller
 {
-    /**
+      /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $entregadonaciones = EntregaDonaciones::orderBy('IdEntrega')->get();
-        return view('EntregaDonaciones.index', compact('entregadonaciones'));
+        $entregadonacionesAlbergue = EntregaDonacionesAlbergue::orderBy('IdEntregaA')->get();
+        return view('EntregaDonacionesAlbergue.index', compact('entregadonacionesAlbergue'));
     }
 
     /**
@@ -25,7 +25,7 @@ class EntregaDonacionesController extends Controller
      */
     public function create()
     {
-        return view('EntregaDonaciones.create');
+        return view('EntregaDonacionesAlbergue.create');
     }
 
     /**
@@ -36,12 +36,8 @@ class EntregaDonacionesController extends Controller
      */
     public function store(Request $request)
     {
-        $entregadonaciones = DB::select("call Insert_EntregaDonaciones(
-        '$request->IdUsuarioRol',
-        '$request->IdJefe',
-        '$request->IdRetiroPaquetes',
-        '$request->Foto')");  
-        header("location:EntregaDonaciones /");
+        $entregadonacionesA = DB::select("call Insert_EntregaDonacionesAlbergue('$request->IdJefeFa')");  
+        header("location:EntregaDonacionesAlbergue /");
     }
 
     /**
@@ -63,8 +59,8 @@ class EntregaDonacionesController extends Controller
      */
     public function edit($id)
     {
-        $entregadonaciones = EntregaDonaciones::find($id);
-        return view('EntregaDonaciones.edit', compact('entregadonaciones'));
+        $entregadonacionesA = EntregaDonacionesAlbergue::find($id);
+        return view('EntregaDonacionesAlbergue.edit', compact('entregadonacionesA'));
     }
 
     /**
@@ -76,12 +72,8 @@ class EntregaDonacionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $entregadonaciones = DB::update("call Update_EntregaDonaciones('$id',
-        '$request->IdUsuarioRol',
-        '$request->IdJefe',
-        '$request->IdRetiroPaquetes',
-        '$request->Foto')");
-        header("location: /EntregaDonaciones");
+        $entregadonacionesA = DB::update("call Update_EntregaDonacionesAlbergue('$id','$request->IdJefe')");
+        header("location: /EntregaDonacionesAlbergue");
     
     }
 
@@ -94,7 +86,7 @@ class EntregaDonacionesController extends Controller
     public function delete($id, Request $request)
     {
         if ($request->ajax()) {
-            if (EntregaDonaciones::delete($id)) {
+            if (EntregaDonacionesAlbergue::delete($id)) {
                 return response()->json(['mensaje' => 'ok']);
             } else {
                 return response()->json(['mensaje' => 'ng']);

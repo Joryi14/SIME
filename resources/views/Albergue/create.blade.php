@@ -59,13 +59,13 @@
               </div>
 
 
-            <div class="form-group">
-                    <label for="IdResponsable" class="col-sm-2 control-label">Cedula del responsable: </label>
-          
-                    <div class="col-sm-8">
-                        <input type="text" name="IdResponsable" class= "form-control" >
-                    </div>
-                 </div>
+              <div class="form-group">
+                <label for="IdResponsable" class="col-sm-2 control-label"> Responsable:</label>
+                <div class="col-sm-9">
+                    <select id='SelectU' name="model_id" style='width: 25%;'>
+                    <option value='0'>Seleccionar un Usuario</option></select>
+                </div>
+              </div>
 
              <div class="form-group">
                      <label for="telefono" class="col-sm-2 control-label">Telefono: </label>

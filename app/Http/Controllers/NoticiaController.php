@@ -150,14 +150,8 @@ class NoticiaController extends Controller
      */
     public function delete($id , Request $request)
     {
-        if ($request->ajax()) {
-            if (Noticia::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+      $noticia = Noticia::find($id);
+      $noticia->delete();
+      return redirect('Noticia')->with('Se ha eliminado correctamente');
     }
 }

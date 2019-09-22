@@ -3,16 +3,6 @@ module('Data adapters - Array');
 var ArrayData = require('select2/data/array');
 var $ = require('jquery');
 var Options = require('select2/options');
-var Utils = require('select2/utils');
-
-var UserDefinedType = function (id, text) {
-  var self = this;
-
-  self.id = id;
-  self.text = text;
-
-  return self;
-};
 
 var arrayOptions = new Options({
   data: [
@@ -27,8 +17,7 @@ var arrayOptions = new Options({
     {
       id: '2',
       text: '2'
-    },
-    new UserDefinedType(1, 'aaaaaa')
+    }
   ]
 });
 
@@ -193,10 +182,7 @@ test('multiple sets the value', function (assert) {
 
   var data = new ArrayData($select, arrayOptions);
 
-  assert.ok(
-    $select.val() == null || $select.val().length == 0,
-    'nothing should be selected'
-  );
+  assert.equal($select.val(), null);
 
   data.select({
     id: 'default',
@@ -230,7 +216,7 @@ test('option tags are automatically generated', function (assert) {
 
   assert.equal(
     $select.find('option').length,
-    4,
+    3,
     'An <option> element should be created for each object'
   );
 });
@@ -251,7 +237,7 @@ test('option tags can receive new data', function(assert) {
   });
 
   assert.ok(
-    Utils.GetData($select.find(':selected')[0], 'data').extra,
+    $select.find(':selected').data('data').extra,
     '<option> default should have new data'
   );
 
@@ -260,7 +246,7 @@ test('option tags can receive new data', function(assert) {
   });
 
   assert.ok(
-    Utils.GetData($select.find(':selected')[0], 'data').extra,
+    $select.find(':selected').data('data').extra,
     '<option> One should have new data'
   );
 });

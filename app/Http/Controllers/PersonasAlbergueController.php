@@ -93,14 +93,8 @@ class PersonasAlbergueController extends Controller
      */
     public function delete($id, Request $request)
     {
-        if ($request->ajax()) {
-            if (PersonasAlbergue::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        $persona = PersonasAlbergue::find($id);
+      $persona->delete();
+      return redirect('PersonasAlbergue')->with('Se ha eliminado correctamente');
     }
 }

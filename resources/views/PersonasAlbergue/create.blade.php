@@ -13,42 +13,42 @@
                 </div>
             <h3 class="box-title">Editar PersonasAlbergue</h3>
           </div>
-          <form class="form-horizontal" method="POST" action="/PersonasAlbergue/{{$persona->idregistroA}}"readonly="readonly">
+          <form class="form-horizontal" method="POST" action="/PersonasAlbergue/store">
             @method('PUT')
             @csrf
             <div class="box-body">
               <div class="form-group">
                 <label for="idAlbergue" class="col-sm-2 control-label">idAlbergue: </label>
                 <div class="col-sm-8">
-                    <input type="text" name="idAlbergue" class= "form-control" value="{{$persona->idAlbergue}}"readonly="readonly">
+                    <input type="text" name="idAlbergue" class= "form-control" >
                 </div>
               </div>
               <div class="form-group">
                 <label for="idJefe" class="col-sm-2 control-label">idJefe: </label>
     
                 <div class="col-sm-8">
-                    <input type="text" name="idJefe" class= "form-control" value="{{$persona->idJefe}}" readonly="readonly">
+                    <input type="text" name="idJefe" class= "form-control" >
                 </div>
               </div>
               <div class="form-group">
                   <label for="LugarDeProcedencia" class="col-sm-2 control-label">LugarDeProcedencia:  </label>
       
                   <div class="col-sm-8">
-                      <input type="text" name="LugarDeProcedencia" class= "form-control" value="{{$persona->LugarDeProcedencia}}" readonly="readonly"> 
+                      <input type="text" name="LugarDeProcedencia" class= "form-control" > 
                   </div>
                 </div>
                 <div class="form-group">
                     <label for="FechaDeIngreso" class="col-sm-2 control-label">FechaDeIngreso: </label>
         
                     <div class="col-sm-8">
-                        <input type="text" name="FechaDeIngreso" class= "form-control" value= "{{$persona->FechaDeIngreso}}"  readonly="readonly">
+                        <input type="text" name="FechaDeIngreso" class= "form-control" >
                     </div>
                   </div>
                   <div class="form-group">
                       <label for="HoraDeIngreso" class="col-sm-2 control-label">HoraDeIngreso: </label>
           
                       <div class="col-sm-8">
-                          <input type="text" name="HoraDeIngreso" class= "form-control" value="{{$persona->HoraDeIngreso}}" readonly="readonly">
+                          <input type="text" name="HoraDeIngreso" class= "form-control">
                       </div>
                     </div>
                    
@@ -56,7 +56,7 @@
                           <label for="FechaDeSalida" class="col-sm-2 control-label">FechaDeSalida: </label>
               
                           <div class="col-sm-8">
-                              <input type="text" name="FechaDeSalida" class= "form-control" value="{{$persona->FechaDeSalida}}" >
+                              <input type="text" name="FechaDeSalida" class= "form-control" >
                           </div>
                         </div>
                        
@@ -64,7 +64,7 @@
                               <label for="HoraDeSalida" class="col-sm-2 control-label">HoraDeSalida: </label>
                   
                               <div class="col-sm-8">
-                                  <input type="text" name="HoraDeSalida" class= "form-control" value="{{$persona->HoraDeSalida}}" > 
+                                  <input type="text" name="HoraDeSalida" class= "form-control" > 
                               </div>
                             </div>
                          </div>

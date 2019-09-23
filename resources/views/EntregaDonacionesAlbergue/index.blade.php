@@ -4,7 +4,7 @@
 @endsection
 @section('Script')
 <script type="text/javascript">
-  document.querySelector('#form1').addEventListener('submit', function(e) {
+  document.querySelector('#formEA').addEventListener('submit', function(e) {
   var form = this;
   e.preventDefault(); // <--- prevent form from submitting
   swal({
@@ -65,6 +65,7 @@ $(function () {
             <tr>
               <th>Id Entrega</th>
               <th>Id Jefe de familia</th>
+              <th>Acciones</th>
               
             </tr>
           </thead>
@@ -72,11 +73,11 @@ $(function () {
                   <tr>
                   <td>{{$item->IdEntregaA}}</td>
 
-                  <td>{{$item->IdJefeFa->cedula}}</td>
+                  <td>{{$item->IdJefeFa}}</td>
                  
                   <td><a href="/EntregaDonacionesAlbergue/{{$item->IdEntregaA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar EntregaDonacionesAlbergue">
                     <i class="fa fa-fw fa-pencil"></i></a>
-                  <form id="form1" action="{{route('EntregaDonacionesA_delete', ['EntregaDonacionesAlbergue' => $item->IdEntregaA])}}" method="POST">
+                  <form id="formEA" action="{{route('EntregadonacionesA_delete', ['EntregaDonacionesAlbergue' => $item->IdEntregaA])}}" method="POST">
                     @csrf 
                     <input name="_method" type="hidden" value="DELETE">
                     <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar EntregaDonacionesAlbergue" onclick="confirmarEnvio()">

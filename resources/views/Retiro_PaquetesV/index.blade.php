@@ -60,7 +60,7 @@ $(function () {
             
           <h3 class="box-title">Retiro de Paquetes </h3>
         </div>
-        <div class="box-body table-responsive no-padding" >
+        <div class="box-body table-responsive" >
           <table id="Retiro_PaquetesV_table" class="table table-bordered table-striped">
               <thead>
             <tr>

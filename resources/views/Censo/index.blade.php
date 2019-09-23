@@ -59,7 +59,7 @@ $(function () {
             </div>
           <h3 class="box-title">Censos</h3>
         </div>
-         <div class="box-body" >
+         <div class="box-body table-responsive" >
           <table id="Censo_table" class="table table-bordered table-striped">
             <thead>
             <tr>

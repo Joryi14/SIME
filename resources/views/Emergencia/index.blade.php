@@ -7,28 +7,28 @@
   document.querySelector('#form1').addEventListener('submit', function(e) {
   var form = this;
   e.preventDefault(); // <--- prevent form from submitting
-  Swal.fire({
+  swal({
       title: "Esta seguro de eliminar?",
       text: "Una vez eliminado no se puede recuperar!",
-      type: "warning",
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-    cancelButtonText: 'No, cancel!',
-     reverseButtons: true
-    }).then((result)=> {
-      if (result.value) {
-        swalWithBootstrapButtons.fire('Deleted!',
-      'Your file has been deleted.',
-      'success')}
-        else if (
-      result.dismiss === Swal.DismissReason.cancel) 
-      {
-    swalWithBootstrapButtons.fire(
-      'Cancelled',
-      'Your imaginary file is safe :)',
-      'error'
-    )
-  }
+      icon: "warning",
+      buttons: [
+        'Cancelar!',
+        'Aceptar!'
+      ],
+      dangerMode: true,
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+        swal({
+          title: 'Exito!',
+          text: 'Se ha Eliminado el registro!',
+          icon: 'success'
+        }).then(function() {
+          form.submit(); // <--- submit form programmatically
+        });
+      } else {
+        swal("Cancelado","" ,"error");
+      }
+    })
 });
 </script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
@@ -61,7 +61,7 @@ $(function () {
           <h3 class="box-title">Emergencias</h3>
         </div>
        
-          <div class="box-body table-responsive no-padding" >
+          <div class="box-body table-responsive" >
           <table id="Emergencia_table" class="table table-bordered table-striped">
               <thead>
               

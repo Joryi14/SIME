@@ -59,16 +59,18 @@ $(function () {
             </div>
           <h3 class="box-title">Entrega de donaciones</h3>
         </div>
-         <div class="box-body" >
+         <div class="box-body table-responsive" >
           <table id="Entregadonaciones_table" class="table table-bordered table-striped">
             <thead>
             <tr>
+
               <th>Id Entrega</th>
               <th>Id UsuarioRol</th>
               <th>Id Jefe de familia</th>
               <th>Id Retiro de Paquetes</th>
               <th>Foto</th>  
               <th>Acciones</th>
+
             </tr>
           </thead>
                 @foreach ($entregadonaciones as $item)

@@ -59,7 +59,7 @@ $(function () {
             </div>
           <h3 class="box-title">Entrega de donaciones en albergue</h3>
         </div>
-         <div class="box-body" >
+         <div class="box-body table-responsive" >
           <table id="EntregaDonacionesAlbergue_table" class="table table-bordered table-striped">
             <thead>
             <tr>

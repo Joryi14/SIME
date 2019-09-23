@@ -59,7 +59,7 @@ $(function () {
           <h3 class="box-title">Incripciones web de voluntarios</h3>
         </div>
         <!-- /.box-header -->
-        <div class="box-body table-responsive no-padding" >
+        <div class="box-body table-responsive" >
             <table id="VoluntariosWeb_table" class="table table-bordered table-striped">
             <thead>
             <tr>

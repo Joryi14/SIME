@@ -285,7 +285,7 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="box box-success box-solid">
-            <div class="box-header">
+            <div class="box-header with-borders">
               <h3 class="box-title">Permisos Rol</h3>
               <div class="box-tools">
                   <div class="row">

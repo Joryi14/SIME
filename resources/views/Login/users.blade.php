@@ -145,13 +145,13 @@
 @section('Contenido')
 <div class="row">
     <div class="col-sm-12">
-      <div class="box box-primary">
+      <div class="box box-info box-solid">
         <div class="box-header">
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
               </div>
           <h3 class="box-title">Usuarios</h3>
-        </div>
+          </div>
         <div class="box-body table-responsive no-padding">
           <table class="table table-hover">
             <tr>
@@ -193,7 +193,7 @@
   </div>
   <div class="row">
       <div class="col-sm-12">
-        <div class="box box-primary">
+        <div class="box box-primary box-solid">
           <div class="box-header">
             <h3 class="box-title">Roles</h3>
             <div class="box-tools">
@@ -238,7 +238,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
-          <div class="box box-primary">
+          <div class="box box-warning box-solid">
             <div class="box-header">
               <h3 class="box-title">Permisos</h3>
               <div class="box-tools">
@@ -284,7 +284,7 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <div class="box box-primary">
+          <div class="box box-success box-solid">
             <div class="box-header">
               <h3 class="box-title">Permisos Rol</h3>
               <div class="box-tools">
@@ -328,7 +328,7 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <div class="box box-primary">
+          <div class="box box-danger box-solid">
             <div class="box-header">
               <h3 class="box-title">Usuario Rol</h3>
               <div class="box-tools">

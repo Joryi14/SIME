@@ -1,15 +1,14 @@
-<aside class="main-sidebar success">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-          
-          <ul class="sidebar-menu" data-widget="tree">
+<aside class="main-sidebar">     
+ <section class="sidebar">
+          <ul class="sidebar-menu"  data-widget="tree">
+              <li class="header">Menu</li>
           @role('Admin')
               <li><a href="{{route('inicio_usuario')}}"><i class="fa fa-users"></i> <span>Control de Usuarios</span></a></li>
           @endrole
           @role('Voluntario|Admin')
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-globe"></i> <span>Modulo de Censo</span>
+                <i class="fa fa-globe"></i><span>Modulo de Censo</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -36,4 +35,3 @@
         </ul>
         </section>
       </aside>
-    

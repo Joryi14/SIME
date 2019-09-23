@@ -14,10 +14,16 @@
   <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/Ionicons/css/ionicons.min.css")}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/AdminLTE.min.css")}}">
+  <!-- Material Design  -->
+  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/bootstrap-material-design.min.css")}}">
+  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/ripples.min.css")}}">
+  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/MaterialAdminLTE.min.css")}}">
+  <!-- Select -->
   <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2.min.css")}}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/skins/_all-skins.min.css")}}">
+  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/skins/all-md-skins.min.css")}}">
+  <link rel="stylesheet" href="{{asset("assets/$theme/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")}}">
   @yield('styles')
   <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -30,7 +36,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-red-light fixed sidebar-mini">
+<body class="hold-transition skin-yellow-light fixed sidebar-mini">
   
     <!-- Site wrapper -->
     <div class="wrapper">
@@ -56,6 +62,12 @@
 <!-- SlimScroll -->
 <script src="{{asset("assets/$theme/bower_components/jquery-slimscroll/jquery.slimscroll.min.js")}}"></script>
 <!-- FastClick -->
+<script src="{{asset("assets/$theme/dist/js/material.min.js")}}"></script>
+<script src="{{asset("assets/$theme/dist/js/ripples.min.js")}}"></script>
+<script>
+    $.material.init();
+</script>
+<script src="{{asset("assets/$theme/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js")}}"></script>
 <script src="{{asset("assets/$theme/bower_components/fastclick/lib/fastclick.js")}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>

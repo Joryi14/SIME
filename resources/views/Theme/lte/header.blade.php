@@ -5,15 +5,11 @@
           <span class="logo-lg"><b>SIME</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top">
+        <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
           <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-    
+              <span class="sr-only">Toggle navigation</span>
+            </a>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <!-- User Account: style can be found in dropdown.less -->
@@ -22,29 +18,14 @@
                 <span class="hidden-xs">{{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    <p>
-                        {{ Auth::user()->name }}
-                    </p>
+                  <li>          
+                     <a href="{{route('user_show', ['id' => Auth::user()->id])}}" class="btn btn-default btn-flat">Perfil</a>
+                    <a href="{{ route('logout')}}" class="btn btn-default btn-flat" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Desconectar</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                   </li>
-                    <li class="user-body">
-                  <!-- Menu Footer-->
-                    <div class="pull-left">
-                      <a href="{{route('user_show', ['id' => Auth::user()->id])}}" class="btn btn-default btn-flat">Datos de usuario</a>
-                    </div>
-                    <div class="pull-right">
-                      <a href="{{ route('logout')}}" class="btn btn-default btn-flat"
-                      onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Desconectar
-                                      </a>
-                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                          @csrf
-                                      </form>
-                    </div>
-                  </li>
-                </ul>
+                      </ul>
               </li>
             </ul>
           </div>

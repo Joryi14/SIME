@@ -46,7 +46,7 @@ Route::group(['prefix' => '/'], function () {
 });
 Route::group(['prefix' => '/'], function () {
     Route::get('EntregaDonaciones', 'EntregaDonacionesController@index')->name('inicio_EntregaDonaciones');
-    Route::get('EntregaDonaciones/create', 'EntregaDonaciones@create')->name('EntregaDonaciones_create');
+    Route::get('EntregaDonaciones/create', 'EntregaDonacionesController@create')->name('EntregaDonaciones_create');
     Route::post('EntregaDonaciones/store','EntregaDonacionesController@store');
     Route::get('EntregaDonaciones/{EntregaDonaciones}/edit', 'EntregaDonacionesController@edit');
     Route::put('EntregaDonaciones/{EntregaDonaciones}','EntregaDonacionesController@update');
@@ -57,9 +57,9 @@ Route::group(['prefix' => '/'], function () {
     Route::get('EntregaDonacionesAlbergue', 'EntregaDonacionesAlbergueController@index')->name('inicio_EntregaDonacionesA');
     Route::get('EntregaDonacionesAlbergue/create', 'EntregaDonacionesAlbergueController@create')->name('EntregaDonacionesA_create');
     Route::post('EntregaDonacionesAlbergue/store','EntregaDonacionesAlbergueController@store');
-    Route::get('EntregaDonacionesAlbergue/{EntregaDonaciones}/edit', 'EntregaDonacionesAlbergueController@edit');
-    Route::put('EntregaDonacionesAlbergue/{EntregaDonaciones}','EntregaDonacionesAlbergueController@update');
-    Route::delete('EntregaDonacionesAlbergue/{EntregaDonaciones}','EntregaDonacionesAlbergueController@delete')->name('entregadonacionesA_delete'); 
+    Route::get('EntregaDonacionesAlbergue/{EntregaDonacionesAlbergue}/edit', 'EntregaDonacionesAlbergueController@edit');
+    Route::put('EntregaDonacionesAlbergue/{EntregaDonacionesAlbergue}','EntregaDonacionesAlbergueController@update');
+    Route::delete('EntregaDonacionesAlbergue/{EntregaDonacionesAlbergue}','EntregaDonacionesAlbergueController@delete')->name('EntregadonacionesA_delete'); 
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

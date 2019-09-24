@@ -37,7 +37,7 @@ class EntregaDonacionesAlbergueController extends Controller
     public function store(Request $request)
     {
         $entregadonacionesA = DB::select("call Insert_EntregaDonacionesAlbergue('$request->IdJefeFa')");  
-        header("location:EntregaDonacionesAlbergue /");
+        header("location:EntregaDonacionesAlbergue");
     }
 
     /**
@@ -72,7 +72,7 @@ class EntregaDonacionesAlbergueController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $entregadonacionesA = DB::update("call Update_EntregaDonacionesAlbergue('$id','$request->IdJefe')");
+        $entregadonacionesA = DB::update("call Update_EntregaDonacionesAlbergue('$id','$request->IdJefeFa')");
         header("location: /EntregaDonacionesAlbergue");
     
     }
@@ -85,14 +85,8 @@ class EntregaDonacionesAlbergueController extends Controller
      */
     public function delete($id, Request $request)
     {
-        if ($request->ajax()) {
-            if (EntregaDonacionesAlbergue::delete($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        $EntregaDonacionesAlbergue = EntregaDonacionesAlbergue::find($id);
+        $EntregaDonacionesAlbergue->delete();
+        return redirect('EntregaDonacionesAlbergue')->with('Se ha eliminado correctamente');
     }
 }

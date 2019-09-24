@@ -13,7 +13,7 @@
           </div>
       <h3 class="box-title">Editar Entrega</h3>
       </div>
-      <form class="form-horizontal" method="POST" action="/EntregaDonaciones/{{$entregadonacionesA->IdEntregaA}}">
+      <form class="form-horizontal" method="POST" action="/EntregaDonacionesAlbergue/{{$entregadonacionesA->IdEntregaA}}">
         @method('PUT')
         @csrf
              <div class="box-body">

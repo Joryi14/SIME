@@ -89,14 +89,8 @@ class Retiro_PaquetesVController extends Controller
      */
     public function delete($id, Request $request)
     {
-        if ($request->ajax()) {
-            if (Retiro_PaquetesV::delete($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        $retiroPV = Retiro_PaquetesV::find($id);
+      $retiroPV->delete();
+      return redirect('Retiro_PaquetesV')->with('Se ha eliminado correctamente');
     }
 }

@@ -145,7 +145,7 @@
 @section('Contenido')
 <div class="row">
     <div class="col-sm-12">
-      <div class="box box-info box-solid">
+      <div class="box">
         <div class="box-header">
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>

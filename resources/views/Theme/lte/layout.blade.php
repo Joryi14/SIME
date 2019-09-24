@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2.min.css")}}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/skins/all-md-skins.min.css")}}">
+  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/skins/all-md-skins.css")}}">
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")}}">
   @yield('styles')
   <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">
@@ -36,8 +36,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-yellow-light fixed sidebar-mini">
-  
+<body class="hold-transition skin-red-light sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
     
@@ -52,14 +51,18 @@
         <section class="content">
            @yield('Contenido')
           </section>
-    </div>
+  </div>
     @include("theme/$theme/footer")
  </div>
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script src="{{asset("assets/$theme/bower_components/jquery/dist/jquery.min.js")}}"></script>
+<script src="{{asset("assets/$theme/bower_components/jquery-ui/jquery-ui.min.js")}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset("assets/$theme/bower_components/bootstrap/dist/js/bootstrap.min.js")}}"></script>
 <!-- SlimScroll -->
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+  </script>
 <script src="{{asset("assets/$theme/bower_components/jquery-slimscroll/jquery.slimscroll.min.js")}}"></script>
 <!-- FastClick -->
 <script src="{{asset("assets/$theme/dist/js/material.min.js")}}"></script>

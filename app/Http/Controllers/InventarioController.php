@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\ValidacionInventario;
 use Illuminate\Support\Facades\DB;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class InventarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionInventario $request)
     {
        
         $inventario = DB::select("call Insert_Inventario(
@@ -76,7 +77,7 @@ class InventarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionInventario $request, $id)
     {
         $inventario= DB::update("call Update_Inventario('$id','$request->idEmergencias',
         '$request->Suministros',

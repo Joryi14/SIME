@@ -17,15 +17,7 @@
       </div>
       <form class="form-horizontal" method="POST" action="/Noticia/store" enctype="multipart/form-data">
         @csrf
-
-         <!--<div class="box-body">
-          <div class="form-group">
-            <label for="FechaPublicacion" class="col-sm-2 control-label">Fecha de publicacion:</label>
-            <div class="col-sm-9">
-                <input type="date" name="FechaPublicacion" class= "form-control" >
-            </div>
-          </div>-->
-
+       <div class="box-body">
           <div class="form-group">
             <label for="Titulo" class="col-sm-2 control-label">Titulo: </label>
             <div class="col-sm-9">
@@ -40,15 +32,15 @@
             </div>
             <div class="form-group">
                 <label for="Imagenes" class="col-sm-2 control-label">Imagenes: </label>
-                <div class="col-sm-2">
+                <button type="button" class="btn fa fa-plus bg-yellow">
                     <input type="file" name="Imagenes" accept="image/*"  >  
-                </div>
+                  </button>
               </div>
               <div class="form-group">
                   <label for="Videos" class="col-sm-2 control-label">Videos: </label>
-                  <div class="col-sm-3">
+                  <button type="button" class="btn fa fa-plus bg-yellow">
                       <input type="file" name="Videos"> 
-                  </div>
+                  </button>
                 </div>
                
                 <div class="form-group">
@@ -60,16 +52,17 @@
                
                   <div class="form-group">
                       <label for="PDF" class="col-sm-2 control-label">PDF: </label>
-                      <div class="col-sm-9">
+                      <button type="button" class="btn fa fa-plus bg-yellow">
                           <input type="file" name="PDF" accept="application/PDF">
-                      </div>
-                    </div>
+                      </button>
+                  </div>
         </div>
         <div class="box-footer">
             @include("Includes.boton-form-create")
         </div>
-      </form>
+    </form>
     </div>
+  </div>
   </div>
 </div>
 @endsection

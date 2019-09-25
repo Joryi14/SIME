@@ -3,6 +3,7 @@
 <div class="row">
     <div class="col-md-10">
         @include('includes.Error-form')
+        @include('Includes.mensaje-Error')
         <div class="box box-info">
           <div class="box-header with-border">
               <div class="box-tools pull-right">

@@ -24,12 +24,7 @@
                   <input type="text" name="IdChofer" class= "form-control" >
               </div>
             </div>
-            <div class="form-group">
-              <label for="IdAdministradorI" class="col-sm-2 control-label">Id de AdministradorI: </label>
-              <div class="col-sm-8">
-                  <input type="text" name="IdAdministradorI" class= "form-control" > 
-              </div>
-            </div>
+            <input type="hidden" name="IdAdministradorI" class= "form-control" value="{{auth::user()->id}}" > 
             <div class="form-group">
                 <label for="IdVoluntario" class="col-sm-2 control-label">Id de Voluntario: </label>
                 <div class="col-sm-8">

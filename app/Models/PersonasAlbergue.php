@@ -9,4 +9,8 @@ class PersonasAlbergue extends Model
     protected  $fillable  = ['idAlbergue','idJefe','LugarDeProcedencia','FechaDeIngreso','HoraDeIngreso','FechaDeSalida','HoraDeSalida'];
     protected $table = 'registropersonaalbergue';
     protected $primaryKey ='idregistroA';
+    public function jefeFamilia()
+    {
+        return $this->belongsTo('App\Models\JefeDeFamilia', 'IdJefeFam');
+    }
 }

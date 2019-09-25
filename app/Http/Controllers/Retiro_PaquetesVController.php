@@ -36,7 +36,7 @@ class Retiro_PaquetesVController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RValidacionRetiroPaquetes $request)
+    public function store(ValidacionRetiroPaquetes $request)
     {
         $retiroPV = DB::select("call Insert_RetiroPaquetes('$request->IdChofer','$request->IdAdministradorI',
         '$request->IdVoluntario','$request->PlacaVehiculo','$request->DireccionAEntregar','$request->SuministrosGobierno','$request->SuministrosComision',

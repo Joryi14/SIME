@@ -45,12 +45,23 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Inscripcion de voluntarios</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{{ route('register') }}">{{ __('Register') }}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{{ route('login') }}">{{ __('Login') }}</a>
-          </li>
+              @if (Route::has('login'))
+              @auth
+              <li class="nav-item">
+              <a class="nav-link" href="{{ url('/home') }}">Sistema</a>
+              </li>
+              @else
+              <li class="nav-item">
+              <a class="nav-link" href="{{ route('login') }}">Acceder</a>
+              </li>
+                  @if (Route::has('register'))
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
+              </li>
+                  @endif
+              @endauth
+          </div>
+      @endif
         </ul>
       </div>
     </div>

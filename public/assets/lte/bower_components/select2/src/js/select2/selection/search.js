@@ -81,7 +81,7 @@ define([
           .prev('.select2-selection__choice');
 
         if ($previousChoice.length > 0) {
-          var item = Utils.GetData($previousChoice[0], 'data');
+          var item = $previousChoice.data('data');
 
           self.searchRemoveChoice(item);
 
@@ -175,7 +175,7 @@ define([
 
     this.resizeSearch();
     if (searchHadFocus) {
-      this.$search.trigger('focus');
+      this.$search.focus();
     }
   };
 

@@ -1,9 +1,6 @@
 @extends("theme/$theme/layout")
 @section('Script')
 <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script type="text/javascript">
   document.querySelector('#form1').addEventListener('submit', function(e) {
   var form = this;
@@ -44,20 +41,14 @@
         <div class="box-header">
           <h3 class="box-title">Informes de incidentes</h3>
           <div class="box-tools pull-right">
-              <a href="{{route('Mensajeria_create')}}" class="btn btn-block btn-primary btn-sm">
-                  <i class="fa fa-fw fa-plus-circle"></i> Crear nuevo informe
-                </a>
-            </div>
-            <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-              <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-              <div class="input-group-btn">
-                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-              </div>
+            <a href="{{route('Mensajeria_create')}}" class="btn btn-primary btn-sm">
+              <i class="fa fa-plus-circle"></i> Crear nuevo informe
+          </a>
             </div>
           </div>
         </div>
         @foreach ($mensajerias as $item)
-     <div class="panel panel-primary">
+     <div class="panel panel-primary panel-solid">
             <div class="panel-heading"> Este reporte fue enviado en la fecha y hora: {{$item->created_at}} 
             </div>
                   <div class="panel-body">

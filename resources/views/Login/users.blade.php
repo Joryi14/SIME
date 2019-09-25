@@ -5,7 +5,7 @@
   document.querySelector('#form1').addEventListener('submit', function(e) {
   var form = this;
   e.preventDefault(); // <--- prevent form from submitting
-  swal({
+  swal.fire({
       title: "Esta seguro de eliminar?",
       text: "Una vez eliminado no se puede recuperar!",
       icon: "warning",
@@ -16,7 +16,7 @@
       dangerMode: true,
     }).then(function(isConfirm) {
       if (isConfirm) {
-        swal({
+        swal.fire({
           title: 'Exito!',
           text: 'Se ha Eliminado el registro!',
           icon: 'success'
@@ -24,7 +24,7 @@
           form.submit(); // <--- submit form programmatically
         });
       } else {
-        swal("Cancelado","" ,"error");
+        swal.fire("Cancelado","" ,"error");
       }
     })
 });
@@ -177,7 +177,7 @@
               <td>{{$item->Nacionalidad}}</td>
               <td>{{$item->Comunidad}}</td>
               <td>
-              <form id="form1" action="{{route('user_delete', ['user' => $item->id])}}" class="d-inline form-eliminar" method="POST">
+              <form id="form1" action="{{route('user_delete', ['user' => $item->id])}}" method="POST">
                   @csrf @method('delete')
                   <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar usuario">
                       <i class="fa fa-fw fa-trash text-danger"></i>

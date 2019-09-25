@@ -36,8 +36,6 @@ class ValidacionRetiroPaquetes extends FormRequest
             'SuministrosComision'=>'numeric',
             'IdInventario'=> 'required',
             
-            
-
         ];
     }
 
@@ -56,7 +54,7 @@ class ValidacionRetiroPaquetes extends FormRequest
             'SuministrosGobierno.numeric' =>' Los suministros brindados por el gobierno deben ser NUMERICOS',
             'SuministrosComision.required' =>'La cantidad de suministros por la comisión es requerida',
             'SuministrosComision.numeric' =>' Los suministros brindados por la comisión  deben ser NUMERICOS',
-            'IdVoluntario.required' =>'El id del inventario es requerido',
+            'IdInventario.required' =>'El id del inventario es requerido',
         ];
     }
 }

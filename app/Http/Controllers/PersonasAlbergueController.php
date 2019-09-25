@@ -1,6 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\ValidacionesAlbergue;
+use App\Http\Requests\ValidacionPersonasAlbergue;
+use App\Models\Albergue;
+use App\Models\JefeDeFamilia;
 use App\Models\PersonasAlbergue;
 use Illuminate\Http\Request;
 
@@ -33,8 +38,9 @@ class PersonasAlbergueController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionPersonasAlbergue $request)
     {
+        if(JefeDeFamilia::find($request->idJefe) != Null && Albergue::find($request->idAlbergue) != NUll){
         $persona = new PersonasAlbergue();
         $persona->idAlbergue = $request->idAlbergue;
         $persona->idJefe = $request->idJefe;  
@@ -44,7 +50,9 @@ class PersonasAlbergueController extends Controller
         $persona->FechaDeSalida = $request->FechaDeSalida;
         $persona->HoraDeSalida = $request->HoraDeSalida;
         $persona->save();  
-        header("location: /PersonasAlbergue");
+        return redirect('PersonasAlbergue')->with('mensaje','Agregado Correctamente');
+    }
+        return redirect('PersonasAlbergue/create')->with('mensaje','El Jefe de Familia o el Albergue no existe');
     }
 
     /**
@@ -77,7 +85,7 @@ class PersonasAlbergueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionPersonasAlbergue $request, $id)
     {
         $persona = PersonasAlbergue::find($id);
         $persona->fill($request->all());

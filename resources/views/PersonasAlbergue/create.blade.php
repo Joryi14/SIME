@@ -2,7 +2,8 @@
 @section('Contenido')
 <div class="row">
     <div class="col-md-10">
-        <div class="box box-success">
+        @include('includes.Error-form')
+        <div class="box box-info">
           <div class="box-header with-border">
               <div class="box-tools pull-right">
                   <div class="col-sm-12">
@@ -14,7 +15,7 @@
             <h3 class="box-title">Crear persona en albergue</h3>
           </div>
           <form class="form-horizontal" method="POST" action="/PersonasAlbergue/store">
-            @method('PUT')
+
             @csrf
             <div class="box-body">
               <div class="form-group">
@@ -71,15 +72,13 @@
                                   <input type="time" name="HoraDeSalida" class= "form-control" > 
                               </div>
                             </div>
-                         </div>
-       <!-- /.box-body -->
-       <div class="box-footer">
-            @include("Includes.boton-form-create")
-            </div>
-            <!-- /.box-footer -->
-     </form>
-     </div>
-     </div>  
-     </div>  
-     @endsection
+                </div>
+              <div class="box-footer">
+                   @include("Includes.boton-form-create")
+              </div>
+         </form>
+       </div>
+   </div>
+  </div>
+ @endsection    
      

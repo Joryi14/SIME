@@ -11,7 +11,7 @@
                   </a>
                   </div>
                 </div>
-            <h3 class="box-title">Editar PersonasAlbergue</h3>
+            <h3 class="box-title">Crear persona en albergue</h3>
           </div>
           <form class="form-horizontal" method="POST" action="/PersonasAlbergue/store">
             @method('PUT')
@@ -37,34 +37,38 @@
                       <input type="text" name="LugarDeProcedencia" class= "form-control" > 
                   </div>
                 </div>
+
+
                 <div class="form-group">
                     <label for="FechaDeIngreso" class="col-sm-2 control-label">FechaDeIngreso: </label>
         
-                    <div class="col-sm-8">
-                        <input type="text" name="FechaDeIngreso" class= "form-control" >
+                    <div class="col-sm-3">
+                        <input type="date" name="FechaDeIngreso" class= "form-control" >
                     </div>
                   </div>
+
+
                   <div class="form-group">
                       <label for="HoraDeIngreso" class="col-sm-2 control-label">HoraDeIngreso: </label>
           
-                      <div class="col-sm-8">
-                          <input type="text" name="HoraDeIngreso" class= "form-control">
+                      <div class="col-sm-2">
+                          <input type="time" name="HoraDeIngreso" class= "form-control">
                       </div>
                     </div>
                    
                       <div class="form-group">
                           <label for="FechaDeSalida" class="col-sm-2 control-label">FechaDeSalida: </label>
               
-                          <div class="col-sm-8">
-                              <input type="text" name="FechaDeSalida" class= "form-control" >
+                          <div class="col-sm-3">
+                              <input type="date" name="FechaDeSalida" class= "form-control" >
                           </div>
                         </div>
                        
                           <div class="form-group">
                               <label for="HoraDeSalida" class="col-sm-2 control-label">HoraDeSalida: </label>
                   
-                              <div class="col-sm-8">
-                                  <input type="text" name="HoraDeSalida" class= "form-control" > 
+                              <div class="col-sm-2">
+                                  <input type="time" name="HoraDeSalida" class= "form-control" > 
                               </div>
                             </div>
                          </div>

@@ -13,7 +13,7 @@
               </a>
               </div>
             </div>
-        <h3 class="box-title">Crear Reporte de incidente</h3>
+        <h3 class="box-title">Crear nueva noticia</h3>
       </div>
       <form class="form-horizontal" method="POST" action="/Noticia/store" enctype="multipart/form-data">
         @csrf

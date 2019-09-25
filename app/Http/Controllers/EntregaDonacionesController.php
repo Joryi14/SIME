@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\ValidacionEntregaDonaciones;
 use Illuminate\Support\Facades\DB;
 use App\Models\EntregaDonaciones;
 use Illuminate\Http\Request;
+
 
 class EntregaDonacionesController extends Controller
 {
@@ -34,7 +37,7 @@ class EntregaDonacionesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionEntregaDonaciones $request)
     {
         $entregadonaciones = DB::select("call Insert_EntregaDonaciones(
         '$request->IdUsuarioRol',
@@ -74,7 +77,7 @@ class EntregaDonacionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionEntregaDonaciones $request, $id)
     {
         $entregadonaciones = DB::update("call Update_EntregaDonaciones('$id',
         '$request->IdUsuarioRol',

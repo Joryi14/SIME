@@ -74,9 +74,10 @@ class user extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $user = AppUser::find($id);
-        $user->delete();
+    {  
+        if(AppUser::destroy($id))
         return redirect('user')->with('Se ha eliminado correctamente');
-    }
+        else 
+        return redirect('user')->with('Error al Eliminar');
+}
 }

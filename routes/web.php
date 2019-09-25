@@ -116,6 +116,17 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comuna
     Route::put('Albergue/{Albergue}','AlbergueController@update');
     Route::delete('Albergue/{Albergue}','AlbergueController@delete')->name('albergue_delete');
 });
+
+Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
+    Route::get('Chofer', 'ChoferController@index')->name('inicio_Chofer');
+    Route::get('Chofer/create', 'ChoferController@create')->name('Chofer_create');
+    Route::post('Chofer/store','ChoferController@store');
+    Route::get('Chofer/{Chofer}/edit', 'ChoferController@edit')->name('Chofer_edit');
+    Route::put('Chofer/{Chofer}','ChoferController@update');
+    Route::delete('Chofer/{Chofer}','ChoferController@delete')->name('Chofer_delete');
+});
+
+
 Route::group(['prefix' => '/'], function () {
 Route::put('user/{user}','user@update')->name('user_edit');
 Route::get('user/{user}','user@show')->name('user_show');

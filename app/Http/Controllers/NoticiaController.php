@@ -16,6 +16,7 @@ class NoticiaController extends Controller
         $noticias = Noticia::orderBy('IdNoticias')->get();
         return view('Noticia.index', compact('noticias'));
     }
+    
 
     public function index1()
     {
@@ -43,32 +44,38 @@ class NoticiaController extends Controller
     {
           if($request->hasFile('Imagenes')){
             $file = $request->file('Imagenes');
-            $name = time().$file->getClientOriginalName();
-            $file->move(public_path().'/img/',$name);
+            $ConIMA= file_get_contents($file);
+           
+        
           }
+          
+          
           if($request->hasFile('Videos')){
             $file = $request->file('Videos');
-            $nameV = time().$file->getClientOriginalName();
-            $file->move(public_path().'/Vide/',$nameV);
+            $ConVI= file_get_contents($file);
   
           }
+          
           if($request->hasFile('PDF')){
             $file = $request->file('PDF');
-            $nameP = time().$file->getClientOriginalName();
-            $file->move(public_path().'/PD/',$nameP);
+            $ConPDF= file_get_contents($file);
   
           }
 
         $noticia = new Noticia();
-        $noticia->FechaPublicacion = $request->FechaPublicacion;
+        $noticia->created_at = $request->created_at;
         $noticia->Titulo = $request->Titulo;
         $noticia->IdAutor = $request->IdAutor;
-        $noticia->Imagenes = $name;
-        $noticia->Videos = $nameV;
+      
+         $noticia->Imagenes = base64_encode($ConIMA); 
+      
+        $noticia->Videos =base64_encode($ConVI);
         $noticia->Articulo = $request->Articulo;
-        $noticia->PDF = $nameP;
+        $noticia->PDF = base64_encode($ConPDF);
         $noticia ->save();  
         header("location: /Noticia");
+
+        
     }
 
     /**

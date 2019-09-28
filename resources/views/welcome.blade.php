@@ -126,7 +126,7 @@
                 <i class="fas fa-plus fa-3x"></i>
               </div>
             </div>
-          <img class="img-fluid" src="img/{{$item->Imagenes}}" width="400" height="300" alt="">
+          <img class="img-fluid" src='data:image/jpeg;base64,{{$item->Imagenes}}' width="400" height="300" alt="">
           </a>
           <div class="portfolio-caption">
             <h4>{{$item->Titulo}}</h4>
@@ -470,17 +470,17 @@
                   <!-- Project Details Go Here -->
                   <h2 class="text-uppercase">{{$item->Titulo}}</h2>
                   <p class="item-intro text-muted"></p>
-                  <img class="img-fluid d-block mx-auto" src="img/{{$item->Imagenes}}" alt="" width="600" height="300">
+                  <img class="img-fluid d-block mx-auto" src='data:image/jpeg;base64,{{$item->Imagenes}}' alt="" width="600" height="300">
 
                   <p>{{$item->Articulo}}</p>
                   
                 <video width="600" height="300" controls>
-                 <source src="Vide/{{$item->Videos}}" type="video/mp4">
+                 <source src='data:video/mp4;base64,{{$item->Videos}}' type="video/mp4">
                  </video>
                   <ul class="list-inline">
                     <li>Fecha de publicacion: {{$item->updated_at}}</li>
                     <li>Autor: {{$item->IdAutor}}</li>
-                    <li>Archivo PDF:   <a href="PD/{{$item->PDF}}" class="btn btn-primary">Descargar<a></li>
+                    <li>Archivo PDF:   <a href='data:application/pdf;base64,base64_decode({{$item->PDF}})' class="btn btn-primary">Descargar<a></li>
                   </ul>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>

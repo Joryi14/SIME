@@ -45,6 +45,21 @@ class InventarioController extends Controller
           '$request->Ropa')");
         header("location: /Inventario");
     }
+    public function generar()
+    {
+        $inventario = \DB::table('inventario')
+       ->select(['idInventario','idEmergencias',
+       'Suministros',
+       'Colchonetas',
+       'Cobijas',
+       'Ropa']) 
+        ->get();
+        $view = view ('Inventario.reporte', compact('inventario'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('inventario'.'.pdf');
+
+    }
 
     /**
      * Display the specified resource.

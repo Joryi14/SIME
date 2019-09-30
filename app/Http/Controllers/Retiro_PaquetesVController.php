@@ -36,7 +36,7 @@ class Retiro_PaquetesVController extends Controller
      */
     public function store(Request $request)
     {
-        $retiroPV = DB::select("call Insert_RetiroPaquetes('$request->IdChofer','$request->IdAdministradorI',
+        $retiroPV = DB::select("call Insert_RetiroPaquetes('$request->IdAdministradorI','$request->NombreChofer','$request->Apellido1C','$request->Apellido2C'
         '$request->IdVoluntario','$request->PlacaVehiculo','$request->DireccionAEntregar','$request->SuministrosGobierno','$request->SuministrosComision',
         '$request->IdInventario')");  
         header("location:Retiro_PaquetesV /");
@@ -45,7 +45,7 @@ class Retiro_PaquetesVController extends Controller
     public function generar()
     {
         $Retiro = \DB::table('retiropaquetes')
-       ->select(['IdRetiroPaquetes','IdChofer','IdAdministradorI',
+       ->select(['IdRetiroPaquetes','IdAdministradorI' ,'NombreChofer','Apellido1C','Apellido2C',
         'IdVoluntario','PlacaVehiculo','DireccionAEntregar','SuministrosGobierno','SuministrosComision',
         'IdInventario']) 
         ->get();
@@ -88,7 +88,7 @@ class Retiro_PaquetesVController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $retiroPV = DB::update("call Update_RetiroPaquetes('$id','$request->IdChofer','$request->IdAdministradorI',
+        $retiroPV = DB::update("call Update_RetiroPaquetes('$id','$request->IdAdministradorI','$request->NombreChofer','$request->Apellido1C','$request->Apellido2C',
         '$request->IdVoluntario','$request->PlacaVehiculo','$request->DireccionAEntregar','$request->SuministrosGobierno','$request->SuministrosComision',
         '$request->IdInventario')");  
         header("location: /Retiro_PaquetesV");

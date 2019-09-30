@@ -31,6 +31,24 @@
               </div>
             </div>
             <div class="form-group">
+              <label for="NombreChofer" class="col-sm-2 control-label">Nombre del chofer: </label>
+              <div class="col-sm-10">
+                  <input type="text" name="NombreChofer" class= "form-control" >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Apellido1C" class="col-sm-2 control-label">Primer apellido del Chofer: </label>
+              <div class="col-sm-10">
+                  <input type="text" name="Apellido1C" class= "form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Apellido2C" class="col-sm-2 control-label">Segundo apellido del Chofer: </label>
+              <div class="col-sm-10">
+                  <input type="text" name="Apellido2C" class= "form-control">
+              </div>
+            </div>
+            <div class="form-group">
                 <label for="IdVoluntario" class="col-sm-2 control-label">Id de Voluntario: </label>
                 <div class="col-sm-10">
                     <input type="text" name="IdVoluntario" class= "form-control" > 

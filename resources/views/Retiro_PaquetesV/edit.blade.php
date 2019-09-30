@@ -18,15 +18,27 @@
           @csrf
           <div class="box-body">
             <div class="form-group">
-              <label for="IdChofer" class="col-sm-2 control-label">IdChofer: </label>
-              <div class="col-sm-10">
-                  <input type="text" name="IdChofer" class= "form-control" value="{{$retiroPV->IdChofer}}">
-              </div>
-            </div>
-            <div class="form-group">
               <label for="IdAdministradorI" class="col-sm-2 control-label">IdAdministradorI: </label>
               <div class="col-sm-10">
                   <input type="text" name="IdAdministradorI" class= "form-control" value="{{$retiroPV->IdAdministradorI}}" readonly="readonly"> 
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="NombreChofer" class="col-sm-2 control-label">Nombre del chofer: </label>
+              <div class="col-sm-10">
+                  <input type="text" name="NombreChofer" class= "form-control" value="{{$item->NombreChofer}}">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Apellido1C" class="col-sm-2 control-label">Primer apellido del Chofer: </label>
+              <div class="col-sm-10">
+                  <input type="text" name="Apellido1C" class= "form-control" value="{{$item->Apellido1C}}">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Apellido2C" class="col-sm-2 control-label">Segundo apellido del Chofer: </label>
+              <div class="col-sm-10">
+                  <input type="text" name="Apellido2C" class= "form-control" value="{{$item->Apellido2C}}">
               </div>
             </div>
             <div class="form-group">

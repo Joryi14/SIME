@@ -42,6 +42,20 @@ class Retiro_PaquetesVController extends Controller
         header("location:Retiro_PaquetesV /");
     }
 
+    public function generar()
+    {
+        $Retiro = \DB::table('retiropaquetes')
+       ->select(['IdRetiroPaquetes','IdChofer','IdAdministradorI',
+        'IdVoluntario','PlacaVehiculo','DireccionAEntregar','SuministrosGobierno','SuministrosComision',
+        'IdInventario']) 
+        ->get();
+        $view = view ('Retiro_PaquetesV.reporte', compact('Retiro'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('Retiro'.'.pdf');
+
+    }
+
     /**
      * Display the specified resource.
      *

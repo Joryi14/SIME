@@ -53,6 +53,9 @@ $(function () {
       <div class="box box-primary">
         <div class="box-header">
             <div class="box-tools pull-right">
+                <a href="{{route('Retiro_PaquetesV_reporte')}}" class="btn btn-block btn-primary btn-sm">
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear Reporte de retiro de paquetes
+                </a>
                 <a href="{{route('Retiro_PaquetesV_create')}}" class="btn btn-block btn-primary btn-sm">
                     <i class="fa fa-fw fa-plus-circle"></i> Crear Retiro Paquetes
                 </a>

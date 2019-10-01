@@ -42,7 +42,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('Inventario/{Inventario}/edit', 'InventarioController@edit');
     Route::put('Inventario/{Inventario}','InventarioController@update');
     Route::get('Inventario/{Inventario}/editSuministro', 'InventarioController@editSuministro');
-    Route::put('Inventario/{Inventario}','InventarioController@updateSuministro');
+    Route::put('Suministro/{Inventario}','InventarioController@updateSuministro');
     Route::delete('Inventario/{Inventario}','InventarioController@delete')->name('inventario_delete');
     Route::get('Inventario/pdf', 'InventarioController@generar')->name('inventario_reporte');
     

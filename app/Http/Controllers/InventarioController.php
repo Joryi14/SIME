@@ -53,8 +53,10 @@ class InventarioController extends Controller
 
     public function updateSuministro(Request $request, $id)
     { 
-        $total =  $request->suma + $request->Suministros; 
-        $inventario= DB::update("call Update_Suministro('$id','$request->idEmergencias','$total')");
+        $t = $request->Suministros;
+        $tt = $request->suma; 
+        $total = $t+$tt;
+        $inventario = DB::update("call Update_Suministros('$id','$request->idEmergencias','$total')");
         header("location: /Inventario");
     }
 

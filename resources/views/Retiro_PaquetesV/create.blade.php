@@ -16,6 +16,7 @@
             <h3 class="box-title">Crear Retiro de Paquetes</h3>
         </div>
         <form class="form-horizontal" method="POST" action="/Retiro_PaquetesV/store">
+  
           @csrf
           <div class="box-body">
             <div class="form-group">

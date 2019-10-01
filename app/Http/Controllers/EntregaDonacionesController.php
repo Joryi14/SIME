@@ -36,11 +36,18 @@ class EntregaDonacionesController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->hasFile('Imagenes')){
+            $file = $request->file('Imagenes');
+            $ConIMA= file_get_contents($file);
+          }
+
+          $Foto = base64_encode($ConIMA); 
+
         $entregadonaciones = DB::select("call Insert_EntregaDonaciones(
         '$request->IdUsuarioRol',
         '$request->IdJefe',
         '$request->IdRetiroPaquetes',
-        '$request->Foto')");  
+        '$Foto')");  
         header("location:EntregaDonaciones /");
     }
 

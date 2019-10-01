@@ -79,7 +79,9 @@ $(function () {
                   <td>{{$item->IdUsuarioRol}}</td>
                   <td>{{$item->IdJefe}}</td>
                   <td>{{$item->IdRetiroPaquetes}}</td>
-                  <td>{{$item->Foto}}</td>
+                  <td>
+                  <img style='display:block; width:100px;height:100px;' src='data:image/jpeg;base64,{{$item->Foto}}'  alt="base64 test">
+                  </td>
                   <td><a href="/EntregaDonaciones/{{$item->IdEntrega}}/edit" class="btn-accion-tabla tooltipsC" title="Editar EntregaDonaciones">
                     <i class="fa fa-fw fa-pencil"></i></a>
                   <form id="form1" action="{{route('EntregaDonaciones_delete', ['EntregaDonaciones' => $item->IdEntrega])}}" method="POST">

@@ -36,7 +36,7 @@ class Retiro_PaquetesVController extends Controller
      */
     public function store(Request $request)
     {
-        $retiroPV = DB::select("call Insert_RetiroPaquetes('$request->IdAdministradorI','$request->NombreChofer','$request->Apellido1C','$request->Apellido2C'
+        $retiroPV = DB::select("call Insert_RetiroPaquetes('$request->IdAdministradorI','$request->NombreChofer','$request->Apellido1C','$request->Apellido2C',
         '$request->IdVoluntario','$request->PlacaVehiculo','$request->DireccionAEntregar','$request->SuministrosGobierno','$request->SuministrosComision',
         '$request->IdInventario')");  
         header("location:Retiro_PaquetesV /");

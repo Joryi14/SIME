@@ -16,14 +16,9 @@
             <h3 class="box-title">Crear Retiro de Paquetes</h3>
         </div>
         <form class="form-horizontal" method="POST" action="/Retiro_PaquetesV/store">
+  
           @csrf
           <div class="box-body">
-            <div class="form-group">
-              <label for="IdChofer" class="col-sm-2 control-label">Id de Chofer: </label>
-              <div class="col-sm-10">
-                  <input type="text" name="IdChofer" class= "form-control" >
-              </div>
-            </div>
             <div class="form-group">
               <label for="IdAdministradorI" class="col-sm-2 control-label">Id de AdministradorI: </label>
               <div class="col-sm-10">

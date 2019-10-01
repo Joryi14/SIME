@@ -28,8 +28,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="{{route('inicio_emergencia')}}"><i class="fa  fa-circle-o"></i><span>Lista de emergencias</span></a></li>
-              <li><a href="{{ route('emergencia_create')}}"><i class="fa fa-circle-o"></i> Crear emergencia</a></li>
+              <li><a href="{{route('inicio_emergencia')}}"><i class="fa  fa-circle-o"></i><span>  Lista de emergencias</span></a></li>
+              <li><a href="{{ route('emergencia_create')}}"><i class="fa fa-circle-o"></i>  Crear emergencia</a></li>
             </ul>
           </li>
           <li><a href="{{route('inicio_mensaje')}}"><i class="fa  fa-envelope"></i><span>Mensajeria</span></a></li>

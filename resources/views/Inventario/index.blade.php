@@ -86,7 +86,9 @@ $(function () {
               <td>{{$item->Ropa}}</td>
               
               <td><a href="/Inventario/{{$item->idInventario}}/edit" class="btn-accion-tabla tooltipsC" title="Editar Inventario">
-                <i class="fa fa-fw fa-pencil"></i></a>
+                <i class="fa fa-fw fa-plus-circle"></i></a>
+                <a href="/Inventario/{{$item->idInventario}}/editSuministro" class="btn-accion-tabla tooltipsC" title="Editar Suministro de inventario Inventario">
+                  <i class="fa fa-fw fa-pencil"></i></a>
               <form id="form1" action="{{route('inventario_delete', ['Inventario' => $item->idInventario])}}" method="POST">
                 @csrf 
                 <input name="_method" type="hidden" value="DELETE">

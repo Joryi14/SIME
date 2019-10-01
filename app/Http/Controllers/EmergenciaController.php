@@ -43,7 +43,7 @@ class EmergenciaController extends Controller
         $emergencia = DB::select("call Insertar_Emergencia('$request->NombreEmergencias',
         '$request->Categoria','$request->TipoDeEmergencia','$request->Descripcion','$request->Longitud',
         '$request->Latitud')");
-
+  
         header("location: /Inventario/create");
 
     }

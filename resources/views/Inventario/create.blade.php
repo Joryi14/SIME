@@ -7,7 +7,7 @@
 <div class= "form-group">
   <h1>Crear reporte de incidente</h1>
   <div class="form-group ">
-  <label>Id de la emergencias: <input type="text" name="idEmergencias" class= "form-control"  value="{{json_decode($ideme)}}"> </label><br>
+  <label>Id de la emergencias: <input type="text" name="idEmergencias" class= "form-control"> </label><br>
   <label>Suministros: <input type="text" name="Suministros" class= "form-control" > </label><br>
 
   <input type="hidden" name="Colchonetas" value="0" />

@@ -8,9 +8,9 @@
 
 
 <div class="form-group ">
-  <label>IdEmergencias: <input type="text" name="idEmergencias" class= "form-control" value=" {{$inventario->idEmergencias}}"> </label><br>
+  <label>IdEmergencias: <input type="text" name="idEmergencias" class= "form-control" value=" {{$inventario->idEmergencias}}"readonly="readonly"> </label><br>
 
-  <label>Suministros: <input type="text" name="Suministros" class= "form-control" value=" {{$inventario->Suministros}}" > </label><br>
+  <label>Suministros: <input type="text" name="Suministros" class= "form-control" value=" {{$inventario->Suministros}}"readonly="readonly" > </label><br>
   
   <input type="hidden" name="Colchonetas" value="0" />
   <label><input type="checkbox" name="Colchonetas" value="1"> Colchonetas</label><br>

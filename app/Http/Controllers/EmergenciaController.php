@@ -44,7 +44,7 @@ class EmergenciaController extends Controller
         '$request->Categoria','$request->TipoDeEmergencia','$request->Descripcion','$request->Longitud',
         '$request->Latitud')");
 
-        header("location: /Emergencia");
+        header("location: /Inventario/create");
 
     }
 

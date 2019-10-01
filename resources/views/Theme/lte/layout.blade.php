@@ -52,8 +52,7 @@
   </div>
     @include("theme/$theme/footer")
  </div>
- <script src="sweetalert2.all.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+ <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{asset("assets/$theme/bower_components/jquery/dist/jquery.min.js")}}"></script>
 <script src="{{asset("assets/$theme/bower_components/jquery-ui/jquery-ui.min.js")}}"></script>
 <!-- Bootstrap 3.3.7 -->

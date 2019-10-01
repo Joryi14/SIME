@@ -3,8 +3,7 @@
 <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
 <script type="text/javascript">
   document.querySelector('#form1').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
+  e.preventDefault();
   swal({
       title: "Esta seguro de eliminar?",
       text: "Una vez eliminado no se puede recuperar!",

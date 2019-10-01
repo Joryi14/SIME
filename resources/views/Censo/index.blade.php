@@ -1,6 +1,20 @@
 @extends("theme/$theme/layout")
 @section('styles')
 <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+<style>
+  .example-modal .modal {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    left: auto;
+    display: block;
+    z-index: 1;
+  }
+  .example-modal .modal {
+    background: transparent !important;
+  }
+</style>
 @endsection
 @section('Script')
 <script type="text/javascript">
@@ -65,10 +79,6 @@ $(function () {
             <tr>
               <th>ID Censo</th>
               <th>Cedula del Jefe de familia</th>
-              <th>Refrigerador</th>
-              <th>Cocina</th>
-              <th>Colchon</th>
-              <th>Cama</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -76,32 +86,8 @@ $(function () {
                   <tr>
                   <td>{{$item->IdCenso}}</td>    
                   <td>{{$item->jefeFamilia->Cedula}}</td>
-                  <td>@if ($item->Refrigerador == 1)
-                       Si
-                  @elseif ($item->Refrigerador == 0) 
-                       No
-                  @endif</td>
-                  <td>
-                      @if ($item->Cocina == 1)
-                      Si
-                 @elseif ($item->Cocina == 0) 
-                      No
-                 @endif
-                  </td>
-                  <td>
-                      @if ($item->Colchon == 1)
-                      Si
-                 @elseif ($item->Colchon == 0) 
-                      No
-                 @endif</td>
-                  <td>
-                      @if ($item->Cama == 1)
-                      Si
-                 @elseif ($item->Cama == 0) 
-                      No
-                 @endif</td>
                   <td><a href="/Censo/{{$item->IdCenso}}/edit" class="btn-accion-tabla tooltipsC" title="Editar censo">
-                    <i class="fa fa-fw fa-pencil"></i></a>
+                    <i class="fa fa-fw fa-pencil text-success"></i></a>
                   <form id="form1" action="{{route('censo_delete', ['Censo' => $item->IdCenso])}}" method="POST">
                     @csrf 
                     <input name="_method" type="hidden" value="DELETE">
@@ -109,11 +95,75 @@ $(function () {
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form>
+                  <button class="btn-accion-tabla tooltipsC" title="Mostrar Censo" data-toggle="modal" data-target="#modal-default">
+                    <i class="fa fa-fw fa-file-text-o text-info"></i>
+                  </button>
                   </td>
                   </tr>
                 @endforeach
           </table>  
       </div>
+    </div>
+    <div class="modal modal-default fade" id="modal-default">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><b>Información de censo</b></h4>
+          </div>
+          <div class="modal-body">
+            @foreach ($censos as $item)
+            <div class="form-group">
+              <label class="col-md-4 "><b>Refrigerador:</b></label>
+              <div class="col-md-4">
+                @if ($item->Refrigerador == 1)
+                Si tiene
+           @elseif ($item->Refrigerador == 0) 
+                No tiene 
+           @endif
+              </div>
+           </div><br>
+           <div class="form-group ">
+            <label class="col-md-4"><b>Cocina:</b></label>
+            <div class="col-md-4">
+              @if ($item->Cocina == 1)
+                Si tiene
+           @elseif ($item->Cocina == 0) 
+                No tiene 
+           @endif
+            </div>
+         </div><br>
+         <div class="form-group">
+          <label  class="col-md-4"><b>Colchon:</b></label>
+          <div class="col-md-4">
+            @if ($item->Colchon == 1)
+            Si tiene 
+       @elseif ($item->Colchon == 0) 
+            No tiene
+       @endif
+          </div>
+       </div><br>
+       <div class="form-group">
+        <label class="col-md-4"><b>Cama:</b></label>
+        <div class="col-md-4">
+          @if ($item->Cama == 1)
+                Si tiene
+           @elseif ($item->Cama == 0) 
+                No tiene
+           @endif
+        </div>
+     </div>    
+          @endforeach
+          <br><br>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline bg-red pull-left" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+        
+      </div>
+      
     </div>
   </div>
 </div>

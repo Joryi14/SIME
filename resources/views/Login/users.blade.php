@@ -1,11 +1,11 @@
 @extends("theme/$theme/layout")
 @section('Script')
 <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
+
 <script type="text/javascript">
-  document.querySelector('#form1').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
-  swal.fire({
+  $(document).ready(function(){$(".form2").submit(function( event ) {
+      event.preventDefault();
+      swal({
       title: "Esta seguro de eliminar?",
       text: "Una vez eliminado no se puede recuperar!",
       icon: "warning",
@@ -14,133 +14,22 @@
         'Aceptar!'
       ],
       dangerMode: true,
-    }).then(function(isConfirm) {
-      if (isConfirm) {
-        swal.fire({
-          title: 'Exito!',
-          text: 'Se ha Eliminado el registro!',
-          icon: 'success'
-        }).then(function() {
-          form.submit(); // <--- submit form programmatically
-        });
-      } else {
-        swal.fire("Cancelado","" ,"error");
-      }
-    })
-});
-</script>
-<script type="text/javascript">
-  document.querySelector('#form2').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
-  swal({
-      title: "Esta seguro de eliminar?",
-      text: "Una vez eliminado no se puede recuperar!",
-      icon: "warning",
-      buttons: [
-        'Cancelar!',
-        'Aceptar!'
-      ],
-      dangerMode: true,
-    }).then(function(isConfirm) {
+      }).then(function(isConfirm) {
       if (isConfirm) {
         swal({
           title: 'Exito!',
           text: 'Se ha Eliminado el registro!',
           icon: 'success'
         }).then(function() {
-          form.submit(); // <--- submit form programmatically
+          form.submit();
         });
       } else {
         swal("Cancelado","" ,"error");
       }
     })
+  })
 });
-</script>
-<script type="text/javascript">
-  document.querySelector('#form3').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
-  swal({
-      title: "Esta seguro de eliminar?",
-      text: "Una vez eliminado no se puede recuperar!",
-      icon: "warning",
-      buttons: [
-        'Cancelar!',
-        'Aceptar!'
-      ],
-      dangerMode: true,
-    }).then(function(isConfirm) {
-      if (isConfirm) {
-        swal({
-          title: 'Exito!',
-          text: 'Se ha Eliminado el registro!',
-          icon: 'success'
-        }).then(function() {
-          form.submit(); // <--- submit form programmatically
-        });
-      } else {
-        swal("Cancelado","" ,"error");
-      }
-    })
-});
-</script>
-<script type="text/javascript">
-  document.querySelector('#form4').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
-  swal({
-      title: "Esta seguro de eliminar?",
-      text: "Una vez eliminado no se puede recuperar!",
-      icon: "warning",
-      buttons: [
-        'Cancelar!',
-        'Aceptar!'
-      ],
-      dangerMode: true,
-    }).then(function(isConfirm) {
-      if (isConfirm) {
-        swal({
-          title: 'Exito!',
-          text: 'Se ha Eliminado el registro!',
-          icon: 'success'
-        }).then(function() {
-          form.submit(); // <--- submit form programmatically
-        });
-      } else {
-        swal("Cancelado","" ,"error");
-      }
-    })
-});
-</script>
-<script type="text/javascript">
-  document.querySelector('#form5').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
-  swal({
-      title: "Esta seguro de eliminar?",
-      text: "Una vez eliminado no se puede recuperar!",
-      icon: "warning",
-      buttons: [
-        'Cancelar!',
-        'Aceptar!'
-      ],
-      dangerMode: true,
-    }).then(function(isConfirm) {
-      if (isConfirm) {
-        swal({
-          title: 'Exito!',
-          text: 'Se ha Eliminado el registro!',
-          icon: 'success'
-        }).then(function() {
-          form.submit(); // <--- submit form programmatically
-        });
-      } else {
-        swal("Cancelado","" ,"error");
-      }
-    })
-});
-</script>
+</script> 
 @endsection
 @section('Contenido')
 <div class="row">
@@ -179,7 +68,7 @@
               <td>
               <form id="form1" action="{{route('user_delete', ['user' => $item->id])}}" method="POST">
                   @csrf @method('delete')
-                  <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar usuario">
+                  <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar usuario" onclick="confirmarEnvio()">
                       <i class="fa fa-fw fa-trash text-danger"></i>
                   </button>
                 </form>  
@@ -222,7 +111,7 @@
                 <td>{{$object->name}}</td>
                 <td>{{$object->guard_name}}</td>
                 <td>
-                <form id="form2" action="{{route('rol_delete', ['roles' => $object->id])}}" class="d-inline form-eliminar" method="POST">
+                <form class="form2" action="{{route('rol_delete', ['roles' => $object->id])}}" method="POST">
                     @csrf @method('delete')
                     <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar rol">
                         <i class="fa fa-fw fa-trash text-danger"></i>
@@ -317,7 +206,7 @@
                       <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar PermisoRol" onclick="confirmarEnvio()">
                           <i class="fa fa-fw fa-trash text-danger"></i>
                       </button>
-                    </form>
+                  </form>
                   </td>
                   </tr>
                 @endforeach

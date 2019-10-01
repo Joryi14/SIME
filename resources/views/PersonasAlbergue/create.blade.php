@@ -20,20 +20,20 @@
             @csrf
             <div class="box-body">
               <div class="form-group">
-                <label for="idAlbergue" class="col-sm-2 control-label">idAlbergue: </label>
+                <label for="idAlbergue" class="col-sm-2 control-label">Id del albergue: </label>
                 <div class="col-sm-8">
                     <input type="text" name="idAlbergue" class= "form-control" >
                 </div>
               </div>
               <div class="form-group">
-                <label for="idJefe" class="col-sm-2 control-label">idJefe: </label>
+                <label for="idJefe" class="col-sm-2 control-label">Id del jefe de familia: </label>
     
                 <div class="col-sm-8">
                     <input type="text" name="idJefe" class= "form-control" >
                 </div>
               </div>
               <div class="form-group">
-                  <label for="LugarDeProcedencia" class="col-sm-2 control-label">LugarDeProcedencia:  </label>
+                  <label for="LugarDeProcedencia" class="col-sm-2 control-label">Lugar de procedencia:  </label>
       
                   <div class="col-sm-8">
                       <input type="text" name="LugarDeProcedencia" class= "form-control" > 
@@ -42,7 +42,7 @@
 
 
                 <div class="form-group">
-                    <label for="FechaDeIngreso" class="col-sm-2 control-label">FechaDeIngreso: </label>
+                    <label for="FechaDeIngreso" class="col-sm-2 control-label">Fecha de ingreso: </label>
         
                     <div class="col-sm-3">
                         <input type="date" name="FechaDeIngreso" class= "form-control" >
@@ -51,7 +51,7 @@
 
 
                   <div class="form-group">
-                      <label for="HoraDeIngreso" class="col-sm-2 control-label">HoraDeIngreso: </label>
+                      <label for="HoraDeIngreso" class="col-sm-2 control-label">Hora de ingreso: </label>
           
                       <div class="col-sm-2">
                           <input type="time" name="HoraDeIngreso" class= "form-control">
@@ -59,7 +59,7 @@
                     </div>
                    
                       <div class="form-group">
-                          <label for="FechaDeSalida" class="col-sm-2 control-label">FechaDeSalida: </label>
+                          <label for="FechaDeSalida" class="col-sm-2 control-label">Fecha de salida: </label>
               
                           <div class="col-sm-3">
                               <input type="date" name="FechaDeSalida" class= "form-control" >
@@ -67,7 +67,7 @@
                         </div>
                        
                           <div class="form-group">
-                              <label for="HoraDeSalida" class="col-sm-2 control-label">HoraDeSalida: </label>
+                              <label for="HoraDeSalida" class="col-sm-2 control-label">Hora de salida: </label>
                   
                               <div class="col-sm-2">
                                   <input type="time" name="HoraDeSalida" class= "form-control" > 

@@ -63,8 +63,8 @@ $(function () {
           <table id="EntregaDonacionesAlbergue_table" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th>Id Entrega</th>
-              <th>Id Jefe de familia</th>
+              <th>Id de la entrega</th>
+              <th>Id jefe de familia</th>
               <th>Acciones</th>
               
             </tr>

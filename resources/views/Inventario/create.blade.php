@@ -19,7 +19,7 @@
   @csrf
   <div class="box-body">
       <div class="form-group">
-        <label for="idEmergencias" class="col-sm-2 control-label">Id de la emergencias: </label>
+        <label for="idEmergencias" class="col-sm-2 control-label">Id de las emergencias: </label>
         <div class="col-sm-8">
             <input type="text" name="idEmergencias" class= "form-control" >
         </div>

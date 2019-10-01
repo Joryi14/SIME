@@ -44,7 +44,7 @@
                 </div>
                
                 <div class="form-group">
-                    <label for="Articulo" class="col-sm-2 control-label">Articulo: </label>
+                    <label for="Articulo" class="col-sm-2 control-label">Artículo: </label>
                     <div class="col-sm-9">
                         <input type="text" name="Articulo" class="form-control" >
                     </div>

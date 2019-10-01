@@ -66,13 +66,13 @@ $(function () {
               <thead>
            
             <tr>
-                <th>IdNoticias</th>
-                <th>FechaPublicacion</th>
+                <th>Id de las noticias</th>
+                <th>Fecha de publicación</th>
                 <th>Titulo</th>
-                <th>IdAutor</th>
+                <th>Id del autor</th>
                 <th>Imagenes</th>
                 <th>Videos</th>
-                <th>Articulo</th>
+                <th>Artículo</th>
                 <th>PDF</th>
                 <th>Acciones</th>
             </tr>

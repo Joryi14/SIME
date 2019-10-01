@@ -18,14 +18,14 @@
   @csrf
   <div class="box-body">
       <div class="form-group">
-        <label for="NombreEmergencias" class="col-sm-2 control-label">Nombre de la Emergencia: </label>
+        <label for="NombreEmergencias" class="col-sm-2 control-label">Nombre de la emergencia: </label>
         <div class="col-sm-8">
             <input type="text" name="NombreEmergencias" class= "form-control" >
         </div>
       </div>
 
       <div class="form-group">
-        <label for="Categoria" class="col-sm-2 control-label">Categoria: </label>
+        <label for="Categoria" class="col-sm-2 control-label">Categoría: </label>
        
         <div class="btn-group-horizontal">
           <button type="button" class="btn btn-danger">Grave
@@ -43,7 +43,7 @@
 
 
         <div class="form-group">
-            <label for="TipoDeEmergencia" class="col-sm-2 control-label">Tipo De Emergencia: </label>
+            <label for="TipoDeEmergencia" class="col-sm-2 control-label">Tipo de emergencia: </label>
   
             <div class="col-sm-8">
                 <input type="text" name="TipoDeEmergencia" class= "form-control" >

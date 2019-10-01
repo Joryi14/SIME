@@ -64,14 +64,14 @@ $(function () {
           <table id="PersonaAlbergue_table" class="table table-bordered table-striped">
               <thead>
             <tr>
-              <th>idregistroA</th>
-              <th>idAlbergue</th>
-              <th>Cedula del Jefe de familia</th>
-              <th>LugarDeProcedencia</th>
-              <th>FechaDeIngreso</th>
-              <th>HoraDeIngreso</th>
-              <th>FechaDeSalida</th>
-              <th>HoraDeSalida</th>
+              <th>Id del registroA</th>
+              <th>Id del albergue</th>
+              <th>Cédula del jefe de familia</th>
+              <th>Lugar de procedencia</th>
+              <th>Fecha de ingreso</th>
+              <th>Hora de ingreso</th>
+              <th>Fecha de salida</th>
+              <th>Hora de salida</th>
               <th>Acciones</th>
             </tr>
           </thead>

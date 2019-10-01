@@ -63,11 +63,11 @@ $(function () {
           <table id="Censo_table" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th>ID Censo</th>
-              <th>Cedula del Jefe de familia</th>
+              <th>Id del censo</th>
+              <th>Cédula del jefe de familia</th>
               <th>Refrigerador</th>
               <th>Cocina</th>
-              <th>Colchon</th>
+              <th>Colchón</th>
               <th>Cama</th>
               <th>Acciones</th>
             </tr>

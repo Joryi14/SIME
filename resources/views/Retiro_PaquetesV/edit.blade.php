@@ -18,49 +18,49 @@
           @csrf
           <div class="box-body">
             <div class="form-group">
-              <label for="IdChofer" class="col-sm-2 control-label">IdChofer: </label>
+              <label for="IdChofer" class="col-sm-2 control-label">Id del chofer: </label>
               <div class="col-sm-10">
                   <input type="text" name="IdChofer" class= "form-control" value="{{$retiroPV->IdChofer}}">
               </div>
             </div>
             <div class="form-group">
-              <label for="IdAdministradorI" class="col-sm-2 control-label">IdAdministradorI: </label>
+              <label for="IdAdministradorI" class="col-sm-2 control-label">Id del administradorI: </label>
               <div class="col-sm-10">
                   <input type="text" name="IdAdministradorI" class= "form-control" value="{{$retiroPV->IdAdministradorI}}" readonly="readonly"> 
               </div>
             </div>
             <div class="form-group">
-                <label for="IdVoluntario" class="col-sm-2 control-label">IdVoluntario: </label>
+                <label for="IdVoluntario" class="col-sm-2 control-label">Id del voluntario: </label>
                 <div class="col-sm-10">
                     <input type="text" name="IdVoluntario" class= "form-control" value="{{$retiroPV->IdVoluntario}}" readonly="readonly"> 
                 </div>
               </div>
               <div class="form-group">
-                  <label for="PlacaVehiculo" class="col-sm-2 control-label">PlacaVehiculo: </label>
+                  <label for="PlacaVehiculo" class="col-sm-2 control-label">Placa del vehículo: </label>
                   <div class="col-sm-10">
                       <input type="text" name="PlacaVehiculo" class= "form-control" value= "{{$retiroPV->PlacaVehiculo}}"  readonly="readonly">
                   </div>
                 </div>
                 <div class="form-group">
-                    <label for="DireccionAEntregar" class="col-sm-2 control-label">DireccionAEntregar: </label>
+                    <label for="DireccionAEntregar" class="col-sm-2 control-label">Dirección a entregar: </label>
                     <div class="col-sm-10">
                         <input type="text" name="DireccionAEntregar" class= "form-control" value="{{$retiroPV->DireccionAEntregar}}" >
                     </div>
                   </div>
                   <div class="form-group">
-                        <label for="SuministrosGobierno" class="col-sm-2 control-label">SuministrosGobierno: </label>
+                        <label for="SuministrosGobierno" class="col-sm-2 control-label">Suministros del gobierno: </label>
                         <div class="col-sm-10">
                             <input type="text" name="SuministrosGobierno" class= "form-control" value="{{$retiroPV->SuministrosGobierno}}" readonly="readonly"> 
                         </div>
                       </div>
                       <div class="form-group">
-                          <label for="SuministrosComision" class="col-sm-2 control-label">SuministrosComision: </label>
+                          <label for="SuministrosComision" class="col-sm-2 control-label">Suministros de la comisión: </label>
                           <div class="col-sm-10">
                               <input type="text" name="SuministrosComision" class= "form-control" value= "{{$retiroPV->SuministrosComision}}"  readonly="readonly">
                           </div>
                         </div>
                         <div class="form-group">
-                            <label for="IdInventario" class="col-sm-2 control-label">IdInventario: </label>
+                            <label for="IdInventario" class="col-sm-2 control-label">Id del inventario: </label>
                             <div class="col-sm-10">
                                 <input type="text" name="IdInventario" class= "form-control" value="{{$retiroPV->IdInventario}}" >
                             </div>

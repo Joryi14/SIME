@@ -51,6 +51,7 @@ class Retiro_PaquetesVController extends Controller
         ->get();
         $view = view ('Retiro_PaquetesV.reporte', compact('Retiro'))->render();
         $pdf = \App::make('dompdf.wrapper');
+        $pdf->setPaper("A4", "landscape");
         $pdf->loadHTML($view);
         return $pdf->stream('Retiro'.'.pdf');
 

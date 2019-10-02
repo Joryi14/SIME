@@ -19,26 +19,19 @@
 @section('Script')
 <script type="text/javascript">
   $(document).on('click', '.show-modal', function() {
-            if($(this).data('pd')== 1)
-            $('#pd').text("Si");
-            else
-            $('#pd').text("No");
-            if($(this).data('mg')== 1)
-            $('#mg').text("Sí");
-            else
-            $('#mg').text("No");
-            if($(this).data('pi')== 1)
-            $('#pi').text("Sí");
-            else
-            $('#pi').text("No");
-            if($(this).data('pm')== 1)
-            $('#pm').text("Sí");
-            else
-            $('#pm').text("No");
+
+            $('#pd').text($(this).data('pd'));
+           $('#mg').text($(this).data('mg'));
+           $('#pi').text($(this).data('pi'));
+           $('#pm').text($(this).data('pm'));
+            $('#ed').text($(this).data('ed'));
+           $('#se').text($(this).data('se'));
+           $('#tel').text($(this).data('tel'));
+           $('#pat').text($(this).data('pat'));
          });
  </script>
 <script type="text/javascript">
-  document.querySelector('#form2').addEventListener('submit', function(e) {
+  document.querySelector('#form1').addEventListener('submit', function(e) {
   var form = this;
   e.preventDefault(); // <--- prevent form from submitting
   swal({
@@ -124,10 +117,6 @@ $(function () {
               <th>Primer apellido</th>
               <th>Segundo apellido</th>
               <th>Cédula</th>
-              <th>Edad</th>
-              <th>Sexo</th>
-              <th>Teléfono</th>
-              <th>Patologia</th>
               <th>Acciones</th>
             </tr>
             </thead>
@@ -139,20 +128,16 @@ $(function () {
               <td>{{$item->Apellido1}}</td>
               <td>{{$item->Apellido2}}</td>
               <td>{{$item->Cedula}}</td>
-              <td>{{$item->Edad}}</td>
-              <td>{{$item->sexo}}</td>    
-              <td>{{$item->Telefono}}</td>
-              <td>{{$item->Patologia}}</td>
               <td><a href="/JefeDeFamilia/{{$item->IdJefe}}/edit" class="btn-accion-tabla tooltipsC" title="Editar jefe de familia">
                 <i class="fa fa-fw fa-pencil"></i></a>
-                <form id="form2" action="{{route('jefe_delete', ['JefeDeFamilia' => $item->IdJefe])}}" method="POST">
+                <form id="form1" action="{{route('jefe_delete', ['JefeDeFamilia' => $item->IdJefe])}}" method="POST">
                     @csrf 
                     <input name="_method" type="hidden" value="DELETE">
                     <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Jefe" onclick="confirmarEnvio()">
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form> 
-                  <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar jefe de familia" data-toggle="modal" data-target="#Detalle"  data-pd="{{$item->PcD}}" data-mg="{{$item->MG}}" data-pi="{{$item->PI}}" data-pm="{{$item->PM}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
+                  <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar jefe de familia" data-toggle="modal" data-target="#Detalle"  data-pd="{{$item->PcD}}" data-mg="{{$item->MG}}" data-pi="{{$item->PI}}" data-pm="{{$item->PM}}" data-ed="{{$item->Edad}}" data-se="{{$item->sexo}}" data-tel="{{$item->Telefono}}" data-pat="{{$item->Patologia}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
                   </td>
                   </tr>
                 @endforeach
@@ -194,6 +179,34 @@ $(function () {
         </div>
       </div>    
           <br><br>
+          <div class="form-group">
+            <label class="col-md-4"><b>Edad:</b></label>
+            <div class="col-md-4">
+                <span id="ed"></span>
+            </div>
+          </div>    
+              <br><br>
+              <div class="form-group">
+                <label class="col-md-4"><b>Sexo:</b></label>
+                <div class="col-md-4">
+                    <span id="se"></span>
+                </div>
+              </div>    
+                  <br><br>
+                  <div class="form-group">
+                    <label class="col-md-4"><b>Telefono:</b></label>
+                    <div class="col-md-4">
+                        <span id="tel"></span>
+                    </div>
+                  </div>    
+                      <br><br>
+                      <div class="form-group">
+                        <label class="col-md-4"><b>Patologia:</b></label>
+                        <div class="col-md-4">
+                            <span id="pat"></span>
+                        </div>
+                      </div>    
+                          <br><br>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline bg-red pull-left" data-dismiss="modal">Cerrar</button>

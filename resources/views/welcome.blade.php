@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -126,7 +132,7 @@
                 <i class="fas fa-plus fa-3x"></i>
               </div>
             </div>
-          <img class="img-fluid" src='data:image/jpeg;base64,{{$item->Imagenes}}' width="400" height="300" alt="">
+          <img class="img-fluid" src='data:image/jpeg;base64,{{$item->Imagenes}}' style='display:block; width:400px;height:300px;' alt="">
           </a>
           <div class="portfolio-caption">
             <h4>{{$item->Titulo}}</h4>
@@ -480,7 +486,13 @@
                   <ul class="list-inline">
                     <li>Fecha de publicacion: {{$item->updated_at}}</li>
                     <li>Autor: {{$item->IdAutor}}</li>
-                    <li>Archivo PDF:   <a href='data:application/pdf;base64,base64_decode({{$item->PDF}})' class="btn btn-primary">Descargar<a></li>
+                    <li>
+                      <a class="btn btn-primary"
+                        
+                         href='data:application/pdf;base64,{{$item->PDF}}' type="application/pdf" download ="{{$item->NombrePDF}}"></object>
+                    
+                      Decargar PDF<a>
+                    </li>
                   </ul>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>

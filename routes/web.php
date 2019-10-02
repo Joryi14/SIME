@@ -13,11 +13,11 @@
 
 use App\Http\Controllers\permisoController;
 use Doctrine\DBAL\Schema\Index;
-Route::get('/', function () {
+    Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
+    Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('Mensajeria', 'MensajeriaController@index')->name('inicio_mensaje');
     Route::get('Mensajeria/create', 'MensajeriaController@create')->name('Mensajeria_create');
     Route::post('Mensajeria/store','MensajeriaController@store');
@@ -27,7 +27,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comuna
     
 });
 
-Route::group(['prefix' => '/'], function () {
+    Route::group(['prefix' => '/'], function () {
     Route::get('Inventario', 'InventarioController@index');
     Route::get('Inventario/create', 'InventarioController@create')->name('Inventario_create');
     Route::post('Inventario/store','InventarioController@store');
@@ -36,7 +36,7 @@ Route::group(['prefix' => '/'], function () {
     Route::delete('Inventario/{Inventario}','InventarioController@delete')->name('inventario_delete');
     
 });
-Route::group(['prefix' => '/'], function () {
+    Route::group(['prefix' => '/'], function () {
     Route::get('EntregaDonaciones', 'EntregaDonacionesController@index');
     Route::get('EntregaDonaciones/create', 'EntregaDonaciones@create')->name('EntregaDonaciones_create');
     Route::post('EntregaDonaciones/store','EntregaDonacionesController@store');
@@ -44,9 +44,9 @@ Route::group(['prefix' => '/'], function () {
     Route::put('EntregaDonaciones/{EntregaDonaciones}','EntregaDonacionesController@update');
     Route::delete('EntregaDonaciones/{EntregaDonaciones}','EntregaDonacionesController@delete')->name('entregadonaciones_delete'); 
 });
-Route::get('/home', 'HomeController@index')->name('home');
-Auth::routes();
-Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Auth::routes();
+    Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
     Route::get('Censo', 'CensoController@index')->name('inicio_censo');
     Route::get('Censo/create', 'CensoController@create')->name('censo_create');
     Route::post('Censo/store','CensoController@store');
@@ -55,7 +55,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], functi
     Route::delete('Censo/{id}','CensoController@delete')->name('censo_delete');
 });
 
-Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
+    Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
     Route::get('JefeDeFamilia', 'JefeDeFamiliaController@index')->name('inicio_jefe');
     Route::get('JefeDeFamilia/create', 'JefeDeFamiliaController@create')->name('jefe_create');
     Route::post('JefeDeFamilia/store','JefeDeFamiliaController@store');
@@ -64,7 +64,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], functi
     Route::delete('JefeDeFamilia/{id}','JefeDeFamiliaController@delete')->name('jefe_delete');
 });
 
-Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
+    Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
     Route::get('Familias', 'FamiliasController@index')->name('inicio_familia');
     Route::get('Familias/create', 'FamiliasController@create')->name('familias_create');
     Route::post('Familias/store','FamiliasController@store');
@@ -73,7 +73,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], functi
     Route::delete('Familias/{Familias}','FamiliasController@delete')->name('familias_delete');
 });
 
-Route::group(['prefix' => '/','middleware' => ['role:Admin|Director']], function () {
+    Route::group(['prefix' => '/','middleware' => ['role:Admin|Director']], function () {
     Route::get('Emergencia', 'EmergenciaController@index')->name('inicio_emergencia');
     Route::get('Emergencia/create', 'EmergenciaController@create')->name('emergencia_create');
     Route::post('Emergencia/store','EmergenciaController@store');
@@ -82,7 +82,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director']], function
     Route::delete('Emergencia/{Emergencia}','EmergenciaController@delete')->name('emergencia_delete');
 });
 
-Route::group(['prefix' => '/'], function () {
+    Route::group(['prefix' => '/'], function () {
     Route::get('PersonaAlbergue', 'PersonasAlbergue@index');
     Route::get('PersonaAlbergue/create', 'PersonasAlbergue@create')->name('personaAlbergue_create');
     Route::post('PersonaAlbergue/store','PersonasAlbergue@store');
@@ -90,7 +90,7 @@ Route::group(['prefix' => '/'], function () {
     Route::put('PersonaAlbergue/{PersonaAlbergue}','PersonasAlbergue@update');
     Route::delete('PersonaAlbergue/{PersonaAlbergue}','PersonasAlbergue@delete')->name('personaAlbergue_delete');
 });
-Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
+    Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('Albergue', 'AlbergueController@index')->name('inicio_albergue');
     Route::get('Albergue/create', 'AlbergueController@create')->name('albergue_create');
     Route::post('Albergue/store','AlbergueController@store');
@@ -98,11 +98,11 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comuna
     Route::put('Albergue/{Albergue}','AlbergueController@update');
     Route::delete('Albergue/{Albergue}','AlbergueController@delete')->name('albergue_delete');
 });
-Route::group(['prefix' => '/'], function () {
-Route::put('user/{user}','user@update')->name('user_edit');
-Route::get('user/{user}','user@show')->name('user_show');
+    Route::group(['prefix' => '/'], function () {
+    Route::put('user/{user}','user@update')->name('user_edit');
+    Route::get('user/{user}','user@show')->name('user_show');
 });
-Route::group(['prefix' => '/',/*'middleware' => ['role:Admin']*/], function () {
+    Route::group(['prefix' => '/',/*'middleware' => ['role:Admin']*/], function () {
     Route::get('user', 'user@index')->name('inicio_usuario');
     Route::get('roles/create', 'roles@create')->name('crearRol');
     Route::post('roles/store','roles@store');
@@ -120,8 +120,8 @@ Route::group(['prefix' => '/',/*'middleware' => ['role:Admin']*/], function () {
     Route::post('UserRol/getUsers','UserRolController@getUsers')->name('Get_Users');
     Route::post('UserRol/getRoles','UserRolController@getRoles')->name('Get_Roles');
 });
-Route::group(['prefix' => '/'], function () {
-    Route::get('/', 'NoticiaController@index1');
+    Route::group(['prefix' => '/'], function () {
+    Route::get('/', 'NoticiaController@index1'); 
     Route::get('Noticia', 'NoticiaController@index')->name('inicio_noticia');
     Route::get('Noticia/create', 'NoticiaController@create')->name('Noticia_create');
     Route::post('Noticia/store','NoticiaController@store');
@@ -131,7 +131,7 @@ Route::group(['prefix' => '/'], function () {
     
 });
 
-Route::group(['prefix' => '/'], function () {
+    Route::group(['prefix' => '/'], function () {
     Route::get('VoluntarioWeb', 'VoluntarioWebController@index')->name('inicio_voluntarioweb');
    //Route::get('/', 'VoluntarioWebController@create')->name('VoluntarioWeb_create');
     Route::post('VoluntarioWeb/store','VoluntarioWebController@store');

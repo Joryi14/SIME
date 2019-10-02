@@ -28,7 +28,9 @@
                 <th>Imagenes</th>
                 <th>Videos</th>
                 <th>Articulo</th>
-                <th>PDF</th>
+                
+                <th>Nombre PDF</th>
+                
 
              
             </tr>
@@ -46,7 +48,8 @@
                   </video>
                   </td>
               <td><p>{{$item->Articulo}}<p></td>
-              <td>{{$item->PDF}}</td>    
+             
+              <td>{{$item->NombrePDF}}</td>
               <td><a href="/Noticia/{{$item->IdNoticias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar Noticia">
                 <i class="fa fa-fw fa-pencil"></i></a>
               <form action="{{route('noticia_delete', ['Noticia' => $item->IdNoticias])}}" class="d-inline form-eliminar" method="POST">

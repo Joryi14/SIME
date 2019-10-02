@@ -13,16 +13,22 @@ class NoticiaController extends Controller
      */
     public function index()
     {
-        $noticias = Noticia::orderBy('IdNoticias')->get();
+
+      $noticias = Noticia::orderBy('IdNoticias')->get();
+      
         return view('Noticia.index', compact('noticias'));
     }
     
 
-    public function index1()
+    public function index1(Request $request)
     {
-        $noticias = Noticia::orderBy('IdNoticias')->get();
+          $noticias = Noticia::orderBy('IdNoticias')->get();
+         
+      
+       
         return view('welcome', compact('noticias'));
     }
+  
 
     /**
      * Show the form for creating a new resource.
@@ -42,6 +48,7 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
+      $noticia = new Noticia();
           if($request->hasFile('Imagenes')){
             $file = $request->file('Imagenes');
             $ConIMA= file_get_contents($file);
@@ -58,7 +65,9 @@ class NoticiaController extends Controller
           
           if($request->hasFile('PDF')){
             $file = $request->file('PDF');
-            $ConPDF= file_get_contents($file);
+           $noticia->PDF = $request->PDF = base64_encode( file_get_contents($file));
+           $noticia->NombrePDF = $request->NombrePDF = time().$file->getClientOriginalName();
+      
   
           }
 
@@ -67,11 +76,11 @@ class NoticiaController extends Controller
         $noticia->Titulo = $request->Titulo;
         $noticia->IdAutor = $request->IdAutor;
       
-         $noticia->Imagenes = base64_encode($ConIMA); 
-      
+        $noticia->Imagenes = base64_encode($ConIMA); 
+        $noticia->NombrePDF = $request->NombrePDF;
         $noticia->Videos =base64_encode($ConVI);
         $noticia->Articulo = $request->Articulo;
-        $noticia->PDF = base64_encode($ConPDF);
+        $noticia->PDF = $request->PDF;
         $noticia ->save();  
         header("location: /Noticia");
 

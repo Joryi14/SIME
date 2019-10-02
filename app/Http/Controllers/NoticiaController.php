@@ -51,7 +51,8 @@ class NoticiaController extends Controller
       $noticia = new Noticia();
           if($request->hasFile('Imagenes')){
             $file = $request->file('Imagenes');
-            $ConIMA= file_get_contents($file);
+            $noticia->Imagenes = $request->Imagenes = base64_encode( file_get_contents($file));
+            //$ConIMA= file_get_contents($file);
            
         
           }
@@ -59,8 +60,8 @@ class NoticiaController extends Controller
           
           if($request->hasFile('Videos')){
             $file = $request->file('Videos');
-            $ConVI= file_get_contents($file);
-  
+           
+            $noticia->Videos = $request->Videos = base64_encode( file_get_contents($file));
           }
           
           if($request->hasFile('PDF')){
@@ -76,9 +77,9 @@ class NoticiaController extends Controller
         $noticia->Titulo = $request->Titulo;
         $noticia->IdAutor = $request->IdAutor;
       
-        $noticia->Imagenes = base64_encode($ConIMA); 
+        $noticia->Imagenes = $request->Imagenes; 
         $noticia->NombrePDF = $request->NombrePDF;
-        $noticia->Videos =base64_encode($ConVI);
+        $noticia->Videos = $request->Videos;
         $noticia->Articulo = $request->Articulo;
         $noticia->PDF = $request->PDF;
         $noticia ->save();  

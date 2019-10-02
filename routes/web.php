@@ -33,7 +33,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comuna
     Route::get('Retiro_PaquetesV/{Retiro_PaquetesV}/edit', 'Retiro_PaquetesVController@edit');
     Route::put('Retiro_PaquetesV/{Retiro_PaquetesV}','Retiro_PaquetesVController@update');
     Route::delete('Retiro_PaquetesV/{Retiro_PaquetesV}','Retiro_PaquetesVController@delete')->name('Retiro_PaquetesV_delete');
-    
+    Route::get('Retiro_PaquetesV/pdf', 'Retiro_PaquetesVController@generar')->name('Retiro_PaquetesV_reporte');
 });
 Route::group(['prefix' => '/'], function () {
     Route::get('Inventario', 'InventarioController@index')->name('inicio_inventario');
@@ -41,7 +41,10 @@ Route::group(['prefix' => '/'], function () {
     Route::post('Inventario/store','InventarioController@store');
     Route::get('Inventario/{Inventario}/edit', 'InventarioController@edit');
     Route::put('Inventario/{Inventario}','InventarioController@update');
+    Route::get('Inventario/{Inventario}/editSuministro', 'InventarioController@editSuministro');
+    Route::put('Suministro/{Inventario}','InventarioController@updateSuministro');
     Route::delete('Inventario/{Inventario}','InventarioController@delete')->name('inventario_delete');
+    Route::get('Inventario/pdf', 'InventarioController@generar')->name('inventario_reporte');
     
 });
 Route::group(['prefix' => '/'], function () {
@@ -157,4 +160,4 @@ Route::group(['prefix' => '/'], function () {
     Route::put('VoluntarioWeb/{VoluntarioWeb}','VoluntarioWebController@update');
     Route::delete('VoluntarioWeb/{VoluntarioWeb}','VoluntarioWebController@delete')->name('voluntarioweb_delete');
 
-});
+}); 

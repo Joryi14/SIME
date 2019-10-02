@@ -4,7 +4,7 @@
   @csrf
 <form>
 <div class= "form-group">
-  <h1>Crear Reporte de incidente</h1>
+  <h1>Crear reporte de incidente</h1>
   <div class="form-group ">
   <label>idEmergencias: <input type="text" name="idEmergencias" class= "form-control" > </label><br>
   <label>Suministros: <input type="text" name="Suministros" class= "form-control" > </label><br>

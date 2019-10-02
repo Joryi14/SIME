@@ -45,6 +45,36 @@ class InventarioController extends Controller
           '$request->Ropa')");
         header("location: /Inventario");
     }
+    public function editSuministro($id)
+    {
+        $inventario = Inventario::find($id);
+        return view('Inventario.Suministro', compact('inventario'));
+    }
+
+    public function updateSuministro(Request $request, $id)
+    { 
+        $t = $request->Suministros;
+        $tt = $request->suma; 
+        $total = $t+$tt;
+        $inventario = DB::update("call Update_Suministros('$id','$request->idEmergencias','$total')");
+        header("location: /Inventario");
+    }
+
+    public function generar()
+    {
+        $inventario = \DB::table('inventario')
+       ->select(['idInventario','idEmergencias',
+       'Suministros',
+       'Colchonetas',
+       'Cobijas',
+       'Ropa']) 
+        ->get();
+        $view = view ('Inventario.reporte', compact('inventario'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('inventario'.'.pdf');
+
+    }
 
     /**
      * Display the specified resource.

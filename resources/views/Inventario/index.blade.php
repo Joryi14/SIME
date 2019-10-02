@@ -69,10 +69,13 @@ $(function () {
 @section('Contenido')
 <div class="row">
   <div class="col-xs-12">
-        
+      <a href="{{route('inventario_reporte')}}" class="btn btn-block btn-primary btn-sm">
+          <i class="fa fa-fw fa-plus-circle"></i> Crear reporte de inventario
+      </a>
       <div class="box box-primary">
         <div class="box-header">
             <div class="box-tools pull-right">
+              
                 <a href="{{route('inventario_create')}}" class="btn btn-block btn-primary btn-sm">
                     <i class="fa fa-fw fa-plus-circle"></i> Crear inventario
                 </a>
@@ -104,6 +107,8 @@ $(function () {
               
               <td><a href="/Inventario/{{$item->idInventario}}/edit" class="btn-accion-tabla tooltipsC" title="Editar Inventario">
                 <i class="fa fa-fw fa-pencil"></i></a>
+                <a href="/Inventario/{{$item->idInventario}}/editSuministro" class="btn-accion-tabla tooltipsC" title="Editar Suministro de inventario Inventario">
+                  <i class="fa fa-fw fa-plus-circle"></i></a>
               <form id="form1" action="{{route('inventario_delete', ['Inventario' => $item->idInventario])}}" method="POST">
                 @csrf 
                 <input name="_method" type="hidden" value="DELETE">

@@ -69,15 +69,21 @@ $(function () {
 @section('Contenido')
 <div class="row">
     <div class="col-xs-12">
-        @include('Includes.mensaje-Succes')
+      @include('Includes.mensaje-Succes')
+      <div class="box-tools pull-rigth">
+          <a href="{{route('Retiro_PaquetesV_reporte')}}" class="btn btn-block btn-primary btn-sm">
+              <i class="fa fa-fw fa-plus-circle"></i> Crear Reporte de retiro de paquetes
+          </a>
+        </div>
       <div class="box box-primary">
+        
         <div class="box-header">
             <div class="box-tools pull-right">
                 <a href="{{route('Retiro_PaquetesV_create')}}" class="btn btn-block btn-primary btn-sm">
                     <i class="fa fa-fw fa-plus-circle"></i> Crear Retiro Paquetes
                 </a>
             </div>
-            
+           
           <h3 class="box-title">Retiro de Paquetes </h3>
         </div>
         <div class="box-body table-responsive" >
@@ -85,8 +91,10 @@ $(function () {
               <thead>
             <tr>
               <th>Id de RetiroPaquetes</th>
-              <th>Id de Chofer</th>
               <th>Id de AdministradorI</th>
+              <th>Nombre del chofer</th>
+              <th>Primer apellido del chofer</th>
+              <th>Segundo apellido del chofer</th>
               <th>Id de Voluntario</th>
               <th>Placa de Vehiculo</th>
               <th>Direccion A Entregar</th>
@@ -99,8 +107,10 @@ $(function () {
             @foreach ($retiroPV as $item)
               <tr>
               <td>{{$item->IdRetiroPaquetes}}</td>      
-              <td>{{$item->IdChofer}}</td>  
               <td>{{$item->IdAdministradorI}}</td>
+              <td>{{$item->NombreChofer}}</td>  
+              <td>{{$item->Apellido1C}}</td>  
+              <td>{{$item->Apellido2C}}</td>  
               <td>{{$item->IdVoluntario}}</td>
               <td>{{$item->PlacaVehiculo}}</td>
               <td>{{$item->DireccionAEntregar}}</td>

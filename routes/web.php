@@ -74,6 +74,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], functi
     Route::get('Censo/{Censo}/edit', 'CensoController@edit');
     Route::put('Censo/{Censo}','CensoController@update');
     Route::delete('Censo/{id}','CensoController@delete')->name('censo_delete');
+    Route::get('Censo/{id}','CensoController@show')->name('Censo_show');
 });
 
 Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {

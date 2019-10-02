@@ -25,7 +25,7 @@ class ValidacionRetiroPaquetes extends FormRequest
     {
         return [
             //
-            'IdChofer'=> 'required',
+            
             'IdAdministradorI'=> 'required',
             'IdVoluntario'=> 'required',
             'PlacaVehiculo'=> 'required',
@@ -44,7 +44,6 @@ class ValidacionRetiroPaquetes extends FormRequest
         return [
             //
 
-            'IdChofer.required' =>'El id del chofer es requerido',
             'IdAdministradorI.required' =>'El id del administrador del inventario es requerido',
             'IdVoluntario.required' =>'El id del voluntario es requerido',
             'PlacaVehiculo.required' =>'La placa del vehiculo es requerida',

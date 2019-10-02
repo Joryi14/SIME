@@ -45,7 +45,7 @@
   // CSRF Token
   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
   $(document).ready(function(){
-    $( "#SelectU" ).select2({
+    $("#SelectU").select2({
       ajax: { 
         url: "{{route('Get_Users')}}",
         type: "post",
@@ -71,7 +71,7 @@
     // CSRF Token
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     $(document).ready(function(){
-      $( "#SelectR" ).select2({
+      $("#SelectR").select2({
         ajax: { 
           url: "{{route('Get_Roles')}}",
           type: "post",

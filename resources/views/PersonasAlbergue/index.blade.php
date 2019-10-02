@@ -1,0 +1,125 @@
+@extends("theme/$theme/layout")
+@section('styles')
+<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+@endsection
+@section('Script')
+<script type="text/javascript">
+  document.querySelector('#form1').addEventListener('submit', function(e) {
+  var form = this;
+  e.preventDefault(); // <--- prevent form from submitting
+  swal({
+      title: "Esta seguro de eliminar?",
+      text: "Una vez eliminado no se puede recuperar!",
+      icon: "warning",
+      buttons: [
+        'Cancelar!',
+        'Aceptar!'
+      ],
+      dangerMode: true,
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+        swal({
+          title: 'Exito!',
+          text: 'Se ha Eliminado el registro!',
+          icon: 'success'
+        }).then(function() {
+          form.submit(); // <--- submit form programmatically
+        });
+      } else {
+        swal("Cancelado","" ,"error");
+      }
+    })
+});
+</script>
+<script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
+<script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
+<script>
+$(function () {
+    $('#PersonaAlbergue_table').DataTable({
+      language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+      },
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
+@endsection
+@section('Contenido')
+<div class="row">
+    <div class="col-xs-12">
+        @include('Includes.mensaje-Succes')
+      <div class="box box-primary">
+        <div class="box-header">
+            <div class="box-tools pull-right">
+                <a href="{{route('personasAlbergue_create')}}" class="btn btn-block btn-primary btn-sm">
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear PersonasAlbergue
+                </a>
+            </div>
+            
+          <h3 class="box-title">PersonasAlbergue</h3>
+        </div>
+        <div class="box-body table-responsive" >
+          <table id="PersonaAlbergue_table" class="table table-bordered table-striped">
+              <thead>
+            <tr>
+              <th>idregistroA</th>
+              <th>idAlbergue</th>
+              <th>Cedula del Jefe de familia</th>
+              <th>LugarDeProcedencia</th>
+              <th>FechaDeIngreso</th>
+              <th>HoraDeIngreso</th>
+              <th>FechaDeSalida</th>
+              <th>HoraDeSalida</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+            @foreach ($persona as $item)
+              <tr>
+               <td>{{$item->idregistroA}}</td> 
+              <td>{{$item->idAlbergue}}</td>      
+              <td>{{$item->idJefe->Cedula}}</td>  
+              <td>{{$item->LugarDeProcedencia}}</td>
+              <td>{{$item->FechaDeIngreso}}</td>
+              <td>{{$item->HoraDeIngreso}}</td>
+              <td>{{$item->FechaDeSalida}}</td>
+              <td>{{$item->HoraDeSalida}}</td>
+              <td><a href="/PersonasAlbergue/{{$item->idregistroA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar PersonasAlbergue">
+                <i class="fa fa-fw fa-pencil"></i></a>
+              <form id="form1" action="{{route('personasAlbergue_delete', ['PersonasAlbergue' => $item->idregistroA])}}" method="POST">
+                @csrf 
+                <input name="_method" type="hidden" value="DELETE">
+                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar PersonasAlbergue" onclick="confirmarEnvio()">
+                    <i class="fa fa-fw fa-trash text-danger"></i>
+                </button>
+              </form>
+              </td>
+              </tr>
+            @endforeach
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection

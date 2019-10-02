@@ -1,42 +1,75 @@
 @extends("theme/$theme/layout")
 @section('styles')
 <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+<style>
+  .example-modal .modal {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    left: auto;
+    display: block;
+    z-index: 1;
+  }
+  .example-modal .modal {
+    background: transparent !important;
+  }
+</style>
 @endsection
 @section('Script')
 <script type="text/javascript">
   document.querySelector('#form1').addEventListener('submit', function(e) {
   var form = this;
   e.preventDefault(); // <--- prevent form from submitting
-  Swal.fire({
+  swal({
       title: "Esta seguro de eliminar?",
       text: "Una vez eliminado no se puede recuperar!",
-      type: "warning",
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-    cancelButtonText: 'No, cancel!',
-     reverseButtons: true
-    }).then((result)=> {
-      if (result.value) {
-        swalWithBootstrapButtons.fire('Deleted!',
-      'Your file has been deleted.',
-      'success')}
-        else if (
-      result.dismiss === Swal.DismissReason.cancel) 
-      {
-    swalWithBootstrapButtons.fire(
-      'Cancelled',
-      'Your imaginary file is safe :)',
-      'error'
-    )
-  }
+      icon: "warning",
+      buttons: [
+        'Cancelar!',
+        'Aceptar!'
+      ],
+      dangerMode: true,
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+        swal({
+          title: 'Exito!',
+          text: 'Se ha Eliminado el registro!',
+          icon: 'success'
+        }).then(function() {
+          form.submit(); // <--- submit form programmatically
+        });
+      } else {
+        swal("Cancelado","" ,"error");
+      }
+    })
 });
 </script>
-<script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 <script>
 $(function () {
     $('#Censo_table').DataTable({
+      language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+      },
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
@@ -60,16 +93,12 @@ $(function () {
             </div>
           <h3 class="box-title">Censos</h3>
         </div>
-         <div class="box-body" >
+         <div class="box-body table-responsive" >
           <table id="Censo_table" class="table table-bordered table-striped">
             <thead>
             <tr>
               <th>ID Censo</th>
               <th>Cedula del Jefe de familia</th>
-              <th>Refrigerador</th>
-              <th>Cocina</th>
-              <th>Colchon</th>
-              <th>Cama</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -77,32 +106,8 @@ $(function () {
                   <tr>
                   <td>{{$item->IdCenso}}</td>    
                   <td>{{$item->jefeFamilia->Cedula}}</td>
-                  <td>@if ($item->Refrigerador == 1)
-                       Si
-                  @elseif ($item->Refrigerador == 0) 
-                       No
-                  @endif</td>
-                  <td>
-                      @if ($item->Cocina == 1)
-                      Si
-                 @elseif ($item->Cocina == 0) 
-                      No
-                 @endif
-                  </td>
-                  <td>
-                      @if ($item->Colchon == 1)
-                      Si
-                 @elseif ($item->Colchon == 0) 
-                      No
-                 @endif</td>
-                  <td>
-                      @if ($item->Cama == 1)
-                      Si
-                 @elseif ($item->Cama == 0) 
-                      No
-                 @endif</td>
                   <td><a href="/Censo/{{$item->IdCenso}}/edit" class="btn-accion-tabla tooltipsC" title="Editar censo">
-                    <i class="fa fa-fw fa-pencil"></i></a>
+                    <i class="fa fa-fw fa-pencil text-success"></i></a>
                   <form id="form1" action="{{route('censo_delete', ['Censo' => $item->IdCenso])}}" method="POST">
                     @csrf 
                     <input name="_method" type="hidden" value="DELETE">
@@ -110,11 +115,75 @@ $(function () {
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form>
+                  <button class="btn-accion-tabla tooltipsC" title="Mostrar Censo" data-toggle="modal" data-target="#modal-default">
+                    <i class="fa fa-fw fa-file-text-o text-info"></i>
+                  </button>
                   </td>
                   </tr>
                 @endforeach
           </table>  
       </div>
+    </div>
+    <div class="modal modal-default fade" id="modal-default">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><b>Información de censo</b></h4>
+          </div>
+          <div class="modal-body">
+            @foreach ($censos as $item)
+            <div class="form-group">
+              <label class="col-md-4 "><b>Refrigerador:</b></label>
+              <div class="col-md-4">
+                @if ($item->Refrigerador == 1)
+                Si tiene
+           @elseif ($item->Refrigerador == 0) 
+                No tiene 
+           @endif
+              </div>
+           </div><br>
+           <div class="form-group ">
+            <label class="col-md-4"><b>Cocina:</b></label>
+            <div class="col-md-4">
+              @if ($item->Cocina == 1)
+                Si tiene
+           @elseif ($item->Cocina == 0) 
+                No tiene 
+           @endif
+            </div>
+         </div><br>
+         <div class="form-group">
+          <label  class="col-md-4"><b>Colchon:</b></label>
+          <div class="col-md-4">
+            @if ($item->Colchon == 1)
+            Si tiene 
+       @elseif ($item->Colchon == 0) 
+            No tiene
+       @endif
+          </div>
+       </div><br>
+       <div class="form-group">
+        <label class="col-md-4"><b>Cama:</b></label>
+        <div class="col-md-4">
+          @if ($item->Cama == 1)
+                Si tiene
+           @elseif ($item->Cama == 0) 
+                No tiene
+           @endif
+        </div>
+     </div>    
+          @endforeach
+          <br><br>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline bg-red pull-left" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+        
+      </div>
+      
     </div>
   </div>
 </div>

@@ -32,12 +32,31 @@
 });
 </script>
 <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
-<script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 <script>
 $(function () {
     $('#Jefe_table').DataTable({
+      language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+      },
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
@@ -62,9 +81,8 @@ $(function () {
             
           <h3 class="box-title">Jefes de familia</h3>
         </div>
-        <!-- /.box-header -->
         <div class="box-body table-responsive">
-          <table id="Jefe_table" class="table table-bordered table-striped ">
+          <table id="Jefe_table" class="table table-bordered table-striped">
             <thead>
             <tr>
               <th>ID Jefe de familia</th>

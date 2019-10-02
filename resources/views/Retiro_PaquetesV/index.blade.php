@@ -19,24 +19,11 @@
 @section('Script')
 <script type="text/javascript">
  $(document).on('click', '.show-modal', function() {
-
-          if($(this).data('ref')== 1)
-           $('#refr').text("Sí tiene");
-           else
-           $('#refr').text("No tiene");
-           if($(this).data('coc')== 1)
-           $('#coc').text("Sí tiene");
-           else
-           $('#coc').text("No tiene");
-           if($(this).data('col')== 1)
-           $('#col').text("Sí tiene");
-           else
-           $('#col').text("No tiene");
-           if($(this).data('cam')== 1)
-           $('#cam').text("Sí tiene");
-           else
-           $('#cam').text("No tiene");
-
+           $('#nc').text($(this).data('nc'));
+           $('#pac').text($(this).data('pac'));
+           $('#sac').text($(this).data('sac'));
+           $('#pv').text($(this).data('pv'));
+           $('#de').text($(this).data('de'));
         });
 </script>
 <script type="text/javascript">

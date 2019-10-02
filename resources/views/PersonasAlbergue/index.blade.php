@@ -1,8 +1,30 @@
 @extends("theme/$theme/layout")
 @section('styles')
 <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+<style>
+  .example-modal .modal {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    left: auto;
+    display: block;
+    z-index: 1;
+  }
+  .example-modal .modal {
+    background: transparent !important;
+  }
+</style>
 @endsection
 @section('Script')
+<script type="text/javascript">
+  $(document).on('click', '.show-modal', function() {
+            $('#fi').text($(this).data('fi'));
+            $('#hi').text($(this).data('hi'));
+            $('#fs').text($(this).data('fs'));
+            $('#hs').text($(this).data('hs'));
+         });
+ </script>
 <script type="text/javascript">
   document.querySelector('#form1').addEventListener('submit', function(e) {
   var form = this;
@@ -88,10 +110,6 @@ $(function () {
               <th>Id del albergue</th>
               <th>Cédula del jefe de familia</th>
               <th>Lugar de procedencia</th>
-              <th>Fecha de ingreso</th>
-              <th>Hora de ingreso</th>
-              <th>Fecha de salida</th>
-              <th>Hora de salida</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -101,10 +119,6 @@ $(function () {
               <td>{{$item->idAlbergue}}</td>      
               <td>{{$item->idJefe->Cedula}}</td>  
               <td>{{$item->LugarDeProcedencia}}</td>
-              <td>{{$item->FechaDeIngreso}}</td>
-              <td>{{$item->HoraDeIngreso}}</td>
-              <td>{{$item->FechaDeSalida}}</td>
-              <td>{{$item->HoraDeSalida}}</td>
               <td><a href="/PersonasAlbergue/{{$item->idregistroA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar PersonasAlbergue">
                 <i class="fa fa-fw fa-pencil"></i></a>
               <form id="form1" action="{{route('personasAlbergue_delete', ['PersonasAlbergue' => $item->idregistroA])}}" method="POST">
@@ -114,12 +128,55 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
+              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar retiro de paquetes" data-toggle="modal" data-target="#Detalle"  data-fi="{{$item->FechaDeIngreso}}" data-hi="{{$item->HoraDeIngreso}}" data-fs="{{$item->FechaDeSalida}}" data-hs="{{$item->HoraDeSalida}}" ><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>
             @endforeach
-          </table>
+      </table>  
+  </div>
+</div>
+<div class="modal modal-default fade" id="Detalle">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><b>Información de retiro de paquetes</b></h4>
+      </div>
+      <div class="modal-body">
+       <div class="form-group ">
+        <label class="col-md-4"><b>Fecha de ingreso:</b></label>
+        <div class="col-md-4">
+            <span id="fi"></span>
         </div>
+      </div><br>
+     <div class="form-group">
+      <label  class="col-md-4"><b>Hora de ingreso:</b></label>
+      <div class="col-md-4">
+          <span id="hi"></span>
+      </div>
+  </div><br>
+   <div class="form-group">
+    <label class="col-md-4"><b>Fecha de salida:</b></label>
+    <div class="col-md-4">
+        <span id="fs"></span>
+    </div>
+  </div>    
+      <br><br>
+      <div class="form-group">
+        <label class="col-md-4"><b>Hora de salida:</b></label>
+        <div class="col-md-4">
+            <span id="hs"></span>
+        </div>
+      </div>    
+          <br><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline bg-red pull-left" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
+</div>
+</div>
+</div>
 @endsection

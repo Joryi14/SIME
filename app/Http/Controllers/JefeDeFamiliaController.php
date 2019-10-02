@@ -54,7 +54,8 @@ class JefeDeFamiliaController extends Controller
      */
     public function show($id)
     {
-        //
+        $Je = JefeDeFamilia::find($id);
+      return response()->json(array(je)); 
     }
 
     /**

@@ -37,11 +37,12 @@
                     </div>
              </div>
              <div class="form-group">
-                    <label for="Foto" class="col-sm-2 control-label">Foto: </label>
-                    <div class="col-sm-10">
-                        <input type="text" name="Foto" class= "form-control" >
-                    </div>
-             </div>
+                <label for="Foto" class="col-sm-2 control-label">Foto: </label>
+                <div class="col-sm-2">
+                    <input type="file" name="Foto" accept="image/*"  >  
+                </div>
+              </div>
+
       </div>
        <!-- /.box-body -->
        <div class="box-footer">

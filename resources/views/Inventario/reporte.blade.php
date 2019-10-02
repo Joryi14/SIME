@@ -20,6 +20,7 @@
             }
  </style>
   <body>
+        <CENTER><h1 class="box-title"> Inventario </h1></CENTER> <p>{{$today}}</p>
    <table>
                     <tr>
                     <th>IdInventario</th>

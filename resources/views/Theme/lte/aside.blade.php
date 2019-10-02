@@ -39,9 +39,11 @@
           <li><a href="{{route('inicio_EntregaDonacionesA')}}"><i class="fa  fa-user-plus"></i><span>Entrega Albergue</span></a></li>
           <li><a href="{{route('inicio_personasAlbergue')}}"><i class="fa  fa-child"></i><span>Personas en Albergue</span></a></li>
           <li><a href="{{route('inicio_Retiro_PaquetesV')}}"><i class="fa   fa-cubes"></i><span>Retiro de Paquetes</span></a></li>
-          @endrole
-          <li><a href="{{route('inicio_noticia')}}"><i class="fa fa-newspaper-o"></i> <span>Noticias</span></a></li>
           <li><a href="{{route('inicio_voluntarioweb')}}"><i class="fa fa-users"></i> <span>Inscripción Voluntarios</span></a></li>
+          @endrole
+          @role('Admin|Autor')
+          <li><a href="{{route('inicio_noticia')}}"><i class="fa fa-newspaper-o"></i> <span>Noticias</span></a></li>
+          @endrole
         </ul>
         </section>
       </aside>

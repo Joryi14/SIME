@@ -19,8 +19,15 @@
                 background: #dedede;
             }
         </style>
+        <script type="text/php">
+            if (isset($pdf))
+            {
+            $font = Font_Metrics::get_font("Arial", "bold");
+            $pdf->page_text(765, 550, "Pagina {PAGE_NUM} de {PAGE_COUNT}", $font, 9, array(0, 0, 0));
+            }
+            </script>
 <body>
-    <CENTER><h1 class="box-title">Retiro de Paquetes </h1></CENTER> 
+    <CENTER><h1 class="box-title">Retiro de Paquetes </h1></CENTER> <p>{{$today}}</p>
     
     <table>
          

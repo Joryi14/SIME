@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Retiro_PaquetesV;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class Retiro_PaquetesVController extends Controller
 {
@@ -49,7 +50,8 @@ class Retiro_PaquetesVController extends Controller
         'IdVoluntario','PlacaVehiculo','DireccionAEntregar','SuministrosGobierno','SuministrosComision',
         'IdInventario']) 
         ->get();
-        $view = view ('Retiro_PaquetesV.reporte', compact('Retiro'))->render();
+        $today = Carbon::now()->format('d/m/Y');
+        $view = view ('Retiro_PaquetesV.reporte', compact('Retiro', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->setPaper("A4", "landscape");
         $pdf->loadHTML($view);

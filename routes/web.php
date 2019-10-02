@@ -133,7 +133,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comuna
 
 Route::group(['prefix' => '/'], function () {
 Route::put('user/{user}','user@update')->name('user_edit');
-Route::get('user/{user}','user@show')->name('user_show');
+Route::get('user/show','user@show')->name('user_show');
 });
 Route::group(['prefix' => '/','middleware' => ['role:Admin']], function () {
     Route::get('user', 'user@index')->name('inicio_usuario');

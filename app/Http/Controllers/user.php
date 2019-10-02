@@ -33,10 +33,9 @@ class user extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-     $user = AppUser::find($id);
-     return view('Login.show',compact('user'));
+     return view('Login.show');
     }
 
     /**

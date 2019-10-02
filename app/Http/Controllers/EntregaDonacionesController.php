@@ -39,18 +39,17 @@ class EntregaDonacionesController extends Controller
      */
     public function store(ValidacionEntregaDonaciones $request)
     {
-        if($request->hasFile('Imagenes')){
-            $file = $request->file('Imagenes');
-            $ConIMA= file_get_contents($file);
+        if($request->hasFile('Foto')){
+            $file = $request->file('Foto');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/Foto/',$name);
           }
-
-          $Foto = base64_encode($ConIMA); 
-
-        $entregadonaciones = DB::select("call Insert_EntregaDonaciones(
-        '$request->IdUsuarioRol',
-        '$request->IdJefe',
-        '$request->IdRetiroPaquetes',
-        '$Foto')");  
+          $entregadonaciones = new EntregaDonaciones();
+          $entregadonaciones->IdUsuarioRol = $request->IdUsuarioRol;
+          $entregadonaciones->IdJef = $request->IdJef;
+          $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
+          $entregadonaciones->Foto = $name;
+          $entregadonaciones->save(); 
         header("location:EntregaDonaciones /");
     }
 
@@ -86,11 +85,18 @@ class EntregaDonacionesController extends Controller
      */
     public function update(ValidacionEntregaDonaciones $request, $id)
     {
+        if($request->hasFile('Imagenes')){
+            $file = $request->file('Imagenes');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/img/',$name);
+            $request->Foto = $name;
+  
+          }
         $entregadonaciones = DB::update("call Update_EntregaDonaciones('$id',
         '$request->IdUsuarioRol',
         '$request->IdJefe',
         '$request->IdRetiroPaquetes',
-        '$request->Foto')");
+        '$name')");
         header("location: /EntregaDonaciones");
     
     }

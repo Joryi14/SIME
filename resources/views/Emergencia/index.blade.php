@@ -86,11 +86,11 @@ $(function () {
               <thead>
               
             <tr>
-              <th>Id de la Emergencia</th>
-              <th>Nombre de la Emergencias</th>
-              <th>Categoria</th>
-              <th>Tipo De Emergencia</th>
-              <th>Descripcion</th>
+              <th>Id de la emergencia</th>
+              <th>Nombre de las emergencias</th>
+              <th>Categoría</th>
+              <th>Tipo de emergencia</th>
+              <th>Descripción</th>
               <th>Longitud</th>
               <th>Latitud</th>
               <th>Acciones</th>

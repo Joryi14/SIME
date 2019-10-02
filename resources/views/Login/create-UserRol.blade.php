@@ -11,7 +11,7 @@
                       </a>
                       </div>
                     </div>
-                <h3 class="box-title">Crear UserRol</h3>
+                <h3 class="box-title">Crear usuario rol</h3>
               </div>
               <form class="form-horizontal" method="POST" action="/UserRol/store">
                 @csrf
@@ -20,14 +20,14 @@
                     <label for="name" class="col-sm-2 control-label"> Usuario:</label>
                     <div class="col-sm-9">
                         <select id='SelectU' name="model_id" style='width: 25%;'>
-                        <option value='0'>Seleccionar un Usuario</option></select>
+                        <option value='0'>Seleccionar un usuario</option></select>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="guard_name" class="col-sm-2 control-label">Id de Rol: </label>
+                    <label for="guard_name" class="col-sm-2 control-label">Id de rol: </label>
                     <div class="col-sm-9">
                         <select id='SelectR' name="role_id" style='width: 25%;'>
-                        <option value='0'>Seleccionar un Rol</option></select>
+                        <option value='0'>Seleccionar un rol</option></select>
                     </div>
                   </div>
                 </div>

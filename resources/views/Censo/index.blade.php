@@ -117,8 +117,8 @@ $(function () {
           <table id="Censo_table" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th>ID Censo</th>
-              <th>Cedula del Jefe de familia</th>
+              <th>Id del censo</th>
+              <th>Cédula del jefe de familia</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -165,7 +165,7 @@ $(function () {
             </div>
           </div><br>
          <div class="form-group">
-          <label  class="col-md-4"><b>Colchon:</b></label>
+          <label  class="col-md-4"><b>Colchón:</b></label>
           <div class="col-md-4">
               <span id="col"></span>
           </div>

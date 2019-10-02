@@ -75,7 +75,7 @@ $(function () {
         <div class="box-header">
             <div class="box-tools pull-right">
                 <a href="{{route('jefe_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear Jefe de familia
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear jefe de familia
                 </a>
             </div>
             
@@ -85,16 +85,15 @@ $(function () {
           <table id="Jefe_table" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th>ID Jefe de familia</th>
-              <th>Total
-                Personas</th>
+              <th>ID jefe de familia</th>
+              <th>Total de personas</th>
               <th>Nombre</th>
-              <th>Apellido1</th>
-              <th>Apellido2</th>
-              <th>Cedula</th>
+              <th>Primer apellido</th>
+              <th>Segundo apellido</th>
+              <th>Cédula</th>
               <th>Edad</th>
               <th>Sexo</th>
-              <th>Telefono</th>
+              <th>Teléfono</th>
               <th>Persona
                  Con 
                  Discapacidad</th>

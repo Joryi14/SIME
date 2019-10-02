@@ -44,12 +44,12 @@
           <table class="table table-hover">
             <tr>
               <th>ID Usuario</th>
-              <th>email</th>
+              <th>Email</th>
               <th>Nombre</th>
-              <th>Apellido1</th>
-              <th>Apellido2</th>
-              <th>Cedula</th>
-              <th>patologia</th>
+              <th>Primer apellido</th>
+              <th>Segundo apellido</th>
+              <th>Cédula</th>
+              <th>Patologias</th>
               <th>Nacionalidad</th>
               <th>Comunidad</th>
             </tr>

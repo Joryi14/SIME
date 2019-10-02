@@ -85,13 +85,13 @@ $(function () {
             <tr>
               <th>Id</th>
               <th>Nombre</th>
-              <th>1er Apellido</th>
-              <th>2do Apellido</th>
-              <th>Cedula</th>
-              <th>Telefono</th>
+              <th>Primer apellido</th>
+              <th>Segundo apellido</th>
+              <th>Cédula</th>
+              <th>Teléfono</th>
               <th>Nacionalidad</th>
-              <th>Ocupacion</th>
-              <th>Patologia</th>
+              <th>Ocupación</th>
+              <th>Patología</th>
               <th>Acciones</th>
             </tr>
               </thead>

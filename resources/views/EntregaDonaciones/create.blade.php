@@ -13,7 +13,7 @@
                       </a>
                       </div>
           </div>
-      <h3 class="box-title">Crear Entrega</h3>
+      <h3 class="box-title">Crear entrega de donaciones</h3>
       </div>
       <form class="form-horizontal" method="POST" action="/EntregaDonaciones/store">
         @csrf

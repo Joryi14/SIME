@@ -85,11 +85,14 @@ $(function () {
               <thead>
             <tr>
               <th>ID de familia</th>
-              <th>Cedula del Jefe de familia</th>
+
+              <th>Cedula del jefe de familia</th>
+              
               <th>Nombre</th>
-              <th>Apellido1</th>
-              <th>Apellido2</th>
-              <th>Cedula</th>
+              
+              <th>Primer apellido</th>
+              <th>Segundo apellido</th>
+              <th>Cédula</th>
               <th>Parentesco</th>
               <th>Edad</th>
               <th>Sexo</th>

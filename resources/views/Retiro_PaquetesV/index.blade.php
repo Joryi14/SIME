@@ -90,17 +90,17 @@ $(function () {
           <table id="Retiro_PaquetesV_table" class="table table-bordered table-striped">
               <thead>
             <tr>
-              <th>Id de RetiroPaquetes</th>
-              <th>Id de AdministradorI</th>
+              <th>Id del retiro paquetes</th>
+              <th>Id del administradorI</th>
               <th>Nombre del chofer</th>
               <th>Primer apellido del chofer</th>
               <th>Segundo apellido del chofer</th>
-              <th>Id de Voluntario</th>
-              <th>Placa de Vehiculo</th>
-              <th>Direccion A Entregar</th>
-              <th>Suministros Gobierno </th>
-              <th>Suministros Comision</th>
-              <th>Id de Inventario</th>
+              <th>Id del voluntario</th>
+              <th>Placa de vehículo</th>
+              <th>Dirección a entregar</th>
+              <th>Suministros del gobierno </th>
+              <th>Suministros de la comisión</th>
+              <th>Id del inventario</th>
               <th>Acciones</th>
             </tr>
           </thead>

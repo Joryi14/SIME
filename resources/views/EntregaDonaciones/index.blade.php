@@ -84,10 +84,10 @@ $(function () {
             <thead>
             <tr>
 
-              <th>Id Entrega</th>
-              <th>Id UsuarioRol</th>
-              <th>Id Jefe de familia</th>
-              <th>Id Retiro de Paquetes</th>
+              <th>Id de la entrega</th>
+              <th>Id del UsuarioRol</th>
+              <th>Id jefe de familia</th>
+              <th>Id retiro de paquetes</th>
               <th>Foto</th>  
               <th>Acciones</th>
 

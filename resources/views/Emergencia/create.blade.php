@@ -18,7 +18,7 @@
   @csrf
   <div class="box-body">
       <div class="form-group">
-        <label for="NombreEmergencias" class="col-sm-2 control-label">Nombre de la Emergencia: </label>
+        <label for="NombreEmergencias" class="col-sm-2 control-label">Nombre de la emergencia: </label>
         <div class="col-sm-8">
             <input type="text" name="NombreEmergencias" class= "form-control" >
         </div>

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\ValidacionEntregaDonacionesAlbergue;
 use Illuminate\Support\Facades\DB;
 use App\Models\EntregaDonacionesAlbergue;
 use Illuminate\Http\Request;
@@ -34,7 +36,7 @@ class EntregaDonacionesAlbergueController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionEntregaDonacionesAlbergue $request)
     {
         $entregadonacionesA = DB::select("call Insert_EntregaDonacionesAlbergue('$request->IdJefeFa')");  
         header("location:EntregaDonacionesAlbergue");
@@ -70,7 +72,7 @@ class EntregaDonacionesAlbergueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionEntregaDonacionesAlbergue $request, $id)
     {
         $entregadonacionesA = DB::update("call Update_EntregaDonacionesAlbergue('$id','$request->IdJefeFa')");
         header("location: /EntregaDonacionesAlbergue");

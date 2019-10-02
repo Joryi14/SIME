@@ -9,7 +9,7 @@
       @include('Includes.mensaje-Succes')
       <div class="box box-info">
         <div class="box-header with-border">
-          <h3 class="box-title">Crear Familia</h3>
+          <h3 class="box-title">Crear familiar</h3>
           <div class="box-tools pull-right">
               <div class="col-sm-12">
               <a href="{{route('inicio_familia')}}" class="btn btn-block btn-info ">
@@ -22,7 +22,7 @@
           @csrf
           <div class="box-body">
             <div class="form-group">
-              <label for="IdJefef" class="col-sm-2 control-label">IdJefeF: </label>
+              <label for="IdJefef" class="col-sm-2 control-label">Id del jefe de familia: </label>
               <div class="col-sm-10">
                   <input type="text" name="IdJefeF" class= "form-control" >
               </div>
@@ -34,19 +34,19 @@
               </div>
             </div>
             <div class="form-group">
-                <label for="Apellido1" class="col-sm-2 control-label">Apellido1: </label>
+                <label for="Apellido1" class="col-sm-2 control-label">Primer apellido: </label>
                 <div class="col-sm-10">
                     <input type="text" name="Apellido1" class= "form-control">
                 </div>
               </div>
               <div class="form-group">
-                  <label for="Apellido2" class="col-sm-2 control-label">Apellido2: </label>
+                  <label for="Apellido2" class="col-sm-2 control-label">Segundo apellido: </label>
                   <div class="col-sm-10">
                       <input type="text" name="Apellido2" class= "form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                    <label for="Cedula" class="col-sm-2 control-label">Cedula: </label>
+                    <label for="Cedula" class="col-sm-2 control-label">Cédula: </label>
                     <div class="col-sm-10">
                         <input type="text" name="Cedula" class= "form-control">
                     </div>

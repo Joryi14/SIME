@@ -90,10 +90,10 @@ $(function () {
               <th>Nombre del albergue</th>
               <th>Distrito</th>
               <th>Comunidad</th>
-              <th>Tipo de la instalacion</th>
+              <th>Tipo de instalación</th>
               <th>Capacidad del lugar</th>
-              <th>Cedula del responsable</th>
-              <th>Telefono</th>
+              <th>Cédula del responsable</th>
+              <th>Teléfono</th>
               <th>Duchas</th>
               <th>Inodoros</th>
               <th>Espacios de cocina</th>

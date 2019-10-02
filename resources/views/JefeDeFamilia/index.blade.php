@@ -1,8 +1,42 @@
 @extends("theme/$theme/layout")
 @section('styles')
-<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}"> 
+<style>
+  .example-modal .modal {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    left: auto;
+    display: block;
+    z-index: 1;
+  }
+  .example-modal .modal {
+    background: transparent !important;
+  }
+</style>
 @endsection
 @section('Script')
+<script type="text/javascript">
+  $(document).on('click', '.show-modal', function() {
+            if($(this).data('pd')== 1)
+            $('#pd').text("Si");
+            else
+            $('#pd').text("No");
+            if($(this).data('mg')== 1)
+            $('#mg').text("Sí");
+            else
+            $('#mg').text("No");
+            if($(this).data('pi')== 1)
+            $('#pi').text("Sí");
+            else
+            $('#pi').text("No");
+            if($(this).data('pm')== 1)
+            $('#pm').text("Sí");
+            else
+            $('#pm').text("No");
+         });
+ </script>
 <script type="text/javascript">
   document.querySelector('#form2').addEventListener('submit', function(e) {
   var form = this;
@@ -31,7 +65,6 @@
     })
 });
 </script>
-<script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 <script>
@@ -94,12 +127,6 @@ $(function () {
               <th>Edad</th>
               <th>Sexo</th>
               <th>Teléfono</th>
-              <th>Persona
-                 Con 
-                 Discapacidad</th>
-              <th>Mujer Gestante</th>
-              <th>Persona Indigena</th>
-              <th>Persona Migrante</th>
               <th>Patologia</th>
               <th>Acciones</th>
             </tr>
@@ -115,10 +142,6 @@ $(function () {
               <td>{{$item->Edad}}</td>
               <td>{{$item->sexo}}</td>    
               <td>{{$item->Telefono}}</td>
-              <td>{{$item->PcD}}</td>
-              <td>{{$item->MG}}</td>
-              <td>{{$item->PI}}</td>
-              <td>{{$item->PM}}</td>
               <td>{{$item->Patologia}}</td>
               <td><a href="/JefeDeFamilia/{{$item->IdJefe}}/edit" class="btn-accion-tabla tooltipsC" title="Editar jefe de familia">
                 <i class="fa fa-fw fa-pencil"></i></a>
@@ -128,13 +151,56 @@ $(function () {
                     <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Jefe" onclick="confirmarEnvio()">
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
-                  </form>
-              </td>
-              </tr>
-            @endforeach
-          </table>
+                  </form> 
+                  <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar jefe de familia" data-toggle="modal" data-target="#Detalle"  data-pd="{{$item->PcD}}" data-mg="{{$item->MG}}" data-pi="{{$item->PI}}" data-pm="{{$item->PM}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
+                  </td>
+                  </tr>
+                @endforeach
+          </table>  
+      </div>
+    </div>
+    <div class="modal modal-default fade" id="Detalle">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><b>Información de jefe de familia</b></h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="col-md-4 "><b>Persona con discapacidad:</b></label>
+              <div class="col-md-4">
+                  <span id="pd"></span>
+              </div>
+            </div>
+           <br>
+           <div class="form-group ">
+            <label class="col-md-4"><b>Mujer Gestante:</b></label>
+            <div class="col-md-4">
+                <span id="mg"></span>
+            </div>
+          </div><br>
+         <div class="form-group">
+          <label  class="col-md-4"><b>Persona Indigena:</b></label>
+          <div class="col-md-4">
+              <span id="pi"></span>
+          </div>
+      </div><br>
+       <div class="form-group">
+        <label class="col-md-4"><b>Persona Migrante:</b></label>
+        <div class="col-md-4">
+            <span id="pm"></span>
+        </div>
+      </div>    
+          <br><br>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline bg-red pull-left" data-dismiss="modal">Cerrar</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 @endsection

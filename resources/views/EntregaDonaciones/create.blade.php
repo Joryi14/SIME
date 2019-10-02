@@ -38,9 +38,9 @@
              </div>
              <div class="form-group">
                 <label for="Foto" class="col-sm-2 control-label">Foto: </label>
-                <div class="col-sm-2">
+                <button type="button" class="btn fa fa-plus bg-yellow">
                     <input type="file" name="Foto" accept="image/*"  >  
-                </div>
+                  </button>
               </div>
 
       </div>

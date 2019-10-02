@@ -16,7 +16,8 @@ class JefeDeFamiliaController extends Controller
     public function index()
     {
         $JefeF = JefeDeFamilia::orderBy('IdJefe')->get();
-        return view('JefeDeFamilia.index', compact('JefeF'));
+        $je = NULL;
+        return view('JefeDeFamilia.index', compact('JefeF','je'));
     }
 
     /**

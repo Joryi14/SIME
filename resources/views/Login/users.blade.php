@@ -1,7 +1,6 @@
 @extends("theme/$theme/layout")
 @section('Script')
 <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
-
 <script type="text/javascript">
   $(document).ready(function(){$(".form2").submit(function( event ) {
       event.preventDefault();
@@ -102,14 +101,13 @@
             <table class="table table-hover" >
               <tr>
                 <th>ID Rol</th>
-                <th>name</th>
-                <th>Guard_Name</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
               </tr>
               @foreach ($rols as $object)
                 <tr>
                 <td>{{$object->id}}</td>    
                 <td>{{$object->name}}</td>
-                <td>{{$object->guard_name}}</td>
                 <td>
                 <form class="form2" action="{{route('rol_delete', ['roles' => $object->id])}}" method="POST">
                     @csrf @method('delete')
@@ -125,7 +123,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-sm-12">
           <div class="box box-warning box-solid">
             <div class="box-header">
@@ -143,12 +141,11 @@
                   </div>
                 </div>
             </div>
-            <div class="box-body table-responsive no-padding">
+             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
                   <th>ID Permiso</th>
-                  <th>nombre</th>
-                  <th>Guard_Name</th>
+                  <th>Nombre</th>
                 </tr>
                 @foreach ($permissions as $permiso)
                   <tr>
@@ -167,11 +164,11 @@
                   </tr>
                 @endforeach
               </table>
-            </div>
+            </div> 
           </div>
         </div>
-      </div>
-      <div class="row">
+      </div> --}}
+      {{-- <div class="row">
         <div class="col-sm-12">
           <div class="box box-success box-solid">
             <div class="box-header with-borders">
@@ -214,7 +211,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
       <div class="row">
         <div class="col-sm-12">
           <div class="box box-danger box-solid">
@@ -237,13 +234,12 @@
               <table class="table table-hover">
                 <tr>
                   <th>ID Usuario</th>
-                  <th>Model_Type</th>
                   <th>ID Rol</th>
+                  <th>Acciones</th>
                 </tr>
                 @foreach ($UserRol as $UserRol)
                   <tr>
-                  <td>{{$UserRol->model_id}}</td> 
-                  <td>{{$UserRol->model_type}}</td>  
+                  <td>{{$UserRol->model_id}}</td>   
                   <td>{{$UserRol->role_id}}</td>
                   <td>
                   <form id="form5" action="{{route('UserRol_delete', ['UserRol' => $UserRol->role_id])}}" method="POST">

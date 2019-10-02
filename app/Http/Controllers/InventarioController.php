@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class InventarioController extends Controller
 {
@@ -69,7 +70,8 @@ class InventarioController extends Controller
        'Cobijas',
        'Ropa']) 
         ->get();
-        $view = view ('Inventario.reporte', compact('inventario'))->render();
+        $today = Carbon::now()->format('d/m/Y');
+        $view = view ('Inventario.reporte', compact('inventario', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('inventario'.'.pdf');

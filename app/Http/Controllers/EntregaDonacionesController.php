@@ -41,7 +41,7 @@ class EntregaDonacionesController extends Controller
     {    $entregadonaciones = new EntregaDonaciones();
         if($request->hasFile('Foto')){
             $file = $request->file('Foto');
-            $entregadonaciones->Foto = $entregadonaciones->Foto = base64_encode(file_get_contents($file));
+            $entregadonaciones->Foto = $request->Foto = base64_encode(file_get_contents($file));
           }
 
           $entregadonaciones = new EntregaDonaciones();

@@ -15,7 +15,7 @@
           </div>
       <h3 class="box-title">Crear entrega de donaciones</h3>
       </div>
-      <form class="form-horizontal" method="POST" action="/EntregaDonaciones/store">
+      <form class="form-horizontal" method="POST" action="/EntregaDonaciones/store" enctype="multipart/form-data">
         @csrf
              <div class="box-body">
              <div class="form-group">

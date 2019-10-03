@@ -48,7 +48,7 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
-      $noticia = new Noticia();
+            $noticia = new Noticia();
           if($request->hasFile('Imagenes')){
             $file = $request->file('Imagenes');
             $noticia->Imagenes = $request->Imagenes = base64_encode( file_get_contents($file));
@@ -130,30 +130,31 @@ class NoticiaController extends Controller
         $noticia ->Titulo = $request->input('Titulo');
         $noticia ->IdAutor = $request->input('IdAutor');
         if($request->hasFile('Imagenes')){
-            $file = $request->file('Imagenes');
-            $name = time().$file->getClientOriginalName();
-            $file->move(public_path().'/img/',$name);
-            $noticia ->Imagenes = $name;
-  
-          }
+          $file = $request->file('Imagenes');
+          $noticia->Imagenes = $request->Imagenes = base64_encode( file_get_contents($file));
+          //$ConIMA= file_get_contents($file);
+         
+      
+        }
+        if($request->hasFile('Videos')){
+          $file = $request->file('Videos');
+         
+          $noticia->Videos = $request->Videos = base64_encode( file_get_contents($file));
+        }
+        
+        if($request->hasFile('PDF')){
+          $file = $request->file('PDF');
+         $noticia->PDF = $request->PDF = base64_encode( file_get_contents($file));
+         $noticia->NombrePDF = $request->NombrePDF = time().$file->getClientOriginalName();
+    
 
-          if($request->hasFile('Videos')){
-            $file = $request->file('Videos');
-            $nameV = time().$file->getClientOriginalName();
-            $file->move(public_path().'/Vide/',$nameV);
-            $noticia->Videos = $nameV;
-  
-          }
+        }
+        
+          
 
           $noticia ->Articulo = $request->input('Articulo');
 
-          if($request->hasFile('PDF')){
-            $file = $request->file('PDF');
-            $nameP = time().$file->getClientOriginalName();
-            $file->move(public_path().'/PD/',$nameP);
-            $noticia->PDF = $nameP;
-  
-          }
+         
        
         $noticia->save();
         header("location: /Noticia");

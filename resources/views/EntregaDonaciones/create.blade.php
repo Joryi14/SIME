@@ -13,7 +13,7 @@
                       </a>
                       </div>
           </div>
-      <h3 class="box-title">Crear Entrega</h3>
+      <h3 class="box-title">Crear entrega de donaciones</h3>
       </div>
       <form class="form-horizontal" method="POST" action="/EntregaDonaciones/store">
         @csrf
@@ -38,9 +38,9 @@
              </div>
              <div class="form-group">
                 <label for="Foto" class="col-sm-2 control-label">Foto: </label>
-                <div class="col-sm-2">
+                <button type="button" class="btn fa fa-plus bg-yellow">
                     <input type="file" name="Foto" accept="image/*"  >  
-                </div>
+                  </button>
               </div>
 
       </div>

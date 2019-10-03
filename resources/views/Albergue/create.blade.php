@@ -12,7 +12,7 @@
                   </a>
                   </div>
                 </div>
-            <h3 class="box-title">Crear Albergue</h3>
+            <h3 class="box-title">Crear albergue</h3>
           </div>
 <form class= "form-horizontal" method="POST" action="/Albergue/store">
   @csrf
@@ -43,7 +43,7 @@
 
 
           <div class="form-group">
-              <label for="TipoDeInstalacion" class="col-sm-2 control-label">Tipo de instalacion: </label>
+              <label for="TipoDeInstalacion" class="col-sm-2 control-label">Tipo de instalación: </label>
     
               <div class="col-sm-8">
                   <input type="text" name="TipoDeInstalacion" class= "form-control" >
@@ -68,7 +68,7 @@
               </div>
 
              <div class="form-group">
-                     <label for="telefono" class="col-sm-2 control-label">Telefono: </label>
+                     <label for="telefono" class="col-sm-2 control-label">Teléfono: </label>
               
                     <div class="col-sm-8">
                      <input type="text" name="telefono" class= "form-control" >
@@ -88,7 +88,7 @@
                  <div class="form-group">
                        <div class="checkbox">
                                <label class="col-sm-2 control-label">
-                                inodoros
+                                Inodoros
                                 <input type="hidden" name="inodoros" value="0" />
                                 <input type="checkbox" class="col-sm-6" name="inodoros" value="1">  
                          </label>

@@ -18,8 +18,8 @@
                 <i class="fa fa-user"></i>
                 </a>
                 <ul class="dropdown-menu">
-                  <li>          
-                     <a href="{{route('user_show', ['id' => Auth::user()->id])}}" class="btn btn-default btn-flat">Perfil</a>
+                  <li>     
+                    <a href="/user/show" class="btn btn-default btn-flat">Perfil</a>
                     <a href="{{ route('logout')}}" class="btn btn-default btn-flat" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Desconectar</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf

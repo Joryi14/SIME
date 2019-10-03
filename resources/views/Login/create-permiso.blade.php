@@ -11,7 +11,7 @@
                       </a>
                       </div>
                     </div>
-                <h3 class="box-title">Crear Permiso</h3>
+                <h3 class="box-title">Crear permiso</h3>
               </div>
               <form class="form-horizontal" method="POST" action="/Permissions/store">
                 @csrf

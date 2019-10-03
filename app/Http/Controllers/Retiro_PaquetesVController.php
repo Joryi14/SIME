@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\ValidacionRetiroPaquetes;
 use Illuminate\Support\Facades\DB;
 use App\Models\Retiro_PaquetesV;
 use Illuminate\Http\Request;
@@ -35,7 +37,7 @@ class Retiro_PaquetesVController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionRetiroPaquetes $request)
     {
         $retiroPV = DB::select("call Insert_RetiroPaquetes('$request->IdAdministradorI','$request->NombreChofer','$request->Apellido1C','$request->Apellido2C',
         '$request->IdVoluntario','$request->PlacaVehiculo','$request->DireccionAEntregar','$request->SuministrosGobierno','$request->SuministrosComision',
@@ -89,7 +91,7 @@ class Retiro_PaquetesVController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionRetiroPaquetes $request, $id)
     {
         $retiroPV = DB::update("call Update_RetiroPaquetes('$id','$request->IdAdministradorI','$request->NombreChofer','$request->Apellido1C','$request->Apellido2C',
         '$request->IdVoluntario','$request->PlacaVehiculo','$request->DireccionAEntregar','$request->SuministrosGobierno','$request->SuministrosComision',

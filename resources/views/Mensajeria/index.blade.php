@@ -3,8 +3,7 @@
 <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
 <script type="text/javascript">
   document.querySelector('#form1').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
+  e.preventDefault();
   swal({
       title: "Esta seguro de eliminar?",
       text: "Una vez eliminado no se puede recuperar!",
@@ -52,14 +51,14 @@
             <div class="panel-heading"> Este reporte fue enviado en la fecha y hora: {{$item->created_at}} 
             </div>
                   <div class="panel-body">
-                    <p><strong>ID Mensajeria:</strong> {{$item->IdMensajeria}}</p>
-                    <p><strong>Codigo Incidente:</strong> {{$item->CodigoIncidente}}</p>
-                       <p><strong>Descripcion:</strong>  {{$item->Descripcion}}</p>
-                      <p><strong>Ubicacion:</strong>  {{$item->Ubicacion}}</p>
+                    <p><strong>ID Mensajería:</strong> {{$item->IdMensajeria}}</p>
+                    <p><strong>Código de incidente:</strong> {{$item->CodigoIncidente}}</p>
+                       <p><strong>Descripción:</strong>  {{$item->Descripcion}}</p>
+                      <p><strong>Ubicación:</strong>  {{$item->Ubicacion}}</p>
                     <p><strong>Hora:</strong>   {{$item->Hora}}</p>
                        <p><strong>Fecha: </strong>{{\Carbon\Carbon::parse($item->fecha)->format('d/m/Y')}} </p>
-                      <p><strong>Categoria:</strong>   {{$item->Categoria}}</p>
-                         <p><strong>Id Lider Comunal:</strong>  {{$item->IdLiderComunal}} </p>  
+                      <p><strong>Categoría:</strong>   {{$item->Categoria}}</p>
+                         <p><strong>Id del líder comunal:</strong>  {{$item->IdLiderComunal}} </p>  
                          <td><a href="/Mensajeria/{{$item->IdMensajeria}}/edit" class="btn-accion-tabla tooltipsC" title="Editar Informe">
                           <i class="fa fa-fw fa-pencil"></i></a>
                           <form action="{{route('mensajeria_delete', ['Mensajeria' => $item->IdMensajeria])}}" id="form1" method="POST">

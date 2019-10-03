@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\ValidacionEntregaDonaciones;
 use Illuminate\Support\Facades\DB;
 use App\Models\EntregaDonaciones;
 use Illuminate\Http\Request;
+
 
 class EntregaDonacionesController extends Controller
 {
@@ -34,20 +37,19 @@ class EntregaDonacionesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionEntregaDonaciones $request)
     {
-        if($request->hasFile('Imagenes')){
-            $file = $request->file('Imagenes');
-            $ConIMA= file_get_contents($file);
+        if($request->hasFile('Foto')){
+            $file = $request->file('Foto');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/Foto/',$name);
           }
-
-          $Foto = base64_encode($ConIMA); 
-
-        $entregadonaciones = DB::select("call Insert_EntregaDonaciones(
-        '$request->IdUsuarioRol',
-        '$request->IdJefe',
-        '$request->IdRetiroPaquetes',
-        '$Foto')");  
+          $entregadonaciones = new EntregaDonaciones();
+          $entregadonaciones->IdUsuarioRol = $request->IdUsuarioRol;
+          $entregadonaciones->IdJef = $request->IdJef;
+          $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
+          $entregadonaciones->Foto = $name;
+          $entregadonaciones->save(); 
         header("location:EntregaDonaciones /");
     }
 
@@ -81,13 +83,20 @@ class EntregaDonacionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionEntregaDonaciones $request, $id)
     {
+        if($request->hasFile('Imagenes')){
+            $file = $request->file('Imagenes');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/img/',$name);
+            $request->Foto = $name;
+  
+          }
         $entregadonaciones = DB::update("call Update_EntregaDonaciones('$id',
         '$request->IdUsuarioRol',
         '$request->IdJefe',
         '$request->IdRetiroPaquetes',
-        '$request->Foto')");
+        '$name')");
         header("location: /EntregaDonaciones");
     
     }

@@ -36,6 +36,26 @@
 <script>
 $(function () {
     $('#Entregadonaciones_table').DataTable({
+      language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+      },
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
@@ -64,10 +84,10 @@ $(function () {
             <thead>
             <tr>
 
-              <th>Id Entrega</th>
-              <th>Id UsuarioRol</th>
-              <th>Id Jefe de familia</th>
-              <th>Id Retiro de Paquetes</th>
+              <th>Id de la entrega</th>
+              <th>Id del UsuarioRol</th>
+              <th>Id jefe de familia</th>
+              <th>Id retiro de paquetes</th>
               <th>Foto</th>  
               <th>Acciones</th>
 
@@ -80,7 +100,7 @@ $(function () {
                   <td>{{$item->IdJefe}}</td>
                   <td>{{$item->IdRetiroPaquetes}}</td>
                   <td>
-                  <img style='display:block; width:100px;height:100px;' src='data:image/jpeg;base64,{{$item->Foto}}'  alt="base64 test">
+                    <img src="img/{{$item->Foto}}" alt="" width="200" height="120">
                   </td>
                   <td><a href="/EntregaDonaciones/{{$item->IdEntrega}}/edit" class="btn-accion-tabla tooltipsC" title="Editar EntregaDonaciones">
                     <i class="fa fa-fw fa-pencil"></i></a>

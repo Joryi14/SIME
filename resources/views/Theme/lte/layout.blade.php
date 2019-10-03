@@ -22,6 +22,7 @@
   folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/skins/all-md-skins.css")}}">
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")}}">
+  <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2.min.css")}}">
   @yield('styles')
   <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -52,8 +53,7 @@
   </div>
     @include("theme/$theme/footer")
  </div>
- <script src="sweetalert2.all.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+ <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{asset("assets/$theme/bower_components/jquery/dist/jquery.min.js")}}"></script>
 <script src="{{asset("assets/$theme/bower_components/jquery-ui/jquery-ui.min.js")}}"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -73,6 +73,7 @@
 <script src="{{asset("assets/$theme/bower_components/fastclick/lib/fastclick.js")}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
+<script src="{{asset("assets/$theme/bower_components/select2/dist/js/select2.full.min.js")}}"></script>
 @yield('scriptsPlugins')
 <script src="{{asset("assets/js/scripts.js")}}"></script>
 @yield('Script')

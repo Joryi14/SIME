@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\PersonaAlbergue;
+use App\Models\PersonasAlbergue;
 use Illuminate\Http\Request;
 
 class PersonasAlbergueController extends Controller
@@ -13,8 +13,8 @@ class PersonasAlbergueController extends Controller
      */
     public function index()
     {
-        $persona = PersonaAlbergue::orderBy('idregistroA')->get();
-        return view('PersonaAlbergue.index', compact('persona'));
+        $persona = PersonasAlbergue::orderBy('idregistroA')->get();
+        return view('PersonasAlbergue.index', compact('persona'));
     }
 
     /**
@@ -24,7 +24,7 @@ class PersonasAlbergueController extends Controller
      */
     public function create()
     {
-        return view('PersonaAlbergue.create');
+        return view('PersonasAlbergue.create');
     }
 
     /**
@@ -35,7 +35,7 @@ class PersonasAlbergueController extends Controller
      */
     public function store(Request $request)
     {
-        $persona = new PersonaAlbergue();
+        $persona = new PersonasAlbergue();
         $persona->idAlbergue = $request->idAlbergue;
         $persona->idJefe = $request->idJefe;  
         $persona->LugarDeProcedencia = $request->LugarDeProcedencia;
@@ -44,7 +44,7 @@ class PersonasAlbergueController extends Controller
         $persona->FechaDeSalida = $request->FechaDeSalida;
         $persona->HoraDeSalida = $request->HoraDeSalida;
         $persona->save();  
-        header("location: /PersonaAlbergue");
+        header("location: /PersonasAlbergue");
     }
 
     /**
@@ -66,8 +66,8 @@ class PersonasAlbergueController extends Controller
      */
     public function edit($id)
     {
-        $persona = PersonaAlbergue::find($id);
-        return view('PersonaAlbergue.edit', compact('persona'));
+        $persona = PersonasAlbergue::find($id);
+        return view('PersonasAlbergue.edit', compact('persona'));
     }
 
     /**
@@ -79,10 +79,10 @@ class PersonasAlbergueController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $persona = PersonaAlbergue::find($id);
+        $persona = PersonasAlbergue::find($id);
         $persona->fill($request->all());
         $persona->save();
-        header("location: /PersonaAlbergue");
+        header("location: /PersonasAlbergue");
     }
 
     /**
@@ -93,14 +93,8 @@ class PersonasAlbergueController extends Controller
      */
     public function delete($id, Request $request)
     {
-        if ($request->ajax()) {
-            if (PersonaAlbergue::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        $persona = PersonasAlbergue::find($id);
+      $persona->delete();
+      return redirect('PersonasAlbergue')->with('Se ha eliminado correctamente');
     }
 }

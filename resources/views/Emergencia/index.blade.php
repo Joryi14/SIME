@@ -1,6 +1,50 @@
 @extends("theme/$theme/layout")
+@section('styles')
+<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+@endsection
 @section('Script')
-<script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
+<script type="text/javascript">
+  document.querySelector('#form1').addEventListener('submit', function(e) {
+  var form = this;
+  e.preventDefault(); // <--- prevent form from submitting
+  swal({
+      title: "Esta seguro de eliminar?",
+      text: "Una vez eliminado no se puede recuperar!",
+      icon: "warning",
+      buttons: [
+        'Cancelar!',
+        'Aceptar!'
+      ],
+      dangerMode: true,
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+        swal({
+          title: 'Exito!',
+          text: 'Se ha Eliminado el registro!',
+          icon: 'success'
+        }).then(function() {
+          form.submit(); // <--- submit form programmatically
+        });
+      } else {
+        swal("Cancelado","" ,"error");
+      }
+    })
+});
+</script>
+<script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
+<script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
+<script>
+$(function () {
+    $('#Emergencia_table').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
 @endsection
 @section('Contenido')
 <div class="row">
@@ -16,10 +60,11 @@
             
           <h3 class="box-title">Emergencias</h3>
         </div>
-        <!-- /.box-header -->
-        <div class="table table-bordered table-striped" id="tabla-data">
-          <table class="table table-hover">
+       
+          <div class="box-body table-responsive" >
+          <table id="Emergencia_table" class="table table-bordered table-striped">
               <thead>
+              
             <tr>
               <th>Id de la Emergencia</th>
               <th>Nombre de la Emergencias</th>
@@ -28,6 +73,8 @@
               <th>Descripcion</th>
               <th>Longitud</th>
               <th>Latitud</th>
+              <th>Acciones</th>
+            
             </tr>
           </thead>
             @foreach ($emergencias as $item)
@@ -41,9 +88,10 @@
               <td>{{$item->Latitud}}</td>
               <td><a href="/Emergencia/{{$item->idEmergencias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar emergencia">
                 <i class="fa fa-fw fa-pencil"></i></a>
-              <form action="{{route('emergencia_delete', ['Emergencias' => $item->idEmergencias])}}" class="d-inline form-eliminar" method="POST">
-                @csrf @method('delete')
-                <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar emergencia">
+              <form id="form1" action="{{route('emergencia_delete', ['Emergencia' => $item->idEmergencias])}}" method="POST">
+                @csrf 
+                <input name="_method" type="hidden" value="DELETE">
+                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Emergencia" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>

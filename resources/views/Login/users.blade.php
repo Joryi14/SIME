@@ -5,7 +5,7 @@
   document.querySelector('#form1').addEventListener('submit', function(e) {
   var form = this;
   e.preventDefault(); // <--- prevent form from submitting
-  swal({
+  swal.fire({
       title: "Esta seguro de eliminar?",
       text: "Una vez eliminado no se puede recuperar!",
       icon: "warning",
@@ -16,7 +16,7 @@
       dangerMode: true,
     }).then(function(isConfirm) {
       if (isConfirm) {
-        swal({
+        swal.fire({
           title: 'Exito!',
           text: 'Se ha Eliminado el registro!',
           icon: 'success'
@@ -24,7 +24,7 @@
           form.submit(); // <--- submit form programmatically
         });
       } else {
-        swal("Cancelado","" ,"error");
+        swal.fire("Cancelado","" ,"error");
       }
     })
 });
@@ -145,13 +145,13 @@
 @section('Contenido')
 <div class="row">
     <div class="col-sm-12">
-      <div class="box box-primary">
+      <div class="box">
         <div class="box-header">
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
               </div>
           <h3 class="box-title">Usuarios</h3>
-        </div>
+          </div>
         <div class="box-body table-responsive no-padding">
           <table class="table table-hover">
             <tr>
@@ -177,7 +177,7 @@
               <td>{{$item->Nacionalidad}}</td>
               <td>{{$item->Comunidad}}</td>
               <td>
-              <form id="form1" action="{{route('user_delete', ['user' => $item->id])}}" class="d-inline form-eliminar" method="POST">
+              <form id="form1" action="{{route('user_delete', ['user' => $item->id])}}" method="POST">
                   @csrf @method('delete')
                   <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar usuario">
                       <i class="fa fa-fw fa-trash text-danger"></i>
@@ -193,7 +193,7 @@
   </div>
   <div class="row">
       <div class="col-sm-12">
-        <div class="box box-primary">
+        <div class="box box-primary box-solid">
           <div class="box-header">
             <h3 class="box-title">Roles</h3>
             <div class="box-tools">
@@ -238,7 +238,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
-          <div class="box box-primary">
+          <div class="box box-warning box-solid">
             <div class="box-header">
               <h3 class="box-title">Permisos</h3>
               <div class="box-tools">
@@ -284,8 +284,8 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <div class="box box-primary">
-            <div class="box-header">
+          <div class="box box-success box-solid">
+            <div class="box-header with-borders">
               <h3 class="box-title">Permisos Rol</h3>
               <div class="box-tools">
                   <div class="row">
@@ -328,7 +328,7 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <div class="box box-primary">
+          <div class="box box-danger box-solid">
             <div class="box-header">
               <h3 class="box-title">Usuario Rol</h3>
               <div class="box-tools">

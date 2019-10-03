@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\ValidacionesAlbergue;
+use Illuminate\Support\Facades\DB;
+use App\User;
 use App\Models\Albergue;
 use Illuminate\Http\Request;
 
@@ -25,8 +27,31 @@ class AlbergueController extends Controller
      */
     public function create()
     {
-        return view('Albergue.create');
+        $users =User::pluck('Cedula','id');
+        return view('Albergue.create',['users'=>$users]);
+      
     }
+    public function getUsers(Request $request){
+
+        $search = $request->search;
+  
+        if($search == ''){
+           $Users = User::orderby('Cedula','asc')->select('id','Cedula')->limit(5)->get();
+        }else{
+           $Users = User::orderby('Cedula','asc')->select('id','Cedula')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+  
+        $response = array();
+        foreach($Users as $user){
+           $response[] = array(
+                "id"=>$user->id,
+                "text"=>$user->Cedula
+           );
+        }
+  
+        echo json_encode($response);
+        exit;
+     }
 
     /**
      * Store a newly created resource in storage.
@@ -36,24 +61,17 @@ class AlbergueController extends Controller
      */
     public function store(ValidacionesAlbergue $request)
     {
-        $albergue = new Albergue();
-        $albergue->Nombre = $request->Nombre;
-        $albergue->Distrito = $request->Distrito;  
-        $albergue->Comunidad = $request->Comunidad;
-        $albergue->TipoDeInstalacion = $request->TipoDeInstalacion;
-        $albergue->Capacidad = $request->Capacidad;
-        $albergue->IdResponsable = $request->IdResponsable;
-        $albergue->telefono = $request->telefono;
-        $albergue->Duchas = $request->Duchas;
-        $albergue->inodoros = $request->inodoros;
-        $albergue->EspaciosDeCocina = $request->EspacioDeCocina;
-        $albergue->Bodega = $request->Bodega;
-        $albergue->Longitud = $request->Longitud;
-        $albergue->Latitud = $request->Latitud;
-        $albergue->Nececidades = $request->Nececidades;
-        $albergue->save();  
+
+        $albergue = DB::select("call Insert_Albergue('$request->Nombre',
+        '$request->Distrito','$request->Comunidad','$request->TipoDeInstalacion','$request->Capacidad', 
+        '$request->model_id','$request->telefono','$request->Duchas','$request->inodoros',
+        '$request->EspacioDeCocina','$request->Bodega',
+        '$request->Longitud','$request->Latitud','$request->Nececidades')");
+    // no sirve todavia revisar lo del model_id para guardar
         header("location: /Albergue");
     }
+
+
 
     /**
      * Display the specified resource.
@@ -101,14 +119,8 @@ class AlbergueController extends Controller
      */
     public function delete($id, Request $request)
     {
-        if ($request->ajax()) {
-            if (Albergue::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        $albergue = Albergue::find($id);
+        $albergue->delete();
+        return redirect('Albergue')->with('Se ha eliminado correctamente');
     }
 }

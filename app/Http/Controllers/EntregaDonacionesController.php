@@ -14,8 +14,8 @@ class EntregaDonacionesController extends Controller
      */
     public function index()
     {
-        $entregadonacioness = EntregaDonaciones::orderBy('IdEntrega')->get();
-        return view('EntregaDonaciones.index', compact('entregadonacioness'));
+        $entregadonaciones = EntregaDonaciones::orderBy('IdEntrega')->get();
+        return view('EntregaDonaciones.index', compact('entregadonaciones'));
     }
 
     /**
@@ -36,11 +36,18 @@ class EntregaDonacionesController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->hasFile('Imagenes')){
+            $file = $request->file('Imagenes');
+            $ConIMA= file_get_contents($file);
+          }
+
+          $Foto = base64_encode($ConIMA); 
+
         $entregadonaciones = DB::select("call Insert_EntregaDonaciones(
         '$request->IdUsuarioRol',
         '$request->IdJefe',
         '$request->IdRetiroPaquetes',
-        '$request->Foto')");  
+        '$Foto')");  
         header("location:EntregaDonaciones /");
     }
 
@@ -93,14 +100,8 @@ class EntregaDonacionesController extends Controller
      */
     public function delete($id, Request $request)
     {
-        if ($request->ajax()) {
-            if (EntregaDonaciones::delete($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        $entregadonaciones = EntregaDonaciones::find($id);
+        $entregadonaciones->delete();
+        return redirect('EntregaDonaciones')->with('Se ha eliminado correctamente');
     }
 }

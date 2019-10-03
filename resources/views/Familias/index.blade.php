@@ -60,7 +60,9 @@ $(function () {
             
           <h3 class="box-title">Familias</h3>
         </div>
-        <div class="box-body table-responsive no-padding" >
+        
+        <div class="box-body  table-responsive no-padding" >
+          
           <table id="Familias_table" class="table table-bordered table-striped">
               <thead>
             <tr>

@@ -92,9 +92,11 @@ $(function () {
                 <th>Id del autor</th>
                 <th>Imagenes</th>
                 <th>Videos</th>
-                <th>Artículo</th>
+                <th>Articulo</th>    
+                <th>Nombre PDF</th>
                 <th>PDF</th>
                 <th>Acciones</th>
+
             </tr>
           </thead>
             @foreach ($noticias as $item)
@@ -104,14 +106,15 @@ $(function () {
               <td>{{$item->Titulo}}</td>
               <td>{{$item->IdAutor}}</td>
               <td>
-              <img src="img/{{$item->Imagenes}}" alt="" width="200" height="120">
+              <img style='display:block; width:100px;height:100px;' src='data:image/jpeg;base64,{{$item->Imagenes}}'  alt="base64 test">
             </td>
               <td><video width="200" height="120"  controls>
-                  <source src="Vide/{{$item->Videos}}" type="video/mp4">
+                  <source src='data:video/mp4;base64,{{$item->Videos}}' type="video/mp4">
                   </video>
                   </td>
               <td><p>{{$item->Articulo}}<p></td>
-              <td>{{$item->PDF}}</td>    
+             
+              <td>{{$item->NombrePDF}}</td>
               <td><a href="/Noticia/{{$item->IdNoticias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar Noticia">
                 <i class="fa fa-fw fa-pencil"></i></a>
               <form id="form1" action="{{route('noticia_delete', ['Noticia' => $item->IdNoticias])}}" method="POST">

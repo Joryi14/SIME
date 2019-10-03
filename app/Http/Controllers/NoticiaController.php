@@ -13,15 +13,22 @@ class NoticiaController extends Controller
      */
     public function index()
     {
-        $noticias = Noticia::orderBy('IdNoticias')->get();
+
+      $noticias = Noticia::orderBy('IdNoticias')->get();
+      
         return view('Noticia.index', compact('noticias'));
     }
+    
 
-    public function index1()
+    public function index1(Request $request)
     {
-        $noticias = Noticia::orderBy('IdNoticias')->get();
+          $noticias = Noticia::orderBy('IdNoticias')->get();
+         
+      
+       
         return view('welcome', compact('noticias'));
     }
+  
 
     /**
      * Show the form for creating a new resource.
@@ -41,34 +48,44 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
+            $noticia = new Noticia();
           if($request->hasFile('Imagenes')){
             $file = $request->file('Imagenes');
-            $name = time().$file->getClientOriginalName();
-            $file->move(public_path().'/img/',$name);
+            $noticia->Imagenes = $request->Imagenes = base64_encode( file_get_contents($file));
+            //$ConIMA= file_get_contents($file);
+           
+        
           }
+          
+          
           if($request->hasFile('Videos')){
             $file = $request->file('Videos');
-            $nameV = time().$file->getClientOriginalName();
-            $file->move(public_path().'/Vide/',$nameV);
-  
+           
+            $noticia->Videos = $request->Videos = base64_encode( file_get_contents($file));
           }
+          
           if($request->hasFile('PDF')){
             $file = $request->file('PDF');
-            $nameP = time().$file->getClientOriginalName();
-            $file->move(public_path().'/PD/',$nameP);
+           $noticia->PDF = $request->PDF = base64_encode( file_get_contents($file));
+           $noticia->NombrePDF = $request->NombrePDF = time().$file->getClientOriginalName();
+      
   
           }
 
         $noticia = new Noticia();
-        $noticia->FechaPublicacion = $request->FechaPublicacion;
+        $noticia->created_at = $request->created_at;
         $noticia->Titulo = $request->Titulo;
         $noticia->IdAutor = $request->IdAutor;
-        $noticia->Imagenes = $name;
-        $noticia->Videos = $nameV;
+      
+        $noticia->Imagenes = $request->Imagenes; 
+        $noticia->NombrePDF = $request->NombrePDF;
+        $noticia->Videos = $request->Videos;
         $noticia->Articulo = $request->Articulo;
-        $noticia->PDF = $nameP;
+        $noticia->PDF = $request->PDF;
         $noticia ->save();  
         header("location: /Noticia");
+
+        
     }
 
     /**
@@ -113,30 +130,31 @@ class NoticiaController extends Controller
         $noticia ->Titulo = $request->input('Titulo');
         $noticia ->IdAutor = $request->input('IdAutor');
         if($request->hasFile('Imagenes')){
-            $file = $request->file('Imagenes');
-            $name = time().$file->getClientOriginalName();
-            $file->move(public_path().'/img/',$name);
-            $noticia ->Imagenes = $name;
-  
-          }
+          $file = $request->file('Imagenes');
+          $noticia->Imagenes = $request->Imagenes = base64_encode( file_get_contents($file));
+          //$ConIMA= file_get_contents($file);
+         
+      
+        }
+        if($request->hasFile('Videos')){
+          $file = $request->file('Videos');
+         
+          $noticia->Videos = $request->Videos = base64_encode( file_get_contents($file));
+        }
+        
+        if($request->hasFile('PDF')){
+          $file = $request->file('PDF');
+         $noticia->PDF = $request->PDF = base64_encode( file_get_contents($file));
+         $noticia->NombrePDF = $request->NombrePDF = time().$file->getClientOriginalName();
+    
 
-          if($request->hasFile('Videos')){
-            $file = $request->file('Videos');
-            $nameV = time().$file->getClientOriginalName();
-            $file->move(public_path().'/Vide/',$nameV);
-            $noticia->Videos = $nameV;
-  
-          }
+        }
+        
+          
 
           $noticia ->Articulo = $request->input('Articulo');
 
-          if($request->hasFile('PDF')){
-            $file = $request->file('PDF');
-            $nameP = time().$file->getClientOriginalName();
-            $file->move(public_path().'/PD/',$nameP);
-            $noticia->PDF = $nameP;
-  
-          }
+         
        
         $noticia->save();
         header("location: /Noticia");

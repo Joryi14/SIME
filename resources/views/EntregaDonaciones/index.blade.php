@@ -84,10 +84,10 @@ $(function () {
             <thead>
             <tr>
 
-              <th>Id Entrega</th>
-              <th>Id UsuarioRol</th>
-              <th>Id Jefe de familia</th>
-              <th>Id Retiro de Paquetes</th>
+              <th>Id de la entrega</th>
+              <th>Id del UsuarioRol</th>
+              <th>Id jefe de familia</th>
+              <th>Id retiro de paquetes</th>
               <th>Foto</th>  
               <th>Acciones</th>
 
@@ -99,7 +99,9 @@ $(function () {
                   <td>{{$item->IdUsuarioRol}}</td>
                   <td>{{$item->IdJefe}}</td>
                   <td>{{$item->IdRetiroPaquetes}}</td>
-                  <td>{{$item->Foto}}</td>
+                  <td>
+                    <img src="img/{{$item->Foto}}" alt="" width="200" height="120">
+                  </td>
                   <td><a href="/EntregaDonaciones/{{$item->IdEntrega}}/edit" class="btn-accion-tabla tooltipsC" title="Editar EntregaDonaciones">
                     <i class="fa fa-fw fa-pencil"></i></a>
                   <form id="form1" action="{{route('EntregaDonaciones_delete', ['EntregaDonaciones' => $item->IdEntrega])}}" method="POST">

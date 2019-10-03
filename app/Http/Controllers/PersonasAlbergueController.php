@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\ValidacionPersonasAlbergue;
+use App\Models\Albergue;
+use App\Models\JefeDeFamilia;
 use App\Models\PersonasAlbergue;
 use Illuminate\Http\Request;
 
@@ -33,9 +37,11 @@ class PersonasAlbergueController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionPersonasAlbergue $request)
     {
-        $persona = new PersonasAlbergue();
+        if(JefeDeFamilia::find($request->idJefe)){
+        if(Albergue::find($request->idAlbergue!=NULL)){
+            $persona = new PersonasAlbergue();
         $persona->idAlbergue = $request->idAlbergue;
         $persona->idJefe = $request->idJefe;  
         $persona->LugarDeProcedencia = $request->LugarDeProcedencia;
@@ -44,7 +50,12 @@ class PersonasAlbergueController extends Controller
         $persona->FechaDeSalida = $request->FechaDeSalida;
         $persona->HoraDeSalida = $request->HoraDeSalida;
         $persona->save();  
-        header("location: /PersonasAlbergue");
+        return redirect('PersonasAlbergue')->with('mensaje','Se ha agregado correctamente');}
+        else
+        return redirect('PersonasAlbergue/create')->with('mensaje','Error El Albergue no Existe');
+        }
+        else
+        return redirect('PersonasAlbergue/create')->with('mensaje','Error El Jefe de Familia no Existe');
     }
 
     /**

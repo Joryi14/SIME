@@ -18,6 +18,26 @@
 @endsection
 @section('Script')
 <script type="text/javascript">
+ $(document).on('click', '.show-modal', function() {
+           if($(this).data('ref')== 1)
+           $('#refr').text("Sí tiene");
+           else
+           $('#refr').text("No tiene");
+           if($(this).data('coc')== 1)
+           $('#coc').text("Sí tiene");
+           else
+           $('#coc').text("No tiene");
+           if($(this).data('col')== 1)
+           $('#col').text("Sí tiene");
+           else
+           $('#col').text("No tiene");
+           if($(this).data('cam')== 1)
+           $('#cam').text("Sí tiene");
+           else
+           $('#cam').text("No tiene");
+        });
+</script>
+<script type="text/javascript">
   document.querySelector('#form1').addEventListener('submit', function(e) {
   var form = this;
   e.preventDefault(); // <--- prevent form from submitting
@@ -97,8 +117,8 @@ $(function () {
           <table id="Censo_table" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th>ID Censo</th>
-              <th>Cedula del Jefe de familia</th>
+              <th>Id del censo</th>
+              <th>Cédula del jefe de familia</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -115,16 +135,14 @@ $(function () {
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form>
-                  <button class="btn-accion-tabla tooltipsC" title="Mostrar Censo" data-toggle="modal" data-target="#modal-default">
-                    <i class="fa fa-fw fa-file-text-o text-info"></i>
-                  </button>
+                  <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar Censo" data-toggle="modal" data-target="#Detalle"  data-ref="{{$item->Refrigerador}}" data-coc="{{$item->Cocina}}" data-col="{{$item->Colchon}}" data-cam="{{$item->Cama}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
                   </td>
                   </tr>
                 @endforeach
           </table>  
       </div>
     </div>
-    <div class="modal modal-default fade" id="modal-default">
+    <div class="modal modal-default fade" id="Detalle">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -133,57 +151,38 @@ $(function () {
             <h4 class="modal-title"><b>Información de censo</b></h4>
           </div>
           <div class="modal-body">
-            @foreach ($censos as $item)
             <div class="form-group">
               <label class="col-md-4 "><b>Refrigerador:</b></label>
               <div class="col-md-4">
-                @if ($item->Refrigerador == 1)
-                Si tiene
-           @elseif ($item->Refrigerador == 0) 
-                No tiene 
-           @endif
+                  <span id="refr"></span>
               </div>
-           </div><br>
+            </div>
+           <br>
            <div class="form-group ">
             <label class="col-md-4"><b>Cocina:</b></label>
             <div class="col-md-4">
-              @if ($item->Cocina == 1)
-                Si tiene
-           @elseif ($item->Cocina == 0) 
-                No tiene 
-           @endif
+                <span id="coc"></span>
             </div>
-         </div><br>
+          </div><br>
          <div class="form-group">
-          <label  class="col-md-4"><b>Colchon:</b></label>
+          <label  class="col-md-4"><b>Colchón:</b></label>
           <div class="col-md-4">
-            @if ($item->Colchon == 1)
-            Si tiene 
-       @elseif ($item->Colchon == 0) 
-            No tiene
-       @endif
+              <span id="col"></span>
           </div>
-       </div><br>
+      </div><br>
        <div class="form-group">
         <label class="col-md-4"><b>Cama:</b></label>
         <div class="col-md-4">
-          @if ($item->Cama == 1)
-                Si tiene
-           @elseif ($item->Cama == 0) 
-                No tiene
-           @endif
+            <span id="cam"></span>
         </div>
-     </div>    
-          @endforeach
+      </div>    
           <br><br>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline bg-red pull-left" data-dismiss="modal">Cerrar</button>
           </div>
         </div>
-        
       </div>
-      
     </div>
   </div>
 </div>

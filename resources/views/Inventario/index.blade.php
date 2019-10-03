@@ -87,8 +87,8 @@ $(function () {
           <table id="Inventario_Table" class="table table-bordered table-striped">
               <thead>
             <tr>
-              <th>IdInventario</th>
-              <th>idEmergencias</th>
+              <th>Id del inventario</th>
+              <th>Id de las emergencias</th>
               <th>Suministros</th>
               <th>Colchonetas</th>
               <th>Cobijas</th>

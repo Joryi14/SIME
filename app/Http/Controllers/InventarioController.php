@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\ValidacionInventario;
 use Illuminate\Support\Facades\DB;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class InventarioController extends Controller
 {
@@ -34,7 +36,7 @@ class InventarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionInventario $request)
     {
        
         $inventario = DB::select("call Insert_Inventario(
@@ -69,7 +71,8 @@ class InventarioController extends Controller
        'Cobijas',
        'Ropa']) 
         ->get();
-        $view = view ('Inventario.reporte', compact('inventario'))->render();
+        $today = Carbon::now()->format('d/m/Y');
+        $view = view ('Inventario.reporte', compact('inventario', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('inventario'.'.pdf');
@@ -106,7 +109,7 @@ class InventarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionInventario $request, $id)
     {
         $inventario= DB::update("call Update_Inventario('$id','$request->idEmergencias',
         '$request->Suministros',

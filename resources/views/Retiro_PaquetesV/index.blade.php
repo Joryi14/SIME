@@ -1,8 +1,31 @@
 @extends("theme/$theme/layout")
 @section('styles')
 <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+<style>
+  .example-modal .modal {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    left: auto;
+    display: block;
+    z-index: 1;
+  }
+  .example-modal .modal {
+    background: transparent !important;
+  }
+</style>
 @endsection
 @section('Script')
+<script type="text/javascript">
+ $(document).on('click', '.show-modal', function() {
+           $('#nc').text($(this).data('nc'));
+           $('#pac').text($(this).data('pac'));
+           $('#sac').text($(this).data('sac'));
+           $('#pv').text($(this).data('pv'));
+           $('#de').text($(this).data('de'));
+        });
+</script>
 <script type="text/javascript">
   document.querySelector('#form1').addEventListener('submit', function(e) {
   var form = this;
@@ -90,30 +113,20 @@ $(function () {
           <table id="Retiro_PaquetesV_table" class="table table-bordered table-striped">
               <thead>
             <tr>
-              <th>Id de RetiroPaquetes</th>
-              <th>Id de AdministradorI</th>
-              <th>Nombre del chofer</th>
-              <th>Primer apellido del chofer</th>
-              <th>Segundo apellido del chofer</th>
-              <th>Id de Voluntario</th>
-              <th>Placa de Vehiculo</th>
-              <th>Direccion A Entregar</th>
-              <th>Suministros Gobierno </th>
-              <th>Suministros Comision</th>
-              <th>Id de Inventario</th>
+              <th>Id del retiro paquetes</th>
+              <th>Id del administradorI</th>
+              <th>Id del voluntario</th>
+              <th>Suministros del gobierno </th>
+              <th>Suministros de la comisión</th>
+              <th>Id del inventario</th>
               <th>Acciones</th>
             </tr>
           </thead>
             @foreach ($retiroPV as $item)
               <tr>
               <td>{{$item->IdRetiroPaquetes}}</td>      
-              <td>{{$item->IdAdministradorI}}</td>
-              <td>{{$item->NombreChofer}}</td>  
-              <td>{{$item->Apellido1C}}</td>  
-              <td>{{$item->Apellido2C}}</td>  
+              <td>{{$item->IdAdministradorI}}</td> 
               <td>{{$item->IdVoluntario}}</td>
-              <td>{{$item->PlacaVehiculo}}</td>
-              <td>{{$item->DireccionAEntregar}}</td>
               <td>{{$item->SuministrosGobierno}}</td>
               <td>{{$item->SuministrosComision}}</td>
               <td>{{$item->IdInventario}}</td>    
@@ -125,14 +138,64 @@ $(function () {
                 <input name="_method" type="hidden" value="DELETE">
                 <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Retiro_PaquetesV" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
-                </button>
-              </form>
-              </td>
-              </tr>
-            @endforeach
-          </table>
+                  </button>
+                </form>
+                <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar retiro de paquetes" data-toggle="modal" data-target="#Detalle"  data-nc="{{$item->NombreChofer}}" data-pac="{{$item->Apellido1C}}" data-sac="{{$item->Apellido2C}}" data-pv="{{$item->PlacaVehiculo}}"  data-de="{{$item->DireccionAEntregar}}" ><i class="fa fa-fw fa-file-text-o text-info"></i></a>
+                </td>
+                </tr>
+              @endforeach
+        </table>  
+    </div>
+  </div>
+  <div class="modal modal-default fade" id="Detalle">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><b>Información de retiro de paquetes</b></h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="col-md-4 "><b>Nombre del chofer:</b></label>
+            <div class="col-md-4">
+                <span id="nc"></span>
+            </div>
+          </div>
+         <br>
+         <div class="form-group ">
+          <label class="col-md-4"><b>Primer apellido del chofer:</b></label>
+          <div class="col-md-4">
+              <span id="pac"></span>
+          </div>
+        </div><br>
+       <div class="form-group">
+        <label  class="col-md-4"><b>Segundo apellido del chofer:</b></label>
+        <div class="col-md-4">
+            <span id="sac"></span>
+        </div>
+    </div><br>
+     <div class="form-group">
+      <label class="col-md-4"><b>Placa de vehículo:</b></label>
+      <div class="col-md-4">
+          <span id="pv"></span>
+      </div>
+    </div>    
+        <br><br>
+        <div class="form-group">
+          <label class="col-md-4"><b>Dirección a entregar:</b></label>
+          <div class="col-md-4">
+              <span id="de"></span>
+          </div>
+        </div>    
+            <br><br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline bg-red pull-left" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>
 @endsection

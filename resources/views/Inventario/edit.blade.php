@@ -8,7 +8,7 @@
 
 
 <div class="form-group ">
-  <label>Id de la emergencias: <input type="text" name="idEmergencias" class= "form-control" value=" {{$inventario->idEmergencias}}"readonly="readonly"> </label><br>
+  <label>Id de las emergencias: <input type="text" name="idEmergencias" class= "form-control" value=" {{$inventario->idEmergencias}}"> </label><br>
 
   <label>Suministros: <input type="text" name="Suministros" class= "form-control" value=" {{$inventario->Suministros}}"readonly="readonly" > </label><br>
   

@@ -13,7 +13,7 @@
                       </a>
                       </div>
           </div>
-      <h3 class="box-title">Crear Entrega en albergue</h3>
+      <h3 class="box-title">Crear entrega de donaciones en albergue</h3>
       </div>
       <form class="form-horizontal" method="POST" action="/EntregaDonacionesAlbergue/store">
         @csrf

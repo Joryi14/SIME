@@ -11,14 +11,14 @@
                   </a>
                   </div>
                 </div>
-            <h3 class="box-title">Editar Jefe de Familia</h3>
+            <h3 class="box-title">Editar jefe de familia</h3>
           </div>
           <form class="form-horizontal" method="POST" action="/JefeDeFamilia/{{$JefeF->IdJefe}}">
             @method('PUT')
             @csrf
             <div class="box-body">
               <div class="form-group">
-                <label for="TotalPersonas" class="col-sm-2 control-label">TotalPersonas: </label>
+                <label for="TotalPersonas" class="col-sm-2 control-label">Total de personas: </label>
                 <div class="col-sm-8">
                     <input type="text" name="TotalPersonas" class= "form-control" value="{{$JefeF->TotalPersonas}}">
                 </div>
@@ -31,21 +31,21 @@
                 </div>
               </div>
               <div class="form-group">
-                  <label for="Apellido1" class="col-sm-2 control-label">Apellido1:  </label>
+                  <label for="Apellido1" class="col-sm-2 control-label">Primer apellido:  </label>
       
                   <div class="col-sm-8">
                       <input type="text" name="Apellido1" class= "form-control" value="{{$JefeF->Apellido1}}" readonly="readonly"> 
                   </div>
                 </div>
                 <div class="form-group">
-                    <label for="Apellido2" class="col-sm-2 control-label">Apellido2: </label>
+                    <label for="Apellido2" class="col-sm-2 control-label">Segundo apellido: </label>
         
                     <div class="col-sm-8">
                         <input type="text" name="Apellido2" class= "form-control" value= "{{$JefeF->Apellido2}}"  readonly="readonly">
                     </div>
                   </div>
                   <div class="form-group">
-                      <label for="Cedula" class="col-sm-2 control-label">Cedula: </label>
+                      <label for="Cedula" class="col-sm-2 control-label">Cédula: </label>
           
                       <div class="col-sm-8">
                           <input type="text" name="Cedula" class= "form-control" value="{{$JefeF->Cedula}}" >
@@ -66,7 +66,7 @@
                           </div>
                         </div>
                           <div class="form-group">
-                              <label for="Telefono" class="col-sm-2 control-label">Telefono: </label>
+                              <label for="Telefono" class="col-sm-2 control-label">Teléfono: </label>
                   
                               <div class="col-sm-8">
                                   <input type="text" name="Telefono" class= "form-control" value="{{$JefeF->Telefono}}" > 

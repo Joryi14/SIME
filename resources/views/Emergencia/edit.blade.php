@@ -19,14 +19,14 @@
   @csrf
   <div class="box-body">
       <div class="form-group">
-        <label for="Nombre de la Emergencia" class="col-sm-2 control-label">Nombre de Emergencias: </label>
+        <label for="Nombre de la Emergencia" class="col-sm-2 control-label">Nombre de la emergencia: </label>
         <div class="col-sm-8">
             <input type="text" name="NombreEmergencias" class= "form-control" value="{{$emergencia->NombreEmergencias}}">
         </div>
       </div>
 
       <div class="form-group">
-          <label for="Categoria" class="col-sm-2 control-label">Categoria: </label>
+          <label for="Categoria" class="col-sm-2 control-label">Categoría: </label>
 
           <div class="col-sm-8">
               <input type="text" name="Categoria" class= "form-control" value="{{$emergencia->Categoria}}" readonly="readonly">
@@ -34,7 +34,7 @@
         </div>
 
         <div class="form-group">
-            <label for="TipoDeEmergencia" class="col-sm-2 control-label">Tipo de la Emergencia: </label>
+            <label for="TipoDeEmergencia" class="col-sm-2 control-label">Tipo de emergencia: </label>
   
             <div class="col-sm-8">
                 <input type="text" name="TipoDeEmergencia" class= "form-control" value="{{$emergencia->TipoDeEmergencia}}" readonly="readonly">
@@ -43,7 +43,7 @@
     
           
           <div class="form-group">
-              <label for="Descripcion" class="col-sm-2 control-label">Descripcion: </label>
+              <label for="Descripcion" class="col-sm-2 control-label">Descripción: </label>
     
               <div class="col-sm-8">
                   <input type="text" name="Descripcion" class= "form-control" value="{{$emergencia->Descripcion}}" readonly="readonly">

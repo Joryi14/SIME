@@ -11,7 +11,7 @@
                       </a>
                       </div>
                     </div>
-                <h3 class="box-title">Crear Rol</h3>
+                <h3 class="box-title">Crear rol</h3>
               </div>
               <form class="form-horizontal" method="POST" action="/roles/store">
                 @csrf

@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\ValidacionEntregaDonaciones;
 use Illuminate\Support\Facades\DB;
 use App\Models\EntregaDonaciones;
 use Illuminate\Http\Request;
+
 
 class EntregaDonacionesController extends Controller
 {
@@ -14,8 +17,8 @@ class EntregaDonacionesController extends Controller
      */
     public function index()
     {
-        $entregadonacioness = EntregaDonaciones::orderBy('IdEntrega')->get();
-        return view('EntregaDonaciones.index', compact('entregadonacioness'));
+        $entregadonaciones = EntregaDonaciones::orderBy('IdEntrega')->get();
+        return view('EntregaDonaciones.index', compact('entregadonaciones'));
     }
 
     /**
@@ -34,13 +37,19 @@ class EntregaDonacionesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionEntregaDonaciones $request)
     {
-        $entregadonaciones = DB::select("call Insert_EntregaDonaciones(
-        '$request->IdUsuarioRol',
-        '$request->IdJefe',
-        '$request->IdRetiroPaquetes',
-        '$request->Foto')");  
+        if($request->hasFile('Foto')){
+            $file = $request->file('Foto');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/Foto/',$name);
+          }
+          $entregadonaciones = new EntregaDonaciones();
+          $entregadonaciones->IdUsuarioRol = $request->IdUsuarioRol;
+          $entregadonaciones->IdJef = $request->IdJef;
+          $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
+          $entregadonaciones->Foto = $name;
+          $entregadonaciones->save(); 
         header("location:EntregaDonaciones /");
     }
 
@@ -74,13 +83,20 @@ class EntregaDonacionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionEntregaDonaciones $request, $id)
     {
+        if($request->hasFile('Imagenes')){
+            $file = $request->file('Imagenes');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/img/',$name);
+            $request->Foto = $name;
+  
+          }
         $entregadonaciones = DB::update("call Update_EntregaDonaciones('$id',
         '$request->IdUsuarioRol',
         '$request->IdJefe',
         '$request->IdRetiroPaquetes',
-        '$request->Foto')");
+        '$name')");
         header("location: /EntregaDonaciones");
     
     }
@@ -93,14 +109,8 @@ class EntregaDonacionesController extends Controller
      */
     public function delete($id, Request $request)
     {
-        if ($request->ajax()) {
-            if (EntregaDonaciones::delete($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        $entregadonaciones = EntregaDonaciones::find($id);
+        $entregadonaciones->delete();
+        return redirect('EntregaDonaciones')->with('Se ha eliminado correctamente');
     }
 }

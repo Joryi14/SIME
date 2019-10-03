@@ -170,6 +170,6 @@ class NoticiaController extends Controller
     {
       $noticia = Noticia::find($id);
       $noticia->delete();
-      return redirect('Noticias')->with('Se ha eliminado correctamente');
+      return redirect('Noticia')->with('Se ha eliminado correctamente');
     }
 }

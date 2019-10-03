@@ -24,6 +24,17 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group row">
+                                <label for="Cedula" class="col-md-4 col-form-label text-md-right">{{ __('Cedula') }}</label>
+                                <div class="col-md-6">
+                                    <input id="Cedula" type="text" class="form-control{{ $errors->has('Cedula') ? ' is-invalid' : '' }}" name="Cedula" value="{{ old('Cedula') }}" required autofocus>
+                                    @if ($errors->has('Cedula'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('Cedula') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo Electronico') }}</label>

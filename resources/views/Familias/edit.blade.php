@@ -18,7 +18,7 @@
           @csrf
           <div class="box-body">
             <div class="form-group">
-              <label for="IdJefef" class="col-sm-2 control-label">IdJefeF: </label>
+              <label for="IdJefef" class="col-sm-2 control-label">Id del jefe de familia: </label>
               <div class="col-sm-10">
                   <input type="text" name="IdJefeF" class= "form-control" value="{{$Familia->IdJefeF}}">
               </div>
@@ -30,19 +30,19 @@
               </div>
             </div>
             <div class="form-group">
-                <label for="Apellido1" class="col-sm-2 control-label">Apellido1: </label>
+                <label for="Apellido1" class="col-sm-2 control-label">Primer apellido: </label>
                 <div class="col-sm-10">
                     <input type="text" name="Apellido1" class= "form-control" value="{{$Familia->Apellido1}}" readonly="readonly"> 
                 </div>
               </div>
               <div class="form-group">
-                  <label for="Apellido2" class="col-sm-2 control-label">Apellido2: </label>
+                  <label for="Apellido2" class="col-sm-2 control-label">Segundo apellido: </label>
                   <div class="col-sm-10">
                       <input type="text" name="Apellido2" class= "form-control" value= "{{$Familia->Apellido2}}"  readonly="readonly">
                   </div>
                 </div>
                 <div class="form-group">
-                    <label for="Cedula" class="col-sm-2 control-label">Cedula: </label>
+                    <label for="Cedula" class="col-sm-2 control-label">Cédula: </label>
                     <div class="col-sm-10">
                         <input type="text" name="Cedula" class= "form-control" value="{{$Familia->Cedula}}" >
                     </div>

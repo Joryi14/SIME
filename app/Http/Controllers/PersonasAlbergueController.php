@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\PersonaAlbergue;
+
+use App\Http\Requests\ValidacionPersonasAlbergue;
+use App\Models\Albergue;
+use App\Models\JefeDeFamilia;
+use App\Models\PersonasAlbergue;
 use Illuminate\Http\Request;
 
 class PersonasAlbergueController extends Controller
@@ -13,8 +17,8 @@ class PersonasAlbergueController extends Controller
      */
     public function index()
     {
-        $persona = PersonaAlbergue::orderBy('idregistroA')->get();
-        return view('PersonaAlbergue.index', compact('persona'));
+        $persona = PersonasAlbergue::orderBy('idregistroA')->get();
+        return view('PersonasAlbergue.index', compact('persona'));
     }
 
     /**
@@ -24,7 +28,7 @@ class PersonasAlbergueController extends Controller
      */
     public function create()
     {
-        return view('PersonaAlbergue.create');
+        return view('PersonasAlbergue.create');
     }
 
     /**
@@ -33,9 +37,11 @@ class PersonasAlbergueController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionPersonasAlbergue $request)
     {
-        $persona = new PersonaAlbergue();
+        if(JefeDeFamilia::find($request->idJefe)){
+        if(Albergue::find($request->idAlbergue!=NULL)){
+            $persona = new PersonasAlbergue();
         $persona->idAlbergue = $request->idAlbergue;
         $persona->idJefe = $request->idJefe;  
         $persona->LugarDeProcedencia = $request->LugarDeProcedencia;
@@ -44,7 +50,12 @@ class PersonasAlbergueController extends Controller
         $persona->FechaDeSalida = $request->FechaDeSalida;
         $persona->HoraDeSalida = $request->HoraDeSalida;
         $persona->save();  
-        header("location: /PersonaAlbergue");
+        return redirect('PersonasAlbergue')->with('mensaje','Se ha agregado correctamente');}
+        else
+        return redirect('PersonasAlbergue/create')->with('mensaje','Error El Albergue no Existe');
+        }
+        else
+        return redirect('PersonasAlbergue/create')->with('mensaje','Error El Jefe de Familia no Existe');
     }
 
     /**
@@ -66,8 +77,8 @@ class PersonasAlbergueController extends Controller
      */
     public function edit($id)
     {
-        $persona = PersonaAlbergue::find($id);
-        return view('PersonaAlbergue.edit', compact('persona'));
+        $persona = PersonasAlbergue::find($id);
+        return view('PersonasAlbergue.edit', compact('persona'));
     }
 
     /**
@@ -79,10 +90,10 @@ class PersonasAlbergueController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $persona = PersonaAlbergue::find($id);
+        $persona = PersonasAlbergue::find($id);
         $persona->fill($request->all());
         $persona->save();
-        header("location: /PersonaAlbergue");
+        header("location: /PersonasAlbergue");
     }
 
     /**
@@ -93,14 +104,8 @@ class PersonasAlbergueController extends Controller
      */
     public function delete($id, Request $request)
     {
-        if ($request->ajax()) {
-            if (PersonaAlbergue::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        $persona = PersonasAlbergue::find($id);
+      $persona->delete();
+      return redirect('PersonasAlbergue')->with('Se ha eliminado correctamente');
     }
 }

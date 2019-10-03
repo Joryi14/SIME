@@ -1,4 +1,8 @@
 @extends("theme/$theme/layout")
+@section('styles')
+<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2.min.css")}}">
+<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2-bootstrap.css")}}">
+@endsection
 @section('Contenido')
 
 <div class="box box-primary">
@@ -14,27 +18,27 @@
         </div>
         <div class="box-body">
                 <div class="row">
-        <form class="form" method="POST" action="{{route('user_edit', ['id' => $user->id])}}">
+        <form class="form" method="POST" action="{{route('user_edit', ['id' => Auth::user()->id])}}">
                         @method('PUT')
                         @csrf
                 <div class="col-md-6">
                 <div class="form-group">
                 <label for="Email">Email:</label>
-                        <input type="text" name="email" class= "form-control" value="{{$user->email}} " readonly="readonly">
+                        <input type="text" name="email" class= "form-control" value="{{Auth::user()->email}} " readonly="readonly">
                 </div>
                 <div class="form-group">
                         <label for="Nombre">Nombre</label>
-                                <input type="text" name="name" class= "form-control" value="{{$user->name}} ">
+                                <input type="text" name="name" class= "form-control" value="{{Auth::user()->name}} ">
                 </div>
                 <div class="form-group">
                                 <label for="Cedula">Cedula</label>
-                                <input type="text" name="Cedula" class= "form-control" value="{{$user->Cedula}}" required>
+                                <input type="text" name="Cedula" class= "form-control" value="{{Auth::user()->Cedula}}" required>
                                 
                 </div>
                 <div class="form-group">
                 <label for="Nacionalidad">Nacionalidad</label>
                 <select class="form-control select2" name="Nacionalidad" value=""style="width: 100%;">
-                                <option selected>{{$user->Nacionalidad}}</option>
+                                <option selected>{{Auth::user()->Nacionalidad}}</option>
                                 <option value="Afganistán ">Afganistán </option>
                                 <option value="Akrotiri ">Akrotiri </option>
                                 <option value="Albania ">Albania </option>
@@ -298,7 +302,7 @@
                 <div class="form-group">
                 <label>Patologia</label>
                 <select class="form-control select2" multiple="multiple" name="patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 100%;">
-                        <option selected>{{$user->patologia}}</option>
+                        <option selected>{{Auth::user()->patologia}}</option>
                         <option>Alergias</option>
                         <option>Asma</option>
                         <option>CA</option>
@@ -313,15 +317,15 @@
                 </div>
                 <div class="form-group">
                         <label for="Apellido1">Primer Apellido</label>
-                        <input type="text" name="Apellido1" class= "form-control" value="{{$user->Apellido1}}">
+                        <input type="text" name="Apellido1" class= "form-control" value="{{Auth::user()->Apellido1}}">
                 </div>
                 <div class="form-group">
                                 <label for="Apellido2">Segundo Apellido</label>
-                                        <input type="text" name="Apellido2" class= "form-control" value="{{$user->Apellido2}}">  
+                                        <input type="text" name="Apellido2" class= "form-control" value="{{Auth::user()->Apellido2}}">  
                 </div>
                 <div class="form-group">
                                 <label for="Comunidad">Comunidad a la que Pertenece </label>
-                                        <input type="text" name="Comunidad" class= "form-control" value=" {{$user->Comunidad}}" required>
+                                        <input type="text" name="Comunidad" class= "form-control" value=" {{Auth::user()->Comunidad}}" required>
                 </div>
                 <!-- /.form-group -->
                 </div>
@@ -339,9 +343,14 @@
         </div>
         <!-- /.box -->
         @section('Script')
+<script src="{{asset("assets/$theme/bower_components/select2/dist/js/select2.full.min.js")}}"></script>
 <script>
-      $(document).ready(function() { 
-        $('.select2').select2({tags: true});
-            }); </script>
+      $(function() { 
+        $('.select2').select2({
+                theme: "bootstrap"
+        });
+        $.fn.select2.defaults.set( "theme", "bootstrap" );
+        });  
+</script>
         @endsection
 @endsection

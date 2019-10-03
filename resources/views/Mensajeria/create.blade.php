@@ -11,13 +11,13 @@
               </a>
               </div>
             </div>
-        <h3 class="box-title">Crear Reporte de incidente</h3>
+        <h3 class="box-title">Crear reporte de incidente</h3>
       </div>
       <form class="form-horizontal" method="POST" action="/Mensajeria/store">
         @csrf
         <div class="box-body">
           <div class="form-group">
-            <label for="Codigo de Incidente" class="col-sm-2 control-label">CodigoIncidente:</label>
+            <label for="Codigo de Incidente" class="col-sm-2 control-label">Código de incidente:</label>
             <div class="col-sm-9">
                 <input type="text" name="CodigoIncidente" class= "form-control" >
             </div>
@@ -47,16 +47,16 @@
                   </div>
                 </div>
                 <div class="form-group">
-                    <label for="Categoria" class="col-sm-2 control-label">Categoria: </label>
+                    <label for="Categoria" class="col-sm-2 control-label">Categoría: </label>
                    
                     <div class="btn-group-horizontal">
-                      <button type="button" class="btn btn-danger">Grave
+                      <button type="button" class="btn bg-red">Grave
                         <input type="hidden" name="Categoria" value="Grave">
                       </button>
-                      <button type="button" class="btn  btn-warning" name="Categoria" value="Moderada" >Moderada
+                      <button type="button" class="btn  bg-orange" name="Categoria" value="Moderada" >Moderada
                         <input type="hidden" name="Categoria" value="Moderada">
                       </button>
-                      <button type="button" class="btn btn-success" name="Categoria" value="Leve" >Leve
+                      <button type="button" class="btn bg-green" name="Categoria" value="Leve" >Leve
                         <input type="hidden" name="Categoria" value="Leve">
                       </button>
                     

@@ -43,7 +43,7 @@
     
           
           <div class="form-group">
-              <label for="TipoDeInstalacion" class="col-sm-2 control-label">Tipo dela instalacion: </label>
+              <label for="TipoDeInstalacion" class="col-sm-2 control-label">Tipo de instalación: </label>
     
               <div class="col-sm-8">
                   <input type="text" name="TipoDeInstalacion" class= "form-control" value="{{$albergue->TipoDeInstalacion}}" readonly="readonly">
@@ -73,7 +73,7 @@
 
 
                          <div class="form-group">
-                            <label for="telefono" class="col-sm-2 control-label">Número de telefono: </label>
+                            <label for="telefono" class="col-sm-2 control-label">Número de teléfono: </label>
                   
                             <div class="col-sm-8">
                                 <input type="text" name="telefono" class= "form-control" value="{{$albergue->telefono}}" readonly="readonly">
@@ -91,7 +91,7 @@
                               </div>
 
                               <div class="form-group">
-                                    <label for="inodoros" class="col-sm-2 control-label">inodoros: </label>
+                                    <label for="inodoros" class="col-sm-2 control-label">Inodoros: </label>
                           
                                     <div class="col-sm-8">
                                         <input type="text" name="inodoros" class= "form-control" value="{{$albergue->inodoros}}" readonly="readonly">

@@ -11,7 +11,7 @@
                       </a>
                       </div>
           </div>
-      <h3 class="box-title">Editar Censo</h3>
+      <h3 class="box-title">Editar censo</h3>
       </div>
       <form class="form-horizontal" method="POST" action="/Censo/{{$censo->IdCenso}}">
         @method('PUT')
@@ -44,7 +44,7 @@
              <div class="form-group">
                     <div class="checkbox">
                            <label class="col-sm-2 control-label">
-                           Colchon
+                           Colchón
                            <input type="hidden" name="Colchon" value="0" />
                            <input type="checkbox" class="col-sm-6" name="Colchon" value="1">  
                     </label>

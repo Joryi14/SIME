@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\ValidacionInventario;
 use Illuminate\Support\Facades\DB;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class InventarioController extends Controller
 {
@@ -34,7 +36,7 @@ class InventarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionInventario $request)
     {
        
         $inventario = DB::select("call Insert_Inventario(
@@ -44,6 +46,37 @@ class InventarioController extends Controller
            '$request->Cobijas',
           '$request->Ropa')");
         header("location: /Inventario");
+    }
+    public function editSuministro($id)
+    {
+        $inventario = Inventario::find($id);
+        return view('Inventario.Suministro', compact('inventario'));
+    }
+
+    public function updateSuministro(Request $request, $id)
+    { 
+        $t = $request->Suministros;
+        $tt = $request->suma; 
+        $total = $t+$tt;
+        $inventario = DB::update("call Update_Suministros('$id','$request->idEmergencias','$total')");
+        header("location: /Inventario");
+    }
+
+    public function generar()
+    {
+        $inventario = \DB::table('inventario')
+       ->select(['idInventario','idEmergencias',
+       'Suministros',
+       'Colchonetas',
+       'Cobijas',
+       'Ropa']) 
+        ->get();
+        $today = Carbon::now()->format('d/m/Y');
+        $view = view ('Inventario.reporte', compact('inventario', 'today'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('inventario'.'.pdf');
+
     }
 
     /**
@@ -76,7 +109,7 @@ class InventarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionInventario $request, $id)
     {
         $inventario= DB::update("call Update_Inventario('$id','$request->idEmergencias',
         '$request->Suministros',
@@ -94,15 +127,8 @@ class InventarioController extends Controller
      */
     public function delete($id, Request $request)
     {
-        if ($request->ajax()) {
-            if (Inventario::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
-         
+        $inventario = Inventario::find($id);
+        $inventario->delete();
+        return redirect('Inventario')->with('Se ha eliminado correctamente');
     }
 }

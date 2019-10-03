@@ -11,7 +11,6 @@ $(function () {
 
   // Make the dashboard widgets sortable Using jquery UI
   $('.connectedSortable').sortable({
-    containment         : $('section.content'),
     placeholder         : 'sort-highlight',
     connectWith         : '.connectedSortable',
     handle              : '.box-header, .nav-tabs',

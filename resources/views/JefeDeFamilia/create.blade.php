@@ -1,4 +1,8 @@
 @extends("theme/$theme/layout")
+@section('styles')
+<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2.min.css")}}">
+<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2-bootstrap.css")}}">
+
 @section('Contenido')
 <div class="row">
 <div class="col-md-10">
@@ -13,13 +17,13 @@
               </a>
               </div>
             </div>
-        <h3 class="box-title">Crear Jefe de Familia</h3>
+        <h3 class="box-title">Crear jefe de Familia</h3>
       </div>
       <form class="form-horizontal" method="POST" action="/JefeDeFamilia/store">
           @csrf
         <div class="box-body">
           <div class="form-group">
-            <label for="TotalPersonas" class="col-sm-2 control-label">TotalPersonas: </label>
+            <label for="TotalPersonas" class="col-sm-2 control-label">Total de personas: </label>
             <div class="col-sm-8">
                 <input type="text" name="TotalPersonas" class= "form-control" >
             </div>
@@ -32,21 +36,21 @@
             </div>
           </div>
           <div class="form-group">
-              <label for="Apellido1" class="col-sm-2 control-label">Apellido1:  </label>
+              <label for="Apellido1" class="col-sm-2 control-label">Primer apellido:  </label>
   
               <div class="col-sm-8">
                   <input type="text" name="Apellido1" class= "form-control" > 
               </div>
             </div>
             <div class="form-group">
-                <label for="Apellido2" class="col-sm-2 control-label">Apellido2: </label>
+                <label for="Apellido2" class="col-sm-2 control-label">Segundo apellido: </label>
     
                 <div class="col-sm-8">
                     <input type="text" name="Apellido2" class= "form-control" >
                 </div>
               </div>
               <div class="form-group">
-                  <label for="Cedula" class="col-sm-2 control-label">Cedula: </label>
+                  <label for="Cedula" class="col-sm-2 control-label">Cédula: </label>
       
                   <div class="col-sm-8">
                       <input type="text" name="Cedula" class= "form-control" >
@@ -72,7 +76,7 @@
                       
                       </div>
                       <div class="form-group">
-                          <label for="Telefono" class="col-sm-2 control-label">Telefono: </label>
+                          <label for="Telefono" class="col-sm-2 control-label">Teléfono: </label>
               
                           <div class="col-sm-8">
                               <input type="text" name="Telefono" class= "form-control" > 
@@ -117,7 +121,8 @@
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label>Patologia</label>
+                                <label class="col-sm-2 control-label">Patologia</label>
+                                <div class="col-sm-8">
                                 <select class="form-control select2" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 100%;">
                                         <option>Alergias</option>
                                         <option>Asma</option>
@@ -131,6 +136,7 @@
                                         <option value="Psiquiatricos">Psiquiátricos</option>
                                 </select>
                                 </div>
+                                </div>
         </div>
         <div class="box-footer">
             @include("Includes.boton-form-create")
@@ -140,9 +146,14 @@
 </div>
 </div>
 @section('Script')
+<script src="{{asset("assets/$theme/bower_components/select2/dist/js/select2.full.min.js")}}"></script>
 <script>
-      $(document).ready(function() { 
-        $('.select2').select2({tags: true});
-            }); </script>
+      $(function() { 
+        $('.select2').select2({
+                theme: "bootstrap"
+        });
+        $.fn.select2.defaults.set( "theme", "bootstrap" );
+        });  
+</script>
         @endsection
 @endsection

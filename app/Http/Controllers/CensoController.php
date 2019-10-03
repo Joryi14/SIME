@@ -17,7 +17,8 @@ class CensoController extends Controller
     public function index()
     {
         $censos = Censo::orderBy('IdCenso')->get();
-        return view('Censo.index', compact('censos'));
+        $cen = NULL;
+        return view('Censo.index', compact('censos','cen'));
     }
 
     /**
@@ -56,7 +57,8 @@ class CensoController extends Controller
      */
     public function show($id)
     {
-    
+      $cen = Censo::find($id);
+      return response()->json(array(cen)); 
     }
 
     /**

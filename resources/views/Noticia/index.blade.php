@@ -92,23 +92,11 @@ $(function () {
                 <th>Id del autor</th>
                 <th>Imagenes</th>
                 <th>Videos</th>
-                <th>Articulo</th>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 4836d9c3c5fb9520563fbcf73351c38d900b5304
-                
+                <th>Articulo</th>    
                 <th>Nombre PDF</th>
-                
-
-             
-<<<<<<< HEAD
-=======
                 <th>PDF</th>
                 <th>Acciones</th>
->>>>>>> monica
-=======
->>>>>>> 4836d9c3c5fb9520563fbcf73351c38d900b5304
+
             </tr>
           </thead>
             @foreach ($noticias as $item)

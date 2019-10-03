@@ -38,17 +38,18 @@ class EntregaDonacionesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ValidacionEntregaDonaciones $request)
-    {
+    {    $entregadonaciones = new EntregaDonaciones();
         if($request->hasFile('Foto')){
             $file = $request->file('Foto');
-            $name = time().$file->getClientOriginalName();
-            $file->move(public_path().'/Foto/',$name);
+            $entregadonaciones->Foto = $entregadonaciones->Foto = base64_encode(file_get_contents($file));
           }
+
           $entregadonaciones = new EntregaDonaciones();
           $entregadonaciones->IdUsuarioRol = $request->IdUsuarioRol;
-          $entregadonaciones->IdJef = $request->IdJef;
+          $entregadonaciones->IdJefe = $request->IdJefe;
           $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
-          $entregadonaciones->Foto = $name;
+          $entregadonaciones->Foto = $request->Foto;
+          $entregadonaciones->created_at = $entregadonaciones->created_at;
           $entregadonaciones->save(); 
         header("location:EntregaDonaciones /");
     }

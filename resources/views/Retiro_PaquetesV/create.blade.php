@@ -2,6 +2,7 @@
 @section('Contenido')
 <div class="row">
     <div class="col-md-10">
+        @include('includes.mensaje-Error')
         @include('includes.Error-form')
      <div class="box box-info">
         <div class="box-header with-border">

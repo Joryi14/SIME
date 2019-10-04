@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidacionRetiroPaquetes;
+use App\Models\Inventario;
 use Illuminate\Support\Facades\DB;
 use App\Models\Retiro_PaquetesV;
 use Illuminate\Http\Request;
@@ -39,10 +40,15 @@ class Retiro_PaquetesVController extends Controller
      */
     public function store(ValidacionRetiroPaquetes $request)
     {
+        $inv = inventario::findorfail($request->IdInventario);
+        if(($request->SuministrosGobierno + $request->SuministrosComision) <= $inv->Suministros){
         $retiroPV = DB::select("call Insert_RetiroPaquetes('$request->IdAdministradorI','$request->NombreChofer','$request->Apellido1C','$request->Apellido2C',
         '$request->IdVoluntario','$request->PlacaVehiculo','$request->DireccionAEntregar','$request->SuministrosGobierno','$request->SuministrosComision',
         '$request->IdInventario')");  
-        header("location:Retiro_PaquetesV /");
+        return redirect('/Retiro_PaquetesV')->with('mensaje','Se ha agregado con éxito');
+    }
+        else 
+        return redirect('/Retiro_PaquetesV/create')->with('mensaje','Cantidad de paquetes insuficientes');
     }
 
     public function generar()

@@ -45,13 +45,13 @@ class EntregaDonacionesController extends Controller
           }
 
           $entregadonaciones = new EntregaDonaciones();
-          $entregadonaciones->IdUsuarioRol = $request->IdUsuarioRol;
+          $entregadonaciones->IdVoluntario = $request->IdUsuarioRol;
           $entregadonaciones->IdJefe = $request->IdJefe;
           $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
           $entregadonaciones->Foto = $request->Foto;
           $entregadonaciones->created_at = $entregadonaciones->created_at;
           $entregadonaciones->save(); 
-        header("location:EntregaDonaciones /");
+        return redirect('/EntregaDonaciones')->with('mensaje','Se ha agregado Correctamente');
     }
 
     /**

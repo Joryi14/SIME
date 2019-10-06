@@ -44,8 +44,7 @@ class EmergenciaController extends Controller
         '$request->Categoria','$request->TipoDeEmergencia','$request->Descripcion','$request->Longitud',
         '$request->Latitud')");
   
-        header("location: /Inventario/create");
-
+        return redirect('Emergencia')->with('mensaje','Se ha agregado correctamente');
     }
 
     /**
@@ -83,7 +82,7 @@ class EmergenciaController extends Controller
         $emergencia = Emergencia::find($id);
      $emergencia->fill($request->all());
      $emergencia->save();
-     header("location: /Emergencia");
+     return redirect('Emergencia')->with('mensaje','Se ha actualizado correctamente');
     }
 
     /**

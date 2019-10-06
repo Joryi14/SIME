@@ -42,7 +42,7 @@ class Retiro_PaquetesVController extends Controller
         $retiroPV = DB::select("call Insert_RetiroPaquetes('$request->IdAdministradorI','$request->NombreChofer','$request->Apellido1C','$request->Apellido2C',
         '$request->IdVoluntario','$request->PlacaVehiculo','$request->DireccionAEntregar','$request->SuministrosGobierno','$request->SuministrosComision',
         '$request->IdInventario')");  
-        header("location:Retiro_PaquetesV /");
+        return redirect('Retiro_PaquetesV')->with('mensaje','Se ha agregado correctamente');
     }
 
     public function generar()
@@ -96,7 +96,7 @@ class Retiro_PaquetesVController extends Controller
         $retiroPV = DB::update("call Update_RetiroPaquetes('$id','$request->IdAdministradorI','$request->NombreChofer','$request->Apellido1C','$request->Apellido2C',
         '$request->IdVoluntario','$request->PlacaVehiculo','$request->DireccionAEntregar','$request->SuministrosGobierno','$request->SuministrosComision',
         '$request->IdInventario')");  
-        header("location: /Retiro_PaquetesV");
+        return redirect('Retiro_PaquetesV')->with('mensaje','Se ha actualizado correctamente');
     
     }
 

@@ -42,8 +42,9 @@ class JefeDeFamiliaController extends Controller
         $Jefe = DB::select("call Insert_JefeDeFamilia('$request->TotalPersonas','$request->Nombre','$request->Apellido1','$request->Apellido2',
        '$request->Cedula','$request->Edad','$request->sexo','$request->Telefono','$request->PcD','$request->MG','$request->PI','$request->PM','$patologia')");
         
-        header("location: /JefeDeFamilia");
-        
+      
+       return redirect('JefeDeFamilia')->with('mensaje','Se ha agregado correctamente');
+    
     }
 
     /**
@@ -81,8 +82,8 @@ class JefeDeFamiliaController extends Controller
     { 
         $patologia = implode(', ',$request->Patologia);
         $JefeF = DB::update("call Update_JefeDeFamilia('$id','$request->TotalPersonas','$request->Nombre','$request->Apellido1','$request->Apellido2','$request->Cedula','$request->Edad','$request->sexo','$request->Telefono','$request->PcD','$request->MG','$request->PI','$request->PM','$patologia')");
-     
-        header("location: /JefeDeFamilia");
+       
+        return redirect('JefeDeFamilia')->with('mensaje','Se ha actualizado correctamente');
     }
 
     /**

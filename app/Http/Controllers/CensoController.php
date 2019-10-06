@@ -85,7 +85,7 @@ class CensoController extends Controller
         $censo = DB::update("call Update_Censo('$id','$request->IdJefeFam'
         ,'$request->Refrigerador','$request->Cocina','$request->Colchon','$request->Cama')");  
     
-     header("location: /Censo");
+        return redirect('Censo')->with('mensaje','Se ha actualizado correctamente'); 
 
     }
 
@@ -99,7 +99,7 @@ class CensoController extends Controller
     {
         $censo = Censo::find($id);
         $censo->delete();
-        return redirect('Censo')->with('Se ha eliminado correctamente');
+        return redirect('Censo')->with('mensaje','Se ha eliminado correctamente');
         
     }
 }

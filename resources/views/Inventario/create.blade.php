@@ -37,8 +37,8 @@
               <div class="checkbox">
                 <label class="col-sm-2 control-label">
                     Colchonetas:
-                  <input type="hidden" name="Colchonetas" value="0" />
-                  <input type="checkbox" class="col-sm-6" name="Colchonetas" value="1"> 
+                  <input type="hidden" name="Colchonetas" value="No" />
+                  <input type="checkbox" class="col-sm-6" name="Colchonetas" value="Si"> 
                  
                 </label>
           </div>
@@ -48,8 +48,8 @@
             <div class="checkbox">
               <label class="col-sm-2 control-label">
                   Cobijas:
-                <input type="hidden" name="Cobijas" value="0" />
-                <input type="checkbox" class="col-sm-6" name="Cobijas" value="1"> 
+                <input type="hidden" name="Cobijas" value="No" />
+                <input type="checkbox" class="col-sm-6" name="Cobijas" value="Si"> 
                
               </label>
         </div>
@@ -59,8 +59,8 @@
           <div class="checkbox">
             <label class="col-sm-2 control-label">
                 Ropa:
-              <input type="hidden" name="Ropa" value="0" />
-              <input type="checkbox" class="col-sm-6" name="Ropa" value="1"> 
+              <input type="hidden" name="Ropa" value="No" />
+              <input type="checkbox" class="col-sm-6" name="Ropa" value="Si"> 
              
             </label>
       </div>

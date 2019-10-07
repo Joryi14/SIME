@@ -93,7 +93,7 @@ class PersonasAlbergueController extends Controller
         $persona = PersonasAlbergue::find($id);
         $persona->fill($request->all());
         $persona->save();
-        header("location: /PersonasAlbergue");
+        return redirect('PersonasAlbergue')->with('mensaje','Se ha actualizado correctamente');
     }
 
     /**

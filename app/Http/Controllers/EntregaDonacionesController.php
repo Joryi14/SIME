@@ -51,7 +51,7 @@ class EntregaDonacionesController extends Controller
           $entregadonaciones->Foto = $request->Foto;
           $entregadonaciones->created_at = $entregadonaciones->created_at;
           $entregadonaciones->save(); 
-        return redirect('/EntregaDonaciones')->with('mensaje','Se ha agregado Correctamente');
+          return redirect('EntregaDonaciones')->with('mensaje','Se ha guardado correctamente'); 
     }
 
     /**
@@ -98,7 +98,7 @@ class EntregaDonacionesController extends Controller
         '$request->IdJefe',
         '$request->IdRetiroPaquetes',
         '$name')");
-        header("location: /EntregaDonaciones");
+        return redirect('EntregaDonaciones')->with('mensaje','Se ha actualizado correctamente'); 
     
     }
 
@@ -112,6 +112,6 @@ class EntregaDonacionesController extends Controller
     {
         $entregadonaciones = EntregaDonaciones::find($id);
         $entregadonaciones->delete();
-        return redirect('EntregaDonaciones')->with('Se ha eliminado correctamente');
+        return redirect('EntregaDonaciones')->with('mensaje','Se ha eliminado correctamente');
     }
 }

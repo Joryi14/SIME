@@ -45,7 +45,8 @@ class InventarioController extends Controller
             '$request->Colchonetas',
            '$request->Cobijas',
           '$request->Ropa')");
-        header("location: /Inventario");
+       
+        return redirect('Inventario')->with('mensaje','Se ha agregado correctamente');
     }
     public function editSuministro($id)
     {
@@ -59,7 +60,8 @@ class InventarioController extends Controller
         $tt = $request->suma; 
         $total = $t+$tt;
         $inventario = DB::update("call Update_Suministros('$id','$request->idEmergencias','$total')");
-        header("location: /Inventario");
+        return redirect('Inventario')->with('mensaje','Se ha actualizado correctamente la cantidad de suministros');
+        
     }
 
     public function generar()
@@ -116,7 +118,8 @@ class InventarioController extends Controller
         '$request->Colchonetas',
        '$request->Cobijas',
       '$request->Ropa')");
-        header("location: /Inventario");
+      return redirect('Inventario')->with('mensaje','Se ha actualizado correctamente');
+      
     }
 
     /**

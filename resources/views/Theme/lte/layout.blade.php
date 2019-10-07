@@ -17,7 +17,7 @@
   <!-- Material Design  -->
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/bootstrap-material-design.min.css")}}">
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/ripples.min.css")}}">
-  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/MaterialAdminLTE.min.css")}}">
+  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/MaterialAdminLTE.css")}}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/skins/all-md-skins.css")}}">

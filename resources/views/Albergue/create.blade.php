@@ -151,3 +151,32 @@
       </div>
       </div>
 @endsection
+@section('Script')
+<!-- Script -->
+<script type="text/javascript">
+  // CSRF Token
+  var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+  $(document).ready(function(){
+    $("#SelectU").select2({
+      ajax: { 
+        url: "{{route('Get_UsersA')}}",
+        type: "post",
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+          return {
+            _token: CSRF_TOKEN,
+            search: params.term // search term
+          };
+        },
+        processResults: function (response) {
+          return {
+            results: response
+          };
+        },
+        cache: true
+      }
+    });
+  });
+  </script>
+@endsection

@@ -85,7 +85,7 @@ $(function () {
             <tr>
 
               <th>Id de la entrega</th>
-              <th>Id del UsuarioRol</th>
+              <th>Voluntario cédula</th>
               <th>Id jefe de familia</th>
               <th>Id retiro de paquetes</th>
               <th>Foto</th>  
@@ -96,7 +96,7 @@ $(function () {
                 @foreach ($entregadonaciones as $item)
                   <tr>
                   <td>{{$item->IdEntrega}}</td>
-                  <td>{{$item->IdUsuarioRol}}</td>
+                  <td>{{$item->User->Cedula}}</td>
                   <td>{{$item->IdJefe}}</td>
                   <td>{{$item->IdRetiroPaquetes}}</td>
                   <td>

@@ -18,29 +18,32 @@
         @csrf
              <div class="box-body">
              <div class="form-group">
-                    <label for="IdUsuarioRol" class="col-sm-2 control-label">Id del usuario: </label>
+                    <label for="IdUsuarioRol" class="col-sm-2 control-label"> Usuario: </label>
                     <div class="col-sm-10">
-                        <input type="text" name="IdUsuarioRol" value=" {{$entregadonaciones->IdUsuarioRol}}" class= "form-control" >
+                        <input type="text" name="IdUsuarioRol"  readonly value=" {{$entregadonaciones->IdVoluntario}}" class= "form-control" >
                     </div>
              </div>
              <div class="form-group">
                     <label for="IdJefe" class="col-sm-2 control-label">Id del jefe de familia: </label>
                     <div class="col-sm-10">
-                        <input type="text" name="IdJefe" value=" {{$entregadonaciones->IdJefe}}" class= "form-control" >
+                        <input type="text" name="IdJefe" readonly value=" {{$entregadonaciones->IdJefe}}" class= "form-control" >
                     </div>
              </div>
              <div class="form-group">
                     <label for="IdRetiroPaquetes" class="col-sm-2 control-label">Id del Retiro de Paquetes: </label>
                     <div class="col-sm-10">
-                        <input type="text" name="IdRetiroPaquetes" value=" {{$entregadonaciones->IdRetiroPaquetes}}" class= "form-control" >
+                        <input type="text" name="IdRetiroPaquetes" readonly value=" {{$entregadonaciones->IdRetiroPaquetes}}" class= "form-control" >
                     </div>
              </div>
              <div class="form-group">
                     <label for="Foto" class="col-sm-2 control-label">Foto: </label>
                     <div class="col-sm-10">
-                        <input type="text" name="Foto" value=" {{$entregadonaciones->Foto}}" class= "form-control" >
+                        <button type="button" class="btn fa fa-plus bg-yellow">
+                         <input type="file" name="Foto" accept="image/*"  >  
+                        </button>
+                        <img style='display:block; width:100px; height:100px;' src='data:image/jpeg;base64,{{$entregadonaciones->Foto}}' alt="base64 test">
                     </div>
-             </div>
+                        </div>
       </div>
              <!-- /.box-body -->
              <div class="box-footer">

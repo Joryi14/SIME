@@ -124,10 +124,6 @@ class NoticiaController extends Controller
     public function update(ValidacionNoticias $request, $id)
     {
         $noticia = Noticia::find($id);
-       
-
-        
-       
         $noticia ->Titulo = $request->input('Titulo');
         $noticia ->IdAutor = $request->input('IdAutor');
         if($request->hasFile('Imagenes')){
@@ -142,7 +138,6 @@ class NoticiaController extends Controller
          
           $noticia->Videos = $request->Videos = base64_encode( file_get_contents($file));
         }
-        
         if($request->hasFile('PDF')){
           $file = $request->file('PDF');
          $noticia->PDF = $request->PDF = base64_encode( file_get_contents($file));

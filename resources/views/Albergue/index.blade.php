@@ -148,7 +148,7 @@ $(function () {
               <td>{{$item->Comunidad}}</td>
               <td>{{$item->TipoDeInstalacion}}</td>
               <td>{{$item->Capacidad}}</td>
-              <td>{{$item->IdResponsable}}</td>
+              <td>{{$item->User->Cedula}}</td>
               <td>{{$item->telefono}}</td>
               <td>{{$item->Nececidades}}</td>
               <td><a href="/Albergue/{{$item->idAlbergue}}/edit" class="btn-accion-tabla tooltipsC" title="Editar albergue">

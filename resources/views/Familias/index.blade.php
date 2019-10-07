@@ -74,7 +74,7 @@ $(function () {
         <div class="box-header">
             <div class="box-tools pull-right">
                 <a href="{{route('familias_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear Familiar
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
             </div>
             

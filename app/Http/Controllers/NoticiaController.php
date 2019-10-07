@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Noticia;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidacionNoticias;
 
 class NoticiaController extends Controller
 {
@@ -46,7 +47,7 @@ class NoticiaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionNoticias $request)
     {
             $noticia = new Noticia();
           if($request->hasFile('Imagenes')){
@@ -120,7 +121,7 @@ class NoticiaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionNoticias $request, $id)
     {
         $noticia = Noticia::find($id);
        

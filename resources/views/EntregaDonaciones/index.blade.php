@@ -74,7 +74,7 @@ $(function () {
         <div class="box-header">
             <div class="box-tools pull-right">
                 <a href="{{route('EntregaDonaciones_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear Entrega
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
             </div>
           <h3 class="box-title">Entrega de donaciones</h3>

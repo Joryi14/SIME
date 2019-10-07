@@ -41,7 +41,7 @@
           <h3 class="box-title">Informes de incidentes</h3>
           <div class="box-tools pull-right">
             <a href="{{route('Mensajeria_create')}}" class="btn btn-primary btn-sm">
-              <i class="fa fa-plus-circle"></i> Crear nuevo informe
+              <i class="fa fa-plus-circle"></i> Crear
           </a>
             </div>
           </div>

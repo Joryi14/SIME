@@ -95,7 +95,7 @@ $(function () {
       @include('Includes.mensaje-Succes')
       <div class="box-tools pull-rigth">
           <a href="{{route('Retiro_PaquetesV_reporte')}}" class="btn btn-block btn-primary btn-sm">
-              <i class="fa fa-fw fa-plus-circle"></i> Crear Reporte de retiro de paquetes
+              <i class="fa fa-fw fa-plus-circle"></i> Crear
           </a>
         </div>
       <div class="box box-primary">

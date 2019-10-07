@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\VoluntarioWeb;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidacionInscripcionVoluntarios;
 
 class VoluntarioWebController extends Controller
 {
@@ -35,7 +36,7 @@ class VoluntarioWebController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionInscripcionVoluntarios $request)
     {
         $voluntarioweb = new VoluntarioWeb();  
         $voluntarioweb->NombreVoluntarioWeb = $request->NombreVoluntarioWeb;    

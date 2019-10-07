@@ -77,7 +77,7 @@ $(function () {
             <div class="box-tools pull-right">
               
                 <a href="{{route('inventario_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear inventario
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
             </div>
             

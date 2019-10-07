@@ -72,13 +72,13 @@ $(function () {
         @include('Includes.mensaje-Succes')
       <div class="box box-primary">
         <div class="box-header">
-            <div class="box-tools pull-right">
+            {{-- <div class="box-tools pull-right">
                 <a href="{{route('emergencia_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear Emergencia
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
             </div>
-            
-          <h3 class="box-title">Emergencias</h3>
+             --}}
+          <h3 class="box-title">Lista de emergencias</h3>
         </div>
        
           <div class="box-body table-responsive" >

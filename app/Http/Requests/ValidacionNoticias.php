@@ -14,6 +14,7 @@ class ValidacionNoticias extends FormRequest
     public function authorize()
     {
         return true;
+    
     }
 
     /**
@@ -25,6 +26,9 @@ class ValidacionNoticias extends FormRequest
     {
         return [
             //
+            'Titulo'=> 'required',
+            'IdAutor'=> 'required',
+            'Articulo'=> 'required',
 
             
         ];
@@ -34,6 +38,10 @@ class ValidacionNoticias extends FormRequest
     {
         return [
             //
+
+            'Titulo.required' => ' El titulo de la noticia es requerido',
+            'IdAutor.required' => ' El autor ese requerido',
+            'Articulo.required' => ' El artículo es requerido',
         ];
     }
 }

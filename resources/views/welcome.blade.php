@@ -27,7 +27,7 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
-  <link href="{{asset("assets/Index/css/agency.min.css")}}" rel="stylesheet">
+  <link href="{{asset("assets/Index/css/agency.css")}}" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -49,7 +49,7 @@
             <a class="nav-link js-scroll-trigger" href="#portfolio">Noticias</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Inscripcion de voluntarios</a>
+            <a class="nav-link js-scroll-trigger" href="#contact">Inscripción de voluntarios</a>
           </li>
               @if (Route::has('login'))
               @auth
@@ -100,7 +100,7 @@
             <i class="fas fa-circle fa-stack-2x text-primary"></i>
             <i class="fas fa-phone-alt fa-stack-1x fa-inverse"></i>
           </span>
-          <h4 class="service-heading">Telefonos</h4>
+          <h4 class="service-heading">Teléfonos</h4>
           <p class="text-muted">83483924</p>
         </div>
         <div class="col-md-4">
@@ -108,7 +108,7 @@
             <i class="fas fa-circle fa-stack-2x text-primary"></i>
             <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
           </span>
-          <h4 class="service-heading">Email</h4>
+          <h4 class="service-heading">Correo</h4>
           <p class="text-muted">nosaraemergencias@gmail.com </p>
         </div>
         <div class="col-md-4">
@@ -117,7 +117,7 @@
             <i class= "fas fa-map-marked-alt fa-stack-1x fa-inverse"></i>
           </span>
           <h4 class="service-heading">Dirección</h4>
-          <p class="text-muted">300mts sur del EBAIS de Nosara, oficinas de la ADIN. Reuniones todos los viernes que la primera semana de cada mes.
+          <p class="text-muted">300mts sur del EBAIS de Nosara, oficinas de la ADIN.Reuniones todos los viernes de la  primera semana de cada mes.
           </p>
         </div>
       </div>
@@ -381,15 +381,15 @@
                 </div>
 
                 <div class="form-group">
-                  <input class="form-control" name="ApellidoVoluntario1Web" type="text" placeholder="1er Apellido *" required="required" data-validation-required-message="Please enter your email address.">
+                  <input class="form-control" name="ApellidoVoluntario1Web" type="text" placeholder="Primer apellido *" required="required" data-validation-required-message="Please enter your email address.">
                   <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
-                  <input class="form-control" name="ApellidoVoluntario2Web" type="text" placeholder="2do Apellido *" required="required" data-validation-required-message="Please enter your phone number.">
+                  <input class="form-control" name="ApellidoVoluntario2Web" type="text" placeholder="Segundo apellido *" required="required" data-validation-required-message="Please enter your phone number.">
                   <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" name="CedulaVoluntarioWeb" type="text" placeholder="# Identificación *" required="required" data-validation-required-message="Please enter your phone number.">
+                    <input class="form-control" name="CedulaVoluntarioWeb" type="text" placeholder="# de Identificación *" required="required" data-validation-required-message="Please enter your phone number.">
                     <p class="help-block text-danger"></p>
                 </div>
               </div>
@@ -397,7 +397,7 @@
           
 
                   <div class="form-group">
-                      <input class="form-control" name="TelefonoVoluntarioWeb" type="text" placeholder="Telefono *" required="required" data-validation-required-message="Please enter your phone number.">
+                      <input class="form-control" name="TelefonoVoluntarioWeb" type="text" placeholder="Teléfono *" required="required" data-validation-required-message="Please enter your phone number.">
                       <p class="help-block text-danger"></p>
                   </div>
                   <div class="form-group">
@@ -406,12 +406,12 @@
                   </div>
 
                   <div class="form-group">
-                      <input class="form-control" name="OcupacionWeb" type="text" placeholder="Ocupacion *" required="required" data-validation-required-message="Please enter your phone number.">
+                      <input class="form-control" name="OcupacionWeb" type="text" placeholder="Ocupación *" required="required" data-validation-required-message="Please enter your phone number.">
                       <p class="help-block text-danger"></p>
                   </div>
 
                   <div class="form-group">
-                      <input class="form-control" name="PatologiaWeb" type="text" placeholder="Patologia *" required="required" data-validation-required-message="Please enter your phone number.">
+                      <input class="form-control" name="PatologiaWeb" type="text" placeholder="Patología *" required="required" data-validation-required-message="Please enter your phone number.">
                       <p class="help-block text-danger"></p>
                   </div>
               </div>

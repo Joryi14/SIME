@@ -67,7 +67,7 @@ class AlbergueController extends Controller
         '$request->model_id','$request->telefono','$request->Duchas','$request->inodoros',
         '$request->EspaciosDeCocina','$request->Bodega',
         '$request->Longitud','$request->Latitud','$request->Nececidades')");
-    // no sirve todavia revisar lo del model_id para guardar
+
         return redirect('Albergue')->with('mensaje','Se ha agregado correctamente');
     }
 

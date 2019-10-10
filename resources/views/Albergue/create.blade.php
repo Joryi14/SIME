@@ -97,13 +97,13 @@
         
          <div class="form-group">
                 <div class="checkbox">
-                   <label class="col-sm-2 control-label">
-                    Espacios de cocina
-                    <input type="hidden" name="EspacioDeCocina" value="0" />
-                      <input type="checkbox" class="col-sm-6" name="EspacioDeCocina" value="1">  
-                </label>
+                      <label class="col-sm-2 control-label">
+                      Espacios de cocina
+                      <input type="hidden" name="EspaciosDeCocina" value="0" />
+                      <input type="checkbox" class="col-sm-6" name="EspaciosDeCocina" value="1">  
+                 </label>
                 </div>  
-            </div> 
+                </div> 
 
                 <div class="form-group">
                         <div class="checkbox">

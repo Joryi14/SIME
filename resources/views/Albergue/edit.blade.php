@@ -66,7 +66,7 @@
                         <label for="IdResponsable" class="col-sm-2 control-label">Id del responsable: </label>
               
                         <div class="col-sm-8">
-                            <input type="text" name="IdResponsable" class= "form-control" value="{{$albergue->IdResponsable}}" readonly="readonly">
+                            <input type="text" name="IdResponsable" class= "form-control" value="{{$albergue->model_id}}" readonly="readonly">
                         </div>
                       </div>
 
@@ -102,7 +102,7 @@
                                         <label for="EspaciosDeCocina" class="col-sm-2 control-label">Espacios de Cocina: </label>
                               
                                         <div class="col-sm-8">
-                                            <input type="text" name="EspaciosDeCocina" class= "form-control" value="{{$albergue->EspacioDeCocina}}" readonly="readonly">
+                                            <input type="text" name="EspaciosDeCocina" class= "form-control" value="{{$albergue->EspaciosDeCocina}}" readonly="readonly">
                                         </div>
                                       </div>
     

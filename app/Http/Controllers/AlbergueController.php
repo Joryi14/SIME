@@ -65,10 +65,10 @@ class AlbergueController extends Controller
         $albergue = DB::select("call Insert_Albergue('$request->Nombre',
         '$request->Distrito','$request->Comunidad','$request->TipoDeInstalacion','$request->Capacidad', 
         '$request->model_id','$request->telefono','$request->Duchas','$request->inodoros',
-        '$request->EspacioDeCocina','$request->Bodega',
+        '$request->EspaciosDeCocina','$request->Bodega',
         '$request->Longitud','$request->Latitud','$request->Nececidades')");
-    // no sirve todavia revisar lo del model_id para guardar
-        header("location: /Albergue");
+
+        return redirect('Albergue')->with('mensaje','Se ha agregado correctamente');
     }
 
 

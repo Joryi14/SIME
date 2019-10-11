@@ -20,7 +20,7 @@
              <div class="box-body">
             <input type="hidden" name="IdUsuarioRol" value="{{Auth::user()->id}}" class= "form-control" >
             <div class="form-group">
-                <label for="IdResponsable" class="col-sm-2 control-label"> Jefe de familia:</label>
+                <label for="IdJefe" class="col-sm-2 control-label"> Jefe de familia:</label>
                 <div class="col-sm-9">
                     <select id='SelectJ' name="IdJefe" style='width: 25%;'>
                     <option value='0'>Seleccionar un Jefe</option></select>

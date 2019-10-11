@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\JefeDeFamilia;
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidacionJefeDeFamilia;
+use App\Http\Requests\ValidacionFamilia;
 
 class JefeDeFamiliaController extends Controller
 {
@@ -85,7 +86,24 @@ class JefeDeFamiliaController extends Controller
        
         return redirect('JefeDeFamilia')->with('mensaje','Se ha actualizado correctamente');
     }
-
+    public function agregarfamiliar($id)
+    {
+        $JefeF = JefeDeFamilia::find($id);
+        return view('JefeDeFamilia.Familiar', compact('JefeF'));
+    }
+    public function Familiar(ValidacionFamilia $request, $id)
+    {
+       // falta validacion para total de personas, osea que revise cuantas personas tienen el mismo IdJefe y si es igual me devuelva
+       //a la vista index de jefe de familia con el mensaje de que ya no puede ingresar mas familiares por el total que dijo 
+       //al total hay que restarle uno para quitar al jefe
+       
+       //quitar boton crear familia 
+       
+         $Patologia = implode(', ',$request->Patologia);
+         $Familia = DB::select("call Insert_Familia('$id','$request->Nombre','$request->Apellido1','$request->Apellido2','$request->Cedula','$request->Parentesco','$request->Edad','$request->sexo','$request->PcD','$request->MG','$request->PI','$request->PM','$Patologia')");
+         return redirect('JefeDeFamilia')->with('mensaje','Se ha agregado correctamente');    
+    
+        }
     /**
      * Remove the specified resource from storage.
      *

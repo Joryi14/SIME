@@ -52,10 +52,10 @@ class PersonasAlbergueController extends Controller
         $persona->save();  
         return redirect('PersonasAlbergue')->with('mensaje','Se ha agregado correctamente');}
         else
-        return redirect('PersonasAlbergue/create')->with('mensaje','Error El Albergue no Existe');
+        return redirect('PersonasAlbergue/create')->with('mensaje','Error el albergue no existe');
         }
         else
-        return redirect('PersonasAlbergue/create')->with('mensaje','Error El Jefe de Familia no Existe');
+        return redirect('PersonasAlbergue/create')->with('mensaje','Error El jefe de familia no existe');
     }
 
     /**

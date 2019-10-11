@@ -83,6 +83,8 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], functi
     Route::post('JefeDeFamilia/store','JefeDeFamiliaController@store');
     Route::get('JefeDeFamilia/{JefeDeFamilia}/edit', 'JefeDeFamiliaController@edit')->name('jefe_edit');
     Route::put('JefeDeFamilia/{JefeDeFamilia}','JefeDeFamiliaController@update');
+    Route::get('JefeDeFamilia/{JefeDeFamilia}/agregarfamiliar', 'JefeDeFamiliaController@agregarfamiliar')->name('familiar');
+    Route::put('Familiar/{JefeDeFamilia}','JefeDeFamiliaController@Familiar');
     Route::delete('JefeDeFamilia/{id}','JefeDeFamiliaController@delete')->name('jefe_delete');
 });
 

@@ -40,7 +40,7 @@ class PermisoRolController extends Controller
         $role = Role::findById($request->role_id);
         $permission = Permission::findById($request->permission_id);
         $role->givePermissionTo($permission);
-        header("location: /user");
+        return redirect('user');
     }
 
     /**

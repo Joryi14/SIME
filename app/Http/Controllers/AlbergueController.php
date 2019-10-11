@@ -108,7 +108,7 @@ class AlbergueController extends Controller
         $albergue = Albergue::find($id);
         $albergue->fill($request->all());
         $albergue->save();
-        header("location: /Albergue");
+        return redirect('Albergue')->with('mensaje','Editado correctamente');
     }
 
     /**
@@ -121,6 +121,6 @@ class AlbergueController extends Controller
     {
         $albergue = Albergue::find($id);
         $albergue->delete();
-        return redirect('Albergue')->with('Se ha eliminado correctamente');
+        return redirect('Albergue')->with('mensaje','Se ha eliminado correctamente');
     }
 }

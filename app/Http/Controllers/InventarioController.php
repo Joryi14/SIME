@@ -113,13 +113,10 @@ class InventarioController extends Controller
      */
     public function update(ValidacionInventario $request, $id)
     {
-        $inventario= DB::update("call Update_Inventario('$id','$request->idEmergencias',
-        '$request->Suministros',
-        '$request->Colchonetas',
-       '$request->Cobijas',
-      '$request->Ropa')");
+        $inventario = Inventario::find($id);
+        $inventario->fill($request->all());
+        $inventario->save();
       return redirect('Inventario')->with('mensaje','Se ha actualizado correctamente');
-      
     }
 
     /**

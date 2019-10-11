@@ -37,7 +37,7 @@ class roles extends Controller
     public function store(Request $request)
     {
         $role = Role::create(['name' => $request->name]);
-        header("location: /user");
+        return redirect('user');
     }
 
     /**

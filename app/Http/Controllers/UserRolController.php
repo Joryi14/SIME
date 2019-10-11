@@ -42,7 +42,7 @@ class UserRolController extends Controller
         $user = User::find($request->model_id);
         $role = Role::findById($request->role_id);
         $user->assignRole($role->name);
-        header("location: /user");
+        return redirect('user');
     }
 
     /**

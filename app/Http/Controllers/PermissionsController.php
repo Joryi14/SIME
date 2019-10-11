@@ -22,7 +22,7 @@ class PermissionsController extends Controller
     public function store(Request $request)
     {
         $permission = Permission::create(['name' => $request->name]);
-        header("location: /user");
+        return redirect('user');
     }
     /**
      * Remove the specified resource from storage.

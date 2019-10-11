@@ -27,22 +27,13 @@
           <input type="text" name="idEmergencias" class= "form-control" value=" {{$inventario->idEmergencias}}" >
         </div>
       </div>
-
-
-      <div class="form-group">
+      
+     <div class="form-group">
           <label for="Suministros" class="col-sm-2 control-label">Suministros: </label>
           <div class="col-sm-9">
-            <input type="text" name="Suministros" class= "form-control" value=" {{$inventario->Suministros}}" >
+            <input type="text" name="Suministros" readonly class= "form-control" value=" {{$inventario->Suministros}}" >
           </div>
         </div>
-
-        <div class="form-group">
-            <label for="Suministros" class="col-sm-2 control-label">Suministros: </label>
-            <div class="col-sm-9">
-              <input type="text" name="Suministros" class= "form-control" value=" {{$inventario->Suministros}}" >
-            </div>
-          </div>
-  
 
           <div class="form-group">
               <div class="checkbox">

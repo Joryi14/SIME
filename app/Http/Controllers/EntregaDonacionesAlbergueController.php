@@ -37,7 +37,7 @@ class EntregaDonacionesAlbergueController extends Controller
     public function store(Request $request)
     {
         $entregadonacionesA = DB::select("call Insert_EntregaDonacionesAlbergue('$request->IdJefeFa')");  
-        header("location:EntregaDonacionesAlbergue");
+        return redirect('EntregaDonacionesAlbergue')->with('mensaje','Se ha guardado');
     }
 
     /**
@@ -73,7 +73,7 @@ class EntregaDonacionesAlbergueController extends Controller
     public function update(Request $request, $id)
     {
         $entregadonacionesA = DB::update("call Update_EntregaDonacionesAlbergue('$id','$request->IdJefeFa')");
-        header("location: /EntregaDonacionesAlbergue");
+        return redirect('EntregaDonacionesAlbergue')->with('mensaje','Editado correctamente');
     
     }
 

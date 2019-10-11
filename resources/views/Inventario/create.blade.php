@@ -4,7 +4,7 @@
     <div class="col-md-10">
         @include('Includes.Error-form')
         <div class="box box-info">
-          <div class="box-header with-border">
+          <div class="box-header with-border"  style="padding:2%">
               <div class="box-tools pull-right">
                   <div class="col-sm-12">
                   <a href="{{route('inicio_inventario')}}" class="btn btn-block btn-info ">

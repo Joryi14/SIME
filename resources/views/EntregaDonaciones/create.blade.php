@@ -5,7 +5,7 @@
      @include('Includes.Error-form')
      @include('Includes.mensaje-Error')
     <div class="box box-info">
-      <div class="box-header with-border">
+      <div class="box-header with-border"style="padding:2%">
         <div class="box-tools pull-right">
                       <div class="col-sm-12">
                       <a href="{{route('inicio_EntregaDonaciones')}}" class="btn btn-block btn-info ">

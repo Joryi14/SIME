@@ -1,22 +1,86 @@
 @extends("theme/$theme/layout")
 @section('Contenido')
-<form class= "form-group" method="POST" action="/Mensajeria/{{$mensajeria->IdMensajeria}}">
+<div class="row">
+      <div class="col-md-10">
+          <div class="box box-success">
+            <div class="box-header with-border " style="padding:2%"> 
+                <div class="box-tools pull-right">
+                    <div class="col-sm-12">
+                        <a href="{{route('inicio_mensaje')}}" class="btn btn-block btn-info ">
+                            <i class="fa fa-fw fa-reply-all"></i> Regresar
+                        </a>
+                        </div>
+                    
+                  </div>
+              <h3 class="box-title">Editar mensaje</h3>
+            </div>
+<form class= "form-horizontal" method="POST" action="/Mensajeria/{{$mensajeria->IdMensajeria}}">
  @method('PUT')
   @csrf
-<div class= "form-group">
-<h1>Editar</h1>
-<label>Código de incidente: <input type="text" name="CodigoIncidente" value=" {{$mensajeria->CodigoIncidente}}"class= "form-control" > </label><br>
-<label>Descripción: <input type="text" name="Descripcion" value=" {{$mensajeria->Descripcion}}" class= "form-control" > </label><br>
-<label>Ubicación: <input type="text" name="Ubicacion" value=" {{$mensajeria->Ubicacion}}" class= "form-control" > </label><br>
-<label>Hora: <input type="text" name="Hora" value=" {{$mensajeria->Hora}}" class= "form-control" > </label><br>
-<label>Fecha: <input type="date" name="Fecha" value="{{old('Fecha', $mensajeria->fecha ?? '')}}" class= "form-control" > </label><br>
-<label>Categoría: <input type="text" name="Categoria" value=" {{$mensajeria->Categoria}}" class= "form-control" > </label><br>
-<label>Id líder comunal: <input type="text" name="IdLiderComunal"  value=" {{$mensajeria->IdLiderComunal}}" class= "form-control" > </label><br>
+
+<div class= "box-body">
+
+      <div class="form-group">
+            <label for="CodigoIncidente" class="col-sm-2 control-label">Código de incidente: </label>
+            <div class="col-sm-9">
+              <input type="text" name="CodigoIncidente" class= "form-control" value=" {{$mensajeria->CodigoIncidente}}" >
+            </div>
+          </div>
+
+
+          <div class="form-group">
+               <label for="Descripcion" class="col-sm-2 control-label">Descripción: </label>
+               <div class="col-sm-9">
+                 <input type="text" name="Descripcion" class= "form-control" value=" {{$mensajeria->Descripcion}}" >
+               </div>
+             </div>
+
+             <div class="form-group">
+                  <label for="Ubicacion" class="col-sm-2 control-label">Ubicación: </label>
+                  <div class="col-sm-9">
+                    <input type="text" name="Ubicacion" class= "form-control" value=" {{$mensajeria->Ubicacion}}" >
+                  </div>
+                </div>
+
+                <div class="form-group">
+                     <label for="Hora" class="col-sm-2 control-label">Hora: </label>
+                     <div class="col-sm-9">
+                       <input type="text" name="Hora" class= "form-control" value=" {{$mensajeria->Hora}}" >
+                     </div>
+                   </div>
+
+
+                   <div class="form-group">
+                        <label for="Fecha" class="col-sm-2 control-label">Fecha: </label>
+                        <div class="col-sm-9">
+                          <input type="text" name="Fecha" class= "form-control" value=" {{$mensajeria->fecha}}" >
+                        </div>
+                      </div>
+                      
+                   <div class="form-group">
+                        <label for="Categoria" class="col-sm-2 control-label">Categoría: </label>
+                        <div class="col-sm-9">
+                          <input type="text" name="Categoria" class= "form-control" value=" {{$mensajeria->Categoria}}" >
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                           <label for="IdLiderComunal" class="col-sm-2 control-label">Id líder comunal: </label>
+                           <div class="col-sm-9">
+                             <input type="text" name="IdLiderComunal" class= "form-control" value=" {{$mensajeria->IdLiderComunal}}" >
+                           </div>
+                         </div>
+
+
+
 </div>
 
-
-      
-
-   <button type="submit" class="btn btn-primary">Editar</button>
-   </div>  
+<div class="box-footer">
+      @include("Includes.boton-editar")
+   </div>
+  </form>
+     </div>  
+  </div>
+</div>
+ 
 @endsection

@@ -3,7 +3,8 @@
    <div class="row">
       <div class="col-md-10">
       <div class="box box-success">
-      <div class="box-header with-border">
+      <div class="box-header with-border"  style="padding:2%">
+            <h3 class="box-title">Editar Entrega</h3>
         <div class="box-tools pull-right">
                       <div class="col-sm-12">
                       <a href="{{route('inicio_EntregaDonacionesA')}}" class="btn btn-block btn-info ">
@@ -11,7 +12,6 @@
                       </a>
                       </div>
           </div>
-      <h3 class="box-title">Editar Entrega</h3>
       </div>
       <form class="form-horizontal" method="POST" action="/EntregaDonacionesAlbergue/{{$entregadonacionesA->IdEntregaA}}">
         @method('PUT')

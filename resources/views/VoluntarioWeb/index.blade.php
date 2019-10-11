@@ -71,7 +71,7 @@ $(function () {
     <div class="col-xs-12">
         @include('Includes.mensaje-Succes')
       <div class="box box-primary">
-        <div class="box-header">
+        <div class="box-header"  style="padding:2%">
             <div class="box-tools pull-right">
                
             </div>

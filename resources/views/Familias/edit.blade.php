@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-md-10">
       <div class="box box-success">
-        <div class="box-header with-border">
+        <div class="box-header with-border" style="padding:2%">
           <h3 class="box-title">Editar Familia</h3>
           <div class="box-tools pull-right">
               <div class="col-sm-12">

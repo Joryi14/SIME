@@ -1,27 +1,87 @@
 @extends("theme/$theme/layout")
 @section('Contenido')
-<form class= "form-group" method="POST" action="/Inventario/{{$inventario->idInventario}}">
+<div class="row">
+  <div class="col-md-10">
+      <div class="box box-success">
+        <div class="box-header with-border">
+            <div class="box-tools pull-right">
+                <div class="col-sm-12">
+                    <a href="{{route('inicio_inventario')}}" class="btn btn-block btn-info ">
+                        <i class="fa fa-fw fa-reply-all"></i> Regresar
+                    </a>
+                    </div>
+                
+              </div>
+          <h3 class="box-title">Editar inventario</h3>
+        </div>
+<form class= "form-horizontal" method="POST" action="/Inventario/{{$inventario->idInventario}}">
  @method('PUT')
   @csrf
-<div class= "form-group">
-<h1>Editar</h1>
+
+<div class= "box-body">
 
 
-<div class="form-group ">
-  <label>Id de las emergencias: <input type="text" name="idEmergencias" class= "form-control" value=" {{$inventario->idEmergencias}}"> </label><br>
+    <div class="form-group">
+        <label for="idEmergencias" class="col-sm-2 control-label">Id de las emergencias: </label>
+        <div class="col-sm-9">
+          <input type="text" name="idEmergencias" class= "form-control" value=" {{$inventario->idEmergencias}}" >
+        </div>
+      </div>
 
-  <label>Suministros: <input type="text" name="Suministros" class= "form-control" value=" {{$inventario->Suministros}}"readonly="readonly" > </label><br>
+
+      <div class="form-group">
+          <label for="Suministros" class="col-sm-2 control-label">Suministros: </label>
+          <div class="col-sm-9">
+            <input type="text" name="Suministros" class= "form-control" value=" {{$inventario->Suministros}}" >
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Suministros" class="col-sm-2 control-label">Suministros: </label>
+            <div class="col-sm-9">
+              <input type="text" name="Suministros" class= "form-control" value=" {{$inventario->Suministros}}" >
+            </div>
+          </div>
   
-  <input type="hidden" name="Colchonetas" value="0" />
-  <label><input type="checkbox" name="Colchonetas" value="1"> Colchonetas: </label><br>
 
-  <input type="hidden" name="Cobijas" value="0" />
-  <label><input type="checkbox" name="Cobijas" value="1"> Cobijas: </label><br>
+          <div class="form-group">
+              <div class="checkbox">
+                <label class="col-sm-2 control-label">
+                 Colchonetas
+                 <input type="hidden" name="Colchonetas" value="0" />
+                <input type="checkbox" class="col-sm-6" name="Colchonetas" value="1">  
+              </label>
+            </div>
+           </div>
 
-  <input type="hidden" name="Ropa" value="0" />
-  <label><input type="checkbox" name="Ropa" value="1"> Ropa: </label><br>
+           <div class="form-group">
+              <div class="checkbox">
+                <label class="col-sm-2 control-label">
+                    Cobijas
+                 <input type="hidden" name="Cobijas" value="0" />
+                <input type="checkbox" class="col-sm-6" name="Cobijas" value="1">  
+              </label>
+            </div>
+           </div>
+
+           <div class="form-group">
+              <div class="checkbox">
+                <label class="col-sm-2 control-label">
+                    Ropa
+                 <input type="hidden" name="Ropa" value="0" />
+                <input type="checkbox" class="col-sm-6" name="Ropa" value="1">  
+              </label>
+            </div>
+           </div>
+
+  </div>
+
+  <div class="box-footer">
+      @include("Includes.boton-editar")
    </div>
+  </form>
+     </div>  
+  </div>
+</div>
 
-   <button type="submit" class="btn btn-primary">Editar</button>
-   </div>  
 @endsection

@@ -84,7 +84,7 @@ class NoticiaController extends Controller
         $noticia->Articulo = $request->Articulo;
         $noticia->PDF = $request->PDF;
         $noticia ->save();  
-        header("location: /Noticia");
+        return redirect('Noticia')->with('mensaje','Se ha guardado');
 
         
     }
@@ -153,7 +153,7 @@ class NoticiaController extends Controller
          
        
         $noticia->save();
-        header("location: /Noticia");
+        return redirect('Noticia')->with('mensaje','Editado correctamente');
     }
 
     /**

@@ -48,7 +48,7 @@ class VoluntarioWebController extends Controller
         $voluntarioweb->OcupacionWeb = $request->OcupacionWeb;
         $voluntarioweb->PatologiaWeb = $request->PatologiaWeb;
         $voluntarioweb->save();  
-        header("location: /VoluntarioWeb");
+        return redirect('VoluntarioWeb');
         
     }
 
@@ -87,7 +87,7 @@ class VoluntarioWebController extends Controller
         $voluntarioweb = VoluntarioWeb::find($id);
         $voluntarioweb->fill($request->all());
         $voluntarioweb->save();
-        header("location: /VoluntarioWeb");
+        return redirect('VoluntarioWeb');
     }
 
     /**

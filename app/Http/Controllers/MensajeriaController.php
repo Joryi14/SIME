@@ -44,7 +44,7 @@ class MensajeriaController extends Controller
         $mensajeria->Categoria = $request->Categoria;
         $mensajeria->IdLiderComunal = $request->IdLiderComunal;
         $mensajeria->save();  
-        header("location: /Mensajeria");
+        return redirect('Mensajeria')->with('mensaje','Se ha guardado');
     }
 
     /**
@@ -83,7 +83,7 @@ class MensajeriaController extends Controller
         $mensajeria = Mensajeria::find($id);
         $mensajeria->fill($request->all());
         $mensajeria->save();
-        header("location: /Mensajeria");
+        return redirect('Mensajeria')->with('mensaje','Editado correctamente');
     }
 
     /**

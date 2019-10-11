@@ -116,11 +116,11 @@ class EntregaDonacionesController extends Controller
             $file = $request->file('Foto');
             $entregadonaciones->Foto = $request->Foto = base64_encode(file_get_contents($file));
           }  
-        $entrega->IdVoluntario = $request->IdUsuarioRol;
-        $entrega->IdJefe = $request->IdJefe;
-        $entrega->IdRetiroPaquetes = $request->IdRetiroPaquetes;
-        $entrega->Foto = $request->Foto;
-        $entrega->save();
+        $entregadonaciones->IdVoluntario = $request->IdUsuarioRol;
+        $entregadonaciones->IdJefe = $request->IdJefe;
+        $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
+        $entregadonaciones->Foto = $request->Foto;
+        $entregadonaciones->save();
         return redirect('EntregaDonaciones')->with('mensaje','Se ha actualizado correctamente');
     }
 

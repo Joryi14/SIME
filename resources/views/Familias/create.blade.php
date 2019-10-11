@@ -8,7 +8,7 @@
       @include('Includes.Error-form')
       @include('Includes.mensaje-Succes')
       <div class="box box-info">
-        <div class="box-header with-border">
+        <div class="box-header with-border"  style="padding:2%">
           <h3 class="box-title">Crear familiar</h3>
           <div class="box-tools pull-right">
               <div class="col-sm-12">

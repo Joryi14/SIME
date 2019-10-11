@@ -3,15 +3,15 @@
    <div class="row">
       <div class="col-md-10">
       <div class="box box-success">
-      <div class="box-header with-border">
+      <div class="box-header with-border" style="padding:2%">
+    <h3 class="box-title">Editar Entrega</h3>
         <div class="box-tools pull-right">
-                      <div class="col-sm-12">
+                      <div class="col-sm-12" style="padding:2%">
                       <a href="{{route('inicio_EntregaDonaciones')}}" class="btn btn-block btn-info ">
                           <i class="fa fa-fw fa-reply-all"></i> Regresar
                       </a>
                       </div>
           </div>
-      <h3 class="box-title">Editar Entrega</h3>
       </div>
       <form class="form-horizontal" method="POST" action="/EntregaDonaciones/{{$entregadonaciones->IdEntrega}}">
         @method('PUT')

@@ -100,10 +100,10 @@ $(function () {
         </div>
       <div class="box box-primary">
         
-        <div class="box-header">
+        <div class="box-header" style="padding:2%">
             <div class="box-tools pull-right">
                 <a href="{{route('Retiro_PaquetesV_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear Retiro Paquetes
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear 
                 </a>
             </div>
            

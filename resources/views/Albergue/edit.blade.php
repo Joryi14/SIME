@@ -4,7 +4,8 @@
     <div class="col-md-10">
         @include('Includes.Error-form')
         <div class="box box-success">
-          <div class="box-header with-border">
+          <div class="box-header with-border"style="padding:2%">
+              <h3 class="box-title">Editar Albergue</h3>
               <div class="box-tools pull-right">
                   <div class="col-sm-12">
                   <a href="{{route('inicio_albergue')}}" class="btn btn-block btn-info ">
@@ -12,7 +13,6 @@
                   </a>
                   </div>
                 </div>
-            <h3 class="box-title">Editar Albergue</h3>
           </div>
 <form class= "form-horizontal" method="POST" action="/Albergue/{{$albergue->idAlbergue}}">
  @method('PUT')

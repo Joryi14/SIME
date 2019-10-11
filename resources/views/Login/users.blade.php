@@ -32,15 +32,15 @@
 @endsection
 @section('Contenido')
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-xs-12">
       <div class="box">
-        <div class="box-header">
+        <div class="box-header" style="padding:2%">
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-              </div>
+            </div>
           <h3 class="box-title">Usuarios</h3>
           </div>
-        <div class="box-body table-responsive no-padding">
+        <div class="box-body table-responsive">
           <table class="table table-hover">
             <tr>
               <th>ID Usuario</th>
@@ -80,24 +80,24 @@
     </div>
   </div>
   <div class="row">
-      <div class="col-sm-12">
+      <div class="col-xs-12">
         <div class="box box-primary box-solid">
-          <div class="box-header">
+          <div class="box-header" style="padding:2%">
             <h3 class="box-title">Roles</h3>
-            <div class="box-tools">
+            <div class="box-tools pull left">
                 <div class="row">
-                <div class="col-sm-1">
+                <div class="col-sm-4 col-xs-4">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-              </div>
-              <div class="col-sm-9">
+                </div>
+              <div class="col-sm-8 col-xs-8 ">
                 <a href="{{route('crearRol')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear nuevo Rol
-                  </a>
-            </div>
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear
+                </a>
+              </div>
                 </div>
               </div>
           </div>
-          <div class="box-body table-responsive no-padding">
+          <div class="box-body table-responsive" >
             <table class="table table-hover" >
               <tr>
                 <th>ID Rol</th>
@@ -215,22 +215,22 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="box box-danger box-solid">
-            <div class="box-header">
+            <div class="box-header" style="padding:2%">
               <h3 class="box-title">Usuario Rol</h3>
               <div class="box-tools">
                   <div class="row">
-                  <div class="col-sm-1">
+                  <div class="col-xs-4">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 </div>
-                <div class="col-sm-9">
+                <div class="col-xs-8">
                   <a href="{{route('crear_UserRol')}}" class="btn btn-block btn-primary btn-sm">
-                      <i class="fa fa-fw fa-plus-circle"></i> Crear nuevo UsuarioRol
+                      <i class="fa fa-fw fa-plus-circle"></i> Crear
                     </a>
               </div>
                   </div>
                 </div>
             </div>
-            <div class="box-body table-responsive no-padding">
+            <div class="box-body table-responsive">
               <table class="table table-hover">
                 <tr>
                   <th>ID Usuario</th>

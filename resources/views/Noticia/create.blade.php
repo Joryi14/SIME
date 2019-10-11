@@ -1,5 +1,3 @@
-
-
 @extends("theme/$theme/layout")
 @section('Contenido')
 <div class="row">

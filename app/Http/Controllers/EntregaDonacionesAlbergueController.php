@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use App\Models\JefeDeFamilia;
 use App\Models\EntregaDonacionesAlbergue;
 use Illuminate\Http\Request;
 
@@ -35,9 +36,14 @@ class EntregaDonacionesAlbergueController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {    
+        
+        if(JefeDeFamilia::find($request->IdJefeFa)){
         $entregadonacionesA = DB::select("call Insert_EntregaDonacionesAlbergue('$request->IdJefeFa')");  
         return redirect('EntregaDonacionesAlbergue')->with('mensaje','Se ha guardado');
+        }
+        else
+        return redirect('EntregaDonacionesAlbergue/create')->with('mensaje','Error El jefe de familia no Existe');
     }
 
     /**

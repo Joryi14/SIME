@@ -4,7 +4,7 @@
 @endsection
 @section('Script')
 <script type="text/javascript">
-  document.querySelector('#form1').addEventListener('submit', function(e) {
+  document.querySelector('#formE').addEventListener('submit', function(e) {
   var form = this;
   e.preventDefault(); // <--- prevent form from submitting
   swal({
@@ -108,7 +108,7 @@ $(function () {
               <td>{{$item->Latitud}}</td>
               <td><a href="/Emergencia/{{$item->idEmergencias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar emergencia">
                 <i class="fa fa-fw fa-pencil"></i></a>
-              <form id="form1" action="{{route('emergencia_delete', ['Emergencia' => $item->idEmergencias])}}" method="POST">
+              <form id="formE"  action="{{route('emergencia_delete', ['Emergencia' => $item->idEmergencias])}}" method="POST">
                 @csrf 
                 <input name="_method" type="hidden" value="DELETE">
                 <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Emergencia" onclick="confirmarEnvio()">

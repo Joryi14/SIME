@@ -43,7 +43,7 @@ class EntregaDonacionesAlbergueController extends Controller
         return redirect('EntregaDonacionesAlbergue')->with('mensaje','Se ha guardado');
         }
         else
-        return redirect('EntregaDonacionesAlbergue/create')->with('mensaje','Error El jefe de familia no Existe');
+        return redirect('EntregaDonacionesAlbergue/create')->with('mensaje','Error El jefe de familia no existe');
     }
 
     /**

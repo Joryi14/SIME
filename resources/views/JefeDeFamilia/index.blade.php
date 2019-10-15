@@ -131,7 +131,7 @@ $(function () {
               <td><a href="/JefeDeFamilia/{{$item->IdJefe}}/edit" class="btn-accion-tabla tooltipsC" title="Editar jefe de familia">
                 <i class="fa fa-fw fa-pencil"></i></a>
                 <a href="/JefeDeFamilia/{{$item->IdJefe}}/agregarfamiliar" class="btn-accion-tabla tooltipsC" title="Agregar familiar">
-                  <i class="fa fa-fw fa-plus-circle"></i></a>
+                  <i class="fa fa-fw fa-plus-circle text-success"></i></a>
                 <form id="form1" action="{{route('jefe_delete', ['JefeDeFamilia' => $item->IdJefe])}}" method="POST">
                     @csrf 
                     <input name="_method" type="hidden" value="DELETE">

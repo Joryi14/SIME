@@ -1,5 +1,6 @@
 @extends("theme/$theme/layout")
 @section('Contenido')
+
 <div class="row">
         <div class="col-xs-10" >
             <div class="box box-info">

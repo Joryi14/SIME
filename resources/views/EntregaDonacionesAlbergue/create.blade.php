@@ -1,5 +1,6 @@
 @extends("theme/$theme/layout")
 @section('Contenido')
+
    <div class="row">
       <div class="col-md-10">
      @include('Includes.Error-form')
@@ -15,7 +16,7 @@
                       </div>
           </div>
       </div>
-      <form class="form-horizontal" method="POST" action="/EntregaDonacionesAlbergue/store">
+      <form class="form-horizontal" method="POST" action="/EntregaDonacionesAlbergue/store" files="true" >
         @csrf
              <div class="box-body">
              <div class="form-group">

@@ -2,9 +2,10 @@
 @section('Script')
 <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
 <script type="text/javascript">
-  $(document).ready(function(){$(".form2").submit(function( event ) {
-      event.preventDefault();
-      swal({
+  document.querySelector('#form2').addEventListener('submit', function(e) {
+  var form = this;
+  e.preventDefault(); // <--- prevent form from submitting
+  swal({
       title: "Esta seguro de eliminar?",
       text: "Una vez eliminado no se puede recuperar!",
       icon: "warning",
@@ -13,22 +14,21 @@
         'Aceptar!'
       ],
       dangerMode: true,
-      }).then(function(isConfirm) {
+    }).then(function(isConfirm) {
       if (isConfirm) {
         swal({
           title: 'Exito!',
           text: 'Se ha Eliminado el registro!',
           icon: 'success'
         }).then(function() {
-          form.submit();
+          form.submit(); // <--- submit form programmatically
         });
       } else {
         swal("Cancelado","" ,"error");
       }
     })
-  })
 });
-</script> 
+</script>
 @endsection
 @section('Contenido')
 <div class="row">
@@ -109,7 +109,7 @@
                 <td>{{$object->id}}</td>    
                 <td>{{$object->name}}</td>
                 <td>
-                <form class="form2" action="{{route('rol_delete', ['roles' => $object->id])}}" method="POST">
+                <form id="form2" action="{{route('rol_delete', ['roles' => $object->id])}}" method="POST">
                     @csrf @method('delete')
                     <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar rol">
                         <i class="fa fa-fw fa-trash text-danger"></i>

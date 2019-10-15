@@ -111,7 +111,7 @@
                 <td>
                 <form id="form2" action="{{route('rol_delete', ['roles' => $object->id])}}" method="POST">
                     @csrf @method('delete')
-                    <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar rol">
+                    <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar rol">
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form>

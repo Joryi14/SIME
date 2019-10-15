@@ -105,10 +105,10 @@ $(function () {
   <div class="col-xs-12">
         @include('Includes.mensaje-Succes')
       <div class="box box-primary">
-        <div class="box-header">
+        <div class="box-header" style="padding:2%">
             <div class="box-tools pull-right">
                 <a href="{{route('censo_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear Censo
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear 
                 </a>
             </div>
           <h3 class="box-title">Censos</h3>

@@ -98,10 +98,10 @@ $(function () {
     <div class="col-xs-12">
         @include('Includes.mensaje-Succes')
       <div class="box box-primary">
-        <div class="box-header">
+        <div class="box-header"  style="padding:2%">
             <div class="box-tools pull-right">
                 <a href="{{route('jefe_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear jefe de familia
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
             </div>
             
@@ -130,6 +130,8 @@ $(function () {
               <td>{{$item->Cedula}}</td>
               <td><a href="/JefeDeFamilia/{{$item->IdJefe}}/edit" class="btn-accion-tabla tooltipsC" title="Editar jefe de familia">
                 <i class="fa fa-fw fa-pencil"></i></a>
+                <a href="/JefeDeFamilia/{{$item->IdJefe}}/agregarfamiliar" class="btn-accion-tabla tooltipsC" title="Agregar familiar">
+                  <i class="fa fa-fw fa-plus-circle"></i></a>
                 <form id="form1" action="{{route('jefe_delete', ['JefeDeFamilia' => $item->IdJefe])}}" method="POST">
                     @csrf 
                     <input name="_method" type="hidden" value="DELETE">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\VoluntarioWeb;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidacionInscripcionVoluntarios;
 
 class VoluntarioWebController extends Controller
 {
@@ -35,7 +36,7 @@ class VoluntarioWebController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionInscripcionVoluntarios $request)
     {
         $voluntarioweb = new VoluntarioWeb();  
         $voluntarioweb->NombreVoluntarioWeb = $request->NombreVoluntarioWeb;    
@@ -47,7 +48,7 @@ class VoluntarioWebController extends Controller
         $voluntarioweb->OcupacionWeb = $request->OcupacionWeb;
         $voluntarioweb->PatologiaWeb = $request->PatologiaWeb;
         $voluntarioweb->save();  
-        header("location: /VoluntarioWeb");
+        return redirect('VoluntarioWeb');
         
     }
 
@@ -86,7 +87,7 @@ class VoluntarioWebController extends Controller
         $voluntarioweb = VoluntarioWeb::find($id);
         $voluntarioweb->fill($request->all());
         $voluntarioweb->save();
-        header("location: /VoluntarioWeb");
+        return redirect('VoluntarioWeb');
     }
 
     /**

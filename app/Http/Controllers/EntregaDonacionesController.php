@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ValidacionEntregaDonaciones;
 use Illuminate\Support\Facades\DB;
 use App\Models\EntregaDonaciones;
+use App\Models\JefeDeFamilia;
+use App\Models\Retiro_PaquetesV;
 use Illuminate\Http\Request;
 
 
@@ -38,21 +40,26 @@ class EntregaDonacionesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ValidacionEntregaDonaciones $request)
-    {    $entregadonaciones = new EntregaDonaciones();
+    {    
+
+        $retiro = Retiro_PaquetesV::find($request->IdRetiroPaquetes);
+        if($retiro != Null){
+        $entregadonaciones = new EntregaDonaciones();
         if($request->hasFile('Foto')){
             $file = $request->file('Foto');
-            $entregadonaciones->Foto = $entregadonaciones->Foto = base64_encode(file_get_contents($file));
-          }
-
-          $entregadonaciones = new EntregaDonaciones();
-          $entregadonaciones->IdUsuarioRol = $request->IdUsuarioRol;
+            $entregadonaciones->Foto = $request->Foto = base64_encode(file_get_contents($file));
+          }  
+          $entregadonaciones->IdVoluntario = $request->IdUsuarioRol;
           $entregadonaciones->IdJefe = $request->IdJefe;
           $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
           $entregadonaciones->Foto = $request->Foto;
           $entregadonaciones->created_at = $entregadonaciones->created_at;
           $entregadonaciones->save(); 
-        header("location:EntregaDonaciones /");
-    }
+          return redirect('EntregaDonaciones')->with('mensaje','Se ha guardado correctamente'); 
+        }
+        else 
+         return redirect('EntregaDonaciones/create')->with('mensaje','Error al agregar codigo de retiro no existe');
+        }
 
     /**
      * Display the specified resource.
@@ -76,7 +83,25 @@ class EntregaDonacionesController extends Controller
         $entregadonaciones = EntregaDonaciones::find($id);
         return view('EntregaDonaciones.edit', compact('entregadonaciones'));
     }
+    public function getJefe(Request $request){
 
+        $search = $request->search;
+        if($search == ''){
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->limit(5)->get();
+        }else{
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Jefes as $jefe){
+           $response[] = array(
+                "id"=>$jefe->IdJefe,
+                "text"=>$jefe->Cedula
+           );
+        }
+  
+        echo json_encode($response);
+        exit;
+     }
     /**
      * Update the specified resource in storage.
      *
@@ -86,20 +111,17 @@ class EntregaDonacionesController extends Controller
      */
     public function update(ValidacionEntregaDonaciones $request, $id)
     {
-        if($request->hasFile('Imagenes')){
-            $file = $request->file('Imagenes');
-            $name = time().$file->getClientOriginalName();
-            $file->move(public_path().'/img/',$name);
-            $request->Foto = $name;
-  
-          }
-        $entregadonaciones = DB::update("call Update_EntregaDonaciones('$id',
-        '$request->IdUsuarioRol',
-        '$request->IdJefe',
-        '$request->IdRetiroPaquetes',
-        '$name')");
-        header("location: /EntregaDonaciones");
-    
+        $entregadonaciones = new EntregaDonaciones();
+        if($request->hasFile('Foto')){
+            $file = $request->file('Foto');
+            $entregadonaciones->Foto = $request->Foto = base64_encode(file_get_contents($file));
+          }  
+        $entregadonaciones->IdVoluntario = $request->IdUsuarioRol;
+        $entregadonaciones->IdJefe = $request->IdJefe;
+        $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
+        $entregadonaciones->Foto = $request->Foto;
+        $entregadonaciones->save();
+        return redirect('EntregaDonaciones')->with('mensaje','Se ha actualizado correctamente');
     }
 
     /**
@@ -112,6 +134,6 @@ class EntregaDonacionesController extends Controller
     {
         $entregadonaciones = EntregaDonaciones::find($id);
         $entregadonaciones->delete();
-        return redirect('EntregaDonaciones')->with('Se ha eliminado correctamente');
+        return redirect('EntregaDonaciones')->with('mensaje','Se ha eliminado correctamente');
     }
 }

@@ -2,9 +2,10 @@
 @section('Contenido')
 <div class="row">
     <div class="col-md-10">
-        @include('includes.Error-form')
+        @include('Includes.Error-form')
         <div class="box box-success">
-          <div class="box-header with-border">
+          <div class="box-header with-border"style="padding:2%">
+              <h3 class="box-title">Editar Albergue</h3>
               <div class="box-tools pull-right">
                   <div class="col-sm-12">
                   <a href="{{route('inicio_albergue')}}" class="btn btn-block btn-info ">
@@ -12,7 +13,6 @@
                   </a>
                   </div>
                 </div>
-            <h3 class="box-title">Editar Albergue</h3>
           </div>
 <form class= "form-horizontal" method="POST" action="/Albergue/{{$albergue->idAlbergue}}">
  @method('PUT')
@@ -66,7 +66,7 @@
                         <label for="IdResponsable" class="col-sm-2 control-label">Id del responsable: </label>
               
                         <div class="col-sm-8">
-                            <input type="text" name="IdResponsable" class= "form-control" value="{{$albergue->IdResponsable}}" readonly="readonly">
+                            <input type="text" name="IdResponsable" class= "form-control" value="{{$albergue->model_id}}" readonly="readonly">
                         </div>
                       </div>
 
@@ -102,7 +102,7 @@
                                         <label for="EspaciosDeCocina" class="col-sm-2 control-label">Espacios de Cocina: </label>
                               
                                         <div class="col-sm-8">
-                                            <input type="text" name="EspaciosDeCocina" class= "form-control" value="{{$albergue->EspacioDeCocina}}" readonly="readonly">
+                                            <input type="text" name="EspaciosDeCocina" class= "form-control" value="{{$albergue->EspaciosDeCocina}}" readonly="readonly">
                                         </div>
                                       </div>
     

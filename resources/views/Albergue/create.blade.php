@@ -2,9 +2,10 @@
 @section('Contenido')
 <div class="row">
     <div class="col-md-10">
-      @include('includes.Error-form')
+      @include('Includes.Error-form')
         <div class="box box-info">
-          <div class="box-header with-border">
+          <div class="box-header with-border"style="padding:2%">
+           <h3 class="box-title">Crear albergue</h3>
               <div class="box-tools pull-right">
                   <div class="col-sm-12">
                   <a href="{{route('inicio_albergue')}}" class="btn btn-block btn-info ">
@@ -12,7 +13,6 @@
                   </a>
                   </div>
                 </div>
-            <h3 class="box-title">Crear albergue</h3>
           </div>
 <form class= "form-horizontal" method="POST" action="/Albergue/store">
   @csrf
@@ -97,13 +97,13 @@
         
          <div class="form-group">
                 <div class="checkbox">
-                   <label class="col-sm-2 control-label">
-                    Espacios de cocina
-                    <input type="hidden" name="EspacioDeCocina" value="0" />
-                      <input type="checkbox" class="col-sm-6" name="EspacioDeCocina" value="1">  
-                </label>
+                      <label class="col-sm-2 control-label">
+                      Espacios de cocina
+                      <input type="hidden" name="EspaciosDeCocina" value="0" />
+                      <input type="checkbox" class="col-sm-6" name="EspaciosDeCocina" value="1">  
+                 </label>
                 </div>  
-            </div> 
+                </div> 
 
                 <div class="form-group">
                         <div class="checkbox">
@@ -150,4 +150,33 @@
         </div>
       </div>
       </div>
+@endsection
+@section('Script')
+<!-- Script -->
+<script type="text/javascript">
+  // CSRF Token
+  var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+  $(document).ready(function(){
+    $("#SelectU").select2({
+      ajax: { 
+        url: "{{route('Get_UsersA')}}",
+        type: "post",
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+          return {
+            _token: CSRF_TOKEN,
+            search: params.term // search term
+          };
+        },
+        processResults: function (response) {
+          return {
+            results: response
+          };
+        },
+        cache: true
+      }
+    });
+  });
+  </script>
 @endsection

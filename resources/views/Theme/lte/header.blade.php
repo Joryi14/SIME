@@ -19,8 +19,8 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>     
-                    <a href="/user/show" class="btn btn-default btn-flat">Perfil</a>
-                    <a href="{{ route('logout')}}" class="btn btn-default btn-flat" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Desconectar</a>
+                    <a href="/user/show" style="color:black" class="btn btn-default btn-flat">Perfil</a>
+                    <a href="{{ route('logout')}}" style="color:black" class="btn btn-default btn-flat" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Desconectar</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>

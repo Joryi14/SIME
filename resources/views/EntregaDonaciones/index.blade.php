@@ -71,13 +71,14 @@ $(function () {
   <div class="col-xs-12">
         @include('Includes.mensaje-Succes')
       <div class="box box-primary">
-        <div class="box-header">
+        <div class="box-header" style="padding:2%">
+            <h3 class="box-title">Entrega de donaciones</h3>
             <div class="box-tools pull-right">
                 <a href="{{route('EntregaDonaciones_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear Entrega
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
             </div>
-          <h3 class="box-title">Entrega de donaciones</h3>
+         
         </div>
          <div class="box-body table-responsive" >
           <table id="Entregadonaciones_table" class="table table-bordered table-striped">
@@ -85,7 +86,7 @@ $(function () {
             <tr>
 
               <th>Id de la entrega</th>
-              <th>Id del UsuarioRol</th>
+              <th>Voluntario cédula</th>
               <th>Id jefe de familia</th>
               <th>Id retiro de paquetes</th>
               <th>Foto</th>  
@@ -96,7 +97,7 @@ $(function () {
                 @foreach ($entregadonaciones as $item)
                   <tr>
                   <td>{{$item->IdEntrega}}</td>
-                  <td>{{$item->IdUsuarioRol}}</td>
+                  <td>{{$item->User->Cedula}}</td>
                   <td>{{$item->IdJefe}}</td>
                   <td>{{$item->IdRetiroPaquetes}}</td>
                   <td>

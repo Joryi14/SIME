@@ -5,7 +5,8 @@
        @include('Includes.Error-form')
        @include('Includes.mensaje-Error')
        <div class="box box-info">
-       <div class="box-header with-border">
+       <div class="box-header with-border"style="padding:2%">
+       <h3 class="box-title">Crear censo</h3>
               <div class="box-tools pull-right">
                             <div class="col-sm-12">
                             <a href="{{route('inicio_censo')}}" class="btn btn-block btn-info ">
@@ -13,7 +14,6 @@
                             </a>
                             </div>
                           </div>
-       <h3 class="box-title">Crear censo</h3>
 </div>
 <form class="form-horizontal" method="POST" action="/Censo/store">
        @csrf

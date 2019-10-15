@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Noticia;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidacionNoticias;
 
 class NoticiaController extends Controller
 {
@@ -46,7 +47,7 @@ class NoticiaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionNoticias $request)
     {
             $noticia = new Noticia();
           if($request->hasFile('Imagenes')){
@@ -83,7 +84,7 @@ class NoticiaController extends Controller
         $noticia->Articulo = $request->Articulo;
         $noticia->PDF = $request->PDF;
         $noticia ->save();  
-        header("location: /Noticia");
+        return redirect('Noticia')->with('mensaje','Se ha guardado');
 
         
     }
@@ -120,13 +121,9 @@ class NoticiaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionNoticias $request, $id)
     {
         $noticia = Noticia::find($id);
-       
-
-        
-       
         $noticia ->Titulo = $request->input('Titulo');
         $noticia ->IdAutor = $request->input('IdAutor');
         if($request->hasFile('Imagenes')){
@@ -141,7 +138,6 @@ class NoticiaController extends Controller
          
           $noticia->Videos = $request->Videos = base64_encode( file_get_contents($file));
         }
-        
         if($request->hasFile('PDF')){
           $file = $request->file('PDF');
          $noticia->PDF = $request->PDF = base64_encode( file_get_contents($file));
@@ -157,7 +153,7 @@ class NoticiaController extends Controller
          
        
         $noticia->save();
-        header("location: /Noticia");
+        return redirect('Noticia')->with('mensaje','Editado correctamente');
     }
 
     /**

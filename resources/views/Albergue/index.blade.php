@@ -112,10 +112,10 @@ $(function () {
     <div class="col-xs-12">
         @include('Includes.mensaje-Succes')
       <div class="box box-primary">
-        <div class="box-header">
+        <div class="box-header"style="padding:2%">
             <div class="box-tools pull-right">
                 <a href="{{route('albergue_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear Albergue
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear 
                 </a>
             </div>
             
@@ -148,7 +148,7 @@ $(function () {
               <td>{{$item->Comunidad}}</td>
               <td>{{$item->TipoDeInstalacion}}</td>
               <td>{{$item->Capacidad}}</td>
-              <td>{{$item->IdResponsable}}</td>
+              <td>{{$item->User->Cedula}}</td>
               <td>{{$item->telefono}}</td>
               <td>{{$item->Nececidades}}</td>
               <td><a href="/Albergue/{{$item->idAlbergue}}/edit" class="btn-accion-tabla tooltipsC" title="Editar albergue">
@@ -160,7 +160,7 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
-              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar retiro de paquetes" data-toggle="modal" data-target="#Detalle"  data-du="{{$item->Duchas}}" data-ino="{{$item->inodoros}}" data-edc="{{$item->EspacioDeCocina}}" data-bo="{{$item->Bodega}}" data-lon="{{$item->Longitud}}"data-lat="{{$item->Latitud}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
+              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar retiro de paquetes" data-toggle="modal" data-target="#Detalle"  data-du="{{$item->Duchas}}" data-ino="{{$item->inodoros}}" data-edc="{{$item->EspaciosDeCocina}}" data-bo="{{$item->Bodega}}" data-lon="{{$item->Longitud}}"data-lat="{{$item->Latitud}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>
             @endforeach

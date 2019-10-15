@@ -71,17 +71,17 @@ $(function () {
     <div class="col-xs-12">
         @include('Includes.mensaje-Succes')
       <div class="box box-primary">
-        <div class="box-header">
+        <div class="box-header"  style="padding:2%">
             <div class="box-tools pull-right">
                 <a href="{{route('noticia_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear Noticia
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
             </div>
             
           <h3 class="box-title">Noticia</h3>
         </div>
         <!-- /.box-header -->
-        <div class="box-body" >
+        <div class="box-body table-responsive" >
             <table id="Noticia_table" class="table table-bordered table-striped">
               <thead>
            
@@ -92,8 +92,7 @@ $(function () {
                 <th>Id del autor</th>
                 <th>Imagenes</th>
                 <th>Videos</th>
-                <th>Articulo</th>    
-                <th>Nombre PDF</th>
+                <th>Artículo</th>    
                 <th>PDF</th>
                 <th>Acciones</th>
 

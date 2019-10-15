@@ -2,10 +2,10 @@
 @section('Contenido')
 <div class="row">
     <div class="col-md-10">
-        @include('includes.Error-form')
+        @include('Includes.Error-form')
         @include('Includes.mensaje-Error')
         <div class="box box-info">
-          <div class="box-header with-border">
+          <div class="box-header with-border"  style="padding:2%">
               <div class="box-tools pull-right">
                   <div class="col-sm-12">
                   <a href="{{route('inicio_personasAlbergue')}}" class="btn btn-block btn-info ">
@@ -25,13 +25,23 @@
                     <input type="text" name="idAlbergue" class= "form-control" >
                 </div>
               </div>
+            
               <div class="form-group">
                 <label for="idJefe" class="col-sm-2 control-label">Id del jefe de familia: </label>
-    
                 <div class="col-sm-8">
                     <input type="text" name="idJefe" class= "form-control" >
-                </div>
+                  </div>
               </div>
+
+              <div class="form-group">
+                  <label class="col-sm-2" class="col-sm-2 control-label"> O </label>
+                <div class="col-sm-8">
+                <a href="{{route('jefe_create')}}" class="btn btn-block btn-primary btn-sm">
+                  <i class="fa fa-fw fa-plus-circle"></i> Crear jefe de familia
+              </a>
+            </div>
+          </div>
+          
               <div class="form-group">
                   <label for="LugarDeProcedencia" class="col-sm-2 control-label">Lugar de procedencia:  </label>
       

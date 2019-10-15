@@ -71,7 +71,7 @@ $(function () {
     <div class="col-xs-12">
         @include('Includes.mensaje-Succes')
       <div class="box box-primary">
-        <div class="box-header">
+        <div class="box-header"  style="padding:2%">
             <div class="box-tools pull-right">
                
             </div>
@@ -107,7 +107,7 @@ $(function () {
               <td>{{$item->OcupacionWeb}}</td>    
               <td>{{$item->PatologiaWeb}}</td>
               <td><a href="/VoluntarioWeb/{{$item->IdVoluntarioWeb}}/edit" class="btn-accion-tabla tooltipsC" title="Editar VoluntarioWeb">
-                <i class="fa fa-fw fa-pencil"></i></a>
+                {{-- <i class="fa fa-fw fa-pencil"></i></a> --}}
               <form id="form1" action="{{route('voluntarioweb_delete', ['VoluntarioWeb' => $item->IdVoluntarioWeb])}}" method="POST">
                 @csrf 
                 <input name="_method" type="hidden" value="DELETE">

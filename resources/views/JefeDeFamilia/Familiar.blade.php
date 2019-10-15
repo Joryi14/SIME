@@ -12,19 +12,20 @@
           <h3 class="box-title">Crear familiar</h3>
           <div class="box-tools pull-right">
               <div class="col-sm-12">
-              <a href="{{route('inicio_familia')}}" class="btn btn-block btn-info ">
+              <a href="{{route('inicio_jefe')}}" class="btn btn-block btn-info ">
                   <i class="fa fa-fw fa-reply-all"></i> Regresar
               </a>
               </div>
             </div>
         </div>
-        <form class="form-horizontal" method="POST" action="/Familias/store">
+        <form class="form-horizontal" method="POST" action="/Familiar/{{$JefeF->IdJefe}}">
+          @method('PUT')
           @csrf
           <div class="box-body">
             <div class="form-group">
               <label for="IdJefef" class="col-sm-2 control-label">Id del jefe de familia: </label>
               <div class="col-sm-10">
-                  <input type="text" name="IdJefeF" class= "form-control" >
+                  <input type="text" name="IdJefeF" class= "form-control" value="{{$JefeF->IdJefe}}" readonly="readonly" >
               </div>
             </div>
             <div class="form-group">

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\ValidacionEntregaDonacionesAlbergue;
 use Illuminate\Support\Facades\DB;
 use App\Models\JefeDeFamilia;
 use App\Models\EntregaDonacionesAlbergue;
@@ -35,7 +36,7 @@ class EntregaDonacionesAlbergueController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionEntregaDonacionesAlbergue $request)
     {    
         
         if(JefeDeFamilia::find($request->IdJefeFa)){
@@ -43,7 +44,7 @@ class EntregaDonacionesAlbergueController extends Controller
         return redirect('EntregaDonacionesAlbergue')->with('mensaje','Se ha guardado');
         }
         else
-        return redirect('EntregaDonacionesAlbergue/create')->with('mensaje','Error El jefe de familia no existe');
+        return redirect('EntregaDonacionesAlbergue/create')->with('mensaje','Error el jefe de familia no existe');
     }
 
     /**
@@ -69,6 +70,26 @@ class EntregaDonacionesAlbergueController extends Controller
         return view('EntregaDonacionesAlbergue.edit', compact('entregadonacionesA'));
     }
 
+    public function getIdJefeFa(Request $request){
+
+        $search = $request->search;
+        if($search == ''){
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->limit(5)->get();
+        }else{
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Jefes as $jefe){
+           $response[] = array(
+                "id"=>$jefe->IdJefe,
+                "text"=>$jefe->Cedula
+           );
+        }
+  
+        echo json_encode($response);
+        exit;
+     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -76,7 +97,7 @@ class EntregaDonacionesAlbergueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionEntregaDonacionesAlbergue $request, $id)
     {
         $entregadonacionesA = DB::update("call Update_EntregaDonacionesAlbergue('$id','$request->IdJefeFa')");
         return redirect('EntregaDonacionesAlbergue')->with('mensaje','Editado correctamente');

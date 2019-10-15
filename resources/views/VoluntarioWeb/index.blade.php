@@ -106,7 +106,7 @@ $(function () {
               <td>{{$item->NacionalidadVoluntarioWeb}}</td>
               <td>{{$item->OcupacionWeb}}</td>    
               <td>{{$item->PatologiaWeb}}</td>
-              <td><a href="/VoluntarioWeb/{{$item->IdVoluntarioWeb}}/edit" class="btn-accion-tabla tooltipsC" title="Editar VoluntarioWeb">
+             <td> {{-- <a href="/VoluntarioWeb/{{$item->IdVoluntarioWeb}}/edit" class="btn-accion-tabla tooltipsC" title="Editar VoluntarioWeb"> --}}
                 {{-- <i class="fa fa-fw fa-pencil"></i></a> --}}
               <form id="form1" action="{{route('voluntarioweb_delete', ['VoluntarioWeb' => $item->IdVoluntarioWeb])}}" method="POST">
                 @csrf 

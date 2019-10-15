@@ -58,8 +58,9 @@ class EntregaDonacionesController extends Controller
           return redirect('EntregaDonaciones')->with('mensaje','Se ha guardado correctamente'); 
         }
         else 
-         return redirect('EntregaDonaciones/create')->with('mensaje','Error al agregar codigo de retiro no existe');
+         return redirect('EntregaDonaciones/create')->with('mensaje','Error al agregar, el id del retiro de paquetes no existe');
         }
+        
 
     /**
      * Display the specified resource.

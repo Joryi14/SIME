@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\ValidacionEntregaDonacionesAlbergue;
+use App\Models\Albergue;
 use Illuminate\Support\Facades\DB;
 use App\Models\JefeDeFamilia;
 use App\Models\EntregaDonacionesAlbergue;
@@ -38,11 +39,14 @@ class EntregaDonacionesAlbergueController extends Controller
      */
     public function store(ValidacionEntregaDonacionesAlbergue $request)
     {    
-        
         if(JefeDeFamilia::find($request->IdJefeFa)){
-        $entregadonacionesA = DB::select("call Insert_EntregaDonacionesAlbergue('$request->IdJefeFa')");  
+            if(Albergue::find($request->IdAlbergue)){
+        $entregadonacionesA = DB::select("call Insert_EntregaDonacionesAlbergue('$request->IdJefeFa','$request->IdAlbergue')");  
         return redirect('EntregaDonacionesAlbergue')->with('mensaje','Se ha guardado');
         }
+    else
+    return redirect('EntregaDonacionesAlbergue/create')->with('mensaje','Error Albergue no existe');
+    }
         else
         return redirect('EntregaDonacionesAlbergue/create')->with('mensaje','Error el jefe de familia no existe');
     }
@@ -57,7 +61,24 @@ class EntregaDonacionesAlbergueController extends Controller
     {
         //
     }
+    public function getAlbergue(Request $request){
 
+        $search = $request->search;
+        if($search == ''){
+           $Albergue = Albergue::orderby('idAlbergue','asc')->select('idAlbergue','Nombre')->limit(5)->get();
+        }else{
+           $Albergue = Albergue::orderby('idAlbergue','asc')->select('idAlbergue','Nombre')->where('Nombre', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Albergue as $Alber){
+           $response[] = array(
+                "id"=>$Alber->idAlbergue,
+                "text"=>$Alber->Nombre
+           );
+        }
+        echo json_encode($response);
+        exit;
+     }
     /**
      * Show the form for editing the specified resource.
      *

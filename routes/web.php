@@ -34,6 +34,8 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comuna
     Route::put('Retiro_PaquetesV/{Retiro_PaquetesV}','Retiro_PaquetesVController@update');
     Route::delete('Retiro_PaquetesV/{Retiro_PaquetesV}','Retiro_PaquetesVController@delete')->name('Retiro_PaquetesV_delete');
     Route::get('Retiro_PaquetesV/pdf', 'Retiro_PaquetesVController@generar')->name('Retiro_PaquetesV_reporte');
+    Route::post('Retiro_PaquetesVController/getUsers','Retiro_PaquetesVController@getUsers')->name('Get_UsersR');
+    Route::post('Retiro_PaquetesVController/getInventario','Retiro_PaquetesVController@getInventario')->name('Get_Inv');
 });
 Route::group(['prefix' => '/'], function () {
     Route::get('Inventario', 'InventarioController@index')->name('inicio_inventario');
@@ -65,6 +67,8 @@ Route::group(['prefix' => '/'], function () {
     Route::put('EntregaDonacionesAlbergue/{EntregaDonacionesAlbergue}','EntregaDonacionesAlbergueController@update');
     Route::delete('EntregaDonacionesAlbergue/{EntregaDonacionesAlbergue}','EntregaDonacionesAlbergueController@delete')->name('EntregadonacionesA_delete'); 
     Route::post('EntregaDonacionesAlbergue/getIdJefeFa','EntregaDonacionesAlbergueController@getIdJefeFa')->name('Get_IdJefeFa');
+    Route::post('EntregaDonacionesAlbergue/getAlbergue','EntregaDonacionesAlbergueController@getAlbergue')->name('Get_AlbergueE');
+    
 
 });
 

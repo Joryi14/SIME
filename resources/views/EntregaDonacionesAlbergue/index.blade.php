@@ -85,6 +85,7 @@ $(function () {
             <tr>
               <th>Id de la entrega</th>
               <th>Id jefe de familia</th>
+              <th>Id Albergue</th>
               <th>Acciones</th>
               
             </tr>
@@ -94,7 +95,7 @@ $(function () {
                   <td>{{$item->IdEntregaA}}</td>
 
                   <td>{{$item->IdJefeFa}}</td>
-                 
+                  <td>{{$item->idAlbergue}}</td>
                   <td><a href="/EntregaDonacionesAlbergue/{{$item->IdEntregaA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar la entrega de donaciones en albergue">
                     <i class="fa fa-fw fa-pencil"></i></a>
                   <form id="formEA" action="{{route('EntregadonacionesA_delete', ['EntregaDonacionesAlbergue' => $item->IdEntregaA])}}" method="POST">

@@ -16,56 +16,41 @@
                 </div>
           </div>
           <form class="form-horizontal" method="POST" action="/PersonasAlbergue/store">
-
             @csrf
             <div class="box-body">
+                <input type="hidden" name="IdUsuarioRol" value="{{Auth::user()->id}}" >
               <div class="form-group">
                 <label for="idAlbergue" class="col-sm-2 control-label">Id del albergue: </label>
-                <div class="col-sm-10">
-                    <div class="col-sm-9">
                            <select id='SelectA' name="idAlbergue" style='width: 50%;'>
                            <option value='0'>Seleccionar un Albergue</option></select>
-                    </div>
-             </div>
               </div>
-            
-              <input type="hidden" name="IdUsuarioRol" value="{{Auth::user()->id}}" class= "form-control" >
               <div class="form-group">
-                <label for="idJefe" class="col-sm-2 control-label">Id del jefe de familia: </label>
-                <div class="col-sm-9">
-                    <select id='SelectJ' name="idJefe" style='width: 25%;'>
+                <label for="idJefe"  class="col-sm-2 control-label">Id del jefe de familia:</label>
+                    <select id='SelectJ' name="idJefe" style='width: 50%;'>
                         <option value='0'>Seleccionar un Jefe</option></select>
                     {{-- <input type="text" name="idJefe" class= "form-control" > --}}
-                  </div>
+                  
               </div>
-
               <div class="form-group">
                   <label class="col-sm-2" class="col-sm-2 control-label"> O </label>
-                <div class="col-sm-8">
+                <div class="col-sm-3">
                 <a href="{{route('jefe_create')}}" class="btn btn-block btn-primary btn-sm">
                   <i class="fa fa-fw fa-plus-circle"></i> Crear jefe de familia
               </a>
             </div>
           </div>
-          
-              <div class="form-group">
+          <div class="form-group">
                   <label for="LugarDeProcedencia" class="col-sm-2 control-label">Lugar de procedencia:  </label>
-      
                   <div class="col-sm-8">
                       <input type="text" name="LugarDeProcedencia" class= "form-control" > 
                   </div>
                 </div>
-
-
                 <div class="form-group">
                     <label for="FechaDeIngreso" class="col-sm-2 control-label">Fecha de ingreso: </label>
-        
                     <div class="col-sm-3">
                         <input type="date" name="FechaDeIngreso" class= "form-control" >
                     </div>
                   </div>
-
-
                   <div class="form-group">
                       <label for="HoraDeIngreso" class="col-sm-2 control-label">Hora de ingreso: </label>
           

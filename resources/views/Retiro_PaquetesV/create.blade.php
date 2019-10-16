@@ -39,10 +39,13 @@
               </div>
             </div>
             <div class="form-group">
-                <label for="IdVoluntario" class="col-sm-2 control-label">Id de voluntario: </label>
+                <label for="IdVoluntario" class="col-sm-2 control-label">Cédula de voluntario: </label>
                 <div class="col-sm-10">
-                    <input type="text" name="IdVoluntario" class= "form-control" > 
-                </div>
+                    <div class="col-sm-9">
+                           <select id='SelectU' name="IdVoluntario" style='width: 70%;'>
+                           <option value='0'>Seleccionar una cédula de voluntario</option></select>
+                    </div>
+             </div>
               </div>
               <div class="form-group">
                   <label for="PlacaVehiculo" class="col-sm-2 control-label">Placa de vehículo: </label>
@@ -70,9 +73,11 @@
                         </div>
                         <div class="form-group">
                             <label for="IdInventario" class="col-sm-2 control-label">Id del Inventario: </label>
-                            <div class="col-sm-8">
-                                <input type="text" name="IdInventario" class= "form-control"  >
-                            </div>
+                            
+                            <div class="col-sm-9">
+                                <select id='SelectI' name="IdInventario"  style='width: 70%;'>
+                                <option value='0'>Seleccionar un Inventario</option></select>
+                         </div>
                           </div>
                      </div>
 
@@ -84,3 +89,57 @@
             </div>
             </div>
       @endsection
+      @section('Script')
+ <script type="text/javascript">
+  // CSRF Token
+  var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+  $(document).ready(function(){
+    $("#SelectU").select2({
+      ajax: { 
+        url: "{{route('Get_UsersR')}}",
+        type: "post",
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+          return {
+            _token: CSRF_TOKEN,
+            search: params.term // search term
+          };
+        },
+        processResults: function (response) {
+          return {
+            results: response
+          };
+        },
+        cache: true
+      }
+    });
+  });
+  </script>
+  <script type="text/javascript">
+    // CSRF Token
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $(document).ready(function(){
+      $("#SelectI").select2({
+        ajax: { 
+          url: "{{route('Get_Inv')}}",
+          type: "post",
+          dataType: 'json',
+          delay: 250,
+          data: function (params) {
+            return {
+              _token: CSRF_TOKEN,
+              search: params.term // search term
+            };
+          },
+          processResults: function (response) {
+            return {
+              results: response
+            };
+          },
+          cache: true
+        }
+      });
+    });
+    </script>
+  @endsection

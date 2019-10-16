@@ -43,7 +43,9 @@ class EntregaDonacionesController extends Controller
     {    
 
         $retiro = Retiro_PaquetesV::find($request->IdRetiroPaquetes);
+        $jefe = JefeDeFamilia::find($request->IdJefe);
         if($retiro != Null){
+            if($jefe != Null){
         $entregadonaciones = new EntregaDonaciones();
         if($request->hasFile('Foto')){
             $file = $request->file('Foto');
@@ -57,6 +59,9 @@ class EntregaDonacionesController extends Controller
           $entregadonaciones->save(); 
           return redirect('EntregaDonaciones')->with('mensaje','Se ha guardado correctamente'); 
         }
+        else return redirect('EntregaDonaciones/create')->with('mensaje','Error al agregar, jefe de familia no existe'); 
+    
+    }
         else 
          return redirect('EntregaDonaciones/create')->with('mensaje','Error al agregar, el id del retiro de paquetes no existe');
         }

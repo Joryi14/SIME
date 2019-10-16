@@ -6,6 +6,7 @@ use App\Http\Requests\ValidacionPersonasAlbergue;
 use App\Models\Albergue;
 use App\Models\JefeDeFamilia;
 use App\Models\PersonasAlbergue;
+use App\User;
 use Illuminate\Http\Request;
 
 class PersonasAlbergueController extends Controller
@@ -68,19 +69,20 @@ class PersonasAlbergueController extends Controller
     {
         //
     }
+    
     public function getAlbergue(Request $request){
 
         $search = $request->search;
         if($search == ''){
-           $Albergue = Albergue::orderby('idAlbergue','asc')->select('idAlbergue')->limit(5)->get();
+           $Albergue = Albergue::orderby('idAlbergue','asc')->select('idAlbergue','Nombre')->limit(5)->get();
         }else{
-           $Albergue = Albergue::orderby('idAlbergue','asc')->select('idAlbergue')->where('idAlbergue', 'like', '%' .$search . '%')->limit(5)->get();
+           $Albergue = Albergue::orderby('idAlbergue','asc')->select('idAlbergue','Nombre')->where('Nombre', 'like', '%' .$search . '%')->limit(5)->get();
         }
         $response = array();
         foreach($Albergue as $Alber){
            $response[] = array(
                 "id"=>$Alber->idAlbergue,
-                "text"=>$Alber->idAlbergue
+                "text"=>$Alber->Nombre
            );
         }
         echo json_encode($response);

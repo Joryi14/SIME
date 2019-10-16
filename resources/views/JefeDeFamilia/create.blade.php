@@ -135,7 +135,6 @@
                                         <option>Epilepsia</option>
                                         <option>EPOC</option>
                                         <option>HTA</option>
-                                        <option>Ninguna</option>
                                         <option value="Psiquiatricos">Psiquiátricos</option>
                                 </select>
                                 </div>

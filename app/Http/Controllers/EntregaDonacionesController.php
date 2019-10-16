@@ -136,7 +136,7 @@ class EntregaDonacionesController extends Controller
      */
     public function update(ValidacionEntregaDonaciones $request, $id)
     {
-        $entregadonaciones = new EntregaDonaciones();
+        $entregadonaciones = EntregaDonaciones::find($id);
         if($request->hasFile('Foto')){
             $file = $request->file('Foto');
             $entregadonaciones->Foto = $request->Foto = base64_encode(file_get_contents($file));

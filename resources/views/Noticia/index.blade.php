@@ -87,7 +87,7 @@ $(function () {
            
             <tr>
                 <th>Id de las noticias</th>
-                <th>Fecha de publicación</th>
+                <!--<th>Fecha de publicación</th>-->
                 <th>Titulo</th>
                 <th>Id del autor</th>
                 <th>Imagenes</th>
@@ -101,7 +101,7 @@ $(function () {
             @foreach ($noticias as $item)
               <tr>
               <td>{{$item->IdNoticias}}</td>  
-              <td>{{$item->created_at}}</td>    
+                
               <td>{{$item->Titulo}}</td>
               <td>{{$item->IdAutor}}</td>
               <td>

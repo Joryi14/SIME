@@ -146,7 +146,7 @@ class EntregaDonacionesController extends Controller
             $fileS = $request->file('Foto')->getSize();
             if($fileS <= 536870912){
            
-            $noticia->Foto = $request->Foto = base64_encode( file_get_contents($file));
+            $entregadonaciones->Foto = $request->Foto = base64_encode( file_get_contents($file));
             }else{
               return redirect('Noticia/edit')->with('mensaje','Error La Imagen es muy grande');
             }

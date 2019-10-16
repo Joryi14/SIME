@@ -21,9 +21,12 @@
             <div class="box-body">
               <div class="form-group">
                 <label for="idAlbergue" class="col-sm-2 control-label">Id del albergue: </label>
-                <div class="col-sm-8">
-                    <input type="text" name="idAlbergue" class= "form-control" >
-                </div>
+                <div class="col-sm-10">
+                    <div class="col-sm-9">
+                           <select id='SelectA' name="idAlbergue" style='width: 50%;'>
+                           <option value='0'>Seleccionar un Albergue</option></select>
+                    </div>
+             </div>
               </div>
             
               <div class="form-group">
@@ -92,4 +95,32 @@
    </div>
   </div>
  @endsection    
-     
+ @section('Script')
+ <!-- Script -->
+ <script type="text/javascript">
+   // CSRF Token
+   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+   $(document).ready(function(){
+     $("#SelectA").select2({
+       ajax: { 
+         url: "{{route('Get_Albergue')}}",
+         type: "post",
+         dataType: 'json',
+         delay: 250,
+         data: function (params) {
+           return {
+             _token: CSRF_TOKEN,
+             search: params.term // search term
+           };
+         },
+         processResults: function (response) {
+           return {
+             results: response
+           };
+         },
+         cache: true
+       }
+     });
+   });
+   </script>
+ @endsection

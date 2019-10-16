@@ -116,6 +116,8 @@ Route::group(['prefix' => '/','middleware'=> ['role:Admin|Director|Lider Comunal
     Route::get('PersonasAlbergue/{PersonasAlbergue}/edit', 'PersonasAlbergueController@edit')->name('personasAlbergue_edit');
     Route::put('PersonasAlbergue/{PersonasAlbergue}','PersonasAlbergueController@update');
     Route::delete('PersonasAlbergue/{PersonasAlbergue}','PersonasAlbergueController@delete')->name('personasAlbergue_delete');
+    Route::post('PersonasAlbergue/getAlbergue','PersonasAlbergueController@getAlbergue')->name('Get_Albergue');
+
 });
     Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('Albergue', 'AlbergueController@index')->name('inicio_albergue');

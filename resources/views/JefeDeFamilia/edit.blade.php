@@ -1,4 +1,8 @@
 @extends("theme/$theme/layout")
+@section('styles')
+<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2.min.css")}}">
+<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2-bootstrap.css")}}">
+@endsection
 @section('Contenido')
 <div class="row">
     <div class="col-md-10">
@@ -112,20 +116,22 @@
                                   </div>
                                   <div class="form-group">
                                     <label class="col-sm-2 control-label">Patologia</label>
-                                    <select class="form-control select2" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 50%;">
-                                            <option selected>{{$JefeF->Patologia}}</option>
-                                            <option>Alergias</option>
-                                            <option>Asma</option>
-                                            <option>CA</option>
-                                            <option value="Cardiopatia">Cardiopatía</option>
-                                            <option>Diabetes Mellitus</option>
-                                            <option>Digestivos</option>
-                                            <option>Epilepsia</option>
-                                            <option>EPOC</option>
-                                            <option>HTA</option>
-                                            <option value="Psiquiatricos">Psiquiátricos</option>
-                                    </select>
-                                    </div>
+                                    <div class="col-sm-10">
+                                        <select class="form-control select2" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 50%;">
+                                                <option>Alergias</option>
+                                                <option>Asma</option>
+                                                <option>CA</option>
+                                                <option value="Cardiopatia">Cardiopatía</option>
+                                                <option>Diabetes Mellitus</option>
+                                                <option>Digestivos</option>
+                                                <option>Epilepsia</option>
+                                                <option>EPOC</option>
+                                                <option>HTA</option>
+                                                <option value="Psiquiatricos">Psiquiátricos</option>
+                                                <option>Ninguna</option>
+                                        </select>
+                                        </div>
+                                  </div>
             </div>
             <div class="box-footer">
                 @include("Includes.boton-editar")
@@ -135,9 +141,15 @@
     </div>
     </div>
     @section('Script')
-    <script>
-          $(document).ready(function() { 
-            $('.select2').select2({tags: true});
-                }); </script>
+    <script src="{{asset("assets/$theme/bower_components/select2/dist/js/select2.full.min.js")}}"></script>
+  <script>
+        $(function() { 
+          $('.select2').select2({
+                  theme: "bootstrap",
+                  tags: true
+          });
+          $.fn.select2.defaults.set("theme","bootstrap");
+          });  
+  </script>
             @endsection
 @endsection

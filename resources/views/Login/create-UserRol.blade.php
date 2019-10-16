@@ -20,14 +20,14 @@
                   <div class="form-group">
                     <label for="name" class="col-sm-2 control-label"> Usuario:</label>
                     <div class="col-sm-9">
-                        <select id='SelectU' name="model_id" style='width: 25%;'>
+                        <select id='SelectU' name="model_id" style='width: 50%;'>
                         <option value='0'>Seleccionar un usuario</option></select>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="guard_name" class="col-sm-2 control-label">Id de rol: </label>
                     <div class="col-sm-9">
-                        <select id='SelectR' name="role_id" style='width: 25%;'>
+                        <select id='SelectR' name="role_id" style='width: 50%;'>
                         <option value='0'>Seleccionar un rol</option></select>
                     </div>
                   </div>

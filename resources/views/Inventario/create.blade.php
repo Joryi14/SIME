@@ -20,8 +20,9 @@
   <div class="box-body">
       <div class="form-group">
         <label for="idEmergencias" class="col-sm-2 control-label">Id de las emergencias: </label>
-        <div class="col-sm-8">
-            <input type="text" name="idEmergencias" class= "form-control" >
+        <div class="col-sm-9">
+            <select id='SelectE' name="idEmergencias" style='width: 50%;'>
+            <option value='0'>Seleccionar una Emergencia</option></select>
         </div>
       </div>
 
@@ -37,8 +38,8 @@
               <div class="checkbox">
                 <label class="col-sm-2 control-label">
                     Colchonetas:
-                  <input type="hidden" name="Colchonetas" value="No" />
-                  <input type="checkbox" class="col-sm-6" name="Colchonetas" value="Si"> 
+                  <input type="hidden" name="Colchonetas" value="0" />
+                  <input type="checkbox" class="col-sm-6" name="Colchonetas" value="1"> 
                  
                 </label>
           </div>
@@ -48,8 +49,8 @@
             <div class="checkbox">
               <label class="col-sm-2 control-label">
                   Cobijas:
-                <input type="hidden" name="Cobijas" value="No" />
-                <input type="checkbox" class="col-sm-6" name="Cobijas" value="Si"> 
+                <input type="hidden" name="Cobijas" value="0" />
+                <input type="checkbox" class="col-sm-6" name="Cobijas" value="1"> 
                
               </label>
         </div>
@@ -59,8 +60,8 @@
           <div class="checkbox">
             <label class="col-sm-2 control-label">
                 Ropa:
-              <input type="hidden" name="Ropa" value="No" />
-              <input type="checkbox" class="col-sm-6" name="Ropa" value="Si"> 
+              <input type="hidden" name="Ropa" value="0" />
+              <input type="checkbox" class="col-sm-6" name="Ropa" value="1"> 
              
             </label>
       </div>
@@ -74,5 +75,32 @@
 </div>
 </div>
 @endsection 
+@section('Script')
+<script type="text/javascript">
+  // CSRF Token
+  var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+  $(document).ready(function(){
+    $("#SelectE").select2({
+      ajax: { 
+        url: "{{route('Get_Emerge')}}",
+        type: "post",
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+          return {
+            _token: CSRF_TOKEN,
+            search: params.term // search term
+          };
+        },
+        processResults: function (response) {
+          return {
+            results: response
+          };
+        },
+        cache: true
+      }
+    });
+  });
+  </script>
   
-  
+  @endsection 

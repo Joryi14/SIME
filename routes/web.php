@@ -45,7 +45,7 @@ Route::group(['prefix' => '/'], function () {
     Route::put('Suministro/{Inventario}','InventarioController@updateSuministro');
     Route::delete('Inventario/{Inventario}','InventarioController@delete')->name('inventario_delete');
     Route::get('Inventario/pdf', 'InventarioController@generar')->name('inventario_reporte');
-    
+    Route::post('Inventario/getEmergencia','InventarioController@getEmergencia')->name('Get_Emerge');
 });
 Route::group(['prefix' => '/'], function () {
     Route::get('EntregaDonaciones', 'EntregaDonacionesController@index')->name('inicio_EntregaDonaciones');
@@ -55,6 +55,7 @@ Route::group(['prefix' => '/'], function () {
     Route::put('EntregaDonaciones/{EntregaDonaciones}','EntregaDonacionesController@update');
     Route::delete('EntregaDonaciones/{EntregaDonaciones}','EntregaDonacionesController@delete')->name('entregadonaciones_delete'); 
     Route::post('EntregaDonaciones/getJefe','EntregaDonacionesController@getJefe')->name('Get_JefeE');
+    Route::post('EntregaDonaciones/getPaquete','EntregaDonacionesController@getPaquete')->name('Get_Paquete');
 });
 Route::group(['prefix' => '/'], function () {
     Route::get('EntregaDonacionesAlbergue', 'EntregaDonacionesAlbergueController@index')->name('inicio_EntregaDonacionesA');
@@ -76,6 +77,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], functi
     Route::get('Censo/{Censo}/edit', 'CensoController@edit');
     Route::put('Censo/{Censo}','CensoController@update');
     Route::delete('Censo/{id}','CensoController@delete')->name('censo_delete');
+    Route::post('Censo/getJefe','CensoController@getJefe')->name('Get_JefeC');
 });
 
     Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
@@ -105,6 +107,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], functi
     Route::get('Emergencia/{Emergencia}/edit', 'EmergenciaController@edit')->name('emergencia_edit');
     Route::put('Emergencia/{Emergencia}','EmergenciaController@update');
     Route::delete('Emergencia/{Emergencia}','EmergenciaController@delete')->name('emergencia_delete');
+    
 });
 
 Route::group(['prefix' => '/','middleware'=> ['role:Admin|Director|Lider Comunal']], function () {
@@ -115,6 +118,8 @@ Route::group(['prefix' => '/','middleware'=> ['role:Admin|Director|Lider Comunal
     Route::put('PersonasAlbergue/{PersonasAlbergue}','PersonasAlbergueController@update');
     Route::delete('PersonasAlbergue/{PersonasAlbergue}','PersonasAlbergueController@delete')->name('personasAlbergue_delete');
     Route::post('PersonasAlbergue/getIdJF','PersonasAlbergueController@getIdJF')->name('Get_IdJF');
+    Route::post('PersonasAlbergue/getAlbergue','PersonasAlbergueController@getAlbergue')->name('Get_Albergue');
+
 });
     Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('Albergue', 'AlbergueController@index')->name('inicio_albergue');

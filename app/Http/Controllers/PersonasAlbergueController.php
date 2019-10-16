@@ -68,7 +68,24 @@ class PersonasAlbergueController extends Controller
     {
         //
     }
+    public function getAlbergue(Request $request){
 
+        $search = $request->search;
+        if($search == ''){
+           $Albergue = Albergue::orderby('idAlbergue','asc')->select('idAlbergue')->limit(5)->get();
+        }else{
+           $Albergue = Albergue::orderby('idAlbergue','asc')->select('idAlbergue')->where('idAlbergue', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Albergue as $Alber){
+           $response[] = array(
+                "id"=>$Alber->idAlbergue,
+                "text"=>$Alber->idAlbergue
+           );
+        }
+        echo json_encode($response);
+        exit;
+     }
     /**
      * Show the form for editing the specified resource.
      *

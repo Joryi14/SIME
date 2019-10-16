@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\ValidacionInventario;
+use App\Models\Emergencia;
 use Illuminate\Support\Facades\DB;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
@@ -104,6 +105,24 @@ class InventarioController extends Controller
         return view('Inventario.edit', compact('inventario'));
     }
 
+    public function getEmergencia(Request $request){
+
+        $search = $request->search;
+        if($search == ''){
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias')->limit(5)->get();
+        }else{
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias')->where('idEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Emergencia as $Emer){
+           $response[] = array(
+                "id"=>$Emer->idEmergencias,
+                "text"=>$Emer->idEmergencias
+           );
+        }
+        echo json_encode($response);
+        exit;
+     }
     /**
      * Update the specified resource in storage.
      *

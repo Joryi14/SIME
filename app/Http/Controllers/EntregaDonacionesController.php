@@ -148,7 +148,7 @@ class EntregaDonacionesController extends Controller
            
             $entregadonaciones->Foto = $request->Foto = base64_encode( file_get_contents($file));
             }else{
-              return redirect('Noticia/edit')->with('mensaje','Error La Imagen es muy grande');
+              return redirect('EntregaDonaciones/edit')->with('mensaje','Error La Imagen es muy grande');
             }
 
           }  

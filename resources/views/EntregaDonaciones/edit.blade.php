@@ -13,7 +13,7 @@
                       </div>
           </div>
       </div>
-      <form class="form-horizontal" method="POST" action="/EntregaDonaciones/{{$entregadonaciones->IdEntrega}}">
+      <form class="form-horizontal" method="POST" action="/EntregaDonaciones/{{$entregadonaciones->IdEntrega}}" enctype="multipart/form-data">
         @method('PUT')
         @csrf
              <div class="box-body">

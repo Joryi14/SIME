@@ -140,11 +140,11 @@ class EntregaDonacionesController extends Controller
         if($request->hasFile('Foto')){
             $file = $request->file('Foto');
             $entregadonaciones->Foto = $request->Foto = base64_encode(file_get_contents($file));
-          }  
+        
+            }  
         $entregadonaciones->IdVoluntario = $request->IdUsuarioRol;
         $entregadonaciones->IdJefe = $request->IdJefe;
         $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
-        $entregadonaciones->Foto = $request->Foto;
         $entregadonaciones->save();
         return redirect('EntregaDonaciones')->with('mensaje','Se ha actualizado correctamente');
     }

@@ -52,23 +52,42 @@ class NoticiaController extends Controller
             $noticia = new Noticia();
           if($request->hasFile('Imagenes')){
             $file = $request->file('Imagenes');
+            $fileS = $request->file('Imagenes')->getSize();
+            if($fileS <= 536870912){
+           
             $noticia->Imagenes = $request->Imagenes = base64_encode( file_get_contents($file));
-            //$ConIMA= file_get_contents($file);
+            }else{
+              return redirect('Noticia/create')->with('mensaje','Error La Imagen es muy grande');
+            }
+          }
+            
            
         
-          }
+          
           
           
           if($request->hasFile('Videos')){
             $file = $request->file('Videos');
+            $fileS = $request->file('Videos')->getSize();
+            if($fileS <= 536870912){
            
             $noticia->Videos = $request->Videos = base64_encode( file_get_contents($file));
+            }else{
+              return redirect('Noticia/create')->with('mensaje','Error El Video es muy grande');
+            }
+           
+            
           }
           
           if($request->hasFile('PDF')){
             $file = $request->file('PDF');
+            $fileS = $request->file('PDF')->getSize();
+            if($fileS <= 536870912){
            $noticia->PDF = $request->PDF = base64_encode( file_get_contents($file));
            $noticia->NombrePDF = $request->NombrePDF = time().$file->getClientOriginalName();
+            }else{
+              return redirect('Noticia/create')->with('mensaje','Error El PDF es muy grande');
+            }
       
   
           }
@@ -128,20 +147,37 @@ class NoticiaController extends Controller
         $noticia ->IdAutor = $request->input('IdAutor');
         if($request->hasFile('Imagenes')){
           $file = $request->file('Imagenes');
+          $fileS = $request->file('Imagenes')->getSize();
+          if($fileS <= 536870912){
+         
           $noticia->Imagenes = $request->Imagenes = base64_encode( file_get_contents($file));
+          }else{
+            return redirect('Noticia/edit')->with('mensaje','Error La Imagen es muy grande');
+          }
           //$ConIMA= file_get_contents($file);
          
       
         }
         if($request->hasFile('Videos')){
           $file = $request->file('Videos');
-         
-          $noticia->Videos = $request->Videos = base64_encode( file_get_contents($file));
+          $fileS = $request->file('Videos')->getSize();
+            if($fileS <= 536870912){
+           
+            $noticia->Videos = $request->Videos = base64_encode( file_get_contents($file));
+            }else{
+              return redirect('Noticia/edit')->with('mensaje','Error El Video es muy grande');
+            
         }
+      }
         if($request->hasFile('PDF')){
           $file = $request->file('PDF');
+          $fileS = $request->file('PDF')->getSize();
+          if($fileS <= 536870912){
          $noticia->PDF = $request->PDF = base64_encode( file_get_contents($file));
          $noticia->NombrePDF = $request->NombrePDF = time().$file->getClientOriginalName();
+          }else{
+            return redirect('Noticia/edit')->with('mensaje','Error El PDF es muy grande');
+          }
     
 
         }

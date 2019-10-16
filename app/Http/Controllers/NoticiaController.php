@@ -49,23 +49,19 @@ class NoticiaController extends Controller
      */
     public function store(ValidacionNoticias $request)
     {
-            $noticia = new Noticia();
+          $noticia = new Noticia();
           if($request->hasFile('Imagenes')){
             $file = $request->file('Imagenes');
             $fileS = $request->file('Imagenes')->getSize();
             if($fileS <= 536870912){
-           
             $noticia->Imagenes = $request->Imagenes = base64_encode( file_get_contents($file));
             }else{
               return redirect('Noticia/create')->with('mensaje','Error La Imagen es muy grande');
             }
           }
-            
-           
-        
-          
-          
-          
+          else{
+            $noticia->Imagenes = null;
+          }
           if($request->hasFile('Videos')){
             $file = $request->file('Videos');
             $fileS = $request->file('Videos')->getSize();
@@ -74,11 +70,11 @@ class NoticiaController extends Controller
             $noticia->Videos = $request->Videos = base64_encode( file_get_contents($file));
             }else{
               return redirect('Noticia/create')->with('mensaje','Error El Video es muy grande');
-            }
-           
-            
+            } 
           }
-          
+          else{
+            $noticia->Videos = null;
+          }
           if($request->hasFile('PDF')){
             $file = $request->file('PDF');
             $fileS = $request->file('PDF')->getSize();
@@ -88,20 +84,16 @@ class NoticiaController extends Controller
             }else{
               return redirect('Noticia/create')->with('mensaje','Error El PDF es muy grande');
             }
-      
   
           }
-
-        $noticia = new Noticia();
+          else{
+            $noticia->PDF = null;
+          }
         $noticia->created_at = $request->created_at;
         $noticia->Titulo = $request->Titulo;
         $noticia->IdAutor = $request->IdAutor;
-      
-        $noticia->Imagenes = $request->Imagenes; 
-        $noticia->NombrePDF = $request->NombrePDF;
-        $noticia->Videos = $request->Videos;
         $noticia->Articulo = $request->Articulo;
-        $noticia->PDF = $request->PDF;
+    
         $noticia ->save();  
         return redirect('Noticia')->with('mensaje','Se ha guardado');
 

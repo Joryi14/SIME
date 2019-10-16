@@ -105,14 +105,20 @@ $(function () {
               <td>{{$item->Titulo}}</td>
               <td>{{$item->IdAutor}}</td>
               <td>
+              @if($item->Imagenes != null)
               <img style='display:block; width:100px;height:100px;' src='data:image/jpeg;base64,{{$item->Imagenes}}'  alt="base64 test">
-            </td>
-              <td><video width="200" height="120"  controls>
+               @endif
+              </td>
+              <td>
+                  @if($item->Videos != null)
+                <video width="200" height="120"  controls>
                   <source src='data:video/mp4;base64,{{$item->Videos}}' type="video/mp4">
                   </video>
-                  </td>
-              <td><p>{{$item->Articulo}}<p></td>
-             
+                  @endif
+              </td>
+              <td>
+              <p>{{$item->Articulo}}<p>
+              </td>
               <td>{{$item->NombrePDF}}</td>
               <td><a href="/Noticia/{{$item->IdNoticias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar noticia">
                 <i class="fa fa-fw fa-pencil"></i></a>

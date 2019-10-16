@@ -36,7 +36,7 @@ class VoluntarioWebController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ValidacionInscripcionVoluntarios $request)
+    public function store(Request $request)
     {
         $voluntarioweb = new VoluntarioWeb();  
         $voluntarioweb->NombreVoluntarioWeb = $request->NombreVoluntarioWeb;    
@@ -48,7 +48,7 @@ class VoluntarioWebController extends Controller
         $voluntarioweb->OcupacionWeb = $request->OcupacionWeb;
         $voluntarioweb->PatologiaWeb = $request->PatologiaWeb;
         $voluntarioweb->save();  
-        return redirect('VoluntarioWeb');
+        return redirect('/');
         
     }
 
@@ -96,17 +96,11 @@ class VoluntarioWebController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id, Request $request)
+    public function delete($id)
     {
-        if ($request->ajax()) {
-            if (VoluntarioWeb::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        $vol = VoluntarioWeb::find($id);
+        $vol->delete();
+        return redirect('VoluntarioWeb')->with('mensaje','Se ha eliminado correctamente');
         
     
     }

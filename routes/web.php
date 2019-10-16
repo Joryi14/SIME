@@ -166,11 +166,11 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin']], function () {
     Route::delete('Noticia/{Noticia}','NoticiaController@delete')->name('noticia_delete');
     
 });
-
+    Route::post('VoluntarioWeb/store','VoluntarioWebController@store');
     Route::group(['prefix' => '/'], function () {
     Route::get('VoluntarioWeb', 'VoluntarioWebController@index')->name('inicio_voluntarioweb');
    //Route::get('/', 'VoluntarioWebController@create')->name('VoluntarioWeb_create');
-    Route::post('VoluntarioWeb/store','VoluntarioWebController@store');
+    
     Route::get('VoluntarioWeb/{VoluntarioWeb}/edit', 'VoluntarioWebController@edit');
     Route::put('VoluntarioWeb/{VoluntarioWeb}','VoluntarioWebController@update');
     Route::delete('VoluntarioWeb/{VoluntarioWeb}','VoluntarioWebController@delete')->name('voluntarioweb_delete');

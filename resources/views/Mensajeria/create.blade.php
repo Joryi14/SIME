@@ -48,21 +48,20 @@
                 </div>
                 <div class="form-group">
                     <label for="Categoria" class="col-sm-2 control-label">Categoría: </label>
-                   
                     <div class="btn-group-horizontal">
                       <button type="button" class="btn bg-red">Grave
                         <input type="hidden" name="Categoria" value="Grave">
                       </button>
-                      <button type="button" class="btn  bg-orange" name="Categoria" value="Moderada" >Moderada
+                      <button type="button" class="btn  bg-orange" >Moderada
                         <input type="hidden" name="Categoria" value="Moderada">
                       </button>
-                      <button type="button" class="btn bg-green" name="Categoria" value="Leve" >Leve
+                      <button type="button" class="btn bg-green" >Leve
                         <input type="hidden" name="Categoria" value="Leve">
                       </button>
                     
                   </div>
                   </div>
-                  <input type="hidden" name="IdLiderComunal" class= "form-control" value="{{Auth::user()->id}}" >
+                  <input type="hidden" name="IdLiderComunal" class= "form-control" value="{{Auth::user()->id}}">
         </div>
         <div class="box-footer">
             @include("Includes.boton-form-create")

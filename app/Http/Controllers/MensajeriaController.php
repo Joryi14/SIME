@@ -43,7 +43,7 @@ class MensajeriaController extends Controller
         $mensajeria->fecha = $request->Fecha;
         $mensajeria->Categoria = $request->Categoria;
         $mensajeria->IdLiderComunal = $request->IdLiderComunal;
-        $mensajeria->save();  
+        $mensajeria->save();
         return redirect('Mensajeria')->with('mensaje','Se ha guardado');
     }
 

@@ -137,7 +137,6 @@ class EntregaDonacionesController extends Controller
     public function update(ValidacionEntregaDonaciones $request, $id)
     {
         $entregadonaciones = EntregaDonaciones::find($id);
-
         $entregadonaciones->IdVoluntario = $request->IdUsuarioRol;
         $entregadonaciones->IdJefe = $request->IdJefe;
         $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
@@ -145,12 +144,10 @@ class EntregaDonacionesController extends Controller
             $file = $request->file('Foto');
             $fileS = $request->file('Foto')->getSize();
             if($fileS <= 536870912){
-           
             $entregadonaciones->Foto = $request->Foto = base64_encode( file_get_contents($file));
             }else{
               return redirect('EntregaDonaciones/edit')->with('mensaje','Error La Imagen es muy grande');
             }
-
           }  
         $entregadonaciones->save();
         return redirect('EntregaDonaciones')->with('mensaje','Se ha actualizado correctamente');

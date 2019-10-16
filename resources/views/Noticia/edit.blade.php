@@ -44,17 +44,16 @@
                   
                 <label for="Imagenes" class="col-sm-2 control-label">Imagenes: </label>
                 
-                <div class="col-sm-2">
-                
-                    <input type="file" name="Imagenes" >  
-                </div>
+                <button type="button" class="btn fa fa-plus bg-yellow">
+                    <input type="file" name="Imagenes" accept="image/*"  >  
+                  </button>
               </div>
 
               <div class="form-group">
                   <label for="Videos" class="col-sm-2 control-label">Videos: </label>
-                  <div class="col-sm-3">
-                      <input type="file" name="Videos"  value="{{$noticia->Videos}}"> 
-                  </div>
+                  <button type="button" class="btn fa fa-plus bg-yellow">
+                      <input type="file" name="Videos"> 
+                  </button>
                 </div>
                 <div class="form-group">
                     <label for="Articulo" class="col-sm-2 control-label">Artículo: </label>
@@ -64,9 +63,9 @@
                   </div>
                   <div class="form-group">
                       <label for="PDF" class="col-sm-2 control-label">PDF: </label>
-                      <div class="col-sm-9">
-                          <input type="file" name="PDF" value=" {{$noticia->PDF}}" >
-                      </div>
+                      <button type="button" class="btn fa fa-plus bg-yellow">
+                          <input type="file" name="PDF" accept="application/PDF">
+                      </button>
                     </div>            
         </div>
            <!-- /.box-body -->

@@ -464,7 +464,7 @@
                     <li>
                       <a class="btn btn-primary"
                         
-                         href='data:application/pdf;base64,{{$item->PDF}}' type="application/pdf" download ="{{$item->NombrePDF}}"></object>
+                    href='data:application/pdf;base64,{{$item->PDF}}' type="application/pdf" download ="{{$item->NombrePDF}}"></object>
                     
                       Decargar PDF<a>
                     </li>

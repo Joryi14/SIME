@@ -117,7 +117,7 @@ $(function () {
               <tr>
                <td>{{$item->idregistroA}}</td> 
               <td>{{$item->idAlbergue}}</td>      
-              <td>{{$item->idJefe->Cedula}}</td>  
+              <td>{{$item->jefeFamilia->Cedula}}</td>  
               <td>{{$item->LugarDeProcedencia}}</td>
               <td><a href="/PersonasAlbergue/{{$item->idregistroA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar personas en albergue">
                 <i class="fa fa-fw fa-pencil"></i></a>

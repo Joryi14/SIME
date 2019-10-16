@@ -8,6 +8,7 @@
 <div class="col-md-10">
   @include('Includes.Error-form')
   @include('Includes.mensaje-Succes')
+ 
     <div class="box box-info">
       <div class="box-header with-border"  style="padding:2%">
           <div class="box-tools pull-right">
@@ -134,6 +135,7 @@
                                         <option>Epilepsia</option>
                                         <option>EPOC</option>
                                         <option>HTA</option>
+                                        <option>Ninguna</option>
                                         <option value="Psiquiatricos">Psiquiátricos</option>
                                 </select>
                                 </div>

@@ -80,7 +80,7 @@ class CensoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionCenso $request, $id)
     {
         $censo = DB::update("call Update_Censo('$id','$request->IdJefeFam'
         ,'$request->Refrigerador','$request->Cocina','$request->Colchon','$request->Cama')");  

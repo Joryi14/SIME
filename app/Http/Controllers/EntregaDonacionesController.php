@@ -102,6 +102,25 @@ class EntregaDonacionesController extends Controller
         echo json_encode($response);
         exit;
      }
+     public function getPaquete(Request $request){
+
+        $search = $request->search;
+        if($search == ''){
+           $Retiro = Retiro_PaquetesV::orderby('IdRetiroPaquetes','asc')->select('IdRetiroPaquetes')->limit(5)->get();
+        }else{
+           $Retiro = Retiro_PaquetesV::orderby('IdRetiroPaquetes','asc')->select('IdRetiroPaquetes')->where('IdRetiroPaquetes', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Retiro as $reti){
+           $response[] = array(
+                "id"=>$reti->IdRetiroPaquetes,
+                "text"=>$reti->IdRetiroPaquetes
+           );
+        }
+  
+        echo json_encode($response);
+        exit;
+     }
     /**
      * Update the specified resource in storage.
      *

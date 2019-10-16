@@ -23,14 +23,15 @@
             <div class="form-group">
                 <label for="IdJefe" class="col-sm-2 control-label"> Jefe de familia:</label>
                 <div class="col-sm-9">
-                    <select id='SelectJ' name="IdJefe" style='width: 25%;'>
-                    <option value='0'>Seleccionar un Jefe</option></select>
+                    <select id='SelectJ' name="IdJefe" style='width: 50%;'>
+                    <option value='0'>Seleccionar un jefe</option></select>
                 </div>
               </div>
              <div class="form-group">
                     <label for="IdRetiroPaquetes" class="col-sm-2 control-label">Id del Retiro de Paquetes: </label>
-                    <div class="col-sm-10">
-                        <input type="text" name="IdRetiroPaquetes"  class= "form-control" >
+                    <div class="col-sm-9">
+                        <select id='SelectR' name="IdRetiroPaquetes" style='width: 50%;'>
+                        <option value='0'>Seleccionar un paquete</option></select>
                     </div>
              </div>
              <div class="form-group">
@@ -79,4 +80,30 @@
          });
        });
        </script>
+       <script type="text/javascript">
+        // CSRF Token
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        $(document).ready(function(){
+          $("#SelectR").select2({
+            ajax: { 
+              url: "{{route('Get_Paquete')}}",
+              type: "post",
+              dataType: 'json',
+              delay: 250,
+              data: function (params) {
+                return {
+                  _token: CSRF_TOKEN,
+                  search: params.term // search term
+                };
+              },
+              processResults: function (response) {
+                return {
+                  results: response
+                };
+              },
+              cache: true
+            }
+          });
+        });
+        </script>
      @endsection

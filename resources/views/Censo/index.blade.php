@@ -131,11 +131,11 @@ $(function () {
                   <form id="form1" action="{{route('censo_delete', ['Censo' => $item->IdCenso])}}" method="POST">
                     @csrf 
                     <input name="_method" type="hidden" value="DELETE">
-                    <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Censo" onclick="confirmarEnvio()">
+                    <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar censo" onclick="confirmarEnvio()">
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form>
-                  <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar Censo" data-toggle="modal" data-target="#Detalle"  data-ref="{{$item->Refrigerador}}" data-coc="{{$item->Cocina}}" data-col="{{$item->Colchon}}" data-cam="{{$item->Cama}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
+                  <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar censo" data-toggle="modal" data-target="#Detalle"  data-ref="{{$item->Refrigerador}}" data-coc="{{$item->Cocina}}" data-col="{{$item->Colchon}}" data-cam="{{$item->Cama}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
                   </td>
                   </tr>
                 @endforeach

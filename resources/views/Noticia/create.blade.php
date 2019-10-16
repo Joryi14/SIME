@@ -6,7 +6,7 @@
 <div class="row">
 <div class="col-md-10">
     @include('Includes.Error-form')
-    @include('Includes.mensaje-Succes')
+    @include('Includes.mensaje-Error')
     <div class="box box-info">
       <div class="box-header with-border"  style="padding:2%">
           <div class="box-tools pull-right">

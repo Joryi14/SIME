@@ -2,6 +2,7 @@
 @section('styles')
 <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2.min.css")}}">
 <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2-bootstrap.css")}}">
+@endsection
 @section('Contenido')
 <div class="row">
     <div class="col-md-10">
@@ -133,6 +134,7 @@
                               <option>EPOC</option>
                               <option>HTA</option>
                               <option value="Psiquiatricos">Psiquiátricos</option>
+                              <option>Ninguna</option>
                       </select>
                       </div>
                 </div>
@@ -143,15 +145,16 @@
       </div>
     </div>
   </div>
-  @section('Script')
+@endsection
+@section('Script')
   <script src="{{asset("assets/$theme/bower_components/select2/dist/js/select2.full.min.js")}}"></script>
   <script>
         $(function() { 
           $('.select2').select2({
-                  theme: "bootstrap"
+                  theme: "bootstrap",
+                  tags: true
           });
           $.fn.select2.defaults.set( "theme", "bootstrap" );
           });  
   </script>
-          @endsection
 @endsection

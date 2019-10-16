@@ -4,7 +4,7 @@
       <div class="col-md-10">
       <div class="box box-success">
       <div class="box-header with-border" style="padding:2%">
-    <h3 class="box-title">Editar Entrega</h3>
+    <h3 class="box-title">Editar entrega de donaciones</h3>
         <div class="box-tools pull-right">
                       <div class="col-sm-12" style="padding:2%">
                       <a href="{{route('inicio_EntregaDonaciones')}}" class="btn btn-block btn-info ">
@@ -13,7 +13,7 @@
                       </div>
           </div>
       </div>
-      <form class="form-horizontal" method="POST" action="/EntregaDonaciones/{{$entregadonaciones->IdEntrega}}">
+      <form class="form-horizontal" method="POST" action="/EntregaDonaciones/{{$entregadonaciones->IdEntrega}}" enctype="multipart/form-data">
         @method('PUT')
         @csrf
              <div class="box-body">

@@ -3,6 +3,7 @@
 <div class="row">
     <div class="col-md-10">
       @include('Includes.Error-form')
+      @include('Includes.mensaje-Error')
         <div class="box box-info">
           <div class="box-header with-border"style="padding:2%">
            <h3 class="box-title">Crear albergue</h3>

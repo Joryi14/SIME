@@ -4,6 +4,22 @@
 @endsection
 @section('Script')
 <script type="text/javascript">
+  $(document).on('click', '.show-modal', function() {
+            if($(this).data('col')== 1)
+            $('#col').text("Sí hay");
+            else
+            $('#col').text("No hay");
+            if($(this).data('cob')== 1)
+            $('#cob').text("Sí hay");
+            else
+            $('#cob').text("No hay");
+            if($(this).data('rop')== 1)
+            $('#rop').text("Sí hay");
+            else
+            $('#rop').text("No hay");
+         });
+ </script>
+<script type="text/javascript">
   document.querySelector('#form1').addEventListener('submit', function(e) {
   var form = this;
   e.preventDefault(); // <--- prevent form from submitting
@@ -69,7 +85,7 @@ $(function () {
 @section('Contenido')
 <div class="row">
   <div class="col-xs-12">
-      <a href="{{route('inventario_reporte')}}" class="btn btn-block btn-primary btn-sm">
+      <a href="{{route('inventario_reporte')}}" class="btn btn-block btn-primary btn-sm" target="_blank">
           <i class="fa fa-fw fa-plus-circle"></i> Crear reporte de inventario
       </a>
       <div class="box box-primary">
@@ -90,9 +106,6 @@ $(function () {
               <th>Id del inventario</th>
               <th>Id de las emergencias</th>
               <th>Suministros</th>
-              <th>Colchonetas</th>
-              <th>Cobijas</th>
-              <th>Ropa</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -101,14 +114,12 @@ $(function () {
               <td>{{$item->idInventario}}</td> 
               <td>{{$item->idEmergencias}}</td>    
               <td>{{$item->Suministros}}</td>
-              <td>{{$item->Colchonetas}}</td>
-              <td>{{$item->Cobijas}}</td>
-              <td>{{$item->Ropa}}</td>
+              
               
               <td><a href="/Inventario/{{$item->idInventario}}/edit" class="btn-accion-tabla tooltipsC" title="Editar Inventario">
                 <i class="fa fa-fw fa-pencil"></i></a>
-                <a href="/Inventario/{{$item->idInventario}}/editSuministro" class="btn-accion-tabla tooltipsC" title="Editar Suministro de inventario Inventario">
-                  <i class="fa fa-fw fa-plus-circle"></i></a>
+                <a href="/Inventario/{{$item->idInventario}}/editSuministro" class="btn-accion-tabla tooltipsC" title="Aumentar Suministros">
+                  <i class="fa fa-fw fa-plus-circle text-success"></i></a>
               <form id="form1" action="{{route('inventario_delete', ['Inventario' => $item->idInventario])}}" method="POST">
                 @csrf 
                 <input name="_method" type="hidden" value="DELETE">
@@ -116,12 +127,49 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
+              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar Inventario" data-toggle="modal" data-target="#Detalle"  data-col="{{$item->Colchonetas}}" data-cob="{{$item->Cobijas}}" data-rop="{{$item->Ropa}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>
             @endforeach
           </table>
         </div>
       </div>
+      <div class="modal modal-default fade" id="Detalle">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Información de Inventario</b></h4>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label class="col-md-4 "><b>Colchonetas:</b></label>
+                  <div class="col-md-4">
+                      <span id="col"></span>
+                  </div>
+                </div>
+               <br>
+               <div class="form-group ">
+                <label class="col-md-4"><b>Cobijas:</b></label>
+                <div class="col-md-4">
+                    <span id="cob"></span>
+                </div>
+              </div><br>
+             <div class="form-group">
+              <label  class="col-md-4"><b>Ropa:</b></label>
+              <div class="col-md-4">
+                  <span id="rop"></span>
+              </div>
+          </div><br>  
+              <br><br>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline bg-red pull-left" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 @endsection

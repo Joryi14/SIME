@@ -21,7 +21,10 @@
        <div class="form-group">
               <label for="Idjefefamilia" class="col-sm-2 control-label">Id de jefe de familia: </label>
               <div class="col-sm-10">
-                     <input type="text" name="IdJefeFam" class= "form-control" >
+                     <div class="col-sm-9">
+                            <select id='SelectC' name="IdJefeFam" style='width: 50%;'>
+                            <option value='0'>Seleccionar un Jefe</option></select>
+                     </div>
               </div>
        </div>
        <div class="form-group">
@@ -70,4 +73,33 @@
 </div>
 </div>  
 </div>  
+@endsection
+@section('Script')
+<!-- Script -->
+<script type="text/javascript">
+  // CSRF Token
+  var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+  $(document).ready(function(){
+    $("#SelectC").select2({
+      ajax: { 
+        url: "{{route('Get_JefeC')}}",
+        type: "post",
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+          return {
+            _token: CSRF_TOKEN,
+            search: params.term // search term
+          };
+        },
+        processResults: function (response) {
+          return {
+            results: response
+          };
+        },
+        cache: true
+      }
+    });
+  });
+  </script>
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Requests\ValidacionRetiroPaquetes;
 use App\Models\Inventario;
 use Illuminate\Support\Facades\DB;
 use App\Models\Retiro_PaquetesV;
+use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -40,15 +41,24 @@ class Retiro_PaquetesVController extends Controller
      */
     public function store(ValidacionRetiroPaquetes $request)
     {
-        $inv = inventario::findorfail($request->IdInventario);
+        $inv = inventario::find($request->IdInventario);
+        $vol = User::find($request->IdVoluntario);
+        if($inv != null){
+        if($vol != null){
         if(($request->SuministrosGobierno + $request->SuministrosComision) <= $inv->Suministros){
         $retiroPV = DB::select("call Insert_RetiroPaquetes('$request->IdAdministradorI','$request->NombreChofer','$request->Apellido1C','$request->Apellido2C',
         '$request->IdVoluntario','$request->PlacaVehiculo','$request->DireccionAEntregar','$request->SuministrosGobierno','$request->SuministrosComision',
         '$request->IdInventario')");  
         return redirect('/Retiro_PaquetesV')->with('mensaje','Se ha agregado con éxito');
     }
+    else
+    return redirect('/Retiro_PaquetesV/create')->with('mensaje','Cantidad de paquetes insuficientes');
+}
+   else 
+     return redirect('/Retiro_PaquetesV/create')->with('mensaje','Voluntario no existe');
+}
         else 
-        return redirect('/Retiro_PaquetesV/create')->with('mensaje','Cantidad de paquetes insuficientes');
+        return redirect('/Retiro_PaquetesV/create')->with('mensaje','Inventario no existe');
     }
 
     public function generar()
@@ -105,7 +115,47 @@ class Retiro_PaquetesVController extends Controller
         return redirect('Retiro_PaquetesV')->with('mensaje','Se ha actualizado correctamente');
     
     }
+    public function getUsers(Request $request){
 
+        $search = $request->search;
+  
+        if($search == ''){
+           $Users = User::orderby('Cedula','asc')->select('id','Cedula')->limit(5)->get();
+        }else{
+           $Users = User::orderby('Cedula','asc')->select('id','Cedula')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+  
+        $response = array();
+        foreach($Users as $user){
+           $response[] = array(
+                "id"=>$user->id,
+                "text"=>$user->Cedula
+           );
+        }
+  
+        echo json_encode($response);
+        exit;
+     }
+     public function getInventario(Request $request){
+        $search = $request->search;
+  
+        if($search == ''){
+           $Inven = Inventario::orderby('idInventario','asc')->select('idInventario')->limit(5)->get();
+        }else{
+           $Inven = Inventario::orderby('idInventario','asc')->select('idInventario')->where('idInventario', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+  
+        $response = array();
+        foreach($Inven as $Inv){
+           $response[] = array(
+                "id"=>$Inv->idInventario,
+                "text"=>$Inv->idInventario
+           );
+        }
+  
+        echo json_encode($response);
+        exit;
+     }
     /**
      * Remove the specified resource from storage.
      *

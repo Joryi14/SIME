@@ -100,13 +100,13 @@ $(function () {
                 </a>
             </div>
             
-          <h3 class="box-title">PersonasAlbergue</h3>
+          <h3 class="box-title">Personas en albergue</h3>
         </div>
         <div class="box-body table-responsive" >
           <table id="PersonaAlbergue_table" class="table table-bordered table-striped">
               <thead>
             <tr>
-              <th>Id del registroA</th>
+              <th>Id del registro del albergue</th>
               <th>Id del albergue</th>
               <th>Cédula del jefe de familia</th>
               <th>Lugar de procedencia</th>
@@ -119,12 +119,12 @@ $(function () {
               <td>{{$item->idAlbergue}}</td>      
               <td>{{$item->idJefe->Cedula}}</td>  
               <td>{{$item->LugarDeProcedencia}}</td>
-              <td><a href="/PersonasAlbergue/{{$item->idregistroA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar PersonasAlbergue">
+              <td><a href="/PersonasAlbergue/{{$item->idregistroA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar personas en albergue">
                 <i class="fa fa-fw fa-pencil"></i></a>
               <form id="form1" action="{{route('personasAlbergue_delete', ['PersonasAlbergue' => $item->idregistroA])}}" method="POST">
                 @csrf 
                 <input name="_method" type="hidden" value="DELETE">
-                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar PersonasAlbergue" onclick="confirmarEnvio()">
+                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar personas en albergue" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>

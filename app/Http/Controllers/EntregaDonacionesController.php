@@ -43,7 +43,9 @@ class EntregaDonacionesController extends Controller
     {    
 
         $retiro = Retiro_PaquetesV::find($request->IdRetiroPaquetes);
+        $jefe = JefeDeFamilia::find($request->IdJefe);
         if($retiro != Null){
+            if($jefe != Null){
         $entregadonaciones = new EntregaDonaciones();
         if($request->hasFile('Foto')){
             $file = $request->file('Foto');
@@ -57,9 +59,13 @@ class EntregaDonacionesController extends Controller
           $entregadonaciones->save(); 
           return redirect('EntregaDonaciones')->with('mensaje','Se ha guardado correctamente'); 
         }
+        else return redirect('EntregaDonaciones/create')->with('mensaje','Error al agregar, jefe de familia no existe'); 
+    
+    }
         else 
-         return redirect('EntregaDonaciones/create')->with('mensaje','Error al agregar codigo de retiro no existe');
+         return redirect('EntregaDonaciones/create')->with('mensaje','Error al agregar, el id del retiro de paquetes no existe');
         }
+        
 
     /**
      * Display the specified resource.
@@ -102,6 +108,25 @@ class EntregaDonacionesController extends Controller
         echo json_encode($response);
         exit;
      }
+     public function getPaquete(Request $request){
+
+        $search = $request->search;
+        if($search == ''){
+           $Retiro = Retiro_PaquetesV::orderby('IdRetiroPaquetes','asc')->select('IdRetiroPaquetes')->limit(5)->get();
+        }else{
+           $Retiro = Retiro_PaquetesV::orderby('IdRetiroPaquetes','asc')->select('IdRetiroPaquetes')->where('IdRetiroPaquetes', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Retiro as $reti){
+           $response[] = array(
+                "id"=>$reti->IdRetiroPaquetes,
+                "text"=>$reti->IdRetiroPaquetes
+           );
+        }
+  
+        echo json_encode($response);
+        exit;
+     }
     /**
      * Update the specified resource in storage.
      *
@@ -111,15 +136,15 @@ class EntregaDonacionesController extends Controller
      */
     public function update(ValidacionEntregaDonaciones $request, $id)
     {
-        $entregadonaciones = new EntregaDonaciones();
+        $entregadonaciones = EntregaDonaciones::find($id);
         if($request->hasFile('Foto')){
             $file = $request->file('Foto');
             $entregadonaciones->Foto = $request->Foto = base64_encode(file_get_contents($file));
-          }  
+        
+            }  
         $entregadonaciones->IdVoluntario = $request->IdUsuarioRol;
         $entregadonaciones->IdJefe = $request->IdJefe;
         $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
-        $entregadonaciones->Foto = $request->Foto;
         $entregadonaciones->save();
         return redirect('EntregaDonaciones')->with('mensaje','Se ha actualizado correctamente');
     }

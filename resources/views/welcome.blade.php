@@ -29,7 +29,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Inicio</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -158,8 +158,8 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">About</h2>
-          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+          {{-- <h2 class="section-heading text-uppercase">Proyectos futuros de la comunidad de Nosara</h2>
+          <h3 class="section-subheading text-muted">Todas las novedades de los proyectos futuros de la comunidad de Nosara.</h3> --}}
         </div>
       </div>
       <div class="row">
@@ -167,32 +167,31 @@
           <ul class="timeline">
             <li>
               <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="{{asset('img/about/1.jpg')}}" alt="">
+                <img class="rounded-circle img-fluid"  alt="">
               </div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
-                  <h4>2009-2011</h4>
-                  <h4 class="subheading">Our Humble Beginnings</h4>
+                  <h4 class="subheading">Misión  del comité comunal de emergenciasde de Nosara. </h4>
                 </div>
                 <div class="timeline-body">
-                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                  <p class="text-muted">...</p>
                 </div>
-              </div>
-            </li>
+              </div> 
+             </li>
             <li class="timeline-inverted">
               <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="{{asset('plan/img/about/2.jpg')}}" alt="">
+                <img class="rounded-circle img-fluid"  alt="">
               </div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
-                  <h4>March 2011</h4>
-                  <h4 class="subheading">An Agency is Born</h4>
+                  <h4 class="subheading">Visión  del comité comunal de emergencias de Nosara.</h4>
                 </div>
                 <div class="timeline-body">
-                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                  <p class="text-muted">...</p>
                 </div>
               </div>
             </li>
+             {{--
             <li>
               <div class="timeline-image">
                 <img class="rounded-circle img-fluid" src="{{asset('plan/img/about/3.jpg')}}" alt="">
@@ -227,30 +226,30 @@
                   <br>Of Our
                   <br>Story!</h4>
               </div>
-            </li>
+            </li>--}}
           </ul>
         </div>
       </div>
     </div>
-  </section>
+  </section> 
 
   <!-- Team -->
   <section class="bg-light page-section" id="team">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+          <h2 class="section-heading text-uppercase">Equipo de trabajo</h2>
+          <h3 class="section-subheading text-muted">Está conformado por una grupo de personas del comité comunal de emergencias de Nosara.</h3>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-4">
           <div class="team-member">
-            <img class="mx-auto rounded-circle" src="{{asset('plan/img/team/1.jpg')}}" alt="">
-            <h4>Kay Garland</h4>
-            <p class="text-muted">Lead Designer</p>
+            {{--<img class="mx-auto rounded-circle" src="{{asset('plan/img/team/1.jpg')}}" alt="">
+          --}}<h4>Marcos Ávila</h4>
+            <p class="text-muted">Presidente del comité</p>
             <ul class="list-inline social-buttons">
-              <li class="list-inline-item">
+              {{-- <li class="list-inline-item">
                 <a href="#">
                   <i class="fab fa-twitter"></i>
                 </a>
@@ -264,17 +263,17 @@
                 <a href="#">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
-              </li>
+              </li> --}}
             </ul>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="team-member">
-            <img class="mx-auto rounded-circle" src="{{asset('plan/img/team/2.jpg')}}" alt="">
-            <h4>Larry Parker</h4>
-            <p class="text-muted">Lead Marketer</p>
+            {{--<img class="mx-auto rounded-circle" src="{{asset('plan/img/team/2.jpg')}}" alt="">
+          --}}<h4>Reynold Delgado</h4>
+            <p class="text-muted">Vicepresidente del comité </p>
             <ul class="list-inline social-buttons">
-              <li class="list-inline-item">
+              {{-- <li class="list-inline-item">
                 <a href="#">
                   <i class="fab fa-twitter"></i>
                 </a>
@@ -288,17 +287,17 @@
                 <a href="#">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
-              </li>
+              </li> --}}
             </ul>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="team-member">
-            <img class="mx-auto rounded-circle" src="{{asset('plan/img/team/3.jpg')}}" alt="">
-            <h4>Diana Pertersen</h4>
-            <p class="text-muted">Lead Developer</p>
+            {{--<img class="mx-auto rounded-circle" src="{{asset('plan/img/team/3.jpg')}}" alt="">
+          --}}<h4>Anilsa Castro</h4>
+            <p class="text-muted">Secretaria del comité </p>
             <ul class="list-inline social-buttons">
-              <li class="list-inline-item">
+              {{-- <li class="list-inline-item">
                 <a href="#">
                   <i class="fab fa-twitter"></i>
                 </a>
@@ -312,21 +311,21 @@
                 <a href="#">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
-              </li>
+              </li> --}}
             </ul>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
-          <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+          <p class="large text-muted">SIME es una página para estar más cerca de la población de Nosara y en casos de emergencia tener un manejo adecuado de la situación.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Clients -->
-  <section class="py-5">
+  {{--<section class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-3 col-sm-6">
@@ -352,7 +351,7 @@
       </div>
     </div>
   </section>
-
+--}}
   <!-- Contact -->
   <section class="page-section" id="contact">
     <div class="container">
@@ -426,37 +425,8 @@
   <footer class="footer">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-md-4">
-          <span class="copyright">Copyright &copy; Your Website 2019</span>
-        </div>
-        <div class="col-md-4">
-          <ul class="list-inline social-buttons">
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <ul class="list-inline quicklinks">
-            <li class="list-inline-item">
-              <a href="#">Privacy Policy</a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">Terms of Use</a>
-            </li>
-          </ul>
+        <div class="col-md-12">
+          <span  class="copyright">Copyright &copy; SIME 2019</span>
         </div>
       </div>
     </div>

@@ -349,7 +349,7 @@
         $('.select2').select2({
                 theme: "bootstrap"
         });
-        $.fn.select2.defaults.set( "theme", "bootstrap" );
+        $.fn.select2.defaults.set("theme", "bootstrap" );
         });  
 </script>
         @endsection

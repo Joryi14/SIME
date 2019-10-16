@@ -6,6 +6,7 @@ use App\Http\Requests\ValidacionPersonasAlbergue;
 use App\Models\Albergue;
 use App\Models\JefeDeFamilia;
 use App\Models\PersonasAlbergue;
+use App\User;
 use Illuminate\Http\Request;
 
 class PersonasAlbergueController extends Controller
@@ -68,7 +69,25 @@ class PersonasAlbergueController extends Controller
     {
         //
     }
+    
+    public function getAlbergue(Request $request){
 
+        $search = $request->search;
+        if($search == ''){
+           $Albergue = Albergue::orderby('idAlbergue','asc')->select('idAlbergue','Nombre')->limit(5)->get();
+        }else{
+           $Albergue = Albergue::orderby('idAlbergue','asc')->select('idAlbergue','Nombre')->where('Nombre', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Albergue as $Alber){
+           $response[] = array(
+                "id"=>$Alber->idAlbergue,
+                "text"=>$Alber->Nombre
+           );
+        }
+        echo json_encode($response);
+        exit;
+     }
     /**
      * Show the form for editing the specified resource.
      *
@@ -80,6 +99,30 @@ class PersonasAlbergueController extends Controller
         $persona = PersonasAlbergue::find($id);
         return view('PersonasAlbergue.edit', compact('persona'));
     }
+
+    
+
+
+    public function getIdJF(Request $request){
+
+        $search = $request->search;
+        if($search == ''){
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->limit(5)->get();
+        }else{
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Jefes as $jefe){
+           $response[] = array(
+                "id"=>$jefe->IdJefe,
+                "text"=>$jefe->Cedula
+           );
+        }
+  
+        echo json_encode($response);
+        exit;
+     }
+
 
     /**
      * Update the specified resource in storage.

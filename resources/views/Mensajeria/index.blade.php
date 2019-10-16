@@ -51,7 +51,7 @@
             <div class="panel-heading"> Este reporte fue enviado en la fecha y hora: {{$item->created_at}} 
             </div>
                   <div class="panel-body">
-                    <p><strong>ID Mensajería:</strong> {{$item->IdMensajeria}}</p>
+                    <p><strong>Id Mensajería:</strong> {{$item->IdMensajeria}}</p>
                     <p><strong>Código de incidente:</strong> {{$item->CodigoIncidente}}</p>
                        <p><strong>Descripción:</strong>  {{$item->Descripcion}}</p>
                       <p><strong>Ubicación:</strong>  {{$item->Ubicacion}}</p>
@@ -59,12 +59,12 @@
                        <p><strong>Fecha: </strong>{{\Carbon\Carbon::parse($item->fecha)->format('d/m/Y')}} </p>
                       <p><strong>Categoría:</strong>   {{$item->Categoria}}</p>
                          <p><strong>Id del líder comunal:</strong>  {{$item->IdLiderComunal}} </p>  
-                         <td><a href="/Mensajeria/{{$item->IdMensajeria}}/edit" class="btn-accion-tabla tooltipsC" title="Editar Informe">
+                         <td><a href="/Mensajeria/{{$item->IdMensajeria}}/edit" class="btn-accion-tabla tooltipsC" title="Editar informe">
                           <i class="fa fa-fw fa-pencil"></i></a>
                           <form action="{{route('mensajeria_delete', ['Mensajeria' => $item->IdMensajeria])}}" id="form1" method="POST">
                               @csrf 
                               <input name="_method" type="hidden" value="DELETE">
-                              <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Informacion" onclick="confirmarEnvio()">
+                              <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar informe" onclick="confirmarEnvio()">
                                   <i class="fa fa-fw fa-trash text-danger"></i>
                               </button>
                           </form>

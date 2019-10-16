@@ -2,9 +2,10 @@
 @section('Script')
 <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
 <script type="text/javascript">
-  $(document).ready(function(){$(".form2").submit(function( event ) {
-      event.preventDefault();
-      swal({
+  document.querySelector('#form2').addEventListener('submit', function(e) {
+  var form = this;
+  e.preventDefault(); // <--- prevent form from submitting
+  swal({
       title: "Esta seguro de eliminar?",
       text: "Una vez eliminado no se puede recuperar!",
       icon: "warning",
@@ -13,22 +14,21 @@
         'Aceptar!'
       ],
       dangerMode: true,
-      }).then(function(isConfirm) {
+    }).then(function(isConfirm) {
       if (isConfirm) {
         swal({
           title: 'Exito!',
           text: 'Se ha Eliminado el registro!',
           icon: 'success'
         }).then(function() {
-          form.submit();
+          form.submit(); // <--- submit form programmatically
         });
       } else {
         swal("Cancelado","" ,"error");
       }
     })
-  })
 });
-</script> 
+</script>
 @endsection
 @section('Contenido')
 <div class="row">
@@ -43,7 +43,7 @@
         <div class="box-body table-responsive">
           <table class="table table-hover">
             <tr>
-              <th>ID Usuario</th>
+              <th>Id usuario</th>
               <th>Email</th>
               <th>Nombre</th>
               <th>Primer apellido</th>
@@ -100,7 +100,7 @@
           <div class="box-body table-responsive" >
             <table class="table table-hover" >
               <tr>
-                <th>ID Rol</th>
+                <th>Id rol</th>
                 <th>Nombre</th>
                 <th>Acciones</th>
               </tr>
@@ -109,9 +109,9 @@
                 <td>{{$object->id}}</td>    
                 <td>{{$object->name}}</td>
                 <td>
-                <form class="form2" action="{{route('rol_delete', ['roles' => $object->id])}}" method="POST">
+                <form id="form2" action="{{route('rol_delete', ['roles' => $object->id])}}" method="POST">
                     @csrf @method('delete')
-                    <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar rol">
+                    <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar rol">
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form>
@@ -233,8 +233,8 @@
             <div class="box-body table-responsive">
               <table class="table table-hover">
                 <tr>
-                  <th>ID Usuario</th>
-                  <th>ID Rol</th>
+                  <th>Id usuario</th>
+                  <th>Id rol</th>
                   <th>Acciones</th>
                 </tr>
                 @foreach ($UserRol as $UserRol)
@@ -245,7 +245,7 @@
                   <form id="form5" action="{{route('UserRol_delete', ['UserRol' => $UserRol->role_id])}}" method="POST">
                       @csrf 
                       <input name="_method" type="hidden" value="DELETE">
-                      <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar PermisoRol" onclick="confirmarEnvio()">
+                      <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar permiso rol" onclick="confirmarEnvio()">
                           <i class="fa fa-fw fa-trash text-danger"></i>
                       </button>
                     </form>

@@ -95,7 +95,7 @@ $(function () {
       @include('Includes.mensaje-Succes')
       <div class="box-tools pull-rigth">
           <a href="{{route('Retiro_PaquetesV_reporte')}}" class="btn btn-block btn-primary btn-sm" target="_blank">
-              <i class="fa fa-fw fa-plus-circle"></i> Crear Reporte de retiro de paquetes
+              <i class="fa fa-fw fa-plus-circle"></i> Crear reporte de retiro de paquetes
           </a>
         </div>
       <div class="box box-primary">
@@ -107,7 +107,7 @@ $(function () {
                 </a>
             </div>
            
-          <h3 class="box-title">Retiro de Paquetes </h3>
+          <h3 class="box-title">Retiro de paquetes </h3>
         </div>
         <div class="box-body table-responsive" >
           <table id="Retiro_PaquetesV_table" class="table table-bordered table-striped">
@@ -131,12 +131,12 @@ $(function () {
               <td>{{$item->SuministrosComision}}</td>
               <td>{{$item->IdInventario}}</td>    
     
-              <td><a href="/Retiro_PaquetesV/{{$item->IdRetiroPaquetes}}/edit" class="btn-accion-tabla tooltipsC" title="Editar Retiro_PaquetesV">
+              <td><a href="/Retiro_PaquetesV/{{$item->IdRetiroPaquetes}}/edit" class="btn-accion-tabla tooltipsC" title="Editar retiro de paquetes">
                 <i class="fa fa-fw fa-pencil"></i></a>
               <form id="form1" action="{{route('Retiro_PaquetesV_delete', ['Retiro_PaquetesV' => $item->IdRetiroPaquetes])}}" method="POST">
                 @csrf 
                 <input name="_method" type="hidden" value="DELETE">
-                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Retiro_PaquetesV" onclick="confirmarEnvio()">
+                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar retiro de raquetes" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                   </button>
                 </form>

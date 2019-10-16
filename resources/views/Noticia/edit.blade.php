@@ -12,7 +12,7 @@
                   </div>
               
             </div>
-        <h3 class="box-title">Editar Noticia</h3>
+        <h3 class="box-title">Editar noticia</h3>
       </div>
       <form class="form-horizontal" method="POST" action="/Noticia/{{$noticia->IdNoticias}}" enctype="multipart/form-data">
          @method('PUT')

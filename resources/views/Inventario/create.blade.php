@@ -12,7 +12,7 @@
                   </a>
                   </div>
                 </div>
-            <h3 class="box-title">Crear Inventario</h3>
+            <h3 class="box-title">Crear inventario</h3>
           </div>
 
 <form class= "form-horizontal" method="POST" action="/Inventario/store">

@@ -43,7 +43,7 @@
         <div class="box-body table-responsive">
           <table class="table table-hover">
             <tr>
-              <th>ID Usuario</th>
+              <th>Id usuario</th>
               <th>Email</th>
               <th>Nombre</th>
               <th>Primer apellido</th>
@@ -100,7 +100,7 @@
           <div class="box-body table-responsive" >
             <table class="table table-hover" >
               <tr>
-                <th>ID Rol</th>
+                <th>Id rol</th>
                 <th>Nombre</th>
                 <th>Acciones</th>
               </tr>
@@ -233,8 +233,8 @@
             <div class="box-body table-responsive">
               <table class="table table-hover">
                 <tr>
-                  <th>ID Usuario</th>
-                  <th>ID Rol</th>
+                  <th>Id usuario</th>
+                  <th>Id rol</th>
                   <th>Acciones</th>
                 </tr>
                 @foreach ($UserRol as $UserRol)
@@ -245,7 +245,7 @@
                   <form id="form5" action="{{route('UserRol_delete', ['UserRol' => $UserRol->role_id])}}" method="POST">
                       @csrf 
                       <input name="_method" type="hidden" value="DELETE">
-                      <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar PermisoRol" onclick="confirmarEnvio()">
+                      <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar permiso rol" onclick="confirmarEnvio()">
                           <i class="fa fa-fw fa-trash text-danger"></i>
                       </button>
                     </form>

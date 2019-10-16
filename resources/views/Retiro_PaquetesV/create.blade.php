@@ -13,7 +13,7 @@
               </a>
               </div>
             </div>
-            <h3 class="box-title">Crear Retiro de Paquetes</h3>
+            <h3 class="box-title">Crear retiro de paquetes</h3>
         </div>
         <form class="form-horizontal" method="POST" action="/Retiro_PaquetesV/store">
           
@@ -27,19 +27,19 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="Apellido1C" class="col-sm-2 control-label">Primer apellido del Chofer: </label>
+              <label for="Apellido1C" class="col-sm-2 control-label">Primer apellido del chofer: </label>
               <div class="col-sm-10">
                   <input type="text" name="Apellido1C" class= "form-control">
               </div>
             </div>
             <div class="form-group">
-              <label for="Apellido2C" class="col-sm-2 control-label">Segundo apellido del Chofer: </label>
+              <label for="Apellido2C" class="col-sm-2 control-label">Segundo apellido del chofer: </label>
               <div class="col-sm-10">
                   <input type="text" name="Apellido2C" class= "form-control">
               </div>
             </div>
             <div class="form-group">
-                <label for="IdVoluntario" class="col-sm-2 control-label">Id de Voluntario: </label>
+                <label for="IdVoluntario" class="col-sm-2 control-label">Id de voluntario: </label>
                 <div class="col-sm-10">
                     <input type="text" name="IdVoluntario" class= "form-control" > 
                 </div>

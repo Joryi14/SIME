@@ -95,12 +95,12 @@ $(function () {
 
                   <td>{{$item->IdJefeFa}}</td>
                  
-                  <td><a href="/EntregaDonacionesAlbergue/{{$item->IdEntregaA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar EntregaDonacionesAlbergue">
+                  <td><a href="/EntregaDonacionesAlbergue/{{$item->IdEntregaA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar la entrega de donaciones en albergue">
                     <i class="fa fa-fw fa-pencil"></i></a>
                   <form id="formEA" action="{{route('EntregadonacionesA_delete', ['EntregaDonacionesAlbergue' => $item->IdEntregaA])}}" method="POST">
                     @csrf 
                     <input name="_method" type="hidden" value="DELETE">
-                    <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar EntregaDonacionesAlbergue" onclick="confirmarEnvio()">
+                    <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar entrega de donaciones en albergue" onclick="confirmarEnvio()">
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form>

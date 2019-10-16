@@ -12,7 +12,7 @@
                   </a>
                   </div>
                 </div>
-            <h3 class="box-title">Crear Emergencia</h3>
+            <h3 class="box-title">Crear emergencia</h3>
           </div>
 <form class= "form-horizontal" method="POST" action="/Emergencia/store">
   @csrf

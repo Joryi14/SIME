@@ -11,7 +11,7 @@
                   </a>
                   </div>
                 </div>
-            <h3 class="box-title">Editar PersonasAlbergue</h3>
+            <h3 class="box-title">Editar personas en albergue</h3>
           </div>
           <form class="form-horizontal" method="POST" action="/PersonasAlbergue/{{$persona->idregistroA}}"readonly="readonly">
             @method('PUT')

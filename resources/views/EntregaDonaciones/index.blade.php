@@ -103,12 +103,12 @@ $(function () {
                   <td>
                     <img style='display:block; width:100px; height:100px;' src='data:image/jpeg;base64,{{$item->Foto}}' alt="base64 test">
                   </td>
-                  <td><a href="/EntregaDonaciones/{{$item->IdEntrega}}/edit" class="btn-accion-tabla tooltipsC" title="Editar EntregaDonaciones">
+                  <td><a href="/EntregaDonaciones/{{$item->IdEntrega}}/edit" class="btn-accion-tabla tooltipsC" title="Editar entrega donaciones">
                     <i class="fa fa-fw fa-pencil"></i></a>
                   <form id="form1" action="{{route('entregadonaciones_delete', ['EntregaDonaciones' => $item->IdEntrega])}}" method="POST">
                     @csrf 
                     <input name="_method" type="hidden" value="DELETE">
-                    <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar EntregaDonaciones" onclick="confirmarEnvio()">
+                    <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar entrega de donaciones" onclick="confirmarEnvio()">
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form>

@@ -17,7 +17,7 @@
               </a>
               </div>
             </div>
-        <h3 class="box-title">Crear jefe de Familia</h3>
+        <h3 class="box-title">Crear jefe de familia</h3>
       </div>
       <form class="form-horizontal" method="POST" action="/JefeDeFamilia/store">
           @csrf

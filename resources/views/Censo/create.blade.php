@@ -28,6 +28,14 @@
               </div>
        </div>
        <div class="form-group">
+              <label class="col-sm-2" class="col-sm-2 control-label"> O </label>
+            <div class="col-sm-3">
+            <a href="{{route('jefe_create')}}" class="btn btn-block btn-primary btn-sm">
+              <i class="fa fa-fw fa-plus-circle"></i> Crear jefe de familia
+          </a>
+        </div>
+      </div>
+       <div class="form-group">
                      <div class="checkbox">
                        <label class="col-sm-2 control-label">
                         Refrigerador 

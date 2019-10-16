@@ -19,7 +19,12 @@
             @csrf
             <div class="box-body">
                 <input type="hidden" name="IdUsuarioRol" value="{{Auth::user()->id}}" >
-              <div class="form-group">
+                <div class="form-group">
+                  <label for="idEmergencias" class="col-sm-2 control-label">Id del albergue: </label>
+                             <select id='SelectE' name="idEmergencias" style='width: 50%;'>
+                             <option value='0'>Seleccionar una emergencia</option></select>
+                </div>
+                <div class="form-group">
                 <label for="idAlbergue" class="col-sm-2 control-label">Id del albergue: </label>
                            <select id='SelectA' name="idAlbergue" style='width: 50%;'>
                            <option value='0'>Seleccionar un Albergue</option></select>
@@ -137,4 +142,30 @@
      });
    });
    </script>
+   <script type="text/javascript">
+    // CSRF Token
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $(document).ready(function(){
+      $("#SelectE").select2({
+        ajax: { 
+          url: "{{route('Get_EmergenciaP')}}",
+          type: "post",
+          dataType: 'json',
+          delay: 250,
+          data: function (params) {
+            return {
+              _token: CSRF_TOKEN,
+              search: params.term // search term
+            };
+          },
+          processResults: function (response) {
+            return {
+              results: response
+            };
+          },
+          cache: true
+        }
+      });
+    });
+    </script>
  @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidacionPersonasAlbergue;
 use App\Models\Albergue;
+use App\Models\Emergencia;
 use App\Models\JefeDeFamilia;
 use App\Models\PersonasAlbergue;
 use App\User;
@@ -42,16 +43,22 @@ class PersonasAlbergueController extends Controller
     {
         if(JefeDeFamilia::find($request->idJefe)){
         if(Albergue::find($request->idAlbergue!=NULL)){
-            $persona = new PersonasAlbergue();
+            if(Emergencia::find($request->idEmergencias)){
+        $persona = new PersonasAlbergue();
         $persona->idAlbergue = $request->idAlbergue;
-        $persona->idJefe = $request->idJefe;  
+        $persona->idJefe = $request->idJefe;
+        $persona->idEmergencias = $request->idEmergencias;
         $persona->LugarDeProcedencia = $request->LugarDeProcedencia;
         $persona->FechaDeIngreso = $request->FechaDeIngreso;
         $persona->HoraDeIngreso = $request->HoraDeIngreso;
         $persona->FechaDeSalida = $request->FechaDeSalida;
         $persona->HoraDeSalida = $request->HoraDeSalida;
         $persona->save();  
-        return redirect('PersonasAlbergue')->with('mensaje','Se ha agregado correctamente');}
+        return redirect('PersonasAlbergue')->with('mensaje','Se ha agregado correctamente');
+    }
+       else  
+       return redirect('PersonasAlbergue/create')->with('mensaje','Error Emergencia no existe');
+    }
         else
         return redirect('PersonasAlbergue/create')->with('mensaje','Error el albergue no existe');
         }
@@ -83,6 +90,24 @@ class PersonasAlbergueController extends Controller
            $response[] = array(
                 "id"=>$Alber->idAlbergue,
                 "text"=>$Alber->Nombre
+           );
+        }
+        echo json_encode($response);
+        exit;
+     }
+     public function getEmergencia(Request $request){
+
+        $search = $request->search;
+        if($search == ''){
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias')->limit(5)->get();
+        }else{
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias')->where('idEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Emergencia as $Emer){
+           $response[] = array(
+                "id"=>$Emer->idEmergencias,
+                "text"=>$Emer->idEmergencias
            );
         }
         echo json_encode($response);
@@ -131,7 +156,7 @@ class PersonasAlbergueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionPersonasAlbergue $request, $id)
     {
         $persona = PersonasAlbergue::find($id);
         $persona->fill($request->all());

@@ -1,5 +1,7 @@
 @extends("theme/$theme/layout")
 @section('Contenido')
+@include('Includes.Error-form')
+@include('Includes.mensaje-Error')
    <div class="row">
       <div class="col-xs-10">
       <div class="box box-success">

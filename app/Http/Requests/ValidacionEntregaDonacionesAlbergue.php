@@ -25,8 +25,7 @@ class ValidacionEntregaDonacionesAlbergue extends FormRequest
     {
         return [
             //
-            'IdJefeFa'=>'required',
-           
+            'IdJefeFa'=>'required|max:8|unique:entregadonacionesalbergue,IdJefeFa',
         ];
     }
 
@@ -35,6 +34,7 @@ class ValidacionEntregaDonacionesAlbergue extends FormRequest
         return [
             //
             'IdJefeFa.required' =>'El Id del jefe de familia es requerido',
+            'IdJefeFa.unique' =>'Al jefe de familia ya se le entregó paquete',
         ];
     }
 }

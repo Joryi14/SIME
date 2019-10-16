@@ -33,7 +33,7 @@
                 <label for="IdAlbergue" class="col-sm-2 control-label">Albergue: </label>
                 <div class="col-sm-9">
                     <select id='SelectA' name="IdAlbergue" style='width: 50%;'>
-                        <option value='0'>Seleccionar un jefe</option></select>
+                        <option value='0'>Seleccionar un Albergue</option></select>
             {{-- <input type="text" name="IdJefeFa" class= "form-control" > --}}
                 </div>
          </div>

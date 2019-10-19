@@ -23,9 +23,10 @@
           <div class="box-body">
             <div class="form-group">
               <label for="IdJefef" class="col-sm-2 control-label">Id del jefe de familia: </label>
-              <div class="col-sm-10">
-                  <input type="text" name="IdJefeF" class= "form-control" >
-              </div>
+              <div class="col-sm-9">
+                <select id='SelectJ' name="IdJefeF" style='width: 50%;'>
+                <option value='0'>Seleccionar un Jefe</option></select>
+         </div>
             </div>
             <div class="form-group">
               <label for="Nombre" class="col-sm-2 control-label">Nombre: </label>
@@ -153,5 +154,31 @@
           $.fn.select2.defaults.set( "theme", "bootstrap" );
           });  
   </script>
+  <script type="text/javascript">
+    // CSRF Token
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $(document).ready(function(){
+      $("#SelectJ").select2({
+        ajax: { 
+          url: "{{route('Get_JefeF')}}",
+          type: "post",
+          dataType: 'json',
+          delay: 250,
+          data: function (params) {
+            return {
+              _token: CSRF_TOKEN,
+              search: params.term // search term
+            };
+          },
+          processResults: function (response) {
+            return {
+              results: response
+            };
+          },
+          cache: true
+        }
+      });
+    });
+    </script>
           @endsection
 @endsection

@@ -102,6 +102,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], functi
     Route::get('Familias/{Familias}/edit', 'FamiliasController@edit')->name('familias_edit');
     Route::put('Familias/{Familias}','FamiliasController@update');
     Route::delete('Familias/{Familias}','FamiliasController@delete')->name('familias_delete');
+    Route::post('Familias/getJefe','FamiliasController@getJefe')->name('Get_JefeF');
 });
 
     Route::group(['prefix' => '/','middleware' => ['role:Admin|Director']], function () {

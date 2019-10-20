@@ -101,7 +101,7 @@ $(function () {
                   <td>{{$item->IdJefe}}</td>
                   <td>{{$item->IdRetiroPaquetes}}</td>
                   <td>
-                    <img style='display:block; width:100px; height:100px;' src='data:image/jpeg;base64,{{$item->Foto}}' alt="base64 test">
+                    <img style='display:block; width:100px; height:100px;' src='Foto/{{$item->Foto}}' alt="base64 test">
                   </td>
                   <td><a href="/EntregaDonaciones/{{$item->IdEntrega}}/edit" class="btn-accion-tabla tooltipsC" title="Editar entrega donaciones">
                     <i class="fa fa-fw fa-pencil"></i></a>

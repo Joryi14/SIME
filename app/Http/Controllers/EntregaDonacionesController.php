@@ -48,13 +48,15 @@ class EntregaDonacionesController extends Controller
             if($jefe != Null){
         $entregadonaciones = new EntregaDonaciones();
         if($request->hasFile('Foto')){
-            $file = $request->file('Foto');
-            $entregadonaciones->Foto = $request->Foto = base64_encode(file_get_contents($file));
-          }  
+            $file =$request->file('Foto');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/Foto/', $name);
+            $entregadonaciones->Foto = $name;
+          } 
           $entregadonaciones->IdVoluntario = $request->IdUsuarioRol;
           $entregadonaciones->IdJefe = $request->IdJefe;
           $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
-          $entregadonaciones->Foto = $request->Foto;
+          //$entregadonaciones->Foto = $request->Foto;
           $entregadonaciones->created_at = $entregadonaciones->created_at;
           $entregadonaciones->save(); 
           return redirect('EntregaDonaciones')->with('mensaje','Se ha guardado correctamente'); 
@@ -142,16 +144,11 @@ class EntregaDonacionesController extends Controller
         $entregadonaciones->IdJefe = $request->IdJefe;
         $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
         if($request->hasFile('Foto')){
-            $file = $request->file('Foto');
-            $fileS = $request->file('Foto')->getSize();
-            if($fileS <= 536870912){
-           
-            $entregadonaciones->Foto = $request->Foto = base64_encode( file_get_contents($file));
-            }else{
-              return redirect('EntregaDonaciones/edit')->with('mensaje','Error La Imagen es muy grande');
-            }
-
-          }  
+            $file =$request->file('Foto');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/Foto/', $name);
+            $entregadonaciones->Foto = $name;
+          } 
         $entregadonaciones->save();
         return redirect('EntregaDonaciones')->with('mensaje','Se ha actualizado correctamente');
     }

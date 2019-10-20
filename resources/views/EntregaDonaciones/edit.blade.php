@@ -41,7 +41,7 @@
                         <button type="button" class="btn fa fa-plus bg-yellow">
                          <input type="file" name="Foto" accept="image/*"  >  
                         </button>
-                        <img style='display:block; width:100px; height:100px;' src='data:image/jpeg;base64,{{$entregadonaciones->Foto}}' alt="base64 test">
+                
                     </div>
                         </div>
       </div>

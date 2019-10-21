@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-    </head>
+        
         <style>
+             @page {
+                margin: 100px 25px;
+            }
             table {
                 border: none;
                 width: 100%;
@@ -18,11 +21,47 @@
             tr:nth-child(1) {
                 background: #dedede;
             }
-        </style>
+            header {
+                position: fixed;
+                top: -60px;
+                left: 0px;
+                right: 0px;
+                height: 50px;
 
+                /** Extra personal styles **/
+                background-color: #03a9f4;
+                color: white;
+                text-align: center;
+                line-height: 35px;
+            }
+
+            footer {
+                position: fixed; 
+                bottom: -60px; 
+                left: 0px; 
+                right: 0px;
+                height: 50px; 
+                 
+                 /** Extra personal styles **/
+                background-color: #03a9f4;
+                color: white;
+                text-align: center;
+                line-height: 35px;
+            }
+
+        </style>
+</head>
 <body>
-    <CENTER><h1 class="box-title">Retiro de Paquetes </h1></CENTER> <p>{{$today}}</p>
-    
+
+        <header>
+            <h1 class="box-title">Retiro de Paquetes </h1> 
+         <img src="/var/www/SIME/public/Logo/cne.jpg"/> 
+            </header>
+
+           <footer>
+                <p>{{$today}}</p>
+           </footer>    
+           <main>
     <table>
          
     
@@ -58,6 +97,6 @@
               </tr>
             @endforeach
     </table>
-    
+           </main>
 </body>
 </html>

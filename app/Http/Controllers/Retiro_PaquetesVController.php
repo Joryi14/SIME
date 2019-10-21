@@ -46,9 +46,10 @@ class Retiro_PaquetesVController extends Controller
         if($inv != null){
         if($vol != null){
         if(($request->SuministrosGobierno + $request->SuministrosComision) <= $inv->Suministros){
-        $retiroPV = DB::select("call Insert_RetiroPaquetes('$request->IdAdministradorI','$request->NombreChofer','$request->Apellido1C','$request->Apellido2C',
-        '$request->IdVoluntario','$request->PlacaVehiculo','$request->DireccionAEntregar','$request->SuministrosGobierno','$request->SuministrosComision',
-        '$request->IdInventario')");  
+            $retiroPV = new Retiro_PaquetesV();
+            $retiroPV->fill($request->all());
+            $retiroPV->save();
+
         return redirect('/Retiro_PaquetesV')->with('mensaje','Se ha agregado con éxito');
     }
     else
@@ -109,9 +110,10 @@ class Retiro_PaquetesVController extends Controller
      */
     public function update(ValidacionRetiroPaquetes $request, $id)
     {
-        $retiroPV = DB::update("call Update_RetiroPaquetes('$id','$request->IdAdministradorI','$request->NombreChofer','$request->Apellido1C','$request->Apellido2C',
-        '$request->IdVoluntario','$request->PlacaVehiculo','$request->DireccionAEntregar','$request->SuministrosGobierno','$request->SuministrosComision',
-        '$request->IdInventario')");  
+        $retiroPV = Retiro_PaquetesV::find($id);
+        $retiroPV->fill($request->all());
+        $retiroPV->save();
+    
         return redirect('Retiro_PaquetesV')->with('mensaje','Se ha actualizado correctamente');
     
     }

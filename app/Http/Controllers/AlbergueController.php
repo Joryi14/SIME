@@ -61,13 +61,9 @@ class AlbergueController extends Controller
      */
     public function store(ValidacionesAlbergue $request)
     {
-
-        $albergue = DB::select("call Insert_Albergue('$request->Nombre',
-        '$request->Distrito','$request->Comunidad','$request->TipoDeInstalacion','$request->Capacidad', 
-        '$request->model_id','$request->telefono','$request->Duchas','$request->inodoros',
-        '$request->EspaciosDeCocina','$request->Bodega',
-        '$request->Longitud','$request->Latitud','$request->Nececidades')");
-
+        $albergue = new Albergue();
+        $albergue->fill($request->all());
+        $albergue->save();
         return redirect('Albergue')->with('mensaje','Se ha agregado correctamente');
     }
 

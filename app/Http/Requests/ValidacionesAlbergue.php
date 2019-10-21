@@ -29,8 +29,8 @@ class ValidacionesAlbergue extends FormRequest
             'Distrito'=>'required|max:50',
             'Comunidad'=>'required|max:50',
             'TipoDeInstalacion'=>'max:50',
-
-            'Capacidad'=>'required',
+            'model_id' =>'required',
+            'Capacidad'=>'required|numeric',
             'telefono'=>'required',
             'Longitud'=>'numeric',
             'Latitud'=>'numeric',
@@ -51,12 +51,13 @@ class ValidacionesAlbergue extends FormRequest
             'Comunidad.max' =>' La nombre de la comunidad no debe ser mayor a 50 caracteres',
             'TipoDeInstalacion.max' =>' El tipo de instalacion no debe ser mayor a 50 caracteres',
             'Capacidad.required' =>'La capacidad del albergue es requerido',
+            'Capacidad.numeric' =>'La capacidad debe ser numerica',
             'telefono.required' =>'El número de telefono del albergue es requerido',
             'Nececidades.required' =>'Las nececidades del albergue es requerido',
             'Nececidades.max' =>' Las nececidades del albergue no debe ser mayor a 50 caracteres',
             'Longitud.numeric' =>' La Longitud de la emergencia debe ser NUMERICA',
-            'Latitud.numeric' =>' La Latitud de la emergencia debe ser NUMERICA'
-            
+            'Latitud.numeric' =>' La Latitud de la emergencia debe ser NUMERICA',
+            'model_id.required'=>'El responsable es requerido'
         ];
     }
 

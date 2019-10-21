@@ -125,6 +125,7 @@
                                 <label class="col-sm-2 control-label">Patologia</label>
                                 <div class="col-sm-8">
                                 <select class="form-control select2" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 100%;">
+                                        <option>Ninguna</option>
                                         <option>Alergias</option>
                                         <option>Asma</option>
                                         <option>CA</option>
@@ -134,7 +135,6 @@
                                         <option>Epilepsia</option>
                                         <option>EPOC</option>
                                         <option>HTA</option>
-                                        <option>Ninguna</option>
                                         <option value="Psiquiatricos">Psiquiátricos</option>
                                 </select>
                                 </div>

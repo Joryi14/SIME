@@ -21,8 +21,8 @@
       <div class="form-group">
         <label for="idEmergencias" class="col-sm-2 control-label">Id de las emergencias: </label>
         <div class="col-sm-9">
-            <select id='SelectE' name="idEmergencias" style='width: 50%;'>
-            <option value='0'>Seleccionar una Emergencia</option></select>
+            <select id='SelectE' name="idEmergencias" style='width: 50%;' required>
+            </select>
         </div>
       </div>
 

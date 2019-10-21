@@ -39,13 +39,9 @@ class InventarioController extends Controller
      */
     public function store(ValidacionInventario $request)
     {
-       
-        $inventario = DB::select("call Insert_Inventario(
-            '$request->idEmergencias',
-            '$request->Suministros',
-            '$request->Colchonetas',
-           '$request->Cobijas',
-          '$request->Ropa')");
+        $inv = new Inventario();
+        $inv->fill($request->all());
+        $inv->save();
        
         return redirect('Inventario')->with('mensaje','Se ha agregado correctamente');
     }

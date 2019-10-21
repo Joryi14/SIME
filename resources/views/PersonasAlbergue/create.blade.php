@@ -22,17 +22,17 @@
                 <div class="form-group">
                   <label for="idEmergencias" class="col-sm-2 control-label">Id del albergue: </label>
                              <select id='SelectE' name="idEmergencias" style='width: 50%;'>
-                             <option value='0'>Seleccionar una emergencia</option></select>
+                             </select>
                 </div>
                 <div class="form-group">
                 <label for="idAlbergue" class="col-sm-2 control-label">Id del albergue: </label>
                            <select id='SelectA' name="idAlbergue" style='width: 50%;'>
-                           <option value='0'>Seleccionar un Albergue</option></select>
+                           </select>
               </div>
               <div class="form-group">
                 <label for="idJefe"  class="col-sm-2 control-label">Id del jefe de familia:</label>
                     <select id='SelectJ' name="idJefe" style='width: 50%;'>
-                        <option value='0'>Seleccionar un Jefe</option></select>
+                        </select>
                     {{-- <input type="text" name="idJefe" class= "form-control" > --}}
                   
               </div>

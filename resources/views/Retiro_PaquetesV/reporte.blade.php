@@ -32,7 +32,7 @@
 
         <div id = "header">
             
-            <h2 class="box-title">Comición Nacional de Prevención de Riesgos Y Atención de Emergencia </h2>
+            <h2 class="box-title">Comisión Nacional de Prevención de Riesgos Y Atención de Emergencia </h2>
                     <h3 class="box-title"> Comité Comunal de Emergencia de: Nosara</h3>     
                 <h4 class="box-title"> Reporte de retiro de paquetes</h4>
                 <img style="position: absolute; left: 10px; top: 30px; height: 90px;" src="{{asset("assets/images/1.png")}}" alt="Logo" height="75px;">

@@ -26,13 +26,9 @@
             <div class="col-sm-9">
               <input type="text" name="Titulo" class= "form-control" >
             </div>
-          </div>
-          <div class="form-group">
-              <label for="IdAutor" class="col-sm-2 control-label">Autor: </label>
-              <div class="col-sm-9">
-                  <input type="text" name="IdAutor" class= "form-control" > 
-              </div>
-            </div>
+          </div>    
+        <input type="hidden" name="IdAutor" value="{{Auth::user()->id}}" class= "form-control" > 
+
             <div class="form-group">
                 <label for="Imagenes" class="col-sm-2 control-label">Imagenes: </label>
                 <button type="button" class="btn fa fa-plus bg-yellow">

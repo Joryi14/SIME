@@ -36,8 +36,8 @@
                             <h5 class="box-title"> Comité Comunal de Emergencia de: Nosara</h5>     
                         <h5 class="box-title"> Reporte de inventario</h5>
                         <p>{{$today}}</p>
-                        <img style="position: absolute; left: 10px; top: 30px; height: 70px;" src="{{asset("assets/images/1.png")}}" alt="Logo" height="75px;">
-                        <img style="position: absolute; right: 78px; top: 30px; height: 70px;"  src="{{asset("assets/images/3.png")}}" alt="Logo" height="75px;">
+                        <img style="position: absolute; left: 10px; top: 30px; height: 70px;" src="{{asset("assets/images/logos/1.png")}}" alt="Logo" height="75px;">
+                        <img style="position: absolute; right: 78px; top: 30px; height: 70px;"  src="{{asset("assets/images/logos/3.png")}}" alt="Logo" height="75px;">
                 </div>
         
                    <div id="footer">

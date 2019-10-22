@@ -70,7 +70,8 @@ class InventarioController extends Controller
        'Cobijas',
        'Ropa']) 
         ->get();
-        $today = Carbon::now()->format('d/m/Y');
+        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        
         $view = view ('Inventario.reporte', compact('inventario', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);

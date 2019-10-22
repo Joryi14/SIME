@@ -37,8 +37,8 @@
                     <h3 class="box-title"> Comité Comunal de Emergencia de: Nosara</h3>     
                 <h4 class="box-title"> Reporte de retiro de paquetes</h4>
                 <p>{{$today}}</p>
-                <img style="position: absolute; left: 10px; top: 30px; height: 90px;" src="{{asset("assets/images/1.png")}}" alt="Logo" height="75px;">
-                <img style="position: absolute; right: 100px; top: 30px; height: 90px;"  src="{{asset("assets/images/3.png")}}" alt="Logo" height="75px;">
+                <img style="position: absolute; left: 10px; top: 30px; height: 90px;" src="{{asset("assets/images/logos/1.png")}}" alt="Logo" height="75px;">
+                <img style="position: absolute; right: 100px; top: 30px; height: 90px;"  src="{{asset("assets/images/logos/3.png")}}" alt="Logo" height="75px;">
         
             </div>
 

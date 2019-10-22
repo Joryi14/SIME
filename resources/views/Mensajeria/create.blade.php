@@ -48,21 +48,17 @@
                 </div>
                 <div class="form-group">
                     <label for="Categoria" class="col-sm-2 control-label">Categoría: </label>
-                   
                     <div class="btn-group-horizontal">
-                      <button type="button" class="btn bg-red">Grave
-                        <input type="hidden" name="Categoria" value="Grave">
-                      </button>
-                      <button type="button" class="btn  bg-orange" name="Categoria" value="Moderada" >Moderada
-                        <input type="hidden" name="Categoria" value="Moderada">
-                      </button>
-                      <button type="button" class="btn bg-green" name="Categoria" value="Leve" >Leve
-                        <input type="hidden" name="Categoria" value="Leve">
-                      </button>
-                    
+                       
+        <div class="btn-group-horizontal" style="margin-top:2%">
+          <input type="radio" name="Categoria" value="Grave"><span style="padding:1%; color:red">Grave</span>  
+                      
+                      <input type="radio" name="Categoria" value="Moderada"><span style="padding:1%; color:orange">Moderada </span>
+                      
+                      <input type="radio" name="Categoria" value="Leve"><span style="padding:1%; color:green">Leve </span>
                   </div>
                   </div>
-                  <input type="hidden" name="IdLiderComunal" class= "form-control" value="{{Auth::user()->id}}" >
+                  <input type="hidden" name="IdLiderComunal" class= "form-control" value="{{Auth::user()->id}}">
         </div>
         <div class="box-footer">
             @include("Includes.boton-form-create")

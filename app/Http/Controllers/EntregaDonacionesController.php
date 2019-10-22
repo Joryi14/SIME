@@ -139,7 +139,6 @@ class EntregaDonacionesController extends Controller
     public function update(ValidacionEntregaDonaciones $request, $id)
     {
         $entregadonaciones = EntregaDonaciones::find($id);
-
         $entregadonaciones->IdVoluntario = $request->IdUsuarioRol;
         $entregadonaciones->IdJefe = $request->IdJefe;
         $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;

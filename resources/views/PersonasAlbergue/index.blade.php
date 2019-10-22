@@ -108,6 +108,7 @@ $(function () {
             <tr>
               <th>Id del registro del albergue</th>
               <th>Id del albergue</th>
+              <th>Id de la emergencia</th>
               <th>Cédula del jefe de familia</th>
               <th>Lugar de procedencia</th>
               <th>Acciones</th>
@@ -115,8 +116,9 @@ $(function () {
           </thead>
             @foreach ($persona as $item)
               <tr>
-               <td>{{$item->idregistroA}}</td> 
-              <td>{{$item->idAlbergue}}</td>      
+              <td>{{$item->idregistroA}}</td> 
+              <td>{{$item->idAlbergue}}</td>
+              <td>{{$item->idEmergencias}}</td>      
               <td>{{$item->jefeFamilia->Cedula}}</td>  
               <td>{{$item->LugarDeProcedencia}}</td>
               <td><a href="/PersonasAlbergue/{{$item->idregistroA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar personas en albergue">

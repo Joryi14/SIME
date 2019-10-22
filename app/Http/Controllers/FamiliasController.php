@@ -70,7 +70,25 @@ class FamiliasController extends Controller
         $Familia = Familias::find($id);
         return view('Familias.edit', compact('Familia'));
     }
+    public function getJefe(Request $request){
 
+        $search = $request->search;
+        if($search == ''){
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->limit(5)->get();
+        }else{
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Jefes as $jefe){
+           $response[] = array(
+                "id"=>$jefe->IdJefe,
+                "text"=>$jefe->Cedula
+           );
+        }
+  
+        echo json_encode($response);
+        exit;
+     }
     /**
      * Update the specified resource in storage.
      *

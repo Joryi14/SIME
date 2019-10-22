@@ -39,13 +39,9 @@ class InventarioController extends Controller
      */
     public function store(ValidacionInventario $request)
     {
-       
-        $inventario = DB::select("call Insert_Inventario(
-            '$request->idEmergencias',
-            '$request->Suministros',
-            '$request->Colchonetas',
-           '$request->Cobijas',
-          '$request->Ropa')");
+        $inv = new Inventario();
+        $inv->fill($request->all());
+        $inv->save();
        
         return redirect('Inventario')->with('mensaje','Se ha agregado correctamente');
     }
@@ -74,7 +70,8 @@ class InventarioController extends Controller
        'Cobijas',
        'Ropa']) 
         ->get();
-        $today = Carbon::now()->format('d/m/Y');
+        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        
         $view = view ('Inventario.reporte', compact('inventario', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);

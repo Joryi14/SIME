@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-    </head>
+        
         <style>
+             @page {
+                margin: 180px 50px;
+            }
             table {
                 border: none;
                 width: 100%;
@@ -10,6 +13,7 @@
             }
 
             td,th { 
+                
                 padding: 2px 1px;
                 text-align: center;
                 border: 1px solid #999;
@@ -18,11 +22,32 @@
             tr:nth-child(1) {
                 background: #dedede;
             }
+            #header { position: fixed; left: 0px; top: -180px; right: 0px; height: 170px; background-color: orange; text-align: center; }
+            #footer { position: fixed; left: 0px; bottom: -180px; right: 0px; height: 80px; background-color: orange; }
+             #footer .page:after { content: counter(page, upper-roman); }
+
         </style>
+</head>
 
 <body>
-    <CENTER><h1 class="box-title">Retiro de Paquetes </h1></CENTER> <p>{{$today}}</p>
-    
+
+        <div id = "header">
+            
+            <h2 class="box-title">Comisión Nacional de Prevención de Riesgos Y Atención de Emergencia </h2>
+                    <h3 class="box-title"> Comité Comunal de Emergencia de: Nosara</h3>     
+                <h4 class="box-title"> Reporte de retiro de paquetes</h4>
+                <p>{{$today}}</p>
+                <img style="position: absolute; left: 10px; top: 30px; height: 90px;" src="{{asset("assets/images/logos/1.png")}}" alt="Logo" height="75px;">
+                <img style="position: absolute; right: 100px; top: 30px; height: 90px;"  src="{{asset("assets/images/logos/3.png")}}" alt="Logo" height="75px;">
+        
+            </div>
+
+           <div id="footer">
+               <center> <p>{{$today}}</p><center>
+           </div>  
+
+<main>
+
     <table>
          
     
@@ -58,6 +83,6 @@
               </tr>
             @endforeach
     </table>
-    
+           </main>
 </body>
 </html>

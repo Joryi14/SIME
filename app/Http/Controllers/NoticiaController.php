@@ -69,20 +69,18 @@ class NoticiaController extends Controller
           $file =$request->file('PDF');
           $nameP = time().$file->getClientOriginalName();
           $file->move(public_path().'/PDF/', $nameP);
-          $noticia->PDF = $nameP;`
+          $noticia->PDF = $nameP;
         }
         $noticia->created_at = $request->created_at;
         $noticia->Titulo = $request->Titulo;
         $noticia->IdAutor = $request->IdAutor;
-       // $noticia->Imagenes = $;
+        // $noticia->Imagenes = $;
         $noticia->NombrePDF = $request->NombrePDF;
        // $noticia->Videos = $request->Videos;
         $noticia->Articulo = $request->Articulo;
-        //$noticia->PDF = $request->PDF;
+         //$noticia->PDF = $request->PDF;
         $noticia ->save();  
         return redirect('Noticia')->with('mensaje','Se ha guardado');
-
-        
     }
 
     /**

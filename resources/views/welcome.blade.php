@@ -363,7 +363,8 @@
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <form class="form-horizontal" method="POST" action="/VoluntarioWeb/store" >
+          <form class="form-horizontal" method="POST" action="/VoluntarioWeb/store">
+            @csrf
             <div class="row">
               <div class="col-md-6">
 
@@ -411,7 +412,6 @@
               <div class="clearfix"></div>
               <div class="col-lg-12 text-center">
                 <div id="success"></div>
-               
                 <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">Enviar</button>
               </div>
             </div>
@@ -460,7 +460,7 @@
                  </video>
                   <ul class="list-inline">
                     <li>Fecha de publicacion: {{$item->updated_at}}</li>
-                    <li>Autor: {{$item->IdAutor}}</li>
+                    <li>Autor: {{$item->user->name}} {{$item->user->Apellido1}}</li>
                     <li>
                       <a class="btn btn-primary"
                         

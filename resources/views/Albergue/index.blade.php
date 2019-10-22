@@ -135,7 +135,6 @@ $(function () {
               <th>Capacidad del lugar</th>
               <th>Cédula del responsable</th>
               <th>Teléfono</th>
-            
               <th>Nececidades</th>
               <th>Acciones</th>
               </tr>

@@ -28,16 +28,13 @@
         <label for="Categoria" class="col-sm-2 control-label">Categoría: </label>
        
         <div class="btn-group-horizontal">
-          <button type="button" class="btn btn-danger">Grave
-            <input type="hidden" name="Categoria" value="Grave">
-          </button>
-          <button type="button" class="btn  btn-warning" name="Categoria" value="Moderada" >Moderada
-            <input type="hidden" name="Categoria" value="Moderada">
-          </button>
-          <button type="button" class="btn btn-success" name="Categoria" value="Leve" >Leve
-            <input type="hidden" name="Categoria" value="Leve">
-          </button>
-        
+           
+        <div class="btn-group-horizontal" style="margin-top:2%">
+          <input type="radio" name="Categoria" value="Grave"><span style="padding:1%; color:red">Grave</span>  
+                      
+                      <input type="radio" name="Categoria" value="Moderada"><span style="padding:1%; color:orange">Moderada </span>
+                      
+                      <input type="radio" name="Categoria" value="Leve"><span style="padding:1%; color:green">Leve </span>
       </div>
       </div>
 
@@ -63,7 +60,7 @@
                 <label for="Longitud" class="col-sm-2 control-label">Longitud: </label>
       
                 <div class="col-sm-8">
-                    <input type="text" name="Longitud" class= "form-control" >
+                    <input type="number" name="Longitud" class= "form-control" >
                 </div>
               </div>
 
@@ -71,7 +68,7 @@
                   <label for="Latitudd" class="col-sm-2 control-label">Latitud: </label>
         
                   <div class="col-sm-8">
-                      <input type="text" name="Latitud" class= "form-control" >
+                      <input type="number" name="Latitud" class= "form-control" >
                   </div>
                 </div>
   

@@ -55,16 +55,16 @@
                 <label for="Capacidad" class="col-sm-2 control-label">Capacidad del lugar: </label>
       
                 <div class="col-sm-8">
-                    <input type="text" name="Capacidad" class= "form-control" >
+                    <input type="number" name="Capacidad" class= "form-control" >
                 </div>
               </div>
 
 
               <div class="form-group">
                 <label for="IdResponsable" class="col-sm-2 control-label"> Responsable:</label>
-                <div class="col-sm-9">
-                    <select id='SelectU' name="model_id" style='width: 25%;'>
-                    <option value='0'>Seleccionar un Usuario</option></select>
+                <div class="col-sm-9" style="padding:2%">
+                    <select id='SelectU' name="model_id" style='width: 50%;' required>
+                    </select>
                 </div>
               </div>
 
@@ -120,7 +120,7 @@
             <label for="Longitud" class="col-sm-2 control-label">Longitud: </label>
   
             <div class="col-sm-8">
-                <input type="text" name="Longitud" class= "form-control" >
+                <input type="number" name="Longitud" class= "form-control" >
             </div>
           </div>
 
@@ -129,7 +129,7 @@
                   <label for="Latitud" class="col-sm-2 control-label">Latitud: </label>
         
                   <div class="col-sm-8">
-                      <input type="text" name="Latitud" class= "form-control" >
+                      <input type="number" name="Latitud" class= "form-control" >
                   </div>
                 </div>
   

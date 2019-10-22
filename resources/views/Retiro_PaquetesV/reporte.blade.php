@@ -4,7 +4,7 @@
         
         <style>
              @page {
-                margin: 100px 25px;
+                margin: 180px 50px;
             }
             table {
                 border: none;
@@ -21,47 +21,27 @@
             tr:nth-child(1) {
                 background: #dedede;
             }
-            header {
-                position: fixed;
-                top: -60px;
-                left: 0px;
-                right: 0px;
-                height: 50px;
-
-                /** Extra personal styles **/
-                background-color: #03a9f4;
-                color: white;
-                text-align: center;
-                line-height: 35px;
-            }
-
-            footer {
-                position: fixed; 
-                bottom: -60px; 
-                left: 0px; 
-                right: 0px;
-                height: 50px; 
-                 
-                 /** Extra personal styles **/
-                background-color: #03a9f4;
-                color: white;
-                text-align: center;
-                line-height: 35px;
-            }
+            #header { position: fixed; left: 0px; top: -180px; right: 0px; height: 150px; background-color: orange; text-align: center; }
+            #footer { position: fixed; left: 0px; bottom: -180px; right: 0px; height: 150px; background-color: orange; }
+             #footer .page:after { content: counter(page, upper-roman); }
 
         </style>
 </head>
+
 <body>
 
-        <header>
-            <h1 class="box-title">Retiro de Paquetes </h1> 
-         <img src="/var/www/SIME/public/Logo/cne.jpg"/> 
-            </header>
+        <div id = "header">
+            
+                <h1 class="box-title">Retiro de Paquetes </h1> 
+                <img id="logo" src="./images/cne.png" alt="Logo" width="50px;">
+        </div>
 
-           <footer>
-                <p>{{$today}}</p>
-           </footer>    
-           <main>
+           <div id="footer">
+               <center> <p>{{$today}}</p><center>
+           </div>  
+
+<main>
+
     <table>
          
     

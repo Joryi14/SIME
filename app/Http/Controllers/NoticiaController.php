@@ -69,14 +69,8 @@ class NoticiaController extends Controller
           $file =$request->file('PDF');
           $nameP = time().$file->getClientOriginalName();
           $file->move(public_path().'/PDF/', $nameP);
-          $noticia->PDF = $nameP;
+          $noticia->PDF = $nameP;`
         }
-
-         
-           
-        
-
-        
         $noticia->created_at = $request->created_at;
         $noticia->Titulo = $request->Titulo;
         $noticia->IdAutor = $request->IdAutor;

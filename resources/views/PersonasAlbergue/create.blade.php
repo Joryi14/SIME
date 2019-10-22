@@ -20,7 +20,7 @@
             <div class="box-body">
                 <input type="hidden" name="IdUsuarioRol" value="{{Auth::user()->id}}" >
                 <div class="form-group">
-                  <label for="idEmergencias" class="col-sm-2 control-label">Id del albergue: </label>
+                  <label for="idEmergencias" class="col-sm-2 control-label">Id de la Emergencia: </label>
                              <select id='SelectE' name="idEmergencias" style='width: 50%;'>
                              </select>
                 </div>

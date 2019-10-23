@@ -124,7 +124,7 @@ class NoticiaController extends Controller
           $file =$request->file('Imagenes');
           $name = time().$file->getClientOriginalName();
           $file->move(public_path().'/img/', $name);
-          $noticia->Imagenes = $name;
+          $noticia->Imagenes = '/img/'+$name;
         }
 
            if($request->hasFile('Videos')){
@@ -160,6 +160,15 @@ class NoticiaController extends Controller
     public function delete($id , Request $request)
     {
       $noticia = Noticia::find($id);
+      if($noticia->Imagenes != NULL){
+      $image_path = public_path().'/img/'.$noticia->Imagenes;
+      unlink($image_path);}
+      if($noticia->Videos != NULL){
+      $videos_path = public_path().'/Video/'.$noticia->Videos;
+      unlink($videos_path);}
+      if($noticia->PDF != NULL){
+      $pdf_path = public_path().'/PDF/'.$noticia->PDF;
+      unlink($pdf_path);}
       $noticia->delete();
       return redirect('Noticia')->with('Se ha eliminado correctamente');
     }

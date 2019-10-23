@@ -106,15 +106,22 @@ $(function () {
               <td>{{$item->Titulo}}</td>
               <td>{{$item->IdAutor}}</td>
               <td>
+              @if($item->Imagenes != null)
               <img style='display:block; width:100px;height:100px;' src='img/{{$item->Imagenes}}'>
             </td>
-              <td><video width="200" height="120"  controls>
+              @endif
+              <td>
+                  @if($item->Videos != null)
+                <video width="200" height="120"  controls>
                   <source src='Video/{{$item->Videos}}' type="video/mp4">
                   </video>
+              @endif
                   </td>
               <td><p>{{$item->Articulo}}<p></td>
-             
-              <td>{{$item->PDF}}</td>
+                @if($item->PDF != null)             
+              <td>{{$item->PDF}}
+              @endif
+              </td>
               <td><a href="/Noticia/{{$item->IdNoticias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar noticia">
                 <i class="fa fa-fw fa-pencil"></i></a>
               <form id="form1" action="{{route('noticia_delete', ['Noticia' => $item->IdNoticias])}}" method="POST">

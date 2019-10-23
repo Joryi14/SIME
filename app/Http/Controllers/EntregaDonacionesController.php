@@ -161,6 +161,9 @@ class EntregaDonacionesController extends Controller
     public function delete($id, Request $request)
     {
         $entregadonaciones = EntregaDonaciones::find($id);
+        if($entregadonaciones ->Foto != NULL){
+            $image_path = public_path().'/Foto/'.$entregadonaciones->Foto;
+            unlink($image_path);}
         $entregadonaciones->delete();
         return redirect('EntregaDonaciones')->with('mensaje','Se ha eliminado correctamente');
     }

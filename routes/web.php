@@ -70,8 +70,8 @@ Route::group(['prefix' => '/'], function () {
     Route::delete('EntregaDonacionesAlbergue/{EntregaDonacionesAlbergue}','EntregaDonacionesAlbergueController@delete')->name('EntregadonacionesA_delete'); 
     Route::post('EntregaDonacionesAlbergue/getIdJefeFa','EntregaDonacionesAlbergueController@getIdJefeFa')->name('Get_IdJefeFa');
     Route::post('EntregaDonacionesAlbergue/getAlbergue','EntregaDonacionesAlbergueController@getAlbergue')->name('Get_AlbergueE');
+    Route::post('EntregaDonacionesAlbergue/getEmergencia','EntregaDonacionesAlbergueController@getEmergencia')->name('Get_IdEme');
     
-
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

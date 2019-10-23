@@ -25,19 +25,26 @@
                     <label for="IdJefeFa" class="col-sm-2 control-label">Id del jefe de familia: </label>
                     <div class="col-sm-9">
                         <select id='SelectJ' name="IdJefeFa" style='width: 50%;'>
-                            <option value='0'>Seleccionar un jefe</option></select>
+                            </select>
                 {{-- <input type="text" name="IdJefeFa" class= "form-control" > --}}
                     </div>
              </div>
              <div class="form-group">
                 <label for="IdAlbergue" class="col-sm-2 control-label">Albergue: </label>
                 <div class="col-sm-9">
-                    <select id='SelectA' name="IdAlbergue" style='width: 50%;'>
-                        <option value='0'>Seleccionar un Albergue</option></select>
+                    <select id='SelectA' name="idAlbergue" style='width: 50%;'>
+                       </select>
             {{-- <input type="text" name="IdJefeFa" class= "form-control" > --}}
                 </div>
          </div>
-
+         <div class="form-group">
+            <label for="IdEmergencias" class="col-sm-2 control-label">Emergencia: </label>
+            <div class="col-sm-9">
+                <select id='SelectE' name="idEmergencias" style='width: 50%;'>
+                    </select>
+        {{-- <input type="text" name="IdJefeFa" class= "form-control" > --}}
+            </div>
+     </div>
 
       </div>
        <!-- /.box-body -->
@@ -104,4 +111,30 @@
           });
         });
         </script>
+        <script type="text/javascript">
+          // CSRF Token
+          var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+          $(document).ready(function(){
+            $("#SelectE").select2({
+              ajax: { 
+                url: "{{route('Get_IdEme')}}",
+                type: "post",
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                  return {
+                    _token: CSRF_TOKEN,
+                    search: params.term // search term
+                  };
+                },
+                processResults: function (response) {
+                  return {
+                    results: response
+                  };
+                },
+                cache: true
+              }
+            });
+          });
+          </script>
      @endsection

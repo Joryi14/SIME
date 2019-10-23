@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\ValidacionEntregaDonacionesAlbergue;
 use App\Models\Albergue;
+use App\Models\Emergencia;
 use Illuminate\Support\Facades\DB;
 use App\Models\JefeDeFamilia;
 use App\Models\EntregaDonacionesAlbergue;
@@ -40,10 +41,16 @@ class EntregaDonacionesAlbergueController extends Controller
     public function store(ValidacionEntregaDonacionesAlbergue $request)
     {    
         if(JefeDeFamilia::find($request->IdJefeFa)){
-            if(Albergue::find($request->IdAlbergue)){
-        $entregadonacionesA = DB::select("call Insert_EntregaDonacionesAlbergue('$request->IdJefeFa','$request->IdAlbergue')");  
+            if(Albergue::find($request->idAlbergue)){
+               if(Albergue::find($request->idEmergencias)){
+        $entr = new EntregaDonacionesAlbergue();
+        $entr->fill($request->all());
+        $entr->save();
         return redirect('EntregaDonacionesAlbergue')->with('mensaje','Se ha guardado');
-        }
+            }
+         else
+         return redirect('EntregaDonacionesAlbergue/create')->with('mensaje','Error Emergencia no existe');
+         }
     else
     return redirect('EntregaDonacionesAlbergue/create')->with('mensaje','Error Albergue no existe');
     }
@@ -74,6 +81,24 @@ class EntregaDonacionesAlbergueController extends Controller
            $response[] = array(
                 "id"=>$Alber->idAlbergue,
                 "text"=>$Alber->Nombre
+           );
+        }
+        echo json_encode($response);
+        exit;
+     }
+     public function getEmergencia(Request $request){
+
+        $search = $request->search;
+        if($search == ''){
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias')->limit(5)->get();
+        }else{
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias')->where('idEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Emergencia as $Emer){
+           $response[] = array(
+                "id"=>$Emer->idEmergencias,
+                "text"=>$Emer->idEmergencias
            );
         }
         echo json_encode($response);
@@ -120,9 +145,10 @@ class EntregaDonacionesAlbergueController extends Controller
      */
     public function update(ValidacionEntregaDonacionesAlbergue $request, $id)
     {
-        $entregadonacionesA = DB::update("call Update_EntregaDonacionesAlbergue('$id','$request->IdJefeFa')");
+      $EntregaDonacionesAlbergue = EntregaDonacionesAlbergue::find($id);
+      $EntregaDonacionesAlbergue->fill($request->all());
+      $EntregaDonacionesAlbergue->save();
         return redirect('EntregaDonacionesAlbergue')->with('mensaje','Editado correctamente');
-    
     }
 
     /**

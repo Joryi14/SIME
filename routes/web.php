@@ -36,6 +36,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comuna
     Route::get('Retiro_PaquetesV/pdf', 'Retiro_PaquetesVController@generar')->name('Retiro_PaquetesV_reporte');
     Route::post('Retiro_PaquetesVController/getUsers','Retiro_PaquetesVController@getUsers')->name('Get_UsersR');
     Route::post('Retiro_PaquetesVController/getInventario','Retiro_PaquetesVController@getInventario')->name('Get_Inv');
+    Route::post('Retiro_PaquetesVController/ReporteFecha', 'Retiro_PaquetesVController@ReporteFecha')->name('Retiro_reporteF');
 });
 Route::group(['prefix' => '/'], function () {
     Route::get('Inventario', 'InventarioController@index')->name('inicio_inventario');
@@ -48,6 +49,7 @@ Route::group(['prefix' => '/'], function () {
     Route::delete('Inventario/{Inventario}','InventarioController@delete')->name('inventario_delete');
     Route::get('Inventario/pdf', 'InventarioController@generar')->name('inventario_reporte');
     Route::post('Inventario/getEmergencia','InventarioController@getEmergencia')->name('Get_Emerge');
+    Route::post('Inventario/ReporteFecha', 'InventarioController@ReporteFecha')->name('inventario_reporteF');
 });
 Route::group(['prefix' => '/'], function () {
     Route::get('EntregaDonaciones', 'EntregaDonacionesController@index')->name('inicio_EntregaDonaciones');

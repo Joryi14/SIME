@@ -60,7 +60,20 @@ class InventarioController extends Controller
         return redirect('Inventario')->with('mensaje','Se ha actualizado correctamente la cantidad de suministros');
         
     }
-
+    public function ReporteFecha(request $request){
+        
+        $inventario = \DB::table('inventario')->select(['idInventario','idEmergencias',
+       'Suministros',
+       'Colchonetas',
+       'Cobijas',
+       'Ropa'])->whereBetween('created_at', array($request->Fecha1,$request->Fecha2)) 
+        ->get();
+        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        $view = view ('Inventario.reporte', compact('inventario', 'today'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('inventario'.'.pdf');
+    }
     public function generar()
     {
         $inventario = \DB::table('inventario')

@@ -77,7 +77,20 @@ class Retiro_PaquetesVController extends Controller
         return $pdf->stream('Retiro'.'.pdf');
 
     }
-
+    public function ReporteFecha(request $request){
+        
+        $Retiro = \DB::table('retiropaquetes')
+       ->select(['IdRetiroPaquetes','IdAdministradorI' ,'NombreChofer','Apellido1C','Apellido2C',
+        'IdVoluntario','PlacaVehiculo','DireccionAEntregar','SuministrosGobierno','SuministrosComision',
+        'IdInventario'])->whereBetween('created_at', array($request->Fecha1,$request->Fecha2)) 
+        ->get();
+        $today = Carbon::now()->format('d/m/Y');
+        $view = view ('Retiro_PaquetesV.reporte', compact('Retiro', 'today'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->setPaper("A4", "landscape");
+        $pdf->loadHTML($view);
+        return $pdf->stream('Retiro'.'.pdf');
+    }
     /**
      * Display the specified resource.
      *

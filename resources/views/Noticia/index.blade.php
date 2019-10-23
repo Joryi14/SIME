@@ -106,18 +106,20 @@ $(function () {
               <td>
               @if($item->Imagenes != null)
               <img style='display:block; width:100px;height:100px;' src='img/{{$item->Imagenes}}'>
-            </td>
               @endif
+            </td>
               <td>
                   @if($item->Videos != null)
                 <video width="200" height="120"  controls>
                   <source src='Video/{{$item->Videos}}' type="video/mp4">
                   </video>
               @endif
-                  </td>
-              <td><p>{{$item->Articulo}}<p></td>
-                @if($item->PDF != null)             
-              <td>{{$item->PDF}}
+              </td>
+              <td>
+                <p>{{$item->Articulo}}<p></td>  
+              <td>
+              @if($item->PDF != null)   
+                {{$item->PDF}}
               @endif
               </td>
               <td><a href="/Noticia/{{$item->IdNoticias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar noticia">

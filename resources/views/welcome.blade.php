@@ -451,16 +451,19 @@
                   <!-- Project Details Go Here -->
                   <h2 class="text-uppercase">{{$item->Titulo}}</h2>
                   <p class="item-intro text-muted"></p>
+                  @if($item->Imagenes != null)   
                   <img class="img-fluid d-block mx-auto" src='img/{{$item->Imagenes}}' alt="" width="600" height="300">
-
+                  @endif
                   <p>{{$item->Articulo}}</p>
-                  
+                  @if($item->Videos != null)     
                 <video width="600" height="300" controls>
                  <source src='Video/{{$item->Videos}}' type="video/mp4">
                  </video>
+                 @endif
                   <ul class="list-inline">
                     <li>Fecha de publicacion: {{$item->updated_at}}</li>
                     <li>Autor: {{$item->user->name}} {{$item->user->Apellido1}}</li>
+                    @if($item->PDF != null)   
                     <li>
                       <a class="btn btn-primary"
                         
@@ -468,10 +471,11 @@
                     
                       Decargar PDF<a>
                     </li>
+                    @endif
                   </ul>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>
-                    Close Project</button>
+                    Cerrar</button>
                 </div>
               </div>
             </div>

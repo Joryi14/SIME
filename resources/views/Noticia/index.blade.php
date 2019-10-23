@@ -95,8 +95,6 @@ $(function () {
                 <th>Artículo</th>    
                 <th>PDF</th>
                 <th>Acciones</th>
-               
-               
             </tr>
           </thead>
             @foreach ($noticias as $item)

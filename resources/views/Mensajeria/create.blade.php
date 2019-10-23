@@ -57,7 +57,7 @@
                       
                       <input type="radio" name="Categoria" value="Leve"><span style="padding:1%; color:green">Leve </span>
                   </div>
-                  </div>
+          </div>
                   <input type="hidden" name="IdLiderComunal" class= "form-control" value="{{Auth::user()->id}}">
         </div>
         <div class="box-footer">

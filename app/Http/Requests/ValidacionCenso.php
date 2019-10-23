@@ -24,7 +24,7 @@ class ValidacionCenso extends FormRequest
     public function rules()
     {
         return [
-            'IdJefeFam' => 'required|max:8|unique:Censo,IdjefeFam'
+            'IdJefeFam' => 'required|max:8|unique:censo,IdjefeFam'
         ];
     }
    public function messages()

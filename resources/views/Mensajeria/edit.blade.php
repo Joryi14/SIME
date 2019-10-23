@@ -59,9 +59,16 @@
                       
                    <div class="form-group">
                         <label for="Categoria" class="col-sm-2 control-label">Categoría: </label>
-                        <div class="col-sm-9">
-                          <input type="text" name="Categoria" class= "form-control" value=" {{$mensajeria->Categoria}}" >
-                        </div>
+                        <div class="btn-group-horizontal">
+                       
+                            <div class="btn-group-horizontal" style="margin-top:2%">
+                              <input type="radio" name="Categoria" value="Grave"><span style="padding:1%; color:red">Grave</span>  
+                                          
+                                          <input type="radio" name="Categoria" value="Moderada"><span style="padding:1%; color:orange">Moderada </span>
+                                          
+                                          <input type="radio" name="Categoria" value="Leve"><span style="padding:1%; color:green">Leve </span>
+                                      </div>
+                              </div>
                       </div>
 
                       <div class="form-group">

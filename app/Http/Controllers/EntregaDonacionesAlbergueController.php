@@ -42,7 +42,7 @@ class EntregaDonacionesAlbergueController extends Controller
     {    
         if(JefeDeFamilia::find($request->IdJefeFa)){
             if(Albergue::find($request->idAlbergue)){
-               if(Albergue::find($request->idEmergencias)){
+               if(Emergencia::find($request->idEmergencias)){
         $entr = new EntregaDonacionesAlbergue();
         $entr->fill($request->all());
         $entr->save();

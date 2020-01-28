@@ -62,11 +62,7 @@ class InventarioController extends Controller
     }
     public function ReporteFecha(request $request){
         
-        $inventario = \DB::table('inventario')->select(['idInventario','idEmergencias',
-       'Suministros',
-       'Colchonetas',
-       'Cobijas',
-       'Ropa'])->whereBetween('created_at', array($request->Fecha1,$request->Fecha2)) 
+        $inventario = Inventario::orderby('idInventario')->whereBetween('created_at', array($request->Fecha1,$request->Fecha2)) 
         ->get();
         $today = Carbon::now()->format('d/m/Y h:i:s A');
         $view = view ('Inventario.reporte', compact('inventario', 'today'))->render();
@@ -76,15 +72,8 @@ class InventarioController extends Controller
     }
     public function generar()
     {
-        $inventario = \DB::table('inventario')
-       ->select(['idInventario','idEmergencias',
-       'Suministros',
-       'Colchonetas',
-       'Cobijas',
-       'Ropa']) 
-        ->get();
-        $today = Carbon::now()->format('d/m/Y h:i:s A');
-        
+        $inventario = Inventario::orderBy('idInventario')->get();
+        $today = Carbon::now()->format('d/m/Y h:i:s A'); 
         $view = view ('Inventario.reporte', compact('inventario', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
@@ -119,15 +108,15 @@ class InventarioController extends Controller
 
         $search = $request->search;
         if($search == ''){
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias')->limit(5)->get();
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->limit(5)->get();
         }else{
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias')->where('idEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('idEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
         }
         $response = array();
         foreach($Emergencia as $Emer){
            $response[] = array(
                 "id"=>$Emer->idEmergencias,
-                "text"=>$Emer->idEmergencias
+                "NombreEmergencias"=>$Emer->NombreEmergencias
            );
         }
         echo json_encode($response);

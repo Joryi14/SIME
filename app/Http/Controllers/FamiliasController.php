@@ -41,7 +41,7 @@ class FamiliasController extends Controller
         if(JefeDeFamilia::find($request->IdJefeF)){
          $Patologia = implode(', ',$request->Patologia);
          $Familia = DB::select("call Insert_Familia('$request->IdJefeF','$request->Nombre','$request->Apellido1','$request->Apellido2','$request->Cedula','$request->Parentesco','$request->Edad','$request->sexo','$request->PcD','$request->MG','$request->PI','$request->PM','$Patologia')");
-         return redirect('Familias')->with('mensaje','Se ha agregado correctamente');
+         return redirect('Familias')->with('exito','Se ha agregado correctamente');
         }
         else
         return redirect('Familias/create')->with('mensaje','Error El jefe de familia no existe');
@@ -74,15 +74,18 @@ class FamiliasController extends Controller
 
         $search = $request->search;
         if($search == ''){
-           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->limit(5)->get();
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula','Nombre','Apellido1','Apellido2')->limit(5)->get();
         }else{
-           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula','Nombre','Apellido1','Apellido2')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
         }
         $response = array();
         foreach($Jefes as $jefe){
            $response[] = array(
                 "id"=>$jefe->IdJefe,
-                "text"=>$jefe->Cedula
+                "Cedula"=>$jefe->Cedula,
+                "Nombre"=>$jefe->Nombre,
+                "Apellido1"=>$jefe->Apellido1,
+                "Apellido2"=>$jefe->Apellido2
            );
         }
   
@@ -101,7 +104,7 @@ class FamiliasController extends Controller
         $Patologia = implode(', ',$request->Patologia);
         $Familia = DB::update("call Update_Familia('$id','$request->IdJefeF','$request->Nombre','$request->Apellido1','$request->Apellido2','$request->Cedula','$request->Parentesco','$request->Edad','$request->sexo','$request->PcD','$request->MG','$request->PI','$request->PM','$Patologia')");
       
-        return redirect('Familias')->with('mensaje','Se ha actualizado correctamente');
+        return redirect('Familias')->with('exito','Se ha actualizado correctamente');
     }
 
     /**
@@ -114,7 +117,7 @@ class FamiliasController extends Controller
     {
         $familia = Familias::find($id);
         $familia->delete();
-        return redirect('Familias')->with('mensaje','Se ha eliminado correctamente');
+        return redirect('Familias')->with('exito','Se ha eliminado correctamente');
     
     }
 }

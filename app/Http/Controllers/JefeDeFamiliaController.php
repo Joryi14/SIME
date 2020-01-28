@@ -6,6 +6,11 @@ use App\Models\JefeDeFamilia;
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidacionJefeDeFamilia;
 use App\Http\Requests\ValidacionFamilia;
+use App\Models\Censo;
+use App\Models\EntregaDonaciones;
+use App\Models\EntregaDonacionesAlbergue;
+use App\Models\Familias;
+use App\Models\PersonasAlbergue;
 
 class JefeDeFamiliaController extends Controller
 {
@@ -44,7 +49,7 @@ class JefeDeFamiliaController extends Controller
        '$request->Cedula','$request->Edad','$request->sexo','$request->Telefono','$request->PcD','$request->MG','$request->PI','$request->PM','$patologia')");
         
       
-       return redirect('JefeDeFamilia')->with('mensaje','Se ha agregado correctamente');
+       return redirect('JefeDeFamilia')->with('exito','Se ha agregado correctamente');
     
     }
 
@@ -57,7 +62,7 @@ class JefeDeFamiliaController extends Controller
     public function show($id)
     {
         $Je = JefeDeFamilia::find($id);
-      return response()->json(array(je)); 
+      return response()->json(array($Je)); 
     }
 
     /**
@@ -113,7 +118,25 @@ class JefeDeFamiliaController extends Controller
     public function delete($id)
     {
         $jefe = JefeDeFamilia::find($id);
+
+        if(Familias::where('idJefeF',$id)->first()){
+        return redirect('JefeDeFamilia')->with('mensaje','Error Este Jefe tiene familia asignada');
+        }
+        if(Censo::where('idJefeFam',$id)->first()){
+            return redirect('JefeDeFamilia')->with('mensaje','Error Este Jefe tiene un censo asignado');
+            }
+        if(EntregaDonaciones::where('idJefe',$id)->first()){
+                return redirect('JefeDeFamilia')->with('mensaje','Error Este Jefe tiene una entrega de paquetes');
+        }
+        if(EntregaDonacionesAlbergue::where('idJefeFa',$id)->first()){
+            return redirect('JefeDeFamilia')->with('mensaje','Error Este Jefe tiene una entrega de paquetes en albergue');
+    }
+    if(PersonasAlbergue::where('idJefe',$id)->first()){
+        return redirect('JefeDeFamilia')->with('mensaje','Error Este Jefe se encuentra en un albergue');
+}
+        else{
         $jefe->delete();
-        return redirect('JefeDeFamilia')->with('Se ha eliminado correctamente');
+        return redirect('JefeDeFamilia')->with('exito','Se ha eliminado correctamente');
+        }
     }
 }

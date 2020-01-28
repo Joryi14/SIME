@@ -69,7 +69,8 @@ $(function () {
 @section('Contenido')
 <div class="row">
   <div class="col-xs-12">
-        @include('Includes.mensaje-Succes')
+    @include('Includes.mensaje-Error')
+    @include('Includes.mensaje-Succes')
       <div class="box box-primary">
         <div class="box-header" style="padding:2%">
             <h3 class="box-title">Entrega de donaciones</h3>
@@ -87,7 +88,7 @@ $(function () {
 
               <th>Id de la entrega</th>
               <th>Voluntario cédula</th>
-              <th>Id jefe de familia</th>
+              <th>Jefe de familia</th>
               <th>Id retiro de paquetes</th>
               <th>Foto</th>  
               <th>Acciones</th>
@@ -98,7 +99,7 @@ $(function () {
                   <tr>
                   <td>{{$item->IdEntrega}}</td>
                   <td>{{$item->User->Cedula}}</td>
-                  <td>{{$item->IdJefe}}</td>
+                  <td>Cedula:{{$item->jefeFamilia->Cedula}} <br> Nombre: {{$item->jefeFamilia->Nombre}} {{$item->jefeFamilia->Apellido1}}</td>
                   <td>{{$item->IdRetiroPaquetes}}</td>
                   <td>
                     <img style='display:block; width:100px; height:100px;' src='Foto/{{$item->Foto}}' alt="base64 test">

@@ -10,4 +10,8 @@ class EntregaDonaciones extends Model
     {
         return $this->belongsTo('App\User', 'IdVoluntario');
     }
+    public function jefeFamilia()
+    {
+        return $this->belongsTo('App\Models\JefeDeFamilia', 'IdJefe');
+    }
 }

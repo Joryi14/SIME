@@ -42,7 +42,7 @@ class PersonasAlbergueController extends Controller
     public function store(ValidacionPersonasAlbergue $request)
     {
         if(JefeDeFamilia::find($request->idJefe)){
-        if(Albergue::find($request->idAlbergue!=NULL)){
+        if(Albergue::find($request->idAlbergue)){
             if(Emergencia::find($request->idEmergencias)){
         $persona = new PersonasAlbergue();
         $persona->idAlbergue = $request->idAlbergue;

@@ -47,8 +47,8 @@
         <main>
    <table>
                     <tr>
-                    <th>IdInventario</th>
-                    <th>idEmergencias</th>
+                    <th>Número de Inventario</th>
+                    <th>Nombre de la Emergencia</th>
                     <th>Suministros</th>
                     <th>Colchonetas</th>
                     <th>Cobijas</th>
@@ -58,12 +58,23 @@
                   @foreach ($inventario as $item)
                     <tr>
                     <td>{{$item->idInventario}}</td> 
-                    <td>{{$item->idEmergencias}}</td>    
+                    <td>{{$item->Emergencia->NombreEmergencias}}</td>    
                     <td>{{$item->Suministros}}</td>
-                    <td>{{$item->Colchonetas}}</td>
-                    <td>{{$item->Cobijas}}</td>
-                    <td>{{$item->Ropa}}</td>
-       
+                    @if($item->Colchonetas== 1)
+                    <td>Sí hay</td>
+                    @else
+                    <td>No hay</td>
+                    @endif
+                    @if($item->Cobijas== 1)
+                    <td>Sí hay</td>
+                    @else
+                    <td>No hay</td>
+                    @endif
+                    @if($item->Ropa== 1)
+                    <td>Sí hay</td>
+                    @else
+                    <td>No hay</td>
+                    @endif
                     </tr>
             @endforeach
     </table>

@@ -68,8 +68,8 @@
                     </div>
                     <div class="form-group">
                         <label for="Edad" class="col-sm-2 control-label">Edad: </label>
-                        <div class="col-sm-10">
-                            <input type="text" name="Edad" class= "form-control">
+                        <div class="col-sm-1">
+                            <input type="number" name="Edad" class= "form-control">
                         </div>
                       </div>
                       <div class="form-group">
@@ -173,7 +173,12 @@
           },
           processResults: function (response) {
             return {
-              results: response
+              results:  $.map(response,function(item){
+              return{
+                    text: item.Cedula+', '+item.Nombre+' '+item.Apellido1+' '+item.Apellido2,
+                    id:item.id
+              }
+            })
             };
           },
           cache: true

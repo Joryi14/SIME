@@ -84,9 +84,9 @@ $(function () {
             <thead>
             <tr>
               <th>Id de la entrega</th>
-              <th>Id jefe de familia</th>
-              <th>Id Albergue</th>
-              <th>Id Emergencia</th>
+              <th>Jefe de familia</th>
+              <th>Albergue</th>
+              <th>Emergencia</th>
               <th>Acciones</th>
               
             </tr>
@@ -95,9 +95,9 @@ $(function () {
                   <tr>
                   <td>{{$item->IdEntregaA}}</td>
 
-                  <td>{{$item->IdJefeFa}}</td>
-                  <td>{{$item->idAlbergue}}</td>
-                  <td>{{$item->idEmergencias}}</td>
+                  <td>Cedula: {{$item->JefeFamilia->Cedula}} <br> Nombre: {{$item->JefeFamilia->Nombre}}  {{$item->JefeFamilia->Apellido1}}</td>
+                  <td>{{$item->Albergue->Nombre}}</td>
+                  <td>{{$item->idEmergencias}}     {{$item->Emergencia->NombreEmergencias}}</td>
                   <td><a href="/EntregaDonacionesAlbergue/{{$item->IdEntregaA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar la entrega de donaciones en albergue">
                     <i class="fa fa-fw fa-pencil"></i></a>
                   <form id="formEA" action="{{route('EntregadonacionesA_delete', ['EntregaDonacionesAlbergue' => $item->IdEntregaA])}}" method="POST">

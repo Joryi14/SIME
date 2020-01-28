@@ -30,34 +30,6 @@
            $('#pat').text($(this).data('pat'));
          });
  </script>
-<script type="text/javascript">
-  document.querySelector('#form1').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
-  swal({
-      title: "Esta seguro de eliminar?",
-      text: "Una vez eliminado no se puede recuperar!",
-      icon: "warning",
-      buttons: [
-        'Cancelar!',
-        'Aceptar!'
-      ],
-      dangerMode: true,
-    }).then(function(isConfirm) {
-      if (isConfirm) {
-        swal({
-          title: 'Exito!',
-          text: 'Se ha Eliminado el registro!',
-          icon: 'success'
-        }).then(function() {
-          form.submit(); // <--- submit form programmatically
-        });
-      } else {
-        swal("Cancelado","" ,"error");
-      }
-    })
-});
-</script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 <script>
@@ -96,7 +68,8 @@ $(function () {
 @section('Contenido')
 <div class="row">
     <div class="col-xs-12">
-        @include('Includes.mensaje-Succes')
+      @include('Includes.mensaje-Error')
+      @include('Includes.mensaje-Succes')
       <div class="box box-primary">
         <div class="box-header"  style="padding:2%">
             <div class="box-tools pull-right">
@@ -132,10 +105,10 @@ $(function () {
                 <i class="fa fa-fw fa-pencil"></i></a>
                 <a href="/JefeDeFamilia/{{$item->IdJefe}}/agregarfamiliar" class="btn-accion-tabla tooltipsC" title="Agregar familiar">
                   <i class="fa fa-fw fa-plus-circle text-success"></i></a>
-                <form id="form1" action="{{route('jefe_delete', ['JefeDeFamilia' => $item->IdJefe])}}" method="POST">
+                <form action="{{route('jefe_delete', ['JefeDeFamilia' => $item->IdJefe])}}" method="POST">
                     @csrf 
                     <input name="_method" type="hidden" value="DELETE">
-                    <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar jefe de familia" onclick="confirmarEnvio()">
+                    <button  type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar jefe de familia">
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form> 

@@ -26,7 +26,7 @@ class ValidacionEntregaDonaciones extends FormRequest
         return [
             //
             'IdUsuarioRol'=>'required',
-            'IdJefe'=>'required',
+            'IdJefe'=>'required || unique:entregadonaciones,Idjefe',
             'IdRetiroPaquetes'=>'required',
             'IdRetiroPaquetes'=>'numeric',
             'Foto'=>'required',
@@ -37,8 +37,10 @@ class ValidacionEntregaDonaciones extends FormRequest
     {
         return [
             //
+
             'IdUsuarioRol.required' =>'El Id del usuario Rol es requerido',
             'IdJefe.required' =>'El Id del jefe de familia es requerido',
+            'IdJefe.unique' =>'Ya se le entrego donaciones a este jefe',
             'IdRetiroPaquetes.required' =>'El Id del retiro de paquetes es requerido',
             'IdRetiroPaquetes.numeric' =>' La Id de retiro de paquetes debe ser NUMERICA',
             'Foto.required' =>'La foto es requerido',

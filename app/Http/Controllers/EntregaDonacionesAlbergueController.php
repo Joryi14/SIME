@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ValidacionEntregaDonacionesAlbergue;
 use App\Models\Albergue;
 use App\Models\Emergencia;
+use App\Models\EntregaDonaciones;
 use Illuminate\Support\Facades\DB;
 use App\Models\JefeDeFamilia;
 use App\Models\EntregaDonacionesAlbergue;
@@ -43,6 +44,9 @@ class EntregaDonacionesAlbergueController extends Controller
         if(JefeDeFamilia::find($request->IdJefeFa)){
             if(Albergue::find($request->idAlbergue)){
                if(Emergencia::find($request->idEmergencias)){
+         if(EntregaDonaciones::where('IdJefe',$request->IdJefeFa)->first()){
+            return redirect('EntregaDonaciones')->with('mensaje','Este jefe ya tiene una entrega de Donaciones');
+         }          
         $entr = new EntregaDonacionesAlbergue();
         $entr->fill($request->all());
         $entr->save();
@@ -90,15 +94,15 @@ class EntregaDonacionesAlbergueController extends Controller
 
         $search = $request->search;
         if($search == ''){
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias')->limit(5)->get();
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->limit(5)->get();
         }else{
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias')->where('idEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('idEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
         }
         $response = array();
         foreach($Emergencia as $Emer){
            $response[] = array(
                 "id"=>$Emer->idEmergencias,
-                "text"=>$Emer->idEmergencias
+                "NombreEmergencias"=>$Emer->NombreEmergencias
            );
         }
         echo json_encode($response);
@@ -120,15 +124,18 @@ class EntregaDonacionesAlbergueController extends Controller
 
         $search = $request->search;
         if($search == ''){
-           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->limit(5)->get();
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula','Nombre','Apellido1','Apellido2')->limit(5)->get();
         }else{
-           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula','Nombre','Apellido1','Apellido2')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
         }
         $response = array();
         foreach($Jefes as $jefe){
            $response[] = array(
                 "id"=>$jefe->IdJefe,
-                "text"=>$jefe->Cedula
+                "Cedula"=>$jefe->Cedula,
+                "Nombre"=>$jefe->Nombre,
+                "Apellido1"=>$jefe->Apellido1,
+                "Apellido2"=>$jefe->Apellido2
            );
         }
   

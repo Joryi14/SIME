@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                                 <label for="Cedula">Cedula</label>
-                                <input type="text" name="Cedula" class= "form-control" value="{{Auth::user()->Cedula}}" required>
+                                <input type="text" name="Cedula" class= "form-control" value="{{Auth::user()->Cedula}}" readonly>
                                 
                 </div>
                 <div class="form-group">

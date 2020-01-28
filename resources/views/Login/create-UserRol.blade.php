@@ -20,7 +20,7 @@
                   <div class="form-group">
                     <label for="name" class="col-sm-2 control-label"> Usuario:</label>
                     <div class="col-sm-9">
-                        <select id='SelectU' name="model_id" style='width: 50%;'>
+                        <select id='SelectU' name="model_id" style='width: 75%;'>
                         <option value='0'>Seleccionar un usuario</option></select>
                     </div>
                   </div>
@@ -60,7 +60,12 @@
         },
         processResults: function (response) {
           return {
-            results: response
+            results: $.map(response,function(item){
+              return{
+                    text: item.Cedula+', '+item.name+' '+item.Apellido1+' '+item.Apellido2,
+                    id:item.id
+              }
+            })
           };
         },
         cache: true

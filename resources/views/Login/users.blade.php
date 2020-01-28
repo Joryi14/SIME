@@ -31,6 +31,8 @@
 </script>
 @endsection
 @section('Contenido')
+@include('Includes.mensaje-Error')
+@include('Includes.mensaje-Succes')
 <div class="row">
     <div class="col-xs-12">
       <div class="box">
@@ -234,13 +236,17 @@
               <table class="table table-hover">
                 <tr>
                   <th>Id usuario</th>
+                  <th>Nombre</th>
                   <th>Id rol</th>
+                  <th>Rol</th>
                   <th>Acciones</th>
                 </tr>
                 @foreach ($UserRol as $UserRol)
                   <tr>
-                  <td>{{$UserRol->model_id}}</td>   
+                  <td>{{$UserRol->model_id}}</td>
+                  <td>{{$UserRol->model->name}} {{$UserRol->model->Apellido1}}</td>   
                   <td>{{$UserRol->role_id}}</td>
+                  <td>{{$UserRol->roles->name}}</td>
                   <td>
                   <form id="form5" action="{{route('UserRol_delete', ['UserRol' => $UserRol->role_id])}}" method="POST">
                       @csrf 

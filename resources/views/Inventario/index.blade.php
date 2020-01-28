@@ -147,7 +147,7 @@ $(function () {
             @foreach ($inventarios as $item)
               <tr>
               <td>{{$item->idInventario}}</td> 
-              <td>{{$item->idEmergencias}}</td>    
+              <td>{{$item->idEmergencias}}  {{$item->Emergencia->NombreEmergencias}}</td>    
               <td>{{$item->Suministros}}</td>
               
               

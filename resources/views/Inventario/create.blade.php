@@ -29,8 +29,8 @@
       <div class="box-body">
           <div class="form-group">
             <label for="Suministros" class="col-sm-2 control-label">Suministros: </label>
-            <div class="col-sm-8">
-                <input type="text" name="Suministros" class= "form-control" >
+            <div class="col-sm-1">
+                <input type="number" name="Suministros" class= "form-control" >
             </div>
           </div>
       
@@ -94,7 +94,12 @@
         },
         processResults: function (response) {
           return {
-            results: response
+            results:  $.map(response,function(item){
+              return{
+                    text: item.id + ' '+item.NombreEmergencias,
+                    id:item.id
+              }
+            })
           };
         },
         cache: true

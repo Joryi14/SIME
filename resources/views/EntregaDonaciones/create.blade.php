@@ -75,7 +75,12 @@
              },
              processResults: function (response) {
                return {
-                 results: response
+                 results: $.map(response,function(item){
+              return{
+                    text: item.Cedula+', '+item.Nombre+' '+item.Apellido1+' '+item.Apellido2,
+                    id:item.id
+              }
+            })
                };
              },
              cache: true

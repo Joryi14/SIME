@@ -59,7 +59,7 @@ class CensoController extends Controller
     public function show($id)
     {
       $cen = Censo::find($id);
-      return response()->json(array(cen)); 
+      return response()->json(array($cen)); 
     }
 
     /**
@@ -86,22 +86,25 @@ class CensoController extends Controller
         $censo = DB::update("call Update_Censo('$id','$request->IdJefeFam'
         ,'$request->Refrigerador','$request->Cocina','$request->Colchon','$request->Cama')");  
     
-        return redirect('Censo')->with('mensaje','Se ha actualizado correctamente'); 
+        return redirect('Censo')->with('exito','Se ha actualizado correctamente'); 
 
     }
     public function getJefe(Request $request){
 
         $search = $request->search;
         if($search == ''){
-           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->limit(5)->get();
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula','Nombre','Apellido1','Apellido2')->limit(5)->get();
         }else{
-           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula','Nombre','Apellido1','Apellido2')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
         }
         $response = array();
         foreach($Jefes as $jefe){
            $response[] = array(
                 "id"=>$jefe->IdJefe,
-                "text"=>$jefe->Cedula
+                "Cedula"=>$jefe->Cedula,
+                "Nombre"=>$jefe->Nombre,
+                "Apellido1"=>$jefe->Apellido1,
+                "Apellido2"=>$jefe->Apellido2
            );
         }
   
@@ -118,7 +121,7 @@ class CensoController extends Controller
     {
         $censo = Censo::find($id);
         $censo->delete();
-        return redirect('Censo')->with('mensaje','Se ha eliminado correctamente');
+        return redirect('Censo')->with('exito','Se ha eliminado correctamente');
         
     }
 }

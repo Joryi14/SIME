@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\roles;
 use App\Models\UserRol;
 use App\User;
 use Illuminate\Http\Request;
@@ -83,16 +84,20 @@ class UserRolController extends Controller
         $search = $request->search;
   
         if($search == ''){
-           $Users = User::orderby('Cedula','asc')->select('id','Cedula')->limit(5)->get();
+           $Users = User::orderby('Cedula','asc')->select('id','Cedula','name','Apellido1','Apellido2')->limit(5)->get();
         }else{
-           $Users = User::orderby('Cedula','asc')->select('id','Cedula')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
+           $Users = User::orderby('Cedula','asc')->select('id','Cedula','name','Apellido1','Apellido2')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
         }
   
         $response = array();
         foreach($Users as $user){
            $response[] = array(
                 "id"=>$user->id,
-                "text"=>$user->Cedula
+                "Cedula"=>$user->Cedula,
+                "name"=>$user->name,
+                "Apellido1"=>$user->Apellido1,
+                "Apellido2"=>$user->Apellido2
+                //+" "+$user->Apellido1+" "+$user->Apellido2
            );
         }
   
@@ -128,7 +133,13 @@ class UserRolController extends Controller
      */
     public function destroy($id)
     {
+        $rolA = roles::where('name','Admin')->get();
+        $Del = UserRol::where('role_id',$id)->get();
+        if($Del->first()->role_id == $rolA->first()->id){
+            return redirect('user')->with('mensaje','No se puede eliminar el Administrador');
+        }
+        else{
         UserRol::where('role_id', $id)->delete();
-        return redirect('user')->with('Se ha eliminado correctamente');
-    }
+        return redirect('user')->with('exito','Se ha eliminado correctamente');
+    }}
 }

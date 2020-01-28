@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Albergue;
 use App\Models\permisoRol;
 use App\Models\permissions;
 use App\Models\roles;
@@ -25,6 +26,7 @@ class user extends Controller
         $permissions = permissions::OrderBy('id')->get();
         $permisoRol = permisoRol::get();
         $UserRol = UserRol::get();
+
         return view('Login.users',compact('users','rols','permissions','permisoRol','UserRol'));
     }
     /**
@@ -73,10 +75,19 @@ class user extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {  
+    { 
+        
+        if(UserRol::find($id)){
+            return redirect('user')->with('mensaje','Error al eliminar el usuario tiene un rol asignado');
+        }
+        if(Albergue::where('model_id',$id)->first()){
+            return redirect('user')->with('mensaje','Error al eliminar el usuario es responsable de un Albergue');
+        }
+        else{
         if(AppUser::destroy($id))
-        return redirect('user')->with('Se ha eliminado correctamente');
+        return redirect('user')->with('exito','Se ha eliminado correctamente');
         else 
-        return redirect('user')->with('Error al Eliminar');
+        return redirect('user')->with('exito','Error al Eliminar');
+}
 }
 }

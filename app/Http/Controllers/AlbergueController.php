@@ -5,6 +5,8 @@ use App\Http\Requests\ValidacionesAlbergue;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Models\Albergue;
+use App\Models\EntregaDonacionesAlbergue;
+use App\Models\PersonasAlbergue;
 use Illuminate\Http\Request;
 
 class AlbergueController extends Controller
@@ -118,8 +120,16 @@ class AlbergueController extends Controller
      */
     public function delete($id, Request $request)
     {
-        $albergue = Albergue::find($id);
-        $albergue->delete();
-        return redirect('Albergue')->with('mensaje','Se ha eliminado correctamente');
+
+        if(PersonasAlbergue::where('idAlbergue',$id)->first()){
+            return redirect('Albergue')->with('mensaje','Este Albergue tiene personas asociadas');
+        }
+        if(EntregaDonacionesAlbergue::where('idAlbergue',$id)->first()){
+            return redirect('Albergue')->with('mensaje','Este Albergue tiene entregas asociadas');
+        }
+        else{
+        if(Albergue::destroy($id))
+        return redirect('Albergue')->with('exito','Se ha eliminado correctamente');
+        }
     }
 }

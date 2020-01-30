@@ -44,34 +44,6 @@
          
          });
  </script>
-<script type="text/javascript">
-  document.querySelector('#form1').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
-  Swal.fire({
-      title: "Esta seguro de eliminar?",
-      text: "Una vez eliminado no se puede recuperar!",
-      type: "warning",
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-    cancelButtonText: 'No, cancel!',
-     reverseButtons: true
-    }).then((result)=> {
-      if (result.value) {
-        swalWithBootstrapButtons.fire('Deleted!',
-      'Your file has been deleted.',
-      'success')}
-        else if (
-      result.dismiss === Swal.DismissReason.cancel) 
-      {
-    swalWithBootstrapButtons.fire(
-      'Cancelled',
-      'Your imaginary file is safe :)',
-      'error'
-    )
-  }
-});
-</script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 <script>

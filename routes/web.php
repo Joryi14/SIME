@@ -17,6 +17,8 @@ use Doctrine\DBAL\Schema\Index;
     return view('welcome');
 });
 
+    Route::get('Albergue/AL', 'AlbergueController@getAL')->name('AL');
+
     Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('Mensajeria', 'MensajeriaController@index')->name('inicio_mensaje');
     Route::get('Mensajeria/create', 'MensajeriaController@create')->name('Mensajeria_create');

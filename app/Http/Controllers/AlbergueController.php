@@ -8,6 +8,7 @@ use App\Models\Albergue;
 use App\Models\EntregaDonacionesAlbergue;
 use App\Models\PersonasAlbergue;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class AlbergueController extends Controller
 {
@@ -69,10 +70,23 @@ class AlbergueController extends Controller
         $albergue = new Albergue();
         $albergue->fill($request->all());
         $albergue->save();
-        return redirect('Albergue')->with('mensaje','Se ha agregado correctamente');
+        return redirect('Albergue')->with('exito','Se ha agregado correctamente');
     }
 
+    public function getAL(){            
+        $AL = Albergue::orderby('idAlbergue','asc')->select('Nombre','Latitud','Longitud')->get();
+        $response = array();
+        foreach($AL as $alber){
+           $response[] = array(
+                "Nombre"=>$alber->Nombre,
+                "Latitud"=>$alber->Latitud,
+                "Longitud"=>$alber->Longitud
+           );
+        }  
+        echo json_encode($response);
+        exit;
 
+    }
 
     /**
      * Display the specified resource.
@@ -109,7 +123,7 @@ class AlbergueController extends Controller
         $albergue = Albergue::find($id);
         $albergue->fill($request->all());
         $albergue->save();
-        return redirect('Albergue')->with('mensaje','Editado correctamente');
+        return redirect('Albergue')->with('exito','Editado correctamente');
     }
 
     /**

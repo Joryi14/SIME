@@ -19,7 +19,7 @@
   <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
+  <link rel="stylesheet" href="{{asset("assets/MAP/leaflet.css")}}"/>  
   <!-- Custom styles for this template -->
   <link href="{{asset("assets/Index/css/agency.css")}}" rel="stylesheet">
 </head>
@@ -44,6 +44,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Inscripción de voluntarios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#Albergue">Albergues</a>
           </li>
               @if (Route::has('login'))
               @auth
@@ -420,6 +423,22 @@
       </div>
     </div>
   </section>
+  <section class="page-section" id="Albergue">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Albergues</h2>
+          </div>
+      </div>
+      <div class="row">
+        <div  class="col-lg-8 mx-auto">
+       <div id="mapid" style="margin-right: auto;margin-left: auto;  width: 100%;
+       height: 400px; ">
+      </div>
+      </div>
+    </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="footer">
@@ -431,7 +450,6 @@
       </div>
     </div>
   </footer>
-
   <!-- Portfolio Modals -->
 
   <!-- Modal 1 -->
@@ -484,8 +502,42 @@
     </div>
   </div>
   @endforeach
+<script type="text/javascript">
+window.onload = function() {
+  const albergue = new XMLHttpRequest();
+  albergue.open('GET','Albergue/AL',true);
+  albergue.send();
+  albergue.onreadystatechange = function(){
 
+if(this.readyState == 4 && this.status == 200){
+   let lglt = JSON.parse(this.responseText);
+   //console.log(lglt);
+   for(let item of lglt){
+    var Albergue = L.icon({
+          iconUrl:      '../assets/MAP/images/Albergue.png',
+          iconSize:     [30, 30],
+  });
+  var mark = L.marker([item.Latitud,item.Longitud],{icon: Albergue}).addTo(mymap);
+    console.log(item.Latitud);
+    console.log(item.Longitud);
+    mark.bindPopup(item.Nombre+" "+item.Latitud+" "+item.Longitud).openPopup();
+   }
+  }
+}
+};
+</script>
+<script src="{{asset("assets/MAP/leaflet.js")}}"></script>
+<script>
+  var mymap = L.map('mapid').setView([9.9789728,-85.6605546], 13);
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    maxZoom: 18,
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+      '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    id: 'mapbox/streets-v11'
+  }).addTo(mymap);
 
+  </script>
   <!-- Bootstrap core JavaScript -->
   <script src="{{asset('assets/Index/vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('assets/Index/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

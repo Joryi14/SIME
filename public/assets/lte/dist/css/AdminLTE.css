@@ -91,7 +91,7 @@ body {
 }
 .content-wrapper {
   min-height: 100%;
-  background-color: lightgoldenrodyellow;
+  background-color: #e9ecef;
   z-index: 800;
 }
 .main-footer {
@@ -289,7 +289,7 @@ a:focus {
   transition: width 0.3s ease-in-out;
   display: block;
   float: left;
-  height: 50px;
+  height: 60px;
   font-size: 20px;
   line-height: 50px;
   text-align: center;
@@ -416,7 +416,7 @@ a:focus {
   position: absolute;
   top: 0;
   left: 0;
-  padding-top: 50px;
+  padding-top: 70px;
   min-height: 100%;
   width: 230px;
   z-index: 810;
@@ -1750,7 +1750,7 @@ a:focus {
 .box-header > .box-tools {
   position: absolute;
   right: 10px;
-  top: 5px;
+  top: -5px;
 }
 .box-header > .box-tools [data-toggle="tooltip"] {
   position: relative;
@@ -2300,8 +2300,8 @@ a:focus {
 .btn-app {
   border-radius: 3px;
   position: relative;
-  padding: 15px 5px;
-  margin: 0 0 10px 10px;
+  padding: 8px 10px;
+  margin: 0 0 10px 5px;
   min-width: 80px;
   height: 60px;
   text-align: center;
@@ -3250,7 +3250,7 @@ table.text-center th {
 }
 .login-page,
 .register-page {
-  background: lightgoldenrodyellow;
+  background: #e9ecef;
 }
 .login-box,
 .register-box {

@@ -57,7 +57,7 @@
               <li class="nav-item">
               <a class="nav-link" href="{{ route('login') }}">Acceder</a>
               </li>
-                  @if (Route::has('register'))
+                  @if (Route::has('login'))
               <li class="nav-item">
                   <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
               </li>
@@ -518,8 +518,6 @@ if(this.readyState == 4 && this.status == 200){
           iconSize:     [30, 30],
   });
   var mark = L.marker([item.Latitud,item.Longitud],{icon: Albergue}).addTo(mymap);
-    console.log(item.Latitud);
-    console.log(item.Longitud);
     mark.bindPopup(item.Nombre+" "+item.Latitud+" "+item.Longitud).openPopup();
    }
   }

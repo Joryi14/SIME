@@ -36,7 +36,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-5">
-                <button type="submit" class="btn  btn-raised btn-block btn-flat" style="background:#750B06;color:white">
+                <button type="submit" class="btn " style="background:#750B06;color:white;">
                 Ingresar
                 </button>
                 

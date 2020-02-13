@@ -13,7 +13,7 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/Ionicons/css/ionicons.min.css")}}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/AdminLTE.min.css")}}">
+  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/AdminLTE.css")}}">
   <!-- Material Design -->
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/bootstrap-material-design.min.css")}}">
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/ripples.min.css")}}">

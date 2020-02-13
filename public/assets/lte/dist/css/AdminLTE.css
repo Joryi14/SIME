@@ -91,7 +91,7 @@ body {
 }
 .content-wrapper {
   min-height: 100%;
-  background-color: #ecf0f5;
+  background-color: lightgoldenrodyellow;
   z-index: 800;
 }
 .main-footer {
@@ -2184,7 +2184,7 @@ a:focus {
   border-radius: 3px;
   -webkit-box-shadow: none;
   box-shadow: none;
-  border: 1px solid transparent;
+  border: 1px solid;
 }
 .btn.uppercase {
   text-transform: uppercase;
@@ -3246,16 +3246,17 @@ table.text-center th {
 }
 .login-logo a,
 .register-logo a {
-  color: #444;
+  color: #9f191f;
 }
 .login-page,
 .register-page {
-  background: #d2d6de;
+  background: lightgoldenrodyellow;
 }
 .login-box,
 .register-box {
   width: 360px;
   margin: 7% auto;
+ 
 }
 @media (max-width: 768px) {
   .login-box,
@@ -3269,11 +3270,12 @@ table.text-center th {
   background: #fff;
   padding: 20px;
   border-top: 0;
-  color: #666;
+  color: #9f191f;
+  border: 6px solid #f1f1f1;
 }
 .login-box-body .form-control-feedback,
 .register-box-body .form-control-feedback {
-  color: #777;
+  color: #9f191f;
 }
 .login-box-msg,
 .register-box-msg {

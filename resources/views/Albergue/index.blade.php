@@ -41,7 +41,8 @@
            
             $('#lon').text($(this).data('lon'));
             $('#lat').text($(this).data('lat'));
-         
+            $('#tip').text($(this).data('tip'));
+            $('#nec').text($(this).data('nec'));
          });
  </script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
@@ -104,11 +105,10 @@ $(function () {
               <th>Nombre del albergue</th>
               <th>Distrito</th>
               <th>Comunidad</th>
-              <th>Tipo de instalación</th>
               <th>Capacidad del lugar</th>
               <th>Cédula del responsable</th>
               <th>Teléfono</th>
-              <th>Nececidades</th>
+              <th>Emergencia</th>
               <th>Acciones</th>
               </tr>
               </thead>
@@ -118,11 +118,10 @@ $(function () {
               <td>{{$item->Nombre}}</td>
               <td>{{$item->Distrito}}</td>
               <td>{{$item->Comunidad}}</td>
-              <td>{{$item->TipoDeInstalacion}}</td>
               <td>{{$item->Capacidad}}</td>
               <td>{{$item->User->Cedula}}</td>
               <td>{{$item->telefono}}</td>
-              <td>{{$item->Nececidades}}</td>
+              <td>{{$item->idEmergencia}}</td>
               <td><a href="/Albergue/{{$item->idAlbergue}}/edit" class="btn-accion-tabla tooltipsC" title="Editar albergue">
                 <i class="fa fa-fw fa-pencil"></i></a>
               <form id="form1" action="{{route('albergue_delete', ['Albergue' => $item->idAlbergue])}}" method="POST">
@@ -132,7 +131,7 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
-              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar retiro de paquetes" data-toggle="modal" data-target="#Detalle"  data-du="{{$item->Duchas}}" data-ino="{{$item->inodoros}}" data-edc="{{$item->EspaciosDeCocina}}" data-bo="{{$item->Bodega}}" data-lon="{{$item->Longitud}}"data-lat="{{$item->Latitud}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
+              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar retiro de paquetes" data-toggle="modal" data-target="#Detalle"  data-du="{{$item->Duchas}}" data-ino="{{$item->inodoros}}" data-edc="{{$item->EspaciosDeCocina}}" data-bo="{{$item->Bodega}}" data-lon="{{$item->Longitud}}" data-lat="{{$item->Latitud}}" data-tip ="{{$item->TipoDeInstalacion}}" data-nec="{{$item->Nececidades}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>
             @endforeach
@@ -188,6 +187,21 @@ $(function () {
         </div>
       </div>    
           <br><br>
+          <div class="form-group">
+            <label class="col-md-4"><b>Tipo De Instalación:</b></label>
+            <div class="col-md-4">
+                <span id="tip"></span>
+            </div>
+          </div>    
+          <br><br>
+          <div class="form-group">
+            <label class="col-md-4"><b>Nececidades:</b></label>
+            <div class="col-md-4">
+                <span id="nec"></span>
+            </div>
+          </div>    
+          <br><br>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline bg-red pull-left" data-dismiss="modal">Cerrar</button>

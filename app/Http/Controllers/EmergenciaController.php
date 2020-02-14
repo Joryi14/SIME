@@ -39,11 +39,9 @@ class EmergenciaController extends Controller
      */
     public function store(ValidacionesEmergencia $request)
     {
-        
-        $emergencia = DB::select("call Insertar_Emergencia('$request->NombreEmergencias',
-        '$request->Categoria','$request->TipoDeEmergencia','$request->Descripcion','$request->Longitud',
-        '$request->Latitud')");
-  
+        $Emergencia = new Emergencia();
+        $Emergencia->fill($request->all());
+        $Emergencia->save();
         return redirect('Emergencia')->with('mensaje','Se ha agregado correctamente');
     }
 

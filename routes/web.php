@@ -138,6 +138,7 @@ Route::group(['prefix' => '/','middleware'=> ['role:Admin|Director|Lider Comunal
     Route::put('Albergue/{Albergue}','AlbergueController@update');
     Route::delete('Albergue/{Albergue}','AlbergueController@delete')->name('albergue_delete');
     Route::post('Albergue/getUsers','AlbergueController@getUsers')->name('Get_UsersA');
+    Route::post('Albergue/getEmergencia','AlbergueController@getEmergeA')->name('Get_EmergeA');
 });
     Route::group(['prefix' => '/'], function () {
     Route::put('user/{user}','user@update')->name('user_edit');

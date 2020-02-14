@@ -5,6 +5,7 @@ use App\Http\Requests\ValidacionesAlbergue;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Models\Albergue;
+use App\Models\Emergencia;
 use App\Models\EntregaDonacionesAlbergue;
 use App\Models\PersonasAlbergue;
 use Illuminate\Http\Request;
@@ -55,6 +56,25 @@ class AlbergueController extends Controller
            );
         }
   
+        echo json_encode($response);
+        exit;
+     }
+
+     public function getEmergeA(Request $request){
+
+        $search = $request->search;
+        if($search == ''){
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias','Estado')->where('Estado','Activa')->limit(5)->get();
+        }else{
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias','Estado')->where('NombreEmergencias', 'like', '%' .$search . '%')->where('Estado','Activa')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Emergencia as $Emer){
+           $response[] = array(
+                "id"=>$Emer->idEmergencias,
+                "NombreEmergencias"=>$Emer->NombreEmergencias
+           );
+        }
         echo json_encode($response);
         exit;
      }

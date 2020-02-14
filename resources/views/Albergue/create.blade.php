@@ -44,8 +44,6 @@
                 <input type="text" name="Comunidad" class= "form-control" >
             </div>
           </div>
-
-
           <div class="form-group">
               <label for="TipoDeInstalacion" class="col-sm-2 control-label">Tipo de instalación: </label>
     
@@ -61,8 +59,6 @@
                     <input type="number" name="Capacidad" class= "form-control" >
                 </div>
               </div>
-
-
               <div class="form-group">
                 <label for="IdResponsable" class="col-sm-2 control-label"> Responsable:</label>
                 <div class="col-sm-9" style="padding:2%">
@@ -70,7 +66,6 @@
                     </select>
                 </div>
               </div>
-
              <div class="form-group">
                      <label for="telefono" class="col-sm-2 control-label">Teléfono: </label>
               
@@ -78,7 +73,13 @@
                      <input type="text" name="telefono" class= "form-control" >
                      </div>
                   </div>
-
+                  <div class="form-group">
+                    <label for="IdEmergencia" class="col-sm-2 control-label"> Emergencia:</label>
+                    <div class="col-sm-9" style="padding:2%">
+                        <select id='SelectE' name="idEmergencia" style='width: 50%;' required>
+                        </select>
+                    </div>
+                  </div>
                   <div class="form-group">
                         <div class="checkbox">
                                <label class="col-sm-2 control-label">
@@ -88,7 +89,7 @@
                         </label>
                         </div>  
                     </div> 
-
+                   
                  <div class="form-group">
                        <div class="checkbox">
                                <label class="col-sm-2 control-label">
@@ -151,9 +152,6 @@
                       <input type="text" id="lt" name="Latitud" class= "form-control" >
                   </div>
                 </div>
-  
-
-
                 <div class="form-group">
                         <label for="Nececidades" class="col-sm-2 control-label">Nececidades: </label>
                  
@@ -231,4 +229,35 @@ mymap.on('click', onMapClick);
     });
   });
   </script>
+  <script type="text/javascript">
+    // CSRF Token
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $(document).ready(function(){
+      $("#SelectE").select2({
+        ajax: { 
+          url: "{{route('Get_EmergeA')}}",
+          type: "post",
+          dataType: 'json',
+          delay: 250,
+          data: function (params) {
+            return {
+              _token: CSRF_TOKEN,
+              search: params.term // search term
+            };
+          },
+          processResults: function (response) {
+            return {
+              results:  $.map(response,function(item){
+                return{
+                      text: item.NombreEmergencias,
+                      id:item.id
+                }
+              })
+            };
+          },
+          cache: true
+        }
+      });
+    });
+    </script>
 @endsection

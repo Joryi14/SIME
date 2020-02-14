@@ -93,6 +93,7 @@ $(function () {
               <th>Descripción</th>
               <th>Longitud</th>
               <th>Latitud</th>
+              <th>Estado</th>
               <th>Acciones</th>
             
             </tr>
@@ -106,6 +107,12 @@ $(function () {
               <td>{{$item->Descripcion}}</td>
               <td>{{$item->Longitud}}</td>
               <td>{{$item->Latitud}}</td>
+              <td>
+                @if($item->Estado == 'Activa')
+                  <a style="color:green;">{{$item->Estado}}</a>
+                @else
+                <a style="color:red;">{{$item->Estado}}</a>
+                @endif</td>
               <td><a href="/Emergencia/{{$item->idEmergencias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar emergencia">
                 <i class="fa fa-fw fa-pencil"></i></a>
               <form id="formE"  action="{{route('emergencia_delete', ['Emergencia' => $item->idEmergencias])}}" method="POST">

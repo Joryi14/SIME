@@ -29,16 +29,15 @@
        
         <div class="btn-group-horizontal">
            
-        <div class="btn-group-horizontal" style="margin-top:2%">
-          <input type="radio" name="Categoria" value="Grave"><span style="padding:1%; color:red">Grave</span>  
+      <div class="btn-group-horizontal" style="margin-top:2%">
+        <input type="radio" name="Categoria" value="Grave"><span style="padding:1%; color:red">Grave</span>  
                       
-                      <input type="radio" name="Categoria" value="Moderada"><span style="padding:1%; color:orange">Moderada </span>
+        <input type="radio" name="Categoria" value="Moderada"><span style="padding:1%; color:orange">Moderada </span>
                       
-                      <input type="radio" name="Categoria" value="Leve"><span style="padding:1%; color:green">Leve </span>
+        <input type="radio" name="Categoria" value="Leve"><span style="padding:1%; color:green">Leve </span>
       </div>
       </div>
-
-
+      </div>
         <div class="form-group">
             <label for="TipoDeEmergencia" class="col-sm-2 control-label">Tipo de emergencia: </label>
   
@@ -71,13 +70,29 @@
                       <input type="number" name="Latitud" class= "form-control" >
                   </div>
                 </div>
-  
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="Estado">Estado</label>
+                  <div class="col-sm-8">
+                  <select class="form-control select2"  data-minimum-results-for-search="Infinity" name="Estado" value=""  style="width: 50%;">
+                                  <option value="Activa">Activa</option>
+                                  <option value="Inactiva">Inactiva</option>
+                  </select>
+                  </div>
+                </div>
+                </div>
               </div>
               <div class="box-footer">
                   @include("Includes.boton-form-create")
               </div>
-          </form>
+        </form>
         </div>
       </div>
-      </div>
+      @section('Script')
+<script src="{{asset("assets/$theme/bower_components/select2/dist/js/select2.full.min.js")}}"></script>
+<script>
+      $(function() { 
+        $('.select2').select2();
+        });  
+</script>
+        @endsection
 @endsection

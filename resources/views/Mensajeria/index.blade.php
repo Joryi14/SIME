@@ -58,7 +58,8 @@
                     <p><strong>Hora:</strong>   {{$item->Hora}}</p>
                        <p><strong>Fecha: </strong>{{\Carbon\Carbon::parse($item->fecha)->format('d/m/Y')}} </p>
                       <p><strong>Categoría:</strong>   {{$item->Categoria}}</p>
-                         <p><strong>Id del líder comunal:</strong>  {{$item->IdLiderComunal}} </p>  
+                         <p><strong>Id del líder comunal:</strong>  {{$item->LiderComunal->Cedula}}  {{$item->LiderComunal->name}}  {{$item->LiderComunal->Apellido1}}</p>  
+                         <p><strong>Emergencia: </strong>{{$item->idEmergencia}} {{$item->Emergencia->NombreEmergencias}} </p>
                          <td><a href="/Mensajeria/{{$item->IdMensajeria}}/edit" class="btn-accion-tabla tooltipsC" title="Editar informe">
                           <i class="fa fa-fw fa-pencil"></i></a>
                           <form action="{{route('mensajeria_delete', ['Mensajeria' => $item->IdMensajeria])}}" id="form1" method="POST">

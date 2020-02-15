@@ -13,12 +13,13 @@
 
 use App\Http\Controllers\permisoController;
 use Doctrine\DBAL\Schema\Index;
-    Route::get('/', function () {
+
+Route::get('/', function () {
     return view('welcome');
 });
 
     Route::get('Albergue/AL', 'AlbergueController@getAL')->name('AL');
-
+    
     Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('Mensajeria', 'MensajeriaController@index')->name('inicio_mensaje');
     Route::get('Mensajeria/create', 'MensajeriaController@create')->name('Mensajeria_create');
@@ -26,7 +27,7 @@ use Doctrine\DBAL\Schema\Index;
     Route::get('Mensajeria/{Mensajeria}/edit', 'MensajeriaController@edit');
     Route::put('Mensajeria/{Mensajeria}','MensajeriaController@update');
     Route::delete('Mensajeria/{Mensajeria}','MensajeriaController@delete')->name('mensajeria_delete');
-    
+    Route::post('Mensajeria/getEmergencia','MensajeriaController@getEmergeM')->name('Get_EmergeM');
 });
 Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('Retiro_PaquetesV', 'Retiro_PaquetesVController@index')->name('inicio_Retiro_PaquetesV');
@@ -176,7 +177,6 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin']], function () {
     Route::group(['prefix' => '/'], function () {
     Route::get('VoluntarioWeb', 'VoluntarioWebController@index')->name('inicio_voluntarioweb');
    //Route::get('/', 'VoluntarioWebController@create')->name('VoluntarioWeb_create');
-    
     Route::get('VoluntarioWeb/{VoluntarioWeb}/edit', 'VoluntarioWebController@edit');
     Route::put('VoluntarioWeb/{VoluntarioWeb}','VoluntarioWebController@update');
     Route::delete('VoluntarioWeb/{VoluntarioWeb}','VoluntarioWebController@delete')->name('voluntarioweb_delete');

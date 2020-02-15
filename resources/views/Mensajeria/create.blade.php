@@ -60,6 +60,13 @@
           </div>
                   <input type="hidden" name="IdLiderComunal" class= "form-control" value="{{Auth::user()->id}}">
         </div>
+        <div class="form-group">
+          <label for="IdEmergencia" class="col-sm-2 control-label"> Emergencia:</label>
+          <div class="col-sm-9" style="padding:2%">
+              <select id='SelectE' name="idEmergencia" style='width: 50%;' required>
+              </select>
+          </div>
+        </div>
         <div class="box-footer">
             @include("Includes.boton-form-create")
         </div>
@@ -67,4 +74,37 @@
     </div>
   </div>
 </div>
+@section('Script')
+<script type="text/javascript">
+  // CSRF Token
+  var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+  $(document).ready(function(){
+    $("#SelectE").select2({
+      ajax: { 
+        url: "{{route('Get_EmergeM')}}",
+        type: "post",
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+          return {
+            _token: CSRF_TOKEN,
+            search: params.term // search term
+          };
+        },
+        processResults: function (response) {
+          return {
+            results:  $.map(response,function(item){
+              return{
+                    text: item.id+'  '+item.NombreEmergencias,
+                    id:item.id
+              }
+            })
+          };
+        },
+        cache: true
+      }
+    });
+  });
+  </script>
+@endsection
 @endsection

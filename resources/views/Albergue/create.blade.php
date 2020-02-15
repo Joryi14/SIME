@@ -249,7 +249,7 @@ mymap.on('click', onMapClick);
             return {
               results:  $.map(response,function(item){
                 return{
-                      text: item.NombreEmergencias,
+                      text: item.id+'  '+item.NombreEmergencias,
                       id:item.id
                 }
               })

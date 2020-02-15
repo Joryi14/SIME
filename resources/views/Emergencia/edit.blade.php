@@ -66,9 +66,18 @@
                       <input type="text" name="Latitud" class= "form-control" value="{{$emergencia->Latitud}}" readonly="readonly">
                   </div>
                 </div>
-
-
               </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="Estado">Estado</label>
+                <div class="col-sm-8">
+                <select class="form-control select2"  data-minimum-results-for-search="Infinity" name="Estado" value=""  style="width: 50%;">
+                  <option value="Activa" @if ($emergencia->Estado == 'Activa') selected="selected" @endif>Activa</option>
+                  <option value="Inactiva" @if ($emergencia->Estado == 'Inactiva') selected="selected" @endif>Inactiva</option>
+                </select>
+                </div>
+              </div>
+
+
        <div class="box-footer">   -    
           @include("Includes.boton-editar")
         </div>
@@ -76,5 +85,15 @@
     </div>
   </div>
    </div>  
+   @section('Script')
+   <script src="{{asset("assets/$theme/bower_components/select2/dist/js/select2.full.min.js")}}"></script>
+   <script>
+         $(function() { 
+           $('.select2').select2();
+           });  
+   </script>
+           @endsection
+
+
 @endsection
 

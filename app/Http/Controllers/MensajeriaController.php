@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Emergencia;
 use App\Models\Mensajeria;
 use Illuminate\Http\Request;
 
@@ -35,16 +37,11 @@ class MensajeriaController extends Controller
      */
     public function store(Request $request)
     {
+
         $mensajeria = new Mensajeria();
-        $mensajeria->CodigoIncidente = $request->CodigoIncidente;
-        $mensajeria->Descripcion = $request->Descripcion;
-        $mensajeria->Ubicacion = $request->Ubicacion;
-        $mensajeria->Hora = $request->Hora;
-        $mensajeria->fecha = $request->Fecha;
-        $mensajeria->Categoria = $request->Categoria;
-        $mensajeria->IdLiderComunal = $request->IdLiderComunal;
+        $mensajeria->fill($request->all());
         $mensajeria->save();
-        return redirect('Mensajeria')->with('mensaje','Se ha guardado');
+        return redirect('Mensajeria')->with('exito','Se ha agregado correctamente');
     }
 
     /**
@@ -85,6 +82,24 @@ class MensajeriaController extends Controller
         $mensajeria->save();
         return redirect('Mensajeria')->with('mensaje','Editado correctamente');
     }
+    public function getEmergeM(Request $request){
+
+        $search = $request->search;
+        if($search == ''){
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias','Estado')->where('Estado','Activa')->limit(5)->get();
+        }else{
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias','Estado')->where('NombreEmergencias', 'like', '%' .$search . '%')->where('Estado','Activa')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Emergencia as $Emer){
+           $response[] = array(
+                "id"=>$Emer->idEmergencias,
+                "NombreEmergencias"=>$Emer->NombreEmergencias
+           );
+        }
+        echo json_encode($response);
+        exit;
+     }
 
     /**
      * Remove the specified resource from storage.

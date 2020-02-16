@@ -74,9 +74,16 @@
                         <div class="form-group">
                             <label for="IdInventario" class="col-sm-2 control-label">Id del inventario: </label>
                             <div class="col-sm-10">
-                                <input type="text" name="IdInventario" class= "form-control" value="{{$retiroPV->IdInventario}}" >
+                                <input type="text" name="IdInventario" class= "form-control" value="{{$retiroPV->IdInventario}}" readonly>
                             </div>
                           </div>
+                          <div class="form-group">
+                            <label for="idEmergencia" class="col-sm-2 control-label">Emergencia: </label>
+                            <div class="col-sm-10">
+                                <input type="text" name="idEmergencia" class= "form-control" value="{{$retiroPV->idEmergencia}}" readonly>
+                            </div>
+                          </div>
+
           </div>
           <div class="box-footer">
               @include("Includes.boton-editar")

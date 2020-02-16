@@ -155,6 +155,7 @@ $(function () {
               <th>Suministros del gobierno </th>
               <th>Suministros de la comisión</th>
               <th>Id del inventario</th>
+              <th>Emergencia</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -166,7 +167,7 @@ $(function () {
               <td>{{$item->SuministrosGobierno}}</td>
               <td>{{$item->SuministrosComision}}</td>
               <td>{{$item->IdInventario}}</td>    
-    
+              <td>{{$item->Emergencia->idEmergencias}} {{$item->Emergencia->NombreEmergencias}}</td>
               <td><a href="/Retiro_PaquetesV/{{$item->IdRetiroPaquetes}}/edit" class="btn-accion-tabla tooltipsC" title="Editar retiro de paquetes">
                 <i class="fa fa-fw fa-pencil"></i></a>
               <form id="form1" action="{{route('Retiro_PaquetesV_delete', ['Retiro_PaquetesV' => $item->IdRetiroPaquetes])}}" method="POST">

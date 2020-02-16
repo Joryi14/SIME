@@ -62,24 +62,24 @@
                         <div class="btn-group-horizontal">
                        
                             <div class="btn-group-horizontal" style="margin-top:2%">
-                              <input type="radio" name="Categoria" value="Grave"><span style="padding:1%; color:red">Grave</span>  
-                                          
-                                          <input type="radio" name="Categoria" value="Moderada"><span style="padding:1%; color:orange">Moderada </span>
-                                          
-                                          <input type="radio" name="Categoria" value="Leve"><span style="padding:1%; color:green">Leve </span>
+                              <input type="radio" name="Categoria" value="Grave"  @if ($mensajeria->Categoria == 'Grave') checked="checked" @endif><span style="padding:1%; color:red">Grave</span>  
+                                          <input type="radio" name="Categoria" value="Moderada" @if ($mensajeria->Categoria == 'Moderada') checked="checked" @endif><span style="padding:1%; color:orange">Moderada </span>
+                                          <input type="radio" name="Categoria" value="Leve"  @if ($mensajeria->Categoria == 'Leve') checked="checked" @endif><span style="padding:1%; color:green">Leve </span>
                                       </div>
                               </div>
                       </div>
-
                       <div class="form-group">
                            <label for="IdLiderComunal" class="col-sm-2 control-label">Id líder comunal: </label>
                            <div class="col-sm-9">
-                             <input type="text" name="IdLiderComunal" class= "form-control" value=" {{$mensajeria->IdLiderComunal}}" >
+                             <input type="text" name="IdLiderComunal" class= "form-control" value=" {{$mensajeria->IdLiderComunal}}" readonly >
                            </div>
                          </div>
-
-
-
+                         <div class="form-group">
+                          <label for="IdEmergencia" class="col-sm-2 control-label"> Emergencia:</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="idEmergencia" class= "form-control" value=" {{$mensajeria->idEmergencia}}"readonly >
+                          </div>
+                        </div>
 </div>
 
 <div class="box-footer">
@@ -89,5 +89,4 @@
      </div>  
   </div>
 </div>
- 
 @endsection

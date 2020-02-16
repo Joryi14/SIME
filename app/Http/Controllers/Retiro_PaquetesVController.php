@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidacionRetiroPaquetes;
+use App\Models\Emergencia;
 use App\Models\Inventario;
 use Illuminate\Support\Facades\DB;
 use App\Models\Retiro_PaquetesV;
@@ -22,6 +23,24 @@ class Retiro_PaquetesVController extends Controller
         $retiroPV = Retiro_PaquetesV::orderBy('IdRetiroPaquetes')->get();
         return view('Retiro_PaquetesV.index', compact('retiroPV'));
     }
+    public function getEmergeR(Request $request){
+
+        $search = $request->search;
+        if($search == ''){
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias','Estado')->where('Estado','Activa')->limit(5)->get();
+        }else{
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias','Estado')->where('NombreEmergencias', 'like', '%' .$search . '%')->where('Estado','Activa')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Emergencia as $Emer){
+           $response[] = array(
+                "id"=>$Emer->idEmergencias,
+                "NombreEmergencias"=>$Emer->NombreEmergencias
+           );
+        }
+        echo json_encode($response);
+        exit;
+     }
 
     /**
      * Show the form for creating a new resource.

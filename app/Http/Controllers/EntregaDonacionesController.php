@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidacionEntregaDonaciones;
+use App\Models\Emergencia;
 use Illuminate\Support\Facades\DB;
 use App\Models\EntregaDonaciones;
 use App\Models\EntregaDonacionesAlbergue;
@@ -33,6 +34,24 @@ class EntregaDonacionesController extends Controller
     {
         return view('EntregaDonaciones.create');
     }
+    public function getEmergeE(Request $request){
+
+        $search = $request->search;
+        if($search == ''){
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias','Estado')->where('Estado','Activa')->limit(5)->get();
+        }else{
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias','Estado')->where('NombreEmergencias', 'like', '%' .$search . '%')->where('Estado','Activa')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Emergencia as $Emer){
+           $response[] = array(
+                "id"=>$Emer->idEmergencias,
+                "NombreEmergencias"=>$Emer->NombreEmergencias
+           );
+        }
+        echo json_encode($response);
+        exit;
+     }
 
     /**
      * Store a newly created resource in storage.
@@ -62,7 +81,7 @@ class EntregaDonacionesController extends Controller
           $entregadonaciones->IdJefe = $request->IdJefe;
           $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
           //$entregadonaciones->Foto = $request->Foto;
-          $entregadonaciones->created_at = $entregadonaciones->created_at;
+          $entregadonaciones->idEmergencia = $request->idEmergencia;
           $entregadonaciones->save(); 
           return redirect('EntregaDonaciones')->with('exito','Se ha guardado correctamente'); 
             }
@@ -141,12 +160,13 @@ else
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ValidacionEntregaDonaciones $request, $id)
+    public function update(Request $request, $id)
     {
         $entregadonaciones = EntregaDonaciones::find($id);
         $entregadonaciones->IdVoluntario = $request->IdUsuarioRol;
         $entregadonaciones->IdJefe = $request->IdJefe;
         $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
+        $entregadonaciones->idEmergencia = $request->idEmergencia;
         if($request->hasFile('Foto')){
             $file =$request->file('Foto');
             $name = time().$file->getClientOriginalName();
@@ -154,7 +174,7 @@ else
             $entregadonaciones->Foto = $name;
           } 
         $entregadonaciones->save();
-        return redirect('EntregaDonaciones')->with('mensaje','Se ha actualizado correctamente');
+        return redirect('EntregaDonaciones')->with('exito','Se ha actualizado correctamente');
     }
 
     /**
@@ -170,6 +190,6 @@ else
             $image_path = public_path().'/Foto/'.$entregadonaciones->Foto;
             unlink($image_path);}
         $entregadonaciones->delete();
-        return redirect('EntregaDonaciones')->with('mensaje','Se ha eliminado correctamente');
+        return redirect('EntregaDonaciones')->with('exito','Se ha eliminado correctamente');
     }
 }

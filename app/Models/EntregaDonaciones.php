@@ -3,7 +3,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 class EntregaDonaciones extends Model
 {
-    protected  $fillable  = [ 'IdVoluntario','IdJefe','IdRetiroPaquetes','Foto'];
+    protected  $fillable  = [ 'IdVoluntario','IdJefe','IdRetiroPaquetes','Foto','idEmergencia'];
     protected $table = 'entregadonaciones';
     protected  $primaryKey  =  'IdEntrega';
     public function User()
@@ -14,4 +14,9 @@ class EntregaDonaciones extends Model
     {
         return $this->belongsTo('App\Models\JefeDeFamilia', 'IdJefe');
     }
+    public function Emergencia()
+    {
+        return $this->belongsTo('App\Models\Emergencia', 'idEmergencia');
+    }
+    
 }

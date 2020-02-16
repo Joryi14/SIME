@@ -66,7 +66,11 @@ class EntregaDonacionesController extends Controller
         $jefe = JefeDeFamilia::find($request->IdJefe);
         if($retiro != Null){
             if($jefe != Null){
-        if(EntregaDonacionesAlbergue::where('IdJefeFa',$request->IdJefe)->first()){
+              
+        if(EntregaDonaciones::where('IdJefe',$request->IdJefe)->where('idEmergencia',$retiro->idEmergencia)->first() ){
+            return redirect('EntregaDonaciones')->with('mensaje','Este jefe ya tiene una entrega');   
+        }
+            if(EntregaDonacionesAlbergue::where('IdJefeFa',$request->IdJefe)->where('idEmergencias',$retiro->idEmergencia)->first()){
             return redirect('EntregaDonaciones')->with('mensaje','Este jefe ya tiene una entrega en el albergue');
         }
         else{
@@ -81,11 +85,12 @@ class EntregaDonacionesController extends Controller
           $entregadonaciones->IdJefe = $request->IdJefe;
           $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
           //$entregadonaciones->Foto = $request->Foto;
-          $entregadonaciones->idEmergencia = $request->idEmergencia;
+          $entregadonaciones->idEmergencia = $retiro->idEmergencia;
           $entregadonaciones->save(); 
           return redirect('EntregaDonaciones')->with('exito','Se ha guardado correctamente'); 
             }
         }else return redirect('EntregaDonaciones/create')->with('mensaje','Error al agregar, jefe de familia no existe'); 
+                  
     }
 else 
     return redirect('EntregaDonaciones/create')->with('mensaje','Error al agregar, el id del retiro de paquetes no existe');

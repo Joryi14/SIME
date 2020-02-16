@@ -64,9 +64,11 @@ class Retiro_PaquetesVController extends Controller
         $vol = User::find($request->IdVoluntario);
         if($inv != null){
         if($vol != null){
+            $request->idEmergencia = $inv->idEmergencias;
         if(($request->SuministrosGobierno + $request->SuministrosComision) <= $inv->Suministros){
             $retiroPV = new Retiro_PaquetesV();
             $retiroPV->fill($request->all());
+            $retiroPV->idEmergencia = $inv->idEmergencias;
             $retiroPV->save();
 
         return redirect('/Retiro_PaquetesV')->with('mensaje','Se ha agregado con éxito');

@@ -62,13 +62,13 @@
                   <div class="form-group">
                         <label for="SuministrosGobierno" class="col-sm-2 control-label">Suministros del gobierno: </label>
                         <div class="col-sm-8">
-                            <input type="text" name="SuministrosGobierno" class= "form-control" > 
+                            <input type="number" name="SuministrosGobierno" class= "form-control" > 
                         </div>
                       </div>
                       <div class="form-group">
                           <label for="SuministrosComision" class="col-sm-2 control-label">Suministros de la comision: </label>
                           <div class="col-sm-8">
-                              <input type="text" name="SuministrosComision" class= "form-control" >
+                              <input type="number" name="SuministrosComision" class= "form-control" >
                           </div>
                         </div>
                         <div class="form-group">
@@ -79,14 +79,6 @@
                                 <option value='0'>Seleccionar un Inventario</option></select>
                          </div>
                           </div>
-                          <div class="form-group">
-                            <label for="IdEmergencia" class="col-sm-2 control-label"> Emergencia:</label>
-                            <div class="col-sm-9" style="padding:2%">
-                                <select id='SelectE' name="idEmergencia" style='width: 50%;' required>
-                                </select>
-                            </div>
-                          </div>
-
                      </div>
 
                      <div class="box-footer">
@@ -129,38 +121,6 @@
     });
   });
   </script>
-<script type="text/javascript">
-  // CSRF Token
-  var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-  $(document).ready(function(){
-    $("#SelectE").select2({
-      ajax: { 
-        url: "{{route('Get_EmergeR')}}",
-        type: "post",
-        dataType: 'json',
-        delay: 250,
-        data: function (params) {
-          return {
-            _token: CSRF_TOKEN,
-            search: params.term // search term
-          };
-        },
-        processResults: function (response) {
-          return {
-            results:  $.map(response,function(item){
-              return{
-                    text: item.id+'  '+item.NombreEmergencias,
-                    id:item.id
-              }
-            })
-          };
-        },
-        cache: true
-      }
-    });
-  });
-  </script>
-
   <script type="text/javascript">
     // CSRF Token
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');

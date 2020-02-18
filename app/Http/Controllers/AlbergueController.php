@@ -60,25 +60,6 @@ class AlbergueController extends Controller
         exit;
      }
 
-     public function getEmergeA(Request $request){
-
-        $search = $request->search;
-        if($search == ''){
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias','Estado')->where('Estado','Activa')->limit(5)->get();
-        }else{
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias','Estado')->where('NombreEmergencias', 'like', '%' .$search . '%')->where('Estado','Activa')->limit(5)->get();
-        }
-        $response = array();
-        foreach($Emergencia as $Emer){
-           $response[] = array(
-                "id"=>$Emer->idEmergencias,
-                "NombreEmergencias"=>$Emer->NombreEmergencias
-           );
-        }
-        echo json_encode($response);
-        exit;
-     }
-
     /**
      * Store a newly created resource in storage.
      *

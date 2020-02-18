@@ -148,9 +148,9 @@ else
 
         $search = $request->search;
         if($search == ''){
-           $Retiro = Retiro_PaquetesV::orderby('IdRetiroPaquetes','asc')->select('IdRetiroPaquetes')->limit(5)->get();
+           $Retiro = Retiro_PaquetesV::orderby('IdRetiroPaquetes','asc')->join('emergencia','idEmergencia','=','emergencia.idEmergencias')->select('IdRetiroPaquetes')->where('emergencia.Estado','Activa')->limit(5)->get();
         }else{
-           $Retiro = Retiro_PaquetesV::orderby('IdRetiroPaquetes','asc')->select('IdRetiroPaquetes')->where('IdRetiroPaquetes', 'like', '%' .$search . '%')->limit(5)->get();
+           $Retiro = Retiro_PaquetesV::orderby('IdRetiroPaquetes','asc')->join('emergencia','idEmergencia','=','emergencia.idEmergencias')->select('IdRetiroPaquetes')->where('IdRetiroPaquetes', 'like', '%' .$search . '%')->where('emergencia.Estado','Activa')->limit(5)->get();
         }
         $response = array();
         foreach($Retiro as $reti){

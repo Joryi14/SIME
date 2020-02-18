@@ -108,7 +108,7 @@ $(function () {
               <th>Capacidad del lugar</th>
               <th>Cédula del responsable</th>
               <th>Teléfono</th>
-              <th>Emergencia</th>
+              <th>Estado</th>
               <th>Acciones</th>
               </tr>
               </thead>
@@ -121,7 +121,12 @@ $(function () {
               <td>{{$item->Capacidad}}</td>
               <td>{{$item->User->Cedula}}</td>
               <td>{{$item->telefono}}</td>
-              <td>{{$item->idEmergencia}}</td>
+              <td>
+                @if($item->Estado == 'Activa')
+                  <a style="color:green;">{{$item->Estado}}</a>
+                @else
+                <a style="color:red;">{{$item->Estado}}</a>
+                @endif</td>
               <td><a href="/Albergue/{{$item->idAlbergue}}/edit" class="btn-accion-tabla tooltipsC" title="Editar albergue">
                 <i class="fa fa-fw fa-pencil"></i></a>
               <form id="form1" action="{{route('albergue_delete', ['Albergue' => $item->idAlbergue])}}" method="POST">

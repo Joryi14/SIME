@@ -74,10 +74,13 @@
                      </div>
                   </div>
                   <div class="form-group">
-                    <label for="IdEmergencia" class="col-sm-2 control-label"> Emergencia:</label>
+                    <label for="IdEmergencia" class="col-sm-2 control-label"> Estado:</label>
                     <div class="col-sm-9" style="padding:2%">
-                        <select id='SelectE' name="idEmergencia" style='width: 50%;' required>
-                        </select>
+                      <label class="switch">
+                        <input type="hidden" name="Estado" value="Inactiva"/>
+                        <input name="Estado" id="sli"  value="Activa" type="checkbox">
+                        <span class="slid round"></span>
+                      </label>
                     </div>
                   </div>
                   <div class="form-group">
@@ -170,6 +173,7 @@
       </div>
 @endsection
 @section('Script')
+
 <script src="{{asset("assets/MAP/leaflet.js")}}"></script>
 <!-- Script -->
 <script>
@@ -229,35 +233,4 @@ mymap.on('click', onMapClick);
     });
   });
   </script>
-  <script type="text/javascript">
-    // CSRF Token
-    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    $(document).ready(function(){
-      $("#SelectE").select2({
-        ajax: { 
-          url: "{{route('Get_EmergeA')}}",
-          type: "post",
-          dataType: 'json',
-          delay: 250,
-          data: function (params) {
-            return {
-              _token: CSRF_TOKEN,
-              search: params.term // search term
-            };
-          },
-          processResults: function (response) {
-            return {
-              results:  $.map(response,function(item){
-                return{
-                      text: item.id+'  '+item.NombreEmergencias,
-                      id:item.id
-                }
-              })
-            };
-          },
-          cache: true
-        }
-      });
-    });
-    </script>
 @endsection

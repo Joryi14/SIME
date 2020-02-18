@@ -32,13 +32,14 @@
               <li><a href="{{route('inicio_mensaje')}}"><i class="fa  fa-envelope"></i><span>Mensajería</span></a></li>
               <li><a href="{{route('inicio_albergue')}}"><i class="fa  fa-hospital-o"></i><span>Albergue</span></a></li>
               <li><a href="{{route('inicio_inventario')}}"><i class="fa  fa-database"></i><span>Inventario</span></a></li>
-              <li><a href="{{route('inicio_EntregaDonaciones')}}"><i class="fa  fa-truck"></i><span>Entrega de donaciones</span></a></li>
+              <li><a href="{{route('inicio_EntregaDonaciones2')}}"><i class="fa  fa-truck"></i><span>Entrega de donaciones</span></a></li>
               <li><a href="{{route('inicio_EntregaDonacionesA')}}"><i class="fa  fa-user-plus"></i><span>Entrega albergue</span></a></li>
               <li><a href="{{route('inicio_personasAlbergue')}}"><i class="fa  fa-child"></i><span>Personas en albergue</span></a></li>
               <li><a href="{{route('inicio_Retiro_PaquetesV')}}"><i class="fa   fa-cubes"></i><span>Retiro de paquetes</span></a></li>
             </ul>
           </li>
           <li><a href="{{route('inicio_emergencia')}}"><i class="fa  fa-list"></i><span>  Lista de emergencias</span></a></li>
+          <li><a href="{{route('inicio_EntregaDonaciones')}}"><i class="fa  fa-truck"></i><span>Entrega de donaciones</span></a></li>
           <li><a href="{{route('inicio_voluntarioweb')}}"><i class="fa fa-users"></i> <span>Inscripción voluntarios</span></a></li>
           @endrole
           @role('Admin|Autor')

@@ -57,6 +57,7 @@ Route::group(['prefix' => '/'], function () {
 });
 Route::group(['prefix' => '/'], function () {
     Route::get('EntregaDonaciones', 'EntregaDonacionesController@index')->name('inicio_EntregaDonaciones');
+    Route::get('EntregaDonaciones/Filtrado', 'EntregaDonacionesController@index2')->name('inicio_EntregaDonaciones2');
     Route::get('EntregaDonaciones/create', 'EntregaDonacionesController@create')->name('EntregaDonaciones_create');
     Route::post('EntregaDonaciones/store','EntregaDonacionesController@store');
     Route::get('EntregaDonaciones/{EntregaDonaciones}/edit', 'EntregaDonacionesController@edit');

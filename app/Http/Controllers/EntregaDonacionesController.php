@@ -22,9 +22,16 @@ class EntregaDonacionesController extends Controller
     public function index()
     {
         $entregadonaciones = EntregaDonaciones::orderBy('IdEntrega')->get();
+        
         return view('EntregaDonaciones.index', compact('entregadonaciones'));
     }
-
+    public function index2()
+    {
+        $entregadonaciones = new EntregaDonaciones();
+        $entregadonaciones = DB::table('entregadonaciones')->join('emergencia','idEmergencia','=','emergencia.idEmergencias')->join('jefedefamilia','entregadonaciones.IdJefe','=','jefedefamilia.IdJefe')->join('users','IdVoluntario','=','users.id')->where('emergencia.Estado','Activa')->select('entregadonaciones.IdEntrega','entregadonaciones.IdRetiroPaquetes','entregadonaciones.Foto','users.Cedula as Ced','users.name','jefedefamilia.Cedula','jefedefamilia.Nombre','jefedefamilia.Apellido1','emergencia.idEmergencias','emergencia.NombreEmergencias')->get();
+        
+        return view('EntregaDonaciones.IndexFiltrado', compact('entregadonaciones'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -61,17 +68,15 @@ class EntregaDonacionesController extends Controller
      */
     public function store(ValidacionEntregaDonaciones $request)
     {    
-
         $retiro = Retiro_PaquetesV::find($request->IdRetiroPaquetes);
         $jefe = JefeDeFamilia::find($request->IdJefe);
         if($retiro != Null){
             if($jefe != Null){
-              
         if(EntregaDonaciones::where('IdJefe',$request->IdJefe)->where('idEmergencia',$retiro->idEmergencia)->first() ){
-            return redirect('EntregaDonaciones')->with('mensaje','Este jefe ya tiene una entrega');   
+            return redirect('EntregaDonaciones/Filtrado')->with('mensaje','Este jefe ya tiene una entrega');   
         }
             if(EntregaDonacionesAlbergue::where('IdJefeFa',$request->IdJefe)->where('idEmergencias',$retiro->idEmergencia)->first()){
-            return redirect('EntregaDonaciones')->with('mensaje','Este jefe ya tiene una entrega en el albergue');
+            return redirect('EntregaDonaciones/Filtrado')->with('mensaje','Este jefe ya tiene una entrega en el albergue');
         }
         else{
         $entregadonaciones = new EntregaDonaciones();
@@ -87,7 +92,7 @@ class EntregaDonacionesController extends Controller
           //$entregadonaciones->Foto = $request->Foto;
           $entregadonaciones->idEmergencia = $retiro->idEmergencia;
           $entregadonaciones->save(); 
-          return redirect('EntregaDonaciones')->with('exito','Se ha guardado correctamente'); 
+          return redirect('EntregaDonaciones/Filtrado')->with('exito','Se ha guardado correctamente'); 
             }
         }else return redirect('EntregaDonaciones/create')->with('mensaje','Error al agregar, jefe de familia no existe'); 
                   
@@ -179,7 +184,7 @@ else
             $entregadonaciones->Foto = $name;
           } 
         $entregadonaciones->save();
-        return redirect('EntregaDonaciones')->with('exito','Se ha actualizado correctamente');
+        return redirect('EntregaDonaciones/Filtrado')->with('exito','Se ha actualizado correctamente');
     }
 
     /**
@@ -195,6 +200,6 @@ else
             $image_path = public_path().'/Foto/'.$entregadonaciones->Foto;
             unlink($image_path);}
         $entregadonaciones->delete();
-        return redirect('EntregaDonaciones')->with('exito','Se ha eliminado correctamente');
+        return redirect('EntregaDonaciones/Filtrado')->with('exito','Se ha eliminado correctamente');
     }
 }

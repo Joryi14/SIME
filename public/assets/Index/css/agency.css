@@ -176,8 +176,8 @@ img::-moz-selection {
 
 header.masthead {
   text-align: center;
-  color: #212529;
-  /*background-image: url("../img/FON.png");*/
+  color: #e9ecef;
+  background-image: url("../img/21.png");
   background-color: #e9ecef;
   background-repeat: no-repeat;
   background-attachment: scroll;

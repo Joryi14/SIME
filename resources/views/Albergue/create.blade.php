@@ -24,7 +24,7 @@
       <div class="form-group">
         <label for="Nombre" class="col-sm-2 control-label">Nombre del albergue: </label>
         <div class="col-sm-8">
-            <input type="text" name="Nombre" class= "form-control" >
+            <input value="{{old('Nombre', $data->Nombre ?? '')}}" type="text" name="Nombre" class= "form-control" >
         </div>
       </div>
 
@@ -32,7 +32,7 @@
           <label for="Distrito" class="col-sm-2 control-label">Distrito: </label>
 
           <div class="col-sm-8">
-              <input type="text" name="Distrito" class= "form-control" >
+              <input type="text" value="{{old('Distrito', $data->Distrito ?? '')}}" name="Distrito" class= "form-control" >
           </div>
         </div>
 
@@ -41,14 +41,14 @@
             <label for="Comunidad" class="col-sm-2 control-label">Comunidad: </label>
   
             <div class="col-sm-8">
-                <input type="text" name="Comunidad" class= "form-control" >
+                <input type="text" value="{{old('Comunidad', $data->Comunidad ?? '')}}" name="Comunidad" class= "form-control" >
             </div>
           </div>
           <div class="form-group">
               <label for="TipoDeInstalacion" class="col-sm-2 control-label">Tipo de instalación: </label>
     
               <div class="col-sm-8">
-                  <input type="text" name="TipoDeInstalacion" class= "form-control" >
+                  <input type="text" value="{{old('TipoDeInstalacion', $data->TipoDeInstalacion ?? '')}}" name="TipoDeInstalacion" class= "form-control" >
               </div>
             </div>
   
@@ -56,7 +56,7 @@
                 <label for="Capacidad" class="col-sm-2 control-label">Capacidad del lugar: </label>
       
                 <div class="col-sm-8">
-                    <input type="number" name="Capacidad" class= "form-control" >
+                    <input type="number" value="{{old('Capacidad', $data->Capacidad ?? '')}}" name="Capacidad" class= "form-control" >
                 </div>
               </div>
               <div class="form-group">
@@ -70,7 +70,7 @@
                      <label for="telefono" class="col-sm-2 control-label">Teléfono: </label>
               
                     <div class="col-sm-8">
-                     <input type="text" name="telefono" class= "form-control" >
+                     <input type="text" name="telefono" value="{{old('telefono', $data->telefono ?? '')}}" class= "form-control" >
                      </div>
                   </div>
                   <div class="form-group">
@@ -139,7 +139,7 @@
             <label for="Longitud" class="col-sm-2 control-label">Longitud: </label>
   
             <div class="col-sm-8">
-                <input type="text" id="lg" name="Longitud" class= "form-control" >
+                <input type="text" id="lg" name="Longitud" value="{{old('Longitud', $data->Longitud ?? '')}}" class= "form-control" >
             </div>
           </div>
      
@@ -152,14 +152,14 @@
                   <label for="Latitud" class="col-sm-2 control-label">Latitud: </label>
         
                   <div class="col-sm-8">
-                      <input type="text" id="lt" name="Latitud" class= "form-control" >
+                      <input type="text" id="lt" name="Latitud"  value="{{old('Latitud', $data->Latitud ?? '')}}" class= "form-control" >
                   </div>
                 </div>
                 <div class="form-group">
                         <label for="Nececidades" class="col-sm-2 control-label">Nececidades: </label>
                  
                        <div class="col-sm-8">
-                        <input type="text" name="Nececidades" class= "form-control" >
+                        <input type="text" name="Nececidades" value="{{old('Nececidades', $data->Nececidades ?? '')}}" class= "form-control" >
                         </div>
                 </div>              
           

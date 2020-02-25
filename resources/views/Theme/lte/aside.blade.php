@@ -47,7 +47,22 @@
               </li>
               <li><a href="{{route('inicio_EntregaDonacionesA')}}"><i class="fa  fa-user-plus"></i><span>Entrega albergue</span></a></li>
               <li><a href="{{route('inicio_personasAlbergue')}}"><i class="fa  fa-child"></i><span>Personas en albergue</span></a></li>
-              <li><a href="{{route('inicio_Retiro_PaquetesV')}}"><i class="fa   fa-cubes"></i><span>Retiro de paquetes</span></a></li>
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa  fa-cubes">
+                    </i><span>Módulo retiro de paquetes</span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+                </a>
+              <ul class="treeview-menu">
+                <li><a href="{{route('inicio_Retiro_PaquetesV')}}"><i class="fa fa-list "></i><span>Lista de retiro</span></a></li>
+              <li><a href="{{route('Retiro_PaquetesV_create')}}"><i class="fa  fa-plus"></i><span>Crear retiro</span></a></li>
+              </ul>
+              </li>
+              
+              
+              
             </ul>
           </li>
           <li><a href="{{route('inicio_emergencia')}}"><i class="fa  fa-list"></i><span>  Lista de emergencias</span></a></li>

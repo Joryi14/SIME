@@ -16,7 +16,7 @@
               </li>
             </li>
           @endrole
-          <!--@role('Admin|Director|Lider Comunal')
+          @role('Admin|Director|Lider Comunal')
           <li class="list-group-item">
             <a href="#">
               <i class="fa  fa-exclamation-triangle"></i><span>Módulo de emergencia</span>
@@ -24,7 +24,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
-            <ul class="treeview-menu">
+            <li class="treeview-menu">
               <li><a href="{{ route('emergencia_create')}}"><i class="fa fa-exclamation-triangle"></i>  Crear emergencia</a></li>
               <li><a href="{{route('inicio_mensaje')}}"><i class="fa  fa-envelope"></i><span>Mensajería</span></a></li>
               <li><a href="{{route('inicio_albergue')}}"><i class="fa  fa-hospital-o"></i><span>Albergue</span></a></li>
@@ -37,10 +37,10 @@
                     <i class="fa fa-angle-left pull-right"></i>
                   </span>
                 </a>
-              <ul class="treeview-menu">
+              <li class="treeview-menu">
               <li><a href="{{route('inicio_EntregaDonaciones2')}}"><i class="fa  fa-list"></i><span>Lista de entrega</span></a></li>
               <li><a href="{{route('EntregaDonaciones_create')}}"><i class="fa  fa-plus"></i><span>Crear entrega</span></a></li>
-              </ul>
+              </li>
               </li>
               <li><a href="{{route('inicio_EntregaDonacionesA')}}"><i class="fa  fa-user-plus"></i><span>Entrega albergue</span></a></li>
               <li><a href="{{route('inicio_personasAlbergue')}}"><i class="fa  fa-child"></i><span>Personas en albergue</span></a></li>
@@ -52,14 +52,14 @@
                     <i class="fa fa-angle-left pull-right"></i>
                   </span>
                 </a>
-              <ul class="treeview-menu">
+              <li class="treeview-menu">
                 <li><a href="{{route('inicio_Retiro_PaquetesV')}}"><i class="fa fa-list "></i><span>Lista de retiro</span></a></li>
               <li><a href="{{route('Retiro_PaquetesV_create')}}"><i class="fa  fa-plus"></i><span>Crear retiro</span></a></li>
-              </ul>
               </li>
-            </ul>
+              </li>
+            </li>
           </li>
-          <li><a href="{{route('inicio_emergencia')}}"><i class="fa  fa-list"></i><span>  Lista de emergencias</span></a></li>
+          <!--<li><a href="{{route('inicio_emergencia')}}"><i class="fa  fa-list"></i><span>  Lista de emergencias</span></a></li>
           <li><a href="{{route('inicio_EntregaDonaciones')}}"><i class="fa  fa-truck"></i><span>Entrega de donaciones</span></a></li>
           <li><a href="{{route('inicio_voluntarioweb')}}"><i class="fa fa-users"></i> <span>Inscripción voluntarios</span></a></li>
           @endrole

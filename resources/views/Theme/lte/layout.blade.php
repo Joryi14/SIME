@@ -7,23 +7,9 @@
   <title>@yield('Titulo','SIME') |Sistema de Informacion de Manejo de Emergencias</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/bootstrap/dist/css/bootstrap.min.css")}}">
-  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/site.min.css")}}">
   <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/font-awesome/css/font-awesome.min.css")}}">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/Ionicons/css/ionicons.min.css")}}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/AdminLTE.css")}}">
-  <!-- Material Design  -->
-  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/bootstrap-material-design.min.css")}}">
-  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/ripples.min.css")}}">
-  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/MaterialAdminLTE.css")}}">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-  folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/skins/all-md-skins.css")}}">
-  <link rel="stylesheet" href="{{asset("assets/$theme/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")}}">
-  <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2.min.css")}}">
+  <script type="text/javascript" src="{{asset("assets/$theme/dist/js/site.min.js")}}"></script>
   @yield('styles')
   <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -34,23 +20,14 @@
   <![endif]-->
 
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   
-  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">  
 </head>
-<body class="hold-transition skin-red-light sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
-    
-    <!--Header-->
-    @include("theme/$theme/header")
-    <!--Fin Header-->
-    <!--Aside-->
-    @include("theme/$theme/aside")
-    <!--finAside-->
+<body>
+      @include("theme/$theme/header")
+    <div class="container-fluid">
+      @include("theme/$theme/aside")
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content">
            @yield('Contenido')
           </section>
@@ -58,26 +35,7 @@
     @include("theme/$theme/footer")
  </div>
  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="{{asset("assets/$theme/bower_components/jquery/dist/jquery.min.js")}}"></script>
-<script src="{{asset("assets/$theme/bower_components/jquery-ui/jquery-ui.min.js")}}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{{asset("assets/$theme/bower_components/bootstrap/dist/js/bootstrap.min.js")}}"></script>
-<!-- SlimScroll -->
-<script>
-    $.widget.bridge('uibutton', $.ui.button);
-  </script>
-<script src="{{asset("assets/$theme/bower_components/jquery-slimscroll/jquery.slimscroll.min.js")}}"></script>
-<!-- FastClick -->
-<script src="{{asset("assets/$theme/dist/js/material.min.js")}}"></script>
-<script src="{{asset("assets/$theme/dist/js/ripples.min.js")}}"></script>
-<script>
-    $.material.init();
-</script>
-<script src="{{asset("assets/$theme/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js")}}"></script>
-<script src="{{asset("assets/$theme/bower_components/fastclick/lib/fastclick.js")}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
-<script src="{{asset("assets/$theme/bower_components/select2/dist/js/select2.full.min.js")}}"></script>
+ 
 @yield('scriptsPlugins')
 <script src="{{asset("assets/js/scripts.js")}}"></script>
 @yield('Script')

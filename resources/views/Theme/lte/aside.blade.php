@@ -1,26 +1,23 @@
-<aside class="main-sidebar">     
- <section class="sidebar">
-          <ul class="sidebar-menu"  data-widget="tree"> 
+<div class="row row-offcanvas row-offcanvas-left">
+  <div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
+        <ul class="list-group panel"> 
           @role('Admin')
-              <li><a href="{{route('inicio_usuario')}}"><i class="fa fa-users"></i> <span>Control de usuarios</span></a></li>
+          <li class="list-group-item"><a href="{{route('inicio_usuario')}}"><i class="fa fa-users"></i> <span>Control de usuarios</span></a></li>
           @endrole
           @role('Voluntario|Admin')
-            <li class="treeview">
-              <a href="#">
+            <li>
+              <a href="#demo4" class="list-group-item " data-toggle="collapse">
                 <i class="fa fa-globe"></i><span>Módulo de censo</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="{{ route('inicio_jefe') }}"><i class="fa fa-circle-o"></i> Jefe de familia</a></li>
-                <li><a href="{{ route('inicio_familia')}}"><i class="fa fa-circle-o"></i> Familias</a></li>
-                <li><a href="{{ route('inicio_censo')}}"><i class="fa fa-circle-o"></i> Censo</a></li>
-              </ul>
+              <li class="collapse" id="demo4">
+                <a class="list-group-item" href="{{ route('inicio_jefe') }}"><i class="fa fa-circle-o"></i> Jefe de familia</a>
+                <a class="list-group-item" href="{{ route('inicio_familia')}}"><i class="fa fa-circle-o"></i> Familias</a>
+                <a class="list-group-item" href="{{ route('inicio_censo')}}"><i class="fa fa-circle-o"></i> Censo</a>
+              </li>
             </li>
           @endrole
-          @role('Admin|Director|Lider Comunal')
-          <li class="treeview">
+          <!--@role('Admin|Director|Lider Comunal')
+          <li class="list-group-item">
             <a href="#">
               <i class="fa  fa-exclamation-triangle"></i><span>Módulo de emergencia</span>
               <span class="pull-right-container">
@@ -60,9 +57,6 @@
               <li><a href="{{route('Retiro_PaquetesV_create')}}"><i class="fa  fa-plus"></i><span>Crear retiro</span></a></li>
               </ul>
               </li>
-              
-              
-              
             </ul>
           </li>
           <li><a href="{{route('inicio_emergencia')}}"><i class="fa  fa-list"></i><span>  Lista de emergencias</span></a></li>
@@ -72,6 +66,7 @@
           @role('Admin|Autor')
           <li><a href="{{route('inicio_noticia')}}"><i class="fa fa-newspaper-o"></i> <span>Noticias</span></a></li>
           @endrole
+          -->
         </ul>
-        </section>
-      </aside>
+      </div>
+    </div>

@@ -5,14 +5,8 @@
 @section('Script')
 <script type="text/javascript">
   $(document).on('click', '.show-modal', function() {
-            if($(this).data('col')== 1)
-            $('#col').text("Sí hay");
-            else
-            $('#col').text("No hay");
-            if($(this).data('cob')== 1)
-            $('#cob').text("Sí hay");
-            else
-            $('#cob').text("No hay");
+    $('#col').text($(this).data('col'));
+    $('#cob').text($(this).data('cob'));
             if($(this).data('rop')== 1)
             $('#rop').text("Sí hay");
             else
@@ -149,8 +143,6 @@ $(function () {
               <td>{{$item->idInventario}}</td> 
               <td>{{$item->idEmergencias}}  {{$item->Emergencia->NombreEmergencias}}</td>    
               <td>{{$item->Suministros}}</td>
-              
-              
               <td><a href="/Inventario/{{$item->idInventario}}/edit" class="btn-accion-tabla tooltipsC" title="Editar Inventario">
                 <i class="fa fa-fw fa-pencil"></i></a>
                 <a href="/Inventario/{{$item->idInventario}}/editSuministro" class="btn-accion-tabla tooltipsC" title="Aumentar Suministros">

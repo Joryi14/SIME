@@ -60,16 +60,8 @@
                     <td>{{$item->idInventario}}</td> 
                     <td>{{$item->Emergencia->NombreEmergencias}}</td>    
                     <td>{{$item->Suministros}}</td>
-                    @if($item->Colchonetas== 1)
-                    <td>Sí hay</td>
-                    @else
-                    <td>No hay</td>
-                    @endif
-                    @if($item->Cobijas== 1)
-                    <td>Sí hay</td>
-                    @else
-                    <td>No hay</td>
-                    @endif
+                    <td>{{$item->Colchonetas}}</td>
+                    <td>{{$item->Cobijas}}</td>
                     @if($item->Ropa== 1)
                     <td>Sí hay</td>
                     @else

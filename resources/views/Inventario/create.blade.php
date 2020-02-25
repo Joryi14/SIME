@@ -25,51 +25,43 @@
             </select>
         </div>
       </div>
-
-      <div class="box-body">
           <div class="form-group">
             <label for="Suministros" class="col-sm-2 control-label">Suministros: </label>
-            <div class="col-sm-1">
+            <div class="col-sm-4">
                 <input type="number" name="Suministros" class= "form-control" >
             </div>
           </div>
       
           <div class="form-group">
-              <div class="checkbox">
                 <label class="col-sm-2 control-label">
-                    Colchonetas:
-                  <input type="hidden" name="Colchonetas" value="0" />
-                  <input type="checkbox" class="col-sm-6" name="Colchonetas" value="1"> 
-                 
-                </label>
-          </div>
+                    Colchonetas:</label>
+                    <div class="col-sm-4">
+                  <input type="number"  class= "form-control"  name="Colchonetas"> 
+                    </div>
+                
         </div>
 
         <div class="form-group">
-            <div class="checkbox">
               <label class="col-sm-2 control-label">
-                  Cobijas:
-                <input type="hidden" name="Cobijas" value="0" />
-                <input type="checkbox" class="col-sm-6" name="Cobijas" value="1"> 
-               
-              </label>
-        </div>
+                  Cobijas:</label>
+                  <div class="col-sm-4">
+                <input type="number" class= "form-control"  name="Cobijas"> 
+                 </div>
       </div>
 
       <div class="form-group">
-          <div class="checkbox">
+        <div class="checkbox">
             <label class="col-sm-2 control-label">
-                Ropa:
-              <input type="hidden" name="Ropa" value="0" />
-              <input type="checkbox" class="col-sm-6" name="Ropa" value="1"> 
-             
+              Ropa:
+              <input type="hidden" name="Ropa" value="0" /> 
+              <input type="checkbox" name="Ropa" value="1"/> 
             </label>
       </div>
-    </div>
-
+      </div>
     <div class="box-footer">
         @include("Includes.boton-form-create")
     </div>
+  </div>
 </form>
 </div>
 </div>

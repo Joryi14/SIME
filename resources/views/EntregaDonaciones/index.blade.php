@@ -74,12 +74,6 @@ $(function () {
       <div class="box box-primary">
         <div class="box-header" style="padding:2%">
             <h3 class="box-title">Entrega de donaciones</h3>
-            <div class="box-tools pull-right">
-                <a href="{{route('EntregaDonaciones_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear
-                </a>
-            </div>
-         
         </div>
          <div class="box-body table-responsive" >
           <table id="Entregadonaciones_table" class="table table-bordered table-striped">

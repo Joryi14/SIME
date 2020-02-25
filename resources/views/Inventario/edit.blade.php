@@ -35,25 +35,22 @@
           </div>
         </div>
 
-          <div class="form-group">
-              <div class="checkbox">
-                <label class="col-sm-2 control-label">
-                 Colchonetas
-                 <input type="hidden" name="Colchonetas" value="0" />
-                <input type="checkbox" class="col-sm-6" name="Colchonetas" value="1">  
-              </label>
-            </div>
-           </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">
+              Colchonetas:</label>
+              <div class="col-sm-4">
+            <input type="number"  class= "form-control"  name="Colchonetas"> 
+              </div>
+          
+  </div>
 
-           <div class="form-group">
-              <div class="checkbox">
-                <label class="col-sm-2 control-label">
-                    Cobijas
-                 <input type="hidden" name="Cobijas" value="0" />
-                <input type="checkbox" class="col-sm-6" name="Cobijas" value="1">  
-              </label>
-            </div>
+  <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Cobijas:</label>
+            <div class="col-sm-4">
+          <input type="number" class= "form-control"  name="Cobijas"> 
            </div>
+</div>
 
            <div class="form-group">
               <div class="checkbox">

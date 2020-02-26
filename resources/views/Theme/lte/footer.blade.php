@@ -1,6 +1,6 @@
-<footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b></b>
-        </div>
-        <strong></a></strong>
-      </footer>
+<div class="site-footer">
+  <div class="container">
+    <hr class="dashed"/>
+    
+  </div>
+</div>

@@ -8,34 +8,28 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/site.min.css")}}">
-  <link rel="stylesheet" href="{{asset("assets/$theme/bower_components/font-awesome/css/font-awesome.min.css")}}">
   <script type="text/javascript" src="{{asset("assets/$theme/dist/js/site.min.js")}}"></script>
   @yield('styles')
-  <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
-  <!-- Google Font -->
-  
+  <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">  
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">  
 </head>
 <body>
-      @include("theme/$theme/header")
-    <div class="container-fluid">
+  @include("theme/$theme/header")
+  <div class="container-fluid">
+    <div class="row row-offcanvas row-offcanvas-left">
       @include("theme/$theme/aside")
-    <div class="content-wrapper">
-        <section class="content">
-           @yield('Contenido')
-          </section>
+      <div class="col-xs-12 col-sm-9 content">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a></h3>
+          </div>
+          @yield('Contenido')
+        </div>
+      </div>
+    </div>
   </div>
-    @include("theme/$theme/footer")
- </div>
- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
  
+ <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @yield('scriptsPlugins')
 <script src="{{asset("assets/js/scripts.js")}}"></script>
 @yield('Script')

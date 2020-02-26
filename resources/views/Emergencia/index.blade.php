@@ -109,7 +109,7 @@ $(function () {
               <td>{{$item->Latitud}}</td>
               <td>
                 @if($item->Estado == 'Activa')
-                  <a style="color:green;">{{$item->Estado}}</a>
+                <span class="badge badge-success">{{$item->Estado}}</span></a>
                 @else
                 <a style="color:red;">{{$item->Estado}}</a>
                 @endif</td>

@@ -1,6 +1,6 @@
 @extends("theme/$theme/layout")
 @section('styles')
-<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+<link rel="stylesheet" href="{{asset("assets/$theme/bootflat-admin/datatables.min.css")}}">    
 @endsection
 @section('Script')
 <script type="text/javascript">
@@ -31,8 +31,7 @@
     })
 });
 </script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
+<script src="{{asset("assets/$theme/bootflat-admin/datatables.min.js")}}"></script>
 <script>
 $(function () {
     $('#Noticia_table').DataTable({
@@ -47,7 +46,7 @@ $(function () {
         "lengthMenu": "Mostrar _MENU_ Entradas",
         "loadingRecords": "Cargando...",
         "processing": "Procesando...",
-        "search": "Buscar:",
+        "search": "Buscar: ",
         "zeroRecords": "Sin resultados encontrados",
         "paginate": {
             "first": "Primero",
@@ -67,40 +66,31 @@ $(function () {
 </script>
 @endsection
 @section('Contenido')
-<div class="row">
-    <div class="col-xs-12">
         @include('Includes.mensaje-Succes')
-      <div class="box box-primary">
-        <div class="box-header"  style="padding:2%">
-            <div class="box-tools pull-right">
+<div class="panel-body">
+  <div class="content-row">
+            <div class="pull-right">
                 <a href="{{route('noticia_create')}}" class="btn btn-block btn-primary btn-sm">
                     <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
             </div>
-            
-          <h3 class="box-title">Noticia</h3>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body table-responsive" >
-            <table id="Noticia_table" class="table table-bordered table-striped">
-              <thead>
-           
+          <h2 class="content-row-title">Noticia</h2>
+            <table id="Noticia_table" class="table table-bordered">
+            <thead>
             <tr>
                 <th>Id de las noticias</th>
-                <!--<th>Fecha de publicación</th>-->
                 <th>Titulo</th>
                 <th>Id del autor</th>
                 <th>Imagenes</th>
                 <th>Videos</th>
-                <th>Artículo</th>    
+                <th>Artículo</th>
                 <th>PDF</th>
                 <th>Acciones</th>
             </tr>
           </thead>
             @foreach ($noticias as $item)
               <tr>
-              <td>{{$item->IdNoticias}}</td>  
-                
+              <td>{{$item->IdNoticias}}</td>
               <td>{{$item->Titulo}}</td>
               <td>{{$item->IdAutor}}</td>
               <td>
@@ -123,7 +113,7 @@ $(function () {
               @endif
               </td>
               <td><a href="/Noticia/{{$item->IdNoticias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar noticia">
-                <i class="fa fa-fw fa-pencil"></i></a>
+                <i class="fa fa-fw fa-pencil text-success"></i></a>
               <form id="form1" action="{{route('noticia_delete', ['Noticia' => $item->IdNoticias])}}" method="POST">
                 @csrf 
                 <input name="_method" type="hidden" value="DELETE">
@@ -135,8 +125,7 @@ $(function () {
               </tr>
             @endforeach
           </table>
-        </div>
+        
       </div>
-    </div>
-  </div>
+   </div>
 @endsection

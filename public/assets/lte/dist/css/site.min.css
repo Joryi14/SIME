@@ -10520,8 +10520,8 @@ a.list-group-item-danger:hover {
 }
 body {
  position:relative;
- font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif!important;
- font-size:15px;
+ font-family:'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';!important;
+ font-size:14px;
  background-color:#f1f2f6;
  overflow-x:hidden
 }

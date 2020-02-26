@@ -66,7 +66,7 @@ $(function () {
 </script>
 @endsection
 @section('Contenido')
-        @include('Includes.mensaje-Succes')
+@include('Includes.mensaje-Succes')
 <div class="panel-body">
   <div class="content-row">
             <div class="pull-right">
@@ -74,7 +74,7 @@ $(function () {
                     <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
             </div>
-          <h2 class="content-row-title">Noticia</h2>
+            <h2 class="content-row-title">Noticia</h2>
             <table id="Noticia_table" class="table table-bordered">
             <thead>
             <tr>
@@ -124,8 +124,7 @@ $(function () {
               </td>
               </tr>
             @endforeach
-          </table>
-        
+          </table>    
       </div>
    </div>
 @endsection

@@ -1,6 +1,7 @@
 @extends("theme/$theme/layout")
-@section('Script')
+
 <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
+
 <script type="text/javascript">
   document.querySelector('#form2').addEventListener('submit', function(e) {
   var form = this;
@@ -29,21 +30,20 @@
     })
 });
 </script>
-@endsection
+
 @section('Contenido')
 @include('Includes.mensaje-Error')
 @include('Includes.mensaje-Succes')
-<div class="row">
-    <div class="col-xs-12">
-      <div class="box">
-        <div class="box-header" style="padding:auto">
-            <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            </div>
-          <h3 class="box-title">Usuarios</h3>
-          </div>
-        <div class="box-body table-responsive">
-          <table class="table table-hover">
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h4 class="content-row-title">Usuarios</h4>
+  </div>
+<div class="panel-body">
+  <div class="content-row">
+    <div class="table-responsive" >
+        <table class="table table-bordered" style="font-size:12px">
+            <thead>
             <tr>
               <th>Id usuario</th>
               <th>Email</th>
@@ -55,6 +55,7 @@
               <th>Nacionalidad</th>
               <th>Comunidad</th>
             </tr>
+            </thead>
             @foreach ($users as $item)
               <tr>
               <td>{{$item->id}}</td>    
@@ -77,35 +78,29 @@
             </tr>
             @endforeach
           </table>
-        </div>
-      </div>
     </div>
   </div>
-  <div class="row">
-      <div class="col-xs-12">
-        <div class="box box-primary box-solid">
-          <div class="box-header" style="padding:auto">
-            <h3 class="box-title">Roles</h3>
-            <div class="box-tools pull left">
-                <div class="row">
-                <div class="col-sm-4 col-xs-4">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                </div>
-              <div class="col-sm-8 col-xs-8 ">
-                <a href="{{route('crearRol')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear
-                </a>
-              </div>
-                </div>
-              </div>
-          </div>
-          <div class="box-body table-responsive" >
-            <table class="table table-hover" >
+  </div>
+</div>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <h4 class="content-row-title">Roles
+      <a href="{{route('crearRol')}}" class="btn btn-primary pull-right">
+          <i class="fa fa-fw fa-plus-circle"></i> Crear
+      </a>
+    </h4>
+  </div>
+  <div class="panel-body">
+    <div class="content-row">
+            <table class="table table-bordered" style="font-size:12px">
+              <thead>
               <tr>
                 <th>Id rol</th>
                 <th>Nombre</th>
                 <th>Acciones</th>
               </tr>
+              </thead>
+              
               @foreach ($rols as $object)
                 <tr>
                 <td>{{$object->id}}</td>    
@@ -118,122 +113,25 @@
                     </button>
                   </form>
                 </td>
-                </tr>
+                </tr> 
               @endforeach
+              
             </table>
-          </div>
-        </div>
       </div>
     </div>
-    {{-- <div class="row">
-        <div class="col-sm-12">
-          <div class="box box-warning box-solid">
-            <div class="box-header">
-              <h3 class="box-title">Permisos</h3>
-              <div class="box-tools">
-                  <div class="row">
-                  <div class="col-sm-1">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                </div>
-                <div class="col-sm-9">
-                  <a href="{{route('crear_permiso')}}" class="btn btn-block btn-primary btn-sm">
-                      <i class="fa fa-fw fa-plus-circle"></i> Crear nuevo Permiso
-                    </a>
-              </div>
-                  </div>
-                </div>
-            </div>
-             <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <tr>
-                  <th>ID Permiso</th>
-                  <th>Nombre</th>
-                </tr>
-                @foreach ($permissions as $permiso)
-                  <tr>
-                  <td>{{$permiso->id}}</td>    
-                  <td>{{$permiso->name}}</td>
-                  <td>{{$permiso->guard_name}}</td>
-                  <td>
-                  <form id="form3" action="{{route('permissions_delete', ['Permissions' => $permiso->id])}}" method="POST">
-                      @csrf 
-                      <input name="_method" type="hidden" value="DELETE">
-                      <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Permiso" onclick="confirmarEnvio()">
-                          <i class="fa fa-fw fa-trash text-danger"></i>
-                      </button>
-                    </form>
-                  </td>
-                  </tr>
-                @endforeach
-              </table>
-            </div> 
-          </div>
-        </div>
-      </div> --}}
-      {{-- <div class="row">
-        <div class="col-sm-12">
-          <div class="box box-success box-solid">
-            <div class="box-header with-borders">
-              <h3 class="box-title">Permisos Rol</h3>
-              <div class="box-tools">
-                  <div class="row">
-                  <div class="col-sm-1">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                </div>
-                <div class="col-sm-9">
-                  <a href="{{route('crear_permisoRol')}}" class="btn btn-block btn-primary btn-sm">
-                      <i class="fa fa-fw fa-plus-circle"></i> Crear nuevo PermisoRol
-                    </a>
-              </div>
-                  </div>
-                </div>
-            </div>
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <tr>
-                  <th>ID Permiso</th>
-                  <th>ID Rol</th>
-                </tr>
-                @foreach ($permisoRol as $permisoRol)
-                  <tr>
-                  <td>{{$permisoRol->permission_id}}</td>    
-                  <td>{{$permisoRol->role_id}}</td>
-                  <td>
-                  <form id="form4" action="{{route('permisoRol_delete', ['PermisoRol' => $permisoRol->permission_id])}}" method="POST">
-                      @csrf 
-                      <input name="_method" type="hidden" value="DELETE">
-                      <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar PermisoRol" onclick="confirmarEnvio()">
-                          <i class="fa fa-fw fa-trash text-danger"></i>
-                      </button>
-                  </form>
-                  </td>
-                  </tr>
-                @endforeach
-              </table>
-            </div>
-          </div>
-        </div>
-      </div> --}}
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="box box-danger box-solid">
-            <div class="box-header" style="padding:auto">
-              <h3 class="box-title">Usuario Rol</h3>
-              <div class="box-tools">
-                  <div class="row">
-                  <div class="col-xs-4">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                </div>
-                <div class="col-xs-8">
-                  <a href="{{route('crear_UserRol')}}" class="btn btn-block btn-primary btn-sm">
-                      <i class="fa fa-fw fa-plus-circle"></i> Crear
-                    </a>
-              </div>
-                  </div>
-                </div>
-            </div>
-            <div class="box-body table-responsive">
-              <table class="table table-hover">
+</div>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h4 class="content-row-title">Usuario Rol
+      <a href="{{route('crear_UserRol')}}" class="btn btn-primary pull-right">
+        <i class="fa fa-fw fa-plus-circle"></i> Crear
+      </a>
+    </h4>
+  </div>
+      <div class="panel-body">
+         <div class="content-row">
+              <table class="table table-bordered" style="font-size:12px">
+                <thead>
                 <tr>
                   <th>Id usuario</th>
                   <th>Nombre</th>
@@ -241,6 +139,8 @@
                   <th>Rol</th>
                   <th>Acciones</th>
                 </tr>
+                </thead>
+               
                 @foreach ($UserRol as $UserRol)
                   <tr>
                   <td>{{$UserRol->model_id}}</td>
@@ -258,9 +158,9 @@
                   </td>
                   </tr>
                 @endforeach
+               
               </table>
-            </div>
-          </div>
         </div>
       </div>
+</div>
 @endsection

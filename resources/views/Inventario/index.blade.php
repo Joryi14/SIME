@@ -133,7 +133,7 @@ $(function () {
               <thead>
             <tr>
               <th>Id del inventario</th>
-              <th>Id de las emergencias</th>
+              <th>Nombre de la emergencia</th>
               <th>Suministros</th>
               <th>Acciones</th>
             </tr>
@@ -141,7 +141,7 @@ $(function () {
             @foreach ($inventarios as $item)
               <tr>
               <td>{{$item->idInventario}}</td> 
-              <td>{{$item->idEmergencias}}  {{$item->Emergencia->NombreEmergencias}}</td>    
+              <td>{{$item->Emergencia->NombreEmergencias}}</td>    
               <td>{{$item->Suministros}}</td>
               <td><a href="/Inventario/{{$item->idInventario}}/edit" class="btn-accion-tabla tooltipsC" title="Editar Inventario">
                 <i class="fa fa-fw fa-pencil"></i></a>

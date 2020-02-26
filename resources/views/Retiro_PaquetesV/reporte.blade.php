@@ -52,17 +52,17 @@
          
     
             <tr >
-                <th>Id de RetiroPaquetes</th>
-                <th>Id de AdministradorI</th>
+                <th>Número de RetiroPaquetes</th>
+                <th>Número de administrador de inventario</th>
                 <th>Nombre del chofer</th>
                 <th>Primer apellido del chofer</th>
                 <th>Segundo apellido del chofer</th>
-                <th>Id de Voluntario</th>
+                <th>Numero de Voluntario</th>
                 <th>Placa de Vehiculo</th>
                 <th>Direccion A Entregar</th>
                 <th>Suministros Gobierno </th>
                 <th>Suministros Comision</th>
-                <th>Id de Inventario</th>
+                <th>Número de Inventario</th>
              
             </tr>
       

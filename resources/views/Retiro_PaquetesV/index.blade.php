@@ -150,7 +150,7 @@ $(function () {
               <thead>
             <tr>
               <th>Id del retiro paquetes</th>
-              <th>Id del administradorI</th>
+              <th>Id del administrador de inventario</th>
               <th>Id del voluntario</th>
               <th>Suministros del gobierno </th>
               <th>Suministros de la comisión</th>

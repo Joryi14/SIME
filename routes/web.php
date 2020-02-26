@@ -66,7 +66,9 @@ Route::group(['prefix' => '/'], function () {
     Route::post('EntregaDonaciones/getJefe','EntregaDonacionesController@getJefe')->name('Get_JefeE');
     Route::post('EntregaDonaciones/getPaquete','EntregaDonacionesController@getPaquete')->name('Get_Paquete');
     Route::post('EntregaDonaciones/getEmergencia','EntregaDonacionesController@getEmergeE')->name('Get_EmergeE');
-
+    Route::get('EntregaDonaciones/pdf', 'EntregaDonacionesController@generar')->name('Entregadonaciones_reporte');
+    Route::post('EntregaDonaciones/ReporteFecha', 'EntregaDonacionesController@ReporteFecha')->name('Entregadonaciones_reporteF');
+    
 });
 Route::group(['prefix' => '/'], function () {
     Route::get('EntregaDonacionesAlbergue', 'EntregaDonacionesAlbergueController@index')->name('inicio_EntregaDonacionesA');
@@ -78,6 +80,8 @@ Route::group(['prefix' => '/'], function () {
     Route::post('EntregaDonacionesAlbergue/getIdJefeFa','EntregaDonacionesAlbergueController@getIdJefeFa')->name('Get_IdJefeFa');
     Route::post('EntregaDonacionesAlbergue/getAlbergue','EntregaDonacionesAlbergueController@getAlbergue')->name('Get_AlbergueE');
     Route::post('EntregaDonacionesAlbergue/getEmergencia','EntregaDonacionesAlbergueController@getEmergencia')->name('Get_IdEme');
+    Route::get('EntregaDonacionesAlbergue/pdf', 'EntregaDonacionesAlbergueController@generar')->name('EntregadonacionesA_reporte');
+    Route::post('EntregaDonacionesAlbergue/ReporteFecha', 'EntregaDonacionesAlbergueController@ReporteFecha')->name('EntregadonacionesA_reporteF');
     
 });
 
@@ -121,6 +125,8 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], functi
     Route::get('Emergencia/{Emergencia}/edit', 'EmergenciaController@edit')->name('emergencia_edit');
     Route::put('Emergencia/{Emergencia}','EmergenciaController@update');
     Route::delete('Emergencia/{Emergencia}','EmergenciaController@delete')->name('emergencia_delete');
+    Route::get('Emergencia/pdf', 'EmergenciaController@generar')->name('emergencia_reporte');
+    Route::post('Emergencia/ReporteFecha', 'EmergenciaController@ReporteFecha')->name('emergencia_reporteF');
     
 });
 
@@ -134,6 +140,8 @@ Route::group(['prefix' => '/','middleware'=> ['role:Admin|Director|Lider Comunal
     Route::post('PersonasAlbergue/getIdJF','PersonasAlbergueController@getIdJF')->name('Get_IdJF');
     Route::post('PersonasAlbergue/getAlbergue','PersonasAlbergueController@getAlbergue')->name('Get_Albergue');
     Route::post('PersonasAlbergue/getEmergencia','PersonasAlbergueController@getEmergencia')->name('Get_EmergenciaP');
+    Route::get('PersonasAlbergue/pdf', 'PersonasAlbergueController@generar')->name('personaAlbergue_reporte');
+    Route::post('PersonasAlbergue/ReporteFecha', 'PersonasAlbergueController@ReporteFecha')->name('personaAlbergue_reporteF');
 });
     Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('Albergue', 'AlbergueController@index')->name('inicio_albergue');

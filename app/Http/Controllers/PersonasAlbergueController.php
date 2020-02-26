@@ -9,6 +9,8 @@ use App\Models\JefeDeFamilia;
 use App\Models\PersonasAlbergue;
 use App\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class PersonasAlbergueController extends Controller
 {
@@ -176,4 +178,28 @@ class PersonasAlbergueController extends Controller
       $persona->delete();
       return redirect('PersonasAlbergue')->with('Se ha eliminado correctamente');
     }
-}
+
+    public function generar()
+    {
+        $persona = PersonasAlbergue::orderBy('idregistroA')->get();
+        $today = Carbon::now()->format('d/m/Y h:i:s A'); 
+        $view = view ('PersonasAlbergue.reporte', compact('persona', 'today'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('persona'.'.pdf');
+
+    }
+
+    public function ReporteFecha(request $request){
+        
+      $persona = PersonasAlbergue::orderby('idregistroA')->whereBetween('created_at', array($request->Fecha1,$request->Fecha2)) 
+      ->get();
+      $today = Carbon::now()->format('d/m/Y h:i:s A');
+      $view = view ('PersonasAlbergue.reporte', compact('persona', 'today'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('persona'.'.pdf');
+  }
+
+
+   }

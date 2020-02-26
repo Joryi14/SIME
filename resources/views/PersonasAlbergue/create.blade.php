@@ -25,12 +25,12 @@
                              </select>
                 </div>
                 <div class="form-group">
-                <label for="idAlbergue" class="col-sm-2 control-label">Id del albergue: </label>
+                <label for="idAlbergue" class="col-sm-2 control-label">Nombre del albergue: </label>
                            <select id='SelectA' name="idAlbergue" style='width: 50%;'>
                            </select>
               </div>
               <div class="form-group">
-                <label for="idJefe"  class="col-sm-2 control-label">Id del jefe de familia:</label>
+                <label for="idJefe"  class="col-sm-2 control-label">Cedula del jefe de familia:</label>
                     <select id='SelectJ' name="idJefe" style='width: 50%;'>
                         </select>
                     {{-- <input type="text" name="idJefe" class= "form-control" > --}}

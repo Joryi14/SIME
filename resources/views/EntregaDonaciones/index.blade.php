@@ -68,9 +68,48 @@ $(function () {
 @endsection
 @section('Contenido')
 <div class="row">
+  <div class="col-xs-10" style="margin-left:8%">
+  <div class="box collapsed-box">
+  <div class="box-header" style="padding:2%">
+      <div class="box-tools pull-right" >
+          <button type="button" class="btn btn-box-tool"  data-widget="collapse"><i class="fa fa-plus"></i></button>
+      </div>
+    <h3  class="box-title">Reporte por fechas</h3>
+  </div>
+  <div class="box-body">
+  <form class= "form-horizontal" method="POST" action="EntregaDonaciones/ReporteFecha" target="_blank">
+        @csrf 
+   <div class="col-md-6">
+  <div class="form-group">
+          <label for="Fecha" class="col-sm-4 control-label">Desde: </label>
+          <div class="col-sm-8">
+              <input required type="date" name="Fecha1" class= "form-control" > 
+          </div>
+  </div>
+  </div> 
+  <div class="col-md-6">
+  <div class="form-group">
+      <label for="Fecha" class="col-sm-4 control-label">Hasta: </label>
+      <div class="col-sm-8">
+          <input required type="date" name="Fecha2" class= "form-control" > 
+      </div>
+  </div>
+  </div>
+  <div class="box-footer">
+      <button type="submit" class="btn btn-primary ">Enviar</button>
+  </div>
+  </form>
+  </div>
+  </div>
+  </div>
+  </div>
+<div class="row">
   <div class="col-xs-12">
     @include('Includes.mensaje-Error')
     @include('Includes.mensaje-Succes')
+    <a href="{{route('Entregadonaciones_reporte')}}" class="btn btn-block btn-primary btn-sm" target="_blank">
+      <i class="fa fa-fw fa-plus-circle"></i> Crear reporte de entrega de donciones 
+  </a>
       <div class="box box-primary">
         <div class="box-header" style="padding:2%">
             <h3 class="box-title">Entrega de donaciones</h3>

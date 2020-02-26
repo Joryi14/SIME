@@ -10,7 +10,7 @@ use App\Models\EntregaDonacionesAlbergue;
 use App\Models\JefeDeFamilia;
 use App\Models\Retiro_PaquetesV;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 
 class EntregaDonacionesController extends Controller
 {
@@ -202,4 +202,28 @@ else
         $entregadonaciones->delete();
         return redirect('EntregaDonaciones/Filtrado')->with('exito','Se ha eliminado correctamente');
     }
+
+
+
+    public function ReporteFecha(request $request){
+        
+        $EntregaDonaciones = EntregaDonaciones::orderby('IdEntrega')->whereBetween('created_at', array($request->Fecha1,$request->Fecha2)) 
+        ->get();
+        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        $view = view ('EntregaDonaciones.reporte', compact('EntregaDonaciones', 'today'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('EntregaDonaciones'.'.pdf');
+    }
+    public function generar()
+    {
+        $EntregaDonaciones = EntregaDonaciones::orderBy('IdEntrega')->get();
+        $today = Carbon::now()->format('d/m/Y h:i:s A'); 
+        $view = view ('EntregaDonaciones.reporte', compact('EntregaDonaciones', 'today'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('EntregaDonaciones'.'.pdf');
+
+    }
+
 }

@@ -6,6 +6,7 @@ use App\Http\Requests\ValidacionesEmergencia;
 use Illuminate\Support\Facades\DB;
 use App\Models\Emergencia;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class EmergenciaController extends Controller
 {
@@ -94,5 +95,26 @@ class EmergenciaController extends Controller
         $emergencia = Emergencia::find($id);
         $emergencia->delete();
         return redirect('Emergencia')->with('Se ha eliminado correctamente');
+    }
+
+    public function ReporteFecha(request $request){
+        
+        $Emergencia = Emergencia::orderby('idEmergencias')->whereBetween('created_at', array($request->Fecha1,$request->Fecha2)) 
+        ->get();
+        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        $view = view ('Emergencia.reporte', compact('Emergencia', 'today'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('Emergencia'.'.pdf');
+    }
+    public function generar()
+    {
+        $Emergencia = Emergencia::orderBy('idEmergencias')->get();
+        $today = Carbon::now()->format('d/m/Y h:i:s A'); 
+        $view = view ('Emergencia.reporte', compact('Emergencia', 'today'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('Emergencia'.'.pdf');
+
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\JefeDeFamilia;
 use App\Models\EntregaDonacionesAlbergue;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class EntregaDonacionesAlbergueController extends Controller
 {
@@ -170,4 +171,28 @@ class EntregaDonacionesAlbergueController extends Controller
         $EntregaDonacionesAlbergue->delete();
         return redirect('EntregaDonacionesAlbergue')->with('Se ha eliminado correctamente');
     }
-}
+
+    public function ReporteFecha(request $request){
+        
+      $EntregaDonacionesAlbergue = EntregaDonacionesAlbergue::orderby('IdEntregaA')->whereBetween('created_at', array($request->Fecha1,$request->Fecha2)) 
+      ->get();
+      $today = Carbon::now()->format('d/m/Y h:i:s A');
+      $view = view ('EntregaDonacionesAlbergue.reporte', compact('EntregaDonacionesAlbergue', 'today'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('EntregaDonacionesAlbergue'.'.pdf');
+  }
+  public function generar()
+  {
+      $EntregaDonacionesAlbergue = EntregaDonacionesAlbergue::orderBy('IdEntregaA')->get();
+      $today = Carbon::now()->format('d/m/Y h:i:s A'); 
+      $view = view ('EntregaDonacionesAlbergue.reporte', compact('EntregaDonacionesAlbergue', 'today'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('EntregaDonacionesAlbergue'.'.pdf');
+
+  }
+
+
+
+   }

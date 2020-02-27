@@ -43,7 +43,7 @@ class UserRolController extends Controller
         $user = User::find($request->model_id);
         $role = Role::findById($request->role_id);
         $user->assignRole($role->name);
-        return redirect('user');
+        return redirect('userRol');
     }
 
     /**
@@ -136,10 +136,10 @@ class UserRolController extends Controller
         $rolA = roles::where('name','Admin')->get();
         $Del = UserRol::where('role_id',$id)->get();
         if($Del->first()->role_id == $rolA->first()->id){
-            return redirect('user')->with('mensaje','No se puede eliminar el Administrador');
+            return redirect('userRol')->with('mensaje','No se puede eliminar el Administrador');
         }
         else{
         UserRol::where('role_id', $id)->delete();
-        return redirect('user')->with('exito','Se ha eliminado correctamente');
+        return redirect('userRol')->with('exito','Se ha eliminado correctamente');
     }}
 }

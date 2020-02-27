@@ -37,7 +37,7 @@ class roles extends Controller
     public function store(Request $request)
     {
         $role = Role::create(['name' => $request->name]);
-        return redirect('user');
+        return redirect('Rol');
     }
 
     /**
@@ -84,6 +84,6 @@ class roles extends Controller
     {
         $rol = AppRoles::find($id);
         $rol->delete();
-        return redirect('user')->with('Se ha eliminado correctamente');
+        return redirect('Rol')->with('Se ha eliminado correctamente');
     }
 }

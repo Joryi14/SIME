@@ -22,12 +22,17 @@ class user extends Controller
     public function index()
     {
         $users = AppUser::OrderBy('id')->get();
+        return view('Login.users',compact('users'));
+    }
+    public function indexR()
+    {
         $rols = roles::OrderBy('id')->get();
-        $permissions = permissions::OrderBy('id')->get();
-        $permisoRol = permisoRol::get();
+        return view('Login.usersRol',compact('rols'));
+    }
+    public function indexUR()
+    {
         $UserRol = UserRol::get();
-
-        return view('Login.users',compact('users','rols','permissions','permisoRol','UserRol'));
+        return view('Login.usersUR',compact('UserRol'));
     }
     /**
      * Display the specified resource.

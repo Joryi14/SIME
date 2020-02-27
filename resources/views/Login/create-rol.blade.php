@@ -1,21 +1,15 @@
 @extends("theme/$theme/layout")
 @section('Contenido')
-<div class="row">
-        <div class="col-xs-10">
-            <div class="box box-info">
-              <div class="box-header with-border" style="padding:2%">
-                  <div class="box-tools pull-right">
-                      <div class="col-sm-12">
-                      <a href="{{route('inicio_usuario')}}" class="btn btn-block btn-info ">
-                          <i class="fa fa-fw fa-reply-all"></i> Regresar
-                      </a>
-                      </div>
-                    </div>
-                <h3 class="box-title">Crear rol</h3>
-              </div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+      <h4 class="content-row-title">Crear rol
+        <a href="{{route('inicio_Rol')}}" class="btn btn-primary pull-right">
+            <i class="fa fa-fw fa-reply-all"></i>Regresar
+        </a></h4>    
+        </div>
               <form class="form-horizontal" method="POST" action="/roles/store">
                 @csrf
-                <div class="box-body">
+                <div class="panel-body">
                   <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">Nombre:</label>
                     <div class="col-sm-9">
@@ -23,11 +17,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="box-footer">
+                <div class="panel-footer">
                     @include("Includes.boton-form-create")
                 </div>
               </form>
             </div>
-          </div>
-        </div>
         @endsection

@@ -1,48 +1,49 @@
 @extends("theme/$theme/layout")
-
-<script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
-
-<script type="text/javascript">
-  document.querySelector('#form2').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
-  swal({
-      title: "Esta seguro de eliminar?",
-      text: "Una vez eliminado no se puede recuperar!",
-      icon: "warning",
-      buttons: [
-        'Cancelar!',
-        'Aceptar!'
-      ],
-      dangerMode: true,
-    }).then(function(isConfirm) {
-      if (isConfirm) {
-        swal({
-          title: 'Exito!',
-          text: 'Se ha Eliminado el registro!',
-          icon: 'success'
-        }).then(function() {
-          form.submit(); // <--- submit form programmatically
-        });
-      } else {
-        swal("Cancelado","" ,"error");
-      }
-    })
-});
-</script>
-
 @section('Contenido')
+<link rel="stylesheet" href="{{asset("assets/$theme/bootflat-admin/datatables.min.css")}}">    
+<script src="{{asset("assets/$theme/bootflat-admin/datatables.min.js")}}"></script>
 @include('Includes.mensaje-Error')
 @include('Includes.mensaje-Succes')
-
+<script>
+  $(function () {
+      $('#users_table').DataTable({
+        language: {
+          "decimal": "",
+          "emptyTable": "No hay información",
+          "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+          "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+          "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+          "infoPostFix": "",
+          "thousands": ",",
+          "lengthMenu": "Mostrar _MENU_ Entradas",
+          "loadingRecords": "Cargando...",
+          "processing": "Procesando...",
+          "search": "Buscar: ",
+          "zeroRecords": "Sin resultados encontrados",
+          "paginate": {
+              "first": "Primero",
+              "last": "Ultimo",
+              "next": "Siguiente",
+              "previous": "Anterior"
+          }
+        },
+        'paging'      : true,
+        'lengthChange': true,
+        'searching'   : true,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : false
+      })
+    })
+  </script>
 <div class="panel panel-info">
   <div class="panel-heading">
     <h4 class="content-row-title">Usuarios</h4>
   </div>
-<div class="panel-body">
+  <div class="panel-body">
   <div class="content-row">
-    <div class="table-responsive" >
-        <table class="table table-bordered" style="font-size:12px">
+    <div class="table-responsive">
+        <table id="users_table"class="table table-bordered" style="font-size:12px">
             <thead>
             <tr>
               <th>Id usuario</th>
@@ -54,6 +55,7 @@
               <th>Patologias</th>
               <th>Nacionalidad</th>
               <th>Comunidad</th>
+              <th>Acciones</th>
             </tr>
             </thead>
             @foreach ($users as $item)
@@ -70,7 +72,7 @@
               <td>
               <form id="form1" action="{{route('user_delete', ['user' => $item->id])}}" method="POST">
                   @csrf @method('delete')
-                  <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar usuario" onclick="confirmarEnvio()">
+                  <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar usuario">
                       <i class="fa fa-fw fa-trash text-danger"></i>
                   </button>
                 </form>  
@@ -81,86 +83,5 @@
     </div>
   </div>
   </div>
-</div>
-<div class="panel panel-danger">
-  <div class="panel-heading">
-    <h4 class="content-row-title">Roles
-      <a href="{{route('crearRol')}}" class="btn btn-primary pull-right">
-          <i class="fa fa-fw fa-plus-circle"></i> Crear
-      </a>
-    </h4>
-  </div>
-  <div class="panel-body">
-    <div class="content-row">
-            <table class="table table-bordered" style="font-size:12px">
-              <thead>
-              <tr>
-                <th>Id rol</th>
-                <th>Nombre</th>
-                <th>Acciones</th>
-              </tr>
-              </thead>
-              
-              @foreach ($rols as $object)
-                <tr>
-                <td>{{$object->id}}</td>    
-                <td>{{$object->name}}</td>
-                <td>
-                <form id="form2" action="{{route('rol_delete', ['roles' => $object->id])}}" method="POST">
-                    @csrf @method('delete')
-                    <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar rol">
-                        <i class="fa fa-fw fa-trash text-danger"></i>
-                    </button>
-                  </form>
-                </td>
-                </tr> 
-              @endforeach
-              
-            </table>
-      </div>
-    </div>
-</div>
-<div class="panel panel-warning">
-  <div class="panel-heading">
-    <h4 class="content-row-title">Usuario Rol
-      <a href="{{route('crear_UserRol')}}" class="btn btn-primary pull-right">
-        <i class="fa fa-fw fa-plus-circle"></i> Crear
-      </a>
-    </h4>
-  </div>
-      <div class="panel-body">
-         <div class="content-row">
-              <table class="table table-bordered" style="font-size:12px">
-                <thead>
-                <tr>
-                  <th>Id usuario</th>
-                  <th>Nombre</th>
-                  <th>Id rol</th>
-                  <th>Rol</th>
-                  <th>Acciones</th>
-                </tr>
-                </thead>
-               
-                @foreach ($UserRol as $UserRol)
-                  <tr>
-                  <td>{{$UserRol->model_id}}</td>
-                  <td>{{$UserRol->model->name}} {{$UserRol->model->Apellido1}}</td>   
-                  <td>{{$UserRol->role_id}}</td>
-                  <td>{{$UserRol->roles->name}}</td>
-                  <td>
-                  <form id="form5" action="{{route('UserRol_delete', ['UserRol' => $UserRol->role_id])}}" method="POST">
-                      @csrf 
-                      <input name="_method" type="hidden" value="DELETE">
-                      <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar permiso rol" onclick="confirmarEnvio()">
-                          <i class="fa fa-fw fa-trash text-danger"></i>
-                      </button>
-                    </form>
-                  </td>
-                  </tr>
-                @endforeach
-               
-              </table>
-        </div>
-      </div>
 </div>
 @endsection

@@ -150,6 +150,8 @@ Route::group(['prefix' => '/','middleware'=> ['role:Admin|Director|Lider Comunal
 });
 Route::group(['prefix' => '/','middleware' => ['role:Admin']], function () {
     Route::get('user', 'user@index')->name('inicio_usuario');
+    Route::get('Rol', 'user@indexR')->name('inicio_Rol');
+    Route::get('userRol', 'user@indexUR')->name('inicio_UR');
     Route::get('roles/create', 'roles@create')->name('crearRol');
     Route::post('roles/store','roles@store');
     Route::delete('user/{user}','user@destroy')->name('user_delete');

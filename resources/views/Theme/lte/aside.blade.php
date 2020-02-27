@@ -1,7 +1,18 @@
   <div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
         <ul class="list-group panel"> 
           @role('Admin')
-          <li class="list-group-item"><a href="{{route('inicio_usuario')}}"><i class="fa fa-users"></i> <span>Control de usuarios</span></a></li>
+          <li>
+            <a href="#demo7" class="list-group-item " data-toggle="collapse">
+              <i class="fa fa-users"></i> <span>Control de usuarios</span><span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <li class="collapse" id="demo7">
+              <a class="list-group-item" href="{{route('inicio_usuario')}}"><i class="fa fa-circle-o"></i>Usuarios</a>
+              <a class="list-group-item" href="{{ route('inicio_Rol')}}"><i class="fa fa-circle-o"></i>Roles</a>
+              <a class="list-group-item" href="{{ route('inicio_UR')}}"><i class="fa fa-circle-o"></i>Asignar roles a usuarios</a>
+            </li>
+          </li>
           @endrole
           @role('Voluntario|Admin')
             <li>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\roles as AppRoles;
+use App\Models\UserRol;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
@@ -83,7 +84,11 @@ class roles extends Controller
     public function destroy($id)
     {
         $rol = AppRoles::find($id);
-        $rol->delete();
-        return redirect('Rol')->with('Se ha eliminado correctamente');
+        $UR = UserRol::where('role_id',$id)->get();
+        if($UR->first()->role_id == $id){
+        return redirect('Rol')->with('mensaje','Error al eliminar rol en uso');
     }
+        $rol->delete();
+        return redirect('Rol')->with('exito','Se ha eliminado correctamente');
+}
 }

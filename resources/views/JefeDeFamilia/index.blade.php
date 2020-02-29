@@ -31,9 +31,7 @@
            $('#pat').text($(this).data('pat'));
          });
  </script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
-<script>
+ <script>
 $(function () {
     $('#Jefe_table').DataTable({
       language: {

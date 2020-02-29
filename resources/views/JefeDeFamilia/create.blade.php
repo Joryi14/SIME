@@ -54,9 +54,8 @@
                
                   <div class="form-group">
                       <label for="Edad" class="col-sm-2 control-label">Edad: </label>
-          
                       <div class="col-sm-8">
-                          <input type="text" name="Edad" class= "form-control" >
+                          <input type="number" name="Edad" class= "form-control">
                       </div>
                     </div>
                     <div class="form-group">
@@ -73,7 +72,7 @@
                       <div class="form-group">
                           <label for="Telefono" class="col-sm-2 control-label">Teléfono: </label>
                           <div class="col-sm-8">
-                              <input type="text" name="Telefono" class= "form-control" > 
+                              <input type="number" name="Telefono" class="form-control" > 
                           </div>
                         </div>
                       <div class="row">
@@ -115,16 +114,18 @@
                                 </div>
                         </div>
                       </div>
+                      <div class="row">
                           <div class="form-group">
+                            <label class="col-sm-3 control-label">
+                              Persona Migrante:
+                            </label>
+                          <div class="col-sm-6">
                                 <div class="checkbox">
-                                    <label class="col-sm-2 control-label">
-                                        Persona Migrante: 
                                     <input type="hidden" name="PM" value="No" />
-                                    <input type="checkbox" class="col-sm-6" name="PM" value="Si"> 
-                                    
-                                  </label>
+                                    <input type="checkbox" name="PM" value="Si"> 
                                 </div>
-                              </div>
+                          </div>
+                      </div>
                               <div class="form-group">
                                 <label class="col-sm-2 control-label">Patologia</label>
                                 <div class="col-sm-8">

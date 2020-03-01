@@ -84,11 +84,13 @@ class roles extends Controller
     public function destroy($id)
     {
         $rol = AppRoles::find($id);
-        $UR = UserRol::where('role_id',$id)->get();
-        if($UR->first()->role_id == $id){
+        //dd($UR);
+        if(UserRol::where('role_id',$id)->first()){
         return redirect('Rol')->with('mensaje','Error al eliminar rol en uso');
     }
-        $rol->delete();
-        return redirect('Rol')->with('exito','Se ha eliminado correctamente');
+    else{
+    $rol->delete();
+    return redirect('Rol')->with('exito','Se ha eliminado correctamente');
+    }
 }
 }

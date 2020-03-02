@@ -45,12 +45,11 @@ class JefeDeFamiliaController extends Controller
     public function store(ValidacionJefeDeFamilia $request)
     {
         $patologia = implode(', ',$request->Patologia);
-        $Jefe = DB::select("call Insert_JefeDeFamilia('$request->TotalPersonas','$request->Nombre','$request->Apellido1','$request->Apellido2',
-       '$request->Cedula','$request->Edad','$request->sexo','$request->Telefono','$request->PcD','$request->MG','$request->PI','$request->PM','$patologia')");
-        
-      
-       return redirect('JefeDeFamilia')->with('exito','Se ha agregado correctamente');
-    
+        $Jefe = new JefeDeFamilia();
+        $Jefe->fill($request->all());
+        $Jefe->Patologia = $patologia;
+        $Jefe->save();
+       return redirect('JefeDeFamilia')->with('exito','Se ha agregado correctamente');    
     }
 
     /**
@@ -87,9 +86,11 @@ class JefeDeFamiliaController extends Controller
     public function update(Request $request, $id)
     { 
         $patologia = implode(', ',$request->Patologia);
-        $JefeF = DB::update("call Update_JefeDeFamilia('$id','$request->TotalPersonas','$request->Nombre','$request->Apellido1','$request->Apellido2','$request->Cedula','$request->Edad','$request->sexo','$request->Telefono','$request->PcD','$request->MG','$request->PI','$request->PM','$patologia')");
-       
-        return redirect('JefeDeFamilia')->with('mensaje','Se ha actualizado correctamente');
+        $Jefe = JefeDeFamilia::find($id);
+        $Jefe->fill($request->all());
+        $Jefe->Patologia = $patologia;
+        $Jefe->save();
+        return redirect('JefeDeFamilia')->with('exito','Se ha actualizado correctamente');
     }
     public function agregarfamiliar($id)
     {
@@ -106,7 +107,7 @@ class JefeDeFamiliaController extends Controller
        
          $Patologia = implode(', ',$request->Patologia);
          $Familia = DB::select("call Insert_Familia('$id','$request->Nombre','$request->Apellido1','$request->Apellido2','$request->Cedula','$request->Parentesco','$request->Edad','$request->sexo','$request->PcD','$request->MG','$request->PI','$request->PM','$Patologia')");
-         return redirect('JefeDeFamilia')->with('mensaje','Se ha agregado correctamente');    
+         return redirect('JefeDeFamilia')->with('exito','Se ha agregado correctamente');    
     
         }
     /**

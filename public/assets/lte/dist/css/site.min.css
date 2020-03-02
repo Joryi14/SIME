@@ -863,7 +863,7 @@ th {
 :before {
  -webkit-box-sizing:border-box;
  -moz-box-sizing:border-box;
- box-sizing:border-box
+ box-sizing:border-box;
 }
 html {
  font-size:10px;
@@ -3948,7 +3948,7 @@ textarea.input-group-sm>.input-group-btn>.btn {
  height:50px;
  padding:15px;
  font-size:30px;
- line-height:20px
+ line-height:35px;
 }
 .navbar-brand:focus,
 .navbar-brand:hover {

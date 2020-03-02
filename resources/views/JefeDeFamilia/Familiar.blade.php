@@ -1,16 +1,12 @@
 @extends("theme/$theme/layout")
 @section('styles')
-<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2.min.css")}}">
-<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2-bootstrap.css")}}">
+<link rel="stylesheet" href="{{asset("assets/$theme/Select2/css/select2.min.css")}}">
 @endsection
 @section('Contenido')
-<div class="row">
-    <div class="col-md-10">
-      @include('Includes.Error-form')
-      @include('Includes.mensaje-Succes')
-      <div class="box box-info">
-        <div class="box-header with-border"  style="padding:2%">
-          <h3 class="box-title">Crear familiar</h3>
+@include('Includes.Error-form')
+<div class="panel panel-warning">
+  <div class="panel-heading">
+          <h3 class="box-title">Crear familiar
           <div class="box-tools pull-right">
               <div class="col-sm-12">
               <a href="{{route('inicio_jefe')}}" class="btn btn-block btn-info ">
@@ -22,7 +18,7 @@
         <form class="form-horizontal" method="POST" action="/Familiar/{{$JefeF->IdJefe}}">
           @method('PUT')
           @csrf
-          <div class="box-body">
+          <div class="panel-body">
             <div class="form-group">
               <label for="IdJefef" class="col-sm-2 control-label">Id del jefe de familia: </label>
               <div class="col-sm-10">
@@ -32,25 +28,25 @@
             <div class="form-group">
               <label for="Nombre" class="col-sm-2 control-label">Nombre: </label>
               <div class="col-sm-10">
-                  <input type="text" name="Nombre" class= "form-control">
+                  <input type="text" value="{{old('Nombre', $data->Nombre ?? '')}}"  name="Nombre" class= "form-control">
               </div>
             </div>
             <div class="form-group">
                 <label for="Apellido1" class="col-sm-2 control-label">Primer apellido: </label>
                 <div class="col-sm-10">
-                    <input type="text" name="Apellido1" class= "form-control">
+                    <input type="text" name="Apellido1" value="{{old('Apellido1', $data->Apellido1 ?? '')}}" class= "form-control">
                 </div>
               </div>
               <div class="form-group">
                   <label for="Apellido2" class="col-sm-2 control-label">Segundo apellido: </label>
                   <div class="col-sm-10">
-                      <input type="text" name="Apellido2" class= "form-control">
+                      <input type="text" name="Apellido2" value="{{old('Apellido2', $data->Apellido2 ?? '')}}" class= "form-control">
                   </div>
                 </div>
                 <div class="form-group">
                     <label for="Cedula" class="col-sm-2 control-label">Cédula: </label>
                     <div class="col-sm-10">
-                        <input type="text" name="Cedula" class= "form-control">
+                        <input type="text" name="Cedula" value="{{old('Cedula', $data->Cedula ?? '')}}" class= "form-control">
                     </div>
                   </div>
               
@@ -70,7 +66,7 @@
                     <div class="form-group">
                         <label for="Edad" class="col-sm-2 control-label">Edad: </label>
                         <div class="col-sm-10">
-                            <input type="text" name="Edad" class= "form-control">
+                            <input value="{{old('Edad', $data->Edad ?? '')}}" type="number" name="Edad" class= "form-control">
                         </div>
                       </div>
                       <div class="form-group">
@@ -82,48 +78,62 @@
                             <input type="radio" name="sexo" class="minimal-red" checked value="M"> Masculino
                           </label>
                         </div>
-            <div class="form-group">
-                <div class="checkbox">
-                  <label class="col-sm-2 control-label">
-                    Persona Con Discapacidad:
-                    <input type="hidden" name="PcD" value="No" />
-                  <input type="checkbox" class="col-sm-6" name="PcD" value="Si">  
-                </label>
-              </div>
-            </div>
-            <div class="form-group">
-                  <div class="checkbox">
-                    <label class="col-sm-2 control-label">
-                        Mujer Gestante:
-                      <input type="hidden" name="MG" value="No" />
-                      <input type="checkbox" class="col-sm-6" name="MG" value="Si"> 
-                     
-                    </label>
-              </div>
-            </div>
-              <div class="form-group">
-                    <div class="checkbox">
-                        <label class="col-sm-2 control-label">  
-                            Persona Indigena:
-                            <input type="hidden" name="PI" value="No" />
-                            <input type="checkbox" class="col-sm-6" name="PI" value="Si">
-                          </label>
-                      </div>
-              </div>
-                <div class="form-group">
-                      <div class="checkbox">
-                          <label class="col-sm-2 control-label">
-                              Persona Migrante: 
-                          <input type="hidden" name="PM" value="No" />
-                          <input type="checkbox" class="col-sm-6" name="PM" value="Si"> 
-                          
-                        </label>
-                      </div>
-                    </div>
+                        <div class="row">
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label">
+                              Persona Con Discapacidad:
+                            </label>
+                            <div class="col-sm-6">
+                              <div class="checkbox">
+                                  <input type="hidden" name="PcD" value="No" />
+                                  <input type="checkbox" name="PcD" value="Si">   
+                                  </div>
+                            </div>
+                          </div>
+                          </div>
+                          <div class="row">
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label">
+                              Mujer Gestante:
+                            </label>
+                            <div class="col-sm-6">
+                            <div class="checkbox">
+                                    <input type="hidden" name="MG" value="No" />
+                                    <input type="checkbox" name="MG" value="Si"> 
+                                  </div>
+                            </div>
+                          </div>
+                          </div>
+                          <div class="row">
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">  
+                                Persona Indigena:
+                              </label>
+                                <div class="col-sm-6">
+                                  <div class="checkbox">
+                                    <input type="hidden" name="PI" value="No" />
+                                          <input type="checkbox" class="col-sm-6" name="PI" value="Si">
+                                  </div>
+                                    </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                              <div class="form-group">
+                                <label class="col-sm-3 control-label">
+                                  Persona Migrante:
+                                </label>
+                              <div class="col-sm-6">
+                                    <div class="checkbox">
+                                        <input type="hidden" name="PM" value="No" />
+                                        <input type="checkbox" name="PM" value="Si" > 
+                                    </div>
+                              </div>
+                          </div>
+                          </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Patologia: </label>
                       <div class="col-sm-10">
-                      <select class="form-control select2" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 70%;">
+                      <select id="patJefe" class="form-control select2" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 70%;">
                               <option>Alergias</option>
                               <option>Asma</option>
                               <option>CA</option>
@@ -138,23 +148,18 @@
                       </select>
                       </div>
                 </div>
-          <div class="box-footer">
+          <div class="panel-footer">
               @include("Includes.boton-form-create")
           </div>
         </form>
       </div>
-    </div>
-  </div>
-@endsection
+
 @section('Script')
-  <script src="{{asset("assets/$theme/bower_components/select2/dist/js/select2.full.min.js")}}"></script>
-  <script>
-        $(function() { 
-          $('.select2').select2({
-                  theme: "bootstrap",
-                  tags: true
-          });
-          $.fn.select2.defaults.set( "theme", "bootstrap" );
-          });  
+<script src="{{asset("assets/$theme/Select2/js/select2.full.min.js")}}"></script>
+<script>
+  $(document).ready(function() {
+    $('#patJefe').select2();
+  });
   </script>
+@endsection
 @endsection

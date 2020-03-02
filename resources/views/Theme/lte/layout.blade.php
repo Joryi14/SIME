@@ -6,10 +6,10 @@
   <title>@yield('Titulo','SIME') |Sistema de Informacion de Manejo de Emergencias</title>
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/site.min.css")}}">
-  <script type="text/javascript" src="{{asset("assets/$theme/dist/js/site.min.js")}}"></script>
   @yield('styles')
   <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">  
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">  
+  <script type="text/javascript" src="{{asset("assets/$theme/dist/js/site.min.js")}}"></script>
 </head>
 <body>
   @include("theme/$theme/header")

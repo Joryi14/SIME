@@ -67,14 +67,17 @@ $(function () {
 @endsection
 @section('Contenido')
 @include('Includes.mensaje-Succes')
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h4 class="content-row-title">Noticia
+      <a href="{{route('noticia_create')}}" class="btn  btn-primary pull-right">
+          <i class="fa fa-fw fa-plus-circle"></i> Crear
+      </a>
+  </h4>
+  </div>
 <div class="panel-body">
   <div class="content-row">
-            <div class="pull-right">
-                <a href="{{route('noticia_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear
-                </a>
-            </div>
-            <h2 class="content-row-title">Noticia</h2>
+            
             <table id="Noticia_table" class="table table-bordered">
             <thead>
             <tr>

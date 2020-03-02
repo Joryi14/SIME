@@ -67,7 +67,7 @@ $(function () {
 @section('Contenido')
   @include('Includes.mensaje-Error')
   @include('Includes.mensaje-Succes')
-<div class="panel panel-warning">
+<div class="panel panel-warning ">
   <div class="panel-heading">
     <h4 class="content-row-title">Jefes de familia
                 <a href="{{route('jefe_create')}}" class="btn  btn-primary pull-right">
@@ -97,7 +97,7 @@ $(function () {
               <td>{{$item->Apellido2}}</td>
               <td>{{$item->Cedula}}</td>
               <td><a href="/JefeDeFamilia/{{$item->IdJefe}}/edit" class="btn-accion-tabla tooltipsC" title="Editar jefe de familia">
-                <i class="fa fa-pencil text-info"></i></a>
+                <i class="fa fa-pencil text-success"></i></a>
                 <a href="/JefeDeFamilia/{{$item->IdJefe}}/agregarfamiliar" class="btn-accion-tabla tooltipsC" title="Agregar familiar">
                   <i class="fa fa-fw fa-plus-circle text-success"></i></a>
                 <form action="{{route('jefe_delete', ['JefeDeFamilia' => $item->IdJefe])}}" method="POST">

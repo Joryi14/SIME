@@ -44,7 +44,7 @@ class CensoController extends Controller
             $censo = new Censo();
             $censo->fill($request->all());
             $censo->save();
-        return redirect('Censo')->with('mensaje','Se guardo con exito');
+        return redirect('Censo')->with('exito','Se guardo con exito');
         }
         else
         return redirect('Censo\create')->with('mensaje','Error el Jefe De Familia no Existe');

@@ -1,6 +1,6 @@
 @extends("theme/$theme/layout")
 @section('styles')
-<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+<link rel="stylesheet" href="{{asset("assets/$theme/bootflat-admin/datatables.min.css")}}">   
 <style>
   .example-modal .modal {
     position: relative;
@@ -17,6 +17,7 @@
 </style>
 @endsection
 @section('Script')
+<script src="{{asset("assets/$theme/bootflat-admin/datatables.min.js")}}"></script>
 <script type="text/javascript">
  $(document).on('click', '.show-modal', function() {
            $('#ape1').text($(this).data('ape1'));
@@ -31,8 +32,6 @@
            $('#pa').text($(this).data('pa'));
         });
 </script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 <script>
 $(function () {
     $('#Familias_table').DataTable({
@@ -67,21 +66,17 @@ $(function () {
 </script>
 @endsection
 @section('Contenido')
-<div class="row">
-    <div class="col-xs-12">
-      @include('Includes.mensaje-Error')
-      @include('Includes.mensaje-Succes')
-      <div class="box box-primary">
-        <div class="box-header" style="padding:2%">
-            <div class="box-tools pull-right">
-                <a href="{{route('familias_create')}}" class="btn btn-block btn-primary btn-sm">
+@include('Includes.mensaje-Error')
+@include('Includes.mensaje-Succes')
+<div class="panel panel-warning ">
+  <div class="panel-heading">
+    <h4 class="content-row-title">Familias
+                <a href="{{route('familias_create')}}" class="btn btn-primary pull-right">
                     <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
-            </div>
-            
-          <h3 class="box-title">Familias</h3>
+          </h4>
         </div>
-        <div class="box-body table-responsive" >
+        <div class="panel-body">
           <table id="Familias_table" class="table table-bordered table-striped">
               <thead>
             <tr>
@@ -99,11 +94,11 @@ $(function () {
               <td>{{$item->Cedula}}</td>
               <td>{{$item->Nombre}}</td>
               <td><a href="/Familias/{{$item->IdFamilia}}/edit" class="btn-accion-tabla tooltipsC" title="Editar familia">
-                <i class="fa fa-fw fa-pencil"></i></a>
+                <i class="fa fa-fw fa-pencil text-success"></i></a>
               <form id="form1" action="{{route('familias_delete', ['Familias' => $item->IdFamilia])}}" method="POST">
                 @csrf 
                 <input name="_method" type="hidden" value="DELETE">
-                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar familia" onclick="confirmarEnvio()">
+                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar familia">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
@@ -136,74 +131,87 @@ $(function () {
                 <h4 class="modal-title"><b>Información del Familiar</b></h4>
               </div>
               <div class="modal-body">
+                <div class="row">
                 <div class="form-group">
                     <label class="col-md-4"><b>Primer apellido</b></label>
                     <div class="col-md-4">
                         <span id="ape1"></span>
                     </div>
-                </div>
+                </div></div><br>
+                <div class="row">
                 <div class="form-group">
                     <label class="col-md-4"><b>Segundo apellido</b></label>
                     <div class="col-md-4">
                         <span id="ape2"></span>
                     </div>
-                </div>
+                </div></div><br>
+                <div class="row">
                 <div class="form-group">
                     <label class="col-md-4"><b>Parentesco</b></label>
                     <div class="col-md-4">
                         <span id="par"></span>
                     </div>
-                </div>
+                </div></div><br>
+                <div class="row">
                 <div class="form-group">
                     <label class="col-md-4"><b>Edad</b></label>
                     <div class="col-md-4">
                         <span id="eda"></span>
                     </div>
-                </div>
+                </div></div><br>
+                <div class="row">
                 <div class="form-group">
                     <label class="col-md-4"><b>Sexo</b></label>
                     <div class="col-md-4">
                         <span id="se"></span>
                     </div>
                 </div>
+              </div><br>
+                <div class="row">
                 <div class="form-group">
                     <label class="col-md-4"><b>Persona con Discapacidad</b></label>
                     <div class="col-md-4">
                         <span id="pcd"></span>
                     </div>
-                </div><br>
+                </div></div><br>
+                <div class="row">
                 <div class="form-group">
                     <label class="col-md-4"><b>Mujer Gestante</b></label>
                     <div class="col-md-4">
                         <span id="mg"></span>
                     </div>
                 </div>
+              </div><br>
+                <div class="row">
                 <div class="form-group">
                     <label class="col-md-4"><b>Persona Indigena</b></label>
                     <div class="col-md-4">
                         <span id="pi"></span>
                     </div>
                 </div>
+              </div><br>
+                <div class="row">
                 <div class="form-group">
                     <label class="col-md-4"><b>Persona Migrante</b></label>
                     <div class="col-md-4">
                         <span id="pm"></span>
                     </div>
                 </div>
+              </div><br>
+                <div class="row">
                 <div class="form-group">
                     <label class="col-md-4"><b>Patologia</b></label>
                     <div class="col-md-4">
                         <span id="pa"></span>
                     </div>
                 </div>
+              </div>
               <br><br>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline bg-red pull-left" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-outline btn-warning pull-left" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
         </div>
-    </div>
-  </div>
 @endsection

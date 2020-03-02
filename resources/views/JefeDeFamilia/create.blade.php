@@ -20,42 +20,42 @@
           <div class="form-group">
             <label for="TotalPersonas" class="col-sm-2 control-label">Total de personas: </label>
             <div class="col-sm-8">
-                <input type="text" name="TotalPersonas" class= "form-control" >
+                <input type="text" name="TotalPersonas" class= "form-control" value="{{old('TotalPersonas', $data->TotalPersonas ?? '')}}">
             </div>
           </div>
           <div class="form-group">
             <label for="Nombre" class="col-sm-2 control-label">Nombre: </label>
 
             <div class="col-sm-8">
-                <input type="text" name="Nombre" class= "form-control" >
+                <input type="text" name="Nombre" class= "form-control" value="{{old('Nombre', $data->Nombre ?? '')}}">
             </div>
           </div>
           <div class="form-group">
               <label for="Apellido1" class="col-sm-2 control-label">Primer apellido:  </label>
   
               <div class="col-sm-8">
-                  <input type="text" name="Apellido1" class= "form-control" > 
+                  <input type="text" name="Apellido1" class= "form-control" value="{{old('Apellido1', $data->Apellido1 ?? '')}}"> 
               </div>
             </div>
             <div class="form-group">
                 <label for="Apellido2" class="col-sm-2 control-label">Segundo apellido: </label>
     
                 <div class="col-sm-8">
-                    <input type="text" name="Apellido2" class= "form-control" >
+                    <input type="text" name="Apellido2" class= "form-control" value="{{old('Apellido2', $data->Apellido2 ?? '')}}">
                 </div>
               </div>
               <div class="form-group">
                   <label for="Cedula" class="col-sm-2 control-label">Cédula: </label>
       
                   <div class="col-sm-8">
-                      <input type="text" name="Cedula" class= "form-control" >
+                      <input type="text" name="Cedula" class= "form-control" value="{{old('Cedula', $data->Cedula ?? '')}}">
                   </div>
                 </div>
                
                   <div class="form-group">
                       <label for="Edad" class="col-sm-2 control-label">Edad: </label>
                       <div class="col-sm-8">
-                          <input type="number" name="Edad" class= "form-control">
+                          <input type="number" name="Edad" class= "form-control" value="{{old('Edad', $data->Edad ?? '')}}">
                       </div>
                     </div>
                     <div class="form-group">
@@ -72,7 +72,7 @@
                       <div class="form-group">
                           <label for="Telefono" class="col-sm-2 control-label">Teléfono: </label>
                           <div class="col-sm-8">
-                              <input type="number" name="Telefono" class="form-control" > 
+                              <input type="number" name="Telefono" class="form-control" value="{{old('Telefono', $data->Telefono ?? '')}}"> 
                           </div>
                         </div>
                       <div class="row">

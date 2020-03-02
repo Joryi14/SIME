@@ -1,12 +1,14 @@
  <nav role="navigation" class="navbar navbar-custom">
-          <div class="container-fluid">
-            <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggle" type="button">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-        <a href="/" class="navbar-brand">SIME</a>
+  <div class="container-fluid">
+  <div class="navbar-header">
+    <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggle" type="button">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="/" class="navbar-brand">SIME</a>
+  </div> 
         <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -24,5 +26,5 @@
             </li>
           </ul>
           </div>
-        </div>
+  </div>
 </nav>

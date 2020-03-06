@@ -1,6 +1,6 @@
 @extends("theme/$theme/layout")
 @section('styles')
-<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+<link rel="stylesheet" href="{{asset("assets/$theme/bootflat-admin/datatables.min.css")}}">
 <style>
   .example-modal .modal {
     position: relative;
@@ -17,18 +17,19 @@
 </style>
 @endsection
 @section('Script')
+<script src="{{asset("assets/$theme/bootflat-admin/datatables.min.js")}}"></script>
 <script type="text/javascript">
   $(document).on('click', '.show-modal', function() {
            if($(this).data('du')== 1)
            $('#du').text("Sí tiene");
            else
            $('#du').text("No tiene");
-           
+
            if($(this).data('ino')== 1)
            $('#ino').text("Sí tiene");
            else
            $('#ino').text("No tiene");
-           
+
            if($(this).data('edc')== 1)
            $('#edc').text("Sí tiene");
            else
@@ -38,15 +39,13 @@
            $('#bo').text("Sí tiene");
            else
            $('#bo').text("No tiene");
-           
+
             $('#lon').text($(this).data('lon'));
             $('#lat').text($(this).data('lat'));
             $('#tip').text($(this).data('tip'));
             $('#nec').text($(this).data('nec'));
          });
  </script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 <script>
 $(function () {
     $('#Albergue_Table').DataTable({
@@ -81,23 +80,17 @@ $(function () {
 </script>
 @endsection
 @section('Contenido')
-<div class="row">
-    <div class="col-xs-12">
-      @include('Includes.mensaje-Error')
-    @include('Includes.mensaje-Succes')
-      <div class="box box-primary">
-        <div class="box-header"style="padding:2%">
-            <div class="box-tools pull-right">
-                <a href="{{route('albergue_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear 
-                </a>
-            </div>
-            
-          <h3 class="box-title">Albergue</h3>
+@include('Includes.mensaje-Error')
+@include('Includes.mensaje-Succes')
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h4 class="content-row-title">Albergue
+      <a href="{{route('albergue_create')}}" class="btn btn-info pull-right">
+          <i class="fa fa-fw fa-plus-circle"></i> Crear
+      </a>
+          </h4>
         </div>
-        
-        
-        <div class="box-body table-responsive" >
+        <div class="panel-body table-responsive" >
           <table id="Albergue_Table" class="table table-bordered table-striped">
               <thead>
             <tr>
@@ -114,7 +107,7 @@ $(function () {
               </thead>
             @foreach ($albergue as $item)
               <tr>
-              <td>{{$item->idAlbergue}}</td>    
+              <td>{{$item->idAlbergue}}</td>
               <td>{{$item->Nombre}}</td>
               <td>{{$item->Distrito}}</td>
               <td>{{$item->Comunidad}}</td>
@@ -123,14 +116,14 @@ $(function () {
               <td>{{$item->telefono}}</td>
               <td>
                 @if($item->Estado == 'Activa')
-                  <a style="color:green;">{{$item->Estado}}</a>
+                <span class="badge badge-success">{{$item->Estado}}</span></a>
                 @else
-                <a style="color:red;">{{$item->Estado}}</a>
+              <span class="badge badge-danger">{{$item->Estado}}</span></a>
                 @endif</td>
               <td><a href="/Albergue/{{$item->idAlbergue}}/edit" class="btn-accion-tabla tooltipsC" title="Editar albergue">
-                <i class="fa fa-fw fa-pencil"></i></a>
+                <i class="fa fa-fw fa-pencil text-success"></i></a>
               <form id="form1" action="{{route('albergue_delete', ['Albergue' => $item->idAlbergue])}}" method="POST">
-                @csrf 
+                @csrf
                 <input name="_method" type="hidden" value="DELETE">
                 <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar albergue" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
@@ -140,7 +133,7 @@ $(function () {
               </td>
               </tr>
             @endforeach
-      </table>  
+      </table>
   </div>
 </div>
 <div class="modal modal-default fade" id="Detalle">
@@ -150,70 +143,79 @@ $(function () {
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title"><b>Información de retiro de paquetes</b></h4>
-      </div>  
+      </div>
       <div class="modal-body">
+        <div class="row">
        <div class="form-group ">
         <label class="col-md-4"><b>Duchas:</b></label>
         <div class="col-md-4">
             <span id="du"></span>
         </div>
+      </div>
       </div><br>
+      <div class="row">
      <div class="form-group">
       <label  class="col-md-4"><b>Inodoros:</b></label>
       <div class="col-md-4">
           <span id="ino"></span>
       </div>
+  </div>
   </div><br>
+  <div class="row">
    <div class="form-group">
     <label class="col-md-4"><b>Espacios de cocina:</b></label>
     <div class="col-md-4">
         <span id="edc"></span>
     </div>
-  </div>    
-      <br><br>
-      <div class="form-group">
-        <label class="col-md-4"><b>Bodega:</b></label>
-        <div class="col-md-4">
+  </div></div>
+      <br>
+      <div class="row">
+        <div class="form-group">
+          <label class="col-md-4"><b>Bodega:</b></label>
+          <div class="col-md-4">
             <span id="bo"></span>
+          </div>
         </div>
-      </div>    
-          <br><br>
+      </div>
+          <br>
+          <div class="row">
           <div class="form-group">
         <label class="col-md-4"><b>Longitud:</b></label>
         <div class="col-md-4">
             <span id="lon"></span>
         </div>
-      </div>    
-          <br><br>
+      </div></div>
+          <br>
+          <div class="row">
           <div class="form-group">
         <label class="col-md-4"><b>Latitud:</b></label>
         <div class="col-md-4">
             <span id="lat"></span>
         </div>
-      </div>    
-          <br><br>
+      </div></div>
+          <br>
+          <div class="row">
           <div class="form-group">
             <label class="col-md-4"><b>Tipo De Instalación:</b></label>
             <div class="col-md-4">
                 <span id="tip"></span>
             </div>
-          </div>    
-          <br><br>
+          </div>
+          </div>
+          <br>
+          <div class="row">
           <div class="form-group">
             <label class="col-md-4"><b>Nececidades:</b></label>
             <div class="col-md-4">
                 <span id="nec"></span>
             </div>
-          </div>    
-          <br><br>
-
+          </div></div>
+          <br>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline bg-red pull-left" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline btn-primary  pull-left" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
-</div>
-</div>
 </div>
 @endsection

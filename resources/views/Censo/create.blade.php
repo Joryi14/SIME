@@ -15,23 +15,22 @@
        @csrf
        <div class="panel-body">
        <div class="form-group">
-              <label for="Idjefefamilia" class="col-sm-2 control-label">Id de jefe de familia: </label>
-              <div class="col-sm-10">
-                     <div class="col-sm-9">
+       <div class="row">
+              <label for="Idjefefamilia" class="col-sm-3 control-label">Id de jefe de familia: </label>
+                     <div class="col-sm-6">
                             <select id='SelectC' name="IdJefeFam" style='width: 50%;'>
                             <option value='0'>Seleccionar un Jefe</option></select>
                      </div>
-              </div>
        </div>
        <div class="row">
-              <label class="col-sm-8">O</label>
-       </div>
-       <div class="row">
-            <div class="form-group">
-            <a href="{{route('jefe_create')}}" class="btn btn-primary">
-              <i class="fa fa-fw fa-plus-circle"></i> Crear jefe de familia
-          </a>
-        </div>
+         <label class="col-sm-3 control-label">O</label>
+         <div class="col-sm-6">
+           <div class="form-group">
+             <a href="{{route('jefe_create')}}" class="btn btn-primary">
+               <i class="fa fa-fw fa-plus-circle"></i> Crear jefe de familia
+             </a>
+           </div>
+         </div>
        </div>
        <div class="row">
         <div class="form-group">
@@ -41,7 +40,7 @@
         <div class="col-sm-6">
               <div class="checkbox">
                   <input type="hidden" name="Refrigerador" value="0" />
-                  <input type="checkbox" name="Refrigerador" value="1"> 
+                  <input type="checkbox" name="Refrigerador" value="1">
               </div>
         </div>
     </div>
@@ -54,7 +53,7 @@
         <div class="col-sm-6">
               <div class="checkbox">
                   <input type="hidden" name="Cocina" value="0" />
-                  <input type="checkbox" name="Cocina" value="1"> 
+                  <input type="checkbox" name="Cocina" value="1">
               </div>
         </div>
     </div>
@@ -67,7 +66,7 @@
         <div class="col-sm-6">
               <div class="checkbox">
                   <input type="hidden" name="Colchon" value="0" />
-                  <input type="checkbox" name="Colchon" value="1"> 
+                  <input type="checkbox" name="Colchon" value="1">
               </div>
         </div>
     </div>
@@ -80,16 +79,16 @@
         <div class="col-sm-6">
               <div class="checkbox">
                   <input type="hidden" name="Cama" value="0" />
-                  <input type="checkbox" name="Cama" value="1"> 
+                  <input type="checkbox" name="Cama" value="1">
               </div>
         </div>
     </div>
   </div>
-</div>  
+</div>
        <div class="panel-footer">
        @include("Includes.boton-form-create")
        </div>
-    
+
   </form>
 </div>
 @endsection
@@ -101,7 +100,7 @@
   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
   $(document).ready(function(){
     $("#SelectC").select2({
-      ajax: { 
+      ajax: {
         url: "{{route('Get_JefeC')}}",
         type: "post",
         dataType: 'json',

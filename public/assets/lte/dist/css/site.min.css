@@ -13,7 +13,7 @@
  *
  *
  */
-
+#mapid { height: 180px; }
 html {
  font-family:sans-serif;
  -webkit-text-size-adjust:100%;
@@ -7367,7 +7367,7 @@ blockquote {
  left:0;
  width:50px;
  height:32px;
- background-color:#FFF;
+ background-color:red;
  -webkit-border-radius:19px;
  -moz-border-radius:19px;
  border-radius:19px;

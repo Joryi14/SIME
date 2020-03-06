@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ValidacionesEmergencia;
 use Illuminate\Support\Facades\DB;
 use App\Models\Emergencia;
+use App\Models\Mensajeria;
 use Illuminate\Http\Request;
 
 class EmergenciaController extends Controller
@@ -16,7 +17,7 @@ class EmergenciaController extends Controller
      */
     public function index()
     {
-        
+
         $emergencias = Emergencia::orderBy('idEmergencias')->get();
         return view('Emergencia.index', compact('emergencias'));
     }
@@ -91,7 +92,12 @@ class EmergenciaController extends Controller
      */
     public function delete($id, Request $request)
     {
+
         $emergencia = Emergencia::find($id);
+        if(Mensajeria::where('idEmergencia',$id)->first()){
+        return redirect('Emergencias')->with('mensaje','No se puede eliminar la emergencia tiene mensajes');
+
+        }
         $emergencia->delete();
         return redirect('Emergencia')->with('Se ha eliminado correctamente');
     }

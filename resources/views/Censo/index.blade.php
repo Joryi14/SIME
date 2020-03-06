@@ -1,6 +1,6 @@
 @extends("theme/$theme/layout")
 @section('styles')
-<link rel="stylesheet" href="{{asset("assets/$theme/bootflat-admin/datatables.min.css")}}">   
+<link rel="stylesheet" href="{{asset("assets/$theme/bootflat-admin/datatables.min.css")}}">
 <style>
   .example-modal .modal {
     position: relative;
@@ -72,15 +72,13 @@ $(function () {
 </script>
 @endsection
 @section('Contenido')
-<div class="row">
-  <div class="col-xs-12">
     @include('Includes.mensaje-Error')
     @include('Includes.mensaje-Succes')
     <div class="panel panel-warning ">
       <div class="panel-heading">
         <h4 class="content-row-title">Censos
                 <a href="{{route('censo_create')}}" class="btn btn-primary pull-right">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear 
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
           </h4>
         </div>
@@ -95,12 +93,12 @@ $(function () {
           </thead>
                 @foreach ($censos as $item)
                   <tr>
-                  <td>{{$item->IdCenso}}</td>    
+                  <td>{{$item->IdCenso}}</td>
                   <td>{{$item->jefeFamilia->Cedula}}</td>
                   <td><a href="/Censo/{{$item->IdCenso}}/edit" class="btn-accion-tabla tooltipsC" title="Editar censo">
                     <i class="fa fa-fw fa-pencil text-success"></i></a>
                   <form id="form1" action="{{route('censo_delete', ['Censo' => $item->IdCenso])}}" method="POST">
-                    @csrf 
+                    @csrf
                     <input name="_method" type="hidden" value="DELETE">
                     <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar censo" onclick="confirmarEnvio()">
                         <i class="fa fa-fw fa-trash text-danger"></i>
@@ -110,7 +108,7 @@ $(function () {
                   </td>
                   </tr>
                 @endforeach
-          </table>  
+          </table>
       </div>
     </div>
     <div class="modal modal-default fade" id="Detalle">
@@ -128,7 +126,7 @@ $(function () {
               <div class="col-md-4">
                   <span id="refr"></span>
               </div>
-            </div></div> 
+            </div></div>
            <br>
            <div class="row">
            <div class="form-group ">
@@ -150,7 +148,7 @@ $(function () {
         <div class="col-md-4">
             <span id="cam"></span>
         </div>
-      </div> </div>    
+      </div> </div>
           <br><br>
           </div>
           <div class="modal-footer">
@@ -159,6 +157,4 @@ $(function () {
         </div>
       </div>
     </div>
-  </div>
-</div>
 @endsection

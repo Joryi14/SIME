@@ -1,14 +1,13 @@
 @extends("theme/$theme/layout")
 @section('styles')
 <link rel="stylesheet" href="{{asset("assets/$theme/Select2/css/select2.min.css")}}">
-
 @section('Contenido')
   @include('Includes.Error-form')
   @include('Includes.mensaje-Succes')
- 
+
   <div class="panel panel-warning">
     <div class="panel-heading">
-      <h4 class="content-row-title">Crear jefe de familia  
+      <h4 class="content-row-title">Crear jefe de familia
               <a href="{{route('inicio_jefe')}}" class="btn btn-info pull-right">
                   <i class="fa fa-fw fa-reply-all"></i> Regresar
               </a>
@@ -32,26 +31,26 @@
           </div>
           <div class="form-group">
               <label for="Apellido1" class="col-sm-2 control-label">Primer apellido:  </label>
-  
+
               <div class="col-sm-8">
-                  <input type="text" name="Apellido1" class= "form-control" value="{{old('Apellido1', $data->Apellido1 ?? '')}}"> 
+                  <input type="text" name="Apellido1" class= "form-control" value="{{old('Apellido1', $data->Apellido1 ?? '')}}">
               </div>
             </div>
             <div class="form-group">
                 <label for="Apellido2" class="col-sm-2 control-label">Segundo apellido: </label>
-    
+
                 <div class="col-sm-8">
                     <input type="text" name="Apellido2" class= "form-control" value="{{old('Apellido2', $data->Apellido2 ?? '')}}">
                 </div>
               </div>
               <div class="form-group">
                   <label for="Cedula" class="col-sm-2 control-label">Cédula: </label>
-      
+
                   <div class="col-sm-8">
                       <input type="text" name="Cedula" class= "form-control" value="{{old('Cedula', $data->Cedula ?? '')}}">
                   </div>
                 </div>
-               
+
                   <div class="form-group">
                       <label for="Edad" class="col-sm-2 control-label">Edad: </label>
                       <div class="col-sm-8">
@@ -72,7 +71,7 @@
                       <div class="form-group">
                           <label for="Telefono" class="col-sm-2 control-label">Teléfono: </label>
                           <div class="col-sm-8">
-                              <input type="number" name="Telefono" class="form-control" value="{{old('Telefono', $data->Telefono ?? '')}}"> 
+                              <input type="number" name="Telefono" class="form-control" value="{{old('Telefono', $data->Telefono ?? '')}}">
                           </div>
                         </div>
                       <div class="row">
@@ -83,7 +82,7 @@
                         <div class="col-sm-6">
                           <div class="checkbox">
                               <input type="hidden" name="PcD" value="No" />
-                              <input type="checkbox" name="PcD" value="Si">   
+                              <input type="checkbox" name="PcD" value="Si">
                               </div>
                         </div>
                       </div>
@@ -96,14 +95,14 @@
                         <div class="col-sm-6">
                         <div class="checkbox">
                                 <input type="hidden" name="MG" value="No" />
-                                <input type="checkbox" name="MG" value="Si"> 
+                                <input type="checkbox" name="MG" value="Si">
                               </div>
                         </div>
                       </div>
                       </div>
                       <div class="row">
                         <div class="form-group">
-                          <label class="col-sm-3 control-label">  
+                          <label class="col-sm-3 control-label">
                             Persona Indigena:
                           </label>
                             <div class="col-sm-6">
@@ -122,7 +121,7 @@
                           <div class="col-sm-6">
                                 <div class="checkbox">
                                     <input type="hidden" name="PM" value="No" />
-                                    <input type="checkbox" name="PM" value="Si"> 
+                                    <input type="checkbox" name="PM" value="Si">
                                 </div>
                           </div>
                       </div>

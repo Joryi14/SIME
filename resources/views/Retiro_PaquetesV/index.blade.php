@@ -1,6 +1,6 @@
 @extends("theme/$theme/layout")
 @section('styles')
-<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">
 <style>
   .example-modal .modal {
     position: relative;
@@ -25,34 +25,6 @@
            $('#pv').text($(this).data('pv'));
            $('#de').text($(this).data('de'));
         });
-</script>
-<script type="text/javascript">
-  document.querySelector('#form1').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
-  swal({
-      title: "Esta seguro de eliminar?",
-      text: "Una vez eliminado no se puede recuperar!",
-      icon: "warning",
-      buttons: [
-        'Cancelar!',
-        'Aceptar!'
-      ],
-      dangerMode: true,
-    }).then(function(isConfirm) {
-      if (isConfirm) {
-        swal({
-          title: 'Exito!',
-          text: 'Se ha Eliminado el registro!',
-          icon: 'success'
-        }).then(function() {
-          form.submit(); // <--- submit form programmatically
-        });
-      } else {
-        swal("Cancelado","" ,"error");
-      }
-    })
-});
 </script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
 <script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
@@ -101,20 +73,20 @@ $(function () {
     </div>
     <div class="box-body">
     <form class= "form-horizontal" method="POST" action="/Retiro_PaquetesVController/ReporteFecha" target="_blank">
-          @csrf 
+          @csrf
      <div class="col-md-6">
     <div class="form-group">
             <label for="Fecha" class="col-sm-4 control-label">Desde: </label>
             <div class="col-sm-8">
-                <input required type="date" name="Fecha1" class= "form-control" > 
+                <input required type="date" name="Fecha1" class= "form-control" >
             </div>
     </div>
-    </div> 
+    </div>
     <div class="col-md-6">
     <div class="form-group">
         <label for="Fecha" class="col-sm-4 control-label">Hasta: </label>
         <div class="col-sm-8">
-            <input required type="date" name="Fecha2" class= "form-control" > 
+            <input required type="date" name="Fecha2" class= "form-control" >
         </div>
     </div>
     </div>
@@ -135,14 +107,14 @@ $(function () {
           </a>
         </div>
       <div class="box box-primary">
-        
+
         <div class="box-header" style="padding:2%">
             <div class="box-tools pull-right">
                 <a href="{{route('Retiro_PaquetesV_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear 
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
             </div>
-           
+
           <h3 class="box-title">Retiro de paquetes </h3>
         </div>
         <div class="box-body table-responsive" >
@@ -161,17 +133,17 @@ $(function () {
           </thead>
             @foreach ($retiroPV as $item)
               <tr>
-              <td>{{$item->IdRetiroPaquetes}}</td>      
-              <td>{{$item->IdAdministradorI}}</td> 
+              <td>{{$item->IdRetiroPaquetes}}</td>
+              <td>{{$item->IdAdministradorI}}</td>
               <td>{{$item->IdVoluntario}}</td>
               <td>{{$item->SuministrosGobierno}}</td>
               <td>{{$item->SuministrosComision}}</td>
-              <td>{{$item->IdInventario}}</td>    
+              <td>{{$item->IdInventario}}</td>
               <td>{{$item->Emergencia->idEmergencias}} {{$item->Emergencia->NombreEmergencias}}</td>
               <td><a href="/Retiro_PaquetesV/{{$item->IdRetiroPaquetes}}/edit" class="btn-accion-tabla tooltipsC" title="Editar retiro de paquetes">
                 <i class="fa fa-fw fa-pencil"></i></a>
               <form id="form1" action="{{route('Retiro_PaquetesV_delete', ['Retiro_PaquetesV' => $item->IdRetiroPaquetes])}}" method="POST">
-                @csrf 
+                @csrf
                 <input name="_method" type="hidden" value="DELETE">
                 <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar retiro de raquetes" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
@@ -181,7 +153,7 @@ $(function () {
                 </td>
                 </tr>
               @endforeach
-        </table>  
+        </table>
     </div>
   </div>
   <div class="modal modal-default fade" id="Detalle">
@@ -217,14 +189,14 @@ $(function () {
       <div class="col-md-4">
           <span id="pv"></span>
       </div>
-    </div>    
+    </div>
         <br><br>
         <div class="form-group">
           <label class="col-md-4"><b>Dirección a entregar:</b></label>
           <div class="col-md-4">
               <span id="de"></span>
           </div>
-        </div>    
+        </div>
             <br><br>
         </div>
         <div class="modal-footer">

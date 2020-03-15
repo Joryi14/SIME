@@ -1,26 +1,23 @@
 @extends("theme/$theme/layout")
 @section('Contenido')
-<div class="row">
-    <div class="col-md-10">
-      <div class="box box-success">
-        <div class="box-header with-border"  style="padding:2%">
-          <h3 class="box-title">Editar Retiro de Paquetes</h3>
-          <div class="box-tools pull-right">
-              <div class="col-sm-12">
-              <a href="{{route('inicio_Retiro_PaquetesV')}}" class="btn btn-block btn-info ">
-                  <i class="fa fa-fw fa-reply-all"></i> Regresar
-              </a>
-              </div>
-            </div>
-        </div>
+@include('Includes.Error-form')
+@include('Includes.mensaje-Error')
+<div class="panel panel-primary">
+  <div class="panel-heading">
+     <h4 class="content-row-title">Editar Retiro de Paquetes
+       <a href="{{route('inicio_Retiro_PaquetesV')}}" class="btn pull-right btn-info ">
+           <i class="fa fa-fw fa-reply-all"></i> Regresar
+       </a>
+     </h4>
+  </div>
         <form class="form-horizontal" method="POST" action="/Retiro_PaquetesV/{{$retiroPV->IdRetiroPaquetes}}">
           @method('PUT')
           @csrf
-          <div class="box-body">
+          <div class="panel-body">
             <div class="form-group">
               <label for="IdAdministradorI" class="col-sm-2 control-label">IdAdministradorI: </label>
               <div class="col-sm-10">
-                  <input type="text" name="IdAdministradorI" class= "form-control" value="{{$retiroPV->IdAdministradorI}}" readonly="readonly"> 
+                  <input type="text" name="IdAdministradorI" class= "form-control" value="{{$retiroPV->IdAdministradorI}}" readonly="readonly">
               </div>
             </div>
             <div class="form-group">
@@ -44,7 +41,7 @@
             <div class="form-group">
                 <label for="IdVoluntario" class="col-sm-2 control-label">Id del voluntario: </label>
                 <div class="col-sm-10">
-                    <input type="text" name="IdVoluntario" class= "form-control" value="{{$retiroPV->IdVoluntario}}" readonly="readonly"> 
+                    <input type="text" name="IdVoluntario" class= "form-control" value="{{$retiroPV->IdVoluntario}}" readonly="readonly">
                 </div>
               </div>
               <div class="form-group">
@@ -62,7 +59,7 @@
                   <div class="form-group">
                         <label for="SuministrosGobierno" class="col-sm-2 control-label">Suministros del gobierno: </label>
                         <div class="col-sm-10">
-                            <input type="text" name="SuministrosGobierno" class= "form-control" value="{{$retiroPV->SuministrosGobierno}}" readonly="readonly"> 
+                            <input type="text" name="SuministrosGobierno" class= "form-control" value="{{$retiroPV->SuministrosGobierno}}" readonly="readonly">
                         </div>
                       </div>
                       <div class="form-group">
@@ -85,11 +82,9 @@
                           </div>
 
           </div>
-          <div class="box-footer">
+          <div class="panel-footer">
               @include("Includes.boton-editar")
           </div>
         </form>
       </div>
-    </div>
-  </div>
   @endsection

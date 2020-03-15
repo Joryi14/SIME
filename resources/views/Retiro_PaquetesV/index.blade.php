@@ -1,6 +1,6 @@
 @extends("theme/$theme/layout")
 @section('styles')
-<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">
+<link rel="stylesheet" href="{{asset("assets/$theme/bootflat-admin/datatables.min.css")}}">
 <style>
   .example-modal .modal {
     position: relative;
@@ -17,6 +17,7 @@
 </style>
 @endsection
 @section('Script')
+<script src="{{asset("assets/$theme/bootflat-admin/datatables.min.js")}}"></script>
 <script type="text/javascript">
  $(document).on('click', '.show-modal', function() {
            $('#nc').text($(this).data('nc'));
@@ -26,8 +27,6 @@
            $('#de').text($(this).data('de'));
         });
 </script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 <script>
 $(function () {
     $('#Retiro_PaquetesV_table').DataTable({
@@ -62,62 +61,17 @@ $(function () {
 </script>
 @endsection
 @section('Contenido')
-<div class="row">
-    <div class="col-xs-10" style="margin-left:8%">
-    <div class="box collapsed-box">
-    <div class="box-header" style="padding:2%">
-        <div class="box-tools pull-right" >
-            <button type="button" class="btn btn-box-tool"  data-widget="collapse"><i class="fa fa-plus"></i></button>
-        </div>
-      <h3  class="box-title">Reporte por fechas</h3>
-    </div>
-    <div class="box-body">
-    <form class= "form-horizontal" method="POST" action="/Retiro_PaquetesVController/ReporteFecha" target="_blank">
-          @csrf
-     <div class="col-md-6">
-    <div class="form-group">
-            <label for="Fecha" class="col-sm-4 control-label">Desde: </label>
-            <div class="col-sm-8">
-                <input required type="date" name="Fecha1" class= "form-control" >
-            </div>
-    </div>
-    </div>
-    <div class="col-md-6">
-    <div class="form-group">
-        <label for="Fecha" class="col-sm-4 control-label">Hasta: </label>
-        <div class="col-sm-8">
-            <input required type="date" name="Fecha2" class= "form-control" >
-        </div>
-    </div>
-    </div>
-    <div class="box-footer">
-        <button type="submit" class="btn btn-primary ">Enviar</button>
-    </div>
-    </form>
-    </div>
-    </div>
-    </div>
-    </div>
-<div class="row">
-    <div class="col-xs-12">
-      @include('Includes.mensaje-Succes')
-      <div class="box-tools pull-rigth">
-          <a href="{{route('Retiro_PaquetesV_reporte')}}" class="btn btn-block btn-primary btn-sm" target="_blank">
-              <i class="fa fa-fw fa-plus-circle"></i> Crear reporte de retiro de paquetes
-          </a>
-        </div>
-      <div class="box box-primary">
-
-        <div class="box-header" style="padding:2%">
-            <div class="box-tools pull-right">
-                <a href="{{route('Retiro_PaquetesV_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear
-                </a>
-            </div>
-
-          <h3 class="box-title">Retiro de paquetes </h3>
-        </div>
-        <div class="box-body table-responsive" >
+@include('Includes.mensaje-Error')
+@include('Includes.mensaje-Succes')
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h4 class="content-row-title">Retiro de paquetes
+                  <a href="{{route('Retiro_PaquetesV_create')}}" class="btn pull-right btn-info btn-sm">
+                      <i class="fa fa-fw fa-plus-circle"></i> Crear
+                  </a>
+                      </h4>
+                    </div>
+        <div class="panel-body table-responsive" >
           <table id="Retiro_PaquetesV_table" class="table table-bordered table-striped">
               <thead>
             <tr>
@@ -141,7 +95,7 @@ $(function () {
               <td>{{$item->IdInventario}}</td>
               <td>{{$item->Emergencia->idEmergencias}} {{$item->Emergencia->NombreEmergencias}}</td>
               <td><a href="/Retiro_PaquetesV/{{$item->IdRetiroPaquetes}}/edit" class="btn-accion-tabla tooltipsC" title="Editar retiro de paquetes">
-                <i class="fa fa-fw fa-pencil"></i></a>
+                <i class="fa fa-fw fa-pencil text-success"></i></a>
               <form id="form1" action="{{route('Retiro_PaquetesV_delete', ['Retiro_PaquetesV' => $item->IdRetiroPaquetes])}}" method="POST">
                 @csrf
                 <input name="_method" type="hidden" value="DELETE">
@@ -149,7 +103,7 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                   </button>
                 </form>
-                <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar retiro de paquetes" data-toggle="modal" data-target="#Detalle"  data-nc="{{$item->NombreChofer}}" data-pac="{{$item->Apellido1C}}" data-sac="{{$item->Apellido2C}}" data-pv="{{$item->PlacaVehiculo}}"  data-de="{{$item->DireccionAEntregar}}" ><i class="fa fa-fw fa-file-text-o text-info"></i></a>
+                <button class="show-modal btn-accion-tabla tooltipsC"title="Mostrar retiro de paquetes" data-toggle="modal" data-target="#Detalle"  data-nc="{{$item->NombreChofer}}" data-pac="{{$item->Apellido1C}}" data-sac="{{$item->Apellido2C}}" data-pv="{{$item->PlacaVehiculo}}"  data-de="{{$item->DireccionAEntregar}}" ><i class="fa fa-fw fa-file-text-o text-info"></i></a>
                 </td>
                 </tr>
               @endforeach
@@ -165,46 +119,94 @@ $(function () {
           <h4 class="modal-title"><b>Información de retiro de paquetes</b></h4>
         </div>
         <div class="modal-body">
+          <div class="row">
           <div class="form-group">
             <label class="col-md-4 "><b>Nombre del chofer:</b></label>
             <div class="col-md-4">
                 <span id="nc"></span>
             </div>
-          </div>
+          </div></div>
          <br>
+         <div class="row">
          <div class="form-group ">
           <label class="col-md-4"><b>Primer apellido del chofer:</b></label>
           <div class="col-md-4">
               <span id="pac"></span>
           </div>
-        </div><br>
+        </div></div><br>
+        <div class="row">
        <div class="form-group">
         <label  class="col-md-4"><b>Segundo apellido del chofer:</b></label>
         <div class="col-md-4">
             <span id="sac"></span>
         </div>
+    </div>
     </div><br>
+    <div class="row">
      <div class="form-group">
       <label class="col-md-4"><b>Placa de vehículo:</b></label>
       <div class="col-md-4">
           <span id="pv"></span>
       </div>
-    </div>
-        <br><br>
+    </div></div>
+        <br>
+        <div class="row">
         <div class="form-group">
           <label class="col-md-4"><b>Dirección a entregar:</b></label>
           <div class="col-md-4">
               <span id="de"></span>
           </div>
         </div>
-            <br><br>
+            </div><br>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline bg-red pull-left" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-outline btn-danger pull-left" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
+  <div class="form-group">
+    <a href="{{route('Retiro_PaquetesV_reporte')}}" class="btn btn-primary btn-sm" target="_blank">
+        <i class="fa fa-fw fa-plus-circle"></i> Crear reporte de retiro de paquetes
+    </a>
+  </div>
+  <div class="form-group">
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ReporteF">  <i class="fa fa-fw fa-plus-circle"></i>Reporte de retiro por fechas</button>
+  </div>
+  <div class="modal modal-default fade" id="ReporteF">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><b>Reporte de retiro por fechas</b></h4>
+          </div>
+          <form class= "form-horizontal" method="POST" action="/Retiro_PaquetesVController/ReporteFecha" target="_blank">
+                @csrf
+          <div class="modal-body">
+           <div class="col-md-6">
+          <div class="form-group">
+                  <label for="Fecha" class="col-sm-4 control-label">Desde: </label>
+                  <div class="col-sm-8">
+                      <input required type="date" name="Fecha1" class= "form-control" >
+                  </div>
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="form-group">
+              <label for="Fecha" class="col-sm-4 control-label">Hasta: </label>
+              <div class="col-sm-8">
+                  <input required type="date" name="Fecha2" class= "form-control" >
+              </div>
+          </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary ">Enviar</button>
+            <button type="button" class="btn btn-outline btn-danger pull-left" data-dismiss="modal">Cerrar</button>
+          </div>
+          </form>
+          </div>
+        </div>
+      </div>
 @endsection

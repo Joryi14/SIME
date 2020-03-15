@@ -100,29 +100,32 @@ $(function () {
                 <h4 class="modal-title"><b>Información de Inventario</b></h4>
               </div>
               <div class="modal-body">
+                <div class="row">
                 <div class="form-group">
                   <label class="col-md-4 "><b>Colchonetas:</b></label>
                   <div class="col-md-4">
                       <span id="col"></span>
                   </div>
-                </div>
+                </div></div>
                <br>
+               <div class="row">
                <div class="form-group ">
                 <label class="col-md-4"><b>Cobijas:</b></label>
                 <div class="col-md-4">
                     <span id="cob"></span>
                 </div>
-              </div><br>
+              </div></div><br>
+              <div class="row">
              <div class="form-group">
               <label  class="col-md-4"><b>Ropa:</b></label>
               <div class="col-md-4">
                   <span id="rop"></span>
               </div>
           </div><br>
-              <br><br>
+        </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline bg-red pull-left" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-outline btn-info pull-left" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -144,9 +147,9 @@ $(function () {
             <span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title"><b>Reporte de inventario por fechas</b></h4>
         </div>
-        <div class="modal-body">
           <form class= "form-horizontal" method="POST" action="/Inventario/ReporteFecha" target="_blank">
                 @csrf
+          <div class="modal-body">
            <div class="col-md-6">
           <div class="form-group">
                   <label for="Fecha" class="col-sm-4 control-label">Desde: </label>
@@ -163,6 +166,7 @@ $(function () {
               </div>
           </div>
           </div>
+        </div>
           <div class="modal-footer">
               <button type="submit" class="btn btn-primary ">Enviar</button>
               <button type="button" class="btn btn-outline btn-danger pull-left" data-dismiss="modal">Cerrar</button>
@@ -171,6 +175,4 @@ $(function () {
         </div>
       </div>
     </div>
-  </div>
-
 @endsection

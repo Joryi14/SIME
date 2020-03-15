@@ -71,15 +71,15 @@ class Retiro_PaquetesVController extends Controller
             $retiroPV->idEmergencia = $inv->idEmergencias;
             $retiroPV->save();
 
-        return redirect('/Retiro_PaquetesV')->with('mensaje','Se ha agregado con éxito');
+        return redirect('/Retiro_PaquetesV')->with('exito','Se ha agregado con éxito');
     }
     else
     return redirect('/Retiro_PaquetesV/create')->with('mensaje','Cantidad de paquetes insuficientes');
 }
-   else 
+   else
      return redirect('/Retiro_PaquetesV/create')->with('mensaje','Voluntario no existe');
 }
-        else 
+        else
         return redirect('/Retiro_PaquetesV/create')->with('mensaje','Inventario no existe');
     }
 
@@ -88,7 +88,7 @@ class Retiro_PaquetesVController extends Controller
         $Retiro = \DB::table('retiropaquetes')
        ->select(['IdRetiroPaquetes','IdAdministradorI' ,'NombreChofer','Apellido1C','Apellido2C',
         'IdVoluntario','PlacaVehiculo','DireccionAEntregar','SuministrosGobierno','SuministrosComision',
-        'IdInventario']) 
+        'IdInventario'])
         ->get();
         $today = Carbon::now()->format('d/m/Y');
         $view = view ('Retiro_PaquetesV.reporte', compact('Retiro', 'today'))->render();
@@ -99,11 +99,11 @@ class Retiro_PaquetesVController extends Controller
 
     }
     public function ReporteFecha(request $request){
-        
+
         $Retiro = \DB::table('retiropaquetes')
        ->select(['IdRetiroPaquetes','IdAdministradorI' ,'NombreChofer','Apellido1C','Apellido2C',
         'IdVoluntario','PlacaVehiculo','DireccionAEntregar','SuministrosGobierno','SuministrosComision',
-        'IdInventario'])->whereBetween('created_at', array($request->Fecha1,$request->Fecha2)) 
+        'IdInventario'])->whereBetween('created_at', array($request->Fecha1,$request->Fecha2))
         ->get();
         $today = Carbon::now()->format('d/m/Y');
         $view = view ('Retiro_PaquetesV.reporte', compact('Retiro', 'today'))->render();
@@ -147,20 +147,20 @@ class Retiro_PaquetesVController extends Controller
         $retiroPV = Retiro_PaquetesV::find($id);
         $retiroPV->fill($request->all());
         $retiroPV->save();
-    
-        return redirect('Retiro_PaquetesV')->with('mensaje','Se ha actualizado correctamente');
-    
+
+        return redirect('Retiro_PaquetesV')->with('exito','Se ha actualizado correctamente');
+
     }
     public function getUsers(Request $request){
 
         $search = $request->search;
-  
+
         if($search == ''){
            $Users = User::orderby('Cedula','asc')->select('id','Cedula','name','Apellido1','Apellido2')->limit(5)->get();
         }else{
            $Users = User::orderby('Cedula','asc')->select('id','Cedula','name','Apellido1','Apellido2')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
         }
-  
+
         $response = array();
         foreach($Users as $user){
            $response[] = array(
@@ -171,19 +171,19 @@ class Retiro_PaquetesVController extends Controller
                 "Apellido2"=>$user->Apellido2
            );
         }
-  
+
         echo json_encode($response);
         exit;
      }
      public function getInventario(Request $request){
         $search = $request->search;
-  
+
         if($search == ''){
            $Inven = Inventario::orderby('idInventario','asc')->select('idInventario')->limit(5)->get();
         }else{
            $Inven = Inventario::orderby('idInventario','asc')->select('idInventario')->where('idInventario', 'like', '%' .$search . '%')->limit(5)->get();
         }
-  
+
         $response = array();
         foreach($Inven as $Inv){
            $response[] = array(
@@ -191,7 +191,7 @@ class Retiro_PaquetesVController extends Controller
                 "text"=>$Inv->idInventario
            );
         }
-  
+
         echo json_encode($response);
         exit;
      }
@@ -205,6 +205,6 @@ class Retiro_PaquetesVController extends Controller
     {
         $retiroPV = Retiro_PaquetesV::find($id);
       $retiroPV->delete();
-      return redirect('Retiro_PaquetesV')->with('Se ha eliminado correctamente');
+      return redirect('Retiro_PaquetesV')->with('exito','Se ha eliminado correctamente');
     }
 }

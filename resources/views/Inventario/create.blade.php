@@ -6,7 +6,7 @@
 @include('Includes.Error-form')
 <div class="panel panel-primary">
   <div class="panel-heading">
-     <h4 class="box-title">Crear inventario
+     <h4 class="content-row-title">Crear inventario
        <a href="{{route('inicio_inventario')}}" class="btn btn-info pull-right">
            <i class="fa fa-fw fa-reply-all"></i> Regresar
        </a></h4>

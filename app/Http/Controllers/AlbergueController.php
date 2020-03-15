@@ -74,18 +74,18 @@ class AlbergueController extends Controller
     }
 
     public function getAL(){
-        $AL = Albergue::orderby('idAlbergue','asc')->select('Nombre','Latitud','Longitud')->get();
+        $AL = Albergue::orderby('idAlbergue','asc')->select('Nombre','Latitud','Longitud','Estado')->get();
         $response = array();
         foreach($AL as $alber){
            $response[] = array(
                 "Nombre"=>$alber->Nombre,
                 "Latitud"=>$alber->Latitud,
-                "Longitud"=>$alber->Longitud
+                "Longitud"=>$alber->Longitud,
+                "Estado"=>$alber->Estado
            );
         }
         echo json_encode($response);
         exit;
-
     }
 
     /**

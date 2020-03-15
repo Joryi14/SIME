@@ -1,10 +1,10 @@
 @extends("theme/$theme/layout")
 @section('styles')
 <link rel="stylesheet" href="{{asset("assets/$theme/Select2/css/select2.min.css")}}">
+@endsection
 @section('Contenido')
   @include('Includes.Error-form')
   @include('Includes.mensaje-Succes')
-
   <div class="panel panel-warning">
     <div class="panel-heading">
       <h4 class="content-row-title">Crear jefe de familia
@@ -147,6 +147,7 @@
         <div class="panel-footer">
             @include("Includes.boton-form-create")
         </div>
+          </div>
     </form>
   </div>
 @section('Script')

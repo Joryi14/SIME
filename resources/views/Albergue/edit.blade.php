@@ -2,7 +2,7 @@
 @section('Contenido')
 @include('Includes.Error-form')
 @include('Includes.mensaje-Error')
-<div class="panel panel-warning">
+<div class="panel panel-primary">
   <div class="panel-heading">
      <h4 class="content-row-title">Editar albergue
        <a href="{{route('inicio_albergue')}}" class="btn btn-info pull-right">

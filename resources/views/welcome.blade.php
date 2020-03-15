@@ -19,14 +19,11 @@
   <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="{{asset("assets/MAP/leaflet.css")}}"/>  
+  <link rel="stylesheet" href="{{asset("assets/MAP/leaflet.css")}}"/>
   <!-- Custom styles for this template -->
   <link href="{{asset("assets/Index/css/agency.css")}}" rel="stylesheet">
 </head>
-
 <body id="page-top">
-
-  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">Inicio</a>
@@ -46,7 +43,7 @@
             <a class="nav-link js-scroll-trigger" href="#contact">Inscripción de voluntarios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#Albergue">Albergues</a>
+            <a class="nav-link js-scroll-trigger" href="#Mapas">Mapas</a>
           </li>
               @if (Route::has('login'))
               @auth
@@ -69,8 +66,6 @@
       </div>
     </div>
   </nav>
-  
-
   <!-- Header -->
   <header class="masthead">
     <div class="container">
@@ -134,7 +129,7 @@
         @foreach ($noticias as $item)
         <div class="col-md-4 col-sm-6 portfolio-item" width="400" height="300">
             <a class="portfolio-link" data-toggle="modal" href="#por{{$item->IdNoticias}}" >
-          
+
             <div class="portfolio-hover" width="400" height="300">
               <div class="portfolio-hover-content" width="400" height="300">
                 <i class="fas fa-plus fa-3x"></i>
@@ -149,10 +144,10 @@
         </div>
         @endforeach
 
-         
-      
+
+
       </div>
-      
+
     </div>
   </section>
 
@@ -179,7 +174,7 @@
                 <div class="timeline-body">
                   <p class="text-muted">...</p>
                 </div>
-              </div> 
+              </div>
              </li>
             <li class="timeline-inverted">
               <div class="timeline-image">
@@ -234,7 +229,7 @@
         </div>
       </div>
     </div>
-  </section> 
+  </section>
 
   <!-- Team -->
   <section class="bg-light page-section" id="team">
@@ -372,7 +367,7 @@
               <div class="col-md-6">
 
                 <div class="form-group">
-                    
+
                   <input class="form-control" name="NombreVoluntarioWeb" type="text" placeholder="Nombre *" required="required" data-validation-required-message="Please enter your name.">
                   <p class="help-block text-danger"></p>
                 </div>
@@ -391,7 +386,7 @@
                 </div>
               </div>
               <div class="col-md-6">
-          
+
 
                   <div class="form-group">
                       <input class="form-control" name="TelefonoVoluntarioWeb" type="text" placeholder="Teléfono *" required="required" data-validation-required-message="Please enter your phone number.">
@@ -423,18 +418,26 @@
       </div>
     </div>
   </section>
-  <section class="page-section" id="Albergue">
+  <section class="page-section" id="Mapas">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">Albergues</h2>
+          <h2 class="section-heading text-uppercase">Mapas</h2>
           </div>
       </div>
+      <br><br>
       <div class="row">
-        <div  class="col-lg-8 mx-auto">
+        <div  class="col-sm-6">
+        <h3 class="text-center">Albergues</h3>
        <div id="mapid" style="margin-right: auto;margin-left: auto;  width: 100%;
        height: 400px; ">
       </div>
+      </div>
+      <div class="col-sm-6">
+        <h3 class="text-center">Emergencias</h3>
+        <div id="mapid2" style="margin-right: auto;margin-left: auto;  width: 100%;
+        height: 400px; ">
+        </div>
       </div>
     </div>
     </div>
@@ -469,24 +472,22 @@
                   <!-- Project Details Go Here -->
                   <h2 class="text-uppercase">{{$item->Titulo}}</h2>
                   <p class="item-intro text-muted"></p>
-                  @if($item->Imagenes != null)   
+                  @if($item->Imagenes != null)
                   <img class="img-fluid d-block mx-auto" src='img/{{$item->Imagenes}}' alt="" width="600" height="300">
                   @endif
                   <p>{{$item->Articulo}}</p>
-                  @if($item->Videos != null)     
-                <video width="600" height="300" controls>
+                  @if($item->Videos != null)
+                  <video width="600" height="300" controls>
                  <source src='Video/{{$item->Videos}}' type="video/mp4">
                  </video>
                  @endif
                   <ul class="list-inline">
                     <li>Fecha de publicacion: {{$item->updated_at}}</li>
                     <li>Autor: {{$item->user->name}} {{$item->user->Apellido1}}</li>
-                    @if($item->PDF != null)   
+                    @if($item->PDF != null)
                     <li>
                       <a class="btn btn-primary"
-                        
                     href='PDF/{{$item->PDF}}' type="application/pdf" download ="{{$item->NombrePDF}}"></object>
-                    
                       Decargar PDF<a>
                     </li>
                     @endif
@@ -502,9 +503,46 @@
     </div>
   </div>
   @endforeach
+  <script src="{{asset("assets/MAP/leaflet.js")}}"></script>
+  <script>
+    var mymap = L.map('mapid').setView([9.9789728,-85.6605546], 13);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+      maxZoom: 18,
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      id: 'mapbox/streets-v11'
+    }).addTo(mymap);
+    var mymap2 = L.map('mapid2').setView([9.9789728,-85.6605546], 13);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+      maxZoom: 18,
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      id: 'mapbox/streets-v11'
+    }).addTo(mymap2);
+    </script>
 <script type="text/javascript">
 window.onload = function() {
   const albergue = new XMLHttpRequest();
+  const emergencia = new XMLHttpRequest();
+  emergencia.open('GET','Emergencia/EM',true);
+  emergencia.send();
+  emergencia.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status == 200){
+   let lglt = JSON.parse(this.responseText);
+   for(let item of lglt){
+    var Albergue = L.icon({
+          iconUrl:      '../assets/MAP/images/Albergue.png',
+          iconSize:     [30, 30],
+  });
+  var circ = L.circle([item.Latitud,item.Longitud], { color: 'red',
+fillColor: '#f03',
+fillOpacity: 0.5,radius: item.Radio }).addTo(mymap2);
+    circ.bindPopup(item.Nombre+" "+item.Latitud+" "+item.Longitud+" "+item.Radio).openPopup();
+   }
+  }
+}
   albergue.open('GET','Albergue/AL',true);
   albergue.send();
   albergue.onreadystatechange = function(){
@@ -513,29 +551,29 @@ if(this.readyState == 4 && this.status == 200){
    let lglt = JSON.parse(this.responseText);
    //console.log(lglt);
    for(let item of lglt){
-    var Albergue = L.icon({
-          iconUrl:      '../assets/MAP/images/Albergue.png',
-          iconSize:     [30, 30],
+    var AlbergueV = L.icon({
+          iconUrl:      '../assets/MAP/images/AlbergueV.png',
+          iconSize:     [50, 50],
   });
-  var mark = L.marker([item.Latitud,item.Longitud],{icon: Albergue}).addTo(mymap);
+  var AlbergueR = L.icon({
+        iconUrl:      '../assets/MAP/images/AlbergueR.png',
+        iconSize:     [50, 50],
+});
+
+if(item.Estado =="Activa"){
+  var mark = L.marker([item.Latitud,item.Longitud],{icon: AlbergueV}).addTo(mymap);
     mark.bindPopup(item.Nombre+" "+item.Latitud+" "+item.Longitud).openPopup();
-   }
+  }
+  else {
+    var mark = L.marker([item.Latitud,item.Longitud],{icon: AlbergueR}).addTo(mymap);
+      mark.bindPopup(item.Nombre+" "+item.Latitud+" "+item.Longitud).openPopup();
+  }
+}
   }
 }
 };
 </script>
-<script src="{{asset("assets/MAP/leaflet.js")}}"></script>
-<script>
-  var mymap = L.map('mapid').setView([9.9789728,-85.6605546], 13);
-  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-    maxZoom: 18,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-      '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    id: 'mapbox/streets-v11'
-  }).addTo(mymap);
 
-  </script>
   <!-- Bootstrap core JavaScript -->
   <script src="{{asset('assets/Index/vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('assets/Index/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

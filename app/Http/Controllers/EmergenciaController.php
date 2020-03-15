@@ -63,6 +63,20 @@ class EmergenciaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     public function getEM(){
+         $EM = Emergencia::orderby('idEmergencias','asc')->select('NombreEmergencias','Latitud','Longitud','Radio','Estado')->where('Estado','Activa')->get();
+         $response = array();
+         foreach($EM as $emer){
+            $response[] = array(
+                 "Nombre"=>$emer->NombreEmergencias,
+                 "Latitud"=>$emer->Latitud,
+                 "Longitud"=>$emer->Longitud,
+                 "Radio"=>$emer->Radio
+            );
+         }
+         echo json_encode($response);
+         exit;
+     }
     public function edit($id)
     {
         $emergencia = Emergencia::find($id);

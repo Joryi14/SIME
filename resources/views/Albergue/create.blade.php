@@ -174,7 +174,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(mymap);
 var Albergue = L.icon({
         iconUrl:      '../assets/MAP/images/Albergue.png',
-        iconSize:     [30, 30],
+        iconSize:     [60, 60],
 });
 var mark = L.marker([9.9789728,-85.6605546],{icon: Albergue}).addTo(mymap);
 function onMapClick(e) {

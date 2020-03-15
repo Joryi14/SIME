@@ -1,9 +1,31 @@
 @extends("theme/$theme/layout")
 @section('styles')
 <link rel="stylesheet" href="{{asset("assets/$theme/bootflat-admin/datatables.min.css")}}">
+<style>
+  .example-modal .modal {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    left: auto;
+    display: block;
+    z-index: 1;
+  }
+  .example-modal .modal {
+    background: transparent !important;
+  }
+</style>
 @endsection
 @section('Script')
 <script src="{{asset("assets/$theme/bootflat-admin/datatables.min.js")}}"></script>
+<script type="text/javascript">
+  $(document).on('click', '.show-modal', function() {
+            $('#desc').text($(this).data('desc'));
+           $('#lt').text($(this).data('lt'));
+           $('#lg').text($(this).data('lg'));
+           $('#rad').text($(this).data('rad'));
+         });
+ </script>
 <script>
 $(function () {
     $('#Emergencia_table').DataTable({
@@ -54,11 +76,6 @@ $(function () {
               <th>Nombre de las emergencias</th>
               <th>Categoría</th>
               <th>Tipo de emergencia</th>
-              <th>Descripción</th>
-              <th>Longitud</th>
-              <th>Latitud</th>
-              <th>Estado</th>
-              <th>Radio</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -68,16 +85,12 @@ $(function () {
               <td>{{$item->NombreEmergencias}}</td>
               <td>{{$item->Categoria}}</td>
               <td>{{$item->TipoDeEmergencia}}</td>
-              <td>{{$item->Descripcion}}</td>
-              <td>{{$item->Longitud}}</td>
-              <td>{{$item->Latitud}}</td>
               <td>
                 @if($item->Estado == 'Activa')
                 <span class="badge badge-success">{{$item->Estado}}</span></a>
                 @else
                 <span class="badge badge-danger">{{$item->Estado}}</span></a>
                 @endif</td>
-                <td>{{$item->Radio}}</td>
               <td><a href="/Emergencia/{{$item->idEmergencias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar emergencia">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
               <form id="formE"  action="{{route('emergencia_delete', ['Emergencia' => $item->idEmergencias])}}" method="POST">
@@ -87,10 +100,60 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
+              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar emergencia" data-toggle="modal" data-target="#Detalle"  data-lt="{{$item->Latitud}}" data-lg="{{$item->Longitud}}" data-rad="{{$item->Radio}}" data-desc="{{$item->Descripcion}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>
             @endforeach
           </table>
+        </div>
+        <div class="modal modal-default fade" id="Detalle">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Información de jefe de familia</b></h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                <div class="form-group">
+                  <label class="col-md-6"><b>Descripción:</b></label>
+                  <div class="col-md-6">
+                      <span id="desc"></span>
+                  </div>
+                </div>
+              </div><br>
+              <div class="row">
+               <div class="form-group">
+                <label class="col-md-6"><b>Latitud:</b></label>
+                <div class="col-md-6">
+                    <span id="lt"></span>
+                </div>
+              </div>
+            </div><br>
+              <div class="row">
+             <div class="form-group">
+              <label  class="col-md-6"><b>Longitud:</b></label>
+              <div class="col-md-6">
+                  <span id="lg"></span>
+              </div>
+          </div>
+        </div><br>
+          <div class="row">
+           <div class="form-group">
+            <label class="col-md-6"><b>Radio:</b></label>
+            <div class="col-md-6">
+                <span id="rad"></span>
+            </div>
+          </div>
+        </div>
+                <br><br>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline btn-primary pull-left" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 @endsection

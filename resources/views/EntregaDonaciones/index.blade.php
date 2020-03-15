@@ -69,7 +69,7 @@ $(function () {
                   </td>
                   <td>{{$item->Emergencia->idEmergencias}} {{$item->Emergencia->NombreEmergencias}}</td>
                   <td><a href="/EntregaDonaciones/{{$item->IdEntrega}}/edit" class="btn-accion-tabla tooltipsC" title="Editar entrega donaciones">
-                    <i class="fa fa-fw fa-pencil"></i></a>
+                    <i class="fa fa-fw fa-pencil text-success"></i></a>
                   <form id="form1" action="{{route('entregadonaciones_delete', ['EntregaDonaciones' => $item->IdEntrega])}}" method="POST">
                     @csrf
                     <input name="_method" type="hidden" value="DELETE">

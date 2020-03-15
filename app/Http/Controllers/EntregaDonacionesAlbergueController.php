@@ -40,17 +40,17 @@ class EntregaDonacionesAlbergueController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ValidacionEntregaDonacionesAlbergue $request)
-    {    
+    {
         if(JefeDeFamilia::find($request->IdJefeFa)){
             if(Albergue::find($request->idAlbergue)){
                if(Emergencia::find($request->idEmergencias)){
          if(EntregaDonaciones::where('IdJefe',$request->IdJefeFa)->first()){
             return redirect('EntregaDonaciones')->with('mensaje','Este jefe ya tiene una entrega de Donaciones');
-         }          
+         }
         $entr = new EntregaDonacionesAlbergue();
         $entr->fill($request->all());
         $entr->save();
-        return redirect('EntregaDonacionesAlbergue')->with('mensaje','Se ha guardado');
+        return redirect('EntregaDonacionesAlbergue')->with('exito','Se ha guardado');
             }
          else
          return redirect('EntregaDonacionesAlbergue/create')->with('mensaje','Error Emergencia no existe');
@@ -138,7 +138,7 @@ class EntregaDonacionesAlbergueController extends Controller
                 "Apellido2"=>$jefe->Apellido2
            );
         }
-  
+
         echo json_encode($response);
         exit;
      }
@@ -155,7 +155,7 @@ class EntregaDonacionesAlbergueController extends Controller
       $EntregaDonacionesAlbergue = EntregaDonacionesAlbergue::find($id);
       $EntregaDonacionesAlbergue->fill($request->all());
       $EntregaDonacionesAlbergue->save();
-        return redirect('EntregaDonacionesAlbergue')->with('mensaje','Editado correctamente');
+        return redirect('EntregaDonacionesAlbergue')->with('exito','Editado correctamente');
     }
 
     /**
@@ -168,6 +168,6 @@ class EntregaDonacionesAlbergueController extends Controller
     {
         $EntregaDonacionesAlbergue = EntregaDonacionesAlbergue::find($id);
         $EntregaDonacionesAlbergue->delete();
-        return redirect('EntregaDonacionesAlbergue')->with('Se ha eliminado correctamente');
+        return redirect('EntregaDonacionesAlbergue')->with('exito','Se ha eliminado correctamente');
     }
 }

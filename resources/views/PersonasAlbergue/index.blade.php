@@ -1,6 +1,6 @@
 @extends("theme/$theme/layout")
 @section('styles')
-<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+<link rel="stylesheet" href="{{asset("assets/$theme/bootflat-admin/datatables.min.css")}}">
 <style>
   .example-modal .modal {
     position: relative;
@@ -17,6 +17,7 @@
 </style>
 @endsection
 @section('Script')
+<script src="{{asset("assets/$theme/bootflat-admin/datatables.min.js")}}"></script>
 <script type="text/javascript">
   $(document).on('click', '.show-modal', function() {
             $('#fi').text($(this).data('fi'));
@@ -25,36 +26,6 @@
             $('#hs').text($(this).data('hs'));
          });
  </script>
-<script type="text/javascript">
-  document.querySelector('#form1').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
-  swal({
-      title: "Esta seguro de eliminar?",
-      text: "Una vez eliminado no se puede recuperar!",
-      icon: "warning",
-      buttons: [
-        'Cancelar!',
-        'Aceptar!'
-      ],
-      dangerMode: true,
-    }).then(function(isConfirm) {
-      if (isConfirm) {
-        swal({
-          title: 'Exito!',
-          text: 'Se ha Eliminado el registro!',
-          icon: 'success'
-        }).then(function() {
-          form.submit(); // <--- submit form programmatically
-        });
-      } else {
-        swal("Cancelado","" ,"error");
-      }
-    })
-});
-</script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 <script>
 $(function () {
     $('#PersonaAlbergue_table').DataTable({
@@ -89,20 +60,17 @@ $(function () {
 </script>
 @endsection
 @section('Contenido')
-<div class="row">
-    <div class="col-xs-12">
-        @include('Includes.mensaje-Succes')
-      <div class="box box-primary">
-        <div class="box-header" style="padding:2%">
-            <div class="box-tools pull-right">
-                <a href="{{route('personasAlbergue_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear
-                </a>
-            </div>
-            
-          <h3 class="box-title">Personas en albergue</h3>
-        </div>
-        <div class="box-body table-responsive" >
+@include('Includes.mensaje-Error')
+@include('Includes.mensaje-Succes')
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h4 class="content-row-title">Personas en albergue
+                  <a href="{{route('personasAlbergue_create')}}" class="btn pull-right btn-info btn-sm">
+                      <i class="fa fa-fw fa-plus-circle"></i> Crear
+                  </a>
+                      </h4>
+                    </div>
+        <div class="panel-body table-responsive" >
           <table id="PersonaAlbergue_table" class="table table-bordered table-striped">
               <thead>
             <tr>
@@ -116,15 +84,15 @@ $(function () {
           </thead>
             @foreach ($persona as $item)
               <tr>
-              <td>{{$item->idregistroA}}</td> 
+              <td>{{$item->idregistroA}}</td>
               <td>{{$item->idAlbergue}}</td>
-              <td>{{$item->idEmergencias}}</td>      
-              <td>{{$item->jefeFamilia->Cedula}}</td>  
+              <td>{{$item->idEmergencias}}</td>
+              <td>{{$item->jefeFamilia->Cedula}}</td>
               <td>{{$item->LugarDeProcedencia}}</td>
               <td><a href="/PersonasAlbergue/{{$item->idregistroA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar personas en albergue">
-                <i class="fa fa-fw fa-pencil"></i></a>
+                <i class="fa fa-fw fa-pencil text-success"></i></a>
               <form id="form1" action="{{route('personasAlbergue_delete', ['PersonasAlbergue' => $item->idregistroA])}}" method="POST">
-                @csrf 
+                @csrf
                 <input name="_method" type="hidden" value="DELETE">
                 <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar personas en albergue" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
@@ -134,7 +102,7 @@ $(function () {
               </td>
               </tr>
             @endforeach
-      </table>  
+      </table>
   </div>
 </div>
 <div class="modal modal-default fade" id="Detalle">
@@ -146,39 +114,41 @@ $(function () {
         <h4 class="modal-title"><b>Información de retiro de paquetes</b></h4>
       </div>
       <div class="modal-body">
+        <div class="row">
        <div class="form-group ">
         <label class="col-md-4"><b>Fecha de ingreso:</b></label>
         <div class="col-md-4">
             <span id="fi"></span>
         </div>
-      </div><br>
+      </div></div><br>
+      <div class="row">
      <div class="form-group">
       <label  class="col-md-4"><b>Hora de ingreso:</b></label>
       <div class="col-md-4">
           <span id="hi"></span>
       </div>
-  </div><br>
+  </div></div><br>
+  <div class="row">
    <div class="form-group">
     <label class="col-md-4"><b>Fecha de salida:</b></label>
     <div class="col-md-4">
         <span id="fs"></span>
     </div>
-  </div>    
-      <br><br>
+  </div>
+      </div><br>
+      <div class="row">
       <div class="form-group">
         <label class="col-md-4"><b>Hora de salida:</b></label>
         <div class="col-md-4">
             <span id="hs"></span>
         </div>
-      </div>    
-          <br><br>
+      </div></div>
+          <br>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline bg-red pull-left" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline btn-danger pull-left" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
-</div>
-</div>
 </div>
 @endsection

@@ -55,10 +55,10 @@ class PersonasAlbergueController extends Controller
         $persona->HoraDeIngreso = $request->HoraDeIngreso;
         $persona->FechaDeSalida = $request->FechaDeSalida;
         $persona->HoraDeSalida = $request->HoraDeSalida;
-        $persona->save();  
-        return redirect('PersonasAlbergue')->with('mensaje','Se ha agregado correctamente');
+        $persona->save();
+        return redirect('PersonasAlbergue')->with('exito','Se ha agregado correctamente');
     }
-       else  
+       else
        return redirect('PersonasAlbergue/create')->with('mensaje','Error Emergencia no existe');
     }
         else
@@ -78,7 +78,7 @@ class PersonasAlbergueController extends Controller
     {
         //
     }
-    
+
     public function getAlbergue(Request $request){
 
         $search = $request->search;
@@ -127,7 +127,7 @@ class PersonasAlbergueController extends Controller
         return view('PersonasAlbergue.edit', compact('persona'));
     }
 
-    
+
 
 
     public function getIdJF(Request $request){
@@ -145,7 +145,7 @@ class PersonasAlbergueController extends Controller
                 "text"=>$jefe->Cedula
            );
         }
-  
+
         echo json_encode($response);
         exit;
      }
@@ -163,7 +163,7 @@ class PersonasAlbergueController extends Controller
         $persona = PersonasAlbergue::find($id);
         $persona->fill($request->all());
         $persona->save();
-        return redirect('PersonasAlbergue')->with('mensaje','Se ha actualizado correctamente');
+        return redirect('PersonasAlbergue')->with('exito','Se ha actualizado correctamente');
     }
 
     /**
@@ -176,7 +176,7 @@ class PersonasAlbergueController extends Controller
     {
         $persona = PersonasAlbergue::find($id);
       $persona->delete();
-      return redirect('PersonasAlbergue')->with('Se ha eliminado correctamente');
+      return redirect('PersonasAlbergue')->with('exito','Se ha eliminado correctamente');
     }
 
     public function generar()

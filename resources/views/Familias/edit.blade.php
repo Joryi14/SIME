@@ -1,22 +1,19 @@
 @extends("theme/$theme/layout")
+<link rel="stylesheet" href="{{asset("assets/$theme/Select2/css/select2.min.css")}}">
 @section('Contenido')
-<div class="row">
-    <div class="col-md-10">
-      <div class="box box-success">
-        <div class="box-header with-border" style="padding:2%">
-          <h3 class="box-title">Editar Familia</h3>
-          <div class="box-tools pull-right">
-              <div class="col-sm-12">
-              <a href="{{route('inicio_familia')}}" class="btn btn-block btn-info ">
+@include('Includes.Error-form')
+<div class="panel panel-warning">
+  <div class="panel-heading">
+          <h4 class="content-row-title">Editar Familia
+              <a href="{{route('inicio_familia')}}" class="btn  btn-info pull-right">
                   <i class="fa fa-fw fa-reply-all"></i> Regresar
               </a>
-              </div>
-            </div>
-        </div>
+            </h4>
+  </div>
         <form class="form-horizontal" method="POST" action="/Familias/{{$Familia->IdFamilia}}">
           @method('PUT')
           @csrf
-          <div class="box-body">
+          <div class="panel-body">
             <div class="form-group">
               <label for="IdJefef" class="col-sm-2 control-label">Id del jefe de familia: </label>
               <div class="col-sm-10">
@@ -73,47 +70,62 @@
                             <input type="text" name="sexo" class= "form-control" value= "{{$Familia->sexo}}"  readonly="readonly">
                         </div>
                         </div>
-            <div class="form-group">
-                <div class="checkbox">
-                  <label class="col-sm-2 control-label">
-                    Persona Con Discapacidad:
-                    <input type="hidden" name="PcD" value="No" />
-                  <input type="checkbox" class="col-sm-6" name="PcD" value="Si">  
-                </label>
-              </div>
-            </div>
-            <div class="form-group">
-                  <div class="checkbox">
-                    <label class="col-sm-2 control-label">
-                        Mujer Gestante:
-                      <input type="hidden" name="MG" value="No" />
-                      <input type="checkbox" class="col-sm-6" name="MG" value="Si"> 
-                     
-                    </label>
-              </div>
-            </div>
-              <div class="form-group">
-                    <div class="checkbox">
-                        <label class="col-sm-2 control-label">  
-                            Persona Indigena:
-                            <input type="hidden" name="PI" value="No" />
-                            <input type="checkbox" class="col-sm-6" name="PI" value="Si">
-                          </label>
-                      </div>
-              </div>
-                <div class="form-group">
-                      <div class="checkbox">
-                          <label class="col-sm-2 control-label">
-                              Persona Migrante: 
-                          <input type="hidden" name="PM" value="No" />
-                          <input type="checkbox" class="col-sm-6" name="PM" value="Si"> 
-                          
-                        </label>
-                      </div>
-                    </div>
+                        <div class="row">
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label">
+                              Persona Con Discapacidad:
+                            </label>
+                            <div class="col-sm-6">
+                              <div class="checkbox">
+                                  <input type="hidden" name="PcD" value="No" />
+                                  <input type="checkbox" name="PcD" value="Si" @if($Familia->PcD == 'Si') checked="CHECKED" @endif>   
+                                  </div>
+                            </div>
+                          </div>
+                          </div>
+                          <div class="row">
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label">
+                              Mujer Gestante:
+                            </label>
+                            <div class="col-sm-6">
+                            <div class="checkbox">
+                                    <input type="hidden" name="MG" value="No" />
+                                    <input type="checkbox" name="MG" value="Si" @if($Familia->MG == 'Si') checked="CHECKED" @endif> 
+                                  </div>
+                            </div>
+                          </div>
+                          </div>
+                          <div class="row">
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">  
+                                Persona Indigena:
+                              </label>
+                                <div class="col-sm-6">
+                                  <div class="checkbox">
+                                    <input type="hidden" name="PI" value="No" />
+                                          <input type="checkbox" class="col-sm-6" name="PI" value="Si" @if($Familia->PI == 'Si') checked="CHECKED" @endif>
+                                  </div>
+                                    </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                              <div class="form-group">
+                                <label class="col-sm-3 control-label">
+                                  Persona Migrante:
+                                </label>
+                              <div class="col-sm-6">
+                                    <div class="checkbox">
+                                        <input type="hidden" name="PM" value="No" />
+                                        <input type="checkbox" name="PM" value="Si" @if($Familia->PM == 'Si') checked="CHECKED" @endif> 
+                                    </div>
+                              </div>
+                          </div>
+                          </div>
                     <div class="form-group">
-                      <label>Patologia</label>
-                      <select class="form-control select2" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 100%;">
+                      <label class="col-sm-2 control-label">Patologia</label>
+                      <div class="col-sm-10">
+                      <select class="form-control select2" id="PatFa" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 100%;">
                               <option selected>{{$Familia->Patologia}}</option>
                               <option>Alergias</option>
                               <option>Asma</option>
@@ -128,19 +140,20 @@
                               <option>Ninguna</option>
                       </select>
                       </div>
+                    </div>
                                             
           </div>
-          <div class="box-footer">
+          <div class="panel-footer">
               @include("Includes.boton-editar")
           </div>
         </form>
       </div>
-    </div>
-  </div>
   @section('Script')
+  <script src="{{asset("assets/$theme/Select2/js/select2.full.min.js")}}"></script>
   <script>
-        $(document).ready(function() { 
-          $('.select2').select2({tags: true});
-              }); </script>
+    $(document).ready(function() {
+      $('#PatFa').select2();
+    });
+    </script>
           @endsection
 @endsection

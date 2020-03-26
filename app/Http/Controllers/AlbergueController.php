@@ -33,18 +33,17 @@ class AlbergueController extends Controller
     {
         $users =User::pluck('Cedula','id');
         return view('Albergue.create',['users'=>$users]);
-      
     }
     public function getUsers(Request $request){
 
         $search = $request->search;
-  
+
         if($search == ''){
            $Users = User::orderby('Cedula','asc')->select('id','Cedula','name','Apellido1','Apellido2')->limit(5)->get();
         }else{
            $Users = User::orderby('Cedula','asc')->select('id','Cedula','name','Apellido1','Apellido2')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
         }
-  
+
         $response = array();
         foreach($Users as $user){
            $response[] = array(
@@ -55,7 +54,7 @@ class AlbergueController extends Controller
                 "Apellido2"=>$user->Apellido2
            );
         }
-  
+
         echo json_encode($response);
         exit;
      }
@@ -74,19 +73,19 @@ class AlbergueController extends Controller
         return redirect('Albergue')->with('exito','Se ha agregado correctamente');
     }
 
-    public function getAL(){            
-        $AL = Albergue::orderby('idAlbergue','asc')->select('Nombre','Latitud','Longitud')->get();
+    public function getAL(){
+        $AL = Albergue::orderby('idAlbergue','asc')->select('Nombre','Latitud','Longitud','Estado')->get();
         $response = array();
         foreach($AL as $alber){
            $response[] = array(
                 "Nombre"=>$alber->Nombre,
                 "Latitud"=>$alber->Latitud,
-                "Longitud"=>$alber->Longitud
+                "Longitud"=>$alber->Longitud,
+                "Estado"=>$alber->Estado
            );
-        }  
+        }
         echo json_encode($response);
         exit;
-
     }
 
     /**
@@ -135,7 +134,6 @@ class AlbergueController extends Controller
      */
     public function delete($id, Request $request)
     {
-
         if(PersonasAlbergue::where('idAlbergue',$id)->first()){
             return redirect('Albergue')->with('mensaje','Este Albergue tiene personas asociadas');
         }

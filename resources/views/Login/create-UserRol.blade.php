@@ -1,22 +1,19 @@
 @extends("theme/$theme/layout")
+@section('styles')
+<link rel="stylesheet" href="{{asset("assets/$theme/Select2/css/select2.min.css")}}">    
+@endsection
 @section('Contenido')
-
-<div class="row">
-        <div class="col-xs-10" >
-            <div class="box box-info">
-              <div class="box-header with-border" style="padding:2%">
-                  <div class="box-tools pull-right">
-                      <div class="col-xs-12">
-                      <a href="{{route('inicio_usuario')}}" class="btn btn-block btn-info ">
-                          <i class="fa fa-fw fa-reply-all"></i> Regresar
-                      </a>
-                      </div>
-                    </div>
-                <h3 class="box-title">Crear usuario rol</h3>
-              </div>
+<div class="panel panel-warning">
+      <div class="panel-heading">
+        <h4 class="content-row-title">Crear usuario rol
+          <a href="{{route('inicio_UR')}}" class="btn btn-primary pull-right">
+              <i class="fa fa-fw fa-reply-all"></i> Regresar
+          </a>
+        </h4>
+          </div>
               <form class="form-horizontal" method="POST" action="/UserRol/store">
                 @csrf
-                <div class="box-body">
+                <div class="panel-body">
                   <div class="form-group">
                     <label for="name" class="col-sm-2 control-label"> Usuario:</label>
                     <div class="col-sm-9">
@@ -32,18 +29,15 @@
                     </div>
                   </div>
                 </div>
-                <div class="box-footer">
+                <div class="panel-footer">
                     @include("Includes.boton-editar")
                 </div>
               </form>
-            </div>
-          </div>
-        </div>
+</div>
 @endsection
 @section('Script')
-<!-- Script -->
+<script src="{{asset("assets/$theme/Select2/js/select2.full.min.js")}}"></script>
 <script type="text/javascript">
-  // CSRF Token
   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
   $(document).ready(function(){
     $("#SelectU").select2({
@@ -55,7 +49,7 @@
         data: function (params) {
           return {
             _token: CSRF_TOKEN,
-            search: params.term // search term
+            search: params.term
           };
         },
         processResults: function (response) {
@@ -74,7 +68,6 @@
   });
   </script>
   <script type="text/javascript">
-    // CSRF Token
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     $(document).ready(function(){
       $("#SelectR").select2({

@@ -1,38 +1,9 @@
 @extends("theme/$theme/layout")
 @section('styles')
-<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+<link rel="stylesheet" href="{{asset("assets/$theme/bootflat-admin/datatables.min.css")}}">
 @endsection
 @section('Script')
-<script type="text/javascript">
-  document.querySelector('#form1').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
-  swal({
-      title: "Esta seguro de eliminar?",
-      text: "Una vez eliminado no se puede recuperar!",
-      icon: "warning",
-      buttons: [
-        'Cancelar!',
-        'Aceptar!'
-      ],
-      dangerMode: true,
-    }).then(function(isConfirm) {
-      if (isConfirm) {
-        swal({
-          title: 'Exito!',
-          text: 'Se ha Eliminado el registro!',
-          icon: 'success'
-        }).then(function() {
-          form.submit(); // <--- submit form programmatically
-        });
-      } else {
-        swal("Cancelado","" ,"error");
-      }
-    })
-});
-</script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
+<script src="{{asset("assets/$theme/bootflat-admin/datatables.min.js")}}"></script>
 <script>
 $(function () {
     $('#Entregadonaciones_table').DataTable({
@@ -67,29 +38,24 @@ $(function () {
 </script>
 @endsection
 @section('Contenido')
-<div class="row">
-  <div class="col-xs-12">
-    @include('Includes.mensaje-Error')
-    @include('Includes.mensaje-Succes')
-      <div class="box box-primary">
-        <div class="box-header" style="padding:2%">
-            <h3 class="box-title">Entrega de donaciones</h3>
-           
-         
+@include('Includes.mensaje-Error')
+@include('Includes.mensaje-Succes')
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h4 class="box-title">Entrega de donaciones
+          </h4>
         </div>
-         <div class="box-body table-responsive" >
+         <div class="panel-body table-responsive" >
           <table id="Entregadonaciones_table" class="table table-bordered table-striped">
             <thead>
             <tr>
-
               <th>Id de la entrega</th>
               <th>Voluntario cédula</th>
               <th>Jefe de familia</th>
               <th>Id retiro de paquetes</th>
-              <th>Foto</th>  
+              <th>Foto</th>
               <th>Emergencia</th>
               <th>Acciones</th>
-
             </tr>
           </thead>
                 @foreach ($entregadonaciones as $item)
@@ -103,9 +69,9 @@ $(function () {
                   </td>
                   <td>{{$item->idEmergencias}} {{$item->NombreEmergencias}}</td>
                   <td><a href="/EntregaDonaciones/{{$item->IdEntrega}}/edit" class="btn-accion-tabla tooltipsC" title="Editar entrega donaciones">
-                    <i class="fa fa-fw fa-pencil"></i></a>
+                    <i class="fa fa-fw fa-pencil text-success"></i></a>
                   <form id="form1" action="{{route('entregadonaciones_delete', ['EntregaDonaciones' => $item->IdEntrega])}}" method="POST">
-                    @csrf 
+                    @csrf
                     <input name="_method" type="hidden" value="DELETE">
                     <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar entrega de donaciones" onclick="confirmarEnvio()">
                         <i class="fa fa-fw fa-trash text-danger"></i>
@@ -114,9 +80,7 @@ $(function () {
                   </td>
                   </tr>
                 @endforeach
-          </table>  
+          </table>
       </div>
     </div>
-  </div>
-</div>
 @endsection

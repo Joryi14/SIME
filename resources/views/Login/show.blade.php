@@ -1,22 +1,17 @@
 @extends("theme/$theme/layout")
 @section('styles')
-<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2.min.css")}}">
-<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/select2/dist/css/select2-bootstrap.css")}}">
+<link rel="stylesheet" href="{{asset("assets/$theme/Select2/css/select2.min.css")}}">
 @endsection
 @section('Contenido')
-
-<div class="box box-primary">
-        <div class="box-header with-border" style="padding:2%">
-                <h3 class="box-title">Perfil</h3>
-                <div class="box-tools pull-right">
-                                <div class="col-xs-12">
-                                <a href="{{route('home')}}" class="btn btn-block btn-info ">
-                                        <i class="fa fa-fw fa-reply-all"></i> Regresar
-                                </a>
-                                </div>
-                </div>
-        </div>
-        <div class="box-body">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h4 class="content-row-title">Perfil
+      <a href="{{route('home')}}" class="btn btn-info pull-right">
+              <i class="fa fa-fw fa-reply-all"></i> Regresar
+      </a>
+          </h4>
+    </div>
+        <div class="panel-body">
                 <div class="row">
         <form class="form" method="POST" action="{{route('user_edit', ['id' => Auth::user()->id])}}">
                         @method('PUT')
@@ -33,7 +28,7 @@
                 <div class="form-group">
                                 <label for="Cedula">Cedula</label>
                                 <input type="text" name="Cedula" class= "form-control" value="{{Auth::user()->Cedula}}" readonly>
-                                
+
                 </div>
                 <div class="form-group">
                 <label for="Nacionalidad">Nacionalidad</label>
@@ -295,13 +290,11 @@
                                 <option value="Zimbabue ">Zimbabue </option>
                                 </select>
                 </div>
-                <!-- /.form-group -->
                 </div>
-                <!-- /.col -->
                 <div class="col-md-6">
                 <div class="form-group">
                 <label>Patologia</label>
-                <select class="form-control select2" multiple="multiple" name="patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 100%;">
+                <select id="pat" class="form-control select2" multiple="multiple" name="patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 100%;">
                         <option selected>{{Auth::user()->patologia}}</option>
                         <option>Alergias</option>
                         <option>Asma</option>
@@ -322,36 +315,27 @@
                 </div>
                 <div class="form-group">
                                 <label for="Apellido2">Segundo Apellido</label>
-                                        <input type="text" name="Apellido2" class= "form-control" value="{{Auth::user()->Apellido2}}">  
+                                        <input type="text" name="Apellido2" class= "form-control" value="{{Auth::user()->Apellido2}}">
                 </div>
                 <div class="form-group">
                                 <label for="Comunidad">Comunidad a la que Pertenece </label>
                                         <input type="text" name="Comunidad" class= "form-control" value=" {{Auth::user()->Comunidad}}" required>
                 </div>
-                <!-- /.form-group -->
                 </div>
-                <!-- /.col -->
-                @include('Includes.boton-editar')
+
         </form>
                 </div>
-                <!-- /.row -->
-        
         </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
+        <div class="panel-footer">
+          @include('Includes.boton-editar')
         </div>
-
         </div>
-        <!-- /.box -->
         @section('Script')
-<script src="{{asset("assets/$theme/bower_components/select2/dist/js/select2.full.min.js")}}"></script>
+<script src="{{asset("assets/$theme/Select2/js/select2.full.min.js")}}"></script>
 <script>
-      $(function() { 
-        $('.select2').select2({
-                theme: "bootstrap"
-        });
-        $.fn.select2.defaults.set("theme", "bootstrap" );
-        });  
+$(document).ready(function() {
+  $('#pat').select2();
+});
 </script>
         @endsection
 @endsection

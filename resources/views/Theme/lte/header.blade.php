@@ -1,33 +1,30 @@
-<header class="main-header">
-        <!-- Logo -->
-        <a href="/" class="logo">
-          <span class="logo-mini"><b>SI</b>ME</span>
-          <span class="logo-lg"><b>SIME</b></span>
-        </a>
-        <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top" role="navigation">
-          <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-              <span class="sr-only">Toggle navigation</span>
-            </a>
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-              <!-- User Account: style can be found in dropdown.less -->
-              <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-user"></i>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>     
-                    <a href="/user/show" style="color:black" class="btn btn-default btn-flat">Perfil</a>
-                    <a href="{{ route('logout')}}" style="color:black" class="btn btn-default btn-flat" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Desconectar</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                  </li>
-                      </ul>
-              </li>
-            </ul>
+ <nav role="navigation" class="navbar navbar-custom">
+  <div class="container-fluid">
+  <div class="navbar-header">
+    <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggle" type="button">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="/" class="navbar-brand">SIME</a>
+  </div> 
+        <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="fa fa-user"></i><b class="caret"></b></a>
+              <ul role="menu" class="dropdown-menu">
+                <li class="dropdown-header">     
+                  <a href="/user/show">Perfil</a>
+                </li>
+                <li><a href="{{ route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Desconectar</a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          @csrf
+                      </form>
+                </li>
+              </ul>
+            </li>
+          </ul>
           </div>
-        </nav>
-      </header>
+  </div>
+</nav>

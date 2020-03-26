@@ -2,73 +2,70 @@
 @section('Contenido')
 @include('Includes.Error-form')
 @include('Includes.mensaje-Error')
-   <div class="row">
-      <div class="col-xs-10">
-      <div class="box box-success">
-      <div class="box-header with-border" style="padding:2%">
-       <h3 class="box-title">Editar censo</h3>
-        <div class="box-tools pull-right">
-                      <div class="col-xs-12">
-                      <a href="{{route('inicio_censo')}}" class="btn btn-block btn-info ">
-                          <i class="fa fa-fw fa-reply-all"></i> Regresar
-                      </a>
-                      </div>
-          </div>
-      </div>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+     <h4 class="content-row-title">Editar censo
+       <a href="{{route('inicio_censo')}}" class="btn btn-info pull-right">
+           <i class="fa fa-fw fa-reply-all"></i> Regresar
+       </a>
+     </h4>
+     </div>
       <form class="form-horizontal" method="POST" action="/Censo/{{$censo->IdCenso}}">
         @method('PUT')
         @csrf
-             <div class="box-body">
-                     <input type="hidden" name="IdJefeFam" value=" {{$censo->IdJefeFam}}" class= "form-control" readonly>
+             <div class="panel-body">
+            <input type="hidden" name="IdJefeFam" value=" {{$censo->IdJefeFam}}" class= "form-control" readonly>
+
+            <div class="row">
              <div class="form-group">
-                    <label for="Idjefefamilia" class="col-xs-2 control-label">Cédula: </label>
-                    <div class="col-xs-8" style="margin-top: 3%;margin-left:8%">{{$censo->jefeFamilia->Cedula}}
+                    <label for="Idjefefamilia" class="col-sm-3 control-label">Cédula: </label>
+                    <span>{{$censo->jefeFamilia->Cedula}}</span>
                     </div>
              </div>
+             <div class="row">
              <div class="form-group">
-                           <div class="checkbox">
-                             <label class="col-xs-2 control-label" style="margin-left:4%">
-                              Refrigerador 
+                             <label class="col-sm-3 control-label">
+                              Refrigerador</label>
+                              <div class="checkbox">
                               <input type="hidden" name="Refrigerador" value="0" />
-                             <input type="checkbox" class="col-xs-6" style="margin-left:8%" name="Refrigerador" value="1">  
-                           </label>
+                             <input type="checkbox" class="col-sm-6" name="Refrigerador" value="1"@if($censo->Refrigerador == 1) checked="CHECKED" @endif>
                          </div>
              </div>
+             </div>
+             <div class="row">
              <div class="form-group">
-                    <div class="checkbox">
-                           <label class="col-xs-2 control-label" style="margin-left:4%">
-                           Cocina
+                           <label class="col-sm-3 control-label">
+                           Cocina</label>
+                             <div class="checkbox">
                            <input type="hidden" name="Cocina" value="0" />
-                           <input type="checkbox" class="col-xs-6" style="margin-left:8%" name="Cocina" value="1">  
-                    </label>
+                           <input type="checkbox" class="col-sm-6" name="Cocina" value="1" @if($censo->Cocina == 1) checked="CHECKED" @endif>
                     </div>
              </div>
-             <div class="form-group">
-                    <div class="checkbox">
-                           <label class="col-xs-2 control-label" style="margin-left:4%">
-                           Colchón
-                           <input type="hidden" name="Colchon" value="0" />
-                           <input type="checkbox" class="col-xs-6" style="margin-left:8%" name="Colchon" value="1">  
-                    </label>
-                    </div>
              </div>
+             <div class="row">
              <div class="form-group">
+                           <label class="col-sm-3 control-label" >
+                           Colchón</label>
                            <div class="checkbox">
-                                  <label class="col-xs-2 control-label" style="margin-left:4%">
-                                   Cama
-                                  <input type="hidden" name="Cama" value="0" />
-                                  <input type="checkbox" class="col-xs-6" style="margin-left:8%" name="Cama" value="1">  
-                           </label>
-                           </div>
+                           <input type="hidden" name="Colchon" value="0" />
+                           <input type="checkbox" class="col-sm-6" name="Colchon" value="1" @if($censo->Colchon == 1) checked="CHECKED" @endif>
+                    </div>
+             </div>
+             </div>
+             <div class="row">
+             <div class="form-group">
+                  <label class="col-sm-3 control-label">
+                   Cama</label>
+                   <div class="checkbox">
+                  <input type="hidden" name="Cama" value="0" />
+                  <input type="checkbox" class="col-sm-6" name="Cama" value="1"@if($censo->Cama == 1) checked="CHECKED" @endif>
+                  </div>
+             </div>
              </div>
       </div>
-             <!-- /.box-body -->
-             <div class="box-footer">
+             <div class="panel-footer">
                 @include("Includes.boton-editar")
              </div>
-             <!-- /.box-footer -->
       </form>
       </div>
-      </div>  
-      </div>  
 @endsection

@@ -42,8 +42,8 @@ class InventarioController extends Controller
         $inv = new Inventario();
         $inv->fill($request->all());
         $inv->save();
-       
-        return redirect('Inventario')->with('mensaje','Se ha agregado correctamente');
+
+        return redirect('Inventario')->with('exito','Se ha agregado correctamente');
     }
     public function editSuministro($id)
     {
@@ -52,17 +52,17 @@ class InventarioController extends Controller
     }
 
     public function updateSuministro(Request $request, $id)
-    { 
+    {
         $t = $request->Suministros;
-        $tt = $request->suma; 
+        $tt = $request->suma;
         $total = $t+$tt;
         $inventario = DB::update("call Update_Suministros('$id','$request->idEmergencias','$total')");
-        return redirect('Inventario')->with('mensaje','Se ha actualizado correctamente la cantidad de suministros');
-        
+        return redirect('Inventario')->with('exito','Se ha actualizado correctamente la cantidad de suministros');
+
     }
     public function ReporteFecha(request $request){
-        
-        $inventario = Inventario::orderby('idInventario')->whereBetween('created_at', array($request->Fecha1,$request->Fecha2)) 
+
+        $inventario = Inventario::orderby('idInventario')->whereBetween('created_at', array($request->Fecha1,$request->Fecha2))
         ->get();
         $today = Carbon::now()->format('d/m/Y h:i:s A');
         $view = view ('Inventario.reporte', compact('inventario', 'today'))->render();
@@ -73,7 +73,7 @@ class InventarioController extends Controller
     public function generar()
     {
         $inventario = Inventario::orderBy('idInventario')->get();
-        $today = Carbon::now()->format('d/m/Y h:i:s A'); 
+        $today = Carbon::now()->format('d/m/Y h:i:s A');
         $view = view ('Inventario.reporte', compact('inventario', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
@@ -134,7 +134,7 @@ class InventarioController extends Controller
         $inventario = Inventario::find($id);
         $inventario->fill($request->all());
         $inventario->save();
-      return redirect('Inventario')->with('mensaje','Se ha actualizado correctamente');
+      return redirect('Inventario')->with('exito','Se ha actualizado correctamente');
     }
 
     /**
@@ -147,6 +147,6 @@ class InventarioController extends Controller
     {
         $inventario = Inventario::find($id);
         $inventario->delete();
-        return redirect('Inventario')->with('Se ha eliminado correctamente');
+        return redirect('Inventario')->with('exito','Se ha eliminado correctamente');
     }
 }

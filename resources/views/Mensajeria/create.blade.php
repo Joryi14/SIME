@@ -1,21 +1,21 @@
 @extends("theme/$theme/layout")
+@section('styles')
+<link rel="stylesheet" href="{{asset("assets/$theme/Select2/css/select2.min.css")}}">
+@endsection
 @section('Contenido')
-<div class="row">
-<div class="col-md-10">
-    <div class="box box-info">
-      <div class="box-header with-border" style="padding:2%">
-          <div class="box-tools pull-right">
-              <div class="col-sm-12">
-              <a href="{{route('inicio_mensaje')}}" class="btn btn-block btn-info ">
-                  <i class="fa fa-fw fa-reply-all"></i> Regresar
-              </a>
-              </div>
-            </div>
-        <h3 class="box-title">Crear reporte de incidente</h3>
-      </div>
+@include('Includes.Error-form')
+@include('Includes.mensaje-Succes')
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h4 class="content-row-title">Crear reporte de incidente
+      <a href="{{route('inicio_mensaje')}}" class="btn btn-info pull-right">
+          <i class="fa fa-fw fa-reply-all"></i> Regresar
+      </a>
+          </h4>
+    </div>
       <form class="form-horizontal" method="POST" action="/Mensajeria/store">
         @csrf
-        <div class="box-body">
+        <div class="panel-body">
           <div class="form-group">
             <label for="Codigo de Incidente" class="col-sm-2 control-label">Código de incidente:</label>
             <div class="col-sm-9">
@@ -31,30 +31,30 @@
           <div class="form-group">
               <label for="Ubicación" class="col-sm-2 control-label">Ubicación: </label>
               <div class="col-sm-9">
-                  <input type="text" name="Ubicacion" class= "form-control" > 
+                  <input type="text" name="Ubicacion" class= "form-control" >
               </div>
             </div>
             <div class="form-group">
                 <label for="Hora" class="col-sm-2 control-label">Hora: </label>
                 <div class="col-sm-2">
-                    <input type="time" name="Hora" class= "form-control" >  
+                    <input type="time" name="Hora" class= "form-control">
                 </div>
               </div>
               <div class="form-group">
                   <label for="Fecha" class="col-sm-2 control-label">Fecha: </label>
                   <div class="col-sm-3">
-                      <input type="date" name="Fecha" class= "form-control" > 
+                      <input type="date" name="Fecha" class= "form-control" >
                   </div>
                 </div>
                 <div class="form-group">
                     <label for="Categoria" class="col-sm-2 control-label">Categoría: </label>
                     <div class="btn-group-horizontal">
-                       
+
         <div class="btn-group-horizontal" style="margin-top:2%">
-          <input type="radio" name="Categoria" value="Grave"><span style="padding:1%; color:red">Grave</span>  
-                      
+          <input type="radio" name="Categoria" value="Grave"><span style="padding:1%; color:red">Grave</span>
+
                       <input type="radio" name="Categoria" value="Moderada"><span style="padding:1%; color:orange">Moderada </span>
-                      
+
                       <input type="radio" name="Categoria" value="Leve"><span style="padding:1%; color:green">Leve </span>
                   </div>
           </div>
@@ -67,20 +67,19 @@
               </select>
           </div>
         </div>
-        <div class="box-footer">
+        <div class="panel-footer">
             @include("Includes.boton-form-create")
         </div>
       </form>
     </div>
   </div>
-</div>
 @section('Script')
+<script src="{{asset("assets/$theme/Select2/js/select2.full.min.js")}}"></script>
 <script type="text/javascript">
-  // CSRF Token
   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
   $(document).ready(function(){
     $("#SelectE").select2({
-      ajax: { 
+      ajax: {
         url: "{{route('Get_EmergeM')}}",
         type: "post",
         dataType: 'json',

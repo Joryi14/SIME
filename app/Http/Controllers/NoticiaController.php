@@ -16,20 +16,20 @@ class NoticiaController extends Controller
     {
 
       $noticias = Noticia::orderBy('IdNoticias')->get();
-      
+
         return view('Noticia.index', compact('noticias'));
     }
-    
+
 
     public function index1(Request $request)
     {
           $noticias = Noticia::orderBy('IdNoticias')->get();
-         
-      
-       
+
+
+
         return view('welcome', compact('noticias'));
     }
-  
+
 
     /**
      * Show the form for creating a new resource.
@@ -50,28 +50,24 @@ class NoticiaController extends Controller
     public function store(ValidacionNoticias $request)
     {
           $noticia = new Noticia();
-            
          if($request->hasFile('Imagenes')){
            $file =$request->file('Imagenes');
            $name = time().$file->getClientOriginalName();
            $file->move(public_path().'/img/', $name);
            $noticia->Imagenes = $name;
          }
-
             if($request->hasFile('Videos')){
            $file =$request->file('Videos');
            $nameV = time().$file->getClientOriginalName();
            $file->move(public_path().'/Video/', $nameV);
            $noticia->Videos = $nameV;
          }
-
          if($request->hasFile('PDF')){
           $file =$request->file('PDF');
           $nameP = time().$file->getClientOriginalName();
           $file->move(public_path().'/PDF/', $nameP);
           $noticia->PDF = $nameP;
         }
-        $noticia->created_at = $request->created_at;
         $noticia->Titulo = $request->Titulo;
         $noticia->IdAutor = $request->IdAutor;
         // $noticia->Imagenes = $;
@@ -79,7 +75,7 @@ class NoticiaController extends Controller
        // $noticia->Videos = $request->Videos;
         $noticia->Articulo = $request->Articulo;
          //$noticia->PDF = $request->PDF;
-        $noticia ->save();  
+        $noticia ->save();
         return redirect('Noticia')->with('mensaje','Se ha guardado');
     }
 
@@ -102,8 +98,6 @@ class NoticiaController extends Controller
      */
     public function edit($id)
     {
-
-
         $noticia = Noticia::find($id);
         return view('Noticia.edit', compact('noticia'));
     }
@@ -140,13 +134,7 @@ class NoticiaController extends Controller
          $file->move(public_path().'/PDF/', $nameP);
          $noticia->PDF = $nameP;
        }
-        
-          
-
           $noticia ->Articulo = $request->input('Articulo');
-
-         
-       
         $noticia->save();
         return redirect('Noticia')->with('mensaje','Editado correctamente');
     }

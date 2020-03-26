@@ -1,6 +1,6 @@
 @extends("theme/$theme/layout")
 @section('styles')
-<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+<link rel="stylesheet" href="{{asset("assets/$theme/bootflat-admin/datatables.min.css")}}">
 <style>
   .example-modal .modal {
     position: relative;
@@ -17,6 +17,7 @@
 </style>
 @endsection
 @section('Script')
+<script src="{{asset("assets/$theme/bootflat-admin/datatables.min.js")}}"></script>
 <script type="text/javascript">
  $(document).on('click', '.show-modal', function() {
            if($(this).data('ref')== 1)
@@ -37,36 +38,6 @@
            $('#cam').text("No tiene");
         });
 </script>
-<script type="text/javascript">
-  document.querySelector('#form1').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
-  swal({
-      title: "Esta seguro de eliminar?",
-      text: "Una vez eliminado no se puede recuperar!",
-      icon: "warning",
-      buttons: [
-        'Cancelar!',
-        'Aceptar!'
-      ],
-      dangerMode: true,
-    }).then(function(isConfirm) {
-      if (isConfirm) {
-        swal({
-          title: 'Exito!',
-          text: 'Se ha Eliminado el registro!',
-          icon: 'success'
-        }).then(function() {
-          form.submit(); // <--- submit form programmatically
-        });
-      } else {
-        swal("Cancelado","" ,"error");
-      }
-    })
-});
-</script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 <script>
 $(function () {
     $('#Censo_table').DataTable({
@@ -101,20 +72,17 @@ $(function () {
 </script>
 @endsection
 @section('Contenido')
-<div class="row">
-  <div class="col-xs-12">
     @include('Includes.mensaje-Error')
     @include('Includes.mensaje-Succes')
-      <div class="box box-primary">
-        <div class="box-header" style="padding:2%">
-            <div class="box-tools pull-right">
-                <a href="{{route('censo_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear 
+    <div class="panel panel-warning ">
+      <div class="panel-heading">
+        <h4 class="content-row-title">Censos
+                <a href="{{route('censo_create')}}" class="btn btn-primary pull-right">
+                    <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
-            </div>
-          <h3 class="box-title">Censos</h3>
+          </h4>
         </div>
-         <div class="box-body table-responsive" >
+         <div class="panel-body">
           <table id="Censo_table" class="table table-bordered table-striped">
             <thead>
             <tr>
@@ -125,12 +93,12 @@ $(function () {
           </thead>
                 @foreach ($censos as $item)
                   <tr>
-                  <td>{{$item->IdCenso}}</td>    
+                  <td>{{$item->IdCenso}}</td>
                   <td>{{$item->jefeFamilia->Cedula}}</td>
                   <td><a href="/Censo/{{$item->IdCenso}}/edit" class="btn-accion-tabla tooltipsC" title="Editar censo">
                     <i class="fa fa-fw fa-pencil text-success"></i></a>
                   <form id="form1" action="{{route('censo_delete', ['Censo' => $item->IdCenso])}}" method="POST">
-                    @csrf 
+                    @csrf
                     <input name="_method" type="hidden" value="DELETE">
                     <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar censo" onclick="confirmarEnvio()">
                         <i class="fa fa-fw fa-trash text-danger"></i>
@@ -140,7 +108,7 @@ $(function () {
                   </td>
                   </tr>
                 @endforeach
-          </table>  
+          </table>
       </div>
     </div>
     <div class="modal modal-default fade" id="Detalle">
@@ -152,39 +120,41 @@ $(function () {
             <h4 class="modal-title"><b>Información de censo</b></h4>
           </div>
           <div class="modal-body">
+            <div class="row">
             <div class="form-group">
               <label class="col-md-4 "><b>Refrigerador:</b></label>
               <div class="col-md-4">
                   <span id="refr"></span>
               </div>
-            </div>
+            </div></div>
            <br>
+           <div class="row">
            <div class="form-group ">
             <label class="col-md-4"><b>Cocina:</b></label>
             <div class="col-md-4">
                 <span id="coc"></span>
             </div>
-          </div><br>
+          </div></div> <br>
+          <div class="row">
          <div class="form-group">
           <label  class="col-md-4"><b>Colchón:</b></label>
           <div class="col-md-4">
               <span id="col"></span>
           </div>
-      </div><br>
+      </div></div> <br>
+      <div class="row">
        <div class="form-group">
         <label class="col-md-4"><b>Cama:</b></label>
         <div class="col-md-4">
             <span id="cam"></span>
         </div>
-      </div>    
+      </div> </div>
           <br><br>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline bg-red pull-left" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-outline btn-warning pull-left" data-dismiss="modal">Cerrar</button>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 @endsection

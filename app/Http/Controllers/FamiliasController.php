@@ -40,7 +40,10 @@ class FamiliasController extends Controller
     {
         if(JefeDeFamilia::find($request->IdJefeF)){
          $Patologia = implode(', ',$request->Patologia);
-         $Familia = DB::select("call Insert_Familia('$request->IdJefeF','$request->Nombre','$request->Apellido1','$request->Apellido2','$request->Cedula','$request->Parentesco','$request->Edad','$request->sexo','$request->PcD','$request->MG','$request->PI','$request->PM','$Patologia')");
+         $fam = new Familias();
+         $fam->fill($request->all());
+         $fam->Patologia = $Patologia;
+         $fam->save();
          return redirect('Familias')->with('exito','Se ha agregado correctamente');
         }
         else
@@ -102,8 +105,10 @@ class FamiliasController extends Controller
     public function update(Request $request, $id)
     {
         $Patologia = implode(', ',$request->Patologia);
-        $Familia = DB::update("call Update_Familia('$id','$request->IdJefeF','$request->Nombre','$request->Apellido1','$request->Apellido2','$request->Cedula','$request->Parentesco','$request->Edad','$request->sexo','$request->PcD','$request->MG','$request->PI','$request->PM','$Patologia')");
-      
+        $fam = Familias::find($id);
+        $fam->fill($request->all());
+        $fam->Patologia = $Patologia;
+        $fam->save();      
         return redirect('Familias')->with('exito','Se ha actualizado correctamente');
     }
 

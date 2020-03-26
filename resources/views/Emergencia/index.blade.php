@@ -1,38 +1,31 @@
 @extends("theme/$theme/layout")
 @section('styles')
-<link rel="stylesheet" href="{{asset("assets/$theme/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">    
+<link rel="stylesheet" href="{{asset("assets/$theme/bootflat-admin/datatables.min.css")}}">
+<style>
+  .example-modal .modal {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    left: auto;
+    display: block;
+    z-index: 1;
+  }
+  .example-modal .modal {
+    background: transparent !important;
+  }
+</style>
 @endsection
 @section('Script')
+<script src="{{asset("assets/$theme/bootflat-admin/datatables.min.js")}}"></script>
 <script type="text/javascript">
-  document.querySelector('#formE').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
-  swal({
-      title: "Esta seguro de eliminar?",
-      text: "Una vez eliminado no se puede recuperar!",
-      icon: "warning",
-      buttons: [
-        'Cancelar!',
-        'Aceptar!'
-      ],
-      dangerMode: true,
-    }).then(function(isConfirm) {
-      if (isConfirm) {
-        swal({
-          title: 'Exito!',
-          text: 'Se ha Eliminado el registro!',
-          icon: 'success'
-        }).then(function() {
-          form.submit(); // <--- submit form programmatically
-        });
-      } else {
-        swal("Cancelado","" ,"error");
-      }
-    })
-});
-</script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
-<script src="{{asset("assets/$theme/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
+  $(document).on('click', '.show-modal', function() {
+            $('#desc').text($(this).data('desc'));
+           $('#lt').text($(this).data('lt'));
+           $('#lg').text($(this).data('lg'));
+           $('#rad').text($(this).data('rad'));
+         });
+ </script>
 <script>
 $(function () {
     $('#Emergencia_table').DataTable({
@@ -67,106 +60,100 @@ $(function () {
 </script>
 @endsection
 @section('Contenido')
-<div class="row">
-  <div class="col-xs-10" style="margin-left:8%">
-  <div class="box collapsed-box">
-  <div class="box-header" style="padding:2%">
-      <div class="box-tools pull-right" >
-          <button type="button" class="btn btn-box-tool"  data-widget="collapse"><i class="fa fa-plus"></i></button>
-      </div>
-    <h3  class="box-title">Reporte por fechas</h3>
-  </div>
-  <div class="box-body">
-  <form class= "form-horizontal" method="POST" action="Emergencia/ReporteFecha" target="_blank">
-        @csrf 
-   <div class="col-md-6">
-  <div class="form-group">
-          <label for="Fecha" class="col-sm-4 control-label">Desde: </label>
-          <div class="col-sm-8">
-              <input required type="date" name="Fecha1" class= "form-control" > 
-          </div>
-  </div>
-  </div> 
-  <div class="col-md-6">
-  <div class="form-group">
-      <label for="Fecha" class="col-sm-4 control-label">Hasta: </label>
-      <div class="col-sm-8">
-          <input required type="date" name="Fecha2" class= "form-control" > 
-      </div>
-  </div>
-  </div>
-  <div class="box-footer">
-      <button type="submit" class="btn btn-primary ">Enviar</button>
-  </div>
-  </form>
-  </div>
-  </div>
-  </div>
-  </div>
-<div class="row">
-    <div class="col-xs-12">
-      <a href="{{route('emergencia_reporte')}}" class="btn btn-block btn-primary btn-sm" target="_blank">
-        <i class="fa fa-fw fa-plus-circle"></i> Crear reporte de emergencias 
-    </a>
-        @include('Includes.mensaje-Succes')
-      <div class="box box-primary">
-        <div class="box-header" style="padding:2%">
-            {{-- <div class="box-tools pull-right">
-                <a href="{{route('emergencia_create')}}" class="btn btn-block btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus-circle"></i> Crear
-                </a>
-            </div>
-             --}}
-          <h3 class="box-title">Lista de emergencias</h3>
-        </div>
-       
-          <div class="box-body table-responsive" >
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h4 class="content-row-title">Lista de emergencias
+      <a href="{{route('emergencia_create')}}" class="btn  btn-info pull-right">
+          <i class="fa fa-fw fa-plus-circle"></i> Crear
+      </a>
+      </h4>
+    </div>
+          <div class="panel-body table-responsive" >
           <table id="Emergencia_table" class="table table-bordered table-striped">
               <thead>
-              
             <tr>
               <th>Id de la emergencia</th>
               <th>Nombre de la emergencia</th>
               <th>Categoría</th>
               <th>Tipo de emergencia</th>
-              <th>Descripción</th>
-              <th>Longitud</th>
-              <th>Latitud</th>
-              <th>Estado</th>
               <th>Acciones</th>
-            
             </tr>
           </thead>
             @foreach ($emergencias as $item)
               <tr>
-              <td>{{$item->idEmergencias}}</td>    
+              <td>{{$item->idEmergencias}}</td>
               <td>{{$item->NombreEmergencias}}</td>
               <td>{{$item->Categoria}}</td>
               <td>{{$item->TipoDeEmergencia}}</td>
-              <td>{{$item->Descripcion}}</td>
-              <td>{{$item->Longitud}}</td>
-              <td>{{$item->Latitud}}</td>
               <td>
                 @if($item->Estado == 'Activa')
-                  <a style="color:green;">{{$item->Estado}}</a>
+                <span class="badge badge-success">{{$item->Estado}}</span></a>
                 @else
-                <a style="color:red;">{{$item->Estado}}</a>
+                <span class="badge badge-danger">{{$item->Estado}}</span></a>
                 @endif</td>
               <td><a href="/Emergencia/{{$item->idEmergencias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar emergencia">
-                <i class="fa fa-fw fa-pencil"></i></a>
+                <i class="fa fa-fw fa-pencil text-success"></i></a>
               <form id="formE"  action="{{route('emergencia_delete', ['Emergencia' => $item->idEmergencias])}}" method="POST">
-                @csrf 
+                @csrf
                 <input name="_method" type="hidden" value="DELETE">
                 <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar emergencia" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
+              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar emergencia" data-toggle="modal" data-target="#Detalle"  data-lt="{{$item->Latitud}}" data-lg="{{$item->Longitud}}" data-rad="{{$item->Radio}}" data-desc="{{$item->Descripcion}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>
             @endforeach
           </table>
         </div>
+        <div class="modal modal-default fade" id="Detalle">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Información de jefe de familia</b></h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                <div class="form-group">
+                  <label class="col-md-6"><b>Descripción:</b></label>
+                  <div class="col-md-6">
+                      <span id="desc"></span>
+                  </div>
+                </div>
+              </div><br>
+              <div class="row">
+               <div class="form-group">
+                <label class="col-md-6"><b>Latitud:</b></label>
+                <div class="col-md-6">
+                    <span id="lt"></span>
+                </div>
+              </div>
+            </div><br>
+              <div class="row">
+             <div class="form-group">
+              <label  class="col-md-6"><b>Longitud:</b></label>
+              <div class="col-md-6">
+                  <span id="lg"></span>
+              </div>
+          </div>
+        </div><br>
+          <div class="row">
+           <div class="form-group">
+            <label class="col-md-6"><b>Radio:</b></label>
+            <div class="col-md-6">
+                <span id="rad"></span>
+            </div>
+          </div>
+        </div>
+                <br><br>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline btn-primary pull-left" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 @endsection

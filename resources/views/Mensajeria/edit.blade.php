@@ -1,33 +1,24 @@
 @extends("theme/$theme/layout")
 @section('Contenido')
-<div class="row">
-      <div class="col-md-10">
-          <div class="box box-success">
-            <div class="box-header with-border " style="padding:2%"> 
-                <div class="box-tools pull-right">
-                    <div class="col-sm-12">
-                        <a href="{{route('inicio_mensaje')}}" class="btn btn-block btn-info ">
-                            <i class="fa fa-fw fa-reply-all"></i> Regresar
-                        </a>
-                        </div>
-                    
-                  </div>
-              <h3 class="box-title">Editar mensaje</h3>
-            </div>
+@include('Includes.Error-form')
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h4 class="content-row-title">Editar mensaje
+      <a href="{{route('inicio_mensaje')}}" class="btn btn-info pull-right">
+          <i class="fa fa-fw fa-reply-all"></i> Regresar
+      </a>
+    </h4>
+    </div>
 <form class= "form-horizontal" method="POST" action="/Mensajeria/{{$mensajeria->IdMensajeria}}">
  @method('PUT')
   @csrf
-
-<div class= "box-body">
-
+<div class= "panel-body">
       <div class="form-group">
             <label for="CodigoIncidente" class="col-sm-2 control-label">Código de incidente: </label>
             <div class="col-sm-9">
               <input type="text" name="CodigoIncidente" class= "form-control" value=" {{$mensajeria->CodigoIncidente}}" >
             </div>
           </div>
-
-
           <div class="form-group">
                <label for="Descripcion" class="col-sm-2 control-label">Descripción: </label>
                <div class="col-sm-9">
@@ -56,13 +47,13 @@
                           <input type="text" name="Fecha" class= "form-control" value=" {{$mensajeria->fecha}}" >
                         </div>
                       </div>
-                      
+
                    <div class="form-group">
                         <label for="Categoria" class="col-sm-2 control-label">Categoría: </label>
                         <div class="btn-group-horizontal">
-                       
+
                             <div class="btn-group-horizontal" style="margin-top:2%">
-                              <input type="radio" name="Categoria" value="Grave"  @if ($mensajeria->Categoria == 'Grave') checked="checked" @endif><span style="padding:1%; color:red">Grave</span>  
+                              <input type="radio" name="Categoria" value="Grave"  @if ($mensajeria->Categoria == 'Grave') checked="checked" @endif><span style="padding:1%; color:red">Grave</span>
                                           <input type="radio" name="Categoria" value="Moderada" @if ($mensajeria->Categoria == 'Moderada') checked="checked" @endif><span style="padding:1%; color:orange">Moderada </span>
                                           <input type="radio" name="Categoria" value="Leve"  @if ($mensajeria->Categoria == 'Leve') checked="checked" @endif><span style="padding:1%; color:green">Leve </span>
                                       </div>
@@ -81,12 +72,9 @@
                           </div>
                         </div>
 </div>
-
-<div class="box-footer">
+<div class="panel-footer">
       @include("Includes.boton-editar")
    </div>
   </form>
-     </div>  
-  </div>
-</div>
+     </div>
 @endsection

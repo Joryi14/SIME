@@ -90,8 +90,8 @@ class PersonasAlbergueController extends Controller
         $response = array();
         foreach($Albergue as $Alber){
            $response[] = array(
-                "id"=>$Alber->idAlbergue,
-                "text"=>$Alber->Nombre
+            "id"=>$Alber->idAlbergue,
+            "text"=>$Alber->Nombre
            );
         }
         echo json_encode($response);
@@ -101,15 +101,15 @@ class PersonasAlbergueController extends Controller
 
         $search = $request->search;
         if($search == ''){
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias')->limit(5)->get();
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->limit(5)->get();
         }else{
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias')->where('idEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('idEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
         }
         $response = array();
         foreach($Emergencia as $Emer){
            $response[] = array(
-                "id"=>$Emer->idEmergencias,
-                "text"=>$Emer->idEmergencias
+            "id"=>$Emer->idEmergencias,
+            "NombreEmergencias"=>$Emer->NombreEmergencias
            );
         }
         echo json_encode($response);
@@ -134,15 +134,18 @@ class PersonasAlbergueController extends Controller
 
         $search = $request->search;
         if($search == ''){
-           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->limit(5)->get();
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula','Nombre','Apellido1','Apellido2')->limit(5)->get();
         }else{
-           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula','Nombre','Apellido1','Apellido2')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
         }
         $response = array();
         foreach($Jefes as $jefe){
            $response[] = array(
                 "id"=>$jefe->IdJefe,
-                "text"=>$jefe->Cedula
+                "Cedula"=>$jefe->Cedula,
+                "Nombre"=>$jefe->Nombre,
+                "Apellido1"=>$jefe->Apellido1,
+                "Apellido2"=>$jefe->Apellido2
            );
         }
 

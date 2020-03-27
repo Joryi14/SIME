@@ -60,6 +60,8 @@ $(function () {
 </script>
 @endsection
 @section('Contenido')
+@include('Includes.mensaje-Error')
+@include('Includes.mensaje-Succes')
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h4 class="content-row-title">Lista de emergencias

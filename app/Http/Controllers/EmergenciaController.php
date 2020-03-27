@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ValidacionesEmergencia;
 use Illuminate\Support\Facades\DB;
 use App\Models\Emergencia;
+use App\Models\EntregaDonaciones;
+use App\Models\EntregaDonacionesAlbergue;
+use App\Models\Inventario;
 use App\Models\Mensajeria;
+use App\Models\PersonasAlbergue;
+use App\Models\Retiro_PaquetesV;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -44,7 +49,7 @@ class EmergenciaController extends Controller
         $Emergencia = new Emergencia();
         $Emergencia->fill($request->all());
         $Emergencia->save();
-        return redirect('Emergencia')->with('mensaje','Se ha agregado correctamente');
+        return redirect('Emergencia')->with('exito','Se ha agregado correctamente');
     }
 
     /**
@@ -96,7 +101,7 @@ class EmergenciaController extends Controller
         $emergencia = Emergencia::find($id);
      $emergencia->fill($request->all());
      $emergencia->save();
-     return redirect('Emergencia')->with('mensaje','Se ha actualizado correctamente');
+     return redirect('Emergencia')->with('exito','Se ha actualizado correctamente');
     }
 
     /**
@@ -110,11 +115,30 @@ class EmergenciaController extends Controller
 
         $emergencia = Emergencia::find($id);
         if(Mensajeria::where('idEmergencia',$id)->first()){
-        return redirect('Emergencias')->with('mensaje','No se puede eliminar la emergencia tiene mensajes');
+        return redirect('Emergencia')->with('mensaje','No se puede eliminar la emergencia tiene mensajes');
 
         }
+        if(EntregaDonaciones::where('idEmergencia',$id)->first()){
+            return redirect('Emergencia')->with('mensaje','No se puede eliminar la emergencia tiene entregas de donaciones asignadas');
+    
+            }
+        if(EntregaDonacionesAlbergue::where('idEmergencias',$id)->first()){
+            return redirect('Emergencia')->with('mensaje','No se puede eliminar la emergencia tiene entregas de donaciones en albergue asignadas');
+        }
+        if(EntregaDonacionesAlbergue::where('idEmergencias',$id)->first()){
+            return redirect('Emergencia')->with('mensaje','No se puede eliminar la emergencia tiene entregas de donaciones en albergue asignadas');
+        }
+        if(PersonasAlbergue::where('idEmergencias',$id)->first()){
+            return redirect('Emergencia')->with('mensaje','No se puede eliminar la emergencia tiene personas en albergue asignadas');
+        }
+        if(Inventario::where('idEmergencias',$id)->first()){
+            return redirect('Emergencia')->with('mensaje','No se puede eliminar la emergencia tiene inventario asignados');
+        }
+        if(Retiro_PaquetesV::where('idEmergencia',$id)->first()){
+            return redirect('Emergencia')->with('mensaje','No se puede eliminar la emergencia tiene retiros de paquetes asignados');
+        }
         $emergencia->delete();
-        return redirect('Emergencia')->with('Se ha eliminado correctamente');
+        return redirect('Emergencia')->with('exito','Se ha eliminado correctamente');
     }
 
     public function ReporteFecha(request $request){

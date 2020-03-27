@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidacionRetiroPaquetes;
 use App\Models\Emergencia;
+use App\Models\EntregaDonaciones;
 use App\Models\Inventario;
 use Illuminate\Support\Facades\DB;
 use App\Models\Retiro_PaquetesV;
@@ -203,7 +204,10 @@ class Retiro_PaquetesVController extends Controller
      */
     public function delete($id, Request $request)
     {
-        $retiroPV = Retiro_PaquetesV::find($id);
+      $retiroPV = Retiro_PaquetesV::find($id);
+      if(EntregaDonaciones::where('IdRetiroPaquetes',$id)->first()){
+        return redirect('Retiro_PaquetesV')->with('mensaje','No se puede eliminar el registro tiene entregas de donaciones asignadas');
+        }
       $retiroPV->delete();
       return redirect('Retiro_PaquetesV')->with('exito','Se ha eliminado correctamente');
     }

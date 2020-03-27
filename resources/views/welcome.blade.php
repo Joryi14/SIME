@@ -562,11 +562,11 @@ if(this.readyState == 4 && this.status == 200){
 
 if(item.Estado =="Activa"){
   var mark = L.marker([item.Latitud,item.Longitud],{icon: AlbergueV}).addTo(mymap);
-    mark.bindPopup(item.Nombre+" "+item.Latitud+" "+item.Longitud).openPopup();
+    mark.bindPopup("Nombre del albergue: "+item.Nombre+", "+"Distrito: "+item.Distrito+", "+"Comunidad: "+item.Comunidad+", "+"Teléfono: "+item.telefono).openPopup();
   }
   else {
     var mark = L.marker([item.Latitud,item.Longitud],{icon: AlbergueR}).addTo(mymap);
-      mark.bindPopup(item.Nombre+" "+item.Latitud+" "+item.Longitud).openPopup();
+      mark.bindPopup("Nombre del albergue: "+item.Nombre+", "+"Distrito: "+item.Distrito+", "+"Comunidad: "+item.Comunidad+", "+"Teléfono: "+item.telefono).openPopup();
   }
 }
   }

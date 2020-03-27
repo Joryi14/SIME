@@ -5,6 +5,7 @@ use App\Http\Requests\ValidacionInventario;
 use App\Models\Emergencia;
 use Illuminate\Support\Facades\DB;
 use App\Models\Inventario;
+use App\Models\Retiro_PaquetesV;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -146,6 +147,9 @@ class InventarioController extends Controller
     public function delete($id, Request $request)
     {
         $inventario = Inventario::find($id);
+        if(Retiro_PaquetesV::where('IdInventario',$id)->first()){
+            return redirect('Inventario')->with('mensaje','No se puede eliminar el inventario tiene retiros de donaciones asignados');
+            }
         $inventario->delete();
         return redirect('Inventario')->with('exito','Se ha eliminado correctamente');
     }

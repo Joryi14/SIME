@@ -102,7 +102,7 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
-              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar censo" data-toggle="modal" data-target="#Detalle"  
+              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar detalles" data-toggle="modal" data-target="#Detalle"  
               data-ape1="{{$item->Apellido1}}" 
               data-ape2="{{$item->Apellido2}}" 
               data-par="{{$item->Parentesco}}" 

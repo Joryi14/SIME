@@ -6,7 +6,7 @@
 <div class="panel panel-warning">
       <div class="panel-heading">
         <h4 class="content-row-title">Crear usuario rol
-          <a href="{{route('inicio_UR')}}" class="btn btn-primary pull-right">
+          <a href="{{route('inicio_UR')}}" class="btn btn-success btn-md pull-right">
               <i class="fa fa-fw fa-reply-all"></i> Regresar
           </a>
         </h4>

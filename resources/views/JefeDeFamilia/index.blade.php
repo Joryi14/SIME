@@ -80,7 +80,7 @@ $(function () {
           <table id="Jefe_table" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th>Id jefe de familia</th>
+              <th>Id del jefe de familia</th>
               <th>Total de personas</th>
               <th>Nombre</th>
               <th>Primer apellido</th>

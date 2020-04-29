@@ -21,21 +21,21 @@
 <script type="text/javascript">
  $(document).on('click', '.show-modal', function() {
            if($(this).data('ref')== 1)
-           $('#refr').text("Sí tiene");
+           $('#refr').text("Posee");
            else
-           $('#refr').text("No tiene");
+           $('#refr').text("No posee");
            if($(this).data('coc')== 1)
-           $('#coc').text("Sí tiene");
+           $('#coc').text("Posee");
            else
-           $('#coc').text("No tiene");
+           $('#coc').text("No posee");
            if($(this).data('col')== 1)
-           $('#col').text("Sí tiene");
+           $('#col').text("Posee");
            else
-           $('#col').text("No tiene");
+           $('#col').text("No posee");
            if($(this).data('cam')== 1)
-           $('#cam').text("Sí tiene");
+           $('#cam').text("Posee");
            else
-           $('#cam').text("No tiene");
+           $('#cam').text("No posee");
         });
 </script>
 <script>

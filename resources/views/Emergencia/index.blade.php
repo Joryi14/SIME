@@ -101,7 +101,7 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
-              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar emergencia" data-toggle="modal" data-target="#Detalle"  data-lt="{{$item->Latitud}}" data-lg="{{$item->Longitud}}" data-rad="{{$item->Radio}}" data-desc="{{$item->Descripcion}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
+              <button  class="show-modal btn-accion-tabla tooltipsC"title="Información de la emergencia" data-toggle="modal" data-target="#Detalle"  data-lt="{{$item->Latitud}}" data-lg="{{$item->Longitud}}" data-rad="{{$item->Radio}}" data-desc="{{$item->Descripcion}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>
             @endforeach
@@ -113,7 +113,7 @@ $(function () {
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b>Información de jefe de familia</b></h4>
+                <h4 class="modal-title"><b>Información de la emergencia</b></h4>
               </div>
               <div class="modal-body">
                 <div class="row">
@@ -151,7 +151,7 @@ $(function () {
                 <br><br>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline btn-primary pull-left" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-outline btn-danger pull-left" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>

@@ -99,7 +99,7 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
-              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar retiro de paquetes" data-toggle="modal" data-target="#Detalle"  data-fi="{{$item->FechaDeIngreso}}" data-hi="{{$item->HoraDeIngreso}}" data-fs="{{$item->FechaDeSalida}}" data-hs="{{$item->HoraDeSalida}}" ><i class="fa fa-fw fa-file-text-o text-info"></i></a>
+              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostar personas en albergue" data-toggle="modal" data-target="#Detalle"  data-fi="{{$item->FechaDeIngreso}}" data-hi="{{$item->HoraDeIngreso}}" data-fs="{{$item->FechaDeSalida}}" data-hs="{{$item->HoraDeSalida}}" ><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>
             @endforeach
@@ -112,7 +112,7 @@ $(function () {
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"><b>Información de retiro de paquetes</b></h4>
+        <h4 class="modal-title"><b>Información de personas en albergue</b></h4>
       </div>
       <div class="modal-body">
         <div class="row">

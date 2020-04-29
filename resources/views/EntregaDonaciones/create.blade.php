@@ -23,7 +23,7 @@
                 </div>
               </div>
              <div class="form-group">
-                    <label for="IdRetiroPaquetes" class="col-sm-2 control-label">Id del Retiro de Paquetes: </label>
+                    <label for="IdRetiroPaquetes" class="col-sm-2 control-label">Id del retiro de paquetes: </label>
                     <div class="col-sm-9">
                         <select id='SelectR' name="IdRetiroPaquetes" style='width: 50%;'>
                         <option value='0'>Seleccionar un paquete</option></select>

@@ -482,7 +482,7 @@
                  </video>
                  @endif
                   <ul class="list-inline">
-                    <li>Fecha de publicacion: {{$item->updated_at}}</li>
+                    <li>Fecha de publicación: {{$item->updated_at}}</li>
                     <li>Autor: {{$item->user->name}} {{$item->user->Apellido1}}</li>
                     @if($item->PDF != null)
                     <li>

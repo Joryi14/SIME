@@ -21,24 +21,24 @@
 <script type="text/javascript">
   $(document).on('click', '.show-modal', function() {
            if($(this).data('du')== 1)
-           $('#du').text("Sí tiene");
+           $('#du').text("Posee");
            else
-           $('#du').text("No tiene");
+           $('#du').text("No posee");
 
            if($(this).data('ino')== 1)
-           $('#ino').text("Sí tiene");
+           $('#ino').text("Posee");
            else
-           $('#ino').text("No tiene");
+           $('#ino').text("No posee");
 
            if($(this).data('edc')== 1)
-           $('#edc').text("Sí tiene");
+           $('#edc').text("Posee");
            else
-           $('#edc').text("No tiene");
+           $('#edc').text("No posee");
 
            if($(this).data('bo')== 1)
-           $('#bo').text("Sí tiene");
+           $('#bo').text("Posee");
            else
-           $('#bo').text("No tiene");
+           $('#bo').text("No posee");
 
             $('#lon').text($(this).data('lon'));
             $('#lat').text($(this).data('lat'));
@@ -130,7 +130,7 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
-              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar retiro de paquetes" data-toggle="modal" data-target="#Detalle"  data-du="{{$item->Duchas}}" data-ino="{{$item->inodoros}}" data-edc="{{$item->EspaciosDeCocina}}" data-bo="{{$item->Bodega}}" data-lon="{{$item->Longitud}}" data-lat="{{$item->Latitud}}" data-tip ="{{$item->TipoDeInstalacion}}" data-nec="{{$item->Nececidades}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
+              <button  class="show-modal btn-accion-tabla tooltipsC"title="Información de albergue" data-toggle="modal" data-target="#Detalle"  data-du="{{$item->Duchas}}" data-ino="{{$item->inodoros}}" data-edc="{{$item->EspaciosDeCocina}}" data-bo="{{$item->Bodega}}" data-lon="{{$item->Longitud}}" data-lat="{{$item->Latitud}}" data-tip ="{{$item->TipoDeInstalacion}}" data-nec="{{$item->Nececidades}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>
             @endforeach
@@ -197,7 +197,7 @@ $(function () {
           <br>
           <div class="row">
           <div class="form-group">
-            <label class="col-md-4"><b>Tipo De Instalación:</b></label>
+            <label class="col-md-4"><b>Tipo de instalación:</b></label>
             <div class="col-md-4">
                 <span id="tip"></span>
             </div>
@@ -214,7 +214,7 @@ $(function () {
           <br>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline btn-primary  pull-left" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline btn-danger  pull-left" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>

@@ -77,10 +77,11 @@ $(function () {
     <div class="panel panel-warning ">
       <div class="panel-heading">
         <h4 class="content-row-title">Censos
-                <a href="{{route('censo_create')}}" class="btn btn-primary pull-right">
+                <a href="{{route('censo_create')}}" class="btn btn-info btn-lg pull-right">
                     <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
           </h4>
+          <br>
         </div>
          <div class="panel-body">
           <table id="Censo_table" class="table table-bordered table-striped">

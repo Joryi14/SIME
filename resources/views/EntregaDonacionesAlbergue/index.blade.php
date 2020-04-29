@@ -43,10 +43,11 @@ $(function () {
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h4 class="content-row-title">Entrega de donaciones en albergue
-                  <a href="{{route('EntregaDonacionesA_create')}}" class="btn pull-right btn-info btn-sm">
+                  <a href="{{route('EntregaDonacionesA_create')}}" class="btn btn-success btn-lg pull-right">
                       <i class="fa fa-fw fa-plus-circle"></i> Crear
                   </a>
                       </h4>
+                      <br>
                     </div>
          <div class="panel-body table-responsive" >
           <table id="EntregaDonacionesAlbergue_table" class="table table-bordered table-striped">
@@ -125,4 +126,5 @@ $(function () {
             </div>
           </div>
         </div>
+        <br>
     @endsection

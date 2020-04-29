@@ -53,10 +53,11 @@ $(function () {
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h4 class="box-title">Inventario
-            <a href="{{route('inventario_create')}}" class="btn btn-success btn-sm pull-right">
+            <a href="{{route('inventario_create')}}" class="btn btn-success btn-lg pull-right">
                 <i class="fa fa-fw fa-plus-circle"></i> Crear
             </a>
                 </h4>
+                <br>
               </div>
         <div class="panel-body table-responsive" >
           <table id="Inventario_Table" class="table table-bordered table-striped">
@@ -175,4 +176,5 @@ $(function () {
         </div>
       </div>
     </div>
+    <br>
 @endsection

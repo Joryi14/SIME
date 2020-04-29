@@ -41,11 +41,12 @@
 
 <div class="panel panel-warning">
     <div class="panel-heading">
-      <h4 class="content-row-title">Usuario Rol
-        <a href="{{route('crear_UserRol')}}" class="btn btn-info pull-right">
+      <h4 class="content-row-title">Usuarios y sus roles
+        <a href="{{route('crear_UserRol')}}" class="btn btn-info btn-lg pull-right">
           <i class="fa fa-fw fa-plus-circle"></i> Crear
         </a>
       </h4>
+      <br>
     </div>
         <div class="panel-body">
            <div class="content-row">

@@ -2,16 +2,17 @@
 @section('Script')
 @endsection
 @section('Contenido')
-      <div class="panel panel-info">
+      <div class="panel panel-primary">
         <div class="panel-heading">
           <h4 class="content-row-title">Informes de incidentes
-            <a href="{{route('Mensajeria_create')}}" class="btn btn-primary pull-right">
+            <a href="{{route('Mensajeria_create')}}" class="btn btn-success btn-lg pull-right">
               <i class="fa fa-plus-circle"></i> Crear
           </a></h4>
+          <br>
           </div>
         </div>
   @foreach ($mensajerias as $item)
-     <div class="panel panel-primary">
+     <div class="panel panel-info">
             <div class="panel-heading"> Este reporte fue enviado en la fecha y hora: {{$item->created_at}}
             </div>
                   <div class="panel-body">

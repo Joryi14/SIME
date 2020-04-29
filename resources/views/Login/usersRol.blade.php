@@ -39,10 +39,11 @@
 <div class="panel panel-danger">
   <div class="panel-heading">
     <h4 class="content-row-title">Roles
-      <a href="{{route('crearRol')}}" class="btn btn-info pull-right">
+      <a href="{{route('crearRol')}}" class="btn btn-info btn-lg pull-right">
           <i class="fa fa-fw fa-plus-circle"></i> Crear
       </a>
     </h4>
+  <br>
   </div>
   <div class="panel-body">
     <div class="content-row">

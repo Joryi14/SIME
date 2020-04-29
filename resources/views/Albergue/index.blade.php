@@ -85,10 +85,11 @@ $(function () {
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h4 class="content-row-title">Albergue
-      <a href="{{route('albergue_create')}}" class="btn btn-info pull-right">
+      <a href="{{route('albergue_create')}}" class="btn btn-success btn-lg  pull-right">
           <i class="fa fa-fw fa-plus-circle"></i> Crear
       </a>
           </h4>
+          <br>
         </div>
         <div class="panel-body table-responsive" >
           <table id="Albergue_Table" class="table table-bordered table-striped">

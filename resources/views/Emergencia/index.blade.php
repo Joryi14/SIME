@@ -63,10 +63,11 @@ $(function () {
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h4 class="content-row-title">Lista de emergencias
-      <a href="{{route('emergencia_create')}}" class="btn  btn-info pull-right">
+      <a href="{{route('emergencia_create')}}" class="btn  btn-success btn-lg pull-right">
           <i class="fa fa-fw fa-plus-circle"></i> Crear
       </a>
       </h4>
+      <br>
     </div>
           <div class="panel-body table-responsive" >
           <table id="Emergencia_table" class="table table-bordered table-striped">
@@ -201,4 +202,5 @@ $(function () {
               </div>
             </div>
           </div>
+          <br>
       @endsection

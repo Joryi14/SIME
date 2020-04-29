@@ -71,10 +71,11 @@ $(function () {
 <div class="panel panel-warning ">
   <div class="panel-heading">
     <h4 class="content-row-title">Familias
-                <a href="{{route('familias_create')}}" class="btn btn-primary pull-right">
+                <a href="{{route('familias_create')}}" class="btn btn-info btn-lg pull-right">
                     <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
           </h4>
+          <br>
         </div>
         <div class="panel-body">
           <table id="Familias_table" class="table table-bordered table-striped">

@@ -48,7 +48,7 @@
               @if (Route::has('login'))
               @auth
               <li class="nav-item">
-              <a class="nav-link" href="{{ url('/home') }}">Sistema</a>
+              <a class="nav-link" href="{{ url('/home') }}">Volver al sistema</a>
               </li>
               @else
               <li class="nav-item">
@@ -122,7 +122,7 @@
       <div class="row">
         <div class="col-lg-12 text-center">
           <h2 class="section-heading text-uppercase">Noticias</h2>
-          <h3 class="section-subheading text-muted">Todas la novedades de la comunidad de Nosara.</h3>
+          <h3 class="section-subheading text-muted">Todas las novedades de la comunidad de Nosara.</h3>
         </div>
       </div>
       <div class="row">
@@ -169,7 +169,7 @@
               </div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
-                  <h4 class="subheading">Misión  del comité comunal de emergenciasde de Nosara. </h4>
+                  <h4 class="subheading">Misión del comité comunal de emergencias de Nosara. </h4>
                 </div>
                 <div class="timeline-body">
                   <p class="text-muted">...</p>

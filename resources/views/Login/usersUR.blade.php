@@ -41,7 +41,7 @@
 
 <div class="panel panel-warning">
     <div class="panel-heading">
-      <h4 class="content-row-title">Usuarios y sus roles
+      <h4 class="content-row-title">Asignación de roles
         <a href="{{route('crear_UserRol')}}" class="btn btn-info btn-lg pull-right">
           <i class="fa fa-fw fa-plus-circle"></i> Crear
         </a>

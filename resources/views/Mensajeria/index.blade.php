@@ -2,16 +2,17 @@
 @section('Script')
 @endsection
 @section('Contenido')
-      <div class="panel panel-info">
+      <div class="panel panel-primary">
         <div class="panel-heading">
           <h4 class="content-row-title">Informes de incidentes
-            <a href="{{route('Mensajeria_create')}}" class="btn btn-primary pull-right">
+            <a href="{{route('Mensajeria_create')}}" class="btn btn-success btn-lg pull-right">
               <i class="fa fa-plus-circle"></i> Crear
           </a></h4>
+          <br>
           </div>
         </div>
   @foreach ($mensajerias as $item)
-     <div class="panel panel-primary">
+     <div class="panel panel-info">
             <div class="panel-heading"> Este reporte fue enviado en la fecha y hora: {{$item->created_at}}
             </div>
                   <div class="panel-body">
@@ -22,7 +23,7 @@
                     <p><strong>Hora:</strong>   {{$item->Hora}}</p>
                        <p><strong>Fecha: </strong>{{\Carbon\Carbon::parse($item->fecha)->format('d/m/Y')}} </p>
                       <p><strong>Categoría:</strong>   {{$item->Categoria}}</p>
-                         <p><strong>Id del líder comunal:</strong>  {{$item->LiderComunal->Cedula}}  {{$item->LiderComunal->name}}  {{$item->LiderComunal->Apellido1}}</p>
+                         <p><strong>Líder comunal:</strong>  {{$item->LiderComunal->Cedula}}  {{$item->LiderComunal->name}}  {{$item->LiderComunal->Apellido1}}</p>
                          <p><strong>Emergencia: </strong>{{$item->idEmergencia}} {{$item->Emergencia->NombreEmergencias}} </p>
                          <td><a href="/Mensajeria/{{$item->IdMensajeria}}/edit" class="btn-accion-tabla tooltipsC" title="Editar informe">
                           <i class="fa fa-fw fa-pencil text-success"></i></a>

@@ -1,9 +1,9 @@
 @extends("theme/$theme/layout")
 @section('Contenido')
-<div class="panel panel-info">
+<div class="panel panel-primary">
   <div class="panel-heading">
       <h4 class="content-row-title">Crear rol
-        <a href="{{route('inicio_Rol')}}" class="btn btn-primary pull-right">
+        <a href="{{route('inicio_Rol')}}" class="btn btn-success btn-md pull-right">
             <i class="fa fa-fw fa-reply-all"></i>Regresar
         </a></h4>    
         </div>

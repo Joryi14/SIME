@@ -70,16 +70,17 @@ $(function () {
 <div class="panel panel-warning ">
   <div class="panel-heading">
     <h4 class="content-row-title">Jefes de familia
-                <a href="{{route('jefe_create')}}" class="btn  btn-primary pull-right">
+                <a href="{{route('jefe_create')}}" class="btn  btn-info btn-lg pull-right">
                     <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
           </h4>
+          <br>
         </div>
         <div class="panel-body">
           <table id="Jefe_table" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th>Id jefe de familia</th>
+              <th>Id del jefe de familia</th>
               <th>Total de personas</th>
               <th>Nombre</th>
               <th>Primer apellido</th>

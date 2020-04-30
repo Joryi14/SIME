@@ -21,21 +21,21 @@
 <script type="text/javascript">
  $(document).on('click', '.show-modal', function() {
            if($(this).data('ref')== 1)
-           $('#refr').text("Sí tiene");
+           $('#refr').text("Posee");
            else
-           $('#refr').text("No tiene");
+           $('#refr').text("No posee");
            if($(this).data('coc')== 1)
-           $('#coc').text("Sí tiene");
+           $('#coc').text("Posee");
            else
-           $('#coc').text("No tiene");
+           $('#coc').text("No posee");
            if($(this).data('col')== 1)
-           $('#col').text("Sí tiene");
+           $('#col').text("Posee");
            else
-           $('#col').text("No tiene");
+           $('#col').text("No posee");
            if($(this).data('cam')== 1)
-           $('#cam').text("Sí tiene");
+           $('#cam').text("Posee");
            else
-           $('#cam').text("No tiene");
+           $('#cam').text("No posee");
         });
 </script>
 <script>
@@ -77,10 +77,11 @@ $(function () {
     <div class="panel panel-warning ">
       <div class="panel-heading">
         <h4 class="content-row-title">Censos
-                <a href="{{route('censo_create')}}" class="btn btn-primary pull-right">
+                <a href="{{route('censo_create')}}" class="btn btn-info btn-lg pull-right">
                     <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
           </h4>
+          <br>
         </div>
          <div class="panel-body">
           <table id="Censo_table" class="table table-bordered table-striped">

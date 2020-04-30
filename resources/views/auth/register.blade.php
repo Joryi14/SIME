@@ -35,7 +35,7 @@
            <div class="input-group-addon">
           <span class="glyphicon glyphicon-credit-card"></span>
            </div>
-        <input placeholder="Cedula" id="Cedula" type="text" class="form-control{{ $errors->has('Cedula') ? ' is-invalid' : '' }}" name="Cedula" value="{{ old('Cedula') }}" required autofocus>
+        <input placeholder="Cédula" id="Cedula" type="text" class="form-control{{ $errors->has('Cedula') ? ' is-invalid' : '' }}" name="Cedula" value="{{ old('Cedula') }}" required autofocus>
         @if ($errors->has('Cedula'))
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $errors->first('Cedula') }}</strong>

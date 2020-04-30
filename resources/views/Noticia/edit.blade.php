@@ -1,10 +1,10 @@
 @extends("theme/$theme/layout")
 @section('Contenido')
 @include('Includes.Error-form')
-<div class="panel panel-success">
+<div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="content-row-title">Editar noticia
-      <a href="{{route('inicio_noticia')}}" class="btn  btn-info pull-right">
+      <a href="{{route('inicio_noticia')}}" class="btn  btn-success pull-right">
           <i class="fa fa-fw fa-reply-all"></i> Regresar
       </a>
             </h3>

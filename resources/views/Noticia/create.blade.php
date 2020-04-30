@@ -4,10 +4,10 @@
 @section('Contenido')
 @include('Includes.Error-form')
 @include('Includes.mensaje-Succes')
-<div class="panel panel-success">
+<div class="panel panel-primary">
   <div class="panel-heading">
     <h4 class="content-row-title">Crear nueva noticia
-      <a href="{{route('inicio_noticia')}}" class="btn btn-info pull-right">
+      <a href="{{route('inicio_noticia')}}" class="btn btn-success pull-right">
           <i class="fa fa-fw fa-reply-all"></i> Regresar
       </a>
           </h4>

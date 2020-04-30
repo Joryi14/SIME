@@ -4,7 +4,7 @@
 @include('Includes.mensaje-Error')
 <div class="panel panel-primary">
   <div class="panel-heading">
-     <h4 class="content-row-title">Editar Retiro de Paquetes
+     <h4 class="content-row-title">Editar retiros de paquetes
        <a href="{{route('inicio_Retiro_PaquetesV')}}" class="btn pull-right btn-info ">
            <i class="fa fa-fw fa-reply-all"></i> Regresar
        </a>
@@ -15,7 +15,7 @@
           @csrf
           <div class="panel-body">
             <div class="form-group">
-              <label for="IdAdministradorI" class="col-sm-2 control-label">IdAdministradorI: </label>
+              <label for="IdAdministradorI" class="col-sm-2 control-label">Id del administrador del inventario: </label>
               <div class="col-sm-10">
                   <input type="text" name="IdAdministradorI" class= "form-control" value="{{$retiroPV->IdAdministradorI}}" readonly="readonly">
               </div>

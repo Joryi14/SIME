@@ -65,10 +65,11 @@ $(function () {
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h4 class="content-row-title">Personas en albergue
-                  <a href="{{route('personasAlbergue_create')}}" class="btn pull-right btn-info btn-sm">
+                  <a href="{{route('personasAlbergue_create')}}" class="btn pull-right btn-success btn-lg">
                       <i class="fa fa-fw fa-plus-circle"></i> Crear
                   </a>
                       </h4>
+                      <br>
                     </div>
         <div class="panel-body table-responsive" >
           <table id="PersonaAlbergue_table" class="table table-bordered table-striped">
@@ -98,7 +99,7 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
-              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar retiro de paquetes" data-toggle="modal" data-target="#Detalle"  data-fi="{{$item->FechaDeIngreso}}" data-hi="{{$item->HoraDeIngreso}}" data-fs="{{$item->FechaDeSalida}}" data-hs="{{$item->HoraDeSalida}}" ><i class="fa fa-fw fa-file-text-o text-info"></i></a>
+              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostar personas en albergue" data-toggle="modal" data-target="#Detalle"  data-fi="{{$item->FechaDeIngreso}}" data-hi="{{$item->HoraDeIngreso}}" data-fs="{{$item->FechaDeSalida}}" data-hs="{{$item->HoraDeSalida}}" ><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>
             @endforeach
@@ -111,7 +112,7 @@ $(function () {
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"><b>Información de retiro de paquetes</b></h4>
+        <h4 class="modal-title"><b>Información de personas en albergue</b></h4>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -151,4 +152,50 @@ $(function () {
     </div>
   </div>
 </div>
-@endsection
+<br>
+    <div class="form-group">
+        <a href="{{route('personaAlbergue_reporte')}}" class="btn btn-info" target="_blank">
+              <i class="fa fa-fw fa-plus-circle"></i> Crear reporte de personas en albergue
+        </a>
+    </div>
+    <div class="form-group">
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ReporteF">  <i class="fa fa-fw fa-plus-circle"></i>Reporte de personas en albergue por fechas</button>
+    </div>
+    <div class="modal modal-default fade" id="ReporteF">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title"><b>Reporte de personas en albergue por fechas</b></h4>
+            </div>
+              <form class= "form-horizontal" method="POST" action="/PersonasAlbergue/ReporteFecha" target="_blank">
+                    @csrf
+              <div class="modal-body">
+               <div class="col-md-6">
+              <div class="form-group">
+                      <label for="Fecha" class="col-sm-4 control-label">Desde: </label>
+                      <div class="col-sm-8">
+                          <input required type="date" name="Fecha1" class= "form-control" >
+                      </div>
+              </div>
+              </div>
+              <div class="col-md-6">
+              <div class="form-group">
+                  <label for="Fecha" class="col-sm-4 control-label">Hasta: </label>
+                  <div class="col-sm-8">
+                      <input required type="date" name="Fecha2" class= "form-control" >
+                  </div>
+              </div>
+              </div>
+            </div>
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary ">Enviar</button>
+                  <button type="button" class="btn btn-outline btn-danger pull-left" data-dismiss="modal">Cerrar</button>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <br>
+    @endsection

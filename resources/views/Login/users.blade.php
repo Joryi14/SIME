@@ -72,7 +72,7 @@
             <thead>
             <tr>
               <th>Id usuario</th>
-              <th>Email</th>
+              <th>Correo</th>
               <th>Nombre</th>
               <th>Primer apellido</th>
               <th>Segundo apellido</th>
@@ -95,7 +95,7 @@
                       <i class="fa fa-fw fa-trash text-danger"></i>
                   </button>
                 </form>
-                  <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar emergencia" data-toggle="modal" data-target="#Detalle"  data-nac="{{$item->Nacionalidad}}" data-pat="{{$item->patologia}}" data-com="{{$item->Comunidad}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
+                  <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar usuarios" data-toggle="modal" data-target="#Detalle"  data-nac="{{$item->Nacionalidad}}" data-pat="{{$item->patologia}}" data-com="{{$item->Comunidad}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
             </tr>
             @endforeach
@@ -114,7 +114,7 @@
       <div class="modal-body">
         <div class="row">
         <div class="form-group">
-          <label class="col-md-6"><b>Patologias:</b></label>
+          <label class="col-md-6"><b>Patologías:</b></label>
           <div class="col-md-6">
               <span id="pat"></span>
           </div>

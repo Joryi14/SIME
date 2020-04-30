@@ -66,10 +66,11 @@ $(function () {
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h4 class="content-row-title">Retiro de paquetes
-                  <a href="{{route('Retiro_PaquetesV_create')}}" class="btn pull-right btn-info btn-sm">
+                  <a href="{{route('Retiro_PaquetesV_create')}}" class="btn pull-right btn-success btn-lg">
                       <i class="fa fa-fw fa-plus-circle"></i> Crear
                   </a>
                       </h4>
+                      <br>
                     </div>
         <div class="panel-body table-responsive" >
           <table id="Retiro_PaquetesV_table" class="table table-bordered table-striped">
@@ -166,12 +167,12 @@ $(function () {
     </div>
   </div>
   <div class="form-group">
-    <a href="{{route('Retiro_PaquetesV_reporte')}}" class="btn btn-primary btn-sm" target="_blank">
+    <a href="{{route('Retiro_PaquetesV_reporte')}}" class="btn btn-info" target="_blank">
         <i class="fa fa-fw fa-plus-circle"></i> Crear reporte de retiro de paquetes
     </a>
   </div>
   <div class="form-group">
-  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ReporteF">  <i class="fa fa-fw fa-plus-circle"></i>Reporte de retiro por fechas</button>
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ReporteF">  <i class="fa fa-fw fa-plus-circle"></i>Reporte de retiro de paquetes por fechas</button>
   </div>
   <div class="modal modal-default fade" id="ReporteF">
       <div class="modal-dialog">
@@ -179,7 +180,7 @@ $(function () {
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"><b>Reporte de retiro por fechas</b></h4>
+            <h4 class="modal-title"><b>Reporte de retiro de paquetes por fechas</b></h4>
           </div>
           <form class= "form-horizontal" method="POST" action="/Retiro_PaquetesVController/ReporteFecha" target="_blank">
                 @csrf
@@ -209,4 +210,5 @@ $(function () {
           </div>
         </div>
       </div>
+      <br>
 @endsection

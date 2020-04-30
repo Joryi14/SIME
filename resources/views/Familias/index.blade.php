@@ -71,17 +71,18 @@ $(function () {
 <div class="panel panel-warning ">
   <div class="panel-heading">
     <h4 class="content-row-title">Familias
-                <a href="{{route('familias_create')}}" class="btn btn-primary pull-right">
+                <a href="{{route('familias_create')}}" class="btn btn-info btn-lg pull-right">
                     <i class="fa fa-fw fa-plus-circle"></i> Crear
                 </a>
           </h4>
+          <br>
         </div>
         <div class="panel-body">
           <table id="Familias_table" class="table table-bordered table-striped">
               <thead>
             <tr>
               <th>Id de familia</th>
-              <th>Cedula del jefe de familia</th>
+              <th>Cédula del jefe de familia</th>
               <th>Cédula</th>
               <th>Nombre</th>
               <th>Acciones</th>
@@ -102,7 +103,7 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
-              <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar censo" data-toggle="modal" data-target="#Detalle"  
+              <button  class="show-modal btn-accion-tabla tooltipsC"title="Información del familiar" data-toggle="modal" data-target="#Detalle"  
               data-ape1="{{$item->Apellido1}}" 
               data-ape2="{{$item->Apellido2}}" 
               data-par="{{$item->Parentesco}}" 

@@ -9,9 +9,9 @@
     $('#col').text($(this).data('col'));
     $('#cob').text($(this).data('cob'));
             if($(this).data('rop')== 1)
-            $('#rop').text("Sí hay");
+            $('#rop').text("Posee");
             else
-            $('#rop').text("No hay");
+            $('#rop').text("No posee");
          });
  </script>
 <script>
@@ -53,10 +53,11 @@ $(function () {
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h4 class="box-title">Inventario
-            <a href="{{route('inventario_create')}}" class="btn btn-success btn-sm pull-right">
+            <a href="{{route('inventario_create')}}" class="btn btn-success btn-lg pull-right">
                 <i class="fa fa-fw fa-plus-circle"></i> Crear
             </a>
                 </h4>
+                <br>
               </div>
         <div class="panel-body table-responsive" >
           <table id="Inventario_Table" class="table table-bordered table-striped">
@@ -73,18 +74,18 @@ $(function () {
               <td>{{$item->idInventario}}</td>
               <td>{{$item->idEmergencias}}  {{$item->Emergencia->NombreEmergencias}}</td>
               <td>{{$item->Suministros}}</td>
-              <td><a href="/Inventario/{{$item->idInventario}}/edit" class="btn-accion-tabla tooltipsC" title="Editar Inventario">
+              <td><a href="/Inventario/{{$item->idInventario}}/edit" class="btn-accion-tabla tooltipsC" title="Editar inventario">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
-                <a href="/Inventario/{{$item->idInventario}}/editSuministro" class="btn-accion-tabla tooltipsC" title="Aumentar Suministros">
+                <a href="/Inventario/{{$item->idInventario}}/editSuministro" class="btn-accion-tabla tooltipsC" title="Aumentar suministros">
                   <i class="fa fa-fw fa-plus-circle text-success"></i></a>
               <form id="form1" action="{{route('inventario_delete', ['Inventario' => $item->idInventario])}}" method="POST">
                 @csrf
                 <input name="_method" type="hidden" value="DELETE">
-                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar Inventario" onclick="confirmarEnvio()">
+                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar inventario" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
-              <button class="show-modal btn-accion-tabla tooltipsC"title="Mostrar Inventario" data-toggle="modal" data-target="#Detalle"  data-col="{{$item->Colchonetas}}" data-cob="{{$item->Cobijas}}" data-rop="{{$item->Ropa}}"><i class="fa fa-fw fa-file-text-o text-info"></i></button>
+              <button class="show-modal btn-accion-tabla tooltipsC"title="Información de inventario" data-toggle="modal" data-target="#Detalle"  data-col="{{$item->Colchonetas}}" data-cob="{{$item->Cobijas}}" data-rop="{{$item->Ropa}}"><i class="fa fa-fw fa-file-text-o text-info"></i></button>
               </td>
               </tr>
             @endforeach
@@ -97,7 +98,7 @@ $(function () {
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b>Información de Inventario</b></h4>
+                <h4 class="modal-title"><b>Información de inventario</b></h4>
               </div>
               <div class="modal-body">
                 <div class="row">
@@ -125,7 +126,7 @@ $(function () {
         </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline btn-info pull-left" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger btn-info pull-left" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -175,4 +176,5 @@ $(function () {
         </div>
       </div>
     </div>
+    <br>
 @endsection

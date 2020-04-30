@@ -27,7 +27,7 @@
                     </div>
              </div>
              <div class="form-group">
-                    <label for="IdRetiroPaquetes" class="col-sm-2 control-label">Id del Retiro de Paquetes: </label>
+                    <label for="IdRetiroPaquetes" class="col-sm-2 control-label">Id del retiro de paquetes: </label>
                     <div class="col-sm-10">
                         <input type="text" name="IdRetiroPaquetes" readonly value=" {{$entregadonaciones->IdRetiroPaquetes}}" class= "form-control" >
                     </div>

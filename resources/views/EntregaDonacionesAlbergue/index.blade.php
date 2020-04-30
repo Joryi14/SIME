@@ -43,10 +43,11 @@ $(function () {
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h4 class="content-row-title">Entrega de donaciones en albergue
-                  <a href="{{route('EntregaDonacionesA_create')}}" class="btn pull-right btn-info btn-sm">
+                  <a href="{{route('EntregaDonacionesA_create')}}" class="btn btn-success btn-lg pull-right">
                       <i class="fa fa-fw fa-plus-circle"></i> Crear
                   </a>
                       </h4>
+                      <br>
                     </div>
          <div class="panel-body table-responsive" >
           <table id="EntregaDonacionesAlbergue_table" class="table table-bordered table-striped">
@@ -80,4 +81,50 @@ $(function () {
           </table>
       </div>
     </div>
-@endsection
+    <br>
+    <div class="form-group">
+        <a href="{{route('EntregadonacionesA_reporte')}}" class="btn btn-info" target="_blank">
+              <i class="fa fa-fw fa-plus-circle"></i> Crear reporte de entrega de donaciones en albergue
+        </a>
+    </div>
+    <div class="form-group">
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ReporteF">  <i class="fa fa-fw fa-plus-circle"></i>Reporte de entrega de donaciones en albergue por fechas</button>
+    </div>
+    <div class="modal modal-default fade" id="ReporteF">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title"><b>Reporte de entrega de donaciones en albergue por fechas</b></h4>
+            </div>
+              <form class= "form-horizontal" method="POST" action="/EntregaDonacionesAlbergue/ReporteFecha" target="_blank">
+                    @csrf
+              <div class="modal-body">
+               <div class="col-md-6">
+              <div class="form-group">
+                      <label for="Fecha" class="col-sm-4 control-label">Desde: </label>
+                      <div class="col-sm-8">
+                          <input required type="date" name="Fecha1" class= "form-control" >
+                      </div>
+              </div>
+              </div>
+              <div class="col-md-6">
+              <div class="form-group">
+                  <label for="Fecha" class="col-sm-4 control-label">Hasta: </label>
+                  <div class="col-sm-8">
+                      <input required type="date" name="Fecha2" class= "form-control" >
+                  </div>
+              </div>
+              </div>
+            </div>
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary ">Enviar</button>
+                  <button type="button" class="btn btn-outline btn-danger pull-left" data-dismiss="modal">Cerrar</button>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <br>
+    @endsection

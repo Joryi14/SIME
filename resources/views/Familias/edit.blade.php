@@ -4,7 +4,7 @@
 @include('Includes.Error-form')
 <div class="panel panel-warning">
   <div class="panel-heading">
-          <h4 class="content-row-title">Editar Familia
+          <h4 class="content-row-title">Editar familia
               <a href="{{route('inicio_familia')}}" class="btn  btn-info pull-right">
                   <i class="fa fa-fw fa-reply-all"></i> Regresar
               </a>

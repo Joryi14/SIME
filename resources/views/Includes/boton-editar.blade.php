@@ -1,1 +1,1 @@
-<button type="submit" class="btn btn-success "> <i class="fa fa-fw fa-check"></i>Guardar</button>
+<button type="submit" class="btn btn-primary "> <i class="fa fa-fw fa-check"></i>Guardar</button>

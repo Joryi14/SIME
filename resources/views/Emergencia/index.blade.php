@@ -79,6 +79,7 @@ $(function () {
               <th>Nombre de la emergencia</th>
               <th>Categoría</th>
               <th>Tipo de emergencia</th>
+              <th>Estado</th>
               <th>Acciones</th>
             </tr>
           </thead>

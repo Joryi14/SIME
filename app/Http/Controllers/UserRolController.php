@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidacionUsuarioRol;
 use App\Models\roles;
 use App\Models\UserRol;
 use App\User;
@@ -38,7 +39,7 @@ class UserRolController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionUsuarioRol $request)
     {
         $user = User::find($request->model_id);
         $role = Role::findById($request->role_id);

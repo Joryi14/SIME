@@ -63,7 +63,7 @@
         <div class="form-group">
           <label for="IdEmergencia" class="col-sm-2 control-label"> Emergencia:</label>
           <div class="col-sm-9" style="padding:2%">
-              <select id='SelectE' name="idEmergencia" style='width: 50%;' required>
+              <select id='SelectE' name="idEmergencia" style='width: 50%;'>
               </select>
           </div>
         </div>

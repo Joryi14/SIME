@@ -1,5 +1,6 @@
 @extends("theme/$theme/layout")
 @section('Contenido')
+@include('Includes.Error-form')
 <div class="panel panel-primary">
   <div class="panel-heading">
       <h4 class="content-row-title">Crear rol

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidacionMensajeria;
 use App\Models\Emergencia;
 use App\Models\Mensajeria;
 use Illuminate\Http\Request;
@@ -35,9 +36,8 @@ class MensajeriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionMensajeria $request)
     {
-
         $mensajeria = new Mensajeria();
         $mensajeria->fill($request->all());
         $mensajeria->save();
@@ -75,7 +75,7 @@ class MensajeriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionMensajeria $request, $id)
     {
         $mensajeria = Mensajeria::find($id);
         $mensajeria->fill($request->all());

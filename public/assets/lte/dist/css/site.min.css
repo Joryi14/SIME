@@ -3944,11 +3944,11 @@ textarea.input-group-sm>.input-group-btn>.btn {
  border-width:1px 0 0
 }
 .navbar-brand {
- float:left;
+ /*! float:left; */
  height:50px;
  padding:15px;
  font-size:30px;
- line-height:35px;
+ line-height:55px;
 }
 .navbar-brand:focus,
 .navbar-brand:hover {

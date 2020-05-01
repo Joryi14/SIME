@@ -2,7 +2,9 @@
 @section('styles')
 <link rel="stylesheet" href="{{asset("assets/$theme/Select2/css/select2.min.css")}}">    
 @endsection
+
 @section('Contenido')
+@include('Includes.Error-form')
 <div class="panel panel-warning">
       <div class="panel-heading">
         <h4 class="content-row-title">Crear usuario rol
@@ -18,14 +20,16 @@
                     <label for="name" class="col-sm-2 control-label"> Usuario:</label>
                     <div class="col-sm-9">
                         <select id='SelectU' name="model_id" style='width: 75%;'>
-                        <option value='0'>Seleccionar un usuario</option></select>
+                       
+                        </select>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="guard_name" class="col-sm-2 control-label">Id de rol: </label>
                     <div class="col-sm-9">
                         <select id='SelectR' name="role_id" style='width: 50%;'>
-                        <option value='0'>Seleccionar un rol</option></select>
+                      
+                        </select>
                     </div>
                   </div>
                 </div>
@@ -41,6 +45,7 @@
   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
   $(document).ready(function(){
     $("#SelectU").select2({
+      placeholder: "Seleccionar usuario",
       ajax: { 
         url: "{{route('Get_Users')}}",
         type: "post",
@@ -71,6 +76,7 @@
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     $(document).ready(function(){
       $("#SelectR").select2({
+        placeholder: "Seleccionar rol",
         ajax: { 
           url: "{{route('Get_Roles')}}",
           type: "post",

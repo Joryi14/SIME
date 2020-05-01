@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidacionRol;
 use App\Models\roles as AppRoles;
 use App\Models\UserRol;
 use Illuminate\Http\Request;
@@ -35,7 +36,7 @@ class roles extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionRol $request)
     {
         $role = Role::create(['name' => $request->name]);
         return redirect('Rol');

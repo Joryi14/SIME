@@ -16,7 +16,7 @@
       <div class="form-group">
             <label for="CodigoIncidente" class="col-sm-2 control-label">Código de incidente: </label>
             <div class="col-sm-9">
-              <input type="text" name="CodigoIncidente" class= "form-control" value=" {{$mensajeria->CodigoIncidente}}" >
+              <input type="text" name="CodigoIncidente" class= "form-control" value=" {{$mensajeria->CodigoIncidente}}" readonly>
             </div>
           </div>
           <div class="form-group">
@@ -36,7 +36,7 @@
                 <div class="form-group">
                      <label for="Hora" class="col-sm-2 control-label">Hora: </label>
                      <div class="col-sm-9">
-                       <input type="text" name="Hora" class= "form-control" value=" {{$mensajeria->Hora}}" >
+                       <input type="time" name="Hora" class= "form-control" value=" {{$mensajeria->Hora}}" >
                      </div>
                    </div>
 
@@ -44,7 +44,7 @@
                    <div class="form-group">
                         <label for="Fecha" class="col-sm-2 control-label">Fecha: </label>
                         <div class="col-sm-9">
-                          <input type="text" name="Fecha" class= "form-control" value=" {{$mensajeria->fecha}}" >
+                          <input type="text" name="Fecha" class= "form-control" value="{{$mensajeria->fecha}}" >
                         </div>
                       </div>
 

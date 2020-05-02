@@ -44,6 +44,9 @@ class JefeDeFamiliaController extends Controller
      */
     public function store(ValidacionJefeDeFamilia $request)
     {
+        if(JefeDeFamilia::where('Cedula',$request->Cedula)->first()){
+            return redirect('JefeDeFamilia/create')->with('mensaje','Error cedula ya existente');
+       }
         $patologia = implode(', ',$request->Patologia);
         $Jefe = new JefeDeFamilia();
         $Jefe->fill($request->all());
@@ -99,16 +102,22 @@ class JefeDeFamiliaController extends Controller
     }
     public function Familiar(ValidacionFamilia $request, $id)
     {
-       // falta validacion para total de personas, osea que revise cuantas personas tienen el mismo IdJefe y si es igual me devuelva
-       //a la vista index de jefe de familia con el mensaje de que ya no puede ingresar mas familiares por el total que dijo 
-       //al total hay que restarle uno para quitar al jefe
-       
-       //quitar boton crear familia 
-       
+        if(Familias::where('Cedula',$request->Cedula)->first()){
+         return redirect('JefeDeFamilia/'.$request->IdJefeF.'/agregarfamiliar')->with('mensaje','Error cedula ya existente');
+        }
+        $jefe = JefeDeFamilia::find($request->IdJefeF);
+        if($jefe){
          $Patologia = implode(', ',$request->Patologia);
-         $Familia = DB::select("call Insert_Familia('$id','$request->Nombre','$request->Apellido1','$request->Apellido2','$request->Cedula','$request->Parentesco','$request->Edad','$request->sexo','$request->PcD','$request->MG','$request->PI','$request->PM','$Patologia')");
-         return redirect('JefeDeFamilia')->with('exito','Se ha agregado correctamente');    
-    
+         $fam = new Familias();
+         $fam->fill($request->all());
+         $fam->Patologia = $Patologia;
+         $fam->save();
+         $jefe->TotalPersonas+= 1;
+         $jefe->save();
+         return redirect('JefeDeFamilia')->with('exito','Se ha agregado correctamente'); 
+        }
+        else
+        return redirect('JefeDeFamilia/'.$request->IdJefeF.'/agregarfamiliar')->with('mensaje','Error El jefe de familia no existe');  
         }
     /**
      * Remove the specified resource from storage.

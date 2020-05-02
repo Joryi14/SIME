@@ -96,7 +96,7 @@ $(function () {
                 @foreach ($censos as $item)
                   <tr>
                   <td>{{$item->IdCenso}}</td>
-                  <td>{{$item->jefeFamilia->Cedula}}</td>
+                  <td>{{$item->jefeFamilia->Cedula}} {{$item->jefeFamilia->Nombre}} {{$item->jefeFamilia->Apellido1}} {{$item->jefeFamilia->Apellido2}}</td>
                   <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                   <td><a href="/Censo/{{$item->IdCenso}}/edit" class="btn-accion-tabla tooltipsC" title="Editar censo">
                     <i class="fa fa-fw fa-pencil text-success"></i></a>

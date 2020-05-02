@@ -4,7 +4,7 @@
 @endsection
 @section('Contenido')
   @include('Includes.Error-form')
-  @include('Includes.mensaje-Succes')
+  @include('Includes.mensaje-Error')
   <div class="panel panel-warning">
     <div class="panel-heading">
       <h4 class="content-row-title">Crear jefe de familia
@@ -16,12 +16,12 @@
       <form class="form-horizontal" method="POST" action="/JefeDeFamilia/store">
           @csrf
         <div class="panel-body">
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="TotalPersonas" class="col-sm-2 control-label">Total de personas: </label>
             <div class="col-sm-8">
-                <input type="number" name="TotalPersonas" class= "form-control" value="{{old('TotalPersonas', $data->TotalPersonas ?? '')}}">
             </div>
-          </div>
+          </div> --}}
+          <input type="hidden" name="TotalPersonas" class= "form-control" value="1" >
           <div class="form-group">
             <label for="Nombre" class="col-sm-2 control-label">Nombre: </label>
 

@@ -37,18 +37,20 @@ class FamiliasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ValidacionFamilia $request)
-    {
-        if(JefeDeFamilia::find($request->IdJefeF)){
+    { 
+        $jefe = JefeDeFamilia::find($request->IdJefeF);
+        if($jefe){
          $Patologia = implode(', ',$request->Patologia);
          $fam = new Familias();
          $fam->fill($request->all());
          $fam->Patologia = $Patologia;
          $fam->save();
+         $jefe->TotalPersonas+= 1;
+         $jefe->save();
          return redirect('Familias')->with('exito','Se ha agregado correctamente');
         }
         else
         return redirect('Familias/create')->with('mensaje','Error El jefe de familia no existe');
-    
         }
 
     /**
@@ -120,7 +122,11 @@ class FamiliasController extends Controller
      */
     public function delete($id, Request $request)
     {
+       
         $familia = Familias::find($id);
+        $jefe = JefeDeFamilia::find($familia->IdJefeF);
+        $jefe->TotalPersonas = $jefe->TotalPersonas - 1;
+        $jefe->save();
         $familia->delete();
         return redirect('Familias')->with('exito','Se ha eliminado correctamente');
     

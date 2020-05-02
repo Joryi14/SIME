@@ -44,6 +44,8 @@
             $('#lat').text($(this).data('lat'));
             $('#tip').text($(this).data('tip'));
             $('#nec').text($(this).data('nec'));
+            var d = $(this).data('fec');
+            $('#fec').text(d.toString());
          });
  </script>
 <script>
@@ -130,7 +132,7 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
-              <button  class="show-modal btn-accion-tabla tooltipsC"title="Información de albergue" data-toggle="modal" data-target="#Detalle"  data-du="{{$item->Duchas}}" data-ino="{{$item->inodoros}}" data-edc="{{$item->EspaciosDeCocina}}" data-bo="{{$item->Bodega}}" data-lon="{{$item->Longitud}}" data-lat="{{$item->Latitud}}" data-tip ="{{$item->TipoDeInstalacion}}" data-nec="{{$item->Nececidades}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
+            <button  class="show-modal btn-accion-tabla tooltipsC"title="Información de albergue" data-toggle="modal" data-target="#Detalle"  data-du="{{$item->Duchas}}" data-ino="{{$item->inodoros}}" data-edc="{{$item->EspaciosDeCocina}}" data-bo="{{$item->Bodega}}" data-lon="{{$item->Longitud}}" data-lat="{{$item->Latitud}}" data-tip ="{{$item->TipoDeInstalacion}}" data-nec="{{$item->Nececidades}}" data-fec="{{date('d-m-Y',strtotime($item->created_at))}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>
             @endforeach
@@ -210,7 +212,16 @@ $(function () {
             <div class="col-md-4">
                 <span id="nec"></span>
             </div>
-          </div></div>
+          </div>
+          </div><br>
+          <div class="row">
+          <div class="form-group">
+            <label class="col-md-4"><b>Fecha:</b></label>
+            <div class="col-md-4">
+                <span id="fec"></span>
+            </div>
+          </div>
+        </div>
           <br>
       </div>
       <div class="modal-footer">

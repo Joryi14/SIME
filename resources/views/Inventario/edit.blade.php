@@ -32,14 +32,14 @@
           <label class="col-sm-2 control-label">
               Colchonetas:</label>
               <div class="col-sm-4">
-            <input type="number" min="0" class= "form-control"  name="Colchonetas">
+            <input type="number" min="0" class= "form-control"  name="Colchonetas" value="{{$inventario->Colchonetas}}">
               </div>
           </div>
   <div class="form-group">
         <label class="col-sm-2 control-label">
             Cobijas:</label>
             <div class="col-sm-4">
-          <input type="number" min="0" class= "form-control"  name="Cobijas">
+          <input type="number" min="0" class= "form-control"  name="Cobijas" value="{{$inventario->Cobijas}}">
            </div>
     </div>
            <div class="form-group">
@@ -47,7 +47,8 @@
                  Ropa</label>
               <div class="checkbox">
                  <input type="hidden" name="Ropa" value="0" />
-                <input type="checkbox" class="col-sm-6" name="Ropa" value="1">
+                <input type="checkbox" class="col-sm-6" name="Ropa" value="1" @if($inventario->Ropa == 1)    
+               CHECKED @endif>
             </div>
            </div>
   </div>

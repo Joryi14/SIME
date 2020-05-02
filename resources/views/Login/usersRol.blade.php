@@ -53,6 +53,7 @@
               <tr>
                 <th>Id rol</th>
                 <th>Nombre</th>
+                <th>Fecha</th>
                 <th>Acciones</th>
               </tr>
               </thead>
@@ -61,6 +62,7 @@
                 <tr>
                 <td>{{$object->id}}</td>    
                 <td>{{$object->name}}</td>
+                <td>{{date('d-m-Y',strtotime($object->created_at))}}</td>
                 <td>
                 <form id="form2" action="{{route('rol_delete', ['roles' => $object->id])}}" method="POST">
                     @csrf @method('delete')

@@ -27,15 +27,16 @@ class ValidacionInventario extends FormRequest
             //
             'idEmergencias'=> 'required',
             'Suministros' => 'required',
+            'Colchonetas'=>'required',
+            'Cobijas'=>'required',
+            'Ropa'=>'required'
         ];
     }
-
-
-    public function messages()
-    {
-        return[
-            'idEmergencias.required' => ' El Id de la EMERGENCIA es requerido',
-            'Suministros.required' => ' La cantidad de SUMINISTROS es requerida',
-        ];
-    }
+    // public function messages()
+    // {
+    //     return[
+    //         'idEmergencias.required' => ' El Id de la EMERGENCIA es requerido',
+    //         'Suministros.required' => ' La cantidad de SUMINISTROS es requerida',
+    //     ];
+    // }
 }

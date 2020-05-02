@@ -38,6 +38,9 @@ class MensajeriaController extends Controller
      */
     public function store(ValidacionMensajeria $request)
     {
+        if(Mensajeria::where('CodigoIncidente',$request->CodigoIncidente)){
+          return redirect('Mensajeria\create')->with('mensaje','Error codigo en uso');
+        }
         $mensajeria = new Mensajeria();
         $mensajeria->fill($request->all());
         $mensajeria->save();

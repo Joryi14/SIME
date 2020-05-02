@@ -80,6 +80,7 @@ $(function () {
               <th>Categoría</th>
               <th>Tipo de emergencia</th>
               <th>Estado</th>
+              <th>Fecha</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -95,6 +96,7 @@ $(function () {
                 @else
                 <span class="badge badge-danger">{{$item->Estado}}</span></a>
                 @endif</td>
+                <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
               <td><a href="/Emergencia/{{$item->idEmergencias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar emergencia">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
               <form id="formE"  action="{{route('emergencia_delete', ['Emergencia' => $item->idEmergencias])}}" method="POST">

@@ -4,7 +4,7 @@
 @endsection
 @section('Contenido')
 @include('Includes.Error-form')
-@include('Includes.mensaje-Succes')
+@include('Includes.mensaje-Error')
 <div class="panel panel-warning">
   <div class="panel-heading">
     <h4 class="content-row-title">Crear reporte de incidente

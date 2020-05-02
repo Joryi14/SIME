@@ -86,6 +86,7 @@ $(function () {
               <th>Primer apellido</th>
               <th>Segundo apellido</th>
               <th>Cédula</th>
+              <th>Fecha</th>
               <th>Acciones</th>
             </tr>
             </thead>
@@ -97,7 +98,8 @@ $(function () {
               <td>{{$item->Apellido1}}</td>
               <td>{{$item->Apellido2}}</td>
               <td>{{$item->Cedula}}</td>
-              <td><a href="/JefeDeFamilia/{{$item->IdJefe}}/edit" class="btn-accion-tabla tooltipsC" title="Editar jefe de familia">
+              <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
+               <td><a href="/JefeDeFamilia/{{$item->IdJefe}}/edit" class="btn-accion-tabla tooltipsC" title="Editar jefe de familia">
                 <i class="fa fa-pencil text-success"></i></a>
                 <a href="/JefeDeFamilia/{{$item->IdJefe}}/agregarfamiliar" class="btn-accion-tabla tooltipsC" title="Agregar familiar">
                   <i class="fa fa-fw fa-plus-circle text-success"></i></a>

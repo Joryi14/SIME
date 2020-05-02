@@ -89,6 +89,7 @@ $(function () {
             <tr>
               <th>Id del censo</th>
               <th>Cédula del jefe de familia</th>
+              <th>Fecha</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -96,6 +97,7 @@ $(function () {
                   <tr>
                   <td>{{$item->IdCenso}}</td>
                   <td>{{$item->jefeFamilia->Cedula}}</td>
+                  <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                   <td><a href="/Censo/{{$item->IdCenso}}/edit" class="btn-accion-tabla tooltipsC" title="Editar censo">
                     <i class="fa fa-fw fa-pencil text-success"></i></a>
                   <form id="form1" action="{{route('censo_delete', ['Censo' => $item->IdCenso])}}" method="POST">

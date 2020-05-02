@@ -85,6 +85,7 @@ $(function () {
               <th>Cédula del jefe de familia</th>
               <th>Cédula</th>
               <th>Nombre</th>
+              <th>Fecha</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -94,6 +95,7 @@ $(function () {
               <td>{{$item->jefeDeFamilia->Cedula}}</td>  
               <td>{{$item->Cedula}}</td>
               <td>{{$item->Nombre}}</td>
+              <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
               <td><a href="/Familias/{{$item->IdFamilia}}/edit" class="btn-accion-tabla tooltipsC" title="Editar familia">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
               <form id="form1" action="{{route('familias_delete', ['Familias' => $item->IdFamilia])}}" method="POST">

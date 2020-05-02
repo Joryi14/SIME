@@ -25,6 +25,7 @@
            $('#sac').text($(this).data('sac'));
            $('#pv').text($(this).data('pv'));
            $('#de').text($(this).data('de'));
+           $('#Fec').text($(this).data('fec'));
         });
 </script>
 <script>
@@ -104,7 +105,7 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                   </button>
                 </form>
-                <button class="show-modal btn-accion-tabla tooltipsC"title="Mostrar retiro de paquetes" data-toggle="modal" data-target="#Detalle"  data-nc="{{$item->NombreChofer}}" data-pac="{{$item->Apellido1C}}" data-sac="{{$item->Apellido2C}}" data-pv="{{$item->PlacaVehiculo}}"  data-de="{{$item->DireccionAEntregar}}" ><i class="fa fa-fw fa-file-text-o text-info"></i></a>
+                <button class="show-modal btn-accion-tabla tooltipsC"title="Mostrar retiro de paquetes" data-toggle="modal" data-target="#Detalle"  data-nc="{{$item->NombreChofer}}" data-pac="{{$item->Apellido1C}}" data-sac="{{$item->Apellido2C}}" data-pv="{{$item->PlacaVehiculo}}"  data-de="{{$item->DireccionAEntregar}}" data-fec="{{date('d-m-Y',strtotime($item->created_at))}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
                 </td>
                 </tr>
               @endforeach
@@ -159,6 +160,14 @@ $(function () {
           </div>
         </div>
             </div><br>
+            <div class="row">
+              <div class="form-group">
+                <label class="col-md-4"><b>Fecha:</b></label>
+                <div class="col-md-4">
+                    <span id="Fec"></span>
+                </div>
+              </div>
+                  </div><br>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline btn-danger pull-left" data-dismiss="modal">Cerrar</button>

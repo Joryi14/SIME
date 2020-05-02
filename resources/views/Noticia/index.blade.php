@@ -89,6 +89,7 @@ $(function () {
                 <th>Videos</th>
                 <th>Artículo</th>
                 <th>PDF</th>
+                <th>Fecha</th>
                 <th>Acciones</th>
             </tr>
           </thead>
@@ -116,6 +117,7 @@ $(function () {
                 {{$item->PDF}}
               @endif
               </td>
+              <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
               <td><a href="/Noticia/{{$item->IdNoticias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar noticia">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
               <form id="form1" action="{{route('noticia_delete', ['Noticia' => $item->IdNoticias])}}" method="POST">

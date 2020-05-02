@@ -57,6 +57,7 @@ $(function () {
               <th>Jefe de familia</th>
               <th>Albergue</th>
               <th>Emergencia</th>
+              <th>Fecha</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -66,6 +67,7 @@ $(function () {
                   <td>Cedula: {{$item->JefeFamilia->Cedula}} <br> Nombre: {{$item->JefeFamilia->Nombre}}  {{$item->JefeFamilia->Apellido1}}</td>
                   <td>{{$item->Albergue->Nombre}}</td>
                   <td>{{$item->idEmergencias}}     {{$item->Emergencia->NombreEmergencias}}</td>
+                  <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                   <td><a href="/EntregaDonacionesAlbergue/{{$item->IdEntregaA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar la entrega de donaciones en albergue">
                     <i class="fa fa-fw fa-pencil text-success"></i></a>
                   <form id="formEA" action="{{route('EntregadonacionesA_delete', ['EntregaDonacionesAlbergue' => $item->IdEntregaA])}}" method="POST">

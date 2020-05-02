@@ -34,9 +34,7 @@
                     <div class="col-sm-4">
                   <input type="number" min="0"  class= "form-control"  name="Colchonetas">
                     </div>
-
         </div>
-
         <div class="form-group">
               <label class="col-sm-2 control-label">
                   Cobijas:</label>

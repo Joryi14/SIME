@@ -24,7 +24,7 @@ class ValidacionMensajeria extends FormRequest
     public function rules()
     {
         return [
-            'CodigoIncidente'=>'required|max:20|unique:mensajeria,CodigoIncidente',
+            'CodigoIncidente'=>'required|max:20',
             'Descripcion'=>'required|max:200',
             'Ubicacion'=>'required',
             'Hora'=>'required',
@@ -36,7 +36,6 @@ class ValidacionMensajeria extends FormRequest
     // public function messages()
     // {
     //      return[
-    //          'CodigoIncidente.unique' => 'Este codigo ya existe',
     //          'CodigoIncidente.max'=>'El codigo no debe superar los 20 digitos',
     //          'CodigoIncidente.required'=>'El codigo es requerido',
     //          'Descripcion.required' => 'La descripcion es requerida',

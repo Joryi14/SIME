@@ -156,6 +156,7 @@ Route::group(['prefix' => '/','middleware'=> ['role:Admin|Director|Lider Comunal
     Route::group(['prefix' => '/'], function () {
     Route::put('user/{user}','user@update')->name('user_edit');
     Route::get('user/{user}','user@show')->name('user_show');
+    Route::post('user/getNacionalidad','user@getNacionalidad')->name('Get_NA');
 });
 Route::group(['prefix' => '/','middleware' => ['role:Admin']], function () {
     Route::get('user', 'user@index')->name('inicio_usuario');

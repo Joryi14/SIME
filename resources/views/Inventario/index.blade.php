@@ -66,6 +66,7 @@ $(function () {
               <th>Id del inventario</th>
               <th>Nombre de la emergencia</th>
               <th>Suministros</th>
+              <th>Fecha</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -74,6 +75,7 @@ $(function () {
               <td>{{$item->idInventario}}</td>
               <td>{{$item->idEmergencias}}  {{$item->Emergencia->NombreEmergencias}}</td>
               <td>{{$item->Suministros}}</td>
+              <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
               <td><a href="/Inventario/{{$item->idInventario}}/edit" class="btn-accion-tabla tooltipsC" title="Editar inventario">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
                 <a href="/Inventario/{{$item->idInventario}}/editSuministro" class="btn-accion-tabla tooltipsC" title="Aumentar suministros">

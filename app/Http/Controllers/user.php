@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Albergue;
+use App\Models\Pais;
 use App\Models\permisoRol;
 use App\Models\permissions;
 use App\Models\roles;
@@ -56,6 +57,24 @@ class user extends Controller
      $user = AppUser::find($id);
      return view('Login.show',compact('user'));
     }
+    public function getNacionalidad(Request $request){
+
+        $search = $request->search;
+        if($search == ''){
+           $Pais = Pais::orderby('id','asc')->select('id','nombre')->limit(10)->get();
+        }else{
+           $Pais = Pais::orderby('id','asc')->select('id','nombre')->where('nombre', 'like', '%' .$search.'%')->limit(5)->get();
+        }
+        $response = array();
+        foreach($Pais as $pai){
+           $response[] = array(
+                "id"=>$pai->nombre,
+                "text"=>$pai->nombre
+           );
+        }
+        echo json_encode($response);
+        exit;
+     }
 
     /**
      * Update the specified resource in storage.

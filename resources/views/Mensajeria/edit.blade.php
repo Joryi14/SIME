@@ -1,6 +1,7 @@
 @extends("theme/$theme/layout")
 @section('Contenido')
 @include('Includes.Error-form')
+
 <div class="panel panel-success">
   <div class="panel-heading">
     <h4 class="content-row-title">Editar mensaje
@@ -36,7 +37,7 @@
                 <div class="form-group">
                      <label for="Hora" class="col-sm-2 control-label">Hora: </label>
                      <div class="col-sm-9">
-                       <input type="time" name="Hora" class= "form-control" value=" {{$mensajeria->Hora}}" >
+                       <input type="time" name="Hora" class= "form-control" value="{{$mensajeria->Hora}}" >
                      </div>
                    </div>
 
@@ -44,7 +45,7 @@
                    <div class="form-group">
                         <label for="Fecha" class="col-sm-2 control-label">Fecha: </label>
                         <div class="col-sm-9">
-                          <input type="text" name="Fecha" class= "form-control" value="{{$mensajeria->fecha}}" >
+                          <input type="date" name="Fecha" class= "form-control" value="{{date('Y-m-d', strtotime($mensajeria['fecha']))}}" >
                         </div>
                       </div>
 

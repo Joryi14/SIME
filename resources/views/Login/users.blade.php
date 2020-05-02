@@ -77,6 +77,7 @@
               <th>Primer apellido</th>
               <th>Segundo apellido</th>
               <th>Cédula</th>
+              <th>Fecha</th>
               <th>Acciones</th>
             </tr>
             </thead>
@@ -88,6 +89,7 @@
               <td>{{$item->Apellido1}}</td>
               <td>{{$item->Apellido2}}</td>
               <td>{{$item->Cedula}}</td>
+              <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
               <td>
               <form id="form1" action="{{route('user_delete', ['user' => $item->id])}}" method="POST">
                   @csrf @method('delete')

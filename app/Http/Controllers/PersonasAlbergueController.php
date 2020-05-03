@@ -25,6 +25,18 @@ class PersonasAlbergueController extends Controller
         return view('PersonasAlbergue.index', compact('persona'));
     }
 
+    public function index2()
+    {
+       $persona = new PersonasAlbergue();
+      $persona = DB::table('registropersonaalbergue')->join('emergencia','registropersonaalbergue.idEmergencias','=','emergencia.idEmergencias')->join('jefedefamilia','registropersonaalbergue.idJefe','=','jefedefamilia.IdJefe')->join('albergue','registropersonaalbergue.idAlbergue','=','albergue.idAlbergue')->where('emergencia.Estado','Activa')->select('registropersonaalbergue.idregistroA',
+      'albergue.idAlbergue','albergue.Nombre','jefedefamilia.IdJefe','jefedefamilia.Cedula',
+      'emergencia.idEmergencias','registropersonaalbergue.LugarDeProcedencia',
+      'jefedefamilia.Nombre','jefedefamilia.Apellido1','registropersonaalbergue.FechaDeIngreso'
+      ,'emergencia.NombreEmergencias','registropersonaalbergue.HoraDeIngreso','registropersonaalbergue.FechaDeSalida'
+      ,'registropersonaalbergue.HoraDeSalida','registropersonaalbergue.created_at')->get();
+
+        return view('PersonasAlbergue.indexFiltrado', compact('persona'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -45,16 +57,12 @@ class PersonasAlbergueController extends Controller
     {
         if(JefeDeFamilia::find($request->idJefe)){
         if(Albergue::find($request->idAlbergue)){
-            if(Emergencia::find($request->idEmergencias)){
+         if(Emergencia::find($request->idEmergencias)){
+            if( (PersonasAlbergue::where('idJefe',$request->idJefe)->first()) && (PersonasAlbergue::where('idEmergencias',$request->idEmergencias)->first())){
+               return redirect('PersonasAlbergue/create')->with('mensaje','Error persona ya esta en albergue');
+            }
         $persona = new PersonasAlbergue();
-        $persona->idAlbergue = $request->idAlbergue;
-        $persona->idJefe = $request->idJefe;
-        $persona->idEmergencias = $request->idEmergencias;
-        $persona->LugarDeProcedencia = $request->LugarDeProcedencia;
-        $persona->FechaDeIngreso = $request->FechaDeIngreso;
-        $persona->HoraDeIngreso = $request->HoraDeIngreso;
-        $persona->FechaDeSalida = $request->FechaDeSalida;
-        $persona->HoraDeSalida = $request->HoraDeSalida;
+        $persona->fill($request->all());
         $persona->save();
         return redirect('PersonasAlbergue')->with('exito','Se ha agregado correctamente');
     }

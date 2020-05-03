@@ -61,7 +61,7 @@
                       </div>
                     </div>
 
-                      <div class="form-group">
+                      {{-- <div class="form-group">
                           <label for="FechaDeSalida" class="col-sm-2 control-label">Fecha de salida: </label>
 
                           <div class="col-sm-3">
@@ -75,7 +75,7 @@
                               <div class="col-sm-2">
                                   <input type="time" name="HoraDeSalida" class= "form-control" >
                               </div>
-                            </div>
+                            </div> --}}
                 </div>
               <div class="panel-footer">
                    @include("Includes.boton-form-create")

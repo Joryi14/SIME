@@ -26,11 +26,11 @@ class ValidacionMensajeria extends FormRequest
         return [
             'CodigoIncidente'=>'required|max:20',
             'Descripcion'=>'required|max:200',
-            'Ubicacion'=>'required',
+            'Longitud'=>'required',
             'Hora'=>'required',
             'Fecha'=>'required',
             'Categoria'=>'required',
-            'idEmergencia'=>'required'
+            'Latitud'=>'required',
         ];
     }
     // public function messages()

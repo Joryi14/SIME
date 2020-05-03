@@ -24,6 +24,7 @@ Route::get('/', function () {
     Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('Mensajeria', 'MensajeriaController@index')->name('inicio_mensaje');
     Route::get('Mensajeria/create', 'MensajeriaController@create')->name('Mensajeria_create');
+    Route::get('search', 'MensajeriaController@search');
     Route::post('Mensajeria/store','MensajeriaController@store');
     Route::get('Mensajeria/{Mensajeria}/edit', 'MensajeriaController@edit');
     Route::put('Mensajeria/{Mensajeria}','MensajeriaController@update');
@@ -45,6 +46,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comuna
 });
 Route::group(['prefix' => '/'], function () {
     Route::get('Inventario', 'InventarioController@index')->name('inicio_inventario');
+    Route::get('Inventario/Filtrado', 'InventarioController@index2')->name('inicio_inventario2');
     Route::get('Inventario/create', 'InventarioController@create')->name('inventario_create');
     Route::post('Inventario/store','InventarioController@store');
     Route::get('Inventario/{Inventario}/edit', 'InventarioController@edit');
@@ -133,6 +135,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], functi
 
 Route::group(['prefix' => '/','middleware'=> ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('PersonasAlbergue', 'PersonasAlbergueController@index')->name('inicio_personasAlbergue');
+    Route::get('PersonasAlbergue/Filtrado', 'PersonasAlbergueController@index2')->name('inicio_personasAlbergue2');
     Route::get('PersonasAlbergue/create', 'PersonasAlbergueController@create')->name('personasAlbergue_create');
     Route::post('PersonasAlbergue/store','PersonasAlbergueController@store');
     Route::get('PersonasAlbergue/{PersonasAlbergue}/edit', 'PersonasAlbergueController@edit')->name('personasAlbergue_edit');

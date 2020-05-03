@@ -21,9 +21,9 @@
 <script type="text/javascript">
   $(document).on('click', '.show-modal', function() {
             $('#fi').text($(this).data('fi'));
-            $('#hi').val($(this).data('hi'));
+            $('#hi').text($(this).data('hi'));
             $('#fs').text($(this).data('fs'));
-            $('#hs').val($(this).data('hs'));
+            $('#hs').text($(this).data('hs'));
          });
  </script>
 <script>
@@ -87,9 +87,9 @@ $(function () {
             @foreach ($persona as $item)
               <tr>
               <td>{{$item->idregistroA}}</td>
-              <td>{{$item->Albergue->idAlbergue}} {{$item->Albergue->Nombre}}</td>
-              <td>{{$item->Emergencia->idEmergencias}} {{$item->Emergencia->NombreEmergencias}}</td>
-              <td>{{$item->jefeFamilia->Cedula}} {{$item->jefeFamilia->Nombre}} {{$item->jefeFamilia->Apellido1}}</td>
+              <td>{{$item->idAlbergue}} {{$item->Nombre}}</td>
+              <td>{{$item->idEmergencias}} {{$item->NombreEmergencias}}</td>
+              <td>{{$item->Cedula}} {{$item->Nombre}} {{$item->Apellido1}}</td>
               <td>{{$item->LugarDeProcedencia}}</td>
               <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
               <td><a href="/PersonasAlbergue/{{$item->idregistroA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar personas en albergue">
@@ -128,7 +128,7 @@ $(function () {
      <div class="form-group">
       <label  class="col-md-4"><b>Hora de ingreso:</b></label>
       <div class="col-md-4">
-        <input type="time" id="hi" readonly>
+          <span id="hi"></span>
       </div>
   </div></div><br>
   <div class="row">
@@ -143,7 +143,7 @@ $(function () {
       <div class="form-group">
         <label class="col-md-4"><b>Hora de salida:</b></label>
         <div class="col-md-4">
-            <input type="time" id="hs" readonly>
+            <span id="hs"></span>
         </div>
       </div></div>
           <br>

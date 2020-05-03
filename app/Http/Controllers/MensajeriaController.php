@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidacionMensajeria;
+use App\Models\Acciones;
 use App\Models\Emergencia;
 use App\Models\Mensajeria;
 use Illuminate\Http\Request;
@@ -16,7 +17,10 @@ class MensajeriaController extends Controller
      */
     public function index()
     {
-        $mensajerias = Mensajeria::orderBy('IdMensajeria')->get();
+        $mensajerias = Mensajeria::orderBy('IdMensajeria','desc')->limit(10)->get();
+        foreach($mensajerias as $item){
+        $item->acciones() = Acciones::orderby('idMensajeria')->where('idMensajeria',$item->IdMensajera)->select('descripcion')->get();
+        }
         return view('Mensajeria.index', compact('mensajerias'));
     }
 
@@ -30,6 +34,12 @@ class MensajeriaController extends Controller
         return view('Mensajeria.create');
     }
 
+    public function search(Request $request){
+     
+        $mensajerias = $request->get('buscar');
+        $mensajerias = Mensajeria::orderBy('IdMensajeria','desc')->where('CodigoIncidente','like','%'.$mensajerias.'%')->orwhere('IdMensajeria','like','%'.$mensajerias.'%')->limit(5)->get();
+        return view('Mensajeria.index', compact('mensajerias'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -38,7 +48,7 @@ class MensajeriaController extends Controller
      */
     public function store(ValidacionMensajeria $request)
     {
-        if(Mensajeria::where('CodigoIncidente',$request->CodigoIncidente)){
+        if(Mensajeria::where('CodigoIncidente',$request->CodigoIncidente)->first()){
           return redirect('Mensajeria\create')->with('mensaje','Error codigo en uso');
         }
         $mensajeria = new Mensajeria();

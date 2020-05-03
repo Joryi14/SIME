@@ -13,4 +13,12 @@ class PersonasAlbergue extends Model
     {
         return $this->belongsTo('App\Models\JefeDeFamilia', 'idJefe');
     }
+    public function Albergue()
+    {
+        return $this->belongsTo('App\Models\Albergue', 'idAlbergue');
+    }
+    public function Emergencia()
+    {
+        return $this->belongsTo('App\Models\Emergencia', 'idEmergencias');
+    }
 }

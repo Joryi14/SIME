@@ -21,7 +21,19 @@ class InventarioController extends Controller
         $inventarios = Inventario::orderBy('idInventario')->get();
         return view('Inventario.index', compact('inventarios'));
     }
-
+    public function index2()
+    {
+        $inventario = new Inventario();
+        $inventario = DB::table('inventario')->join('emergencia','inventario.idEmergencias','=','emergencia.idEmergencias')->where('emergencia.estado','Activa')->select('inventario.idInventario',
+        'emergencia.idEmergencias',
+        'emergencia.NombreEmergencias',
+        'inventario.Suministros',
+        'inventario.Colchonetas',
+        'inventario.Cobijas',
+        'inventario.Ropa', 
+        'inventario.created_at')->get();
+        return view('Inventario.IndexFiltrado', compact('inventario'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -109,9 +121,9 @@ class InventarioController extends Controller
 
         $search = $request->search;
         if($search == ''){
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->limit(5)->get();
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias','Estado')->where('Estado','Activa')->limit(5)->get();
         }else{
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('idEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('idEmergencias', 'like', '%' .$search . '%')->where('Estado','Activa')->limit(5)->get();
         }
         $response = array();
         foreach($Emergencia as $Emer){

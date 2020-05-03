@@ -31,8 +31,6 @@ class ValidacionPersonasAlbergue extends FormRequest
             'LugarDeProcedencia'=> 'required|max:50',
             'FechaDeIngreso'=> 'required',
             'HoraDeIngreso'=> 'required',
-            'FechaDeSalida'=> 'required',
-            'HoraDeSalida'=> 'required', 
         ];
     }
 
@@ -48,8 +46,6 @@ class ValidacionPersonasAlbergue extends FormRequest
             'LugarDeProcedencia.max' => 'El lugar de procedencia no debe superar los 50 digitos',
             'FechaDeIngreso.required' => 'La fecha de ingreso al albergue es requerida',
             'HoraDeIngreso.required' => 'La hora de ingreso al albergue es requerida',
-            'FechaDeSalida.required' => 'La fecha de salida del albergue es requerida',
-            'HoraDeSalida.required' => 'La hora de salida del albergue es requerida',
         ];
     }
 

@@ -19,7 +19,7 @@
               <div class="form-group">
                 <label for="TotalPersonas" class="col-sm-2 control-label">Total de personas: </label>
                 <div class="col-sm-8">
-                    <input type="text" name="TotalPersonas" class= "form-control" value="{{$JefeF->TotalPersonas}}">
+                    <input type="text" name="TotalPersonas" class= "form-control" value="{{$JefeF->TotalPersonas}}" readonly>
                 </div>
               </div>
               <div class="form-group">

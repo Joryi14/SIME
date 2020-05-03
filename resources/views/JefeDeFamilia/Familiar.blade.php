@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="{{asset("assets/$theme/Select2/css/select2.min.css")}}">
 @endsection
 @section('Contenido')
+@include('Includes.mensaje-Error')
 @include('Includes.Error-form')
 <div class="panel panel-warning">
   <div class="panel-heading">

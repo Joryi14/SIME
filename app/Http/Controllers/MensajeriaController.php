@@ -18,9 +18,6 @@ class MensajeriaController extends Controller
     public function index()
     {
         $mensajerias = Mensajeria::orderBy('IdMensajeria','desc')->limit(10)->get();
-        foreach($mensajerias as $item){
-        $item->acciones() = Acciones::orderby('idMensajeria')->where('idMensajeria',$item->IdMensajera)->select('descripcion')->get();
-        }
         return view('Mensajeria.index', compact('mensajerias'));
     }
 
@@ -33,7 +30,9 @@ class MensajeriaController extends Controller
     {
         return view('Mensajeria.create');
     }
-
+    public function ubicacion($Longitud,$Latitud){
+        return view('Mensajeria.ubicacion', compact('Longitud','Latitud'));
+    }
     public function search(Request $request){
      
         $mensajerias = $request->get('buscar');
@@ -81,6 +80,18 @@ class MensajeriaController extends Controller
       
     }
 
+    public function accion($id)
+    {
+        $mensajeria = Mensajeria::find($id);
+        return view('Mensajeria.accion', compact('mensajeria'));
+    }
+    public function storeA(Request $request)
+    {
+          $acciones = new Acciones();
+          $acciones->fill($request->all());
+          $acciones->save();
+          return redirect('Mensajeria')->with('exito','Se ha agregado correctamente');
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -95,25 +106,6 @@ class MensajeriaController extends Controller
         $mensajeria->save();
         return redirect('Mensajeria')->with('mensaje','Editado correctamente');
     }
-    public function getEmergeM(Request $request){
-
-        $search = $request->search;
-        if($search == ''){
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias','Estado')->where('Estado','Activa')->limit(5)->get();
-        }else{
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias','Estado')->where('NombreEmergencias', 'like', '%' .$search . '%')->where('Estado','Activa')->limit(5)->get();
-        }
-        $response = array();
-        foreach($Emergencia as $Emer){
-           $response[] = array(
-                "id"=>$Emer->idEmergencias,
-                "NombreEmergencias"=>$Emer->NombreEmergencias
-           );
-        }
-        echo json_encode($response);
-        exit;
-     }
-
     /**
      * Remove the specified resource from storage.
      *

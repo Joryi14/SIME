@@ -1,6 +1,6 @@
 @extends("theme/$theme/layout")
 @section('styles')
-<link rel="stylesheet" href="{{asset("assets/$theme/Select2/css/select2.min.css")}}">
+<link rel="stylesheet" href="{{asset("assets/MAP/leaflet.css")}}"/>
 @endsection
 @section('Contenido')
 @include('Includes.Error-form')
@@ -28,16 +28,25 @@
               <input type="text" name="Descripcion" class= "form-control" >
             </div>
           </div>
+          <table style="width: 100%;
+          margin-right: auto;
+          margin-left: auto;
+          display: inline;
+          float: left;
+          text-align: center;" >
+         <div id="mapid" style=" margin-right: auto;
+         margin-left: auto; width: 400px; height: 250px; position: relative;"></div>
+        </table><br>
           <div class="form-group">
               <label for="Longitud" class="col-sm-2 control-label">Longitud: </label>
               <div class="col-sm-9">
-                  <input type="text" name="Longitud" class= "form-control" >
+                  <input type="text" id="lg" name="Longitud" class= "form-control" >
               </div>
             </div>
             <div class="form-group">
               <label for="Latitud" class="col-sm-2 control-label">Latitud: </label>
               <div class="col-sm-9">
-                  <input type="text" name="Latitud" class= "form-control" >
+                  <input type="text" id="lt" name="Latitud" class= "form-control" >
               </div>
             </div>
             <div class="form-group">
@@ -72,4 +81,29 @@
       </form>
     </div>
   </div>
+@section('Script')
+<script src="{{asset("assets/MAP/leaflet.js")}}"></script>
+<!-- Script -->
+<script>
+var mymap = L.map('mapid').setView([9.9789728,-85.6605546], 13);
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+  maxZoom: 18,
+  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  id: 'mapbox/streets-v11'
+}).addTo(mymap);
+var mark = L.marker([9.9789728,-85.6605546]).addTo(mymap);
+function onMapClick(e) {
+        mark.setLatLng(e.latlng);
+        var Longitud = document.getElementById("lg");
+        var latitud = document.getElementById("lt");
+        latitud.value = mark.getLatLng().lat;
+        Longitud.value = mark.getLatLng().lng;
+      }
+
+mymap.on('click', onMapClick);
+</script>
+@endsection
+
 @endsection

@@ -24,9 +24,12 @@ Route::get('/', function () {
     Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('Mensajeria', 'MensajeriaController@index')->name('inicio_mensaje');
     Route::get('Mensajeria/create', 'MensajeriaController@create')->name('Mensajeria_create');
+    Route::get('Mensajeria/{Latitud}/{Longitud}/ubicacion', 'MensajeriaController@ubicacion');
     Route::get('search', 'MensajeriaController@search');
     Route::post('Mensajeria/store','MensajeriaController@store');
+    Route::post('Mensajeria/storeA','MensajeriaController@storeA');
     Route::get('Mensajeria/{Mensajeria}/edit', 'MensajeriaController@edit');
+    Route::get('Mensajeria/{Mensajeria}/accion', 'MensajeriaController@accion');
     Route::put('Mensajeria/{Mensajeria}','MensajeriaController@update');
     Route::delete('Mensajeria/{Mensajeria}','MensajeriaController@delete')->name('mensajeria_delete');
     Route::post('Mensajeria/getEmergencia','MensajeriaController@getEmergeM')->name('Get_EmergeM');

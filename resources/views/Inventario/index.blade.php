@@ -53,9 +53,9 @@ $(function () {
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h4 class="box-title">Inventario
-            <a href="{{route('inventario_create')}}" class="btn btn-success btn-lg pull-right">
+            {{-- <a href="{{route('inventario_create')}}" class="btn btn-success btn-lg pull-right">
                 <i class="fa fa-fw fa-plus-circle"></i> Crear
-            </a>
+            </a> --}}
                 </h4>
                 <br>
               </div>
@@ -76,7 +76,8 @@ $(function () {
               <td>{{$item->idEmergencias}}  {{$item->Emergencia->NombreEmergencias}}</td>
               <td>{{$item->Suministros}}</td>
               <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
-              <td><a href="/Inventario/{{$item->idInventario}}/edit" class="btn-accion-tabla tooltipsC" title="Editar inventario">
+              <td>
+                {{-- <a href="/Inventario/{{$item->idInventario}}/edit" class="btn-accion-tabla tooltipsC" title="Editar inventario">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
                 <a href="/Inventario/{{$item->idInventario}}/editSuministro" class="btn-accion-tabla tooltipsC" title="Aumentar suministros">
                   <i class="fa fa-fw fa-plus-circle text-success"></i></a>
@@ -86,7 +87,7 @@ $(function () {
                 <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar inventario" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
-              </form>
+              </form> --}}
               <button class="show-modal btn-accion-tabla tooltipsC"title="Información de inventario" data-toggle="modal" data-target="#Detalle"  data-col="{{$item->Colchonetas}}" data-cob="{{$item->Cobijas}}" data-rop="{{$item->Ropa}}"><i class="fa fa-fw fa-file-text-o text-info"></i></button>
               </td>
               </tr>

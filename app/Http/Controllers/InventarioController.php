@@ -56,7 +56,7 @@ class InventarioController extends Controller
         $inv->fill($request->all());
         $inv->save();
 
-        return redirect('Inventario')->with('exito','Se ha agregado correctamente');
+        return redirect('Inventario/Filtrado')->with('exito','Se ha agregado correctamente');
     }
     public function editSuministro($id)
     {
@@ -70,7 +70,7 @@ class InventarioController extends Controller
         $tt = $request->suma;
         $total = $t+$tt;
         $inventario = DB::update("call Update_Suministros('$id','$request->idEmergencias','$total')");
-        return redirect('Inventario')->with('exito','Se ha actualizado correctamente la cantidad de suministros');
+        return redirect('Inventario/Filtrado')->with('exito','Se ha actualizado correctamente la cantidad de suministros');
 
     }
     public function ReporteFecha(request $request){
@@ -147,7 +147,7 @@ class InventarioController extends Controller
         $inventario = Inventario::find($id);
         $inventario->fill($request->all());
         $inventario->save();
-      return redirect('Inventario')->with('exito','Se ha actualizado correctamente');
+      return redirect('Inventario/Filtrado')->with('exito','Se ha actualizado correctamente');
     }
 
     /**
@@ -160,9 +160,9 @@ class InventarioController extends Controller
     {
         $inventario = Inventario::find($id);
         if(Retiro_PaquetesV::where('IdInventario',$id)->first()){
-            return redirect('Inventario')->with('mensaje','No se puede eliminar el inventario tiene retiros de donaciones asignados');
+            return redirect('Inventario/Filtrado')->with('mensaje','No se puede eliminar el inventario tiene retiros de donaciones asignados');
             }
         $inventario->delete();
-        return redirect('Inventario')->with('exito','Se ha eliminado correctamente');
+        return redirect('Inventario/Filtrado')->with('exito','Se ha eliminado correctamente');
     }
 }

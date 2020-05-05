@@ -23,7 +23,17 @@ class EntregaDonacionesAlbergueController extends Controller
         $entregadonacionesAlbergue = EntregaDonacionesAlbergue::orderBy('IdEntregaA')->get();
         return view('EntregaDonacionesAlbergue.index', compact('entregadonacionesAlbergue'));
     }
-
+    public function index2()
+    {
+      $entrega = new EntregaDonacionesAlbergue();
+      $entrega = DB::table('entregadonacionesalbergue')->join('emergencia','entregadonacionesalbergue.idEmergencias','=','emergencia.idEmergencias')->join('jefedefamilia','entregadonacionesalbergue.IdJefeFa','=','jefedefamilia.IdJefe')->join('albergue','entregadonacionesalbergue.idAlbergue','=','albergue.idAlbergue')->where('emergencia.Estado','Activa')->select('entregadonacionesalbergue.IdEntregaA',
+      'albergue.idAlbergue','albergue.Nombre','jefedefamilia.IdJefe','jefedefamilia.Cedula',
+      'emergencia.idEmergencias',
+      'jefedefamilia.Nombre','jefedefamilia.Apellido1'
+      ,'emergencia.NombreEmergencias'
+      ,'entregadonacionesalbergue.created_at')->get();
+      return view('EntregaDonacionesAlbergue.indexFiltrado', compact('entrega'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -51,7 +61,7 @@ class EntregaDonacionesAlbergueController extends Controller
         $entr = new EntregaDonacionesAlbergue();
         $entr->fill($request->all());
         $entr->save();
-        return redirect('EntregaDonacionesAlbergue')->with('exito','Se ha guardado');
+        return redirect('EntregaDonacionesAlbergue/Filtrado')->with('exito','Se ha guardado');
             }
          else
          return redirect('EntregaDonacionesAlbergue/create')->with('mensaje','Error Emergencia no existe');
@@ -95,9 +105,9 @@ class EntregaDonacionesAlbergueController extends Controller
 
         $search = $request->search;
         if($search == ''){
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->limit(5)->get();
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('Estado','Activa')->limit(5)->get();
         }else{
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('idEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('Estado','Activa')->where('idEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
         }
         $response = array();
         foreach($Emergencia as $Emer){
@@ -122,7 +132,6 @@ class EntregaDonacionesAlbergueController extends Controller
     }
 
     public function getIdJefeFa(Request $request){
-
         $search = $request->search;
         if($search == ''){
            $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula','Nombre','Apellido1','Apellido2')->limit(5)->get();
@@ -156,7 +165,7 @@ class EntregaDonacionesAlbergueController extends Controller
       $EntregaDonacionesAlbergue = EntregaDonacionesAlbergue::find($id);
       $EntregaDonacionesAlbergue->fill($request->all());
       $EntregaDonacionesAlbergue->save();
-        return redirect('EntregaDonacionesAlbergue')->with('exito','Editado correctamente');
+        return redirect('EntregaDonacionesAlbergue/Filtrado')->with('exito','Editado correctamente');
     }
 
     /**
@@ -169,7 +178,7 @@ class EntregaDonacionesAlbergueController extends Controller
     {
         $EntregaDonacionesAlbergue = EntregaDonacionesAlbergue::find($id);
         $EntregaDonacionesAlbergue->delete();
-        return redirect('EntregaDonacionesAlbergue')->with('exito','Se ha eliminado correctamente');
+        return redirect('EntregaDonacionesAlbergue/Filtrado')->with('exito','Se ha eliminado correctamente');
     }
 
     public function ReporteFecha(request $request){

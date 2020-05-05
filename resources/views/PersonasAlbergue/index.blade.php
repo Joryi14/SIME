@@ -65,9 +65,9 @@ $(function () {
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h4 class="content-row-title">Personas en albergue
-                  <a href="{{route('personasAlbergue_create')}}" class="btn pull-right btn-success btn-lg">
+                  {{-- <a href="{{route('personasAlbergue_create')}}" class="btn pull-right btn-success btn-lg">
                       <i class="fa fa-fw fa-plus-circle"></i> Crear
-                  </a>
+                  </a> --}}
                       </h4>
                       <br>
                     </div>
@@ -92,7 +92,8 @@ $(function () {
               <td>{{$item->jefeFamilia->Cedula}} {{$item->jefeFamilia->Nombre}} {{$item->jefeFamilia->Apellido1}}</td>
               <td>{{$item->LugarDeProcedencia}}</td>
               <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
-              <td><a href="/PersonasAlbergue/{{$item->idregistroA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar personas en albergue">
+              <td>
+              {{-- <a href="/PersonasAlbergue/{{$item->idregistroA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar personas en albergue">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
               <form id="form1" action="{{route('personasAlbergue_delete', ['PersonasAlbergue' => $item->idregistroA])}}" method="POST">
                 @csrf
@@ -100,7 +101,7 @@ $(function () {
                 <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar personas en albergue" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
-              </form>
+              </form> --}}
               <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostar personas en albergue" data-toggle="modal" data-target="#Detalle"  data-fi="{{date('d-m-Y',strtotime($item->FechaDeIngreso))}}" data-hi="{{$item->HoraDeIngreso}}" data-fs="{{date('d-m-Y',strtotime($item->FechaDeSalida))}}" data-hs="{{$item->HoraDeSalida}}" ><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>

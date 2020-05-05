@@ -6,7 +6,7 @@
 <script src="{{asset("assets/$theme/bootflat-admin/datatables.min.js")}}"></script>
 <script>
 $(function () {
-    $('#Entregadonaciones_table').DataTable({
+    $('#EntregaDonacionesAlbergue_table').DataTable({
       language: {
         "decimal": "",
         "emptyTable": "No hay información",
@@ -40,43 +40,40 @@ $(function () {
 @section('Contenido')
 @include('Includes.mensaje-Error')
 @include('Includes.mensaje-Succes')
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h4 class="box-title">Entrega de donaciones
-       <a href="{{route('EntregaDonaciones_create')}}" class="btn btn-success btn-lg pull-right">
-      <i class="fa fa-fw fa-plus-circle"></i> Crear
-       </a>
-          </h4>
-        </div>
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h4 class="content-row-title">Entrega de donaciones en albergue
+                  <a href="{{route('EntregaDonacionesA_create')}}" class="btn btn-success btn-lg pull-right">
+                      <i class="fa fa-fw fa-plus-circle"></i> Crear
+                  </a>
+                      </h4>
+                      <br>
+                    </div>
          <div class="panel-body table-responsive" >
-          <table id="Entregadonaciones_table" class="table table-bordered table-striped">
+          <table id="EntregaDonacionesAlbergue_table" class="table table-bordered table-striped">
             <thead>
             <tr>
               <th>Id de la entrega</th>
-              <th>Voluntario cédula</th>
               <th>Jefe de familia</th>
-              <th>Id retiro de paquetes</th>
-              <th>Foto</th>
+              <th>Albergue</th>
               <th>Emergencia</th>
+              <th>Fecha</th>
               <th>Acciones</th>
             </tr>
           </thead>
-                @foreach ($entregadonaciones as $item)
+                @foreach ($entrega as $item)
                   <tr>
-                  <td>{{$item->IdEntrega}}</td>
-                  <td>{{$item->Ced}}</td>
-                  <td>Cedula:{{$item->Cedula}} <br> Nombre: {{$item->Nombre}} {{$item->Apellido1}}</td>
-                  <td>{{$item->IdRetiroPaquetes}}</td>
-                  <td>
-                    <img style='display:block; width:100px; height:100px;' src= "{{url('Foto/'.$item->Foto)}}" alt="base64">
-                  </td>
-                  <td>{{$item->idEmergencias}} {{$item->NombreEmergencias}}</td>
-                  <td><a href="/EntregaDonaciones/{{$item->IdEntrega}}/edit" class="btn-accion-tabla tooltipsC" title="Editar entrega donaciones">
+                  <td>{{$item->IdEntregaA}}</td>
+                  <td>Cedula: {{$item->Cedula}} <br> Nombre: {{$item->Nombre}}  {{$item->Apellido1}}</td>
+                  <td>{{$item->Nombre}}</td>
+                  <td>{{$item->idEmergencias}}     {{$item->NombreEmergencias}}</td>
+                  <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
+                  <td><a href="/EntregaDonacionesAlbergue/{{$item->IdEntregaA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar la entrega de donaciones en albergue">
                     <i class="fa fa-fw fa-pencil text-success"></i></a>
-                  <form id="form1" action="{{route('entregadonaciones_delete', ['EntregaDonaciones' => $item->IdEntrega])}}" method="POST">
+                  <form id="formEA" action="{{route('EntregadonacionesA_delete', ['EntregaDonacionesAlbergue' => $item->IdEntregaA])}}" method="POST">
                     @csrf
                     <input name="_method" type="hidden" value="DELETE">
-                    <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar entrega de donaciones" onclick="confirmarEnvio()">
+                    <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar entrega de donaciones en albergue" onclick="confirmarEnvio()">
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form>
@@ -88,12 +85,12 @@ $(function () {
     </div>
     <br>
     <div class="form-group">
-        <a href="{{route('Entregadonaciones_reporte')}}" class="btn btn-info" target="_blank">
-              <i class="fa fa-fw fa-plus-circle"></i> Crear reporte de entrega de donaciones
+        <a href="{{route('EntregadonacionesA_reporte')}}" class="btn btn-info" target="_blank">
+              <i class="fa fa-fw fa-plus-circle"></i> Crear reporte de entrega de donaciones en albergue
         </a>
     </div>
     <div class="form-group">
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ReporteF">  <i class="fa fa-fw fa-plus-circle"></i>Reporte de entrega de donaciones por fechas</button>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ReporteF">  <i class="fa fa-fw fa-plus-circle"></i>Reporte de entrega de donaciones en albergue por fechas</button>
     </div>
     <div class="modal modal-default fade" id="ReporteF">
         <div class="modal-dialog">
@@ -101,9 +98,9 @@ $(function () {
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Reporte de entrega de donaciones por fechas</b></h4>
+              <h4 class="modal-title"><b>Reporte de entrega de donaciones en albergue por fechas</b></h4>
             </div>
-              <form class= "form-horizontal" method="POST" action="/EntregaDonaciones/ReporteFecha" target="_blank">
+              <form class= "form-horizontal" method="POST" action="/EntregaDonacionesAlbergue/ReporteFecha" target="_blank">
                     @csrf
               <div class="modal-body">
                <div class="col-md-6">

@@ -43,9 +43,9 @@ $(function () {
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h4 class="content-row-title">Entrega de donaciones en albergue
-                  <a href="{{route('EntregaDonacionesA_create')}}" class="btn btn-success btn-lg pull-right">
+                  {{-- <a href="{{route('EntregaDonacionesA_create')}}" class="btn btn-success btn-lg pull-right">
                       <i class="fa fa-fw fa-plus-circle"></i> Crear
-                  </a>
+                  </a> --}}
                       </h4>
                       <br>
                     </div>
@@ -58,7 +58,7 @@ $(function () {
               <th>Albergue</th>
               <th>Emergencia</th>
               <th>Fecha</th>
-              <th>Acciones</th>
+              {{-- <th>Acciones</th> --}}
             </tr>
           </thead>
                 @foreach ($entregadonacionesAlbergue as $item)
@@ -68,7 +68,7 @@ $(function () {
                   <td>{{$item->Albergue->Nombre}}</td>
                   <td>{{$item->idEmergencias}}     {{$item->Emergencia->NombreEmergencias}}</td>
                   <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
-                  <td><a href="/EntregaDonacionesAlbergue/{{$item->IdEntregaA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar la entrega de donaciones en albergue">
+                  {{-- <td><a href="/EntregaDonacionesAlbergue/{{$item->IdEntregaA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar la entrega de donaciones en albergue">
                     <i class="fa fa-fw fa-pencil text-success"></i></a>
                   <form id="formEA" action="{{route('EntregadonacionesA_delete', ['EntregaDonacionesAlbergue' => $item->IdEntregaA])}}" method="POST">
                     @csrf
@@ -77,7 +77,7 @@ $(function () {
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form>
-                  </td>
+                  </td> --}}
                   </tr>
                 @endforeach
           </table>

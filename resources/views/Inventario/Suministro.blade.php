@@ -5,7 +5,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
      <h4 class="box-title">Agregar suministros
-       <a href="{{route('inicio_inventario')}}" class="btn pull-right btn-info ">
+       <a href="{{route('inicio_inventario2')}}" class="btn pull-right btn-info ">
            <i class="fa fa-fw fa-reply-all"></i> Regresar
        </a>
      </h4>
@@ -17,7 +17,8 @@
     <div class="form-group">
         <label for="idEmergencias" class="col-sm-2 control-label">Nombre de las emergencias: </label>
         <div class="col-sm-9">
-          <input type="text" name="idEmergencias" class= "form-control" value=" {{$inventario->Emergencia->NombreEmergencias}}"readonly="readonly">
+          <input type="text"  class= "form-control" value=" {{$inventario->Emergencia->NombreEmergencias}}"readonly="readonly">
+          <input type="hidden" name="idEmergencias" class= "form-control" value=" {{$inventario->idEmergencias}}"readonly="readonly">
         </div>
       </div>
 

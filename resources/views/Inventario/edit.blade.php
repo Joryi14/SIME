@@ -5,7 +5,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
      <h4 class="content-row-title">Editar inventario
-       <a href="{{route('inicio_inventario')}}" class="btn pull-right btn-info ">
+       <a href="{{route('inicio_inventario2')}}" class="btn pull-right btn-info ">
            <i class="fa fa-fw fa-reply-all"></i> Regresar
        </a>
      </h4>

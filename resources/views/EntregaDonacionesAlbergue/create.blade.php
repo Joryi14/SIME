@@ -8,7 +8,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
      <h4 class="content-row-title">Crear entrega de donaciones en albergue
-       <a href="{{route('inicio_EntregaDonacionesA')}}" class="btn pull-right btn-info ">
+       <a href="{{route('inicio_EntregaDonacionesAF')}}" class="btn pull-right btn-info ">
            <i class="fa fa-fw fa-reply-all"></i> Regresar
        </a></h4>
      </div>

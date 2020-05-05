@@ -64,7 +64,7 @@ class PersonasAlbergueController extends Controller
         $persona = new PersonasAlbergue();
         $persona->fill($request->all());
         $persona->save();
-        return redirect('PersonasAlbergue')->with('exito','Se ha agregado correctamente');
+        return redirect('PersonasAlbergue/Filtrado')->with('exito','Se ha agregado correctamente');
     }
        else
        return redirect('PersonasAlbergue/create')->with('mensaje','Error Emergencia no existe');
@@ -109,9 +109,9 @@ class PersonasAlbergueController extends Controller
 
         $search = $request->search;
         if($search == ''){
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->limit(5)->get();
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('Estado','Activa')->limit(5)->get();
         }else{
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('idEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('Estado','Activa')->where('idEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
         }
         $response = array();
         foreach($Emergencia as $Emer){
@@ -174,7 +174,7 @@ class PersonasAlbergueController extends Controller
         $persona = PersonasAlbergue::find($id);
         $persona->fill($request->all());
         $persona->save();
-        return redirect('PersonasAlbergue')->with('exito','Se ha actualizado correctamente');
+        return redirect('PersonasAlbergue/Filtrado')->with('exito','Se ha actualizado correctamente');
     }
 
     /**
@@ -187,7 +187,7 @@ class PersonasAlbergueController extends Controller
     {
         $persona = PersonasAlbergue::find($id);
       $persona->delete();
-      return redirect('PersonasAlbergue')->with('exito','Se ha eliminado correctamente');
+      return redirect('PersonasAlbergue/Filtrado')->with('exito','Se ha eliminado correctamente');
     }
 
     public function generar()

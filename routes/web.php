@@ -36,6 +36,7 @@ Route::get('/', function () {
 });
 Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('Retiro_PaquetesV', 'Retiro_PaquetesVController@index')->name('inicio_Retiro_PaquetesV');
+    Route::get('Retiro_PaquetesV/Filtrado', 'Retiro_PaquetesVController@index2')->name('inicio_Retiro_PaquetesV2');
     Route::get('Retiro_PaquetesV/create', 'Retiro_PaquetesVController@create')->name('Retiro_PaquetesV_create');
     Route::post('Retiro_PaquetesV/store','Retiro_PaquetesVController@store');
     Route::get('Retiro_PaquetesV/{Retiro_PaquetesV}/edit', 'Retiro_PaquetesVController@edit');
@@ -131,6 +132,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], functi
     Route::post('Emergencia/store','EmergenciaController@store');
     Route::get('Emergencia/{Emergencia}/edit', 'EmergenciaController@edit')->name('emergencia_edit');
     Route::put('Emergencia/{Emergencia}','EmergenciaController@update');
+    Route::get('Estado/{id}','EmergenciaController@Estado')->name('emergencia_estado');
     Route::delete('Emergencia/{Emergencia}','EmergenciaController@delete')->name('emergencia_delete');
     Route::get('Emergencia/pdf', 'EmergenciaController@generar')->name('emergencia_reporte');
     Route::post('Emergencia/ReporteFecha', 'EmergenciaController@ReporteFecha')->name('emergencia_reporteF');
@@ -184,6 +186,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin']], function () {
     Route::post('UserRol/store','UserRolController@store');
     Route::post('UserRol/getUsers','UserRolController@getUsers')->name('Get_Users');
     Route::post('UserRol/getRoles','UserRolController@getRoles')->name('Get_Roles');
+    Route::get('usuarioE/{id}','user@Estado')->name('emergencia_estado');
 });
     Route::group(['prefix' => '/'], function () {
     Route::get('/', 'NoticiaController@index1');

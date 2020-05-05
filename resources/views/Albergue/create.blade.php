@@ -30,6 +30,7 @@
           </div>
         </div>
 
+        <input type="hidden" name="PersonasAlbergue" value="0" class= "form-control" readonly>
 
         <div class="form-group">
             <label for="Comunidad" class="col-sm-2 control-label">Comunidad: </label>

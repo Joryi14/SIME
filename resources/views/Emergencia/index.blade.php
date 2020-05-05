@@ -62,6 +62,8 @@ $(function () {
 @section('Contenido')
 @include('Includes.mensaje-Error')
 @include('Includes.mensaje-Succes')
+@include('Includes.Inactiva')
+@include('Includes.Activa')
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h4 class="content-row-title">Lista de emergencias
@@ -97,7 +99,8 @@ $(function () {
                 <span class="badge badge-danger">{{$item->Estado}}</span></a>
                 @endif</td>
                 <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
-              <td><a href="/Emergencia/{{$item->idEmergencias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar emergencia">
+              <td>
+                <a href="/Emergencia/{{$item->idEmergencias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar emergencia">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
               <form id="formE"  action="{{route('emergencia_delete', ['Emergencia' => $item->idEmergencias])}}" method="POST">
                 @csrf
@@ -106,6 +109,8 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
+              <a href="/Estado/{{$item->idEmergencias}}" class="btn-accion-tabla tooltipsC" title="Actualizar estado">
+                <i class="glyphicon glyphicon-refresh text-warning"></i></a>
               <button  class="show-modal btn-accion-tabla tooltipsC"title="Información de la emergencia" data-toggle="modal" data-target="#Detalle"  data-lt="{{$item->Latitud}}" data-lg="{{$item->Longitud}}" data-rad="{{$item->Radio}}" data-desc="{{$item->Descripcion}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>

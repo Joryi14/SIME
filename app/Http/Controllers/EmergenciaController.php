@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidacionesEmergencia;
+use App\Models\Albergue;
 use Illuminate\Support\Facades\DB;
 use App\Models\Emergencia;
 use App\Models\EntregaDonaciones;
 use App\Models\EntregaDonacionesAlbergue;
 use App\Models\Inventario;
+use App\Models\JefeDeFamilia;
 use App\Models\Mensajeria;
 use App\Models\PersonasAlbergue;
 use App\Models\Retiro_PaquetesV;
@@ -98,11 +100,41 @@ class EmergenciaController extends Controller
      */
     public function update(ValidacionesEmergencia $request, $id)
     {
-        $emergencia = Emergencia::find($id);
+     $emergencia = Emergencia::find($id);
      $emergencia->fill($request->all());
      $emergencia->save();
      return redirect('Emergencia')->with('exito','Se ha actualizado correctamente');
     }
+    public function Estado($id)
+    {
+     $emergencia = Emergencia::find($id);
+     if($emergencia->Estado =="Activa")
+     {
+     $emergencia->Estado = "Inactiva";
+     $emergencia->save();
+     $persona = PersonasAlbergue::where('idEmergencias',$id)->get(); 
+     foreach($persona as $item){
+        $jefe = JefeDeFamilia::find($item->idJefe);
+        $albergue = Albergue::find($item->idAlbergue);
+        $albergue->PersonasAlbergue = $albergue->PersonasAlbergue -$jefe->TotalPersonas;
+        $albergue->save();
+     }
+     return redirect('Emergencia')->with('nota','Emergencia Inactiva');
+     }
+     else if($emergencia->Estado == "Inactiva")
+     {
+      $emergencia->Estado ="Activa";
+      $emergencia->save();
+      $persona = PersonasAlbergue::where('idEmergencias',$id)->get(); 
+      foreach($persona as $item){
+        $jefe = JefeDeFamilia::find($item->idJefe);
+        $albergue = Albergue::find($item->idAlbergue);
+        $albergue->PersonasAlbergue = $albergue->PersonasAlbergue +$jefe->TotalPersonas;
+        $albergue->save();
+    }
+      return redirect('Emergencia')->with('nota2','Emergencia Activa');
+    }
+}
 
     /**
      * Remove the specified resource from storage.

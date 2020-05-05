@@ -5,7 +5,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
      <h4 class="content-row-title">Editar personas en albergue
-       <a href="{{route('inicio_personasAlbergue')}}" class="btn pull-right btn-info ">
+       <a href="{{route('inicio_personasAlbergue2')}}" class="btn pull-right btn-info ">
            <i class="fa fa-fw fa-reply-all"></i> Regresar
        </a>
      </h4>

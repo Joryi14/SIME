@@ -8,7 +8,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
      <h4 class="content-row-title">Crear retiro de paquetes
-       <a href="{{route('inicio_Retiro_PaquetesV')}}" class="btn pull-right btn-info ">
+       <a href="{{route('inicio_Retiro_PaquetesV2')}}" class="btn pull-right btn-info ">
            <i class="fa fa-fw fa-reply-all"></i> Regresar
        </a></h4>
      </div>
@@ -39,7 +39,7 @@
                 <div class="col-sm-10">
                     <div class="col-sm-9">
                            <select id='SelectU'  name="IdVoluntario" style='width: 70%;'>
-                           <option value='0'>Seleccionar una cédula de voluntario</option></select>
+                           </select>
                     </div>
              </div>
               </div>
@@ -70,8 +70,7 @@
                         <div class="form-group">
                             <label for="IdInventario" class="col-sm-2 control-label">Id del Inventario: </label>
                             <div class="col-sm-9">
-                                <select id='SelectI' name="IdInventario"  style='width: 70%;'>
-                                <option value='0'>Seleccionar un Inventario</option></select>
+                                <select id='SelectI' name="IdInventario"  style='width: 70%;' required></select>
                          </div>
                           </div>
                      </div>
@@ -88,6 +87,7 @@
   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
   $(document).ready(function(){
     $("#SelectU").select2({
+      placeholder:"Seleccionar una cédula de voluntario",
       ajax: {
         url: "{{route('Get_UsersR')}}",
         type: "post",
@@ -119,6 +119,7 @@
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     $(document).ready(function(){
       $("#SelectI").select2({
+        placeholder:"Seleccionar un Inventario",
         ajax: {
           url: "{{route('Get_Inv')}}",
           type: "post",
@@ -131,10 +132,15 @@
             };
           },
           processResults: function (response) {
-            return {
-              results: response
-            };
-          },
+          return {
+            results:  $.map(response,function(item){
+              return{
+                    text:'Inventario: '+item.id+', '+'Emergencia '+item.NombreE,
+                    id:item.id
+              }
+            })
+          };
+        },
           cache: true
         }
       });

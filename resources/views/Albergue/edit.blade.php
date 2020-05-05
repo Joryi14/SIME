@@ -20,6 +20,7 @@
             <input type="text" name="Nombre" class= "form-control" value="{{$albergue->Nombre}}">
         </div>
       </div>
+      <input type="hidden" name="PersonasAlbergue" class= "form-control" value="{{$albergue->PersonasAlbergue}}" readonly="readonly">
 
       <div class="form-group">
           <label for="Distrito" class="col-sm-2 control-label">Distrito: </label>

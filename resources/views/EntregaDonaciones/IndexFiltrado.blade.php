@@ -58,6 +58,7 @@ $(function () {
               <th>Id retiro de paquetes</th>
               <th>Foto</th>
               <th>Emergencia</th>
+              <th>Fecha</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -71,6 +72,7 @@ $(function () {
                     <img style='display:block; width:100px; height:100px;' src= "{{url('Foto/'.$item->Foto)}}" alt="base64">
                   </td>
                   <td>{{$item->idEmergencias}} {{$item->NombreEmergencias}}</td>
+                  <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                   <td><a href="/EntregaDonaciones/{{$item->IdEntrega}}/edit" class="btn-accion-tabla tooltipsC" title="Editar entrega donaciones">
                     <i class="fa fa-fw fa-pencil text-success"></i></a>
                   <form id="form1" action="{{route('entregadonaciones_delete', ['EntregaDonaciones' => $item->IdEntrega])}}" method="POST">

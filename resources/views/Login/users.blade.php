@@ -23,6 +23,10 @@
             $('#pat').text($(this).data('pat'));
            $('#nac').text($(this).data('nac'));
            $('#com').text($(this).data('com'));
+           if($(this).data('est')=="1"){
+           $('#est').text("Activo");
+           }else
+           $('#est').text("Inactivo");
          });
  </script>
 <script>
@@ -61,6 +65,8 @@
 @section('Contenido')
 @include('Includes.mensaje-Error')
 @include('Includes.mensaje-Succes')
+@include('Includes.activa')
+@include('Includes.inactiva')
 <div class="panel panel-info">
   <div class="panel-heading">
     <h4 class="content-row-title">Usuarios</h4>
@@ -97,8 +103,12 @@
                       <i class="fa fa-fw fa-trash text-danger"></i>
                   </button>
                 </form>
-                  <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar usuarios" data-toggle="modal" data-target="#Detalle"  data-nac="{{$item->Nacionalidad}}" data-pat="{{$item->patologia}}" data-com="{{$item->Comunidad}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
-              </td>
+                  <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar usuarios" data-toggle="modal" data-target="#Detalle"  data-est="{{$item->Estado}}" data-nac="{{$item->Nacionalidad}}" data-pat="{{$item->patologia}}" data-com="{{$item->Comunidad}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
+                  </button>
+                    <a href="/usuarioE/{{$item->id}}" class="btn-accion-tabla tooltipsC" title="Actualizar estado">
+                      <i class="glyphicon glyphicon-refresh text-warning"></i>
+                    </a>
+                  </td>
             </tr>
             @endforeach
           </table>
@@ -138,7 +148,16 @@
       </div>
   </div>
 </div>
-        <br><br>
+        <br>
+        <div class="row">
+          <div class="form-group">
+           <label  class="col-md-6"><b>Estado:</b></label>
+           <div class="col-md-6">
+               <span id="est"></span>
+           </div>
+       </div>
+     </div>
+             <br>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline btn-primary pull-left" data-dismiss="modal">Cerrar</button>

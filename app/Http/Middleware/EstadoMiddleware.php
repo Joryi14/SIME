@@ -5,22 +5,21 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class RedirectIfAuthenticated
+class EstadoMiddleware
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/')->with('mensaje','Cuenta inactiva esperar administrador');
-        }
-
+        if(Auth::check() && Auth::user()->Estado == '1')
         return $next($request);
+        else 
+        Auth::logout();
+        return redirect('/')->with('mensaje','Cuenta inactiva esperar a administrador');
     }
 }

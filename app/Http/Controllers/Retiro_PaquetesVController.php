@@ -21,8 +21,27 @@ class Retiro_PaquetesVController extends Controller
      */
     public function index()
     {
+        
         $retiroPV = Retiro_PaquetesV::orderBy('IdRetiroPaquetes')->get();
         return view('Retiro_PaquetesV.index', compact('retiroPV'));
+    }
+    public function index2()
+    {
+        $retiro = new Retiro_PaquetesV();
+        $retiro = DB::table('retiropaquetes')->join('emergencia','idEmergencia','=','emergencia.idEmergencias')
+        ->join('users','retiropaquetes.IdVoluntario','=','users.id')->join('users as c','retiropaquetes.IdAdministradorI','=','c.id')
+        ->join('inventario','retiropaquetes.IdInventario','=','inventario.idInventario')->where('emergencia.Estado','Activa')
+        ->select('retiropaquetes.IdRetiroPaquetes','c.id','c.name','c.Apellido1','c.Cedula',
+        'retiropaquetes.NombreChofer','retiropaquetes.Apellido1C','retiropaquetes.Apellido2C',
+        'users.Cedula as Ced','users.id as idV','users.name as vol','users.Apellido1 as av','emergencia.idEmergencias',
+        'emergencia.NombreEmergencias',
+        'retiropaquetes.PlacaVehiculo',
+        'retiropaquetes.DireccionAEntregar',
+        'retiropaquetes.SuministrosGobierno',
+        'retiropaquetes.SuministrosComision',
+        'retiropaquetes.created_at','inventario.idInventario')->orderBy('IdRetiroPaquetes')->get();
+        //dd($retiro);
+        return view('Retiro_PaquetesV.indexFiltrado', compact('retiro'));
     }
     public function getEmergeR(Request $request){
 
@@ -72,7 +91,7 @@ class Retiro_PaquetesVController extends Controller
             $retiroPV->idEmergencia = $inv->idEmergencias;
             $retiroPV->save();
 
-        return redirect('/Retiro_PaquetesV')->with('exito','Se ha agregado con éxito');
+        return redirect('/Retiro_PaquetesV/Filtrado')->with('exito','Se ha agregado con éxito');
     }
     else
     return redirect('/Retiro_PaquetesV/create')->with('mensaje','Cantidad de paquetes insuficientes');
@@ -149,7 +168,7 @@ class Retiro_PaquetesVController extends Controller
         $retiroPV->fill($request->all());
         $retiroPV->save();
 
-        return redirect('Retiro_PaquetesV')->with('exito','Se ha actualizado correctamente');
+        return redirect('Retiro_PaquetesV/Filtrado')->with('exito','Se ha actualizado correctamente');
 
     }
     public function getUsers(Request $request){
@@ -157,9 +176,13 @@ class Retiro_PaquetesVController extends Controller
         $search = $request->search;
 
         if($search == ''){
-           $Users = User::orderby('Cedula','asc')->select('id','Cedula','name','Apellido1','Apellido2')->limit(5)->get();
+           $Users = DB::select('select users.Cedula, users.id, users.name, users.Apellido1, users.Apellido2
+           from users inner join model_has_roles on users.id = model_has_roles.model_id inner join roles on roles.id = model_has_roles.role_id 
+           where roles.name = "Voluntario" order by users.Cedula asc LIMIT 5');
         }else{
-           $Users = User::orderby('Cedula','asc')->select('id','Cedula','name','Apellido1','Apellido2')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
+           $Users = DB::select('select users.Cedula, users.id, users.name, users.Apellido1, users.Apellido2
+           from users inner join model_has_roles on users.id = model_has_roles.model_id inner join roles on roles.id = model_has_roles.role_id 
+           where roles.name = "Voluntario" AND Cedula like "%'.$search .'%" OR users.name like "%'.$search.'%" order by users.Cedula asc LIMIT 5');
         }
 
         $response = array();
@@ -178,9 +201,12 @@ class Retiro_PaquetesVController extends Controller
      }
      public function getInventario(Request $request){
         $search = $request->search;
-
+        $Inven = new Inventario();
         if($search == ''){
-           $Inven = Inventario::orderby('idInventario','asc')->select('idInventario')->limit(5)->get();
+           $Inven = DB::table('inventario')->join('emergencia','inventario.idEmergencias','=','emergencia.idEmergencias')->where('emergencia.estado','Activa')->select('inventario.idInventario',
+           'emergencia.idEmergencias',
+           'emergencia.NombreEmergencias',
+           'inventario.idInventario')->orderby('idInventario','asc')->limit(5)->get();
         }else{
            $Inven = Inventario::orderby('idInventario','asc')->select('idInventario')->where('idInventario', 'like', '%' .$search . '%')->limit(5)->get();
         }
@@ -189,7 +215,7 @@ class Retiro_PaquetesVController extends Controller
         foreach($Inven as $Inv){
            $response[] = array(
                 "id"=>$Inv->idInventario,
-                "text"=>$Inv->idInventario
+                "NombreE"=>$Inv->NombreEmergencias
            );
         }
 
@@ -206,9 +232,9 @@ class Retiro_PaquetesVController extends Controller
     {
       $retiroPV = Retiro_PaquetesV::find($id);
       if(EntregaDonaciones::where('IdRetiroPaquetes',$id)->first()){
-        return redirect('Retiro_PaquetesV')->with('mensaje','No se puede eliminar el registro tiene entregas de donaciones asignadas');
+        return redirect('Retiro_PaquetesV/Filtrado')->with('mensaje','No se puede eliminar el registro tiene entregas de donaciones asignadas');
         }
       $retiroPV->delete();
-      return redirect('Retiro_PaquetesV')->with('exito','Se ha eliminado correctamente');
+      return redirect('Retiro_PaquetesV/Filtrado')->with('exito','Se ha eliminado correctamente');
     }
 }

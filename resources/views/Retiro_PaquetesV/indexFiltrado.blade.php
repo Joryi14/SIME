@@ -67,9 +67,9 @@ $(function () {
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h4 class="content-row-title">Retiro de paquetes
-                  {{-- <a href="{{route('Retiro_PaquetesV_create')}}" class="btn pull-right btn-success btn-lg">
+                  <a href="{{route('Retiro_PaquetesV_create')}}" class="btn pull-right btn-success btn-lg">
                       <i class="fa fa-fw fa-plus-circle"></i> Crear
-                  </a> --}}
+                  </a>
                       </h4>
                       <br>
                     </div>
@@ -87,17 +87,16 @@ $(function () {
               <th>Acciones</th>
             </tr>
           </thead>
-            @foreach ($retiroPV as $item)
+            @foreach ($retiro as $item)
               <tr>
               <td>{{$item->IdRetiroPaquetes}}</td>
-              <td>{{$item->IdAdministradorI}}</td>
-              <td>{{$item->IdVoluntario}}</td>
+              <td>{{$item->name}} {{$item->Apellido1}} {{$item->Cedula}}</td>
+              <td>{{$item->vol}} {{$item->av}} {{$item->Ced}}</td>
               <td>{{$item->SuministrosGobierno}}</td>
               <td>{{$item->SuministrosComision}}</td>
-              <td>{{$item->IdInventario}}</td>
-              <td>{{$item->Emergencia->idEmergencias}} {{$item->Emergencia->NombreEmergencias}}</td>
-              <td>
-                {{-- <a href="/Retiro_PaquetesV/{{$item->IdRetiroPaquetes}}/edit" class="btn-accion-tabla tooltipsC" title="Editar retiro de paquetes">
+              <td>{{$item->idInventario}}</td>
+              <td>{{$item->idEmergencias}} {{$item->NombreEmergencias}}</td>
+              <td><a href="/Retiro_PaquetesV/{{$item->IdRetiroPaquetes}}/edit" class="btn-accion-tabla tooltipsC" title="Editar retiro de paquetes">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
               <form id="form1" action="{{route('Retiro_PaquetesV_delete', ['Retiro_PaquetesV' => $item->IdRetiroPaquetes])}}" method="POST">
                 @csrf
@@ -105,7 +104,7 @@ $(function () {
                 <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar retiro de raquetes" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                   </button>
-                </form> --}}
+                </form>
                 <button class="show-modal btn-accion-tabla tooltipsC"title="Mostrar retiro de paquetes" data-toggle="modal" data-target="#Detalle"  data-nc="{{$item->NombreChofer}}" data-pac="{{$item->Apellido1C}}" data-sac="{{$item->Apellido2C}}" data-pv="{{$item->PlacaVehiculo}}"  data-de="{{$item->DireccionAEntregar}}" data-fec="{{date('d-m-Y',strtotime($item->created_at))}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
                 </td>
                 </tr>

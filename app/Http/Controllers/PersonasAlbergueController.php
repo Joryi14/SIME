@@ -29,7 +29,7 @@ class PersonasAlbergueController extends Controller
     {
        $persona = new PersonasAlbergue();
       $persona = DB::table('registropersonaalbergue')->join('emergencia','registropersonaalbergue.idEmergencias','=','emergencia.idEmergencias')->join('jefedefamilia','registropersonaalbergue.idJefe','=','jefedefamilia.IdJefe')->join('albergue','registropersonaalbergue.idAlbergue','=','albergue.idAlbergue')->where('emergencia.Estado','Activa')->select('registropersonaalbergue.idregistroA',
-      'albergue.idAlbergue','albergue.Nombre','jefedefamilia.IdJefe','jefedefamilia.Cedula',
+      'albergue.idAlbergue','albergue.Nombre as n','jefedefamilia.IdJefe','jefedefamilia.Cedula',
       'emergencia.idEmergencias','registropersonaalbergue.LugarDeProcedencia',
       'jefedefamilia.Nombre','jefedefamilia.Apellido1','registropersonaalbergue.FechaDeIngreso'
       ,'emergencia.NombreEmergencias','registropersonaalbergue.HoraDeIngreso','registropersonaalbergue.FechaDeSalida'
@@ -54,18 +54,27 @@ class PersonasAlbergueController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ValidacionPersonasAlbergue $request)
-    {
+    {    
         if(JefeDeFamilia::find($request->idJefe)){
         if(Albergue::find($request->idAlbergue)){
          if(Emergencia::find($request->idEmergencias)){
-            if( (PersonasAlbergue::where('idJefe',$request->idJefe)->first()) && (PersonasAlbergue::where('idEmergencias',$request->idEmergencias)->first())){
+            if(PersonasAlbergue::where('idJefe',$request->idJefe)->where('idEmergencias',$request->idEmergencias)->first())
+            {
                return redirect('PersonasAlbergue/create')->with('mensaje','Error persona ya esta en albergue');
             }
+         $Albergue =Albergue::find($request->idAlbergue);
+         $jefe =JefeDeFamilia::find($request->idJefe);
+         $suma = $Albergue->PersonasAlbergue+$jefe->TotalPersonas;
+         if($Albergue->Capacidad >= $suma){
         $persona = new PersonasAlbergue();
         $persona->fill($request->all());
+        $Albergue->PersonasAlbergue += $jefe->TotalPersonas;
         $persona->save();
+        $Albergue->save();
         return redirect('PersonasAlbergue/Filtrado')->with('exito','Se ha agregado correctamente');
-    }
+    }else
+       return redirect('PersonasAlbergue/create')->with('mensaje','Error albergue sin capacidad');
+   }
        else
        return redirect('PersonasAlbergue/create')->with('mensaje','Error Emergencia no existe');
     }
@@ -185,7 +194,11 @@ class PersonasAlbergueController extends Controller
      */
     public function delete($id, Request $request)
     {
-        $persona = PersonasAlbergue::find($id);
+      $persona = PersonasAlbergue::find($id);
+      $Albergue= Albergue::find($persona->idAlbergue);
+      $jefe = JefeDeFamilia::find($persona->idJefe);
+      $Albergue->PersonasAlbergue = $Albergue->PersonasAlbergue - $jefe->TotalPersonas;
+      $Albergue->save();
       $persona->delete();
       return redirect('PersonasAlbergue/Filtrado')->with('exito','Se ha eliminado correctamente');
     }

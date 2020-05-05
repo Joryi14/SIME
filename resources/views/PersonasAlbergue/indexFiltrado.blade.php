@@ -87,7 +87,7 @@ $(function () {
             @foreach ($persona as $item)
               <tr>
               <td>{{$item->idregistroA}}</td>
-              <td>{{$item->idAlbergue}} {{$item->Nombre}}</td>
+              <td>{{$item->idAlbergue}} {{$item->n}}</td>
               <td>{{$item->idEmergencias}} {{$item->NombreEmergencias}}</td>
               <td>{{$item->Cedula}} {{$item->Nombre}} {{$item->Apellido1}}</td>
               <td>{{$item->LugarDeProcedencia}}</td>

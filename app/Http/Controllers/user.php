@@ -35,6 +35,20 @@ class user extends Controller
         $UserRol = UserRol::get();
         return view('Login.usersUR',compact('UserRol'));
     }
+    public function Estado($id){
+        $user = AppUser::find($id);
+        if($user->Estado =='1')
+        {
+        $user->Estado ='0';
+        $user->save();
+        return redirect('/user')->with('nota',' Estado inactivo');
+        }
+        else if($user->Estado == '0'){
+        $user->Estado = '1';
+        $user->save();
+        return redirect('/user')->with('nota2','Estado activo');
+        }
+    }
     /**
      * Display the specified resource.
      *

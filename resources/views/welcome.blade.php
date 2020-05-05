@@ -23,6 +23,7 @@
   <!-- Custom styles for this template -->
   <link href="{{asset("assets/Index/css/agency.css")}}" rel="stylesheet">
 </head>
+
 <body id="page-top">
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
@@ -65,6 +66,7 @@
         </ul>
       </div>
     </div>
+   @include('Includes.alert')
   </nav>
   <!-- Header -->
   <header class="masthead">
@@ -587,7 +589,7 @@ if(item.Estado =="Activa"){
 
   <!-- Custom scripts for this template -->
   <script src="{{asset('assets/Index/js/agency.min.js')}}"></script>
-
+<script src="{{asset("assets/js/scripts.js")}}"></script>
 </body>
 
 </html>

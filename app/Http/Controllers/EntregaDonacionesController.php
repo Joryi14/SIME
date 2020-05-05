@@ -28,7 +28,7 @@ class EntregaDonacionesController extends Controller
     public function index2()
     {
         $entregadonaciones = new EntregaDonaciones();
-        $entregadonaciones = DB::table('entregadonaciones')->join('emergencia','idEmergencia','=','emergencia.idEmergencias')->join('jefedefamilia','entregadonaciones.IdJefe','=','jefedefamilia.IdJefe')->join('users','IdVoluntario','=','users.id')->where('emergencia.Estado','Activa')->select('entregadonaciones.IdEntrega','entregadonaciones.IdRetiroPaquetes','entregadonaciones.Foto','users.Cedula as Ced','users.name','jefedefamilia.Cedula','jefedefamilia.Nombre','jefedefamilia.Apellido1','emergencia.idEmergencias','emergencia.NombreEmergencias')->get();
+        $entregadonaciones = DB::table('entregadonaciones')->join('emergencia','idEmergencia','=','emergencia.idEmergencias')->join('jefedefamilia','entregadonaciones.IdJefe','=','jefedefamilia.IdJefe')->join('users','IdVoluntario','=','users.id')->where('emergencia.Estado','Activa')->select('entregadonaciones.IdEntrega','entregadonaciones.created_at','entregadonaciones.IdRetiroPaquetes','entregadonaciones.Foto','users.Cedula as Ced','users.name','jefedefamilia.Cedula','jefedefamilia.Nombre','jefedefamilia.Apellido1','emergencia.idEmergencias','emergencia.NombreEmergencias')->get();
         
         return view('EntregaDonaciones.IndexFiltrado', compact('entregadonaciones'));
     }
@@ -91,6 +91,7 @@ class EntregaDonacionesController extends Controller
           $entregadonaciones->IdRetiroPaquetes = $request->IdRetiroPaquetes;
           //$entregadonaciones->Foto = $request->Foto;
           $entregadonaciones->idEmergencia = $retiro->idEmergencia;
+          $entregadonaciones->created_at = Carbon::now();
           $entregadonaciones->save(); 
           return redirect('EntregaDonaciones/Filtrado')->with('exito','Se ha guardado correctamente'); 
             }

@@ -5,7 +5,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
      <h4 class="content-row-title">Editar retiros de paquetes
-       <a href="{{route('inicio_Retiro_PaquetesV')}}" class="btn pull-right btn-info ">
+       <a href="{{route('inicio_Retiro_PaquetesV2')}}" class="btn pull-right btn-info ">
            <i class="fa fa-fw fa-reply-all"></i> Regresar
        </a>
      </h4>

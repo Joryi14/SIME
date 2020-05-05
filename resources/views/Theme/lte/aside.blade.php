@@ -27,6 +27,7 @@
                 <a class="list-group-item child" href="{{ route('inicio_censo')}}"><i class="fa fa-circle-o"></i><em> Censo</em></a>
               </li>
             </li>
+            <li class="list-group-item"><a  href="{{route('inicio_emergencia')}}"><i class="fa fa-exclamation-triangle"></i><b>Emergencias</b></a></li>
           @endrole
           @role('Admin|Director|Lider Comunal')
           <li class="list-group-item"><a  href="{{route('inicio_mensaje')}}"><i class="fa  fa-envelope"></i><span>Mensajería</span></a></li>
@@ -40,7 +41,7 @@
               <a class="list-group-item child" href="{{route('emergencia_create')}}"><i class="fa fa-exclamation-triangle"></i><em> Crear emergencia</em></a>
               <a class="list-group-item child" href="{{route('inicio_personasAlbergue2')}}"><i class="fa  fa-child"></i><span><em>Personas en albergue</em></span></a>
               <a class="list-group-item child" href="{{route('inicio_inventario2')}}"><i class="fa  fa-database"></i><span><em>Inventario</em></span></a>
-              <a class="list-group-item child" href="{{route('inicio_Retiro_PaquetesV')}}"><i class="fa  fa-cubes"></i><span><em>Retiro de paquetes</em></span></a>
+              <a class="list-group-item child" href="{{route('inicio_Retiro_PaquetesV2')}}"><i class="fa  fa-cubes"></i><span><em>Retiro de paquetes</em></span></a>
               <a class="list-group-item child" href="{{route('inicio_EntregaDonaciones2')}}"><i class="fa fa-truck"></i><span><em>Entrega de donaciones</em></span></a>
               <a  class="list-group-item child" href="{{route('inicio_EntregaDonacionesAF')}}"><i class="fa fa-user"></i><span><em>Entrega albergue</em></span></a>
                 
@@ -52,8 +53,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </span></a>
             <div class="collapse" id="demo5">
-          <a class="list-group-item child" href="{{route('inicio_emergencia')}}"><i class="glyphicon glyphicon-list-alt"></i><span><em>Lista de emergencias</em></span></a>
           <a class="list-group-item child" href="{{route('inicio_inventario')}}"><i class="glyphicon glyphicon-list-alt"></i><span><em>Lista de Inventarios</em></span></a>
+          <a class="list-group-item child" href="{{route('inicio_Retiro_PaquetesV')}}"><i class="glyphicon glyphicon-list-alt"></i><span><em>Lista retiro de paquetes</em></span></a>
           <a class="list-group-item child" href="{{route('inicio_personasAlbergue')}}"><i class="glyphicon glyphicon-list-alt"></i><span><em>Lista de personas en albergue</em></span></a>
           <a class="list-group-item child" href="{{route('inicio_EntregaDonaciones')}}"><i class="glyphicon glyphicon-list-alt"></i><span><em>Lista de entrega de donaciones</em></span></a>
           <a class="list-group-item child" href="{{route('inicio_EntregaDonacionesA')}}"><i class="glyphicon glyphicon-list-alt"></i><span><em>Lista de entrega albergue</em></span></a>

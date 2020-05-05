@@ -18,9 +18,9 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
+            Auth::logout();
             return redirect('/')->with('mensaje','Cuenta inactiva esperar administrador');
         }
-
         return $next($request);
     }
 }

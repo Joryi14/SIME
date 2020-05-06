@@ -16,6 +16,8 @@
                         padding: 2px 1px;
                         text-align: center;
                         border: 1px solid #999;
+                        style=color:#456789; 
+                        font-size:80%;
                     }
         
                     tr:nth-child(1) {
@@ -53,6 +55,7 @@
                     <th>Colchonetas</th>
                     <th>Cobijas</th>
                     <th>Ropa</th>
+                    <th>Fecha de creación</th>
                   </tr>
                 </thead>
                   @foreach ($inventario as $item)
@@ -63,10 +66,11 @@
                     <td>{{$item->Colchonetas}}</td>
                     <td>{{$item->Cobijas}}</td>
                     @if($item->Ropa== 1)
-                    <td>Sí hay</td>
+                    <td>Posee</td>
                     @else
-                    <td>No hay</td>
+                    <td>No posee</td>
                     @endif
+                    <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                     </tr>
             @endforeach
     </table>

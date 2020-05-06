@@ -16,6 +16,9 @@
                         padding: 2px 1px;
                         text-align: center;
                         border: 1px solid #999;
+                        
+                        style=color:#456789;
+                        font-size:80%;
                     }
         
                     tr:nth-child(1) {
@@ -34,7 +37,7 @@
                     
                     <h4 class="box-title">Comisión Nacional de Prevención de Riesgos Y Atención de Emergencia </h4>
                             <h5 class="box-title"> Comité Comunal de Emergencia de: Nosara</h5>     
-                        <h5 class="box-title"> Reporte de entrega de donaciones en albergue</h5>
+                        <h5 class="box-title"> Reporte de entrega de donaciones</h5>
                         <p>{{$today}}</p>
                         <img style="position: absolute; left: 10px; top: 30px; height: 70px;" src="{{asset("assets/images/logos/1.png")}}" alt="Logo" height="75px;">
                         <img style="position: absolute; right: 78px; top: 30px; height: 70px;"  src="{{asset("assets/images/logos/3.png")}}" alt="Logo" height="75px;">
@@ -53,6 +56,7 @@
     <th>Número de retiro de paquetes</th>
     <th>Foto</th>  
     <th>Emergencia</th>
+    <th>Fecha de creación</th>
  
 
   </tr>
@@ -67,7 +71,9 @@
           <img style='display:block; width:100px; height:100px;' src='Foto/{{$item->Foto}}' alt="base64 test">
         </td>
         <td>{{$item->Emergencia->idEmergencias}} {{$item->Emergencia->NombreEmergencias}}</td>
-                    </tr>
+        <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
+
+    </tr>
             @endforeach
     </table>
 </main>

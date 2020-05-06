@@ -10,12 +10,15 @@
                         border: none;
                         width: 100%;
                         border-collapse: collapse;
+                  box-align: center;
                     }
         
                     td,th { 
                         padding: 2px 1px;
                         text-align: center;
                         border: 1px solid #999;
+                        style="color:#456789;
+                        font-size:80%;
                     }
         
                     tr:nth-child(1) {
@@ -56,7 +59,7 @@
         <th>Longitud</th>
         <th>Latitud</th>
         <th>Estado</th>
-      
+        <th>Fecha de creación</th>
       </tr>
     </thead>
       @foreach ($Emergencia as $item)
@@ -74,6 +77,8 @@
           @else
           <a style="color:red;">{{$item->Estado}}</a>
           @endif</td>
+          <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
+
                     </tr>
             @endforeach
     </table>

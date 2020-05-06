@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\User;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 class AppServiceProvider extends ServiceProvider
@@ -14,7 +15,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view::share('theme', 'lte');
-        
     }
 
     /**

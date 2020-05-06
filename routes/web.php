@@ -92,8 +92,12 @@ Route::group(['prefix' => '/'], function () {
     Route::post('EntregaDonacionesAlbergue/ReporteFecha', 'EntregaDonacionesAlbergueController@ReporteFecha')->name('EntregadonacionesA_reporteF');
 
 });
-
 Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
+    Route::get('notifications/{id}', 'notificationsController@marcarLeido');
+    Route::delete('notifications/{id}/delete', 'notificationsController@delete')->name('noti_del');
+   //Route::get('Censo/create', 'CensoController@create')->name('censo_create');
+});
 Auth::routes();
 Route::group(['prefix' => '/','middleware' => ['role:Admin|Voluntario']], function () {
     Route::get('Censo', 'CensoController@index')->name('inicio_censo');

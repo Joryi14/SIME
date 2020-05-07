@@ -32,7 +32,7 @@ class InventarioController extends Controller
         'inventario.Cobijas',
         'inventario.Ropa', 
         'inventario.created_at')->get();
-        return view('Inventario.IndexFiltrado', compact('inventario'));
+        return view('Inventario.indexFiltrado', compact('inventario'));
     }
     /**
      * Show the form for creating a new resource.

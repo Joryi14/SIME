@@ -105,11 +105,8 @@ class Retiro_PaquetesVController extends Controller
 
     public function generar()
     {
-        $Retiro = \DB::table('retiropaquetes')
-       ->select(['IdRetiroPaquetes','IdAdministradorI' ,'NombreChofer','Apellido1C','Apellido2C',
-        'IdVoluntario','PlacaVehiculo','DireccionAEntregar','SuministrosGobierno','SuministrosComision',
-        'IdInventario'])
-        ->get();
+        
+        $Retiro=  Retiro_PaquetesV::orderBy('IdRetiroPaquetes')->get();
         $today = Carbon::now()->format('d/m/Y h:i:s A');
         $view = view ('Retiro_PaquetesV.reporte', compact('Retiro', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
@@ -120,10 +117,7 @@ class Retiro_PaquetesVController extends Controller
     }
     public function ReporteFecha(request $request){
 
-        $Retiro = \DB::table('retiropaquetes')
-       ->select(['IdRetiroPaquetes','IdAdministradorI' ,'NombreChofer','Apellido1C','Apellido2C',
-        'IdVoluntario','PlacaVehiculo','DireccionAEntregar','SuministrosGobierno','SuministrosComision',
-        'IdInventario'])->whereBetween('created_at', array($request->Fecha1,$request->Fecha2))
+        $Retiro=  Retiro_PaquetesV::orderBy('IdRetiroPaquetes')->whereBetween('created_at', array($request->Fecha1,$request->Fecha2))
         ->get();
         $today = Carbon::now()->format('d/m/Y h:i:s A');
         $view = view ('Retiro_PaquetesV.reporte', compact('Retiro', 'today'))->render();

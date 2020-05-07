@@ -17,6 +17,7 @@
                 padding: 2px 1px;
                 text-align: center;
                 border: 1px solid #999;
+                style=color:#456789; font-size:80%;
             }
 
             tr:nth-child(1) {
@@ -63,7 +64,7 @@
                 <th>Suministros Gobierno </th>
                 <th>Suministros Comision</th>
                 <th>Número de Inventario</th>
-             
+                <th>Fecha de creación</th>
             </tr>
       
 
@@ -79,7 +80,8 @@
                 <td>{{$item->DireccionAEntregar}}</td>
                 <td>{{$item->SuministrosGobierno}}</td>
                 <td>{{$item->SuministrosComision}}</td>
-                <td>{{$item->IdInventario}}</td>     
+                <td>{{$item->IdInventario}}</td>  
+                <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
               </tr>
             @endforeach
     </table>

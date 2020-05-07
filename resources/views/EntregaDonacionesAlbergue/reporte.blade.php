@@ -16,6 +16,8 @@
                         padding: 2px 1px;
                         text-align: center;
                         border: 1px solid #999;
+                        style=color:#456789;
+                        font-size:80%;
                     }
         
                     tr:nth-child(1) {
@@ -51,7 +53,7 @@
         <th>Cedula del jefe de familia</th>
         <th>Albergue</th>
         <th>Emergencia</th>
-        
+        <th>Fecha de creación</th>
       </tr>
  
           @foreach ($EntregaDonacionesAlbergue as $item)
@@ -60,6 +62,7 @@
             <td>{{$item->JefeFamilia->Cedula}}</td>
             <td>{{$item->Albergue->Nombre}}</td>
             <td>{{$item->idEmergencias}} {{$item->Emergencia->NombreEmergencias}}</td>
+            <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                     </tr>
             @endforeach
     </table>

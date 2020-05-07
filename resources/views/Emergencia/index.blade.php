@@ -174,7 +174,7 @@ $(function () {
           </a>
       </div>
       <div class="form-group">
-      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ReporteF">  <i class="fa fa-fw fa-plus-circle"></i>Reporte de emergencia</button>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ReporteF">  <i class="fa fa-fw fa-plus-circle"></i>Reporte de emergencia por fecha</button>
       </div>
       <div class="modal modal-default fade" id="ReporteF">
           <div class="modal-dialog">

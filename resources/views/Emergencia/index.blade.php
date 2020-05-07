@@ -62,8 +62,8 @@ $(function () {
 @section('Contenido')
 @include('Includes.mensaje-Error')
 @include('Includes.mensaje-Succes')
-@include('Includes.Inactiva')
-@include('Includes.Activa')
+@include('Includes.inactiva')
+@include('Includes.activa')
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h4 class="content-row-title">Lista de emergencias

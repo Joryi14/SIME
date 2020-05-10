@@ -39,30 +39,30 @@ class ValidacionFamilia extends FormRequest
     {
         return [
             'IdJefeF.required' => 'El Id de jefe de familia es requerido',
-            'IdJefeF.max' => 'El id de jefe de familia no debe superar los 8 digitos',
+            'IdJefeF.max' => 'El id de jefe de familia no debe superar los 8 caracteres',
 
             'Nombre.required' => 'El nombre es requerido',
-            'Nombre.max' => 'El nombre no debe superar los 10 caracteres',
+            'Nombre.max' => 'El nombre no debe ser mayor a 10 caracteres',
             
-            'Apellido1.required' => 'El Apellido1 es requerido',
-            'Apellido1.max' => 'El Apellido1 no debe superar los 15 digitos',
+            'Apellido1.required' => 'El primer apellido es requerido',
+            'Apellido1.max' => 'El  primer apellido no debe ser mayor a 15 caracteres',
 
-            'Apellido2.required' => 'El Apellido2 es requerido',
-            'Apellido2.max' => 'El Apellido2 no debe superar los 15 digitos',
+            'Apellido2.required' => 'El segundo apellido es requerido',
+            'Apellido2.max' => 'El segundo apellido no debe ser mayor los 15 caracteres',
 
-            'Cedula.required' => 'La Cedula es requerido',
-            'Cedula.max' => 'La Cedula no debe superar los 10 digitos',
+            'Cedula.required' => 'La cédula es requerida',
+            'Cedula.max' => 'La cédula no debe ser mayor a los 10 caracteres',
 
-            'Parentesco.required' => 'El Parentesco es requerido',
-            'Parentesco.max' => 'El Parentesco no debe superar los 15 digitos',
+            'Parentesco.required' => 'El parentesco es requerido',
+            'Parentesco.max' => 'El parentesco no debe ser mayor los 15 caracteres',
 
-            'Edad.required' => 'El Edad es requerido',
-            'Edad.max' => 'El Edad no debe superar los 3 digitos',
+            'Edad.required' => 'La edad es requerido',
+            'Edad.max' => 'La edad no debe ser mayor a los 3 caracteres',
             
             'sexo.required' => 'El sexo es requerido',
          
-            'Patologia.required' => 'La Patologia es requerida',
-            'Patologia.max' => 'La Patologia no debe superar los 15 digitos'
+            'Patologia.required' => 'La patología es requerida',
+            'Patologia.max' => 'La patología no debe ser mayor a los 15 caracteres'
 
         ];
 

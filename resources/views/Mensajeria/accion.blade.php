@@ -1,5 +1,7 @@
 @extends("theme/$theme/layout") @section('Contenido')
-@include('Includes.Error-form') @include('Includes.mensaje-Error')
+
+@include('Includes.Error-form') 
+@include('Includes.mensaje-Error')
 <div class="panel panel-warning">
     <div class="panel-heading">
         <h4 class="content-row-title">Añadir acciones

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidacionAccion;
 use App\Http\Requests\ValidacionMensajeria;
 use App\Models\Acciones;
 use App\Models\Emergencia;
@@ -85,7 +86,7 @@ class MensajeriaController extends Controller
         $mensajeria = Mensajeria::find($id);
         return view('Mensajeria.accion', compact('mensajeria'));
     }
-    public function storeA(Request $request)
+    public function storeA(ValidacionAccion $request)
     {
           $acciones = new Acciones();
           $acciones->fill($request->all());

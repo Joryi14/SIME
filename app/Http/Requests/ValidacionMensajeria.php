@@ -26,25 +26,28 @@ class ValidacionMensajeria extends FormRequest
         return [
             'CodigoIncidente'=>'required|max:20',
             'Descripcion'=>'required|max:200',
-            'Longitud'=>'required',
+            'Longitud'=>'required|numeric',
             'Hora'=>'required',
             'Fecha'=>'required',
             'Categoria'=>'required',
-            'Latitud'=>'required',
+            'Latitud'=>'required|numeric',
         ];
     }
-    // public function messages()
-    // {
-    //      return[
-    //          'CodigoIncidente.max'=>'El codigo no debe superar los 20 digitos',
-    //          'CodigoIncidente.required'=>'El codigo es requerido',
-    //          'Descripcion.required' => 'La descripcion es requerida',
-    //          'Ubicacion.required' => 'La ubicacion es requerida',
-    //          'Hora.required' => 'La hora es requerida',
-    //          'Fecha.required' => 'La fecha es requerida',
-    //          'Categoria.required' => 'La categoria es requerida',
-    //          'idEmergencias.required' => 'La emergencia es requerida',
-    //           ];
-    // }
+     public function messages()
+     {
+          return[
+              'CodigoIncidente.max'=>'El código no debe ser mayor a los 20 caracteres',
+              'CodigoIncidente.required'=>'El código es requerido',
+              'Descripcion.required' => 'La descripción es requerida',
+              'Descripcion.max' => 'La descripción no debe ser mayor a 200 caracteres',
+              'Latitud.required' => 'La latitud es requerida',
+              'Longitud.required' => 'La longitud es requerida',
+              'Latitud.numeric' => 'La latitud debe ser numerica',
+              'Longitud.numeric' => 'La longitud debe ser numerica',
+              'Hora.required' => 'La hora es requerida',
+              'Fecha.required' => 'La fecha es requerida',
+              'Categoria.required' => 'La categoría es requerida',
+               ];
+     }
 
 }

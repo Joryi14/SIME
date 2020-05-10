@@ -19,7 +19,7 @@
              <div class="form-group">
                     <label for="IdJefeFa" class="col-sm-2 control-label">Jefe de familia: </label>
                     <div class="col-sm-9">
-                        <select id='SelectJ' name="IdJefeFa" style='width: 50%;'>
+                        <select id='SelectJ' name="IdJefeFa" style='width: 50%;' required>
                             </select>
                 {{-- <input type="text" name="IdJefeFa" class= "form-control" > --}}
                     </div>
@@ -27,7 +27,7 @@
              <div class="form-group">
                 <label for="IdAlbergue" class="col-sm-2 control-label">Albergue: </label>
                 <div class="col-sm-9">
-                    <select id='SelectA' name="idAlbergue" style='width: 50%;'>
+                    <select id='SelectA' name="idAlbergue" style='width: 50%;' required>
                        </select>
             {{-- <input type="text" name="IdJefeFa" class= "form-control" > --}}
                 </div>
@@ -35,7 +35,7 @@
          <div class="form-group">
             <label for="IdEmergencias" class="col-sm-2 control-label">Emergencia: </label>
             <div class="col-sm-9">
-                <select id='SelectE' name="idEmergencias" style='width: 50%;'>
+                <select id='SelectE' name="idEmergencias" style='width: 50%;' required>
                     </select>
         {{-- <input type="text" name="IdJefeFa" class= "form-control" > --}}
             </div>
@@ -43,7 +43,7 @@
 
       </div>
        <div class="panel-footer">
-            @include("Includes.boton-form-create")
+        <button type="submit" class="btn btn-primary "> <i class="fa fa-fw fa-check"></i>Guardar</button>
             </div>
      </form>
      </div>
@@ -56,6 +56,7 @@
        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
        $(document).ready(function(){
          $("#SelectJ").select2({
+           placeholder:"Seleccione un jefe",
            ajax: {
              url: "{{route('Get_IdJefeFa')}}",
              type: "post",
@@ -87,6 +88,7 @@
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function(){
           $("#SelectA").select2({
+            placeholder:"Seleccione un albergue",
             ajax: {
               url: "{{route('Get_AlbergueE')}}",
               type: "post",
@@ -113,6 +115,7 @@
           var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
           $(document).ready(function(){
             $("#SelectE").select2({
+              placeholder:"seleccione una emergencia",
               ajax: {
                 url: "{{route('Get_IdEme')}}",
                 type: "post",

@@ -42,8 +42,8 @@ class ValidacionEntregaDonaciones extends FormRequest
             'IdJefe.required' =>'El Id del jefe de familia es requerido',
             
             'IdRetiroPaquetes.required' =>'El Id del retiro de paquetes es requerido',
-            'IdRetiroPaquetes.numeric' =>' La Id de retiro de paquetes debe ser NUMERICA',
-            'Foto.required' =>'La foto es requerido',
+            'IdRetiroPaquetes.numeric' =>' La Id de retiro de paquetes debe ser numerica',
+            'Foto.required' =>'La foto es requerida',
         ];
     }
 

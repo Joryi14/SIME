@@ -33,7 +33,7 @@
     <div class="panel-body">
       <div class="col-md-3">
         <p>
-            <strong>Id Mensajería:</strong>
+            <strong>Id mensajería:</strong>
             {{$item->IdMensajeria}}</p>
         <p>
             <strong>Código de incidente:</strong>

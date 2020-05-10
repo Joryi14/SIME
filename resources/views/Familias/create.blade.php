@@ -18,8 +18,8 @@
             <div class="form-group">
               <label for="IdJefef" class="col-sm-2 control-label">Id del jefe de familia: </label>
               <div class="col-sm-9">
-                <select id='SelectJ' name="IdJefeF" style='width: 50%;'>
-                <option value='0'>Seleccionar un Jefe</option></select>
+                <select id='SelectJ' name="IdJefeF" style='width: 50%;' required>
+                </select>
          </div>
             </div>
             <div class="form-group">
@@ -63,7 +63,7 @@
                     <div class="form-group">
                         <label for="Edad" class="col-sm-2 control-label">Edad: </label>
                         <div class="col-sm-1">
-                            <input type="number" name="Edad" class= "form-control" value="{{old('Edad', $data->Edad ?? '')}}">
+                            <input type="number" min="0" name="Edad" class= "form-control" value="{{old('Edad', $data->Edad ?? '')}}">
                         </div>
                       </div>
                       <div class="form-group">
@@ -128,9 +128,9 @@
                           </div>
                         </div>
                     <div class="form-group">
-                      <label class="col-sm-2 control-label">Patologia: </label>
+                      <label class="col-sm-2 control-label">Patología: </label>
                       <div class="col-sm-10">
-                      <select id="PatoloFam" class="form-control select2" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de Patologias" style="width: 70%;">
+                      <select id="PatoloFam" class="form-control select2" multiple="multiple" name="Patologia[]"  data-placeholder="Seleccion de patologías" style="width: 70%;">
                               <option>Ninguna</option>
                               <option>Alergias</option>
                               <option>Asma</option>
@@ -164,6 +164,7 @@
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     $(document).ready(function(){
       $("#SelectJ").select2({
+        placeholder:"Seleccione un jefe",
         ajax: { 
           url: "{{route('Get_JefeF')}}",
           type: "post",

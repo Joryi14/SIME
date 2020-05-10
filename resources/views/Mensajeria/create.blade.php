@@ -40,13 +40,13 @@
           <div class="form-group">
               <label for="Longitud" class="col-sm-2 control-label">Longitud: </label>
               <div class="col-sm-9">
-                  <input type="text" id="lg" name="Longitud" class= "form-control" >
+                  <input type="text" id="lg" name="Longitud" class= "form-control" required>
               </div>
             </div>
             <div class="form-group">
               <label for="Latitud" class="col-sm-2 control-label">Latitud: </label>
               <div class="col-sm-9">
-                  <input type="text" id="lt" name="Latitud" class= "form-control" >
+                  <input type="text" id="lt" name="Latitud" class= "form-control" required>
               </div>
             </div>
             <div class="form-group">

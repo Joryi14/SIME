@@ -91,7 +91,7 @@ class Retiro_PaquetesVController extends Controller
             $retiroPV->idEmergencia = $inv->idEmergencias;
             $retiroPV->save();
 
-        return redirect('/Retiro_PaquetesV/Filtrado')->with('exito','Se ha agregado con éxito');
+        return redirect('/Retiro_PaquetesV/Filtrado')->with('exito','Se ha agregado correctamente');
     }
     else
     return redirect('/Retiro_PaquetesV/create')->with('mensaje','Cantidad de paquetes insuficientes');

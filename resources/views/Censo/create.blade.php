@@ -18,8 +18,8 @@
        <div class="row">
               <label for="Idjefefamilia" class="col-sm-3 control-label">Id de jefe de familia: </label>
                      <div class="col-sm-6">
-                            <select id='SelectC' name="IdJefeFam" style='width: 50%;'>
-                            <option value='0'>Seleccionar un Jefe</option></select>
+                            <select id='SelectC' name="IdJefeFam" style='width: 50%;' required>
+                            </select>
                      </div>
        </div>
        <div class="row">
@@ -86,7 +86,7 @@
   </div>
 </div>
        <div class="panel-footer">
-       @include("Includes.boton-form-create")
+        <button type="submit" class="btn btn-primary "> <i class="fa fa-fw fa-check"></i>Guardar</button>
        </div>
 
   </form>
@@ -100,6 +100,7 @@
   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
   $(document).ready(function(){
     $("#SelectC").select2({
+      placeholder:"Seleccionar jefe",
       ajax: {
         url: "{{route('Get_JefeC')}}",
         type: "post",

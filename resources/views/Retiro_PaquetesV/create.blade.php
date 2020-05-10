@@ -38,7 +38,7 @@
                 <label for="IdVoluntario" class="col-sm-2 control-label">Cédula de voluntario: </label>
                 <div class="col-sm-10">
                     <div class="col-sm-9">
-                           <select id='SelectU'  name="IdVoluntario" style='width: 70%;'>
+                           <select id='SelectU'  name="IdVoluntario" style='width: 70%;' required>
                            </select>
                     </div>
              </div>

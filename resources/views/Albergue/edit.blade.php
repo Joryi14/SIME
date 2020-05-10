@@ -126,7 +126,7 @@
                 </div>
 
                 <div class="form-group">
-                        <label for="Nececidades" class="col-sm-2 control-label">Nececidades: </label>
+                        <label for="Nececidades" class="col-sm-2 control-label">Necesidades: </label>
 
                         <div class="col-sm-8">
                             <input type="text" name="Nececidades" class= "form-control" value="{{$albergue->Nececidades}}" readonly="readonly">

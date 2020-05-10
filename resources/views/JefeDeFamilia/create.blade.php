@@ -54,7 +54,7 @@
                   <div class="form-group">
                       <label for="Edad" class="col-sm-2 control-label">Edad: </label>
                       <div class="col-sm-8">
-                          <input type="number" name="Edad" class= "form-control" value="{{old('Edad', $data->Edad ?? '')}}">
+                          <input type="number" min="0" max="200" name="Edad" class= "form-control" value="{{old('Edad', $data->Edad ?? '')}} ">
                       </div>
                     </div>
                     <div class="form-group">
@@ -71,7 +71,7 @@
                       <div class="form-group">
                           <label for="Telefono" class="col-sm-2 control-label">Teléfono: </label>
                           <div class="col-sm-8">
-                              <input type="number" name="Telefono" class="form-control" value="{{old('Telefono', $data->Telefono ?? '')}}">
+                              <input type="number" min="0" name="Telefono" class="form-control" value="{{old('Telefono', $data->Telefono ?? '')}}">
                           </div>
                         </div>
                       <div class="row">

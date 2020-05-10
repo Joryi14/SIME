@@ -209,7 +209,7 @@ $(function () {
           <br>
           <div class="row">
           <div class="form-group">
-            <label class="col-md-4"><b>Nececidades:</b></label>
+            <label class="col-md-4"><b>Necesidades:</b></label>
             <div class="col-md-4">
                 <span id="nec"></span>
             </div>

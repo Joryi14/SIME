@@ -38,29 +38,29 @@ class ValidacionJefeDeFamilia extends FormRequest
     public function messages()
     {
         return [
-            'TotalPersonas.required' => 'El Total de Personas es requerido',
+            'TotalPersonas.required' => 'El total de Personas es requerido',
 
             
-            'Nombre.max' => 'El nombre no debe superar los 10 caracteres',
-            
-            'Apellido1.required' => 'El Apellido1 es requerido',
-            'Apellido1.max' => 'El Apellido1 no debe superar los 15 digitos',
+            'Nombre.max' => 'El nombre no debe ser mayor a 10 caracteres',
+            'Nombre.required' => 'El nombre es requerido',
+            'Apellido1.required' => 'El primer apellido es requerido',
+            'Apellido1.max' => 'El primero apellido no debe ser mayor a los 15 caracteres',
 
-            'Apellido2.required' => 'El Apellido2 es requerido',
-            'Apellido2.max' => 'El Apellido2 no debe superar los 15 digitos',
+            'Apellido2.required' =>'El segundo apellido es requerido',
+            'Apellido2.max' => 'El segundo apellido no debe ser mayor a los 15 caracteres',
 
-            'Cedula.required' => 'La Cédula es requerida',
-            'Cedula.max' => 'La Cédula no debe superar los 10 digitos',
+            'Cedula.required' => 'La cédula es requerida',
+            'Cedula.max' => 'La cédula no debe ser mayor los 10 caracteres',
 
-            'Edad.required' => 'El Edad es requerido',
-            'Edad.max' => 'El Edad no debe superar los 3 digitos',
+            'Edad.required' => 'La edad es requerida',
+            'Edad.max' => 'La edad no debe ser mayor los 3 caracteres',
             
             'sexo.required' => 'El sexo es requerido',
             
-            'Telefono.max' => 'La Telefono no debe superar los 15 digitos',
+            'Telefono.max' => 'La teléfono no debe ser mayor a los 15 caracteres',
 
-            'Patologia.required' => 'La patologia es requerido',
-            'Patologia.max' => 'La Patologia no debe superar los 15 digitos'
+            'Patologia.required' => 'La patología es requerida',
+            'Patologia.max' => 'La Patología no debe ser mayor los 15 caracteres'
         ];
     }
 }

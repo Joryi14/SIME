@@ -25,7 +25,6 @@ class ValidacionRetiroPaquetes extends FormRequest
     {
         return [
             //
-            
             'IdAdministradorI'=> 'required',
             'IdVoluntario'=> 'required',
             'PlacaVehiculo'=> 'required',
@@ -35,7 +34,10 @@ class ValidacionRetiroPaquetes extends FormRequest
             'SuministrosComision'=> 'required',
             'SuministrosComision'=>'numeric',
             'IdInventario'=> 'required',
-            
+            'NombreChofer'=>'required|max:50',
+            'Apellido1C'=>'required|max:100',
+            'Apellido2C'=>'required|max:100'
+
         ];
     }
 
@@ -44,16 +46,23 @@ class ValidacionRetiroPaquetes extends FormRequest
         return [
             //
 
-            'IdAdministradorI.required' =>'El id del administrador del inventario es requerido',
-            'IdVoluntario.required' =>'El id del voluntario es requerido',
-            'PlacaVehiculo.required' =>'La placa del vehiculo es requerida',
-            'DireccionAEntregar.required' =>'La direccion es requerida',
-            'DireccionAEntregar.max' =>'La dirección no debe ser mayor a 100 caracteres',
+            'IdAdministradorI.required' =>'El id del administrador del inventario es requerido.',
+            'IdVoluntario.required' =>'El id del voluntario es requerido.',
+            'PlacaVehiculo.required' =>'La placa del vehículo es requerida.',
+            'DireccionAEntregar.required' =>'La dirección es requerida.',
+            'DireccionAEntregar.max' =>'La dirección no debe ser mayor a 100 caracteres.',
             'SuministrosGobierno.required' =>'La cantidad de suministros por el gobierno es requerida',
-            'SuministrosGobierno.numeric' =>' Los suministros brindados por el gobierno deben ser NUMERICOS',
-            'SuministrosComision.required' =>'La cantidad de suministros por la comisión es requerida',
-            'SuministrosComision.numeric' =>' Los suministros brindados por la comisión  deben ser NUMERICOS',
-            'IdInventario.required' =>'El id del inventario es requerido',
+            'SuministrosGobierno.numeric' =>' Los suministros brindados por el gobierno deben ser numerico.',
+            'SuministrosComision.required' =>'La cantidad de suministros por la comisión es requerida.',
+            'SuministrosComision.numeric' =>' Los suministros brindados por la comisión deben ser numerico.',
+            'IdInventario.required' =>'El id del inventario es requerido.',
+            'NombreChofer.required' =>'El nombre del chofer es requerido.',
+            'NombreChofer.max' =>'El nombre del chofer no debe ser mayor a 50 caracteres.',
+            'Apellido1C.required' =>'El primer apellido del chofer es requerido.',
+            'Apellido1C.max' =>'El primer apellido del chofer no debe ser mayor a 100 caracteres.',
+            'Apellido2C.required' =>'El segundo apellido es requerido.',
+            'Apellico2C.max' =>'El segundo apellido del chofer no debe ser mayor a 100 caracteres.',
+
         ];
     }
 }

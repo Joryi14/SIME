@@ -100,13 +100,15 @@ $(function () {
                   <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                   <td><a href="/Censo/{{$item->IdCenso}}/edit" class="btn-accion-tabla tooltipsC" title="Editar censo">
                     <i class="fa fa-fw fa-pencil text-success"></i></a>
-                  <form id="form1" action="{{route('censo_delete', ['Censo' => $item->IdCenso])}}" method="POST">
+                    @role('Admin|Director')
+                    <form id="form1" action="{{route('censo_delete', ['Censo' => $item->IdCenso])}}" method="POST">
                     @csrf
                     <input name="_method" type="hidden" value="DELETE">
                     <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar censo" onclick="confirmarEnvio()">
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form>
+                  @endrole
                   <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar censo" data-toggle="modal" data-target="#Detalle"  data-ref="{{$item->Refrigerador}}" data-coc="{{$item->Cocina}}" data-col="{{$item->Colchon}}" data-cam="{{$item->Cama}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
                   </td>
                   </tr>

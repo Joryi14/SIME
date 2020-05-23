@@ -103,13 +103,15 @@ $(function () {
                 <i class="fa fa-pencil text-success"></i></a>
                 <a href="/JefeDeFamilia/{{$item->IdJefe}}/agregarfamiliar" class="btn-accion-tabla tooltipsC" title="Agregar familiar">
                   <i class="fa fa-fw fa-plus-circle text-success"></i></a>
-                <form action="{{route('jefe_delete', ['JefeDeFamilia' => $item->IdJefe])}}" method="POST">
+                  @role('Admin|Director')
+                  <form action="{{route('jefe_delete', ['JefeDeFamilia' => $item->IdJefe])}}" method="POST">
                     @csrf 
                     <input name="_method" type="hidden" value="DELETE">
                     <button  type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar jefe de familia">
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
-                  </form> 
+                  </form>
+                  @endrole 
                   <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar jefe de familia" data-toggle="modal" data-target="#Detalle"  data-pd="{{$item->PcD}}" data-mg="{{$item->MG}}" data-pi="{{$item->PI}}" data-pm="{{$item->PM}}" data-ed="{{$item->Edad}}" data-se="{{$item->sexo}}" data-tel="{{$item->Telefono}}" data-pat="{{$item->Patologia}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
                   </td>
                   </tr>

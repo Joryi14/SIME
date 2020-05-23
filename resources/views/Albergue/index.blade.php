@@ -124,15 +124,18 @@ $(function () {
                 @else
               <span class="badge badge-danger">{{$item->Estado}}</span></a>
                 @endif</td>
-              <td><a href="/Albergue/{{$item->idAlbergue}}/edit" class="btn-accion-tabla tooltipsC" title="Editar albergue">
+              <td>
+                @role('Admin|Director')
+                <a href="/Albergue/{{$item->idAlbergue}}/edit" class="btn-accion-tabla tooltipsC" title="Editar albergue">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
-              <form id="form1" action="{{route('albergue_delete', ['Albergue' => $item->idAlbergue])}}" method="POST">
+                <form id="form1" action="{{route('albergue_delete', ['Albergue' => $item->idAlbergue])}}" method="POST">
                 @csrf
                 <input name="_method" type="hidden" value="DELETE">
                 <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar albergue" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
+              @endrole
             <button  class="show-modal btn-accion-tabla tooltipsC"title="Información de albergue" data-toggle="modal" data-target="#Detalle"  data-du="{{$item->Duchas}}" data-ino="{{$item->inodoros}}" data-edc="{{$item->EspaciosDeCocina}}" data-bo="{{$item->Bodega}}" data-lon="{{$item->Longitud}}" data-lat="{{$item->Latitud}}" data-tip ="{{$item->TipoDeInstalacion}}" data-nec="{{$item->Nececidades}}" data-fec="{{date('d-m-Y',strtotime($item->created_at))}}" data-per ="{{$item->PersonasAlbergue}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>

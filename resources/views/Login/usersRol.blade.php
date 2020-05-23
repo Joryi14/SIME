@@ -39,9 +39,11 @@
 <div class="panel panel-danger">
   <div class="panel-heading">
     <h4 class="content-row-title">Roles
+      @role('Admin')
       <a href="{{route('crearRol')}}" class="btn btn-info btn-lg pull-right">
           <i class="fa fa-fw fa-plus-circle"></i> Crear
       </a>
+      @endrole
     </h4>
   <br>
   </div>
@@ -64,12 +66,14 @@
                 <td>{{$object->name}}</td>
                 <td>{{date('d-m-Y',strtotime($object->created_at))}}</td>
                 <td>
+                @role('Admin')  
                 <form id="form2" action="{{route('rol_delete', ['roles' => $object->id])}}" method="POST">
                     @csrf @method('delete')
                     <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar rol">
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form>
+                  @endrole
                 </td>
                 </tr> 
               @endforeach

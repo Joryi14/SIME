@@ -33,6 +33,7 @@ Route::get('/', function () {
     Route::get('Mensajeria/{Mensajeria}/accion', 'MensajeriaController@accion');
     Route::put('Mensajeria/{Mensajeria}','MensajeriaController@update');
     Route::delete('Mensajeria/{Mensajeria}','MensajeriaController@delete')->name('mensajeria_delete');
+    Route::delete('Mensajeri/{id}','MensajeriaController@deleteA')->name('mensajeria_deleteA');
     Route::post('Mensajeria/getEmergencia','MensajeriaController@getEmergeM')->name('Get_EmergeM');
 });
 Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Administrador de Inventario']], function () {
@@ -144,7 +145,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Censo']], fu
 
 });
 
-Route::group(['prefix' => '/','middleware'=> ['role:Admin|Director|Lider Comunal']], function () {
+Route::group(['prefix' => '/','middleware'=> ['role:Admin|Director|Voluntario']], function () {
     Route::get('PersonasAlbergue', 'PersonasAlbergueController@index')->name('inicio_personasAlbergue');
     Route::get('PersonasAlbergue/Filtrado', 'PersonasAlbergueController@index2')->name('inicio_personasAlbergue2');
     Route::get('PersonasAlbergue/create', 'PersonasAlbergueController@create')->name('personasAlbergue_create');

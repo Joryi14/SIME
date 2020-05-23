@@ -98,13 +98,15 @@ $(function () {
               <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
               <td><a href="/Familias/{{$item->IdFamilia}}/edit" class="btn-accion-tabla tooltipsC" title="Editar familia">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
-              <form id="form1" action="{{route('familias_delete', ['Familias' => $item->IdFamilia])}}" method="POST">
+                @role('Admin|Director')
+                <form id="form1" action="{{route('familias_delete', ['Familias' => $item->IdFamilia])}}" method="POST">
                 @csrf 
                 <input name="_method" type="hidden" value="DELETE">
                 <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar familia">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
+              @endrole
               <button  class="show-modal btn-accion-tabla tooltipsC"title="Información del familiar" data-toggle="modal" data-target="#Detalle"  
               data-ape1="{{$item->Apellido1}}" 
               data-ape2="{{$item->Apellido2}}" 

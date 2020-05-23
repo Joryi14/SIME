@@ -68,6 +68,7 @@
                 title="Editar informe">
                 <i class="fa fa-fw fa-pencil text-success"></i>
             </a>
+            @role('Admin|Director')
             <form style="display: inline"
                 action="{{route('mensajeria_delete', ['Mensajeria' => $item->IdMensajeria])}}"
                 id="form1"
@@ -83,6 +84,7 @@
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
             </form>
+            @endrole
             <a
                 href="/Mensajeria/{{$item->IdMensajeria}}/accion"
                 class="btn-accion-tabla tooltipsC"
@@ -106,6 +108,23 @@
             @foreach ($item->Accion as $AccionD)
                 <div class="tab-pane fade" id="home{{$AccionD->id}}">
                     <p>{{$AccionD->descripcion}}</p>
+                    @role('Admin|Director')
+            <form style="display: inline"
+                action="{{route('mensajeria_deleteA', ['id' => $AccionD->id])}}"
+                id="form1"
+                method="POST">
+                @csrf
+                <input name="_method" type="hidden" value="DELETE">
+                <button
+                    id="btneliminar"
+                    type="submit"
+                    class="btn-accion-tabla tooltipsC"
+                    title="Eliminar informe"
+                    onclick="confirmarEnvio()">
+                    <i class="fa fa-fw fa-trash text-danger"></i>
+                </button>
+            </form>
+            @endrole
                 </div>
             @endforeach
           </div>

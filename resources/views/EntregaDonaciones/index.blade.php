@@ -56,7 +56,7 @@ $(function () {
               <th>Foto</th>
               <th>Emergencia</th>
               <th>Fecha</th>
-              <th>Acciones</th>
+              {{-- <th>Acciones</th> --}}
             </tr>
           </thead>
                 @foreach ($entregadonaciones as $item)
@@ -70,7 +70,7 @@ $(function () {
                   </td>
                   <td>{{$item->Emergencia->idEmergencias}} {{$item->Emergencia->NombreEmergencias}}</td>
                   <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
-                  <td><a href="/EntregaDonaciones/{{$item->IdEntrega}}/edit" class="btn-accion-tabla tooltipsC" title="Editar entrega donaciones">
+                  {{-- <td><a href="/EntregaDonaciones/{{$item->IdEntrega}}/edit" class="btn-accion-tabla tooltipsC" title="Editar entrega donaciones">
                     <i class="fa fa-fw fa-pencil text-success"></i></a>
                   <form id="form1" action="{{route('entregadonaciones_delete', ['EntregaDonaciones' => $item->IdEntrega])}}" method="POST">
                     @csrf
@@ -79,7 +79,7 @@ $(function () {
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form>
-                  </td>
+                  </td> --}}
                   </tr>
                 @endforeach
           </table>

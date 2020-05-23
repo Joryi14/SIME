@@ -80,13 +80,15 @@ $(function () {
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
                 <a href="/Inventario/{{$item->idInventario}}/editSuministro" class="btn-accion-tabla tooltipsC" title="Aumentar suministros">
                   <i class="fa fa-fw fa-plus-circle text-success"></i></a>
-              <form id="form1" action="{{route('inventario_delete', ['Inventario' => $item->idInventario])}}" method="POST">
+                @role('Admin|Director')
+                <form id="form1" action="{{route('inventario_delete', ['Inventario' => $item->idInventario])}}" method="POST">
                 @csrf
                 <input name="_method" type="hidden" value="DELETE">
                 <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar inventario" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
+              @endrole
               <button class="show-modal btn-accion-tabla tooltipsC"title="Información de inventario" data-toggle="modal" data-target="#Detalle"  data-col="{{$item->Colchonetas}}" data-cob="{{$item->Cobijas}}" data-rop="{{$item->Ropa}}"><i class="fa fa-fw fa-file-text-o text-info"></i></button>
               </td>
               </tr>

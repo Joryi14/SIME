@@ -98,13 +98,15 @@ $(function () {
               <td>{{$item->idEmergencias}} {{$item->NombreEmergencias}}</td>
               <td><a href="/Retiro_PaquetesV/{{$item->IdRetiroPaquetes}}/edit" class="btn-accion-tabla tooltipsC" title="Editar retiro de paquetes">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
-              <form id="form1" action="{{route('Retiro_PaquetesV_delete', ['Retiro_PaquetesV' => $item->IdRetiroPaquetes])}}" method="POST">
+                @role('Admin|Director')
+                <form id="form1" action="{{route('Retiro_PaquetesV_delete', ['Retiro_PaquetesV' => $item->IdRetiroPaquetes])}}" method="POST">
                 @csrf
                 <input name="_method" type="hidden" value="DELETE">
                 <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar retiro de raquetes" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                   </button>
                 </form>
+                @endrole
                 <button class="show-modal btn-accion-tabla tooltipsC"title="Mostrar retiro de paquetes" data-toggle="modal" data-target="#Detalle"  data-nc="{{$item->NombreChofer}}" data-pac="{{$item->Apellido1C}}" data-sac="{{$item->Apellido2C}}" data-pv="{{$item->PlacaVehiculo}}"  data-de="{{$item->DireccionAEntregar}}" data-fec="{{date('d-m-Y',strtotime($item->created_at))}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
                 </td>
                 </tr>

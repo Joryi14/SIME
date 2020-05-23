@@ -70,13 +70,15 @@ $(function () {
                   <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                   <td><a href="/EntregaDonacionesAlbergue/{{$item->IdEntregaA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar la entrega de donaciones en albergue">
                     <i class="fa fa-fw fa-pencil text-success"></i></a>
-                  <form id="formEA" action="{{route('EntregadonacionesA_delete', ['EntregaDonacionesAlbergue' => $item->IdEntregaA])}}" method="POST">
+                    @role('Admin|Director')
+                    <form id="formEA" action="{{route('EntregadonacionesA_delete', ['EntregaDonacionesAlbergue' => $item->IdEntregaA])}}" method="POST">
                     @csrf
                     <input name="_method" type="hidden" value="DELETE">
                     <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar entrega de donaciones en albergue" onclick="confirmarEnvio()">
                         <i class="fa fa-fw fa-trash text-danger"></i>
                     </button>
                   </form>
+                    @endrole
                   </td>
                   </tr>
                 @endforeach

@@ -100,6 +100,7 @@ $(function () {
                 @endif</td>
                 <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
               <td>
+                @role('Admin|Director')
                 <a href="/Emergencia/{{$item->idEmergencias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar emergencia">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
               <form id="formE"  action="{{route('emergencia_delete', ['Emergencia' => $item->idEmergencias])}}" method="POST">
@@ -111,6 +112,7 @@ $(function () {
               </form>
               <a href="/Estado/{{$item->idEmergencias}}" class="btn-accion-tabla tooltipsC" title="Actualizar estado">
                 <i class="glyphicon glyphicon-refresh text-warning"></i></a>
+                @endrole
               <button  class="show-modal btn-accion-tabla tooltipsC"title="Información de la emergencia" data-toggle="modal" data-target="#Detalle"  data-lt="{{$item->Latitud}}" data-lg="{{$item->Longitud}}" data-rad="{{$item->Radio}}" data-desc="{{$item->Descripcion}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>

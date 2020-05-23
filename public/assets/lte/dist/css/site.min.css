@@ -9738,7 +9738,7 @@ a.list-group-item-danger:hover {
  content:""
 }
 .fa-angle-left:before {
- content:""
+ content:"";
 }
 .fa-angle-right:before {
  content:""
@@ -11397,7 +11397,7 @@ h6 {
  padding-right:5px
 }
 .sidebar-offcanvas i {
- margin-right:8px
+ /*! margin-right:8px; */
 }
 .toggle-sidebar span {
  font-size:18px;

@@ -28,7 +28,7 @@ class EntregaDonacionesController extends Controller
     public function index2()
     {
         $entregadonaciones = new EntregaDonaciones();
-        $entregadonaciones = DB::table('entregadonaciones')->join('emergencia','idEmergencia','=','emergencia.idEmergencias')->join('jefedefamilia','entregadonaciones.IdJefe','=','jefedefamilia.IdJefe')->join('users','IdVoluntario','=','users.id')->where('emergencia.Estado','Activa')->select('entregadonaciones.IdEntrega','entregadonaciones.created_at','entregadonaciones.IdRetiroPaquetes','entregadonaciones.Foto','users.Cedula as Ced','users.name','jefedefamilia.Cedula','jefedefamilia.Nombre','jefedefamilia.Apellido1','emergencia.idEmergencias','emergencia.NombreEmergencias')->get();
+        $entregadonaciones = DB::table('entregadonaciones')->join('emergencia','idEmergencia','=','emergencia.idEmergencias')->join('jefedefamilia','entregadonaciones.IdJefe','=','jefedefamilia.IdJefe')->join('users','IdVoluntario','=','users.id')->where('emergencia.Estado','Activa')->select('entregadonaciones.IdEntrega','entregadonaciones.created_at','entregadonaciones.IdRetiroPaquetes','entregadonaciones.Cantidad','entregadonaciones.Foto','users.Cedula as Ced','users.name','jefedefamilia.Cedula','jefedefamilia.Nombre','jefedefamilia.Apellido1','emergencia.idEmergencias','emergencia.NombreEmergencias')->get();
         
         return view('EntregaDonaciones.IndexFiltrado', compact('entregadonaciones'));
     }
@@ -111,7 +111,13 @@ else
     {
         //
     }
-
+    public function aumentarCantidad($id)
+    {
+        $entregadonaciones = EntregaDonaciones::find($id);
+        $entregadonaciones->Cantidad =$entregadonaciones->Cantidad+1;
+        $entregadonaciones->save();
+        return redirect('EntregaDonaciones/Filtrado')->with('exito','Se ha aumentado la entrega correctamente');
+    }
     /**
      * Show the form for editing the specified resource.
      *

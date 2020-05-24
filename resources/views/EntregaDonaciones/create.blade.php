@@ -32,7 +32,7 @@
                 <label for="Foto" class="col-sm-2 control-label">Foto: </label>
                     <input type="file" name="Foto" accept="image/*"  >
               </div>
-      </div>
+            </div>
        <div class="panel-footer">
         <button type="submit" class="btn btn-primary "> <i class="fa fa-fw fa-check"></i>Guardar</button>
 

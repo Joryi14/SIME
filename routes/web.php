@@ -71,6 +71,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Voluntario']
     Route::post('EntregaDonaciones/store','EntregaDonacionesController@store');
     Route::get('EntregaDonaciones/{EntregaDonaciones}/edit', 'EntregaDonacionesController@edit');
     Route::put('EntregaDonaciones/{EntregaDonaciones}','EntregaDonacionesController@update');
+    Route::get('EntregaDonacione/{id}','EntregaDonacionesController@aumentarCantidad')->name('AumentarC');
     Route::delete('EntregaDonaciones/{EntregaDonaciones}','EntregaDonacionesController@delete')->name('entregadonaciones_delete');
     Route::post('EntregaDonaciones/getJefe','EntregaDonacionesController@getJefe')->name('Get_JefeE');
     Route::post('EntregaDonaciones/getPaquete','EntregaDonacionesController@getPaquete')->name('Get_Paquete');

@@ -55,10 +55,9 @@
     <th>Cédula del jefe de familia</th>
     <th>Número de retiro de paquetes</th>
     <th>Foto</th>  
+    <th>Cantidad</th>
     <th>Emergencia</th>
     <th>Fecha de creación</th>
- 
-
   </tr>
 
       @foreach ($EntregaDonaciones as $item)
@@ -70,6 +69,7 @@
         <td>
           <img style='display:block; width:100px; height:100px;' src='Foto/{{$item->Foto}}' alt="base64 test">
         </td>
+        <td>{{$item->Cantidad}}</td>
         <td>{{$item->Emergencia->idEmergencias}} {{$item->Emergencia->NombreEmergencias}}</td>
         <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
 

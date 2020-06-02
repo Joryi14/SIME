@@ -123,7 +123,7 @@ class InventarioController extends Controller
         if($search == ''){
            $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias','Estado')->where('Estado','Activa')->limit(5)->get();
         }else{
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('idEmergencias', 'like', '%' .$search . '%')->where('Estado','Activa')->limit(5)->get();
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('idEmergencias', 'like', '%' .$search . '%')->where('Estado','Activa')->orWhere('NombreEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
         }
         $response = array();
         foreach($Emergencia as $Emer){

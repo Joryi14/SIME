@@ -107,7 +107,7 @@ class EntregaDonacionesAlbergueController extends Controller
         if($search == ''){
            $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('Estado','Activa')->limit(5)->get();
         }else{
-           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('Estado','Activa')->where('idEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
+           $Emergencia = Emergencia::orderby('idEmergencias','asc')->select('idEmergencias','NombreEmergencias')->where('Estado','Activa')->where('idEmergencias', 'like', '%' .$search . '%')->orWhere('NombreEmergencias', 'like', '%' .$search . '%')->limit(5)->get();
         }
         $response = array();
         foreach($Emergencia as $Emer){
@@ -136,7 +136,7 @@ class EntregaDonacionesAlbergueController extends Controller
         if($search == ''){
            $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula','Nombre','Apellido1','Apellido2')->limit(5)->get();
         }else{
-           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula','Nombre','Apellido1','Apellido2')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
+           $Jefes = JefeDeFamilia::orderby('Cedula','asc')->select('IdJefe','Cedula','Nombre','Apellido1','Apellido2')->where('Cedula', 'like', '%' .$search . '%')->orWhere('Nombre', 'like', '%' .$search . '%')->limit(5)->get();
         }
         $response = array();
         foreach($Jefes as $jefe){

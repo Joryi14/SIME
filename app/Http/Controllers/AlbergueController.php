@@ -41,7 +41,7 @@ class AlbergueController extends Controller
         if($search == ''){
            $Users = User::orderby('Cedula','asc')->select('id','Cedula','name','Apellido1','Apellido2')->limit(5)->get();
         }else{
-           $Users = User::orderby('Cedula','asc')->select('id','Cedula','name','Apellido1','Apellido2')->where('Cedula', 'like', '%' .$search . '%')->limit(5)->get();
+           $Users = User::orderby('Cedula','asc')->select('id','Cedula','name','Apellido1','Apellido2')->where('Cedula', 'like', '%' .$search . '%')->orWhere('name', 'like', '%' .$search . '%')->limit(5)->get();
         }
 
         $response = array();

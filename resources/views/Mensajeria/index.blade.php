@@ -3,16 +3,17 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h4 class="content-row-title">Informes de incidentes
+            @role('Admin|Lider Comunal')
             <a
                 href="{{route('Mensajeria_create')}}"
                 class="btn btn-success btn-lg pull-right">
                 <i class="fa fa-plus-circle"></i>
                 Crear
             </a>
+            @endrole
         </h4>
         <br>
         <div class="row">
-
             <form action="/search" method="GET">
                 <div class="col-md-2">
                     <input type="search" name="buscar" class="form-control">
@@ -85,12 +86,14 @@
                 </button>
             </form>
             @endrole
+            @role('Admin|Director')
             <a
                 href="/Mensajeria/{{$item->IdMensajeria}}/accion"
                 class="btn-accion-tabla tooltipsC"
                 title="Añadir acción">
                 <i class="fa fa-fw fa-plus text-warning"></i>
             </a>
+            @endrole
         </td>
       </div>
         <div class="col-md-9">
@@ -120,7 +123,7 @@
                     type="submit"
                     class="btn-accion-tabla tooltipsC"
                     title="Eliminar informe"
-                    onclick="confirmarEnvio()">
+                   >
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
             </form>

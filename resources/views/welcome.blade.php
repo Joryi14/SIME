@@ -370,7 +370,7 @@ window.onload = function() {
   var circ = L.circle([item.Latitud,item.Longitud], { color: 'red',
 fillColor: '#f03',
 fillOpacity: 0.5,radius: item.Radio }).addTo(mymap2);
-    circ.bindPopup(item.Nombre+" "+item.Latitud+" "+item.Longitud+" "+item.Radio).openPopup();
+    circ.bindPopup("Nombre: "+item.Nombre+" "+"Categoria: "+item.Categoria+" "+"Radio: "+item.Radio).openPopup();
    }
   }
 }
@@ -393,11 +393,11 @@ if(this.readyState == 4 && this.status == 200){
 
 if(item.Estado =="Activa"){
   var mark = L.marker([item.Latitud,item.Longitud],{icon: AlbergueV}).addTo(mymap);
-    mark.bindPopup("Nombre del albergue: "+item.Nombre+", "+"Distrito: "+item.Distrito+", "+"Comunidad: "+item.Comunidad+", "+"Teléfono: "+item.telefono).openPopup();
+    mark.bindPopup("Nombre del albergue: "+item.Nombre+", "+"Total personas: "+item.PersonasAlbergue+", "+"Capacidad: "+item.Capacidad+", "+"Teléfono: "+item.telefono).openPopup();
   }
   else {
     var mark = L.marker([item.Latitud,item.Longitud],{icon: AlbergueR}).addTo(mymap);
-      mark.bindPopup("Nombre del albergue: "+item.Nombre+", "+"Distrito: "+item.Distrito+", "+"Comunidad: "+item.Comunidad+", "+"Teléfono: "+item.telefono).openPopup();
+      mark.bindPopup("Nombre del albergue: "+item.Nombre+", "+"Total personas: "+item.PersonasAlbergue+", "+"Capacidad: "+item.Capacidad+", "+"Teléfono: "+item.telefono).openPopup();
   }
 }
   }

@@ -98,7 +98,7 @@ $(function () {
                 <form id="form1" action="{{route('personasAlbergue_delete', ['PersonasAlbergue' => $item->idregistroA])}}" method="POST">
                 @csrf
                 <input name="_method" type="hidden" value="DELETE">
-                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar personas en albergue" onclick="confirmarEnvio()">
+                <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar personas en albergue">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>

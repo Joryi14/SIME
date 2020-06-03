@@ -26,28 +26,28 @@
                 <label for="Nombre" class="col-sm-2 control-label">Nombre: </label>
     
                 <div class="col-sm-8">
-                    <input type="text" name="Nombre" class= "form-control" value="{{$JefeF->Nombre}}" readonly="readonly">
+                    <input type="text" name="Nombre" class= "form-control" value="{{$JefeF->Nombre}}">
                 </div>
               </div>
               <div class="form-group">
                   <label for="Apellido1" class="col-sm-2 control-label">Primer apellido:  </label>
       
                   <div class="col-sm-8">
-                      <input type="text" name="Apellido1" class= "form-control" value="{{$JefeF->Apellido1}}" readonly="readonly"> 
+                      <input type="text" name="Apellido1" class= "form-control" value="{{$JefeF->Apellido1}}"> 
                   </div>
                 </div>
                 <div class="form-group">
                     <label for="Apellido2" class="col-sm-2 control-label">Segundo apellido: </label>
         
                     <div class="col-sm-8">
-                        <input type="text" name="Apellido2" class= "form-control" value= "{{$JefeF->Apellido2}}"  readonly="readonly">
+                        <input type="text" name="Apellido2" class= "form-control" value= "{{$JefeF->Apellido2}}">
                     </div>
                   </div>
                   <div class="form-group">
                       <label for="Cedula" class="col-sm-2 control-label">Cédula: </label>
           
                       <div class="col-sm-8">
-                          <input type="text" name="Cedula" class= "form-control" value="{{$JefeF->Cedula}}" >
+                          <input type="text" name="Cedula" class= "form-control" value="{{$JefeF->Cedula}}" readonly>
                       </div>
                     </div>
                    
@@ -60,15 +60,20 @@
                         </div>
                         <div class="form-group">
                             <label for="sexo" class="col-sm-2 control-label">Sexo: </label>
-                            <div class="col-sm-10">
-                              <input type="text" name="sexo" class= "form-control" value= "{{$JefeF->sexo}}"  readonly="readonly">
-                          </div>
+                            <div class="col-sm-4">
+                              <label>
+                                <input type="radio" name="sexo" class="minimal-red" checked value="F"  @if($JefeF->sexo == 'F') checked="CHECKED" @endif> Femenino
+                              </label>
+                              <label>
+                                <input type="radio" name="sexo" class="minimal-red" checked value="M"  @if($JefeF->sexo == 'M') checked="CHECKED" @endif> Masculino
+                              </label>
+                              </div>
                         </div>
                           <div class="form-group">
                               <label for="Telefono" class="col-sm-2 control-label">Teléfono: </label>
                   
                               <div class="col-sm-8">
-                                  <input type="text" name="Telefono" class= "form-control" value="{{$JefeF->Telefono}}" > 
+                                  <input type="text" name="Telefono" class= "form-control" value="{{$JefeF->Telefono}}"> 
                               </div>
                             </div>
                             <div class="row">

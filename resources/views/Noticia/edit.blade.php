@@ -28,7 +28,7 @@
           <div class="form-group">
               <label for="IdAutor" class="col-sm-2 control-label">Autor: </label>
               <div class="col-sm-9">
-                  <input type="text" name="IdAutor" class= "form-control" value=" {{$noticia->IdAutor}}"  >
+                  <input type="text" name="IdAutor" class= "form-control" value=" {{$noticia->IdAutor}}"  readonly>
               </div>
             </div>
                <div class="form-group">

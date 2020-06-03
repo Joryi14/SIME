@@ -86,7 +86,7 @@ class JefeDeFamiliaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionJefeDeFamilia $request, $id)
     { 
         $patologia = implode(', ',$request->Patologia);
         $Jefe = JefeDeFamilia::find($id);
@@ -117,7 +117,7 @@ class JefeDeFamiliaController extends Controller
          return redirect('JefeDeFamilia')->with('exito','Se ha agregado correctamente'); 
         }
         else
-        return redirect('JefeDeFamilia/'.$request->IdJefeF.'/agregarfamiliar')->with('mensaje','Error El jefe de familia no existe');  
+        return redirect('JefeDeFamilia/'.$request->IdJefeF.'/agregarfamiliar')->with('mensaje','Error este jefe de familia no existe');  
         }
     /**
      * Remove the specified resource from storage.
@@ -130,19 +130,19 @@ class JefeDeFamiliaController extends Controller
         $jefe = JefeDeFamilia::find($id);
 
         if(Familias::where('idJefeF',$id)->first()){
-        return redirect('JefeDeFamilia')->with('mensaje','Error Este Jefe tiene familia asignada');
+        return redirect('JefeDeFamilia')->with('mensaje','Error este jefe tiene familia asignada');
         }
         if(Censo::where('idJefeFam',$id)->first()){
-            return redirect('JefeDeFamilia')->with('mensaje','Error Este Jefe tiene un censo asignado');
+            return redirect('JefeDeFamilia')->with('mensaje','Error este jefe tiene un censo asignado');
             }
         if(EntregaDonaciones::where('idJefe',$id)->first()){
-                return redirect('JefeDeFamilia')->with('mensaje','Error Este Jefe tiene una entrega de paquetes');
+                return redirect('JefeDeFamilia')->with('mensaje','Error este jefe tiene una entrega de paquetes');
         }
         if(EntregaDonacionesAlbergue::where('idJefeFa',$id)->first()){
-            return redirect('JefeDeFamilia')->with('mensaje','Error Este Jefe tiene una entrega de paquetes en albergue');
+            return redirect('JefeDeFamilia')->with('mensaje','Error este jefe tiene una entrega de paquetes en albergue');
     }
     if(PersonasAlbergue::where('idJefe',$id)->first()){
-        return redirect('JefeDeFamilia')->with('mensaje','Error Este Jefe se encuentra en un albergue');
+        return redirect('JefeDeFamilia')->with('mensaje','Error este jefe se encuentra en un albergue');
 }
         else{
         $jefe->delete();

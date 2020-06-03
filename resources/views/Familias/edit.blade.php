@@ -17,31 +17,31 @@
             <div class="form-group">
               <label for="IdJefef" class="col-sm-2 control-label">Id del jefe de familia: </label>
               <div class="col-sm-10">
-                  <input type="text" name="IdJefeF" class= "form-control" value="{{$Familia->IdJefeF}}">
+                  <input type="text" name="IdJefeF" class= "form-control" value="{{$Familia->IdJefeF}}" readonly>
               </div>
             </div>
             <div class="form-group">
               <label for="Nombre" class="col-sm-2 control-label">Nombre: </label>
               <div class="col-sm-10">
-                  <input type="text" name="Nombre" class= "form-control" value="{{$Familia->Nombre}}" readonly="readonly"> 
+                  <input type="text" name="Nombre" class= "form-control" value="{{$Familia->Nombre}}" > 
               </div>
             </div>
             <div class="form-group">
                 <label for="Apellido1" class="col-sm-2 control-label">Primer apellido: </label>
                 <div class="col-sm-10">
-                    <input type="text" name="Apellido1" class= "form-control" value="{{$Familia->Apellido1}}" readonly="readonly"> 
+                    <input type="text" name="Apellido1" class= "form-control" value="{{$Familia->Apellido1}}" > 
                 </div>
               </div>
               <div class="form-group">
                   <label for="Apellido2" class="col-sm-2 control-label">Segundo apellido: </label>
                   <div class="col-sm-10">
-                      <input type="text" name="Apellido2" class= "form-control" value= "{{$Familia->Apellido2}}"  readonly="readonly">
+                      <input type="text" name="Apellido2" class= "form-control" value= "{{$Familia->Apellido2}}">
                   </div>
                 </div>
                 <div class="form-group">
                     <label for="Cedula" class="col-sm-2 control-label">Cédula: </label>
                     <div class="col-sm-10">
-                        <input type="text" name="Cedula" class= "form-control" value="{{$Familia->Cedula}}" >
+                        <input type="text" name="Cedula" class= "form-control" value="{{$Familia->Cedula}}" readonly>
                     </div>
                   </div>
                   <div class="form-group">
@@ -66,9 +66,13 @@
                       </div>
                       <div class="form-group">
                           <label for="Sexo" class="col-sm-2 control-label">Sexo: </label>
-                          <div class="col-sm-10">
-                            <input type="text" name="sexo" class= "form-control" value= "{{$Familia->sexo}}"  readonly="readonly">
-                        </div>
+                        <label>
+                          <input type="radio" name="sexo" class="minimal-red" checked value="F" @if($Familia->sexo == 'F') checked="CHECKED" @endif> Femenino
+                        </label>
+                        <label>
+                          <input type="radio" name="sexo" class="minimal-red" checked value="M" @if($Familia->sexo == 'M') checked="CHECKED" @endif> Masculino
+                        </label>
+
                         </div>
                         <div class="row">
                           <div class="form-group">

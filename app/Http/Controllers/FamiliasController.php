@@ -104,7 +104,7 @@ class FamiliasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionFamilia $request, $id)
     {
         $Patologia = implode(', ',$request->Patologia);
         $fam = Familias::find($id);

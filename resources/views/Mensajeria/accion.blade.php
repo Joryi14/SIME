@@ -15,7 +15,7 @@
         @csrf
         <div class="panel-body">
             <div class="form-group">
-                <label for="idMensajeria" class="col-sm-2 control-label">Mensajeria:</label>
+                <label for="idMensajeria" class="col-sm-2 control-label">Mensajería:</label>
                 <div class="col-sm-9">
                     <input
                         type="text"
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="Titulo" class="col-sm-2 control-label">Título:
+                <label for="Titulo" class="col-sm-2 control-label">Titulo:
                 </label>
                 <div class="col-sm-2">
                     <input type="text" name="titulo" class="form-control">

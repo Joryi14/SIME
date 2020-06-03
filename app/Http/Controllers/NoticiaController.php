@@ -76,7 +76,7 @@ class NoticiaController extends Controller
         $noticia->Articulo = $request->Articulo;
          //$noticia->PDF = $request->PDF;
         $noticia ->save();
-        return redirect('Noticia')->with('mensaje','Se ha guardado');
+        return redirect('Noticia')->with('mensaje','Se ha agregado correctamente');
     }
 
     /**

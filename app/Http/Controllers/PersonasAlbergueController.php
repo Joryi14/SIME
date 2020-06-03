@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidacionEditarPersonaA;
 use App\Http\Requests\ValidacionPersonasAlbergue;
 use App\Models\Albergue;
 use App\Models\Emergencia;
@@ -67,6 +68,8 @@ class PersonasAlbergueController extends Controller
          $suma = $Albergue->PersonasAlbergue+$jefe->TotalPersonas;
          if($Albergue->Capacidad >= $suma){
         $persona = new PersonasAlbergue();
+        $persona->HoraDeSalida = Carbon::now();
+        $persona->FechaDeSalida = Carbon::now();
         $persona->fill($request->all());
         $Albergue->PersonasAlbergue += $jefe->TotalPersonas;
         $persona->save();
@@ -178,7 +181,7 @@ class PersonasAlbergueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ValidacionPersonasAlbergue $request, $id)
+    public function update(ValidacionEditarPersonaA $request, $id)
     {
         $persona = PersonasAlbergue::find($id);
         $persona->fill($request->all());

@@ -38,7 +38,7 @@ class ValidacionesEmergencia extends FormRequest
     {
         return [
             //
-            'NombreEmergencias.required' =>'El nombre de la emergencia es requerida',
+            'NombreEmergencias.required' =>'El nombre de la emergencia es requerido',
             'NombreEmergencias.max' =>'El nombre de la emergencia no debe ser mayor a 50 caracteres',
             'TipoDeEmergencia.required' =>'El tipo de emergencia es requerido',
             'TipoDeEmergencia.max' =>'El tipo de emergencia no debe ser mayor a 30 caracteres',

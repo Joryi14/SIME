@@ -126,9 +126,22 @@ class AlbergueController extends Controller
         $albergue = Albergue::find($id);
         $albergue->fill($request->all());
         $albergue->save();
-        return redirect('Albergue')->with('exito','Editado correctamente');
+        return redirect('Albergue')->with('exito','Se ha actualizado correctamente');
     }
-
+    public function Estado($id){
+        $alber = Albergue::find($id);
+        if($alber->Estado =='Activa')
+        {
+        $alber->Estado ='Inactiva';
+        $alber->save();
+        return redirect('Albergue')->with('nota',' Estado inactivo');
+        }
+        else if($alber->Estado == 'Inactiva'){
+        $alber->Estado = 'Activa';
+        $alber->save();
+        return redirect('Albergue')->with('nota2','Estado activo');
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *

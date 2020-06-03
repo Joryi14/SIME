@@ -28,11 +28,17 @@
              </div>
 
              <div class="form-group">
-                  <label for="Ubicacion" class="col-sm-2 control-label">Ubicación: </label>
-                  <div class="col-sm-9">
-                    <input type="text" name="Ubicacion" class= "form-control" value=" {{$mensajeria->Ubicacion}}" >
-                  </div>
-                </div>
+              <label for="Longitud" class="col-sm-2 control-label">Longitud: </label>
+              <div class="col-sm-9">
+              <input type="text" id="lg" value="{{$mensajeria->Longitud}}"   name="Longitud" class= "form-control" required readonly>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Latitud" class="col-sm-2 control-label">Latitud: </label>
+              <div class="col-sm-9">
+              <input type="text" id="lt" value="{{$mensajeria->Latitud}}"  name="Latitud" class= "form-control" required readonly>
+              </div>
+            </div>
 
                 <div class="form-group">
                      <label for="Hora" class="col-sm-2 control-label">Hora: </label>
@@ -66,12 +72,6 @@
                              <input type="text" name="IdLiderComunal" class= "form-control" value=" {{$mensajeria->IdLiderComunal}}" readonly >
                            </div>
                          </div>
-                         <div class="form-group">
-                          <label for="IdEmergencia" class="col-sm-2 control-label"> Emergencia:</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="idEmergencia" class= "form-control" value=" {{$mensajeria->idEmergencia}}"readonly >
-                          </div>
-                        </div>
 </div>
 <div class="panel-footer">
       @include("Includes.boton-editar")

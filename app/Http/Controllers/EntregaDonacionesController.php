@@ -93,7 +93,7 @@ class EntregaDonacionesController extends Controller
           $entregadonaciones->idEmergencia = $retiro->idEmergencia;
           $entregadonaciones->created_at = Carbon::now();
           $entregadonaciones->save(); 
-          return redirect('EntregaDonaciones/Filtrado')->with('exito','Se ha guardado correctamente'); 
+          return redirect('EntregaDonaciones/Filtrado')->with('exito','Se ha agregado correctamente'); 
             }
         }else return redirect('EntregaDonaciones/create')->with('mensaje','Error al agregar, jefe de familia no existe'); 
                   
@@ -177,7 +177,7 @@ else
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionEntregaDonaciones $request, $id)
     {
         $entregadonaciones = EntregaDonaciones::find($id);
         $entregadonaciones->IdVoluntario = $request->IdUsuarioRol;

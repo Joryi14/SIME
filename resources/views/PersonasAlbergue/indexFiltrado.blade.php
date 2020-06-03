@@ -20,10 +20,10 @@
 <script src="{{asset("assets/$theme/bootflat-admin/datatables.min.js")}}"></script>
 <script type="text/javascript">
   $(document).on('click', '.show-modal', function() {
-            $('#fi').text($(this).data('fi'));
-            $('#hi').text($(this).data('hi'));
-            $('#fs').text($(this).data('fs'));
-            $('#hs').text($(this).data('hs'));
+            $('#fi').val($(this).data('fi'));
+            $('#hi').val($(this).data('hi'));
+            $('#fs').val($(this).data('fs'));
+            $('#hs').val($(this).data('hs'));
          });
  </script>
 <script>
@@ -123,21 +123,21 @@ $(function () {
        <div class="form-group ">
         <label class="col-md-4"><b>Fecha de ingreso:</b></label>
         <div class="col-md-4">
-            <span id="fi"></span>
+            <input type="text" id="fi" readonly>
         </div>
       </div></div><br>
       <div class="row">
      <div class="form-group">
       <label  class="col-md-4"><b>Hora de ingreso:</b></label>
       <div class="col-md-4">
-          <span id="hi"></span>
+          <input type="time" id="hi" readonly>
       </div>
   </div></div><br>
   <div class="row">
    <div class="form-group">
     <label class="col-md-4"><b>Fecha de salida:</b></label>
     <div class="col-md-4">
-        <span id="fs"></span>
+        <input type="text" id="fs" readonly>
     </div>
   </div>
       </div><br>
@@ -145,7 +145,7 @@ $(function () {
       <div class="form-group">
         <label class="col-md-4"><b>Hora de salida:</b></label>
         <div class="col-md-4">
-            <span id="hs"></span>
+            <input type="time" id="hs" readonly>
         </div>
       </div></div>
           <br>

@@ -60,7 +60,7 @@ class ValidacionRetiroPaquetes extends FormRequest
             'NombreChofer.max' =>'El nombre del chofer no debe ser mayor a 50 caracteres.',
             'Apellido1C.required' =>'El primer apellido del chofer es requerido.',
             'Apellido1C.max' =>'El primer apellido del chofer no debe ser mayor a 100 caracteres.',
-            'Apellido2C.required' =>'El segundo apellido es requerido.',
+            'Apellido2C.required' =>'El segundo apellido del chofer es requerido.',
             'Apellico2C.max' =>'El segundo apellido del chofer no debe ser mayor a 100 caracteres.',
 
         ];

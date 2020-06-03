@@ -111,7 +111,7 @@ class MensajeriaController extends Controller
         $mensajeria = Mensajeria::find($id);
         $mensajeria->fill($request->all());
         $mensajeria->save();
-        return redirect('Mensajeria')->with('mensaje','Editado correctamente');
+        return redirect('Mensajeria')->with('mensaje','Se ha actualizado correctamente');
     }
     /**
      * Remove the specified resource from storage.

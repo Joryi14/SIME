@@ -133,7 +133,7 @@ class EmergenciaController extends Controller
         $albergue->PersonasAlbergue = $albergue->PersonasAlbergue +$jefe->TotalPersonas;
         $albergue->save();
     }
-      return redirect('Emergencia')->with('nota2','Emergencia Activa');
+      return redirect('Emergencia')->with('nota2','Emergencia activa');
     }
 }
 

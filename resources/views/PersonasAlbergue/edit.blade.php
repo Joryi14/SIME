@@ -53,7 +53,7 @@
                           <label for="FechaDeSalida" class="col-sm-2 control-label">Fecha de salida: </label>
 
                           <div class="col-sm-8">
-                              <input type="date" name="FechaDeSalida" class= "form-control" value="{{$persona->FechaDeSalida}}">
+                              <input type="date" name="FechaDeSalida" class= "form-control" value="{{date('Y-m-d',strtotime($persona->FechaDeSalida))}}">
                           </div>
                         </div>
 
@@ -61,7 +61,7 @@
                               <label for="HoraDeSalida" class="col-sm-2 control-label">Hora de salida: </label>
 
                               <div class="col-sm-8">
-                                  <input type="time" name="HoraDeSalida" class= "form-control" value="{{$persona->HoraDeSalida}}" >
+                                  <input type="time" name="HoraDeSalida" class= "form-control" value="{{$persona->HoraDeSalida}}">
                               </div>
                             </div>
             </div>

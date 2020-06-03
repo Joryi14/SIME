@@ -61,7 +61,7 @@ class EntregaDonacionesAlbergueController extends Controller
         $entr = new EntregaDonacionesAlbergue();
         $entr->fill($request->all());
         $entr->save();
-        return redirect('EntregaDonacionesAlbergue/Filtrado')->with('exito','Se ha guardado correctamente');
+        return redirect('EntregaDonacionesAlbergue/Filtrado')->with('exito','Se ha agregado correctamente');
             }
          else
          return redirect('EntregaDonacionesAlbergue/create')->with('mensaje','Error Emergencia no existe');
@@ -165,7 +165,7 @@ class EntregaDonacionesAlbergueController extends Controller
       $EntregaDonacionesAlbergue = EntregaDonacionesAlbergue::find($id);
       $EntregaDonacionesAlbergue->fill($request->all());
       $EntregaDonacionesAlbergue->save();
-        return redirect('EntregaDonacionesAlbergue/Filtrado')->with('exito','se ha editado correctamente');
+        return redirect('EntregaDonacionesAlbergue/Filtrado')->with('exito','Se ha actualizado correctamente');
     }
 
     /**

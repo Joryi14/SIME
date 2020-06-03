@@ -168,6 +168,7 @@ Route::group(['prefix' => '/','middleware'=> ['role:Admin|Director|Voluntario']]
     Route::put('Albergue/{Albergue}','AlbergueController@update');
     Route::delete('Albergue/{Albergue}','AlbergueController@delete')->name('albergue_delete');
     Route::post('Albergue/getUsers','AlbergueController@getUsers')->name('Get_UsersA');
+    Route::get('AlbergueE/{id}','AlbergueController@Estado')->name('albergue_estado');
 });
     Route::group(['prefix' => '/'], function () {
     Route::put('user/{user}','user@update')->name('user_edit');
@@ -193,7 +194,7 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director']], function
     Route::post('UserRol/store','UserRolController@store');
     Route::post('UserRol/getUsers','UserRolController@getUsers')->name('Get_Users');
     Route::post('UserRol/getRoles','UserRolController@getRoles')->name('Get_Roles');
-    Route::get('usuarioE/{id}','user@Estado')->name('emergencia_estado');
+    Route::get('usuarioE/{id}','user@Estado')->name('user_estado');
 });
     Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Autor']], function () {
     

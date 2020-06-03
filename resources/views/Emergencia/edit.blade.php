@@ -23,9 +23,10 @@
 
       <div class="form-group">
           <label for="Categoria" class="col-sm-2 control-label">Categoría: </label>
-
-          <div class="col-sm-8">
-              <input type="text" name="Categoria" class= "form-control" value="{{$emergencia->Categoria}}" readonly="readonly">
+          <div class="btn-group-horizontal" style="margin-top:2%">
+            <input type="radio" name="Categoria" value="Grave"@if($emergencia->Categoria =="Grave") CHECKED @endif><span style="padding:1%; color:red">Grave</span>
+            <input type="radio" name="Categoria" value="Moderada" @if($emergencia->Categoria =="Moderada") CHECKED @endif><span style="padding:1%; color:orange">Moderada </span>
+            <input type="radio" name="Categoria" value="Leve" @if($emergencia->Categoria =="Leve") CHECKED @endif><span style="padding:1%; color:green">Leve </span>
           </div>
         </div>
 
@@ -33,7 +34,7 @@
             <label for="TipoDeEmergencia" class="col-sm-2 control-label">Tipo de emergencia: </label>
 
             <div class="col-sm-8">
-                <input type="text" name="TipoDeEmergencia" class= "form-control" value="{{$emergencia->TipoDeEmergencia}}" readonly="readonly">
+                <input type="text" name="TipoDeEmergencia" class= "form-control" value="{{$emergencia->TipoDeEmergencia}}">
             </div>
           </div>
 
@@ -42,7 +43,7 @@
               <label for="Descripcion" class="col-sm-2 control-label">Descripción: </label>
 
               <div class="col-sm-8">
-                  <input type="text" name="Descripcion" class= "form-control" value="{{$emergencia->Descripcion}}" readonly="readonly">
+                  <input type="text" name="Descripcion" class= "form-control" value="{{$emergencia->Descripcion}}">
               </div>
             </div>
 
@@ -66,10 +67,7 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="Estado">Estado</label>
                 <div class="col-sm-8">
-                <select class="form-control select2"  data-minimum-results-for-search="Infinity" name="Estado" value=""  style="width: 50%;">
-                  <option value="Activa" @if ($emergencia->Estado == 'Activa') selected="selected" @endif>Activa</option>
-                  <option value="Inactiva" @if ($emergencia->Estado == 'Inactiva') selected="selected" @endif>Inactiva</option>
-                </select>
+                  <input type="text" name="Estado" class= "form-control" value="{{$emergencia->Estado}}" readonly="readonly">
                 </div>
               </div>
        <div class="panel-footer">

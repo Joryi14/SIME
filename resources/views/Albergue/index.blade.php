@@ -85,6 +85,8 @@ $(function () {
 @section('Contenido')
 @include('Includes.mensaje-Error')
 @include('Includes.mensaje-Succes')
+@include('Includes.inactiva')
+@include('Includes.activa')
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h4 class="content-row-title">Albergue
@@ -135,6 +137,8 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
+              <a href="/AlbergueE/{{$item->idAlbergue}}" class="btn-accion-tabla tooltipsC" title="Actualizar estado">
+                <i class="glyphicon glyphicon-refresh text-warning"></i></a>
               @endrole
             <button  class="show-modal btn-accion-tabla tooltipsC"title="Información de albergue" data-toggle="modal" data-target="#Detalle"  data-du="{{$item->Duchas}}" data-ino="{{$item->inodoros}}" data-edc="{{$item->EspaciosDeCocina}}" data-bo="{{$item->Bodega}}" data-lon="{{$item->Longitud}}" data-lat="{{$item->Latitud}}" data-tip ="{{$item->TipoDeInstalacion}}" data-nec="{{$item->Nececidades}}" data-fec="{{date('d-m-Y',strtotime($item->created_at))}}" data-per ="{{$item->PersonasAlbergue}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
@@ -149,7 +153,7 @@ $(function () {
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"><b>Información de retiro de paquetes</b></h4>
+        <h4 class="modal-title"><b>Información de albergue</b></h4>
       </div>
       <div class="modal-body">
         <div class="row">

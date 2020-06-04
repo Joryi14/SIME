@@ -76,7 +76,7 @@ class NoticiaController extends Controller
         $noticia->Articulo = $request->Articulo;
          //$noticia->PDF = $request->PDF;
         $noticia ->save();
-        return redirect('Noticia')->with('mensaje','Se ha agregado correctamente');
+        return redirect('Noticia')->with('exito','Se ha agregado correctamente');
     }
 
     /**
@@ -136,7 +136,7 @@ class NoticiaController extends Controller
        }
           $noticia ->Articulo = $request->input('Articulo');
         $noticia->save();
-        return redirect('Noticia')->with('mensaje','Editado correctamente');
+        return redirect('Noticia')->with('exito','Se ha actualizado correctamente');
     }
 
     /**
@@ -158,6 +158,6 @@ class NoticiaController extends Controller
       $pdf_path = public_path().'/PDF/'.$noticia->PDF;
       unlink($pdf_path);}
       $noticia->delete();
-      return redirect('Noticia')->with('Se ha eliminado correctamente');
+      return redirect('Noticia')->with('exito','Se ha eliminado correctamente');
     }
 }

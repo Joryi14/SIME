@@ -28,7 +28,7 @@ class ValidacionNoticias extends FormRequest
             //
             'Titulo'=> 'required|max:100',
             'IdAutor'=> 'required',
-            'Articulo'=> 'required|max:300',
+            'Articulo'=> 'required|max:3000',
 
             
         ];
@@ -43,7 +43,7 @@ class ValidacionNoticias extends FormRequest
             'IdAutor.required' => ' El autor ese requerido',
             'Articulo.required' => ' El artículo es requerido',
             'Titulo.max' => 'El titulo no debe ser mayor a 100 caracteres',
-            'Articulo.max' => 'El articulo no debe ser mayor a 300 caracteres',
+            'Articulo.max' => 'El articulo no debe ser mayor a 3000 caracteres',
         ];
     }
 }

@@ -77,6 +77,7 @@ $(function () {
           <br>
         </div>
         <div class="panel-body">
+          <div class="table-responsive">
           <table id="Jefe_table" class="table table-bordered table-striped">
             <thead>
             <tr>
@@ -116,7 +117,8 @@ $(function () {
                   </td>
                   </tr>
                 @endforeach
-          </table>  
+          </table>
+          </div>  
       </div>
     <div class="modal modal-default fade" id="Detalle">
       <div class="modal-dialog">

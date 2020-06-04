@@ -78,7 +78,7 @@ $(function () {
   </div>
 <div class="panel-body">
   <div class="content-row">
-            
+    <div class="table-responsive">
             <table id="Noticia_table" class="table table-bordered">
             <thead>
             <tr>
@@ -130,7 +130,8 @@ $(function () {
               </td>
               </tr>
             @endforeach
-          </table>    
+          </table>   
+    </div> 
       </div>
    </div>
 @endsection

@@ -78,6 +78,7 @@ $(function () {
           <br>
         </div>
         <div class="panel-body">
+          <div class="table-responsive">
           <table id="Familias_table" class="table table-bordered table-striped">
               <thead>
             <tr>
@@ -125,6 +126,7 @@ $(function () {
               </tr>
             @endforeach
           </table>
+          </div>
         </div>
       </div>
       <div class="modal modal-default fade" id="Detalle">

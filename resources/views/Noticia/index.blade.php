@@ -81,12 +81,10 @@ $(function () {
               @endif
             </td>
               <td>
-                  @if($item->Videos != null)
-                <video width="200" height="120"  controls>
-                  <source src='Video/{{$item->Videos}}' type="video/mp4">
-                  </video>
+                @if($item->Videos != null)
+                 <a style="color: blue" href="{{$item->Videos}}">{{$item->Videos}}</a> 
               @endif
-              </td>
+                </td>
               <td>
               @if($item->PDF != null)   
                 {{$item->PDF}}

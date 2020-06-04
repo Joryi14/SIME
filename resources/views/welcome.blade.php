@@ -41,11 +41,12 @@
             <a class="nav-link js-scroll-trigger" href="#portfolio">Noticias</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Inscripción de voluntarios</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#Mapas">Mapas</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Inscripción de voluntarios</a>
+          </li>
+          
               @if (Route::has('login'))
               @auth
               <li class="nav-item">
@@ -150,6 +151,32 @@
       </div>
     </div>
   </section>
+  <section class="page-section" id="Mapas">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Mapas</h2>
+          </div>
+      </div>
+      <br><br>
+      <div class="row">
+        <div  class="col-sm-6">
+        <h3 class="text-center">Albergues</h3>
+       <div id="mapid" style="margin-right: auto;margin-left: auto;  width: 100%;
+       height: 400px; ">
+      </div>
+      </div>
+      <div class="col-sm-6">
+        <h3 class="text-center">Emergencias</h3>
+        <div id="mapid2" style="margin-right: auto;margin-left: auto;  width: 100%;
+        height: 400px; ">
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+
   <!-- Team -->
   <section class="bg-light page-section" id="team">
     <div class="container">
@@ -251,30 +278,7 @@
       </div>
     </div>
   </section>
-  <section class="page-section" id="Mapas">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">Mapas</h2>
-          </div>
-      </div>
-      <br><br>
-      <div class="row">
-        <div  class="col-sm-6">
-        <h3 class="text-center">Albergues</h3>
-       <div id="mapid" style="margin-right: auto;margin-left: auto;  width: 100%;
-       height: 400px; ">
-      </div>
-      </div>
-      <div class="col-sm-6">
-        <h3 class="text-center">Emergencias</h3>
-        <div id="mapid2" style="margin-right: auto;margin-left: auto;  width: 100%;
-        height: 400px; ">
-        </div>
-      </div>
-    </div>
-    </div>
-  </section>
+  
 
   <!-- Footer -->
   <footer class="footer">
@@ -310,9 +314,7 @@
                   @endif
                   <p>{{$item->Articulo}}</p>
                   @if($item->Videos != null)
-                  <video width="600" height="300" controls>
-                 <source src='Video/{{$item->Videos}}' type="video/mp4">
-                 </video>
+                <span>Link del video: </span> <a style="color:black" href="{{$item->Videos}}">{{$item->Videos}}</a></p>
                  @endif
                   <ul class="list-inline">
                     <li>Fecha de publicación: {{$item->updated_at}}</li>

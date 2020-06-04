@@ -56,18 +56,19 @@ class NoticiaController extends Controller
            $file->move(public_path().'/img/', $name);
            $noticia->Imagenes = $name;
          }
-            if($request->hasFile('Videos')){
-           $file =$request->file('Videos');
-           $nameV = time().$file->getClientOriginalName();
-           $file->move(public_path().'/Video/', $nameV);
-           $noticia->Videos = $nameV;
-         }
+        //     if($request->hasFile('Videos')){
+        //    $file =$request->file('Videos');
+        //    $nameV = time().$file->getClientOriginalName();
+        //    $file->move(public_path().'/Video/', $nameV);
+        //    $noticia->Videos = $nameV;
+        //  }
          if($request->hasFile('PDF')){
           $file =$request->file('PDF');
           $nameP = time().$file->getClientOriginalName();
           $file->move(public_path().'/PDF/', $nameP);
           $noticia->PDF = $nameP;
         }
+        $noticia->Videos = $request->Videos;
         $noticia->Titulo = $request->Titulo;
         $noticia->IdAutor = $request->IdAutor;
         // $noticia->Imagenes = $;
@@ -114,6 +115,7 @@ class NoticiaController extends Controller
         $noticia = Noticia::find($id);
         $noticia ->Titulo = $request->input('Titulo');
         $noticia ->IdAutor = $request->input('IdAutor');
+        $noticia->Videos = $request->Videos;
         if($request->hasFile('Imagenes')){
           $file =$request->file('Imagenes');
           $name = time().$file->getClientOriginalName();
@@ -121,12 +123,12 @@ class NoticiaController extends Controller
           $noticia->Imagenes = '/img/'+$name;
         }
 
-           if($request->hasFile('Videos')){
-          $file =$request->file('Videos');
-          $nameV = time().$file->getClientOriginalName();
-          $file->move(public_path().'/Video/', $nameV);
-          $noticia->Videos = $nameV;
-        }
+        //    if($request->hasFile('Videos')){
+        //   $file =$request->file('Videos');
+        //   $nameV = time().$file->getClientOriginalName();
+        //   $file->move(public_path().'/Video/', $nameV);
+        //   $noticia->Videos = $nameV;
+        // }
 
         if($request->hasFile('PDF')){
          $file =$request->file('PDF');
@@ -135,6 +137,7 @@ class NoticiaController extends Controller
          $noticia->PDF = $nameP;
        }
           $noticia ->Articulo = $request->input('Articulo');
+
         $noticia->save();
         return redirect('Noticia')->with('exito','Se ha actualizado correctamente');
     }

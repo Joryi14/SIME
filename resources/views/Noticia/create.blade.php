@@ -28,8 +28,10 @@
               </div>
               <div class="form-group">
                   <label for="Videos" class="col-sm-2 control-label">Videos: </label>
-                      <input type="file" name="Videos">
-                </div>
+                  <div class="col-sm-9">
+                      <input type="text" name="Videos" class="form-control">
+                  </div>
+                    </div>
                 <div class="form-group">
                     <label for="Articulo" class="col-sm-2 control-label">Artículo: </label>
                     <div class="col-sm-9">

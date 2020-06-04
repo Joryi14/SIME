@@ -40,15 +40,14 @@
 
               <div class="form-group">
                   <label for="Videos" class="col-sm-2 control-label">Videos: </label>
-
-                      <input type="file" name="Videos">
-
+                  <div class="col-sm-9">
+                      <input type="text" name="Videos" class="form-control" value="{{$noticia->Videos}}">
                 </div>
+                    </div>
                 <div class="form-group">
                     <label for="Articulo" class="col-sm-2 control-label">Artículo: </label>
                     <div class="col-sm-9">
                         <textarea required=""  class="form-control" rows="10" cols="30" name="Articulo">{{$noticia->Articulo}}</textarea>
-
                       </div>
                   </div>
                   <div class="form-group">

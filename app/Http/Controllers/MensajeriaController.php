@@ -97,7 +97,7 @@ class MensajeriaController extends Controller
     {
           $acciones = Acciones::find($id);
           $acciones->delete();
-          return redirect('Mensajeria')->with('mensaje','Se ha eliminado correctamente');
+          return redirect('Mensajeria')->with('exito','Se ha eliminado correctamente');
     }
     /**
      * Update the specified resource in storage.
@@ -111,7 +111,7 @@ class MensajeriaController extends Controller
         $mensajeria = Mensajeria::find($id);
         $mensajeria->fill($request->all());
         $mensajeria->save();
-        return redirect('Mensajeria')->with('mensaje','Se ha actualizado correctamente');
+        return redirect('Mensajeria')->with('exito','Se ha actualizado correctamente');
     }
     /**
      * Remove the specified resource from storage.
@@ -123,7 +123,7 @@ class MensajeriaController extends Controller
     {   
         $user = Mensajeria::find($id);
         $user->delete();
-        return redirect('Mensajeria')->with('mensaje','Se ha eliminado correctamente');
+        return redirect('Mensajeria')->with('exito','Se ha eliminado correctamente');
     
     }
 }

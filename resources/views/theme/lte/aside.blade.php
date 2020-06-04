@@ -3,7 +3,7 @@
           @role('Admin|Director')
           <li>
             <a href="#demo7" class="list-group-item " data-toggle="collapse">
-              <i class="fa fa-users"></i> <span>Control de usuarios</span><span class="pull-right-container">
+              <i class="fa fa-users"></i><span>Control de usuarios</span><span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
@@ -23,9 +23,9 @@
               </a>
               @role('Director|Admin|Censo')
               <li class="collapse" id="demo4">  
-                <a class="list-group-item child" href="{{ route('inicio_jefe') }}"><i class="fa fa-circle-o"></i><em> Jefe de familia</em></a>
-                <a class="list-group-item child" href="{{ route('inicio_familia')}}"><i class="fa fa-circle-o"></i><em> Familias</em></a>
-                <a class="list-group-item child" href="{{ route('inicio_censo')}}"><i class="fa fa-circle-o"></i><em> Censo</em></a>
+                <a class="list-group-item child" href="{{ route('inicio_jefe') }}"><i class="fa fa-circle-o"></i><em>Jefe de familia</em></a>
+                <a class="list-group-item child" href="{{ route('inicio_familia')}}"><i class="fa fa-circle-o"></i><em>Familias</em></a>
+                <a class="list-group-item child" href="{{ route('inicio_censo')}}"><i class="fa fa-circle-o"></i><em>Censo</em></a>
               </li>
               @endrole
             </li>
@@ -45,7 +45,7 @@
               </span></a>
             <div class="collapse" id="demo3">
               @role('Admin|Director')
-              <a class="list-group-item child" href="{{route('emergencia_create')}}"><i class="fa fa-exclamation-triangle"></i><em> Crear emergencia</em></a>
+              <a class="list-group-item child" href="{{route('emergencia_create')}}"><i class="fa fa-exclamation-triangle"></i><em>Crear emergencia</em></a>
               @endrole
               @role('Admin|Director|Voluntario')
               <a class="list-group-item child" href="{{route('inicio_personasAlbergue2')}}"><i class="fa  fa-child"></i><span><em>Personas en albergue</em></span></a>
@@ -77,7 +77,7 @@
        <li class="list-group-item"><a  href="{{route('inicio_voluntarioweb')}}"><i class="fa fa-users"></i> <span>Inscripción voluntarios</span></a></li>
        @endrole   
        @role('Admin|Autor')
-          <li class="list-group-item"><a href="{{route('inicio_noticia')}}"><i class="fa fa-newspaper-o"></i> <span>Noticias</span></a></li>
+          <li class="list-group-item"><a href="{{route('inicio_noticia')}}"><i class="fa fa-newspaper-o"></i><span>Noticias</span></a></li>
        @endrole
         </ul>
       </div>

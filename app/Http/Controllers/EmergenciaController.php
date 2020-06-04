@@ -147,10 +147,6 @@ class EmergenciaController extends Controller
     {
 
         $emergencia = Emergencia::find($id);
-        if(Mensajeria::where('idEmergencia',$id)->first()){
-        return redirect('Emergencia')->with('mensaje','No se puede eliminar la emergencia tiene mensajes');
-
-        }
         if(EntregaDonaciones::where('idEmergencia',$id)->first()){
             return redirect('Emergencia')->with('mensaje','No se puede eliminar la emergencia tiene entregas de donaciones asignadas');
     

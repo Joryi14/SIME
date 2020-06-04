@@ -76,7 +76,7 @@
        @role('Admin|Director|Voluntario')
        <li class="list-group-item"><a  href="{{route('inicio_voluntarioweb')}}"><i class="fa fa-users"></i> <span>Inscripción voluntarios</span></a></li>
        @endrole   
-       @role('Admin|Autor')
+       @role('Admin|Autor|Director')
           <li class="list-group-item"><a href="{{route('inicio_noticia')}}"><i class="fa fa-newspaper-o"></i><span>Noticias</span></a></li>
        @endrole
         </ul>

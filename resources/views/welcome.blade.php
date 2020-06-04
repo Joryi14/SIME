@@ -141,7 +141,9 @@
           </a>
           <div class="portfolio-caption">
             <h4>{{$item->Titulo}}</h4>
-            <p class="text-muted">{{$item->IdAutor}}</p>
+            <p style="white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;" class="text-muted">{{$item->Articulo}}</p>
           </div>
         </div>
         @endforeach

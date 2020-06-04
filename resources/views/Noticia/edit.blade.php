@@ -47,8 +47,9 @@
                 <div class="form-group">
                     <label for="Articulo" class="col-sm-2 control-label">Artículo: </label>
                     <div class="col-sm-9">
-                        <input type="text" name="Articulo" class="form-control" value=" {{$noticia->Articulo}}" >
-                    </div>
+                        <textarea required=""  class="form-control" rows="10" cols="30" name="Articulo">{{$noticia->Articulo}}</textarea>
+
+                      </div>
                   </div>
                   <div class="form-group">
                       <label for="PDF" class="col-sm-2 control-label">PDF: </label>

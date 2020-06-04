@@ -4,33 +4,10 @@
 @endsection
 @section('Script')
 <script type="text/javascript">
-  document.querySelector('#form1').addEventListener('submit', function(e) {
-  var form = this;
-  e.preventDefault(); // <--- prevent form from submitting
-  swal({
-      title: "Esta seguro de eliminar?",
-      text: "Una vez eliminado no se puede recuperar!",
-      icon: "warning",
-      buttons: [
-        'Cancelar!',
-        'Aceptar!'
-      ],
-      dangerMode: true,
-    }).then(function(isConfirm) {
-      if (isConfirm) {
-        swal({
-          title: 'Exito!',
-          text: 'Se ha Eliminado el registro!',
-          icon: 'success'
-        }).then(function() {
-          form.submit(); // <--- submit form programmatically
-        });
-      } else {
-        swal("Cancelado","" ,"error");
-      }
-    })
-});
-</script>
+  $(document).on('click', '.show-modal', function() {
+            $('#ar').text($(this).data('ar'));
+         });
+ </script>
 <script src="{{asset("assets/$theme/bootflat-admin/datatables.min.js")}}"></script>
 <script>
 $(function () {
@@ -88,7 +65,6 @@ $(function () {
                 <th>Id del autor</th>
                 <th>Imagenes</th>
                 <th>Videos</th>
-                <th>Artículo</th>
                 <th>PDF</th>
                 <th>Fecha</th>
                 <th>Acciones</th>
@@ -112,8 +88,6 @@ $(function () {
               @endif
               </td>
               <td>
-                <p>{{$item->Articulo}}<p></td>  
-              <td>
               @if($item->PDF != null)   
                 {{$item->PDF}}
               @endif
@@ -128,6 +102,7 @@ $(function () {
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
+              <button class="show-modal btn-accion-tabla tooltipsC" title="Mostar articulo" data-toggle="modal" data-target="#Detalle"  data-ar="{{$item->Articulo}}" ><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>
             @endforeach
@@ -135,4 +110,24 @@ $(function () {
     </div> 
       </div>
    </div>
+   <div class="modal modal-default fade" id="Detalle">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><b>Articulo</b></h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+         <div class="form-group ">
+              <textarea required="" id="ar" class="form-control" rows="10" cols="30" name="Articulo" readonly></textarea>
+        </div></div><br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline btn-danger pull-left" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection

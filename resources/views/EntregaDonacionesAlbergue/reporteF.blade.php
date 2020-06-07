@@ -61,7 +61,7 @@
                     <td>{{$item->IdEntregaA}}</td>
                     <td>{{$item->Cedula}} </td>
                     <td>{{$item->Nombre}}</td>
-                    <td>{{$item->idEmergencias}}     {{$item->NombreEmergencias}}</td>
+                    <td>Id: {{$item->idEmergencias}} <br> Nombre: {{$item->NombreEmergencias}}</td>
                     <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                     </tr>
             @endforeach

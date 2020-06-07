@@ -69,8 +69,8 @@
         <td>
           <img style='display:block; width:100px; height:100px;' src= "{{url('Foto/'.$item->Foto)}}" alt="base64">
         </td>
-        <td>{{$item->idEmergencias}} {{$item->NombreEmergencias}}</td>
         <td>{{$item->Cantidad}}</td>
+        <td>Id: {{$item->idEmergencias}} <br> Nombre: {{$item->NombreEmergencias}}</td>
         <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
 
     </tr>

@@ -63,6 +63,10 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Administrado
     Route::get('Inventario/pdf', 'InventarioController@generar')->name('inventario_reporte');
     Route::post('Inventario/getEmergencia','InventarioController@getEmergencia')->name('Get_Emerge');
     Route::post('Inventario/ReporteFecha', 'InventarioController@ReporteFecha')->name('inventario_reporteF');
+    Route::get('Inventario/pdf_Filtrado', 'InventarioController@generarF')->name('inventario_reporteFi');
+    Route::post('Inventario/ReporteFecha_Filtrado', 'InventarioController@ReporteFechaF')->name('inventario_reporteFFi');
+
+
 });
 Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Voluntario']], function () {
     Route::get('EntregaDonaciones', 'EntregaDonacionesController@index')->name('inicio_EntregaDonaciones');

@@ -93,7 +93,41 @@ class InventarioController extends Controller
         return $pdf->stream('inventario'.'.pdf');
 
     }
+    public function ReporteFechaF(request $request){
 
+        $inventario = new Inventario();
+        $inventario = DB::table('inventario')->join('emergencia','inventario.idEmergencias','=','emergencia.idEmergencias')->where('emergencia.estado','Activa')->select('inventario.idInventario',
+        'emergencia.idEmergencias',
+        'emergencia.NombreEmergencias',
+        'inventario.Suministros',
+        'inventario.Colchonetas',
+        'inventario.Cobijas',
+        'inventario.Ropa', 
+        'inventario.created_at')->get();
+        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        $view = view ('Inventario.reporteF', compact('inventario', 'today'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('inventario'.'.pdf');
+    }
+    public function generarF()
+    {
+        $inventario = new Inventario();
+        $inventario = DB::table('inventario')->join('emergencia','inventario.idEmergencias','=','emergencia.idEmergencias')->where('emergencia.estado','Activa')->select('inventario.idInventario',
+        'emergencia.idEmergencias',
+        'emergencia.NombreEmergencias',
+        'inventario.Suministros',
+        'inventario.Colchonetas',
+        'inventario.Cobijas',
+        'inventario.Ropa', 
+        'inventario.created_at')->get();
+        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        $view = view ('Inventario.reporteF', compact('inventario', 'today'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('inventario'.'.pdf');
+
+    }
     /**
      * Display the specified resource.
      *

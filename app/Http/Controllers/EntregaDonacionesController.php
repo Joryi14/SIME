@@ -240,8 +240,8 @@ else
         
       
         $EntregaDonaciones = new EntregaDonaciones();
-        $EntregaDonaciones = DB::table('entregadonaciones')->join('emergencia','idEmergencia','=','emergencia.idEmergencias')->join('jefedefamilia','entregadonaciones.IdJefe','=','jefedefamilia.IdJefe')->join('users','IdVoluntario','=','users.id')->where('emergencia.Estado','Activa')->select('entregadonaciones.IdEntrega','entregadonaciones.created_at','entregadonaciones.IdRetiroPaquetes','entregadonaciones.Cantidad','entregadonaciones.Foto','users.Cedula as Ced','users.name','jefedefamilia.Cedula','jefedefamilia.Nombre','jefedefamilia.Apellido1','emergencia.idEmergencias','emergencia.NombreEmergencias')->where('created_at','>=',$request->Fecha1,'created_at','<=',$request->Fecha2)->get();
-    
+        $EntregaDonaciones = DB::table('entregadonaciones')->join('emergencia','idEmergencia','=','emergencia.idEmergencias')->join('jefedefamilia','entregadonaciones.IdJefe','=','jefedefamilia.IdJefe')->join('users','IdVoluntario','=','users.id')->where('emergencia.Estado','Activa')->whereBetween('entregadonaciones.created_at', array($request->Fecha1,$request->Fecha2))->select('entregadonaciones.IdEntrega','entregadonaciones.created_at','entregadonaciones.IdRetiroPaquetes','entregadonaciones.Cantidad','entregadonaciones.Foto','users.Cedula as Ced','users.name','jefedefamilia.Cedula','jefedefamilia.Nombre','jefedefamilia.Apellido1','emergencia.idEmergencias','emergencia.NombreEmergencias')->get();
+        dd($EntregadoDonaciones);
 
         $today = Carbon::now()->format('d/m/Y h:i:s A');
         $view = view ('EntregaDonaciones.reporteF', compact('EntregaDonaciones', 'today'))->render();

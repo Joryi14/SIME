@@ -45,9 +45,12 @@
       <div class="form-group">
         <label class="col-sm-2 control-label">
           Ropa:</label>
-        <div class="checkbox">
+          <div class="col-sm-6">
+            <label class="container">
               <input type="hidden" name="Ropa" value="0" />
               <input type="checkbox"  name="Ropa" value="1"/>
+              <span class="checkmark"></span>
+                                </label>
       </div>
       </div>
     <div class="panel-footer">

@@ -80,10 +80,11 @@
                           Persona Con Discapacidad:
                         </label>
                         <div class="col-sm-6">
-                          <div class="checkbox">
+                          <label class="container">
                               <input type="hidden" name="PcD" value="No" />
                               <input type="checkbox" name="PcD" value="Si">
-                              </div>
+                              <span class="checkmark"></span>
+                            </label>
                         </div>
                       </div>
                       </div>
@@ -93,10 +94,11 @@
                           Mujer Gestante:
                         </label>
                         <div class="col-sm-6">
-                        <div class="checkbox">
+                          <label class="container">
                                 <input type="hidden" name="MG" value="No" />
                                 <input type="checkbox" name="MG" value="Si">
-                              </div>
+                                <span class="checkmark"></span>
+                              </label>
                         </div>
                       </div>
                       </div>
@@ -105,24 +107,28 @@
                           <label class="col-sm-3 control-label">
                             Persona Indigena:
                           </label>
-                            <div class="col-sm-6">
-                              <div class="checkbox">
+                          <div class="col-sm-6">
+                            <label class="container">
                                 <input type="hidden" name="PI" value="No" />
                                       <input type="checkbox" class="col-sm-6" name="PI" value="Si">
+                                      <span class="checkmark"></span>
+                            </label>
                               </div>
                                 </div>
                         </div>
-                      </div>
+                      
                       <div class="row">
                           <div class="form-group">
                             <label class="col-sm-3 control-label">
                               Persona Migrante:
                             </label>
-                          <div class="col-sm-6">
-                                <div class="checkbox">
+                            <div class="col-sm-6">
+                              <label class="container">
                                     <input type="hidden" name="PM" value="No" />
                                     <input type="checkbox" name="PM" value="Si">
-                                </div>
+                                    <span class="checkmark"></span>
+                                  </label>
+                                  </div>
                           </div>
                       </div>
                               <div class="form-group">

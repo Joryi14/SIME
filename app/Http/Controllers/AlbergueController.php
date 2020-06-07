@@ -97,9 +97,21 @@ class AlbergueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function PersonasAlbergue($id)
+    {   
+        $suma = 0;
+        $alber = DB::table('registropersonaalbergue')->join('jefedefamilia','jefedefamilia.IdJefe','=','registropersonaalbergue.idJefe')
+        ->join('albergue','albergue.idAlbergue','=','registropersonaalbergue.idAlbergue')
+        ->join('emergencia','emergencia.idEmergencias','=','registropersonaalbergue.idEmergencias')
+        ->select('registropersonaalbergue.idregistroA', 'jefedefamilia.IdJefe', 'jefedefamilia.TotalPersonas','emergencia.Estado', 'albergue.idAlbergue')
+        ->where('emergencia.Estado','=','Activa')->where('albergue.idAlbergue',$id)->get();
+        foreach($alber as $item){
+            $suma = $suma + $item->TotalPersonas;
+        }
+        $al = Albergue::find($id);
+        $al->PersonasAlbergue = $suma;
+        $al->save();
+        return redirect('Albergue')->with('nota2','Total de personas se ha actualizado correctamente');
     }
 
     /**

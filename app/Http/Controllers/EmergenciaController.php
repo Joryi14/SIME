@@ -118,6 +118,8 @@ class EmergenciaController extends Controller
         $jefe = JefeDeFamilia::find($item->idJefe);
         $albergue = Albergue::find($item->idAlbergue);
         $albergue->PersonasAlbergue = $albergue->PersonasAlbergue -$jefe->TotalPersonas;
+        if($albergue->PersonasAlbergue < 0){
+        $albergue->PersonasAlbergue = 0;}
         $albergue->save();
      }
      return redirect('Emergencia')->with('nota','Emergencia Inactiva');
@@ -125,14 +127,7 @@ class EmergenciaController extends Controller
      else if($emergencia->Estado == "Inactiva")
      {
       $emergencia->Estado ="Activa";
-      $emergencia->save();
-      $persona = PersonasAlbergue::where('idEmergencias',$id)->get(); 
-      foreach($persona as $item){
-        $jefe = JefeDeFamilia::find($item->idJefe);
-        $albergue = Albergue::find($item->idAlbergue);
-        $albergue->PersonasAlbergue = $albergue->PersonasAlbergue +$jefe->TotalPersonas;
-        $albergue->save();
-    }
+      $emergencia->save(); 
       return redirect('Emergencia')->with('nota2','Emergencia activa');
     }
 }

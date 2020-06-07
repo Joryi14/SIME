@@ -63,20 +63,16 @@ class PersonasAlbergueController extends Controller
             {
                return redirect('PersonasAlbergue/create')->with('mensaje','Error persona ya esta en albergue');
             }
-         $Albergue =Albergue::find($request->idAlbergue);
-         $jefe =JefeDeFamilia::find($request->idJefe);
-         $suma = $Albergue->PersonasAlbergue+$jefe->TotalPersonas;
-         if($Albergue->Capacidad >= $suma){
+        if(DB::table('registropersonaalbergue')->join('emergencia','registropersonaalbergue.idEmergencias','=','emergencia.idEmergencias')->where('idJefe',$request->idJefe)->where('emergencia.Estado','Activa')->first()){
+         return redirect('PersonasAlbergue/create')->with('mensaje','Error la persona ya esta en un albergue por una emergencia activa');
+        }    
         $persona = new PersonasAlbergue();
         $persona->HoraDeSalida = Carbon::now();
         $persona->FechaDeSalida = Carbon::now();
         $persona->fill($request->all());
-        $Albergue->PersonasAlbergue += $jefe->TotalPersonas;
         $persona->save();
-        $Albergue->save();
         return redirect('PersonasAlbergue/Filtrado')->with('exito','Se ha agregado correctamente');
-    }else
-       return redirect('PersonasAlbergue/create')->with('mensaje','Error albergue sin capacidad');
+    
    }
        else
        return redirect('PersonasAlbergue/create')->with('mensaje','Error Emergencia no existe');
@@ -198,13 +194,6 @@ class PersonasAlbergueController extends Controller
     public function delete($id, Request $request)
     {
       $persona = PersonasAlbergue::find($id);
-      $Albergue= Albergue::find($persona->idAlbergue);
-      $jefe = JefeDeFamilia::find($persona->idJefe);
-      $Albergue->PersonasAlbergue = $Albergue->PersonasAlbergue - $jefe->TotalPersonas;
-      if($Albergue->PersonaAlbergue < 0){
-         $Albergue->PersonaAlbergue = 0;
-         $Albergue->save();}
-      $Albergue->save();   
       $persona->delete();
       return redirect('PersonasAlbergue/Filtrado')->with('exito','Se ha eliminado correctamente');
     }

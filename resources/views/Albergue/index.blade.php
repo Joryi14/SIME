@@ -139,6 +139,8 @@ $(function () {
               </form>
               <a href="/AlbergueE/{{$item->idAlbergue}}" class="btn-accion-tabla tooltipsC" title="Actualizar estado">
                 <i class="glyphicon glyphicon-refresh text-warning"></i></a>
+                <a href="/AlbergueT/{{$item->idAlbergue}}" class="btn-accion-tabla tooltipsC" title="Total de personas">
+                  <i class="glyphicon glyphicon-upload text-primary"></i></a>
               @endrole
             <button  class="show-modal btn-accion-tabla tooltipsC"title="Información de albergue" data-toggle="modal" data-target="#Detalle"  data-du="{{$item->Duchas}}" data-ino="{{$item->inodoros}}" data-edc="{{$item->EspaciosDeCocina}}" data-bo="{{$item->Bodega}}" data-lon="{{$item->Longitud}}" data-lat="{{$item->Latitud}}" data-tip ="{{$item->TipoDeInstalacion}}" data-nec="{{$item->Nececidades}}" data-fec="{{date('d-m-Y',strtotime($item->created_at))}}" data-per ="{{$item->PersonasAlbergue}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>

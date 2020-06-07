@@ -96,7 +96,7 @@ $(function () {
     </div>
     <br>
     <div class="form-group">
-        <a href="{{route('Entregadonaciones_reporte')}}" class="btn btn-info" target="_blank">
+        <a href="{{route('Entregadonaciones_reporteFi')}}" class="btn btn-info" target="_blank">
               <i class="fa fa-fw fa-plus-circle"></i> Crear reporte de entrega de donaciones
         </a>
     </div>
@@ -111,7 +111,7 @@ $(function () {
                 <span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title"><b>Reporte de entrega de donaciones por fechas</b></h4>
             </div>
-              <form class= "form-horizontal" method="POST" action="/EntregaDonaciones/ReporteFecha" target="_blank">
+              <form class= "form-horizontal" method="POST" action="/EntregaDonaciones/ReporteFechaF" target="_blank">
                     @csrf
               <div class="modal-body">
                <div class="col-md-6">

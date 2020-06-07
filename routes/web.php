@@ -78,6 +78,8 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Voluntario']
     Route::post('EntregaDonaciones/getEmergencia','EntregaDonacionesController@getEmergeE')->name('Get_EmergeE');
     Route::get('EntregaDonaciones/pdf', 'EntregaDonacionesController@generar')->name('Entregadonaciones_reporte');
     Route::post('EntregaDonaciones/ReporteFecha', 'EntregaDonacionesController@ReporteFecha')->name('Entregadonaciones_reporteF');
+    Route::get('EntregaDonaciones/pdf_Filtrado', 'EntregaDonacionesController@generarF')->name('Entregadonaciones_reporteFi');
+    Route::post('EntregaDonaciones/ReporteFecha_Filtrado', 'EntregaDonacionesController@ReporteFechaF')->name('Entregadonaciones_reporteFFi');
 
 });
 Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Voluntario']], function () {

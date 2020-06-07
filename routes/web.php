@@ -95,6 +95,8 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Voluntario']
     Route::post('EntregaDonacionesAlbergue/getEmergencia','EntregaDonacionesAlbergueController@getEmergencia')->name('Get_IdEme');
     Route::get('EntregaDonacionesAlbergue/pdf', 'EntregaDonacionesAlbergueController@generar')->name('EntregadonacionesA_reporte');
     Route::post('EntregaDonacionesAlbergue/ReporteFecha', 'EntregaDonacionesAlbergueController@ReporteFecha')->name('EntregadonacionesA_reporteF');
+    Route::get('EntregaDonacionesAlbergue/pdf_Filtrado', 'EntregaDonacionesAlbergueController@generarF')->name('EntregadonacionesA_reporteFi');
+    Route::post('EntregaDonacionesAlbergue/ReporteFecha_Filtrado', 'EntregaDonacionesAlbergueController@ReporteFechaF')->name('EntregadonacionesA_reporteFFi');
 
 });
 Route::get('/home', 'HomeController@index')->name('home');

@@ -83,7 +83,7 @@
                                <label class="col-sm-2 control-label">
                                Duchas</label>
                                <div class="col-sm-6">
-                                <label class="container">
+                                <label class="containerC">
                                   <input type="hidden" name="Duchas" value="0" />
                                <input type="checkbox" class="col-sm-6" name="Duchas" value="1">
                                <span class="checkmark"></span>
@@ -97,7 +97,7 @@
                                <label class="col-sm-2 control-label">
                                 Inodoros</label>
                                 <div class="col-sm-6">
-                                  <label class="container">
+                                  <label class="containerC">
                                 <input type="hidden" name="inodoros" value="0" />
                                 <input type="checkbox" class="col-sm-6" name="inodoros" value="1">
                                 <span class="checkmark"></span>
@@ -111,7 +111,7 @@
                         <label class="col-sm-2 control-label">
                           Espacios de cocina</label>
                           <div class="col-sm-6">
-                            <label class="container">
+                            <label class="containerC">
                       <input type="hidden" name="EspaciosDeCocina" value="0" />
                       <input type="checkbox" class="col-sm-6" name="EspaciosDeCocina" value="1">
                       <span class="checkmark"></span>
@@ -124,7 +124,7 @@
                            <label class="col-sm-2 control-label">
                                 Bodega</label>
                                 <div class="col-sm-6">
-                                  <label class="container">
+                                  <label class="containerC">
                             <input type="hidden" name="Bodega" value="0" />
                               <input type="checkbox" class="col-sm-6" name="Bodega" value="1">
                               <span class="checkmark"></span>

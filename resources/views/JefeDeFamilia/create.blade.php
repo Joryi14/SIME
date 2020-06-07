@@ -80,7 +80,7 @@
                           Persona Con Discapacidad:
                         </label>
                         <div class="col-sm-6">
-                          <label class="container">
+                          <label class="containerC">
                               <input type="hidden" name="PcD" value="No" />
                               <input type="checkbox" name="PcD" value="Si">
                               <span class="checkmark"></span>
@@ -94,7 +94,7 @@
                           Mujer Gestante:
                         </label>
                         <div class="col-sm-6">
-                          <label class="container">
+                          <label class="containerC">
                                 <input type="hidden" name="MG" value="No" />
                                 <input type="checkbox" name="MG" value="Si">
                                 <span class="checkmark"></span>
@@ -108,7 +108,7 @@
                             Persona Indigena:
                           </label>
                           <div class="col-sm-6">
-                            <label class="container">
+                            <label class="containerC">
                                 <input type="hidden" name="PI" value="No" />
                                       <input type="checkbox" class="col-sm-6" name="PI" value="Si">
                                       <span class="checkmark"></span>
@@ -123,7 +123,7 @@
                               Persona Migrante:
                             </label>
                             <div class="col-sm-6">
-                              <label class="container">
+                              <label class="containerC">
                                     <input type="hidden" name="PM" value="No" />
                                     <input type="checkbox" name="PM" value="Si">
                                     <span class="checkmark"></span>

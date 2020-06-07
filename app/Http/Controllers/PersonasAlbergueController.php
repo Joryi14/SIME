@@ -201,7 +201,10 @@ class PersonasAlbergueController extends Controller
       $Albergue= Albergue::find($persona->idAlbergue);
       $jefe = JefeDeFamilia::find($persona->idJefe);
       $Albergue->PersonasAlbergue = $Albergue->PersonasAlbergue - $jefe->TotalPersonas;
-      $Albergue->save();
+      if($Albergue->PersonaAlbergue < 0){
+         $Albergue->PersonaAlbergue = 0;
+         $Albergue->save();}
+      $Albergue->save();   
       $persona->delete();
       return redirect('PersonasAlbergue/Filtrado')->with('exito','Se ha eliminado correctamente');
     }

@@ -61,16 +61,16 @@
   </tr>
 
       @foreach ($EntregaDonaciones as $item)
-        <tr>
+      <tr>
         <td>{{$item->IdEntrega}}</td>
-        <td>{{$item->User->Cedula}}</td>
-        <td>{{$item->jefeFamilia->Cedula}}</td>
+        <td>{{$item->Ced}}</td>
+        <td>Cedula:{{$item->Cedula}} <br> Nombre: {{$item->Nombre}} {{$item->Apellido1}}</td>
         <td>{{$item->IdRetiroPaquetes}}</td>
         <td>
-          <img style='display:block; width:100px; height:100px;' src='Foto/{{$item->Foto}}' alt="base64 test">
+          <img style='display:block; width:100px; height:100px;' src= "{{url('Foto/'.$item->Foto)}}" alt="base64">
         </td>
+        <td>{{$item->idEmergencias}} {{$item->NombreEmergencias}}</td>
         <td>{{$item->Cantidad}}</td>
-        <td>{{$item->Emergencia->idEmergencias}} {{$item->Emergencia->NombreEmergencias}}</td>
         <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
 
     </tr>

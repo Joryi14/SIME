@@ -221,4 +221,36 @@ class PersonasAlbergueController extends Controller
   }
 
 
+  public function generarF()
+  {
+   $persona = new PersonasAlbergue();
+   $persona = DB::table('registropersonaalbergue')->join('emergencia','registropersonaalbergue.idEmergencias','=','emergencia.idEmergencias')->join('jefedefamilia','registropersonaalbergue.idJefe','=','jefedefamilia.IdJefe')->join('albergue','registropersonaalbergue.idAlbergue','=','albergue.idAlbergue')->where('emergencia.Estado','Activa')->select('registropersonaalbergue.idregistroA',
+   'albergue.idAlbergue','albergue.Nombre as n','jefedefamilia.IdJefe','jefedefamilia.Cedula',
+   'emergencia.idEmergencias','registropersonaalbergue.LugarDeProcedencia',
+   'jefedefamilia.Nombre','jefedefamilia.Apellido1','registropersonaalbergue.FechaDeIngreso'
+   ,'emergencia.NombreEmergencias','registropersonaalbergue.HoraDeIngreso','registropersonaalbergue.FechaDeSalida'
+   ,'registropersonaalbergue.HoraDeSalida','registropersonaalbergue.created_at')->get();
+      $today = Carbon::now()->format('d/m/Y h:i:s A'); 
+      $view = view ('PersonasAlbergue.reporteF', compact('persona', 'today'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('persona'.'.pdf');
+
+  }
+
+  public function ReporteFechaF(request $request){
+      
+   $persona = new PersonasAlbergue();
+      $persona = DB::table('registropersonaalbergue')->join('emergencia','registropersonaalbergue.idEmergencias','=','emergencia.idEmergencias')->join('jefedefamilia','registropersonaalbergue.idJefe','=','jefedefamilia.IdJefe')->join('albergue','registropersonaalbergue.idAlbergue','=','albergue.idAlbergue')->where('emergencia.Estado','Activa')->select('registropersonaalbergue.idregistroA',
+      'albergue.idAlbergue','albergue.Nombre as n','jefedefamilia.IdJefe','jefedefamilia.Cedula',
+      'emergencia.idEmergencias','registropersonaalbergue.LugarDeProcedencia',
+      'jefedefamilia.Nombre','jefedefamilia.Apellido1','registropersonaalbergue.FechaDeIngreso'
+      ,'emergencia.NombreEmergencias','registropersonaalbergue.HoraDeIngreso','registropersonaalbergue.FechaDeSalida'
+      ,'registropersonaalbergue.HoraDeSalida','registropersonaalbergue.created_at')->get();
+    $today = Carbon::now()->format('d/m/Y h:i:s A');
+    $view = view ('PersonasAlbergue.reporteF', compact('persona', 'today'))->render();
+    $pdf = \App::make('dompdf.wrapper');
+    $pdf->loadHTML($view);
+    return $pdf->stream('persona'.'.pdf');
+}
    }

@@ -65,8 +65,8 @@ $(function () {
                   <tr>
                   <td>{{$item->IdEntregaA}}</td>
                   <td>Cedula: {{$item->Cedula}} <br> Nombre: {{$item->Nombre}}  {{$item->Apellido1}}</td>
-                  <td>{{$item->Nombre}}</td>
-                  <td>{{$item->idEmergencias}}     {{$item->NombreEmergencias}}</td>
+                  <td>Id: {{$item->idAlbergue}}<br> Nombre:  {{$item->Nombre}}</td>
+                  <td>Id: {{$item->idEmergencias}}<br> Nombre: {{$item->NombreEmergencias}}</td>
                   <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                   <td><a href="/EntregaDonacionesAlbergue/{{$item->IdEntregaA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar la entrega de donaciones en albergue">
                     <i class="fa fa-fw fa-pencil text-success"></i></a>

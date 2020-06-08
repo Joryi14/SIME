@@ -52,7 +52,7 @@
        <tr>
     <th>Número de entrega</th>
     <th>Cédula del voluntario</th>
-    <th>Cédula del jefe de familia</th>
+    <th>Jefe de familia</th>
     <th>Número de retiro de paquetes</th>
     <th>Foto</th>  
     <th>Cantidad</th>

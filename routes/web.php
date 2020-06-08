@@ -167,6 +167,9 @@ Route::group(['prefix' => '/','middleware'=> ['role:Admin|Director|Voluntario']]
     Route::post('PersonasAlbergue/getEmergencia','PersonasAlbergueController@getEmergencia')->name('Get_EmergenciaP');
     Route::get('PersonasAlbergue/pdf', 'PersonasAlbergueController@generar')->name('personaAlbergue_reporte');
     Route::post('PersonasAlbergue/ReporteFecha', 'PersonasAlbergueController@ReporteFecha')->name('personaAlbergue_reporteF');
+    Route::get('PersonasAlbergue/pdf_Filtrado', 'PersonasAlbergueController@generarF')->name('personaAlbergue_reporteFi');
+    Route::post('PersonasAlbergue/ReporteFecha_Filtrado', 'PersonasAlbergueController@ReporteFechaF')->name('personaAlbergue_reporteFFi');
+
 });
     Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Lider Comunal']], function () {
     Route::get('Albergue', 'AlbergueController@index')->name('inicio_albergue');

@@ -76,9 +76,9 @@ $(function () {
               <thead>
             <tr>
               <th>Id del registro del albergue</th>
-              <th>Id del albergue</th>
-              <th>Id de la emergencia</th>
-              <th>Cédula del jefe de familia</th>
+              <th>Albergue</th>
+              <th>Emergencia</th>
+              <th>Jefe de familia</th>
               <th>Lugar de procedencia</th>
               <th>Fecha</th>
               <th>Acciones</th>
@@ -87,9 +87,9 @@ $(function () {
             @foreach ($persona as $item)
               <tr>
               <td>{{$item->idregistroA}}</td>
-              <td>{{$item->idAlbergue}} {{$item->n}}</td>
-              <td>{{$item->idEmergencias}} {{$item->NombreEmergencias}}</td>
-              <td>{{$item->Cedula}} {{$item->Nombre}} {{$item->Apellido1}}</td>
+              <td>Id:  {{$item->idAlbergue}}<br> Nombre {{$item->n}}</td>
+              <td>Id: {{$item->idEmergencias}}<br> Nombre: {{$item->NombreEmergencias}}</td>
+              <td>Cedula: {{$item->Cedula}}<br> Nombre: {{$item->Nombre}} {{$item->Apellido1}}</td>
               <td>{{$item->LugarDeProcedencia}}</td>
               <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
               <td><a href="/PersonasAlbergue/{{$item->idregistroA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar personas en albergue">
@@ -158,7 +158,7 @@ $(function () {
 </div>
 <br>
     <div class="form-group">
-        <a href="{{route('personaAlbergue_reporte')}}" class="btn btn-info" target="_blank">
+        <a href="{{route('personaAlbergue_reporteFi')}}" class="btn btn-info" target="_blank">
               <i class="fa fa-fw fa-plus-circle"></i> Crear reporte de personas en albergue
         </a>
     </div>
@@ -173,7 +173,7 @@ $(function () {
                 <span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title"><b>Reporte de personas en albergue por fechas</b></h4>
             </div>
-              <form class= "form-horizontal" method="POST" action="/PersonasAlbergue/ReporteFecha" target="_blank">
+              <form class= "form-horizontal" method="POST" action="/PersonasAlbergue/ReporteFechaF" target="_blank">
                     @csrf
               <div class="modal-body">
                <div class="col-md-6">

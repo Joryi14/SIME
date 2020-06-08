@@ -51,8 +51,8 @@
   
         <tr>
           <th>Numero de registro del albergue</th>
-          <th>Numero del albergue</th>
-          <th>Numero de emergencia</th>
+          <th>Albergue</th>
+          <th>Emergencia</th>
           <th>Cédula del jefe de familia</th>
           <th>Lugar de procedencia</th>
           <th>Fecha de ingreso</th>
@@ -65,8 +65,8 @@
         @foreach ($persona as $item)
           <tr>
           <td>{{$item->idregistroA}}</td> 
-          <td>{{$item->idAlbergue}}</td>
-          <td>{{$item->idEmergencias}} </td>      
+          <td>Id: {{$item->idAlbergue}}<br>Nombre: {{$item->albergue->Nombre}}</td>
+          <td>Id: {{$item->idEmergencias}}<br> Nombre: {{$item->Emergencia->NombreEmergencias}}</td>      
           <td>{{$item->jefeFamilia->Cedula}}</td>  
           <td>{{$item->LugarDeProcedencia}}</td>
           <td>{{date('d-m-Y',strtotime($item->FechaDeIngreso))}}</td>

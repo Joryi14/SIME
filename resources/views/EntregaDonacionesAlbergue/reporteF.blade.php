@@ -58,10 +58,10 @@
  
           @foreach ($EntregaDonacionesAlbergue as $item)
              <tr>
-                    <td>{{$item->IdEntregaA}}</td>
-                    <td>{{$item->Cedula}} </td>
-                    <td>{{$item->Nombre}}</td>
-                    <td>Id: {{$item->idEmergencias}} <br> Nombre: {{$item->NombreEmergencias}}</td>
+                <td>{{$item->IdEntregaA}}</td>
+                <td>{{$item->Cedula}}</td>
+                <td>Id:{{$item->idAlbergue}}<br> Nombre: {{$item->Nombre}}</td>
+                <td>Id: {{$item->idEmergencias}}<br> Nombre: {{$item->NombreEmergencias}}</td>
                     <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                     </tr>
             @endforeach

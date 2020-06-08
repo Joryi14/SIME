@@ -49,6 +49,9 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Administrado
     Route::post('Retiro_PaquetesVController/getInventario','Retiro_PaquetesVController@getInventario')->name('Get_Inv');
     Route::post('Retiro_PaquetesVController/ReporteFecha', 'Retiro_PaquetesVController@ReporteFecha')->name('Retiro_reporteF');
     Route::post('Retiro_PaquetesV/getEmergencia','Retiro_PaquetesVController@getEmergeR')->name('Get_EmergeR');
+    Route::get('Retiro_PaquetesV/pdf_Filtrado', 'Retiro_PaquetesVController@generarF')->name('Retiro_PaquetesV_reporteFi');
+    Route::post('Retiro_PaquetesVController/ReporteFecha_Filtrado', 'Retiro_PaquetesVController@ReporteFechaF')->name('Retiro_reporteFFi');
+   
 });
 Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Administrador de Inventario']], function () {
     Route::get('Inventario', 'InventarioController@index')->name('inicio_inventario');

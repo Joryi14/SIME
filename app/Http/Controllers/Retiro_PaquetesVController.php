@@ -22,7 +22,20 @@ class Retiro_PaquetesVController extends Controller
     public function index()
     {
         
-        $retiroPV = Retiro_PaquetesV::orderBy('IdRetiroPaquetes')->get();
+        $retiroPV = new Retiro_PaquetesV();
+        $retiroPV = DB::table('retiropaquetes')->join('emergencia','idEmergencia','=','emergencia.idEmergencias')
+        ->join('users','retiropaquetes.IdVoluntario','=','users.id')->join('users as c','retiropaquetes.IdAdministradorI','=','c.id')
+        ->join('inventario','retiropaquetes.IdInventario','=','inventario.idInventario')
+        ->select('retiropaquetes.IdRetiroPaquetes','c.id','c.name','c.Apellido1','c.Cedula',
+        'retiropaquetes.NombreChofer','retiropaquetes.Apellido1C','retiropaquetes.Apellido2C',
+        'users.Cedula as Ced','users.id as idV','users.name as vol','users.Apellido1 as av','emergencia.idEmergencias',
+        'emergencia.NombreEmergencias',
+        'retiropaquetes.PlacaVehiculo',
+        'retiropaquetes.DireccionAEntregar',
+        'retiropaquetes.SuministrosGobierno',
+        'retiropaquetes.SuministrosComision',
+        'retiropaquetes.created_at','inventario.idInventario')->orderBy('IdRetiroPaquetes')->get();
+
         return view('Retiro_PaquetesV.index', compact('retiroPV'));
     }
     public function index2()
@@ -106,7 +119,20 @@ class Retiro_PaquetesVController extends Controller
     public function generar()
     {
         
-        $Retiro=  Retiro_PaquetesV::orderBy('IdRetiroPaquetes')->get();
+        $Retiro = new Retiro_PaquetesV();
+        $Retiro = DB::table('retiropaquetes')->join('emergencia','idEmergencia','=','emergencia.idEmergencias')
+        ->join('users','retiropaquetes.IdVoluntario','=','users.id')->join('users as c','retiropaquetes.IdAdministradorI','=','c.id')
+        ->join('inventario','retiropaquetes.IdInventario','=','inventario.idInventario')
+        ->select('retiropaquetes.IdRetiroPaquetes','c.id','c.name','c.Apellido1','c.Cedula',
+        'retiropaquetes.NombreChofer','retiropaquetes.Apellido1C','retiropaquetes.Apellido2C',
+        'users.Cedula as Ced','users.id as idV','users.name as vol','users.Apellido1 as av','emergencia.idEmergencias',
+        'emergencia.NombreEmergencias',
+        'retiropaquetes.PlacaVehiculo',
+        'retiropaquetes.DireccionAEntregar',
+        'retiropaquetes.SuministrosGobierno',
+        'retiropaquetes.SuministrosComision',
+        'retiropaquetes.created_at','inventario.idInventario')->orderBy('IdRetiroPaquetes')->get();
+
         $today = Carbon::now()->format('d/m/Y h:i:s A');
         $view = view ('Retiro_PaquetesV.reporte', compact('Retiro', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
@@ -117,10 +143,70 @@ class Retiro_PaquetesVController extends Controller
     }
     public function ReporteFecha(request $request){
 
-        $Retiro=  Retiro_PaquetesV::orderBy('IdRetiroPaquetes')->whereBetween('created_at', array($request->Fecha1,$request->Fecha2))
-        ->get();
+        $Retiro = new Retiro_PaquetesV();
+        $Retiro = DB::table('retiropaquetes')->join('emergencia','idEmergencia','=','emergencia.idEmergencias')
+        ->join('users','retiropaquetes.IdVoluntario','=','users.id')->join('users as c','retiropaquetes.IdAdministradorI','=','c.id')
+        ->join('inventario','retiropaquetes.IdInventario','=','inventario.idInventario')->whereBetween('retiropaquetes.created_at', array($request->Fecha1,$request->Fecha2))
+        ->select('retiropaquetes.IdRetiroPaquetes','c.id','c.name','c.Apellido1','c.Cedula',
+        'retiropaquetes.NombreChofer','retiropaquetes.Apellido1C','retiropaquetes.Apellido2C',
+        'users.Cedula as Ced','users.id as idV','users.name as vol','users.Apellido1 as av','emergencia.idEmergencias',
+        'emergencia.NombreEmergencias',
+        'retiropaquetes.PlacaVehiculo',
+        'retiropaquetes.DireccionAEntregar',
+        'retiropaquetes.SuministrosGobierno',
+        'retiropaquetes.SuministrosComision',
+        'retiropaquetes.created_at','inventario.idInventario')->orderBy('IdRetiroPaquetes')->get();
+
         $today = Carbon::now()->format('d/m/Y h:i:s A');
         $view = view ('Retiro_PaquetesV.reporte', compact('Retiro', 'today'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->setPaper("A4", "landscape");
+        $pdf->loadHTML($view);
+        return $pdf->stream('Retiro'.'.pdf');
+    }
+
+    public function generarF()
+    {
+        
+        $Retiro = new Retiro_PaquetesV();
+        $Retiro = DB::table('retiropaquetes')->join('emergencia','idEmergencia','=','emergencia.idEmergencias')
+        ->join('users','retiropaquetes.IdVoluntario','=','users.id')->join('users as c','retiropaquetes.IdAdministradorI','=','c.id')
+        ->join('inventario','retiropaquetes.IdInventario','=','inventario.idInventario')->where('emergencia.Estado','Activa')
+        ->select('retiropaquetes.IdRetiroPaquetes','c.id','c.name','c.Apellido1','c.Cedula',
+        'retiropaquetes.NombreChofer','retiropaquetes.Apellido1C','retiropaquetes.Apellido2C',
+        'users.Cedula as Ced','users.id as idV','users.name as vol','users.Apellido1 as av','emergencia.idEmergencias',
+        'emergencia.NombreEmergencias',
+        'retiropaquetes.PlacaVehiculo',
+        'retiropaquetes.DireccionAEntregar',
+        'retiropaquetes.SuministrosGobierno',
+        'retiropaquetes.SuministrosComision',
+        'retiropaquetes.created_at','inventario.idInventario')->orderBy('IdRetiroPaquetes')->get();
+        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        $view = view ('Retiro_PaquetesV.reporteF', compact('Retiro', 'today'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->setPaper("A4", "landscape");
+        $pdf->loadHTML($view);
+        return $pdf->stream('Retiro'.'.pdf');
+
+    }
+    public function ReporteFechaF(request $request){
+
+        $Retiro = new Retiro_PaquetesV();
+        $Retiro = DB::table('retiropaquetes')->join('emergencia','idEmergencia','=','emergencia.idEmergencias')
+        ->join('users','retiropaquetes.IdVoluntario','=','users.id')->join('users as c','retiropaquetes.IdAdministradorI','=','c.id')
+        ->join('inventario','retiropaquetes.IdInventario','=','inventario.idInventario')->where('emergencia.Estado','Activa')
+        ->whereBetween('retiropaquetes.created_at', array($request->Fecha1,$request->Fecha2))
+        ->select('retiropaquetes.IdRetiroPaquetes','c.id','c.name','c.Apellido1','c.Cedula',
+        'retiropaquetes.NombreChofer','retiropaquetes.Apellido1C','retiropaquetes.Apellido2C',
+        'users.Cedula as Ced','users.id as idV','users.name as vol','users.Apellido1 as av','emergencia.idEmergencias',
+        'emergencia.NombreEmergencias',
+        'retiropaquetes.PlacaVehiculo',
+        'retiropaquetes.DireccionAEntregar',
+        'retiropaquetes.SuministrosGobierno',
+        'retiropaquetes.SuministrosComision',
+        'retiropaquetes.created_at','inventario.idInventario')->orderBy('IdRetiroPaquetes')->get();
+        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        $view = view ('Retiro_PaquetesV.reporteF', compact('Retiro', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->setPaper("A4", "landscape");
         $pdf->loadHTML($view);

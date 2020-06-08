@@ -90,12 +90,12 @@ $(function () {
             @foreach ($retiro as $item)
               <tr>
               <td>{{$item->IdRetiroPaquetes}}</td>
-              <td>{{$item->name}} {{$item->Apellido1}} {{$item->Cedula}}</td>
-              <td>{{$item->vol}} {{$item->av}} {{$item->Ced}}</td>
+              <td>Nombre: {{$item->name}} {{$item->Apellido1}}<br> Cedula: {{$item->Cedula}}</td>
+              <td>Nombre: {{$item->vol}} {{$item->av}}<br> Cedula:  {{$item->Ced}}</td>
               <td>{{$item->SuministrosGobierno}}</td>
               <td>{{$item->SuministrosComision}}</td>
               <td>{{$item->idInventario}}</td>
-              <td>{{$item->idEmergencias}} {{$item->NombreEmergencias}}</td>
+              <td>Id: {{$item->idEmergencias}}<br> Nombre: {{$item->NombreEmergencias}}</td>
               <td><a href="/Retiro_PaquetesV/{{$item->IdRetiroPaquetes}}/edit" class="btn-accion-tabla tooltipsC" title="Editar retiro de paquetes">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
                 @role('Admin|Director')
@@ -178,7 +178,7 @@ $(function () {
     </div>
   </div>
   <div class="form-group">
-    <a href="{{route('Retiro_PaquetesV_reporte')}}" class="btn btn-info" target="_blank">
+    <a href="{{route('Retiro_PaquetesV_reporteFi')}}" class="btn btn-info" target="_blank">
         <i class="fa fa-fw fa-plus-circle"></i> Crear reporte de retiro de paquetes
     </a>
   </div>
@@ -193,7 +193,7 @@ $(function () {
               <span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title"><b>Reporte de retiro de paquetes por fechas</b></h4>
           </div>
-          <form class= "form-horizontal" method="POST" action="/Retiro_PaquetesVController/ReporteFecha" target="_blank">
+          <form class= "form-horizontal" method="POST" action="/Retiro_PaquetesVController/ReporteFechaF" target="_blank">
                 @csrf
           <div class="modal-body">
            <div class="col-md-6">

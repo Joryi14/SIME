@@ -88,14 +88,13 @@ $(function () {
             </tr>
           </thead>
             @foreach ($retiroPV as $item)
-              <tr>
-              <td>{{$item->IdRetiroPaquetes}}</td>
-              <td>{{$item->IdAdministradorI}}</td>
-              <td>{{$item->IdVoluntario}}</td>
-              <td>{{$item->SuministrosGobierno}}</td>
-              <td>{{$item->SuministrosComision}}</td>
-              <td>{{$item->IdInventario}}</td>
-              <td>{{$item->Emergencia->idEmergencias}} {{$item->Emergencia->NombreEmergencias}}</td>
+            <td>{{$item->IdRetiroPaquetes}}</td>
+            <td>Nombre: {{$item->name}} {{$item->Apellido1}}<br> Cedula: {{$item->Cedula}}</td>
+            <td>Nombre: {{$item->vol}} {{$item->av}}<br> Cedula:  {{$item->Ced}}</td>
+            <td>{{$item->SuministrosGobierno}}</td>
+            <td>{{$item->SuministrosComision}}</td>
+            <td>{{$item->idInventario}}</td>
+            <td>Id: {{$item->idEmergencias}}<br> Nombre: {{$item->NombreEmergencias}}</td>
               <td>
                 {{-- <a href="/Retiro_PaquetesV/{{$item->IdRetiroPaquetes}}/edit" class="btn-accion-tabla tooltipsC" title="Editar retiro de paquetes">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>

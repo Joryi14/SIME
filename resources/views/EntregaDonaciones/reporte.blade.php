@@ -52,7 +52,7 @@
        <tr>
     <th>Número de entrega</th>
     <th>Cédula del voluntario</th>
-    <th>Cédula del jefe de familia</th>
+    <th>Jefe de familia</th>
     <th>Número de retiro de paquetes</th>
     <th>Foto</th>  
     <th>Cantidad</th>
@@ -63,14 +63,14 @@
       @foreach ($EntregaDonaciones as $item)
         <tr>
         <td>{{$item->IdEntrega}}</td>
-        <td>{{$item->Ced}} {{$item->name}}</td>
-        <td>{{$item->Cedula}} {{$item->Nombre}} {{$item->Apellido1}}</td>
+        <td>{{$item->Ced}}</td>
+        <td>Cedula:{{$item->Cedula}}<br> Nombre: {{$item->Nombre}} {{$item->Apellido1}}</td>
         <td>{{$item->IdRetiroPaquetes}}</td>
         <td>
           <img style='display:block; width:100px; height:100px;' src='Foto/{{$item->Foto}}' alt="base64 test">
         </td>
         <td>{{$item->Cantidad}}</td>
-        <td>{{$item->idEmergencias}} {{$item->NombreEmergencias}}</td>
+        <td>Id: {{$item->idEmergencias}}<br> Nombre: {{$item->NombreEmergencias}}</td>
         <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
 
     </tr>

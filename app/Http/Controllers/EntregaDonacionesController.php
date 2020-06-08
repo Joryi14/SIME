@@ -227,8 +227,13 @@ else
         return $pdf->stream('EntregaDonaciones'.'.pdf');
     }
     public function generar()
-    {
-        $EntregaDonaciones = EntregaDonaciones::orderBy('IdEntrega')->get();
+    {   $EntregaDonaciones = DB::table('entregadonaciones')
+        ->join('emergencia','idEmergencia','=','emergencia.idEmergencias')
+        ->join('jefedefamilia','entregadonaciones.IdJefe','=','jefedefamilia.IdJefe')
+        ->join('users','IdVoluntario','=','users.id')
+        ->where('emergencia.Estado','Activa')
+        ->select('entregadonaciones.IdEntrega','entregadonaciones.created_at','entregadonaciones.IdRetiroPaquetes','entregadonaciones.Cantidad','entregadonaciones.Foto','users.Cedula as Ced','users.name','jefedefamilia.Cedula','jefedefamilia.Nombre','jefedefamilia.Apellido1','emergencia.idEmergencias','emergencia.NombreEmergencias')
+        ->get();
         $today = Carbon::now()->format('d/m/Y h:i:s A'); 
         $view = view ('EntregaDonaciones.reporte', compact('EntregaDonaciones', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');

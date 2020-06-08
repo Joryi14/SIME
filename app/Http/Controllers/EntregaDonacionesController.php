@@ -213,8 +213,12 @@ else
 
 
     public function ReporteFecha(request $request){
-        
-        $EntregaDonaciones = EntregaDonaciones::orderby('IdEntrega')->whereBetween('created_at', array($request->Fecha1,$request->Fecha2)) 
+        $EntregaDonaciones = DB::table('entregadonaciones')
+        ->join('emergencia','idEmergencia','=','emergencia.idEmergencias')
+        ->join('jefedefamilia','entregadonaciones.IdJefe','=','jefedefamilia.IdJefe')
+        ->join('users','IdVoluntario','=','users.id')
+        ->where('emergencia.Estado','Activa')->whereBetween('entregadonaciones.created_at', array($request->Fecha1,$request->Fecha2))
+        ->select('entregadonaciones.IdEntrega','entregadonaciones.created_at','entregadonaciones.IdRetiroPaquetes','entregadonaciones.Cantidad','entregadonaciones.Foto','users.Cedula as Ced','users.name','jefedefamilia.Cedula','jefedefamilia.Nombre','jefedefamilia.Apellido1','emergencia.idEmergencias','emergencia.NombreEmergencias')
         ->get();
         $today = Carbon::now()->format('d/m/Y h:i:s A');
         $view = view ('EntregaDonaciones.reporte', compact('EntregaDonaciones', 'today'))->render();
@@ -238,7 +242,7 @@ else
 
     public function ReporteFechaF(request $request){
         
-        $EntregaDonaciones = new EntregaDonaciones();
+      
         $EntregaDonaciones = DB::table('entregadonaciones')
         ->join('emergencia','idEmergencia','=','emergencia.idEmergencias')
         ->join('jefedefamilia','entregadonaciones.IdJefe','=','jefedefamilia.IdJefe')

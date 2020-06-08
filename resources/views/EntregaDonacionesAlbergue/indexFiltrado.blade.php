@@ -102,7 +102,7 @@ $(function () {
                 <span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title"><b>Reporte de entrega de donaciones en albergue por fechas</b></h4>
             </div>
-              <form class= "form-horizontal" method="POST" action="/EntregaDonacionesAlbergue/ReporteFechaF" target="_blank">
+              <form class= "form-horizontal" method="POST" action="/EntregaDonacionesAlbergue/ReporteFecha_Filtrado" target="_blank">
                     @csrf
               <div class="modal-body">
                <div class="col-md-6">

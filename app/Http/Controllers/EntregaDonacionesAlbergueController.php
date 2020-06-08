@@ -211,7 +211,7 @@ class EntregaDonacionesAlbergueController extends Controller
    ->join('jefedefamilia','entregadonacionesalbergue.IdJefeFa','=','jefedefamilia.IdJefe')
    ->join('albergue','entregadonacionesalbergue.idAlbergue','=','albergue.idAlbergue')
    ->where('emergencia.Estado','Activa')
-   ->whereBetween('entregadonaciones.created_at', array($request->Fecha1,$request->Fecha2))
+   ->whereBetween('entregadonacionesalbergue.created_at', array($request->Fecha1,$request->Fecha2))
    ->select('entregadonacionesalbergue.IdEntregaA',
    'albergue.idAlbergue','albergue.Nombre','jefedefamilia.IdJefe','jefedefamilia.Cedula',
    'emergencia.idEmergencias',

@@ -203,5 +203,35 @@ class EntregaDonacionesAlbergueController extends Controller
   }
 
 
+  public function ReporteFechaF(request $request){
+        
+   $EntregaDonacionesAlbergue  = new EntregaDonacionesAlbergue();
+   $EntregaDonacionesAlbergue = DB::table('entregadonacionesalbergue')->join('emergencia','entregadonacionesalbergue.idEmergencias','=','emergencia.idEmergencias')->join('jefedefamilia','entregadonacionesalbergue.IdJefeFa','=','jefedefamilia.IdJefe')->join('albergue','entregadonacionesalbergue.idAlbergue','=','albergue.idAlbergue')->where('emergencia.Estado','Activa')->select('entregadonacionesalbergue.IdEntregaA',
+   'albergue.idAlbergue','albergue.Nombre','jefedefamilia.IdJefe','jefedefamilia.Cedula',
+   'emergencia.idEmergencias',
+   'jefedefamilia.Nombre','jefedefamilia.Apellido1'
+   ,'emergencia.NombreEmergencias'
+   ,'entregadonacionesalbergue.created_at')->get();
+   $today = Carbon::now()->format('d/m/Y h:i:s A');
+   $view = view ('EntregaDonacionesAlbergue.reporteF', compact('EntregaDonacionesAlbergue', 'today'))->render();
+   $pdf = \App::make('dompdf.wrapper');
+   $pdf->loadHTML($view);
+   return $pdf->stream('EntregaDonacionesAlbergue'.'.pdf');
+}
+public function generarF()
+{
+   $EntregaDonacionesAlbergue = new EntregaDonacionesAlbergue();
+   $EntregaDonacionesAlbergue = DB::table('entregadonacionesalbergue')->join('emergencia','entregadonacionesalbergue.idEmergencias','=','emergencia.idEmergencias')->join('jefedefamilia','entregadonacionesalbergue.IdJefeFa','=','jefedefamilia.IdJefe')->join('albergue','entregadonacionesalbergue.idAlbergue','=','albergue.idAlbergue')->where('emergencia.Estado','Activa')->select('entregadonacionesalbergue.IdEntregaA',
+   'albergue.idAlbergue','albergue.Nombre','jefedefamilia.IdJefe','jefedefamilia.Cedula',
+   'emergencia.idEmergencias',
+   'jefedefamilia.Nombre','jefedefamilia.Apellido1'
+   ,'emergencia.NombreEmergencias'
+   ,'entregadonacionesalbergue.created_at')->get();
+   $today = Carbon::now()->format('d/m/Y h:i:s A'); 
+   $view = view ('EntregaDonacionesAlbergue.reporteF', compact('EntregaDonacionesAlbergue', 'today'))->render();
+   $pdf = \App::make('dompdf.wrapper');
+   $pdf->loadHTML($view);
+   return $pdf->stream('EntregaDonacionesAlbergue'.'.pdf');
 
+}
    }

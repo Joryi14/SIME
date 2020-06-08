@@ -16,7 +16,8 @@
                         padding: 2px 1px;
                         text-align: center;
                         border: 1px solid #999;
-                        style=color:#456789; 
+                        
+                        style=color:#456789;
                         font-size:80%;
                     }
         
@@ -36,7 +37,7 @@
                     
                     <h4 class="box-title">Comisión Nacional de Prevención de Riesgos Y Atención de Emergencia </h4>
                             <h5 class="box-title"> Comité Comunal de Emergencia de: Nosara</h5>     
-                        <h5 class="box-title"> Reporte de inventario</h5>
+                        <h5 class="box-title"> Reporte de entrega de donaciones</h5>
                         <p>{{$today}}</p>
                         <img style="position: absolute; left: 10px; top: 30px; height: 70px;" src="{{asset("assets/images/logos/1.png")}}" alt="Logo" height="75px;">
                         <img style="position: absolute; right: 78px; top: 30px; height: 70px;"  src="{{asset("assets/images/logos/3.png")}}" alt="Logo" height="75px;">
@@ -48,30 +49,31 @@
         
         <main>
    <table>
-                    <tr>
-                    <th>Número de Inventario</th>
-                    <th>Nombre de la Emergencia</th>
-                    <th>Suministros</th>
-                    <th>Colchonetas</th>
-                    <th>Cobijas</th>
-                    <th>Ropa</th>
-                    <th>Fecha de creación</th>
-                  </tr>
-                </thead>
-                  @foreach ($inventario as $item)
-                    <tr>
-                    <td>{{$item->idInventario}}</td> 
-                    <td>Id: {{$item->idEmergencias}} <br> Nombre: {{$item->Emergencia->NombreEmergencias}}</td>    
-                    <td>{{$item->Suministros}}</td>
-                    <td>{{$item->Colchonetas}}</td>
-                    <td>{{$item->Cobijas}}</td>
-                    @if($item->Ropa== 1)
-                    <td>Posee</td>
-                    @else
-                    <td>No posee</td>
-                    @endif
-                    <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
-                    </tr>
+       <tr>
+    <th>Número de entrega</th>
+    <th>Cédula del voluntario</th>
+    <th>Cédula del jefe de familia</th>
+    <th>Número de retiro de paquetes</th>
+    <th>Foto</th>  
+    <th>Cantidad</th>
+    <th>Emergencia</th>
+    <th>Fecha de creación</th>
+  </tr>
+
+      @foreach ($EntregaDonaciones as $item)
+      <tr>
+        <td>{{$item->IdEntrega}}</td>
+        <td>{{$item->Ced}}</td>
+        <td>Cedula:{{$item->Cedula}} <br> Nombre: {{$item->Nombre}} {{$item->Apellido1}}</td>
+        <td>{{$item->IdRetiroPaquetes}}</td>
+        <td>
+          <img style='display:block; width:100px; height:100px;' src= "{{url('Foto/'.$item->Foto)}}" alt="base64">
+        </td>
+        <td>{{$item->Cantidad}}</td>
+        <td>Id: {{$item->idEmergencias}} <br> Nombre: {{$item->NombreEmergencias}}</td>
+        <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
+
+    </tr>
             @endforeach
     </table>
 </main>

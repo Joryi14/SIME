@@ -60,8 +60,9 @@
                 </thead>
                   @foreach ($inventario as $item)
                     <tr>
-                    <td>{{$item->idInventario}}</td> 
-                    <td>Id: {{$item->idEmergencias}} <br> Nombre: {{$item->Emergencia->NombreEmergencias}}</td>    
+                    
+                    <td>{{$item->idInventario}}</td>
+                    <td>Id: {{$item->idEmergencias}} <br> Nombre: {{$item->NombreEmergencias}}</td>
                     <td>{{$item->Suministros}}</td>
                     <td>{{$item->Colchonetas}}</td>
                     <td>{{$item->Cobijas}}</td>

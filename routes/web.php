@@ -63,6 +63,10 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Administrado
     Route::get('Inventario/pdf', 'InventarioController@generar')->name('inventario_reporte');
     Route::post('Inventario/getEmergencia','InventarioController@getEmergencia')->name('Get_Emerge');
     Route::post('Inventario/ReporteFecha', 'InventarioController@ReporteFecha')->name('inventario_reporteF');
+    Route::get('Inventario/pdf_Filtrado', 'InventarioController@generarF')->name('inventario_reporteFi');
+    Route::post('Inventario/ReporteFecha_Filtrado', 'InventarioController@ReporteFechaF')->name('inventario_reporteFFi');
+
+
 });
 Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Voluntario']], function () {
     Route::get('EntregaDonaciones', 'EntregaDonacionesController@index')->name('inicio_EntregaDonaciones');
@@ -78,6 +82,8 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Voluntario']
     Route::post('EntregaDonaciones/getEmergencia','EntregaDonacionesController@getEmergeE')->name('Get_EmergeE');
     Route::get('EntregaDonaciones/pdf', 'EntregaDonacionesController@generar')->name('Entregadonaciones_reporte');
     Route::post('EntregaDonaciones/ReporteFecha', 'EntregaDonacionesController@ReporteFecha')->name('Entregadonaciones_reporteF');
+    Route::get('EntregaDonaciones/pdf_Filtrado', 'EntregaDonacionesController@generarF')->name('Entregadonaciones_reporteFi');
+    Route::post('EntregaDonaciones/ReporteFecha_Filtrado', 'EntregaDonacionesController@ReporteFechaF')->name('Entregadonaciones_reporteFFi');
 
 });
 Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Voluntario']], function () {
@@ -93,6 +99,8 @@ Route::group(['prefix' => '/','middleware' => ['role:Admin|Director|Voluntario']
     Route::post('EntregaDonacionesAlbergue/getEmergencia','EntregaDonacionesAlbergueController@getEmergencia')->name('Get_IdEme');
     Route::get('EntregaDonacionesAlbergue/pdf', 'EntregaDonacionesAlbergueController@generar')->name('EntregadonacionesA_reporte');
     Route::post('EntregaDonacionesAlbergue/ReporteFecha', 'EntregaDonacionesAlbergueController@ReporteFecha')->name('EntregadonacionesA_reporteF');
+    Route::get('EntregaDonacionesAlbergue/pdf_Filtrado', 'EntregaDonacionesAlbergueController@generarF')->name('EntregadonacionesA_reporteFi');
+    Route::post('EntregaDonacionesAlbergue/ReporteFecha_Filtrado', 'EntregaDonacionesAlbergueController@ReporteFechaF')->name('EntregadonacionesA_reporteFFi');
 
 });
 Route::get('/home', 'HomeController@index')->name('home');

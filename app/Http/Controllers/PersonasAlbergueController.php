@@ -241,7 +241,9 @@ class PersonasAlbergueController extends Controller
   public function ReporteFechaF(request $request){
       
    $persona = new PersonasAlbergue();
-      $persona = DB::table('registropersonaalbergue')->join('emergencia','registropersonaalbergue.idEmergencias','=','emergencia.idEmergencias')->join('jefedefamilia','registropersonaalbergue.idJefe','=','jefedefamilia.IdJefe')->join('albergue','registropersonaalbergue.idAlbergue','=','albergue.idAlbergue')->where('emergencia.Estado','Activa')->select('registropersonaalbergue.idregistroA',
+      $persona = DB::table('registropersonaalbergue')->join('emergencia','registropersonaalbergue.idEmergencias','=','emergencia.idEmergencias')->join('jefedefamilia','registropersonaalbergue.idJefe','=','jefedefamilia.IdJefe')->join('albergue','registropersonaalbergue.idAlbergue','=','albergue.idAlbergue')->where('emergencia.Estado','Activa')
+      ->whereBetween('registropersonaalbergue.created_at', array($request->Fecha1,$request->Fecha2))
+      ->select('registropersonaalbergue.idregistroA',
       'albergue.idAlbergue','albergue.Nombre as n','jefedefamilia.IdJefe','jefedefamilia.Cedula',
       'emergencia.idEmergencias','registropersonaalbergue.LugarDeProcedencia',
       'jefedefamilia.Nombre','jefedefamilia.Apellido1','registropersonaalbergue.FechaDeIngreso'

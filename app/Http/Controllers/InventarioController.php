@@ -96,7 +96,9 @@ class InventarioController extends Controller
     public function ReporteFechaF(request $request){
 
         $inventario = new Inventario();
-        $inventario = DB::table('inventario')->join('emergencia','inventario.idEmergencias','=','emergencia.idEmergencias')->where('emergencia.estado','Activa')->select('inventario.idInventario',
+        $inventario = DB::table('inventario')->join('emergencia','inventario.idEmergencias','=','emergencia.idEmergencias')->where('emergencia.estado','Activa')
+        ->whereBetween('inventario.created_at', array($request->Fecha1,$request->Fecha2))
+        ->select('inventario.idInventario',
         'emergencia.idEmergencias',
         'emergencia.NombreEmergencias',
         'inventario.Suministros',

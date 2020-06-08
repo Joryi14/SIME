@@ -206,7 +206,13 @@ class EntregaDonacionesAlbergueController extends Controller
   public function ReporteFechaF(request $request){
         
    $EntregaDonacionesAlbergue  = new EntregaDonacionesAlbergue();
-   $EntregaDonacionesAlbergue = DB::table('entregadonacionesalbergue')->join('emergencia','entregadonacionesalbergue.idEmergencias','=','emergencia.idEmergencias')->join('jefedefamilia','entregadonacionesalbergue.IdJefeFa','=','jefedefamilia.IdJefe')->join('albergue','entregadonacionesalbergue.idAlbergue','=','albergue.idAlbergue')->where('emergencia.Estado','Activa')->select('entregadonacionesalbergue.IdEntregaA',
+   $EntregaDonacionesAlbergue = DB::table('entregadonacionesalbergue')
+   ->join('emergencia','entregadonacionesalbergue.idEmergencias','=','emergencia.idEmergencias')
+   ->join('jefedefamilia','entregadonacionesalbergue.IdJefeFa','=','jefedefamilia.IdJefe')
+   ->join('albergue','entregadonacionesalbergue.idAlbergue','=','albergue.idAlbergue')
+   ->where('emergencia.Estado','Activa')
+   ->whereBetween('entregadonaciones.created_at', array($request->Fecha1,$request->Fecha2))
+   ->select('entregadonacionesalbergue.IdEntregaA',
    'albergue.idAlbergue','albergue.Nombre','jefedefamilia.IdJefe','jefedefamilia.Cedula',
    'emergencia.idEmergencias',
    'jefedefamilia.Nombre','jefedefamilia.Apellido1'

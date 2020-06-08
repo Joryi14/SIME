@@ -238,8 +238,6 @@ else
     }
 
 
-    
-
     public function ReporteFechaF(request $request){
         
       
@@ -247,7 +245,8 @@ else
         ->join('emergencia','idEmergencia','=','emergencia.idEmergencias')
         ->join('jefedefamilia','entregadonaciones.IdJefe','=','jefedefamilia.IdJefe')
         ->join('users','IdVoluntario','=','users.id')
-        ->where('emergencia.Estado','Activa')->whereBetween('entregadonaciones.created_at', array($request->Fecha1,$request->Fecha2))
+        ->where('emergencia.Estado','Activa')
+        ->whereBetween('entregadonaciones.created_at', array($request->Fecha1,$request->Fecha2))
         ->select('entregadonaciones.IdEntrega','entregadonaciones.created_at','entregadonaciones.IdRetiroPaquetes','entregadonaciones.Cantidad','entregadonaciones.Foto','users.Cedula as Ced','users.name','jefedefamilia.Cedula','jefedefamilia.Nombre','jefedefamilia.Apellido1','emergencia.idEmergencias','emergencia.NombreEmergencias')
         ->get();
         $today = Carbon::now()->format('d/m/Y h:i:s A');

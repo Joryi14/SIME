@@ -42,11 +42,12 @@ $(function () {
 @include('Includes.mensaje-Succes')
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h4 class="box-title">Entrega de donaciones
+    <h4 class="content-row-title">Entrega de donaciones
        <a href="{{route('EntregaDonaciones_create')}}" class="btn btn-success btn-lg pull-right">
       <i class="fa fa-fw fa-plus-circle"></i> Crear
        </a>
           </h4>
+          <br>
         </div>
          <div class="panel-body table-responsive" >
           <table id="Entregadonaciones_table" class="table table-bordered table-striped">

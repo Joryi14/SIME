@@ -92,7 +92,7 @@
       <div class="row text-center">
         <div class="col-md-4">
           <span class="fa-stack fa-4x">
-            <a href="https://www.facebook.com/CCENosara/">
+            <a href="https://www.facebook.com/CCENosara/" target="_blank">
             <i class="fas fa-circle fa-stack-2x text-primary"></i>
             <i class="fab fa-facebook fa-stack-1x fa-inverse"></i></a>
           </span>

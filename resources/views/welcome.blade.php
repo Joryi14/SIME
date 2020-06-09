@@ -92,12 +92,12 @@
       <div class="row text-center">
         <div class="col-md-4">
           <span class="fa-stack fa-4x">
+            <a href="https://www.facebook.com/CCENosara/">
             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-facebook fa-stack-2x text-primary"></i>
+            <i class="fab fa-facebook fa-stack-1x fa-inverse"></i></a>
           </span>
-          <h4 class="service-heading">Teléfonos</h4>
-          <p class="text-muted">83483924</p>
-          <i class="fa fa-facebook-f"></i>
+          <h4 class="service-heading">Facebook</h4>
+          <p class="text-muted">Comite Comunal de Emergencias Nosara</p>
         </div>
         <div class="col-md-4">
           <span class="fa-stack fa-4x">

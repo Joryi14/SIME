@@ -1,7 +1,5 @@
 
 <link rel="stylesheet" href="{{asset("assets/MAP/leaflet.css")}}"/>
-
-
 <table style="width: 100%;
           margin-right: auto;
           margin-left: auto;
@@ -22,12 +20,4 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   id: 'mapbox/streets-v11'
 }).addTo(mymap);
 var mark = L.marker([{{$Latitud}},{{$Longitud}}]).addTo(mymap);
-function onMapClick(e) {
-        mark.setLatLng(e.latlng);
-        var Longitud = document.getElementById("lg");
-        var latitud = document.getElementById("lt");
-        latitud.value = mark.getLatLng().lat;
-        Longitud.value = mark.getLatLng().lng;
-      }
-mymap.on('click', onMapClick);
 </script>

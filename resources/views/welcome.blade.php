@@ -93,10 +93,11 @@
         <div class="col-md-4">
           <span class="fa-stack fa-4x">
             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-phone-alt fa-stack-1x fa-inverse"></i>
+            <i class="fas fa-facebook fa-stack-2x text-primary"></i>
           </span>
           <h4 class="service-heading">Teléfonos</h4>
           <p class="text-muted">83483924</p>
+          <i class="fa fa-facebook-f"></i>
         </div>
         <div class="col-md-4">
           <span class="fa-stack fa-4x">

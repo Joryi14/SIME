@@ -25,9 +25,9 @@ class ValidacionFamilia extends FormRequest
     {
         return [
             'IdJefeF'=> 'required|max:8',
-            'Nombre'  => 'required|max:10',
-            'Apellido1' => 'required|max:15',
-            'Apellido2' => 'required|max:15',
+            'Nombre'  => 'required|max:20',
+            'Apellido1' => 'required|max:20',
+            'Apellido2' => 'required|max:20',
             'Cedula'=> 'required|max:10',
             'Parentesco'=> 'required',
             'Edad'=> 'required|max:3',
@@ -42,13 +42,13 @@ class ValidacionFamilia extends FormRequest
             'IdJefeF.max' => 'El id de jefe de familia no debe superar los 8 caracteres',
 
             'Nombre.required' => 'El nombre es requerido',
-            'Nombre.max' => 'El nombre no debe ser mayor a 10 caracteres',
+            'Nombre.max' => 'El nombre no debe ser mayor a 20 caracteres',
             
             'Apellido1.required' => 'El primer apellido es requerido',
-            'Apellido1.max' => 'El  primer apellido no debe ser mayor a 15 caracteres',
+            'Apellido1.max' => 'El  primer apellido no debe ser mayor a 20 caracteres',
 
             'Apellido2.required' => 'El segundo apellido es requerido',
-            'Apellido2.max' => 'El segundo apellido no debe ser mayor los 15 caracteres',
+            'Apellido2.max' => 'El segundo apellido no debe ser mayor los 20 caracteres',
 
             'Cedula.required' => 'La cédula es requerida',
             'Cedula.max' => 'La cédula no debe ser mayor a los 10 caracteres',

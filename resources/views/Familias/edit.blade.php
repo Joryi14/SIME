@@ -47,7 +47,7 @@
                   <div class="form-group">
                     <label for="Parentesco" class="col-sm-2 control-label">Parentesco: </label>
                     <div class="col-sm-10">
-                    <select class="form-control select2" name="Parentesco" value=""style="width: 50%;">
+                    <select class="form-control select2" id="paren" name="Parentesco" value=""style="width: 50%;">
                       <option selected>{{$Familia->Parentesco}}</option>
                       <option value="Hijo">Hijo</option>
                       <option value="Conyugue ">Conyugue</option>
@@ -158,6 +158,11 @@
     $(document).ready(function() {
       $('#PatFa').select2();
     });
+    </script>
+    <script>
+      $("#paren").select2({
+  tags: true
+});
     </script>
           @endsection
 @endsection

@@ -76,9 +76,9 @@ $(function () {
               <thead>
             <tr>
               <th>Id del registro del albergue</th>
-              <th>Id del albergue</th>
-              <th>Id de la emergencia</th>
-              <th>Cédula del jefe de familia</th>
+              <th>Albergue</th>
+              <th>Emergencia</th>
+              <th>Jefe de familia</th>
               <th>Lugar de procedencia</th>
               <th>Fecha</th>
               <th>Acciones</th>
@@ -87,9 +87,9 @@ $(function () {
             @foreach ($persona as $item)
               <tr>
               <td>{{$item->idregistroA}}</td>
-              <td>{{$item->Albergue->idAlbergue}} {{$item->Albergue->Nombre}}</td>
-              <td>{{$item->Emergencia->idEmergencias}} {{$item->Emergencia->NombreEmergencias}}</td>
-              <td>{{$item->jefeFamilia->Cedula}} {{$item->jefeFamilia->Nombre}} {{$item->jefeFamilia->Apellido1}}</td>
+              <td>Id: {{$item->Albergue->idAlbergue}}<br> Nombre: {{$item->Albergue->Nombre}}</td>
+              <td>Id: {{$item->Emergencia->idEmergencias}}<br> Nombre: {{$item->Emergencia->NombreEmergencias}}</td>
+              <td>Cedula: {{$item->jefeFamilia->Cedula}}<br> Nombre: {{$item->jefeFamilia->Nombre}} {{$item->jefeFamilia->Apellido1}}</td>
               <td>{{$item->LugarDeProcedencia}}</td>
               <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
               <td>

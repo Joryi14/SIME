@@ -83,7 +83,7 @@ $(function () {
               <thead>
             <tr>
               <th>Id de familia</th>
-              <th>Cédula del jefe de familia</th>
+              <th>Jefe de familia</th>
               <th>Cédula</th>
               <th>Nombre</th>
               <th>Fecha</th>
@@ -93,7 +93,7 @@ $(function () {
             @foreach ($Familias as $item)
               <tr>
               <td>{{$item->IdFamilia}}</td>      
-              <td>{{$item->jefeDeFamilia->Cedula}} {{$item->jefeDeFamilia->Nombre}} {{$item->jefeDeFamilia->Apellido1}} {{$item->jefeDeFamilia->Apellido2}}</td>  
+              <td>Cedula: {{$item->jefeDeFamilia->Cedula}}<br> Nombre: {{$item->jefeDeFamilia->Nombre}} {{$item->jefeDeFamilia->Apellido1}} {{$item->jefeDeFamilia->Apellido2}}</td>  
               <td>{{$item->Cedula}}</td>
               <td>{{$item->Nombre}}</td>
               <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>

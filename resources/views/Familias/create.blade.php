@@ -50,7 +50,7 @@
                       <div class="form-group">
                         <label for="Parentesco" class="col-sm-2 control-label">Parentesco: </label>
                         <div class="col-sm-10">
-                        <select class="form-control select2" name="Parentesco" value=""style="width: 50%;">
+                        <select class="form-control select2" id="paren" name="Parentesco" value=""style="width: 50%;">
                           <option value="Hijo">Hijo</option>
                           <option value="Conyugue ">Conyugue</option>
                           <option value="Nieto">Nieto</option>
@@ -162,6 +162,12 @@
     $(document).ready(function() {
       $('#PatoloFam').select2();
     });
+    </script>
+    <script>
+      $("#paren").select2({
+    tags: true
+    });
+
     </script>
   <script type="text/javascript">
     // CSRF Token

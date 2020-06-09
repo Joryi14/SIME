@@ -371,10 +371,24 @@ window.onload = function() {
           iconUrl:      '../assets/MAP/images/Albergue.png',
           iconSize:     [30, 30],
   });
+  if(item.Categoria == "Grave"){
   var circ = L.circle([item.Latitud,item.Longitud], { color: 'red',
 fillColor: '#f03',
 fillOpacity: 0.5,radius: item.Radio }).addTo(mymap2);
     circ.bindPopup("Nombre: "+item.Nombre+" "+"Categoria: "+item.Categoria+" "+"Radio: "+item.Radio).openPopup();
+   }
+   if(item.Categoria == "Moderada"){
+  var circ = L.circle([item.Latitud,item.Longitud], { color: 'orange',
+fillColor: 'orange',
+fillOpacity: 0.5,radius: item.Radio }).addTo(mymap2);
+    circ.bindPopup("Nombre: "+item.Nombre+" "+"Categoria: "+item.Categoria+" "+"Radio: "+item.Radio).openPopup();
+   }
+   if(item.Categoria == "Leve"){
+  var circ = L.circle([item.Latitud,item.Longitud], { color: 'green',
+fillColor: 'green',
+fillOpacity: 0.5,radius: item.Radio }).addTo(mymap2);
+    circ.bindPopup("Nombre: "+item.Nombre+" "+"Categoria: "+item.Categoria+" "+"Radio: "+item.Radio).openPopup();
+   }
    }
   }
 }

@@ -104,7 +104,7 @@ $(function () {
                 <i class="fa fa-pencil text-success"></i></a>
                 <a href="/JefeDeFamilia/{{$item->IdJefe}}/agregarfamiliar" class="btn-accion-tabla tooltipsC" title="Agregar familiar">
                   <i class="fa fa-fw fa-plus-circle text-success"></i></a>
-                  @role('Admin|Director')
+                  @role('Admin')
                   <form action="{{route('jefe_delete', ['JefeDeFamilia' => $item->IdJefe])}}" method="POST">
                     @csrf 
                     <input name="_method" type="hidden" value="DELETE">

@@ -5,7 +5,7 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h4 class="content-row-title">Informes de incidentes
-            @role('Admin|Lider Comunal')
+            @role('Admin')
             <a
                 href="{{route('Mensajeria_create')}}"
                 class="btn btn-success btn-lg pull-right">

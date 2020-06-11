@@ -99,7 +99,7 @@ $(function () {
               <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
               <td><a href="/Familias/{{$item->IdFamilia}}/edit" class="btn-accion-tabla tooltipsC" title="Editar familia">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
-                @role('Admin|Director')
+                @role('Admin')
                 <form id="form1" action="{{route('familias_delete', ['Familias' => $item->IdFamilia])}}" method="POST">
                 @csrf 
                 <input name="_method" type="hidden" value="DELETE">

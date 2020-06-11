@@ -101,7 +101,7 @@ $(function () {
                   <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                   <td><a href="/Censo/{{$item->IdCenso}}/edit" class="btn-accion-tabla tooltipsC" title="Editar censo">
                     <i class="fa fa-fw fa-pencil text-success"></i></a>
-                    @role('Admin|Director')
+                    @role('Admin')
                     <form id="form1" action="{{route('censo_delete', ['Censo' => $item->IdCenso])}}" method="POST">
                     @csrf
                     <input name="_method" type="hidden" value="DELETE">

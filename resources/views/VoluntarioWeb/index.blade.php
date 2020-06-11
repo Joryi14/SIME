@@ -89,13 +89,15 @@ $(function () {
               <td>{{$item->TelefonoVoluntarioWeb}}</td>
              <td> {{-- <a href="/VoluntarioWeb/{{$item->IdVoluntarioWeb}}/edit" class="btn-accion-tabla tooltipsC" title="Editar VoluntarioWeb"> --}}
                 {{-- <i class="fa fa-fw fa-pencil"></i></a> --}}
-              <form id="form1" action="{{route('voluntarioweb_delete', ['VoluntarioWeb' => $item->IdVoluntarioWeb])}}" method="POST">
+              @role('Admin')
+                <form id="form1" action="{{route('voluntarioweb_delete', ['VoluntarioWeb' => $item->IdVoluntarioWeb])}}" method="POST">
                 @csrf
                 <input name="_method" type="hidden" value="DELETE">
                 <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar voluntario web" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
               </form>
+              @endrole
               <button class="show-modal btn-accion-tabla tooltipsC"title="Mostrar Voluntarios" data-toggle="modal" data-target="#Detalle"  data-na="{{$item->NacionalidadVoluntarioWeb}}" data-ocu="{{$item->OcupacionWeb}}" data-pat="{{$item->PatologiaWeb}}" data-fec="{{date('d-m-Y',strtotime($item->created_at))}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
                 
               </td>

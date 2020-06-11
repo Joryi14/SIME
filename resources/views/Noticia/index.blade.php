@@ -93,13 +93,14 @@ $(function () {
               <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
               <td><a href="/Noticia/{{$item->IdNoticias}}/edit" class="btn-accion-tabla tooltipsC" title="Editar noticia">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
-              <form id="form1" action="{{route('noticia_delete', ['Noticia' => $item->IdNoticias])}}" method="POST">
+              @role('Admin')
+                <form id="form1" action="{{route('noticia_delete', ['Noticia' => $item->IdNoticias])}}" method="POST">
                 @csrf 
                 <input name="_method" type="hidden" value="DELETE">
                 <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar noticia" onclick="confirmarEnvio()">
                     <i class="fa fa-fw fa-trash text-danger"></i>
                 </button>
-              </form>
+              </form>@endrole
               <button class="show-modal btn-accion-tabla tooltipsC" title="Mostar articulo" data-toggle="modal" data-target="#Detalle"  data-ar="{{$item->Articulo}}" ><i class="fa fa-fw fa-file-text-o text-info"></i></a>
               </td>
               </tr>

@@ -80,7 +80,7 @@ $(function () {
                     <i class="fa fa-fw fa-pencil text-success"></i></a>
                     <a href="{{route('AumentarC', ['id' => $item->IdEntrega])}}" class="btn-accion-tabla tooltipsC" title="Aumentar cantidad">
                       <i class="glyphicon glyphicon-plus text-primary"></i></a>
-                    @role('Admin|Director')
+                    @role('Admin')
                     <form id="form1" action="{{route('entregadonaciones_delete', ['EntregaDonaciones' => $item->IdEntrega])}}" method="POST">
                     @csrf
                     <input name="_method" type="hidden" value="DELETE">

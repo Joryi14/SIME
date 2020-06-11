@@ -68,12 +68,14 @@
                     <td>{{$UserRol->role_id}}</td>
                     <td>{{$UserRol->roles->name}}</td>
                     <td>
+                      @role('Admin')
                         <form  action="{{route('UserRol_delete', ['UserRol' => $UserRol->role_id])}}" method="POST">
                           @csrf @method('delete')
                           <button id="btneliminar" type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar permiso rol">
                               <i class="fa fa-fw fa-trash text-danger"></i>
                           </button>
                         </form>
+                        @endrole
                     </td>
                     </tr>
                   @endforeach

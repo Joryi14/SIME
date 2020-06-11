@@ -94,7 +94,7 @@ $(function () {
               <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
               <td><a href="/PersonasAlbergue/{{$item->idregistroA}}/edit" class="btn-accion-tabla tooltipsC" title="Editar personas en albergue">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
-                @role('Admin|Director')
+                @role('Admin')
                 <form id="form1" action="{{route('personasAlbergue_delete', ['PersonasAlbergue' => $item->idregistroA])}}" method="POST">
                 @csrf
                 <input name="_method" type="hidden" value="DELETE">

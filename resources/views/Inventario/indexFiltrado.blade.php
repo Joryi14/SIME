@@ -80,7 +80,7 @@ $(function () {
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
                 <a href="/Inventario/{{$item->idInventario}}/editSuministro" class="btn-accion-tabla tooltipsC" title="Aumentar suministros">
                   <i class="fa fa-fw fa-plus-circle text-success"></i></a>
-                @role('Admin|Director')
+                @role('Admin')
                 <form id="form1" action="{{route('inventario_delete', ['Inventario' => $item->idInventario])}}" method="POST">
                 @csrf
                 <input name="_method" type="hidden" value="DELETE">

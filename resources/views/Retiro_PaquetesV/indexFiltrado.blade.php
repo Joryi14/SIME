@@ -98,7 +98,7 @@ $(function () {
               <td>Id: {{$item->idEmergencias}}<br> Nombre: {{$item->NombreEmergencias}}</td>
               <td><a href="/Retiro_PaquetesV/{{$item->IdRetiroPaquetes}}/edit" class="btn-accion-tabla tooltipsC" title="Editar retiro de paquetes">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
-                @role('Admin|Director')
+                @role('Admin')
                 <form id="form1" action="{{route('Retiro_PaquetesV_delete', ['Retiro_PaquetesV' => $item->IdRetiroPaquetes])}}" method="POST">
                 @csrf
                 <input name="_method" type="hidden" value="DELETE">

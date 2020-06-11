@@ -127,7 +127,7 @@ $(function () {
               <span class="badge badge-danger">{{$item->Estado}}</span></a>
                 @endif</td>
               <td>
-                @role('Admin|Director')
+                @role('Admin')
                 <a href="/Albergue/{{$item->idAlbergue}}/edit" class="btn-accion-tabla tooltipsC" title="Editar albergue">
                 <i class="fa fa-fw fa-pencil text-success"></i></a>
                 <form id="form1" action="{{route('albergue_delete', ['Albergue' => $item->idAlbergue])}}" method="POST">

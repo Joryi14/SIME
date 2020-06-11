@@ -97,12 +97,14 @@
               <td>{{$item->Cedula}}</td>
               <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
               <td>
+              @role('Admin')
               <form id="form1" action="{{route('user_delete', ['user' => $item->id])}}" method="POST">
                   @csrf @method('delete')
                   <button type="submit" class="btn-accion-tabla tooltipsC" title="Eliminar usuario">
                       <i class="fa fa-fw fa-trash text-danger"></i>
                   </button>
                 </form>
+                @endrole
                   <button  class="show-modal btn-accion-tabla tooltipsC"title="Mostrar usuarios" data-toggle="modal" data-target="#Detalle"  data-est="{{$item->Estado}}" data-nac="{{$item->Nacionalidad}}" data-pat="{{$item->patologia}}" data-com="{{$item->Comunidad}}"><i class="fa fa-fw fa-file-text-o text-info"></i></a>
                   </button>
                     <a href="/usuarioE/{{$item->id}}" class="btn-accion-tabla tooltipsC" title="Actualizar estado">

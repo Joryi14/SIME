@@ -154,12 +154,10 @@ class NoticiaController extends Controller
       if($noticia->Imagenes != NULL){
       $image_path = public_path().'/img/'.$noticia->Imagenes;
       unlink($image_path);}
-      if($noticia->Videos != NULL){
-      $videos_path = public_path().'/Video/'.$noticia->Videos;
-      unlink($videos_path);}
       if($noticia->PDF != NULL){
       $pdf_path = public_path().'/PDF/'.$noticia->PDF;
-      unlink($pdf_path);}
+      unlink($pdf_path);
+    }
       $noticia->delete();
       return redirect('Noticia')->with('exito','Se ha eliminado correctamente');
     }

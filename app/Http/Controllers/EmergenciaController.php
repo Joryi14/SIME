@@ -169,7 +169,7 @@ class EmergenciaController extends Controller
         
         $Emergencia = Emergencia::orderby('idEmergencias')->whereBetween('created_at', array($request->Fecha1,$request->Fecha2)) 
         ->get();
-        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        $today = Carbon::now()->format('m/d/Y h:i:s A');
         $view = view ('Emergencia.reporte', compact('Emergencia', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);

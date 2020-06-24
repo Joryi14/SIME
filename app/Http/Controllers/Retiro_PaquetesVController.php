@@ -157,7 +157,7 @@ class Retiro_PaquetesVController extends Controller
         'retiropaquetes.SuministrosComision',
         'retiropaquetes.created_at','inventario.idInventario')->orderBy('IdRetiroPaquetes')->get();
 
-        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        $today = Carbon::now()->format('m/d/Y h:i:s A');
         $view = view ('Retiro_PaquetesV.reporte', compact('Retiro', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->setPaper("A4", "landscape");
@@ -205,7 +205,7 @@ class Retiro_PaquetesVController extends Controller
         'retiropaquetes.SuministrosGobierno',
         'retiropaquetes.SuministrosComision',
         'retiropaquetes.created_at','inventario.idInventario')->orderBy('IdRetiroPaquetes')->get();
-        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        $today = Carbon::now()->format('m/d/Y h:i:s A');
         $view = view ('Retiro_PaquetesV.reporteF', compact('Retiro', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->setPaper("A4", "landscape");

@@ -213,7 +213,7 @@ class PersonasAlbergueController extends Controller
         
       $persona = PersonasAlbergue::orderby('idregistroA')->whereBetween('created_at', array($request->Fecha1,$request->Fecha2)) 
       ->get();
-      $today = Carbon::now()->format('d/m/Y h:i:s A');
+      $today = Carbon::now()->format('m/d/Y h:i:s A');
       $view = view ('PersonasAlbergue.reporte', compact('persona', 'today'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
@@ -249,7 +249,7 @@ class PersonasAlbergueController extends Controller
       'jefedefamilia.Nombre','jefedefamilia.Apellido1','registropersonaalbergue.FechaDeIngreso'
       ,'emergencia.NombreEmergencias','registropersonaalbergue.HoraDeIngreso','registropersonaalbergue.FechaDeSalida'
       ,'registropersonaalbergue.HoraDeSalida','registropersonaalbergue.created_at')->get();
-    $today = Carbon::now()->format('d/m/Y h:i:s A');
+    $today = Carbon::now()->format('m/d/Y h:i:s A');
     $view = view ('PersonasAlbergue.reporteF', compact('persona', 'today'))->render();
     $pdf = \App::make('dompdf.wrapper');
     $pdf->loadHTML($view);

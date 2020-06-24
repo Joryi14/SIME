@@ -77,7 +77,7 @@ class InventarioController extends Controller
 
         $inventario = Inventario::orderby('idInventario')->whereBetween('created_at', array($request->Fecha1,$request->Fecha2))
         ->get();
-        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        $today = Carbon::now()->format('m/d/Y h:i:s A');
         $view = view ('Inventario.reporte', compact('inventario', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
@@ -106,7 +106,7 @@ class InventarioController extends Controller
         'inventario.Cobijas',
         'inventario.Ropa', 
         'inventario.created_at')->get();
-        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        $today = Carbon::now()->format('m/d/Y h:i:s A');
         $view = view ('Inventario.reporteF', compact('inventario', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);

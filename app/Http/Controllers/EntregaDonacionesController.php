@@ -220,7 +220,7 @@ else
         ->where('emergencia.Estado','Activa')->whereBetween('entregadonaciones.created_at', array($request->Fecha1,$request->Fecha2))
         ->select('entregadonaciones.IdEntrega','entregadonaciones.created_at','entregadonaciones.IdRetiroPaquetes','entregadonaciones.Cantidad','entregadonaciones.Foto','users.Cedula as Ced','users.name','jefedefamilia.Cedula','jefedefamilia.Nombre','jefedefamilia.Apellido1','emergencia.idEmergencias','emergencia.NombreEmergencias')
         ->get();
-        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        $today = Carbon::now()->format('m/d/Y h:i:s A');
         $view = view ('EntregaDonaciones.reporte', compact('EntregaDonaciones', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
@@ -254,7 +254,7 @@ else
         ->whereBetween('entregadonaciones.created_at', array($request->Fecha1,$request->Fecha2))
         ->select('entregadonaciones.IdEntrega','entregadonaciones.created_at','entregadonaciones.IdRetiroPaquetes','entregadonaciones.Cantidad','entregadonaciones.Foto','users.Cedula as Ced','users.name','jefedefamilia.Cedula','jefedefamilia.Nombre','jefedefamilia.Apellido1','emergencia.idEmergencias','emergencia.NombreEmergencias')
         ->get();
-        $today = Carbon::now()->format('d/m/Y h:i:s A');
+        $today = Carbon::now()->format('m/d/Y h:i:s A');
         $view = view ('EntregaDonaciones.reporteF', compact('EntregaDonaciones', 'today'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);

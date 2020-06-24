@@ -185,7 +185,7 @@ class EntregaDonacionesAlbergueController extends Controller
         
       $EntregaDonacionesAlbergue = EntregaDonacionesAlbergue::orderby('IdEntregaA')->whereBetween('created_at', array($request->Fecha1,$request->Fecha2)) 
       ->get();
-      $today = Carbon::now()->format('d/m/Y h:i:s A');
+      $today = Carbon::now()->format('m/d/Y h:i:s A');
       $view = view ('EntregaDonacionesAlbergue.reporte', compact('EntregaDonacionesAlbergue', 'today'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
@@ -218,7 +218,7 @@ class EntregaDonacionesAlbergueController extends Controller
    'jefedefamilia.Nombre','jefedefamilia.Apellido1'
    ,'emergencia.NombreEmergencias'
    ,'entregadonacionesalbergue.created_at')->get();
-   $today = Carbon::now()->format('d/m/Y h:i:s A');
+   $today = Carbon::now()->format('m/d/Y h:i:s A');
    $view = view ('EntregaDonacionesAlbergue.reporteF', compact('EntregaDonacionesAlbergue', 'today'))->render();
    $pdf = \App::make('dompdf.wrapper');
    $pdf->loadHTML($view);
